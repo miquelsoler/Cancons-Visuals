@@ -7,6 +7,9 @@
 ///--------------------------------------------------------------
 void ofApp::setup()
 {
+    
+    //ofSetLogLevel(OF_LOG_VERBOSE);
+    
     ofSetFrameRate(60);
     ofSetVerticalSync(true);
     ofBackground(ofColor::black);
@@ -33,6 +36,18 @@ void ofApp::setup()
 
     audioAnalyzer = new PMDeviceAudioAnalyzer(this, 0, 2, 0, 44100, 512);
     audioAnalyzer->setup();
+    
+    //kinect fist test
+    
+    kinect.setup();
+    kinect.addDepthGenerator();
+    kinect.addImageGenerator();
+    kinect.setRegister(false);
+    kinect.setMirror(true);
+    kinect.addUserGenerator();
+    kinect.setMaxNumUsers(3);
+    kinect.setSkeletonProfile(XN_SKEL_PROFILE_ALL);
+    kinect.start();
 }
 
 ///--------------------------------------------------------------
@@ -43,6 +58,11 @@ void ofApp::update()
 #endif
 
     sceneManager.update();
+    
+    
+    //kinect
+    
+    kinect.update();
 }
 
 ///--------------------------------------------------------------
@@ -54,7 +74,17 @@ void ofApp::draw()
         ofDrawBitmapString(ofToString(ofGetFrameRate()) + "fps", 15, ofGetHeight() - 15);
     }
 
-    sceneManager.draw();
+    //sceneManager.draw();
+    
+    //inect
+    
+    kinect.drawImage();
+}
+
+///--------------------------------------------------------------
+void ofApp::exit()
+{
+    kinect.stop();
 }
 
 ///--------------------------------------------------------------
