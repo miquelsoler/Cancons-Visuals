@@ -11,7 +11,6 @@
 		084025DA517D8329301FE1B6 /* ofxUIEventArgs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8896AC3BECAAA504E3828F4 /* ofxUIEventArgs.cpp */; };
 		152EAECABD008D84AF7F27F8 /* ofxEasingLinear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CFDCEA412E8BCDACA9B26 /* ofxEasingLinear.cpp */; };
 		1587708E3CAC72997E43504E /* ofxUIRangeSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2813E36CEFD8D1C1B70E600 /* ofxUIRangeSlider.cpp */; };
-		168C43F69AF6A8042EA0B13F /* easing_terms_of_use.html in Sources */ = {isa = PBXBuildFile; fileRef = 9AAEF50558BBDBEB5260FC35 /* easing_terms_of_use.html */; };
 		1D397CC89DDD782F892B7483 /* ofxAudioAnalyzer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97E50D4D46A31EDC1439DCD0 /* ofxAudioAnalyzer.cpp */; };
 		1DAAC3FB4B98B08AE63F4687 /* ofxUISuperCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38EBD5650A3BF5A499B07525 /* ofxUISuperCanvas.cpp */; };
 		22030CBDCC25D815E7ED6757 /* ofxUIFPSSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E592342D8B7FB73A6F64D /* ofxUIFPSSlider.cpp */; };
@@ -19,7 +18,6 @@
 		26874B150C8535AEA0F24C8C /* ofxUIImageSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2689C5C8A97002C218125F2F /* ofxUIImageSlider.cpp */; };
 		27765D1BFF26BD9A6186915F /* ofxEasingCirc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4973CEF438C8931B5E03E0A /* ofxEasingCirc.cpp */; };
 		2AB2A7F31BCEC68400DEE302 /* PMDeviceAudioAnalyzer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2A7E91BCEC61000DEE302 /* PMDeviceAudioAnalyzer.cpp */; };
-		2AB2A7F41BCEC68500DEE302 /* PMDeviceAudioAnalyzer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2A7EA1BCEC61000DEE302 /* PMDeviceAudioAnalyzer.hpp */; };
 		2AB2A8001BCEC6F100DEE302 /* libtag.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB2A7F71BCEC6F100DEE302 /* libtag.dylib */; settings = {ASSET_TAGS = (); }; };
 		2AB2A8011BCEC6F100DEE302 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB2A7F81BCEC6F100DEE302 /* libavcodec.a */; settings = {ASSET_TAGS = (); }; };
 		2AB2A8021BCEC6F100DEE302 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB2A7F91BCEC6F100DEE302 /* libavformat.a */; settings = {ASSET_TAGS = (); }; };
@@ -1060,15 +1058,13 @@
 				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
 				2AB2A8091BCECA5500DEE302 /* PMSc1Settings.cpp in Sources */,
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
-				168C43F69AF6A8042EA0B13F /* easing_terms_of_use.html in Sources */,
+				2AB2A7F31BCEC68400DEE302 /* PMDeviceAudioAnalyzer.cpp in Sources */,
 				9266028E1AECBB027ABF64D8 /* ofxEasing.cpp in Sources */,
 				2AB2A80B1BCECA6600DEE302 /* PMSettingsManager.cpp in Sources */,
 				2AB2A80A1BCECA5600DEE302 /* PMSc2Main.cpp in Sources */,
-				2AB2A7F31BCEC68400DEE302 /* PMDeviceAudioAnalyzer.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				5E0DBDE5736DEB3A5886B3F1 /* ofxEasingBack.cpp in Sources */,
-				2AB2A7F41BCEC68500DEE302 /* PMDeviceAudioAnalyzer.hpp in Sources */,
 				EAD3CE0789481F975F351F39 /* ofxEasingBounce.cpp in Sources */,
 				27765D1BFF26BD9A6186915F /* ofxEasingCirc.cpp in Sources */,
 				E816D7D242D315FB53E23F54 /* ofxEasingCubic.cpp in Sources */,
