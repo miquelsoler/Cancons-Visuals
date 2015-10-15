@@ -74,6 +74,11 @@
 		9BE4AE0AA2B8C436BDFE9D4D /* ofxUIDragableLabelButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFD5D3C9D38E29DB72B32254 /* ofxUIDragableLabelButton.cpp */; };
 		9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832BDC407620CDBA568B713D /* tinyxmlerror.cpp */; };
 		9F0348F61BCFE39C00164C02 /* PMDeviceAudioAnalyzer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F0348F41BCFE39C00164C02 /* PMDeviceAudioAnalyzer.cpp */; settings = {ASSET_TAGS = (); }; };
+		9F3B37DA1BCFFF4800021E6E /* ofxOpenNI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B37D51BCFFF4800021E6E /* ofxOpenNI.cpp */; settings = {ASSET_TAGS = (); }; };
+		9F3B37DB1BCFFF4800021E6E /* ofxOpenNITypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B37D71BCFFF4800021E6E /* ofxOpenNITypes.cpp */; settings = {ASSET_TAGS = (); }; };
+		9F3B37E41BCFFF5000021E6E /* ofxKinectFeatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B37DE1BCFFF5000021E6E /* ofxKinectFeatures.cpp */; settings = {ASSET_TAGS = (); }; };
+		9F3B37E51BCFFF5000021E6E /* ofxMocapElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B37E01BCFFF5000021E6E /* ofxMocapElement.cpp */; settings = {ASSET_TAGS = (); }; };
+		9F3B37E61BCFFF5000021E6E /* ofxMocapEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B37E21BCFFF5000021E6E /* ofxMocapEvents.cpp */; settings = {ASSET_TAGS = (); }; };
 		9F5C6DD965B4F3A6DB5B88F8 /* ofxUI2DGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02FF3B8D243CFB85AE0909EB /* ofxUI2DGraph.cpp */; };
 		ADE7C2AFC51E3F7E5E389026 /* ofxUISortableList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5613D5D24B00D8AD909F7E6A /* ofxUISortableList.cpp */; };
 		AE281BEBF3A00F1FC37F3DA0 /* ofxUIWaveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9345327AA463407B3DADBADE /* ofxUIWaveform.cpp */; };
@@ -313,6 +318,17 @@
 		9F0348F31BCFE39C00164C02 /* PMAudioOutParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMAudioOutParams.h; sourceTree = "<group>"; };
 		9F0348F41BCFE39C00164C02 /* PMDeviceAudioAnalyzer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMDeviceAudioAnalyzer.cpp; sourceTree = "<group>"; };
 		9F0348F51BCFE39C00164C02 /* PMDeviceAudioAnalyzer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMDeviceAudioAnalyzer.hpp; sourceTree = "<group>"; };
+		9F3B37D51BCFFF4800021E6E /* ofxOpenNI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOpenNI.cpp; sourceTree = "<group>"; };
+		9F3B37D61BCFFF4800021E6E /* ofxOpenNI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenNI.h; sourceTree = "<group>"; };
+		9F3B37D71BCFFF4800021E6E /* ofxOpenNITypes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOpenNITypes.cpp; sourceTree = "<group>"; };
+		9F3B37D81BCFFF4800021E6E /* ofxOpenNITypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenNITypes.h; sourceTree = "<group>"; };
+		9F3B37D91BCFFF4800021E6E /* ofxOpenNIUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenNIUtils.h; sourceTree = "<group>"; };
+		9F3B37DE1BCFFF5000021E6E /* ofxKinectFeatures.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxKinectFeatures.cpp; sourceTree = "<group>"; };
+		9F3B37DF1BCFFF5000021E6E /* ofxKinectFeatures.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxKinectFeatures.h; sourceTree = "<group>"; };
+		9F3B37E01BCFFF5000021E6E /* ofxMocapElement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMocapElement.cpp; sourceTree = "<group>"; };
+		9F3B37E11BCFFF5000021E6E /* ofxMocapElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMocapElement.h; sourceTree = "<group>"; };
+		9F3B37E21BCFFF5000021E6E /* ofxMocapEvents.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMocapEvents.cpp; sourceTree = "<group>"; };
+		9F3B37E31BCFFF5000021E6E /* ofxMocapEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMocapEvents.h; sourceTree = "<group>"; };
 		9FC51B01FA0EE5D750125994 /* peak.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = peak.h; path = ../../../addons/ofxAudioAnalyzer/libs/essentia/include/essentia/utils/peak.h; sourceTree = SOURCE_ROOT; };
 		A26C4A6254126C99F0A65354 /* ofxEasingElastic.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxEasingElastic.cpp; path = ../../../addons/ofxTween/src/Easings/ofxEasingElastic.cpp; sourceTree = SOURCE_ROOT; };
 		A480BA1389E17B9874316172 /* tnt_i_refvec.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = tnt_i_refvec.h; path = ../../../addons/ofxAudioAnalyzer/libs/essentia/include/essentia/utils/tnt/tnt_i_refvec.h; sourceTree = SOURCE_ROOT; };
@@ -752,6 +768,49 @@
 			name = utils;
 			sourceTree = "<group>";
 		};
+		9F3B37D31BCFFF4800021E6E /* ofxOpenNI-PM */ = {
+			isa = PBXGroup;
+			children = (
+				9F3B37D41BCFFF4800021E6E /* src */,
+			);
+			name = "ofxOpenNI-PM";
+			sourceTree = "<group>";
+		};
+		9F3B37D41BCFFF4800021E6E /* src */ = {
+			isa = PBXGroup;
+			children = (
+				9F3B37D51BCFFF4800021E6E /* ofxOpenNI.cpp */,
+				9F3B37D61BCFFF4800021E6E /* ofxOpenNI.h */,
+				9F3B37D71BCFFF4800021E6E /* ofxOpenNITypes.cpp */,
+				9F3B37D81BCFFF4800021E6E /* ofxOpenNITypes.h */,
+				9F3B37D91BCFFF4800021E6E /* ofxOpenNIUtils.h */,
+			);
+			name = src;
+			path = "../../../addons/ofxOpenNI-PM/src";
+			sourceTree = "<group>";
+		};
+		9F3B37DC1BCFFF5000021E6E /* ofxKinectFeatures */ = {
+			isa = PBXGroup;
+			children = (
+				9F3B37DD1BCFFF5000021E6E /* src */,
+			);
+			name = ofxKinectFeatures;
+			sourceTree = "<group>";
+		};
+		9F3B37DD1BCFFF5000021E6E /* src */ = {
+			isa = PBXGroup;
+			children = (
+				9F3B37DE1BCFFF5000021E6E /* ofxKinectFeatures.cpp */,
+				9F3B37DF1BCFFF5000021E6E /* ofxKinectFeatures.h */,
+				9F3B37E01BCFFF5000021E6E /* ofxMocapElement.cpp */,
+				9F3B37E11BCFFF5000021E6E /* ofxMocapElement.h */,
+				9F3B37E21BCFFF5000021E6E /* ofxMocapEvents.cpp */,
+				9F3B37E31BCFFF5000021E6E /* ofxMocapEvents.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxKinectFeatures/src;
+			sourceTree = "<group>";
+		};
 		A492CE86424AB8905550BFD8 /* ofxUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -809,6 +868,8 @@
 				8D82EBF7DBCF242EC80B1CFF /* ofxSceneManager */,
 				1F293A20D2B096D59C4F24DD /* ofxTween */,
 				A492CE86424AB8905550BFD8 /* ofxUI */,
+				9F3B37D31BCFFF4800021E6E /* ofxOpenNI-PM */,
+				9F3B37DC1BCFFF5000021E6E /* ofxKinectFeatures */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -1138,7 +1199,9 @@
 				EEBE0E386AA0A4E9C4ABD070 /* ofxSceneManager.cpp in Sources */,
 				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
 				2AB2A8091BCECA5500DEE302 /* PMSc1Settings.cpp in Sources */,
+				9F3B37E51BCFFF5000021E6E /* ofxMocapElement.cpp in Sources */,
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
+				9F3B37DB1BCFFF4800021E6E /* ofxOpenNITypes.cpp in Sources */,
 				9266028E1AECBB027ABF64D8 /* ofxEasing.cpp in Sources */,
 				2AB2A80B1BCECA6600DEE302 /* PMSettingsManager.cpp in Sources */,
 				2AB2A80A1BCECA5600DEE302 /* PMSc2Main.cpp in Sources */,
@@ -1166,8 +1229,10 @@
 				DF0C851B244C4C867CEA8806 /* ofxUICircleSlider.cpp in Sources */,
 				9BE4AE0AA2B8C436BDFE9D4D /* ofxUIDragableLabelButton.cpp in Sources */,
 				F392A99D83698FC099127880 /* ofxUIDropDownList.cpp in Sources */,
+				9F3B37DA1BCFFF4800021E6E /* ofxOpenNI.cpp in Sources */,
 				084025DA517D8329301FE1B6 /* ofxUIEventArgs.cpp in Sources */,
 				7252706DA14C1BE63950ADDA /* ofxUIFPS.cpp in Sources */,
+				9F3B37E61BCFFF5000021E6E /* ofxMocapEvents.cpp in Sources */,
 				22030CBDCC25D815E7ED6757 /* ofxUIFPSSlider.cpp in Sources */,
 				3D4EA8E172D3E4A30FEFA969 /* ofxUIImage.cpp in Sources */,
 				7F2CD93F681F3C1547B3BF2C /* ofxUIImageButton.cpp in Sources */,
@@ -1186,6 +1251,7 @@
 				1587708E3CAC72997E43504E /* ofxUIRangeSlider.cpp in Sources */,
 				59C5F2F5D7254C33C00F97CB /* ofxUIRectangle.cpp in Sources */,
 				FE0F1DB69ACCD163E9DA2A15 /* ofxUIRotarySlider.cpp in Sources */,
+				9F3B37E41BCFFF5000021E6E /* ofxKinectFeatures.cpp in Sources */,
 				43BADBB2FE0F17D34B57A705 /* ofxUIScrollableCanvas.cpp in Sources */,
 				740A58CBFDFE578C83A349AF /* ofxUISlider.cpp in Sources */,
 				ADE7C2AFC51E3F7E5E389026 /* ofxUISortableList.cpp in Sources */,
@@ -1372,6 +1438,10 @@
 					../../../addons/ofxTween/src/Easings,
 					../../../addons/ofxUI/libs,
 					../../../addons/ofxUI/src,
+					"../../../addons/ofxOpenNI-PM/include",
+					"../../../addons/ofxOpenNI-PM/include/libusb",
+					"../../../addons/ofxOpenNI-PM/include/nite",
+					"../../../addons/ofxOpenNI-PM/include/openni",
 					/usr/local/include,
 					/usr/local/include/taglib,
 					/usr/local/include/essentia,
@@ -1438,6 +1508,10 @@
 					../../../addons/ofxTween/src/Easings,
 					../../../addons/ofxUI/libs,
 					../../../addons/ofxUI/src,
+					"../../../addons/ofxOpenNI-PM/include",
+					"../../../addons/ofxOpenNI-PM/include/libusb",
+					"../../../addons/ofxOpenNI-PM/include/nite",
+					"../../../addons/ofxOpenNI-PM/include/openni",
 					/usr/local/include,
 					/usr/local/include/taglib,
 					/usr/local/include/essentia,
