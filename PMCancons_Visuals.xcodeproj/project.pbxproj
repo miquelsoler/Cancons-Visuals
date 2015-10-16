@@ -1867,7 +1867,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
-					/Volumes/Data/Eduauxfolders/Documents/Dev/of_v0.9.0RC1_osx_release/apps/cansons_visuals/cancons_visuals/bin/data/openni/lib,
+					"$(SRCROOT)/bin/data/openni/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1945,7 +1945,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
-					/Volumes/Data/Eduauxfolders/Documents/Dev/of_v0.9.0RC1_osx_release/apps/cansons_visuals/cancons_visuals/bin/data/openni/lib,
+					"$(SRCROOT)/bin/data/openni/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_CPLUSPLUSFLAGS = (
