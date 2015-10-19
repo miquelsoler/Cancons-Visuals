@@ -8,6 +8,8 @@
 #ifndef PMAudioOutParams_h
 #define PMAudioOutParams_h
 
+#pragma once
+
 struct baseAudioOutParams
 {
     int deviceID;
@@ -25,11 +27,9 @@ struct onsetParams : public baseAudioOutParams
 {
 };
 
-struct fftBandsParams : public baseAudioOutParams
+struct freqBandsParams : public baseAudioOutParams
 {
-    float low;
-    float mid;
-    float high;
+    float *melBands;
 };
 
 
