@@ -3,11 +3,11 @@
 
 #include "ofMain.h"
 #include "PMDeviceAudioAnalyzer.hpp"
+#include "PMMotionExtractor.hpp"
 #include "ofxSceneManager.h"
 #include "ofxOpenNI.h"
 #include "ofxKinectFeatures.h"
 
-#define MAX_DEVICES 1
 
 class ofApp : public ofBaseApp
 {
@@ -40,10 +40,5 @@ private:
     ofxSceneManager         sceneManager;
     unsigned int            currentScene;
     
-    //kinect fist test
-    
-    ofxOpenNI kinect;
-    //bool hasUsers;
-    ofxKinectFeatures featExtractor;
-    
+    PMMotionExtractor       *motionExtractor;
 };

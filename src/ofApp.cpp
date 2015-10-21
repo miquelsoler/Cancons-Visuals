@@ -8,7 +8,7 @@
 void ofApp::setup()
 {
     
-    //ofSetLogLevel(OF_LOG_VERBOSE);
+    ofSetLogLevel(OF_LOG_VERBOSE);
     
     ofSetFrameRate(60);
     ofSetVerticalSync(true);
@@ -41,17 +41,9 @@ void ofApp::setup()
     int numMelBands = 24;
     audioAnalyzer->setup(PMDAA_CHANNEL_MONO, channelNumber, useMelBands, numMelBands);
     
-    //kinect fist test
     
-    kinect.setup();
-    kinect.addDepthGenerator();
-    kinect.addImageGenerator();
-    kinect.setRegister(false);
-    kinect.setMirror(true);
-    kinect.addUserGenerator();
-    kinect.setMaxNumUsers(3);
-    kinect.setSkeletonProfile(XN_SKEL_PROFILE_ALL);
-    kinect.start();
+    motionExtractor = new PMMotionExtractor();
+    motionExtractor->setup();
 }
 
 ///--------------------------------------------------------------
@@ -63,10 +55,7 @@ void ofApp::update()
 
     sceneManager.update();
     
-    
-    //kinect
-    
-    kinect.update();
+    motionExtractor->update();
 }
 
 ///--------------------------------------------------------------
@@ -78,17 +67,15 @@ void ofApp::draw()
         ofDrawBitmapString(ofToString(ofGetFrameRate()) + "fps", 15, ofGetHeight() - 15);
     }
 
-    //sceneManager.draw();
+    sceneManager.draw();
     
-    //inect
-    
-    kinect.drawImage();
+    motionExtractor->draw();
 }
 
 ///--------------------------------------------------------------
 void ofApp::exit()
 {
-    kinect.stop();
+    motionExtractor->exit();
 }
 
 ///--------------------------------------------------------------

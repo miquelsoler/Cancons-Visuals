@@ -74,6 +74,7 @@
 		9BE4AE0AA2B8C436BDFE9D4D /* ofxUIDragableLabelButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFD5D3C9D38E29DB72B32254 /* ofxUIDragableLabelButton.cpp */; };
 		9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832BDC407620CDBA568B713D /* tinyxmlerror.cpp */; };
 		9F0348F61BCFE39C00164C02 /* PMDeviceAudioAnalyzer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F0348F41BCFE39C00164C02 /* PMDeviceAudioAnalyzer.cpp */; settings = {ASSET_TAGS = (); }; };
+		9F304D831BD6912B000E9FDA /* PMMotionExtractor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F304D811BD6912B000E9FDA /* PMMotionExtractor.cpp */; settings = {ASSET_TAGS = (); }; };
 		9F3B37DA1BCFFF4800021E6E /* ofxOpenNI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B37D51BCFFF4800021E6E /* ofxOpenNI.cpp */; settings = {ASSET_TAGS = (); }; };
 		9F3B37DB1BCFFF4800021E6E /* ofxOpenNITypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B37D71BCFFF4800021E6E /* ofxOpenNITypes.cpp */; settings = {ASSET_TAGS = (); }; };
 		9F3B37F81BD016E800021E6E /* libnimCodecs.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3B37EA1BD016E800021E6E /* libnimCodecs.dylib */; settings = {ASSET_TAGS = (); }; };
@@ -370,6 +371,8 @@
 		9F0348F31BCFE39C00164C02 /* PMAudioOutParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMAudioOutParams.h; sourceTree = "<group>"; };
 		9F0348F41BCFE39C00164C02 /* PMDeviceAudioAnalyzer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMDeviceAudioAnalyzer.cpp; sourceTree = "<group>"; };
 		9F0348F51BCFE39C00164C02 /* PMDeviceAudioAnalyzer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMDeviceAudioAnalyzer.hpp; sourceTree = "<group>"; };
+		9F304D811BD6912B000E9FDA /* PMMotionExtractor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMMotionExtractor.cpp; sourceTree = "<group>"; };
+		9F304D821BD6912B000E9FDA /* PMMotionExtractor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMMotionExtractor.hpp; sourceTree = "<group>"; };
 		9F3B37D51BCFFF4800021E6E /* ofxOpenNI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOpenNI.cpp; sourceTree = "<group>"; };
 		9F3B37D61BCFFF4800021E6E /* ofxOpenNI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenNI.h; sourceTree = "<group>"; };
 		9F3B37D71BCFFF4800021E6E /* ofxOpenNITypes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOpenNITypes.cpp; sourceTree = "<group>"; };
@@ -1012,6 +1015,15 @@
 			path = PMAudioAnalysis;
 			sourceTree = "<group>";
 		};
+		9F304D801BD6912B000E9FDA /* Motion */ = {
+			isa = PBXGroup;
+			children = (
+				9F304D811BD6912B000E9FDA /* PMMotionExtractor.cpp */,
+				9F304D821BD6912B000E9FDA /* PMMotionExtractor.hpp */,
+			);
+			path = Motion;
+			sourceTree = "<group>";
+		};
 		9F3B37D31BCFFF4800021E6E /* ofxOpenNI-PM */ = {
 			isa = PBXGroup;
 			children = (
@@ -1490,6 +1502,7 @@
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				2AB2A7EC1BCEC64100DEE302 /* Defaults.h */,
+				9F304D801BD6912B000E9FDA /* Motion */,
 				9F0348F11BCFE39C00164C02 /* External */,
 				2A2337371BCEC097000612E4 /* Scenes */,
 				2A23373C1BCEC097000612E4 /* Utils */,
@@ -1655,6 +1668,7 @@
 				9A83D1B3FB64456BC907667F /* ofxUIMinimalSlider.cpp in Sources */,
 				F440B307990F8F5CE40B9111 /* ofxUIMovingGraph.cpp in Sources */,
 				222C3AB10FA3158602718602 /* ofxUIMultiImageButton.cpp in Sources */,
+				9F304D831BD6912B000E9FDA /* PMMotionExtractor.cpp in Sources */,
 				F9C20834354ACC8337320B8C /* ofxUIMultiImageToggle.cpp in Sources */,
 				E3D59A6B55F05669B3FBF8BD /* ofxUINumberDialer.cpp in Sources */,
 				D60E54E7FD6E19BC8636E0D2 /* ofxUIRadio.cpp in Sources */,
@@ -1870,6 +1884,7 @@
 					"$(inherited)",
 					/usr/local/lib,
 					"$(SRCROOT)/bin/data/openni/lib",
+					"$(SRCROOT)/bin/data/openni/config",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1948,6 +1963,7 @@
 					"$(inherited)",
 					/usr/local/lib,
 					"$(SRCROOT)/bin/data/openni/lib",
+					"$(SRCROOT)/bin/data/openni/config",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_CPLUSPLUSFLAGS = (
