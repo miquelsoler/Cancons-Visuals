@@ -8,7 +8,7 @@
 void ofApp::setup()
 {
     
-    ofSetLogLevel(OF_LOG_VERBOSE);
+    //ofSetLogLevel(OF_LOG_VERBOSE);
     
     ofSetFrameRate(60);
     ofSetVerticalSync(true);

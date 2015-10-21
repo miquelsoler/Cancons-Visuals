@@ -33,6 +33,8 @@ private:
     ofxKinectFeatures kinectFeatures;
     ofxOpenNI kinectNI;
     
+    void handEvent(ofxOpenNIHandEvent & event);
+    
 };
 
 #endif /* PMMotionExtractor_hpp */

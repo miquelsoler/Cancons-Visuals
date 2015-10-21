@@ -12,33 +12,64 @@
 ///--------------------------------------------------------------
 void PMMotionExtractor::setup()
 {
-    //kinectNI fist test
-    
     kinectNI.setup();
     kinectNI.addDepthGenerator();
     kinectNI.addImageGenerator();
-    kinectNI.setRegister(false);
+    kinectNI.setRegister(true);
     kinectNI.setMirror(true);
-    kinectNI.addUserGenerator();
-    kinectNI.setMaxNumUsers(3);
+    //kinectNI.addUserGenerator();
+    kinectNI.setMaxNumUsers(1);
     kinectNI.setSkeletonProfile(XN_SKEL_PROFILE_ALL);
+    kinectNI.addHandsGenerator();
+    kinectNI.addUserGenerator();
+    kinectNI.addAllHandFocusGestures();
+    kinectNI.setMaxNumHands(2);
     kinectNI.start();
+    
 }
 
 ///--------------------------------------------------------------
 void PMMotionExtractor::update()
 {
-    //kinectNI
-    
     kinectNI.update();
+//    int numHands = kinectNI.getNumTrackedHands();
+//    
+//    // iterate through users
+//    for (int i = 0; i < numHands; i++){
+//        
+//        // get a reference to this user
+//        ofxOpenNIHand & hand = kinectNI.getTrackedHand(i);
+//        
+//        // get hand position
+//        ofPoint & handPosition = hand.getPosition();
+//        // do something with the positions like:
+//        
+//        // draw a rect at the position (don't confuse this with the debug draw which shows circles!!)
+//        ofSetColor(255,0,0);
+//        ofRect(handPosition.x, handPosition.y, 10, 10);
+//    }
 }
 
 ///--------------------------------------------------------------
 void PMMotionExtractor::draw()
 {
-    //inect
+    kinectNI.drawImage();
+    int numHands = kinectNI.getNumTrackedHands();
     
-    kinectNI.drawDebug();
+    // iterate through hands
+    for (int i = 0; i < numHands; i++){
+        
+        // get a reference to this user
+        ofxOpenNIHand & hand = kinectNI.getTrackedHand(i);
+        
+        // get hand position
+        ofPoint & handPosition = hand.getPosition();
+        // do something with the positions like:
+        
+        // draw a rect at the position (don't confuse this with the debug draw which shows circles!!)
+        ofSetColor(255,0,0);
+        ofDrawEllipse(handPosition.x, handPosition.y, 20, 20);
+    }
 }
 
 ///--------------------------------------------------------------
