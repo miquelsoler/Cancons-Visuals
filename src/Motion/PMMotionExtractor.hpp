@@ -32,8 +32,9 @@ public:
 private:
     ofxKinectFeatures kinectFeatures;
     ofxOpenNI kinectNI;
+    bool hadUsers;
     
-    void handEvent(ofxOpenNIHandEvent & event);
+    //void handEvent(ofxOpenNIHandEvent & event);
     
 };
 
