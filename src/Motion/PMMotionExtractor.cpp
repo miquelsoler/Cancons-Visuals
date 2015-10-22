@@ -26,6 +26,10 @@ void PMMotionExtractor::setup()
     //kinectNI.setMaxNumHands(2);
     kinectNI.start();
     
+    //ofSetWindowShape(640, 480);
+    
+    font.loadFont("verdana.ttf", 18);
+    
     //ofAddListener(kinectNI.userEvent, this, &ofApp::userEvent);
 }
 
@@ -57,44 +61,20 @@ void PMMotionExtractor::update()
         kinectNI.setPaused(false);
     }
     
-//    int numHands = kinectNI.getNumTrackedHands();
-//    
-//    // iterate through users
-//    for (int i = 0; i < numHands; i++){
-//        
-//        // get a reference to this user
-//        ofxOpenNIHand & hand = kinectNI.getTrackedHand(i);
-//        
-//        // get hand position
-//        ofPoint & handPosition = hand.getPosition();
-//    }
-    
+    //wraper to kinectInfo struct
 }
 
 ///--------------------------------------------------------------
 void PMMotionExtractor::draw()
 {
     kinectNI.drawImage();
-//    int numHands = kinectNI.getNumTrackedHands();
-//    
-//    // iterate through hands
-//    for (int i = 0; i < numHands; i++){
-//        
-//        // get a reference to this user
-//        ofxOpenNIHand & hand = kinectNI.getTrackedHand(i);
-//        
-//        // get hand position
-//        ofPoint & handPosition = hand.getPosition();
-//        // do something with the positions like:
-//        
-//        // draw a rect at the position (don't confuse this with the debug draw which shows circles!!)
-//        ofSetColor(255,0,0);
-//        ofDrawEllipse(handPosition.x, handPosition.y, 20, 20);
-//    }
+    cout<<kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).x/kinectNI.getWidth() << endl;
+    //prova
     ofDrawEllipse(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).y, 20, 20);
     ofDrawEllipse(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).y, 20, 20);
     ofDrawEllipse(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).y, 20, 20);
     ofDrawEllipse(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).y, 20, 20);
+    font.drawString(ofToString(kinectFeatures.getAcceleration(JOINT_RIGHT_HAND).y), kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).y);
     
 }
 
