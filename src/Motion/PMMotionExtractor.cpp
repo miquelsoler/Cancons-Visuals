@@ -62,20 +62,36 @@ void PMMotionExtractor::update()
     }
     
     //wraper to kinectInfo struct
+    kinectOut.leftHand_joint.x=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).x/kinectNI.getWidth();
+    kinectOut.leftHand_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).y/kinectNI.getHeight();
+    kinectOut.leftHand_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).z, 1000, 3000, 0, 1);
+    kinectOut.leftHand_joint.a=(kinectFeatures.getAcceleration(JOINT_LEFT_HAND).y+kinectFeatures.getAcceleration(JOINT_LEFT_HAND).x)/2;
+    kinectOut.rightHand_joint.x=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).x/kinectNI.getWidth();
+    kinectOut.rightHand_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).y/kinectNI.getHeight();
+    kinectOut.rightHand_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).z, 1000, 3000, 0, 1);
+    kinectOut.rightHand_joint.a=(kinectFeatures.getAcceleration(JOINT_RIGHT_HAND).y+kinectFeatures.getAcceleration(JOINT_RIGHT_HAND).x)/2;
+    kinectOut.head_joint.x=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).x/kinectNI.getWidth();
+    kinectOut.head_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).y/kinectNI.getHeight();
+    kinectOut.head_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).z, 1000, 3000, 0, 1);
+    kinectOut.head_joint.a=(kinectFeatures.getAcceleration(JOINT_HEAD).y+kinectFeatures.getAcceleration(JOINT_HEAD).x)/2;
+    kinectOut.torso_joint.x=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).x/kinectNI.getWidth();
+    kinectOut.torso_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).y/kinectNI.getHeight();
+    kinectOut.torso_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).z, 1000, 3000, 0, 1);
+    kinectOut.torso_joint.a=(kinectFeatures.getAcceleration(JOINT_TORSO).y+kinectFeatures.getAcceleration(JOINT_TORSO).x)/2;
+    ofNotifyEvent(eventKinectInfo, kinectOut, this);
 }
 
 ///--------------------------------------------------------------
 void PMMotionExtractor::draw()
 {
     kinectNI.drawImage();
-    cout<<kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).x/kinectNI.getWidth() << endl;
-    //prova
-    ofDrawEllipse(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).y, 20, 20);
-    ofDrawEllipse(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).y, 20, 20);
-    ofDrawEllipse(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).y, 20, 20);
-    ofDrawEllipse(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).y, 20, 20);
-    font.drawString(ofToString(kinectFeatures.getAcceleration(JOINT_RIGHT_HAND).y), kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).y);
-    
+//    cout<<kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).z << endl;
+//    //prova
+//    ofDrawEllipse(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).y, 20, 20);
+//    ofDrawEllipse(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).y, 20, 20);
+//    ofDrawEllipse(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).y, 20, 20);
+//    ofDrawEllipse(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).y, 20, 20);
+    //font.drawString(ofToString(kinectFeatures.getAcceleration(JOINT_RIGHT_HAND).y), kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).y);
 }
 
 ///--------------------------------------------------------------

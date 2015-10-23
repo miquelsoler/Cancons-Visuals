@@ -25,10 +25,10 @@ struct kinectElement{
     float a;
 };
 struct kinectInfo{
-    kinectElement leftHand;
-    kinectElement rightHand;
-    kinectElement head;
-    kinectElement torso;
+    kinectElement leftHand_joint;
+    kinectElement rightHand_joint;
+    kinectElement head_joint;
+    kinectElement torso_joint;
 };
 
 class PMMotionExtractor
@@ -48,8 +48,7 @@ private:
     bool hadUsers;
     kinectInfo kinectOut;
     
-    //void handEvent(ofxOpenNIHandEvent & event);
-    
+    ofEvent<kinectInfo> eventKinectInfo;
 };
 
 #endif /* PMMotionExtractor_hpp */
