@@ -58,9 +58,6 @@ private:
     ofxOpenNI kinectNI;
     bool hadUsers;
     KinectInfo kinectOut;
-    
-    
-//    ofEvent<kinectInfo> eventKinectInfo;
 };
 
 #endif /* PMMotionExtractor_hpp */
