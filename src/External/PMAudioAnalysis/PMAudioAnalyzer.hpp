@@ -29,17 +29,17 @@ public:
     void init(bool useMelBands, int numMelBands);
 
     void addDeviceAudioAnalyzer(int deviceID,
-            int inChannels,
-            int outChannels,
-            int sampleRate,
-            int bufferSize,
-            PMDAA_ChannelMode channelMode,
-            int channelNumber);
+                                int inChannels,
+                                int outChannels,
+                                int sampleRate,
+                                int bufferSize,
+                                PMDAA_ChannelMode channelMode,
+                                int channelNumber);
 
     void start();
     void stop();
 
-    static vector<ofSoundDevice> getDevices();
+    static vector<ofSoundDevice> getInputDevices();
 
 private:
 
