@@ -7,7 +7,7 @@
 ///--------------------------------------------------------------
 void ofApp::setup()
 {
-    
+    ofSetWindowShape(640, 480);
     //ofSetLogLevel(OF_LOG_VERBOSE);
     
     ofSetFrameRate(60);
@@ -70,6 +70,11 @@ void ofApp::draw()
     sceneManager.draw();
     
     motionExtractor->draw();
+    ofDrawEllipse(motionExtractor->kinectOut.leftHand_joint.x*ofGetWidth(), motionExtractor->kinectOut.leftHand_joint.y*ofGetHeight(), 10+5*motionExtractor->kinectOut.leftHand_joint.a, 10+5*motionExtractor->kinectOut.leftHand_joint.a);
+    ofDrawEllipse(motionExtractor->kinectOut.rightHand_joint.x*ofGetWidth(), motionExtractor->kinectOut.rightHand_joint.y*ofGetHeight(), 10+5*motionExtractor->kinectOut.rightHand_joint.a, 10+5*motionExtractor->kinectOut.rightHand_joint.a);
+    ofDrawEllipse(motionExtractor->kinectOut.head_joint.x*ofGetWidth(), motionExtractor->kinectOut.head_joint.y*ofGetHeight(), 10+7*motionExtractor->kinectOut.head_joint.a, 10+7*motionExtractor->kinectOut.head_joint.a);
+    ofDrawEllipse(motionExtractor->kinectOut.torso_joint.x*ofGetWidth(), motionExtractor->kinectOut.torso_joint.y*ofGetHeight(), 10+10*motionExtractor->kinectOut.torso_joint.a, 10+10*motionExtractor->kinectOut.torso_joint.a);
+    
 }
 
 ///--------------------------------------------------------------

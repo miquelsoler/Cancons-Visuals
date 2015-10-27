@@ -34,19 +34,29 @@ struct kinectInfo{
 class PMMotionExtractor
 {
 public:
+    /**
+     * getInstance()
+     * Returns singleton instance
+     */
+//    static PMMotionExtractor &getInstance()
+//    {
+//        static PMMotionExtractor instance;
+//        return instance;
+//    }
+    
     PMMotionExtractor() {};
     ~PMMotionExtractor() {};
     void setup();
     void update();
     void draw(); //noexistirà?
     void exit();
-    
+    kinectInfo kinectOut;
 private:
     ofTrueTypeFont font;
     ofxKinectFeatures kinectFeatures;
     ofxOpenNI kinectNI;
     bool hadUsers;
-    kinectInfo kinectOut;
+    
     
     ofEvent<kinectInfo> eventKinectInfo;
 };
