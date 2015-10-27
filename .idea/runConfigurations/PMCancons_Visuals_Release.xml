@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="PMCancons_Visuals Release" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="PMCancons_Visuals" TARGET_NAME="PMCancons_Visuals" CONFIG_NAME="Release" SCHEME_NAME="PMCancons_Visuals Release" RUN_TARGET_PROJECT_NAME="PMCancons_Visuals" RUN_TARGET_NAME="PMCancons_Visuals" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+    <envs />
+    <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+      <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+    </EXTENSION>
+    <method />
+  </configuration>
+</component>
