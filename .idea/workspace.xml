@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8b6f613b-8534-4c2f-9e0d-625efa7bb167" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/External/PMAudioAnalysis/PMAudioOutParams.h" afterPath="$PROJECT_DIR$/src/External/PMAudioAnalysis/PMAudioOutParams.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/External/PMAudioAnalysis/PMDeviceAudioAnalyzer.cpp" afterPath="$PROJECT_DIR$/src/External/PMAudioAnalysis/PMDeviceAudioAnalyzer.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/External/PMAudioAnalysis/PMDeviceAudioAnalyzer.hpp" afterPath="$PROJECT_DIR$/src/External/PMAudioAnalysis/PMDeviceAudioAnalyzer.hpp" />
-    </list>
+    <list default="true" id="8b6f613b-8534-4c2f-9e0d-625efa7bb167" name="Default" comment="" />
     <ignored path="PMCancons_Visuals.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
