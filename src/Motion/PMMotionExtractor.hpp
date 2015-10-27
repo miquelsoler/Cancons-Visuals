@@ -18,17 +18,17 @@
 
 #define MAX_DEVICES 1
 
-struct kinectElement{
+struct KinectElement{
     float x;
     float y;
     float z;
     float a;
 };
-struct kinectInfo{
-    kinectElement leftHand_joint;
-    kinectElement rightHand_joint;
-    kinectElement head_joint;
-    kinectElement torso_joint;
+struct KinectInfo{
+    KinectElement leftHand_joint;
+    KinectElement rightHand_joint;
+    KinectElement head_joint;
+    KinectElement torso_joint;
 };
 
 class PMMotionExtractor
@@ -50,15 +50,17 @@ public:
     void update();
     void draw(); //noexistirà?
     void exit();
-    kinectInfo kinectOut;
+    KinectInfo* getKinectInfo();
+    
 private:
     ofTrueTypeFont font;
     ofxKinectFeatures kinectFeatures;
     ofxOpenNI kinectNI;
     bool hadUsers;
+    KinectInfo kinectOut;
     
     
-    ofEvent<kinectInfo> eventKinectInfo;
+//    ofEvent<kinectInfo> eventKinectInfo;
 };
 
 #endif /* PMMotionExtractor_hpp */
