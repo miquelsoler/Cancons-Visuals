@@ -7,6 +7,9 @@
 ///--------------------------------------------------------------
 void ofApp::setup()
 {
+    ofSetWindowShape(640, 480);
+    //ofSetLogLevel(OF_LOG_VERBOSE);
+    
     ofSetFrameRate(60);
     ofSetVerticalSync(true);
     ofBackground(ofColor::black);
@@ -36,7 +39,12 @@ void ofApp::setup()
     int channelNumber = 0;
     bool useMelBands = true;
     int numMelBands = 24;
-    audioAnalyzer->setup(PMDAA_CHANNEL_MONO, channelNumber, useMelBands, numMelBands);}
+    audioAnalyzer->setup(PMDAA_CHANNEL_MONO, channelNumber, useMelBands, numMelBands);
+    
+    
+    motionExtractor = new PMMotionExtractor();
+    motionExtractor->setup();
+}
 
 ///--------------------------------------------------------------
 void ofApp::update()
@@ -46,6 +54,8 @@ void ofApp::update()
 #endif
 
     sceneManager.update();
+    
+    motionExtractor->update();
 }
 
 ///--------------------------------------------------------------
@@ -58,6 +68,20 @@ void ofApp::draw()
     }
 
     sceneManager.draw();
+    
+    motionExtractor->draw();
+    KinectInfo* kinectOut=motionExtractor->getKinectInfo();
+    ofDrawEllipse(kinectOut->leftHand_joint.x*ofGetWidth(), kinectOut->leftHand_joint.y*ofGetHeight(), 10+5*kinectOut->leftHand_joint.a, 10+5*kinectOut->leftHand_joint.a);
+    ofDrawEllipse(kinectOut->rightHand_joint.x*ofGetWidth(), kinectOut->rightHand_joint.y*ofGetHeight(), 10+5*kinectOut->rightHand_joint.a, 10+5*kinectOut->rightHand_joint.a);
+    ofDrawEllipse(kinectOut->head_joint.x*ofGetWidth(), kinectOut->head_joint.y*ofGetHeight(), 10+7*kinectOut->head_joint.a, 10+7*kinectOut->head_joint.a);
+    ofDrawEllipse(kinectOut->torso_joint.x*ofGetWidth(), kinectOut->torso_joint.y*ofGetHeight(), 10+10*kinectOut->torso_joint.a, 10+10*kinectOut->torso_joint.a);
+    
+}
+
+///--------------------------------------------------------------
+void ofApp::exit()
+{
+    motionExtractor->exit();
 }
 
 ///--------------------------------------------------------------
