@@ -38,11 +38,11 @@ public:
      * getInstance()
      * Returns singleton instance
      */
-//    static PMMotionExtractor &getInstance()
-//    {
-//        static PMMotionExtractor instance;
-//        return instance;
-//    }
+    static PMMotionExtractor &getInstance()
+    {
+        static PMMotionExtractor instance;
+        return instance;
+    }
     
     PMMotionExtractor() {};
     ~PMMotionExtractor() {};

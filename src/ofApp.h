@@ -40,5 +40,5 @@ private:
     ofxSceneManager         sceneManager;
     unsigned int            currentScene;
     
-    PMMotionExtractor       *motionExtractor;
+    //PMMotionExtractor       *motionExtractor;
 };

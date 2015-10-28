@@ -21,11 +21,12 @@ public:
     PMSc1Settings() {};
 
 //    void setup();
-//    void update();
+    void update();
     void draw();
 
 protected:
 
 private:
+    
 
 };

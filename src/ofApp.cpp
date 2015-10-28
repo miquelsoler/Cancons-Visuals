@@ -16,7 +16,7 @@ void ofApp::setup()
 
     isFullScreen = (DEFAULT_WINDOW_MODE == OF_FULLSCREEN);
 
-    currentScene = 1;
+    currentScene = 0;
 
     // Settings
 
@@ -42,8 +42,9 @@ void ofApp::setup()
     audioAnalyzer->setup(PMDAA_CHANNEL_MONO, channelNumber, useMelBands, numMelBands);
     
     
-    motionExtractor = new PMMotionExtractor();
-    motionExtractor->setup();
+//    motionExtractor = new PMMotionExtractor();
+//    motionExtractor->setup();
+    PMMotionExtractor::getInstance().setup();
 }
 
 ///--------------------------------------------------------------
@@ -55,7 +56,7 @@ void ofApp::update()
 
     sceneManager.update();
     
-    motionExtractor->update();
+    //motionExtractor->update();
 }
 
 ///--------------------------------------------------------------
@@ -69,19 +70,20 @@ void ofApp::draw()
 
     sceneManager.draw();
     
-    motionExtractor->draw();
-    KinectInfo* kinectOut=motionExtractor->getKinectInfo();
-    ofDrawEllipse(kinectOut->leftHand_joint.x*ofGetWidth(), kinectOut->leftHand_joint.y*ofGetHeight(), 10+5*kinectOut->leftHand_joint.a, 10+5*kinectOut->leftHand_joint.a);
-    ofDrawEllipse(kinectOut->rightHand_joint.x*ofGetWidth(), kinectOut->rightHand_joint.y*ofGetHeight(), 10+5*kinectOut->rightHand_joint.a, 10+5*kinectOut->rightHand_joint.a);
-    ofDrawEllipse(kinectOut->head_joint.x*ofGetWidth(), kinectOut->head_joint.y*ofGetHeight(), 10+7*kinectOut->head_joint.a, 10+7*kinectOut->head_joint.a);
-    ofDrawEllipse(kinectOut->torso_joint.x*ofGetWidth(), kinectOut->torso_joint.y*ofGetHeight(), 10+10*kinectOut->torso_joint.a, 10+10*kinectOut->torso_joint.a);
+//    motionExtractor->draw();
+//    KinectInfo* kinectOut=motionExtractor->getKinectInfo();
+//    ofDrawEllipse(kinectOut->leftHand_joint.x*ofGetWidth(), kinectOut->leftHand_joint.y*ofGetHeight(), 10+5*kinectOut->leftHand_joint.a, 10+5*kinectOut->leftHand_joint.a);
+//    ofDrawEllipse(kinectOut->rightHand_joint.x*ofGetWidth(), kinectOut->rightHand_joint.y*ofGetHeight(), 10+5*kinectOut->rightHand_joint.a, 10+5*kinectOut->rightHand_joint.a);
+//    ofDrawEllipse(kinectOut->head_joint.x*ofGetWidth(), kinectOut->head_joint.y*ofGetHeight(), 10+7*kinectOut->head_joint.a, 10+7*kinectOut->head_joint.a);
+//    ofDrawEllipse(kinectOut->torso_joint.x*ofGetWidth(), kinectOut->torso_joint.y*ofGetHeight(), 10+10*kinectOut->torso_joint.a, 10+10*kinectOut->torso_joint.a);
     
 }
 
 ///--------------------------------------------------------------
 void ofApp::exit()
 {
-    motionExtractor->exit();
+//    motionExtractor->exit();
+    PMMotionExtractor::getInstance().exit();
 }
 
 ///--------------------------------------------------------------
@@ -123,6 +125,16 @@ void ofApp::keyReleased(int key)
                 case 'L':
                 {
                     audioAnalyzer->stop();
+                    break;
+                }
+                case OF_KEY_UP:
+                {
+                    
+                    break;
+                }
+                case OF_KEY_DOWN:
+                {
+                    
                     break;
                 }
                 default:

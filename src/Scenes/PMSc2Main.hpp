@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "ofxScene.h"
+#include "PMMotionExtractor.hpp"
 
 #endif /* PMSc2Main_hpp */
 
@@ -21,11 +22,14 @@ public:
     PMSc2Main() {};
 
 //    void setup();
-//    void update();
+    void update();
     void draw();
 
 protected:
 
 private:
+    
+    PMMotionExtractor   *motionExtractor;
+
 
 };
