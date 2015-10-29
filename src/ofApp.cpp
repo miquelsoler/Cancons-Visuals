@@ -7,7 +7,7 @@
 ///--------------------------------------------------------------
 void ofApp::setup()
 {
-    ofSetWindowShape(640, 480);
+    //ofSetWindowShape(640, 480);
     //ofSetLogLevel(OF_LOG_VERBOSE);
     
     ofSetFrameRate(60);
@@ -42,9 +42,7 @@ void ofApp::setup()
     audioAnalyzer->setup(PMDAA_CHANNEL_MONO, channelNumber, useMelBands, numMelBands);
     
     
-//    motionExtractor = new PMMotionExtractor();
-//    motionExtractor->setup();
-    PMMotionExtractor::getInstance().setup();
+    //PMMotionExtractor::getInstance().setup();x
 }
 
 ///--------------------------------------------------------------

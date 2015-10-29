@@ -30,6 +30,8 @@ public:
 //    void dragEvent(ofDragInfo dragInfo);
 //    void gotMessage(ofMessage msg);
 
+
+
 private:
 
     PMDeviceAudioAnalyzer   *audioAnalyzer;
@@ -39,6 +41,4 @@ private:
 
     ofxSceneManager         sceneManager;
     unsigned int            currentScene;
-    
-    //PMMotionExtractor       *motionExtractor;
 };
