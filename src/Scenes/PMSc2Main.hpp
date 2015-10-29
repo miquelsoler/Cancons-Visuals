@@ -21,15 +21,18 @@ public:
 
     PMSc2Main() {};
 
-//    void setup();
+    void setup();
     void update();
     void draw();
+    
+    void loadSong(string filename);
+    void playSong();
 
 protected:
 
 private:
     
-    PMMotionExtractor   *motionExtractor;
-
+    ofSoundPlayer  song;
+    bool    songIsStarted;
 
 };
