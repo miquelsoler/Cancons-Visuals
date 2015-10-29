@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "ofxScene.h"
+#include "ofxUI.h"
 
 #endif /* PMSc1Settings_hpp */
 
@@ -20,13 +21,17 @@ public:
 
     PMSc1Settings() {};
 
-//    void setup();
+    void setup();
     void update();
     void draw();
+    void guiEvent(ofxUIEventArgs &e);
+    
+    void setupGUI_SONG();
+
 
 protected:
 
 private:
-    
-
+    ofxUISuperCanvas *gui_song;
+    ofxUIDropDownList *ddl;
 };
