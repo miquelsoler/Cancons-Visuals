@@ -15,7 +15,7 @@
 
 #endif /* PMSc1Settings_hpp */
 
-class PMSc1Settings : public ofxScene
+class PMSc1Settings : public PMBaseScene
 {
 public:
 

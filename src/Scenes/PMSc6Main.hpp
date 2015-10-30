@@ -1,25 +1,25 @@
 //
-//  PMSc2Main.hpp
+//  PMSc6Main.hpp
 //  PMConcertParaules
 //
 //  Created by Miquel Àngel Soler on 7/10/15.
 //
 //
 
-#ifndef PMSc2Main_hpp
-#define PMSc2Main_hpp
+#ifndef PMSc6Main_hpp
+#define PMSc6Main_hpp
 
 #include <stdio.h>
 #include "ofxScene.h"
 #include "PMMotionExtractor.hpp"
 
-#endif /* PMSc2Main_hpp */
+#endif /* PMSc6Main_hpp */
 
-class PMSc2Main : public ofxScene
+class PMSc6Main : public PMBaseScene
 {
 public:
 
-    PMSc2Main() {};
+    PMSc6Main() {};
 
     void setup();
     void update();

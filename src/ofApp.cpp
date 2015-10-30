@@ -1,8 +1,6 @@
 #include "ofApp.h"
 #include "PMSettingsManager.h"
 #include "Defaults.h"
-#include "PMSc1Settings.hpp"
-#include "PMSc2Main.hpp"
 
 ///--------------------------------------------------------------
 void ofApp::setup()
@@ -28,9 +26,8 @@ void ofApp::setup()
 
     // Scenes
 
-    sceneManager.addScene(ofPtr<ofxScene>(new PMSc1Settings));
-    sceneManager.addScene(ofPtr<ofxScene>(new PMSc2Main));
-    sceneManager.run();
+    sceneManager = &(PMSceneManager::getInstance());
+    sceneManager->init();
 
     // For testing purposes
 
@@ -42,7 +39,7 @@ void ofApp::setup()
     audioAnalyzer->setup(PMDAA_CHANNEL_MONO, channelNumber, useMelBands, numMelBands);
     
     
-    //PMMotionExtractor::getInstance().setup();x
+    //PMMotionExtractor::getInstance().setup();
 }
 
 ///--------------------------------------------------------------
@@ -53,8 +50,6 @@ void ofApp::update()
 #endif
 
     sceneManager.update();
-    
-    //motionExtractor->update();
 }
 
 ///--------------------------------------------------------------
@@ -67,20 +62,11 @@ void ofApp::draw()
     }
 
     sceneManager.draw();
-    
-//    motionExtractor->draw();
-//    KinectInfo* kinectOut=motionExtractor->getKinectInfo();
-//    ofDrawEllipse(kinectOut->leftHand_joint.x*ofGetWidth(), kinectOut->leftHand_joint.y*ofGetHeight(), 10+5*kinectOut->leftHand_joint.a, 10+5*kinectOut->leftHand_joint.a);
-//    ofDrawEllipse(kinectOut->rightHand_joint.x*ofGetWidth(), kinectOut->rightHand_joint.y*ofGetHeight(), 10+5*kinectOut->rightHand_joint.a, 10+5*kinectOut->rightHand_joint.a);
-//    ofDrawEllipse(kinectOut->head_joint.x*ofGetWidth(), kinectOut->head_joint.y*ofGetHeight(), 10+7*kinectOut->head_joint.a, 10+7*kinectOut->head_joint.a);
-//    ofDrawEllipse(kinectOut->torso_joint.x*ofGetWidth(), kinectOut->torso_joint.y*ofGetHeight(), 10+10*kinectOut->torso_joint.a, 10+10*kinectOut->torso_joint.a);
-    
 }
 
 ///--------------------------------------------------------------
 void ofApp::exit()
 {
-//    motionExtractor->exit();
     PMMotionExtractor::getInstance().exit();
 }
 
@@ -96,6 +82,10 @@ void ofApp::keyReleased(int key)
             break;
         }
         case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
         {
             switch(key)
             {
@@ -127,17 +117,20 @@ void ofApp::keyReleased(int key)
                 }
                 case OF_KEY_UP:
                 {
-                    
+                    currentScene++;
+                    sceneManager.changeScene(currentScene);
                     break;
                 }
                 case OF_KEY_DOWN:
                 {
-                    
+                    currentScene--;
+                    sceneManager.changeScene(currentScene);
                     break;
                 }
                 default:
                     break;
             }
+            
         }
     }
 }

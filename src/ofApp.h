@@ -4,7 +4,7 @@
 #include "ofMain.h"
 #include "PMDeviceAudioAnalyzer.hpp"
 #include "PMMotionExtractor.hpp"
-#include "ofxSceneManager.h"
+#include "PMSceneManager.hpp"
 #include "ofxOpenNI.h"
 #include "ofxKinectFeatures.h"
 
@@ -39,6 +39,6 @@ private:
     bool                    showFPS;
     bool                    isFullScreen;
 
-    ofxSceneManager         sceneManager;
+    PMSceneManager          *sceneManager;
     unsigned int            currentScene;
 };
