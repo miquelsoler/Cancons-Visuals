@@ -37,7 +37,6 @@ void PMSc1Settings::update()
 void PMSc1Settings::draw()
 {
 //    cout << "PMSc1Settings::draw()" << endl;
-    ofDrawCircle(147, 674, 40);
 }
 
 void PMSc1Settings::guiEvent(ofxUIEventArgs &e)
