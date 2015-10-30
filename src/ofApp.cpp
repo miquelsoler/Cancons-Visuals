@@ -49,7 +49,7 @@ void ofApp::update()
     ofShowCursor();
 #endif
 
-    sceneManager.update();
+    sceneManager->update();
 }
 
 ///--------------------------------------------------------------
@@ -61,7 +61,7 @@ void ofApp::draw()
         ofDrawBitmapString(ofToString(ofGetFrameRate()) + "fps", 15, ofGetHeight() - 15);
     }
 
-    sceneManager.draw();
+    sceneManager->draw();
 }
 
 ///--------------------------------------------------------------
@@ -77,7 +77,7 @@ void ofApp::keyReleased(int key)
     {
         case 0:
         {
-            sceneManager.changeScene();
+            sceneManager->changeScene();
             currentScene = 1;
             break;
         }
@@ -118,15 +118,15 @@ void ofApp::keyReleased(int key)
                 case OF_KEY_UP:
                 {
                     currentScene++;
-                    sceneManager.changeScene(currentScene);
+                    sceneManager->changeScene();
                     break;
                 }
-                case OF_KEY_DOWN:
-                {
-                    currentScene--;
-                    sceneManager.changeScene(currentScene);
-                    break;
-                }
+//                case OF_KEY_DOWN:
+//                {
+//                    currentScene--;
+//                    sceneManager->changeScene(currentScene);
+//                    break;
+//                }
                 default:
                     break;
             }

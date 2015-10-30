@@ -10,7 +10,8 @@
 #define PMSc1Settings_hpp
 
 #include <stdio.h>
-#include "ofxScene.h"
+#include "PMBaseScene.hpp"
+
 #include "ofxUI.h"
 
 #endif /* PMSc1Settings_hpp */
@@ -27,6 +28,8 @@ public:
     void guiEvent(ofxUIEventArgs &e);
     
     void setupGUI_SONG();
+    
+    void willExit() {};
 
 
 protected:

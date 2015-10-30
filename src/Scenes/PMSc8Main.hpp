@@ -1,25 +1,25 @@
 //
-//  PMSc6Main.hpp
+//  PMSc8Main.hpp
 //  PMConcertParaules
 //
 //  Created by Miquel Àngel Soler on 7/10/15.
 //
 //
 
-#ifndef PMSc6Main_hpp
-#define PMSc6Main_hpp
+#ifndef PMSc8Main_hpp
+#define PMSc8Main_hpp
 
 #include <stdio.h>
-#include "ofxScene.h"
+#include "PMBaseScene.hpp"
 #include "PMMotionExtractor.hpp"
 
-#endif /* PMSc6Main_hpp */
+#endif /* PMSc8Main_hpp */
 
-class PMSc6Main : public PMBaseScene
+class PMSc8Main : public PMBaseScene
 {
 public:
 
-    PMSc6Main() {};
+    PMSc8Main() {};
 
     void setup();
     void update();
@@ -27,6 +27,8 @@ public:
     
     void loadSong(string filename);
     void playSong();
+    
+    void willExit() {};
 
 protected:
 

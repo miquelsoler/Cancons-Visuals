@@ -43,7 +43,7 @@
 		2AB2A8071BCEC6F100DEE302 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB2A7FE1BCEC6F100DEE302 /* libswresample.a */; settings = {ASSET_TAGS = (); }; };
 		2AB2A8081BCEC6F100DEE302 /* libyaml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB2A7FF1BCEC6F100DEE302 /* libyaml.a */; settings = {ASSET_TAGS = (); }; };
 		2AB2A8091BCECA5500DEE302 /* PMSc1Settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A2337381BCEC097000612E4 /* PMSc1Settings.cpp */; };
-		2AB2A80A1BCECA5600DEE302 /* PMSc6Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A23373A1BCEC097000612E4 /* PMSc6Main.cpp */; };
+		2AB2A80A1BCECA5600DEE302 /* PMSc8Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A23373A1BCEC097000612E4 /* PMSc8Main.cpp */; };
 		2AB2A80B1BCECA6600DEE302 /* PMSettingsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A23373D1BCEC097000612E4 /* PMSettingsManager.cpp */; };
 		32FC7731C1EF7B87E491C93D /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497F252390399FCF843297DA /* ofxTween.cpp */; };
 		3D4EA8E172D3E4A30FEFA969 /* ofxUIImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 938F5A098A216B403906129C /* ofxUIImage.cpp */; };
@@ -96,14 +96,16 @@
 		9F3B38A21BD0F5CE00021E6E /* ofxKinectFeatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B389C1BD0F5CE00021E6E /* ofxKinectFeatures.cpp */; settings = {ASSET_TAGS = (); }; };
 		9F3B38A31BD0F5CE00021E6E /* ofxMocapElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B389E1BD0F5CE00021E6E /* ofxMocapElement.cpp */; settings = {ASSET_TAGS = (); }; };
 		9F3B38A41BD0F5CF00021E6E /* ofxMocapEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B38A01BD0F5CE00021E6E /* ofxMocapEvents.cpp */; settings = {ASSET_TAGS = (); }; };
-		9F530AEB1BE28F410071941A /* PMSc4Brushes_Choose.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F530AE91BE28F410071941A /* PMSc4Brushes_Choose.cpp */; settings = {ASSET_TAGS = (); }; };
-		9F530AF11BE28F6B0071941A /* PMSc5Countdown.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F530AEF1BE28F6B0071941A /* PMSc5Countdown.cpp */; settings = {ASSET_TAGS = (); }; };
-		9F530AF41BE28FB10071941A /* PMSc3Palette_Choose.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F530AF21BE28FB10071941A /* PMSc3Palette_Choose.cpp */; settings = {ASSET_TAGS = (); }; };
-		9F530AF71BE291300071941A /* PMSc2Song_Choose.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F530AF51BE291300071941A /* PMSc2Song_Choose.cpp */; settings = {ASSET_TAGS = (); }; };
+		9F530AEB1BE28F410071941A /* PMSc5Brushes_Choose.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F530AE91BE28F410071941A /* PMSc5Brushes_Choose.cpp */; settings = {ASSET_TAGS = (); }; };
+		9F530AF11BE28F6B0071941A /* PMSc7Countdown.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F530AEF1BE28F6B0071941A /* PMSc7Countdown.cpp */; settings = {ASSET_TAGS = (); }; };
+		9F530AF41BE28FB10071941A /* PMSc4Palette_Choose.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F530AF21BE28FB10071941A /* PMSc4Palette_Choose.cpp */; settings = {ASSET_TAGS = (); }; };
+		9F530AF71BE291300071941A /* PMSc3Song_Choose.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F530AF51BE291300071941A /* PMSc3Song_Choose.cpp */; settings = {ASSET_TAGS = (); }; };
 		9F530B051BE383D70071941A /* PMBaseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F530B011BE383D70071941A /* PMBaseScene.cpp */; settings = {ASSET_TAGS = (); }; };
 		9F530B061BE383D70071941A /* PMSceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F530B031BE383D70071941A /* PMSceneManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		9F5C6DD965B4F3A6DB5B88F8 /* ofxUI2DGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02FF3B8D243CFB85AE0909EB /* ofxUI2DGraph.cpp */; };
 		9FC1D4E51BDF85EA00DF31E3 /* PMAudioAnalyzer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FC1D4E31BDF85EA00DF31E3 /* PMAudioAnalyzer.cpp */; settings = {ASSET_TAGS = (); }; };
+		9FD630471BE38BDF00B9F1E1 /* PMSc2Start.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FD630451BE38BDF00B9F1E1 /* PMSc2Start.cpp */; settings = {ASSET_TAGS = (); }; };
+		9FD6304A1BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FD630481BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.cpp */; settings = {ASSET_TAGS = (); }; };
 		ADE7C2AFC51E3F7E5E389026 /* ofxUISortableList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5613D5D24B00D8AD909F7E6A /* ofxUISortableList.cpp */; };
 		AE281BEBF3A00F1FC37F3DA0 /* ofxUIWaveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9345327AA463407B3DADBADE /* ofxUIWaveform.cpp */; };
 		BEDFEE7400C58EA4E412B757 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B099E6BD1199664C48B177 /* ofxJSONElement.cpp */; };
@@ -192,8 +194,8 @@
 		28155024C27152A66926B553 /* ofxUIBaseDraws.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUIBaseDraws.cpp; path = ../../../addons/ofxUI/src/ofxUIBaseDraws.cpp; sourceTree = SOURCE_ROOT; };
 		2A2337381BCEC097000612E4 /* PMSc1Settings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc1Settings.cpp; sourceTree = "<group>"; };
 		2A2337391BCEC097000612E4 /* PMSc1Settings.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PMSc1Settings.hpp; sourceTree = "<group>"; };
-		2A23373A1BCEC097000612E4 /* PMSc6Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc6Main.cpp; sourceTree = "<group>"; };
-		2A23373B1BCEC097000612E4 /* PMSc6Main.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PMSc6Main.hpp; sourceTree = "<group>"; };
+		2A23373A1BCEC097000612E4 /* PMSc8Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc8Main.cpp; sourceTree = "<group>"; };
+		2A23373B1BCEC097000612E4 /* PMSc8Main.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PMSc8Main.hpp; sourceTree = "<group>"; };
 		2A23373D1BCEC097000612E4 /* PMSettingsManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PMSettingsManager.cpp; sourceTree = "<group>"; };
 		2A23373E1BCEC097000612E4 /* PMSettingsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMSettingsManager.h; sourceTree = "<group>"; };
 		2A3C86FA1BCFAF88005C49C1 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -534,20 +536,24 @@
 		9F3B389F1BD0F5CE00021E6E /* ofxMocapElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMocapElement.h; sourceTree = "<group>"; };
 		9F3B38A01BD0F5CE00021E6E /* ofxMocapEvents.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMocapEvents.cpp; sourceTree = "<group>"; };
 		9F3B38A11BD0F5CE00021E6E /* ofxMocapEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMocapEvents.h; sourceTree = "<group>"; };
-		9F530AE91BE28F410071941A /* PMSc4Brushes_Choose.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc4Brushes_Choose.cpp; sourceTree = "<group>"; };
-		9F530AEA1BE28F410071941A /* PMSc4Brushes_Choose.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSc4Brushes_Choose.hpp; sourceTree = "<group>"; };
-		9F530AEF1BE28F6B0071941A /* PMSc5Countdown.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc5Countdown.cpp; sourceTree = "<group>"; };
-		9F530AF01BE28F6B0071941A /* PMSc5Countdown.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSc5Countdown.hpp; sourceTree = "<group>"; };
-		9F530AF21BE28FB10071941A /* PMSc3Palette_Choose.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc3Palette_Choose.cpp; sourceTree = "<group>"; };
-		9F530AF31BE28FB10071941A /* PMSc3Palette_Choose.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSc3Palette_Choose.hpp; sourceTree = "<group>"; };
-		9F530AF51BE291300071941A /* PMSc2Song_Choose.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc2Song_Choose.cpp; sourceTree = "<group>"; };
-		9F530AF61BE291300071941A /* PMSc2Song_Choose.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSc2Song_Choose.hpp; sourceTree = "<group>"; };
+		9F530AE91BE28F410071941A /* PMSc5Brushes_Choose.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc5Brushes_Choose.cpp; sourceTree = "<group>"; };
+		9F530AEA1BE28F410071941A /* PMSc5Brushes_Choose.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSc5Brushes_Choose.hpp; sourceTree = "<group>"; };
+		9F530AEF1BE28F6B0071941A /* PMSc7Countdown.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc7Countdown.cpp; sourceTree = "<group>"; };
+		9F530AF01BE28F6B0071941A /* PMSc7Countdown.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSc7Countdown.hpp; sourceTree = "<group>"; };
+		9F530AF21BE28FB10071941A /* PMSc4Palette_Choose.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc4Palette_Choose.cpp; sourceTree = "<group>"; };
+		9F530AF31BE28FB10071941A /* PMSc4Palette_Choose.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSc4Palette_Choose.hpp; sourceTree = "<group>"; };
+		9F530AF51BE291300071941A /* PMSc3Song_Choose.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc3Song_Choose.cpp; sourceTree = "<group>"; };
+		9F530AF61BE291300071941A /* PMSc3Song_Choose.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSc3Song_Choose.hpp; sourceTree = "<group>"; };
 		9F530B011BE383D70071941A /* PMBaseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMBaseScene.cpp; sourceTree = "<group>"; };
 		9F530B021BE383D70071941A /* PMBaseScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMBaseScene.hpp; sourceTree = "<group>"; };
 		9F530B031BE383D70071941A /* PMSceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSceneManager.cpp; sourceTree = "<group>"; };
 		9F530B041BE383D70071941A /* PMSceneManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSceneManager.hpp; sourceTree = "<group>"; };
 		9FC1D4E31BDF85EA00DF31E3 /* PMAudioAnalyzer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMAudioAnalyzer.cpp; sourceTree = "<group>"; };
 		9FC1D4E41BDF85EA00DF31E3 /* PMAudioAnalyzer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMAudioAnalyzer.hpp; sourceTree = "<group>"; };
+		9FD630451BE38BDF00B9F1E1 /* PMSc2Start.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc2Start.cpp; sourceTree = "<group>"; };
+		9FD630461BE38BDF00B9F1E1 /* PMSc2Start.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSc2Start.hpp; sourceTree = "<group>"; };
+		9FD630481BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc6Kinect_Detect.cpp; sourceTree = "<group>"; };
+		9FD630491BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSc6Kinect_Detect.hpp; sourceTree = "<group>"; };
 		A26C4A6254126C99F0A65354 /* ofxEasingElastic.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxEasingElastic.cpp; path = ../../../addons/ofxTween/src/Easings/ofxEasingElastic.cpp; sourceTree = SOURCE_ROOT; };
 		A4973CEF438C8931B5E03E0A /* ofxEasingCirc.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxEasingCirc.cpp; path = ../../../addons/ofxTween/src/Easings/ofxEasingCirc.cpp; sourceTree = SOURCE_ROOT; };
 		A64B8AA7481267CD4A76C16B /* ofxUITabBar.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUITabBar.cpp; path = ../../../addons/ofxUI/src/ofxUITabBar.cpp; sourceTree = SOURCE_ROOT; };
@@ -715,16 +721,20 @@
 				9F530B021BE383D70071941A /* PMBaseScene.hpp */,
 				2A2337381BCEC097000612E4 /* PMSc1Settings.cpp */,
 				2A2337391BCEC097000612E4 /* PMSc1Settings.hpp */,
-				9F530AF51BE291300071941A /* PMSc2Song_Choose.cpp */,
-				9F530AF61BE291300071941A /* PMSc2Song_Choose.hpp */,
-				9F530AF21BE28FB10071941A /* PMSc3Palette_Choose.cpp */,
-				9F530AF31BE28FB10071941A /* PMSc3Palette_Choose.hpp */,
-				9F530AE91BE28F410071941A /* PMSc4Brushes_Choose.cpp */,
-				9F530AEA1BE28F410071941A /* PMSc4Brushes_Choose.hpp */,
-				9F530AEF1BE28F6B0071941A /* PMSc5Countdown.cpp */,
-				9F530AF01BE28F6B0071941A /* PMSc5Countdown.hpp */,
-				2A23373A1BCEC097000612E4 /* PMSc6Main.cpp */,
-				2A23373B1BCEC097000612E4 /* PMSc6Main.hpp */,
+				9FD630451BE38BDF00B9F1E1 /* PMSc2Start.cpp */,
+				9FD630461BE38BDF00B9F1E1 /* PMSc2Start.hpp */,
+				9F530AF51BE291300071941A /* PMSc3Song_Choose.cpp */,
+				9F530AF61BE291300071941A /* PMSc3Song_Choose.hpp */,
+				9F530AF21BE28FB10071941A /* PMSc4Palette_Choose.cpp */,
+				9F530AF31BE28FB10071941A /* PMSc4Palette_Choose.hpp */,
+				9F530AE91BE28F410071941A /* PMSc5Brushes_Choose.cpp */,
+				9F530AEA1BE28F410071941A /* PMSc5Brushes_Choose.hpp */,
+				9FD630481BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.cpp */,
+				9FD630491BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.hpp */,
+				9F530AEF1BE28F6B0071941A /* PMSc7Countdown.cpp */,
+				9F530AF01BE28F6B0071941A /* PMSc7Countdown.hpp */,
+				2A23373A1BCEC097000612E4 /* PMSc8Main.cpp */,
+				2A23373B1BCEC097000612E4 /* PMSc8Main.hpp */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -1660,10 +1670,12 @@
 				9F3B37DB1BCFFF4800021E6E /* ofxOpenNITypes.cpp in Sources */,
 				9266028E1AECBB027ABF64D8 /* ofxEasing.cpp in Sources */,
 				2AB2A80B1BCECA6600DEE302 /* PMSettingsManager.cpp in Sources */,
-				2AB2A80A1BCECA5600DEE302 /* PMSc6Main.cpp in Sources */,
+				9FD630471BE38BDF00B9F1E1 /* PMSc2Start.cpp in Sources */,
+				2AB2A80A1BCECA5600DEE302 /* PMSc8Main.cpp in Sources */,
 				9F3B38A21BD0F5CE00021E6E /* ofxKinectFeatures.cpp in Sources */,
 				2AA47ADE1BD59F9200CB9D5A /* ofxAudioAnalyzer.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				9FD6304A1BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				5E0DBDE5736DEB3A5886B3F1 /* ofxEasingBack.cpp in Sources */,
 				EAD3CE0789481F975F351F39 /* ofxEasingBounce.cpp in Sources */,
@@ -1672,7 +1684,7 @@
 				9F0348F61BCFE39C00164C02 /* PMDeviceAudioAnalyzer.cpp in Sources */,
 				6E062274743F6716A9AD4395 /* ofxEasingElastic.cpp in Sources */,
 				59EEACB88F062457FF86492C /* ofxEasingExpo.cpp in Sources */,
-				9F530AF71BE291300071941A /* PMSc2Song_Choose.cpp in Sources */,
+				9F530AF71BE291300071941A /* PMSc3Song_Choose.cpp in Sources */,
 				152EAECABD008D84AF7F27F8 /* ofxEasingLinear.cpp in Sources */,
 				6D7B53ED56654ABBF2FF13B1 /* ofxEasingQuad.cpp in Sources */,
 				85A41526FDFA1A8CDAEE81F7 /* ofxEasingQuart.cpp in Sources */,
@@ -1690,7 +1702,7 @@
 				9BE4AE0AA2B8C436BDFE9D4D /* ofxUIDragableLabelButton.cpp in Sources */,
 				F392A99D83698FC099127880 /* ofxUIDropDownList.cpp in Sources */,
 				9F3B37DA1BCFFF4800021E6E /* ofxOpenNI.cpp in Sources */,
-				9F530AF11BE28F6B0071941A /* PMSc5Countdown.cpp in Sources */,
+				9F530AF11BE28F6B0071941A /* PMSc7Countdown.cpp in Sources */,
 				9F530B051BE383D70071941A /* PMBaseScene.cpp in Sources */,
 				084025DA517D8329301FE1B6 /* ofxUIEventArgs.cpp in Sources */,
 				7252706DA14C1BE63950ADDA /* ofxUIFPS.cpp in Sources */,
@@ -1718,7 +1730,7 @@
 				740A58CBFDFE578C83A349AF /* ofxUISlider.cpp in Sources */,
 				ADE7C2AFC51E3F7E5E389026 /* ofxUISortableList.cpp in Sources */,
 				9F3B38A31BD0F5CE00021E6E /* ofxMocapElement.cpp in Sources */,
-				9F530AF41BE28FB10071941A /* PMSc3Palette_Choose.cpp in Sources */,
+				9F530AF41BE28FB10071941A /* PMSc4Palette_Choose.cpp in Sources */,
 				BFEFCE32DAFE10A8EB519F6C /* ofxUISpacer.cpp in Sources */,
 				52AFF80A869790144ACCC9BA /* ofxUISpectrum.cpp in Sources */,
 				1DAAC3FB4B98B08AE63F4687 /* ofxUISuperCanvas.cpp in Sources */,
@@ -1727,7 +1739,7 @@
 				F8D05F7C7F785CE323983B47 /* ofxUITextInput.cpp in Sources */,
 				04C82720B149CE576B8CBB06 /* ofxUIToggle.cpp in Sources */,
 				9F530B061BE383D70071941A /* PMSceneManager.cpp in Sources */,
-				9F530AEB1BE28F410071941A /* PMSc4Brushes_Choose.cpp in Sources */,
+				9F530AEB1BE28F410071941A /* PMSc5Brushes_Choose.cpp in Sources */,
 				E3A1109F67D711D6C256031E /* ofxUIToggleMatrix.cpp in Sources */,
 				60012C723B05938A3D388335 /* ofxUIValuePlotter.cpp in Sources */,
 				AE281BEBF3A00F1FC37F3DA0 /* ofxUIWaveform.cpp in Sources */,
