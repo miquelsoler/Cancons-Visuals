@@ -20,5 +20,6 @@ void PMSc4Palette_Choose::update()
 
 void PMSc4Palette_Choose::draw()
 {
-    
+    ofBackground(0);
+    drawSettingsNumbers(2);
 }

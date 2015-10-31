@@ -20,5 +20,5 @@ void PMSc2Start::update()
 
 void PMSc2Start::draw()
 {
-    baseFont.drawString("1", ofGetWidth()/3, 30);
+    
 }

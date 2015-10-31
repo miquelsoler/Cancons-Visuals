@@ -20,5 +20,6 @@ void PMSc5Brushes_Choose::update()
 
 void PMSc5Brushes_Choose::draw()
 {
-    
+    ofBackground(0);
+    drawSettingsNumbers(3);
 }

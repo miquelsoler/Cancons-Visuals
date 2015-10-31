@@ -10,6 +10,7 @@
 #define PMSc3Song_Choose_hpp
 
 #include <stdio.h>
+#include <dirent.h>
 #include "PMBaseScene.hpp"
 
 #endif /* PMSc3Song_Choose_hpp */
@@ -26,10 +27,15 @@ public:
     
     void willExit() {};
     
+    void mousePressed(int x, int y, int button);
+    void mouseMoved(int x, int y);
+    
     
 protected:
     
 private:
-    
+    vector<string> songNames;
+    int pseudoSelectedSong;
+    ofTrueTypeFont selectFont;
     
 };

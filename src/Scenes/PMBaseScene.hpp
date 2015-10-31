@@ -26,12 +26,17 @@ public:
     virtual void draw();
 
     virtual void willExit() = 0;
+    
+    virtual void drawCenteredFont(ofTrueTypeFont &font, string s, int x, int y);
+    virtual void drawSettingsNumbers(int currentNumber);
 
 protected:
 
     ofColor backgroundColor;
 
-    ofTrueTypeFont baseFont;
+    ofTrueTypeFont  baseFont;
+    ofTrueTypeFont  numberFont;
+    ofTrueTypeFont  numberBoldFont;
 };
 
 #endif /* PMBaseScene_hpp */
