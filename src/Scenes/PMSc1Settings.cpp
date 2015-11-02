@@ -7,6 +7,7 @@
 //
 
 #include "PMSc1Settings.hpp"
+
 void PMSc1Settings::setup()
 {
     ofBackground(150);

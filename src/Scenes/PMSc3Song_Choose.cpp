@@ -71,5 +71,13 @@ void PMSc3Song_Choose::mouseMoved(int x, int y)
 
 void PMSc3Song_Choose::mousePressed(int x, int y, int button)
 {
-    
+    for(int i=0; i<songNames.size(); i++){
+        int x1=ofGetWidth()/2-(baseFont.stringWidth(songNames[i])/2);
+        int x2=ofGetWidth()/2+(baseFont.stringWidth(songNames[i])/2);
+        int y1=((ofGetHeight()-100)*(i+1)/(songNames.size()+1))+100-(baseFont.stringHeight(songNames[i])/2);
+        int y2=((ofGetHeight()-100)*(i+1)/(songNames.size()+1))+100+(baseFont.stringHeight(songNames[i])/2);
+        if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
+            PMSceneManager::getInstance().changeScene();
+        }
+    }
 }

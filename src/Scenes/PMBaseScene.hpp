@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include "ofxSceneManager.h"
 #include "ofxScene.h"
+#include "PMSceneManager.hpp"
 
 class PMBaseScene : public ofxScene
 {
