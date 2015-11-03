@@ -7,10 +7,11 @@
 //
 
 #include "PMSc5Brushes_Choose.hpp"
+#include "PMBrushesSelector.hpp"
 
 void PMSc5Brushes_Choose::setup()
 {
-    
+    PMBrushesSelector::getInstance().init();
 }
 
 void PMSc5Brushes_Choose::update()
@@ -22,4 +23,5 @@ void PMSc5Brushes_Choose::draw()
 {
     ofBackground(0);
     drawSettingsNumbers(3);
+    PMBrushesSelector::getInstance().draw();
 }
