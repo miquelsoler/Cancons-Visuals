@@ -1,0 +1,52 @@
+{
+    "Colors" : [
+                {
+                "Name" : "Vasili Kandinsky - Composition VIII",
+                "1" : "0x573059",
+                "2" : "0xF0B345",
+                "3" : "0xF4DBB1",
+                "4" : "0xBE6148",
+                "5" : "0XBE1605"
+                },
+                {
+                "Name" : "The Persistence Of Memory - Salvador Dali",
+                "1" : "0x7BA1D8",
+                "2" : "0xF5E6BB",
+                "3" : "0xF0BC54",
+                "4" : "0xA6593A",
+                "5" : "0xDA573B"
+                },
+                {
+                "Name" : "EdvardMunch - TheScream",
+                "1" : "0x2D3958",
+                "2" : "0xF2BF5C",
+                "3" : "0xBE9864",
+                "4" : "0xD66F30",
+                "5" : "0xA54926"
+                },
+                {
+                "Name" : "Mona Lisa - Leonardo da Vinci",
+                "1" : "0x0E0104",
+                "2" : "0x8B772f",
+                "3" : "0xF3B63D",
+                "4" : "0x8C4215",
+                "5" : "0x582014"
+                },
+                {
+                "Name" : "Sitting Woman with Legs Drawn Up 1917 - Egon Schiele",
+                "1" : "0x3D3741",
+                "2" : "0x538B7F",
+                "3" : "0xD7A06A",
+                "4" : "0xF2E3D1",
+                "5" : "0xC08369"
+                },
+                {
+                "Name" : "Starry Night - Vincent van Gogh",
+                "1" : "0x31488C",
+                "2" : "0x5578A7",
+                "3" : "0x7C90A7",
+                "4" : "0xBEBA7F",
+                "5" : "0xC2A529"
+                }
+                ]
+}
