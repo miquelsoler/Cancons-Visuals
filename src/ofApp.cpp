@@ -1,5 +1,6 @@
 #include "ofApp.h"
 #include "PMSettingsManager.h"
+#include "PMSettingsManagerGeneral.hpp"
 #include "Defaults.h"
 
 ///--------------------------------------------------------------
@@ -19,9 +20,9 @@ void ofApp::setup()
     // Settings
 
 #ifdef OF_DEBUG
-    showFPS = PMSettingsManager::getInstance().debugShowFPS;
+    showFPS = PMSettingsManagerGeneral::getInstance().getDebugShowFPS();
 #else
-    showFPS = PMSettingsManager::getInstance().releaseShowFPS;
+    showFPS = PMSettingsManagerGeneral::getInstance().getReleaseShowFPS();
 #endif
 
     // Scenes

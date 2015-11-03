@@ -1,0 +1,35 @@
+{
+   "Devices" : [
+      {
+         "1. Name" : "Apple Inc.: Built-in Microphone",
+         "2. Id" : 0,
+         "3. Enabled" : true,
+         "4. Channels" : [
+            {
+               "1. Id" : 0,
+               "2. Enabled" : true
+            },
+            {
+               "1. Id" : 1,
+               "2. Enabled" : true
+            }
+         ]
+      },
+      {
+         "1. Name" : "Apple Inc.: Built-in Input",
+         "2. Id" : 1,
+         "3. Enabled" : false,
+         "4. Channels" : [
+            {
+               "1. Id" : 0,
+               "2. Enabled" : false
+            },
+            {
+               "1. Id" : 1,
+               "2. Enabled" : false
+            }
+         ]
+      }
+   ]
+}
+

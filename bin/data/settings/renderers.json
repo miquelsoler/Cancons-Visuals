@@ -1,0 +1,23 @@
+{
+   "Renderers" : [
+      {
+         "1. Name" : "Paint Brush",
+         "2. Id" : 0,
+         "3. Enabled" : true,
+         "4. Settings" : []
+      },
+      {
+         "1. Name" : "Typography",
+         "2. Id" : 0,
+         "3. Enabled" : false,
+         "4. Settings" : []
+      },
+      {
+         "1. Name" : "Colors",
+         "2. Id" : 0,
+         "3. Enabled" : false,
+         "4. Settings" : []
+      }
+   ]
+}
+

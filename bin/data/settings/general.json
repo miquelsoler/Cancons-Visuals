@@ -1,0 +1,8 @@
+{
+   "Debug Mode" : {
+      "Show FPS" : true
+   },
+   "Release Mode" : {
+      "Show FPS" : false
+   }
+}

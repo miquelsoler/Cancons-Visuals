@@ -2,7 +2,7 @@
 //  PMSettingsManager.h
 //  ConductrEnter
 //
-//  Created by Miquel Ëngel Soler on 25/5/15.
+//  Created by Miquel ï¿½ngel Soler on 25/5/15.
 //
 //
 
@@ -14,29 +14,22 @@
 #include <stdio.h>
 #include "ofxJSON.h"
 
+
 class PMSettingsManager
 {
 public:
-    static PMSettingsManager &getInstance()
-    {
-        static PMSettingsManager instance;
-        return instance;
-    }
-
-    // Debug Mode
-    bool            debugShowGUI;
-    bool            debugShowFPS;
-
-    // Release Mode
-    bool            releaseShowGUI;
-    bool            releaseShowFPS;
-
-private:
-
-    PMSettingsManager();
-    bool loadSettings();
-
+    virtual void write();
+    
+protected:
+    
+    PMSettingsManager() {};
+    virtual bool load(string filename);
+    virtual void createJSONSettings() = 0;
+    
+    bool fileExists(string filename);
+    
     ofxJSONElement  json;
+    string          filename;
 };
 
 #endif /* defined(__ConductrEnter__SettingsManager__) */

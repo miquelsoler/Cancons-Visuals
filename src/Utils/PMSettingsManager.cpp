@@ -2,46 +2,31 @@
 //  PMSettingsManager.cpp
 //  ConductrEnter
 //
-//  Created by Miquel Ëngel Soler on 25/5/15.
+//  Created by Miquel Angel Soler on 25/5/15.
 //
 //
 
 #include "PMSettingsManager.h"
 
-const std::string FILENAME = "settings/settings.json";
+#pragma mark - Internal setup
 
-///--------------------------------------------------------------
-PMSettingsManager::PMSettingsManager()
+bool PMSettingsManager::load(string filename)
 {
-    bool parserResult = loadSettings();
-    if (!parserResult)
-    {
-        ofLog(OF_LOG_ERROR, "BAD FORMAT IN settings.json. Now quitting...");
-        std::exit(EXIT_FAILURE);
-    }
+    return json.open(filename);
 }
 
-///--------------------------------------------------------------
-bool PMSettingsManager::loadSettings()
+void PMSettingsManager::write()
 {
-    // JSON parse
+    json.save(filename, true);
+}
 
-    bool parsingSuccessful = json.open(FILENAME);
-#ifdef OF_DEBUG
-    cout << "PARSING RESULT: " << parsingSuccessful << endl;
-#endif
+#pragma mark - Convenience methods
 
-    string prefix;
-
-    // Debug Mode
-    prefix = "Debug Mode";
-    debugShowGUI = json[prefix]["Show GUI"].asBool();
-    debugShowFPS = json[prefix]["Show FPS"].asBool();
-
-    // Release mode
-    prefix = "Release Mode";
-    releaseShowGUI = json[prefix]["Show GUI"].asBool();
-    releaseShowFPS = json[prefix]["Show FPS"].asBool();
-
-    return parsingSuccessful;
+bool PMSettingsManager::fileExists(string filename)
+{
+    ofFile file(filename);
+    bool fileExists = file.exists();
+    file.close();
+    
+    return fileExists;
 }
