@@ -12,7 +12,7 @@
 
 void PMSc4Palette_Choose::setup()
 {
-    PMColorsSelector::getInstance().init();
+    PMColorsSelector::getInstance().init(baseFont);
 }
 
 void PMSc4Palette_Choose::update()

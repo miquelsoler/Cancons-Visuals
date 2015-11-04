@@ -8,18 +8,18 @@
 
 #include "PMTextContainer.hpp"
 
-PMTextContainer::PMTextContainer(int _x, int _y, int _width, int _height, string _s, ofTrueTypeFont _font)
+PMTextContainer::PMTextContainer(int _x, int _y, string _s, ofTrueTypeFont &_font)
 {
     this->s=_s;
-    this->font=_font;
+    this->font=&_font;
     this->x=_x;
     this->y=_y;
-    this->width=_width;
-    this->height=_height;
+    this->width=font->stringWidth(s);
+    this->height=font->stringHeight(s);
 
 }
 
 void PMTextContainer::draw()
 {
-    
+    font->drawString(s, x-width/2, y+height/2);
 }

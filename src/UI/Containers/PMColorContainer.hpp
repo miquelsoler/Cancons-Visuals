@@ -17,7 +17,7 @@ public:
     PMColorContainer(int x, int y, int width, int height, ofColor color);
     void draw();
     void setColor(ofColor color);
-    
+
 private:
     ofColor color;
 };

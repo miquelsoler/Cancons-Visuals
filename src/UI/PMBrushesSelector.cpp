@@ -66,6 +66,14 @@ void PMBrushesSelector::init()
             index++;
         }
     }
+    
+    for(int i=0; i<brushes.size(); i=i+brushesXpalette){
+        int x=ofGetWidth()/2;
+        int y=brushes[i].getY();
+        int width=ofGetWidth()-(2*brushes[i].getX()-brushes[i].getWidth())+20;
+        int height=brushes[i].getHeight()+20;
+        rectSelector.push_back(PMColorContainer(x, y, width, height, ofColor(127)));
+    }
 }
 
 void PMBrushesSelector::update()
@@ -75,20 +83,10 @@ void PMBrushesSelector::update()
 
 void PMBrushesSelector::draw()
 {
-//    int x,y;
-//    int width,height;
-//    for(int i=1; i<=brushes.size()/brushesXpalette; i++){
-//        y=(((ofGetHeight()-150)*i/((brushes.size()/brushesXpalette)+1))+150);
-//        for(int j=0; j<brushesXpalette; j++){
-//            x=(ofGetWidth()*(j+1)/(brushesXpalette+1));
-//            width=((ofGetWidth()/(brushesXpalette*2))-1);
-//            //width=40;
-//            height=width;
-//            ofSetRectMode(OF_RECTMODE_CENTER);
-//            ofSetColor(255);
-//            ofDrawRectRounded(x, y, width, height, 2);
-//        }
-//    }
+    for(int i=0; i<rectSelector.size(); i++){
+        rectSelector[i].draw();
+    }
+    
     for(int i=0; i<brushes.size(); i++){
         brushes[i].draw();
     }

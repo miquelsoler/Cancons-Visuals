@@ -14,13 +14,12 @@
 class PMTextContainer : public PMSelectorContainer
 {
 public:
-    PMTextContainer(int x, int y, int width, int height, string s);
-    PMTextContainer(int x, int y, int width, int height, string s, ofTrueTypeFont font);
+    PMTextContainer(int x, int y, string s, ofTrueTypeFont &font);
     void draw();
     
 private:
     string s;
-    ofTrueTypeFont font;
+    ofTrueTypeFont *font;
 };
 
 #endif /* PMTextContainer_hpp */

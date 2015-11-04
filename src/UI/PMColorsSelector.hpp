@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "ofMain.h"
 #include "PMColorContainer.hpp"
+#include "PMTextContainer.hpp"
 #include "ofxJSON.h"
 
 struct colorPalette{
@@ -29,7 +30,7 @@ public:
         return instance;
     }
     
-    void init();
+    void init(ofTrueTypeFont &font);
     void update();
     void draw();
     
@@ -40,7 +41,8 @@ private:
     ofxJSONElement  json;
     vector<colorPalette> colorPalettes;
     colorPalette tempPalette;
-    
+    vector<PMColorContainer > rectSelector;
+    vector<PMTextContainer > paletteNames;
 };
 
 #endif /* PMColorsSelector_hpp */

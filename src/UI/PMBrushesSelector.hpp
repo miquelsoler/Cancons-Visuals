@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include "ofMain.h"
 #include "PMImageContainer.hpp"
+#include "PMColorContainer.hpp"
 
 class PMBrushesSelector
 {
@@ -33,9 +34,9 @@ public:
     
 private:
     ofImage tempImage;
-    //vector<ofImage > brushes;
     int brushesXpalette;
     vector<PMImageContainer > brushes;
+    vector<PMColorContainer > rectSelector;
     
 };
 

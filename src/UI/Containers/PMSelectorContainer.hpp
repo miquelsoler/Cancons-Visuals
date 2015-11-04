@@ -21,6 +21,12 @@ public:
     void update(int x, int y, int width, int height);
     bool isInside(int x, int y);
     
+    int getX(){return x;};
+    int getY(){return y;};
+    int getWidth(){return width;};
+    int getHeight(){return height;};
+    
+    
 protected:
     int x;
     int y;
