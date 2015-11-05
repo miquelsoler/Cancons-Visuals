@@ -21,5 +21,13 @@ PMTextContainer::PMTextContainer(int _x, int _y, string _s, ofTrueTypeFont &_fon
 
 void PMTextContainer::draw()
 {
+    ofSetColor(121,43,53);
     font->drawString(s, x-width/2, y+height/2);
+}
+
+void PMTextContainer::setFont(ofTrueTypeFont &_font)
+{
+    this->font=&_font;
+    this->width=font->stringWidth(s);
+    this->height=font->stringHeight(s);
 }

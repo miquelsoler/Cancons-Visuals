@@ -34,7 +34,7 @@ public:
     void update();
     void draw();
     
-    void getBrush(){};
+    void getColor(){};
     
 private:
     vector<PMColorContainer > colorContainers;

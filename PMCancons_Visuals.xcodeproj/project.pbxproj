@@ -110,6 +110,7 @@
 		9FC1D4E51BDF85EA00DF31E3 /* PMAudioAnalyzer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FC1D4E31BDF85EA00DF31E3 /* PMAudioAnalyzer.cpp */; settings = {ASSET_TAGS = (); }; };
 		9FD630471BE38BDF00B9F1E1 /* PMSc2Start.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FD630451BE38BDF00B9F1E1 /* PMSc2Start.cpp */; settings = {ASSET_TAGS = (); }; };
 		9FD6304A1BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FD630481BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.cpp */; settings = {ASSET_TAGS = (); }; };
+		9FD787E21BEA568800376552 /* PMSongSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FD787E01BEA568800376552 /* PMSongSelector.cpp */; settings = {ASSET_TAGS = (); }; };
 		9FFB2E8A1BE7B5A500651A12 /* PMSettingsManagerGeneral.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FFB2E881BE7B5A500651A12 /* PMSettingsManagerGeneral.cpp */; settings = {ASSET_TAGS = (); }; };
 		9FFB2E8E1BE7B74700651A12 /* PMBrushesSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FFB2E8C1BE7B74700651A12 /* PMBrushesSelector.cpp */; settings = {ASSET_TAGS = (); }; };
 		9FFB2E941BE7B77300651A12 /* PMColorsSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FFB2E921BE7B77300651A12 /* PMColorsSelector.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -569,6 +570,8 @@
 		9FD630461BE38BDF00B9F1E1 /* PMSc2Start.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSc2Start.hpp; sourceTree = "<group>"; };
 		9FD630481BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc6Kinect_Detect.cpp; sourceTree = "<group>"; };
 		9FD630491BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSc6Kinect_Detect.hpp; sourceTree = "<group>"; };
+		9FD787E01BEA568800376552 /* PMSongSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PMSongSelector.cpp; path = UI/PMSongSelector.cpp; sourceTree = "<group>"; };
+		9FD787E11BEA568800376552 /* PMSongSelector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PMSongSelector.hpp; path = UI/PMSongSelector.hpp; sourceTree = "<group>"; };
 		9FFB2E881BE7B5A500651A12 /* PMSettingsManagerGeneral.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PMSettingsManagerGeneral.cpp; path = General/PMSettingsManagerGeneral.cpp; sourceTree = "<group>"; };
 		9FFB2E891BE7B5A500651A12 /* PMSettingsManagerGeneral.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PMSettingsManagerGeneral.hpp; path = General/PMSettingsManagerGeneral.hpp; sourceTree = "<group>"; };
 		9FFB2E8C1BE7B74700651A12 /* PMBrushesSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PMBrushesSelector.cpp; path = UI/PMBrushesSelector.cpp; sourceTree = "<group>"; };
@@ -1399,6 +1402,8 @@
 				9FFB2E8D1BE7B74700651A12 /* PMBrushesSelector.hpp */,
 				9FFB2E921BE7B77300651A12 /* PMColorsSelector.cpp */,
 				9FFB2E931BE7B77300651A12 /* PMColorsSelector.hpp */,
+				9FD787E01BEA568800376552 /* PMSongSelector.cpp */,
+				9FD787E11BEA568800376552 /* PMSongSelector.hpp */,
 				9F69EDC61BE8B2E8009018D9 /* Containers */,
 			);
 			name = UI;
@@ -1765,6 +1770,7 @@
 				9BE4AE0AA2B8C436BDFE9D4D /* ofxUIDragableLabelButton.cpp in Sources */,
 				F392A99D83698FC099127880 /* ofxUIDropDownList.cpp in Sources */,
 				9F3B37DA1BCFFF4800021E6E /* ofxOpenNI.cpp in Sources */,
+				9FD787E21BEA568800376552 /* PMSongSelector.cpp in Sources */,
 				9F530AF11BE28F6B0071941A /* PMSc7Countdown.cpp in Sources */,
 				9F530B051BE383D70071941A /* PMBaseScene.cpp in Sources */,
 				084025DA517D8329301FE1B6 /* ofxUIEventArgs.cpp in Sources */,
