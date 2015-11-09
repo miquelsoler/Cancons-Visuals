@@ -8,7 +8,7 @@
 
 #include "PMSc8Main.hpp"
 
-PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
+PMSc8Main::PMSc8Main() : PMBaseScene("Scene8")
 {
     
 }
@@ -33,9 +33,7 @@ void PMSc8Main::update()
 
 void PMSc8Main::draw()
 {
-    ofClear(255);
-    //ofBackground(255, 35, 32);
-    ofSetColor(ofColor::red);
+    ofBackground(255, 35, 32);
     ofDrawCircle(ofGetWidth()/2, ofGetHeight()/2, 200);
 //    PMMotionExtractor::getInstance().draw();
 //    KinectInfo* kinectOut=PMMotionExtractor::getInstance().getKinectInfo();
@@ -58,4 +56,10 @@ void PMSc8Main::playSong()
     }
     song.play();
     songIsStarted=true;
+}
+
+void PMSc8Main::changeScene()
+{
+    unsigned int nextSceneIndex = 8;
+    ofNotifyEvent(eventChangeScene, nextSceneIndex, this);
 }

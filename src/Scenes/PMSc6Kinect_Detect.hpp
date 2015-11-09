@@ -18,13 +18,15 @@ class PMSc6Kinect_Detect : public PMBaseScene
 {
 public:
     
-    PMSc6Kinect_Detect() {};
+    PMSc6Kinect_Detect();
     
     void setup();
     void update();
     void draw();
-    
-    void willExit() {};
+    void exit(){};
+    void updateEnter(){PMBaseScene::updateEnter();};
+    void updateExit(){PMBaseScene::updateExit();};
+
     
     
 protected:

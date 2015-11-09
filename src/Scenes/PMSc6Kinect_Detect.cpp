@@ -8,6 +8,11 @@
 
 #include "PMSc6Kinect_Detect.hpp"
 
+PMSc6Kinect_Detect::PMSc6Kinect_Detect() :PMBaseScene("Scene 6")
+{
+    
+}
+
 void PMSc6Kinect_Detect::setup()
 {
     

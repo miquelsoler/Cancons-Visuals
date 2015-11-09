@@ -9,6 +9,11 @@
 #include "PMSc5Brushes_Choose.hpp"
 #include "PMBrushesSelector.hpp"
 
+PMSc5Brushes_Choose::PMSc5Brushes_Choose() : PMBaseScene("Scene 5")
+{
+    
+}
+
 void PMSc5Brushes_Choose::setup()
 {
     PMBrushesSelector::getInstance().init();

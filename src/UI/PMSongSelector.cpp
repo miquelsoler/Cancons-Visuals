@@ -70,5 +70,16 @@ void PMSongSelector::checkMousePassed(int x, int y)
 
 string PMSongSelector::checkMousePressed(int x, int y)
 {
-    
+    for(int i=0; i<songNamesBox.size(); i++){
+        int x1=songNamesBox[i].getX()-songNamesBox[i].getWidth();
+        int x2=songNamesBox[i].getX()+songNamesBox[i].getWidth();
+        int y1=songNamesBox[i].getY()-songNamesBox[i].getHeight();
+        int y2=songNamesBox[i].getY()+songNamesBox[i].getHeight();
+        if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
+            indexChoosed=i;
+            return songFilenames[i];
+        }else{
+            return NULL;
+        }
+    }
 }

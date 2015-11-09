@@ -9,16 +9,16 @@
 #include "PMBaseScene.hpp"
 
 ///--------------------------------------------------------------
-PMBaseScene::PMBaseScene()
+PMBaseScene::PMBaseScene(const string &name) : ofxFadeScene(name)
 {
     baseFont.load(OF_TTF_SANS, 20, true, true, false, 0.3, 72);
     numberFont.load(OF_TTF_SERIF, 50, true, true, false, 0.3, 72);
     numberBoldFont.load(OF_TTF_SANS, 50, true, true, false, 0.3, 72);
 
     // Disable fades
-    this->setSceneDuration(0.2, 0.2);
+    //this->setSceneDuration(0.2, 0.2);
 
-    backgroundColor = ofColor::black;
+    backgroundColor = ofColor::green;
 }
 
 ///--------------------------------------------------------------
@@ -27,12 +27,27 @@ void PMBaseScene::draw()
     ofClear(backgroundColor);
 }
 
+void PMBaseScene::updateEnter()
+{
+    ofxFadeScene::updateEnter();
+}
+
+void PMBaseScene::updateExit()
+{
+    ofxFadeScene::updateExit();
+}
+
 void PMBaseScene::drawCenteredFont(ofTrueTypeFont &font, string s, int x, int y)
 {
     int halfStringHeight = font.stringHeight(s)/2;
     int halfStringWidth = font.stringWidth(s)/2;
     font.drawString(s, x-halfStringWidth, y+halfStringHeight);
 }
+
+
+
+
+
 
 void PMBaseScene::drawSettingsNumbers(int currentNumber)
 {

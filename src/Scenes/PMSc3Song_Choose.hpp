@@ -19,16 +19,19 @@ class PMSc3Song_Choose : public PMBaseScene
 {
 public:
     
-    PMSc3Song_Choose() {};
+    PMSc3Song_Choose();
     
     void setup();
     void update();
     void draw();
-    
-    void willExit() {};
+    void exit(){};
+    void updateEnter(){PMBaseScene::updateEnter();};
+    void updateExit(){PMBaseScene::updateExit();};
+
     
     void mousePressed(int x, int y, int button);
     void mouseMoved(int x, int y);
+    
     
     
 protected:

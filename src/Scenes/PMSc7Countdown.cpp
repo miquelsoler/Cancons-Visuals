@@ -8,6 +8,11 @@
 
 #include "PMSc7Countdown.hpp"
 
+PMSc7Countdown::PMSc7Countdown() : PMBaseScene("Scene 7")
+{
+    
+}
+
 void PMSc7Countdown::setup()
 {
     

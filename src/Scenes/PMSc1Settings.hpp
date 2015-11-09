@@ -20,16 +20,20 @@ class PMSc1Settings : public PMBaseScene
 {
 public:
 
-    PMSc1Settings() {};
+    PMSc1Settings();
+    ~PMSc1Settings(){};
 
     void setup();
     void update();
     void draw();
     void guiEvent(ofxUIEventArgs &e);
+    void exit(){};
+    void updateEnter(){PMBaseScene::updateEnter();};
+    void updateExit(){PMBaseScene::updateExit();};
     
     void setupGUI_SONG();
     
-    void willExit() {};
+    
 
 
 protected:

@@ -44,6 +44,7 @@ private:
     vector<string> songFilenames;
     ofTrueTypeFont *font;
     ofTrueTypeFont *boldFont;
+    int indexChoosed;
 };
 
 #endif /* PMSongSelector_hpp */

@@ -11,7 +11,6 @@
 PMSc1Settings::PMSc1Settings() : PMBaseScene("Scene 1")
 {
     ofBackground(150);
-    setFade(1000, 1000);
     //setupGUI_SONG();
 }
 
@@ -43,6 +42,7 @@ void PMSc1Settings::update()
 
 void PMSc1Settings::draw()
 {
+    ofDrawCircle(ofGetWidth()/2, ofGetHeight()/2, 200);
 //    cout << "PMSc1Settings::draw()" << endl;
 }
 
@@ -51,3 +51,8 @@ void PMSc1Settings::guiEvent(ofxUIEventArgs &e)
     
 }
 
+void PMSc1Settings::changeScene()
+{
+    unsigned int nextSceneIndex = 1;
+    ofNotifyEvent(eventChangeScene, nextSceneIndex, this);
+}

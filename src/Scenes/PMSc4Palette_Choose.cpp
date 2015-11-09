@@ -9,6 +9,10 @@
 #include "PMSc4Palette_Choose.hpp"
 #include "PMColorsSelector.hpp"
 
+PMSc4Palette_Choose::PMSc4Palette_Choose() : PMBaseScene("Scene 4")
+{
+    
+}
 
 void PMSc4Palette_Choose::setup()
 {

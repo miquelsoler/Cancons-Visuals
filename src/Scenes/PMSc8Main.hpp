@@ -19,16 +19,18 @@ class PMSc8Main : public PMBaseScene
 {
 public:
 
-    PMSc8Main() {};
+    PMSc8Main();
 
     void setup();
     void update();
     void draw();
+    void exit(){};
+    void updateEnter(){PMBaseScene::updateEnter();};
+    void updateExit(){PMBaseScene::updateExit();};
     
     void loadSong(string filename);
     void playSong();
     
-    void willExit() {};
 
 protected:
 

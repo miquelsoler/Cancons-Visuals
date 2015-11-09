@@ -18,13 +18,15 @@ class PMSc7Countdown : public PMBaseScene
 {
 public:
     
-    PMSc7Countdown() {};
+    PMSc7Countdown();
     
     void setup();
     void update();
     void draw();
-    
-    void willExit() {};
+    void exit(){};
+    void updateEnter(){PMBaseScene::updateEnter();};
+    void updateExit(){PMBaseScene::updateExit();};
+
     
 protected:
     

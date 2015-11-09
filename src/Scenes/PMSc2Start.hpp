@@ -18,13 +18,14 @@ class PMSc2Start : public PMBaseScene
 {
 public:
     
-    PMSc2Start() {};
+    PMSc2Start();
     
     void setup();
     void update();
     void draw();
-    
-    void willExit() {};
+    void exit(){};
+    void updateEnter(){PMBaseScene::updateEnter();};
+    void updateExit(){PMBaseScene::updateExit();};
     
     
 protected:

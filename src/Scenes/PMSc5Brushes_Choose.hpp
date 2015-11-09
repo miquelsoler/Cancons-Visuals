@@ -18,13 +18,15 @@ class PMSc5Brushes_Choose : public PMBaseScene
 {
 public:
     
-    PMSc5Brushes_Choose() {};
+    PMSc5Brushes_Choose();
     
     void setup();
     void update();
     void draw();
-    
-    void willExit() {};
+    void exit(){};
+    void updateEnter(){PMBaseScene::updateEnter();};
+    void updateExit(){PMBaseScene::updateExit();};
+
     
 protected:
     

@@ -4,12 +4,12 @@
 #include "ofMain.h"
 #include "PMDeviceAudioAnalyzer.hpp"
 #include "PMMotionExtractor.hpp"
-#include "PMSceneManager.hpp"
+#include "ofxAppUtils.h"
 #include "ofxOpenNI.h"
 #include "ofxKinectFeatures.h"
 
 
-class ofApp : public ofBaseApp
+class ofApp : public ofxApp
 {
 public:
 
@@ -33,12 +33,13 @@ public:
 
 
 private:
+    
 
     PMDeviceAudioAnalyzer   *audioAnalyzer;
 
     bool                    showFPS;
     bool                    isFullScreen;
 
-    PMSceneManager          *sceneManager;
+    ofxSceneManager          sceneManager;
     unsigned int            currentScene;
 };
