@@ -35,9 +35,9 @@ public:
     void update();
     void draw();
     
-    void getFilename(int index){};
+    string getFilename(){return songFilenames[indexChoosed];};
     void checkMousePassed(int x, int y);
-    string checkMousePressed(int x, int y);
+    bool checkMousePressed(int x, int y);
     
 private:
     vector<PMTextContainer > songNamesBox;

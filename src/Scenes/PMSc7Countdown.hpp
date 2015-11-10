@@ -27,9 +27,10 @@ public:
     void updateEnter(){PMBaseScene::updateEnter();};
     void updateExit(){PMBaseScene::updateExit();};
 
-    
-protected:
-    
+
 private:
+    
+    ofxTimer countdown;
+    
     
 };

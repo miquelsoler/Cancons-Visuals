@@ -67,7 +67,7 @@ void ofApp::setup()
     ofSetLogLevel("ofxSceneManager", OF_LOG_VERBOSE); //lets see whats going on inside
     
     setSceneManager(&sceneManager);
-    sceneManager.gotoScene("Scene 1", false);
+    sceneManager.gotoScene("Scene 3", false);
     
     // For testing purposes
 

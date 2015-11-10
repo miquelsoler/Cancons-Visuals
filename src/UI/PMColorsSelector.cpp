@@ -72,3 +72,33 @@ void PMColorsSelector::draw()
     }
 
 }
+
+void PMColorsSelector::checkMousePassed(int x, int y)
+{
+    for(int i=0; i<rectSelector.size(); i++){
+        int x1=rectSelector[i].getX()-rectSelector[i].getWidth();
+        int x2=rectSelector[i].getX()+rectSelector[i].getWidth();
+        int y1=rectSelector[i].getY()-rectSelector[i].getHeight();
+        int y2=rectSelector[i].getY()+rectSelector[i].getHeight();
+        if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
+            //rectSelector[i].setFont(*boldFont);
+        }else{
+            //rectSelector[i].setFont(*font);
+        }
+    }
+}
+
+bool PMColorsSelector::checkMousePressed(int x, int y)
+{
+    for(int i=0; i<rectSelector.size(); i++){
+        int x1=rectSelector[i].getX()-rectSelector[i].getWidth();
+        int x2=rectSelector[i].getX()+rectSelector[i].getWidth();
+        int y1=rectSelector[i].getY()-rectSelector[i].getHeight();
+        int y2=rectSelector[i].getY()+rectSelector[i].getHeight();
+        if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
+            //indexChoosed=i;
+            return true;
+        }
+    }
+    return false;
+}

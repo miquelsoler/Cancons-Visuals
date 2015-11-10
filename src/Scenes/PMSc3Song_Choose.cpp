@@ -58,5 +58,7 @@ void PMSc3Song_Choose::mouseMoved(int x, int y)
 
 void PMSc3Song_Choose::mousePressed(int x, int y, int button)
 {
-    
+    if(PMSongSelector::getInstance().checkMousePressed(x, y)){
+        //ofxSceneManager::gotoScene("Scene 4");
+    }
 }

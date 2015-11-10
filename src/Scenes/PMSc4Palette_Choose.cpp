@@ -11,7 +11,7 @@
 
 PMSc4Palette_Choose::PMSc4Palette_Choose() : PMBaseScene("Scene 4")
 {
-    
+    setFade(1000, 1000);
 }
 
 void PMSc4Palette_Choose::setup()

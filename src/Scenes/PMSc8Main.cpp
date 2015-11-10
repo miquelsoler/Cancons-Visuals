@@ -7,17 +7,21 @@
 //
 
 #include "PMSc8Main.hpp"
+#include "PMSongSelector.hpp"
 
 PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
 {
-    
+    setSingleSetup(false);
 }
 
 void PMSc8Main::setup()
 {
+    string songPath="songs/"+PMSongSelector::getInstance().getFilename();
+    cout<<songPath<<endl;
     songIsStarted=false;
-    loadSong("songs/Com_Balles_Tu.mp3");
+    loadSong(songPath);
     playSong();
+    songIsStarted=true;
 }
 
 void PMSc8Main::update()

@@ -48,7 +48,6 @@ void PMSongSelector::draw()
 {
     for(int i=0; i<songNamesBox.size(); i++){
         songNamesBox[i].draw();
-        cout<<"drawing"<<i<<endl;
     }
     
 }
@@ -68,7 +67,7 @@ void PMSongSelector::checkMousePassed(int x, int y)
     }
 }
 
-string PMSongSelector::checkMousePressed(int x, int y)
+bool PMSongSelector::checkMousePressed(int x, int y)
 {
     for(int i=0; i<songNamesBox.size(); i++){
         int x1=songNamesBox[i].getX()-songNamesBox[i].getWidth();
@@ -77,9 +76,8 @@ string PMSongSelector::checkMousePressed(int x, int y)
         int y2=songNamesBox[i].getY()+songNamesBox[i].getHeight();
         if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
             indexChoosed=i;
-            return songFilenames[i];
-        }else{
-            return NULL;
+            return true;
         }
     }
+    return false;
 }

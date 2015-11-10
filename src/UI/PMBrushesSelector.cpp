@@ -33,10 +33,7 @@ void PMBrushesSelector::init()
                 while((epdf2 = readdir(dpdf2))){
                     string brushname=epdf2->d_name;
                     if(brushname[0]!='.'){
-                        cout<<"brushes/"+foldername+slash+brushname<<endl;
-                        //tempImage.load("brushes/"+foldername+slash+brushname);
                         PMImageContainer tempContainer("brushes/"+foldername+slash+brushname);
-                        //brushes.push_back(tempImage);
                         brushes.push_back(tempContainer);
                         i++;
                     }
@@ -62,7 +59,6 @@ void PMBrushesSelector::init()
             width=((ofGetWidth()/(brushesXpalette*2))-1);
             height=width;
             brushes[index].update(x, y, width, height);
-            cout<<x<<" "<<y<<endl;
             index++;
         }
     }
@@ -90,4 +86,35 @@ void PMBrushesSelector::draw()
     for(int i=0; i<brushes.size(); i++){
         brushes[i].draw();
     }
+}
+
+
+void PMBrushesSelector::checkMousePassed(int x, int y)
+{
+    for(int i=0; i<rectSelector.size(); i++){
+        int x1=rectSelector[i].getX()-rectSelector[i].getWidth();
+        int x2=rectSelector[i].getX()+rectSelector[i].getWidth();
+        int y1=rectSelector[i].getY()-rectSelector[i].getHeight();
+        int y2=rectSelector[i].getY()+rectSelector[i].getHeight();
+        if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
+            //rectSelector[i].setFont(*boldFont);
+        }else{
+            //rectSelector[i].setFont(*font);
+        }
+    }
+}
+
+bool PMBrushesSelector::checkMousePressed(int x, int y)
+{
+    for(int i=0; i<rectSelector.size(); i++){
+        int x1=rectSelector[i].getX()-rectSelector[i].getWidth();
+        int x2=rectSelector[i].getX()+rectSelector[i].getWidth();
+        int y1=rectSelector[i].getY()-rectSelector[i].getHeight();
+        int y2=rectSelector[i].getY()+rectSelector[i].getHeight();
+        if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
+            //indexChoosed=i;
+            return true;
+        }
+    }
+    return false;
 }

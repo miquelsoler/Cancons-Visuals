@@ -35,6 +35,8 @@ public:
     void draw();
     
     void getColor(){};
+    void checkMousePassed(int x, int y);
+    bool checkMousePressed(int x, int y);
     
 private:
     vector<PMColorContainer > colorContainers;

@@ -11,7 +11,7 @@
 
 PMSc5Brushes_Choose::PMSc5Brushes_Choose() : PMBaseScene("Scene 5")
 {
-    
+    setFade(1000, 1000);
 }
 
 void PMSc5Brushes_Choose::setup()

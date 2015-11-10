@@ -31,6 +31,8 @@ public:
     void draw();
     
     void getBrush(){};
+    void checkMousePassed(int x, int y);
+    bool checkMousePressed(int x, int y);
     
 private:
     ofImage tempImage;
