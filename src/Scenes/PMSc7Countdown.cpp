@@ -21,6 +21,10 @@ void PMSc7Countdown::setup()
 void PMSc7Countdown::update()
 {
     cout<<(int)countdown.getDiff()/1000<<endl;
+    if(5-(int)countdown.getDiff()/1000==0){
+        string toScene="Scene 8";
+        ofNotifyEvent(goToSceneEvent, toScene, this);
+    }
 }
 
 void PMSc7Countdown::draw()

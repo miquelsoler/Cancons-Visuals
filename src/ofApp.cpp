@@ -77,9 +77,10 @@ void ofApp::setup()
 //    bool useMelBands = true;
 //    int numMelBands = 24;
 //    audioAnalyzer->setup(PMDAA_CHANNEL_MONO, channelNumber, useMelBands, numMelBands);
-//    
+//
     
-    //PMMotionExtractor::getInstance().setup();
+    ofAddListener(scene3->goToSceneEvent, this, &ofApp::changeScene);
+    ofAddListener(scene7->goToSceneEvent, this, &ofApp::changeScene);
 }
 
 ///--------------------------------------------------------------
@@ -88,8 +89,6 @@ void ofApp::update()
 #ifdef OF_DEBUG
     ofShowCursor();
 #endif
-
-    //sceneManager->update();
 }
 
 ///--------------------------------------------------------------
@@ -100,14 +99,16 @@ void ofApp::draw()
         ofSetColor(ofColor::white);
         ofDrawBitmapString(ofToString(ofGetFrameRate()) + "fps", 15, ofGetHeight() - 15);
     }
-
-    //sceneManager->draw();
+    ofSetColor(200);
+    ofxBitmapString(12, ofGetHeight()-8)
+    << "Current Scene: " << sceneManager.getCurrentSceneIndex()
+    << " " << sceneManager.getCurrentSceneName() << endl;
 }
 
 ///--------------------------------------------------------------
 void ofApp::exit()
 {
-//    PMMotionExtractor::getInstance().exit();
+    
 }
 
 ///--------------------------------------------------------------
@@ -155,5 +156,12 @@ void ofApp::keyReleased(int key)
             break;
     }
     
+}
+
+
+void ofApp::changeScene(string &scene)
+{
+    sceneManager.gotoScene(scene);
+
 }
 

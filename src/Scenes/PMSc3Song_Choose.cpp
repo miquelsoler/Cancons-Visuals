@@ -11,7 +11,8 @@
 
 PMSc3Song_Choose::PMSc3Song_Choose() : PMBaseScene("Scene 3")
 {
-    setFade(1000, 1000);
+    //setFade(1000, 1000);
+    setFadeIn(1000);
 }
 
 void PMSc3Song_Choose::setup()
@@ -43,6 +44,7 @@ void PMSc3Song_Choose::mouseMoved(int x, int y)
 void PMSc3Song_Choose::mousePressed(int x, int y, int button)
 {
     if(PMSongSelector::getInstance().checkMousePressed(x, y)){
-        //ofxSceneManager::gotoScene("Scene 4");
+        string sceneToChange="Scene 4";
+        ofNotifyEvent(goToSceneEvent, sceneToChange, this);
     }
 }

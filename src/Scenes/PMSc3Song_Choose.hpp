@@ -41,4 +41,6 @@ private:
     int pseudoSelectedSong;
     ofTrueTypeFont selectFont;
     
+    
+    
 };

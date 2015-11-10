@@ -25,8 +25,8 @@ public:
     void update();
     void draw();
     void exit(){};
-    void updateEnter(){PMBaseScene::updateEnter();};
-    void updateExit(){PMBaseScene::updateExit();};
+    void updateEnter(){ofxFadeScene::updateEnter();};
+    void updateExit(){ofxFadeScene::updateExit();};
     
 private:
     vector<PMTextContainer > textBoxes;
