@@ -16,23 +16,7 @@ PMSc3Song_Choose::PMSc3Song_Choose() : PMBaseScene("Scene 3")
 
 void PMSc3Song_Choose::setup()
 {
-//    DIR *dpdf;
-//    struct dirent *epdf;
-//
-//    dpdf = opendir(ofToDataPath("songs/", true).c_str());
-//    if(dpdf == NULL){
-//        return false;
-//    }
-//    while((epdf = readdir(dpdf))){
-//        if (true){
-//            string songname=string(epdf->d_name);
-//            if(songname[0]!='.'){
-//                songname=songname.substr(0,songname.find_last_of('.'));
-//                songNames.push_back(songname);
-//            }
-//        }
-//    }
-//    
+ 
     selectFont.load("verdana.ttf", 30);
     PMSongSelector::getInstance().init(baseFont, selectFont);
 }

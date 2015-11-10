@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "PMBaseScene.hpp"
+#include "PMTextContainer.hpp"
 
 #endif /* PMSc2Start_hpp */
 
@@ -27,9 +28,6 @@ public:
     void updateEnter(){PMBaseScene::updateEnter();};
     void updateExit(){PMBaseScene::updateExit();};
     
-    
-protected:
-    
 private:
-    
+    vector<PMTextContainer > textBoxes;
 };

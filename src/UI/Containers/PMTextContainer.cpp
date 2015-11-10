@@ -8,6 +8,7 @@
 
 #include "PMTextContainer.hpp"
 
+
 PMTextContainer::PMTextContainer(int _x, int _y, string _s, ofTrueTypeFont &_font)
 {
     this->s=_s;

@@ -16,12 +16,7 @@ PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
 
 void PMSc8Main::setup()
 {
-    string songPath="songs/"+PMSongSelector::getInstance().getFilename();
-    cout<<songPath<<endl;
-    songIsStarted=false;
-    loadSong(songPath);
-    playSong();
-    songIsStarted=true;
+
 }
 
 void PMSc8Main::update()
@@ -47,6 +42,22 @@ void PMSc8Main::draw()
 //    ofDrawEllipse(kinectOut->rightHand_joint.x*ofGetWidth(), kinectOut->rightHand_joint.y*ofGetHeight(), 10+5*kinectOut->rightHand_joint.a, 10+5*kinectOut->rightHand_joint.a);
 //    ofDrawEllipse(kinectOut->head_joint.x*ofGetWidth(), kinectOut->head_joint.y*ofGetHeight(), 10+7*kinectOut->head_joint.a, 10+7*kinectOut->head_joint.a);
 //    ofDrawEllipse(kinectOut->torso_joint.x*ofGetWidth(), kinectOut->torso_joint.y*ofGetHeight(), 10+10*kinectOut->torso_joint.a, 10+10*kinectOut->torso_joint.a);
+}
+
+void PMSc8Main::updateEnter()
+{
+    PMBaseScene::updateEnter();
+    string songPath="songs/"+PMSongSelector::getInstance().getFilename();
+    cout<<songPath<<endl;
+    songIsStarted=false;
+    loadSong(songPath);
+    playSong();
+}
+
+void PMSc8Main::updateExit()
+{
+    PMBaseScene::updateExit();
+    song.stop();
 }
 
 void PMSc8Main::loadSong(string filename){
