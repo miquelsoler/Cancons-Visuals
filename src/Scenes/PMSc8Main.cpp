@@ -32,10 +32,9 @@ void PMSc8Main::update()
 
 void PMSc8Main::draw()
 {
-    ofClear(255);
     //ofBackground(255, 35, 32);
-    ofSetColor(ofColor::red);
-    ofDrawCircle(ofGetWidth()/2, ofGetHeight()/2, 200);
+    //ofSetColor(ofColor::red);
+    //ofDrawCircle(ofGetWidth()/2, ofGetHeight()/2, 200);
 //    PMMotionExtractor::getInstance().draw();
 //    KinectInfo* kinectOut=PMMotionExtractor::getInstance().getKinectInfo();
 //    ofDrawEllipse(kinectOut->leftHand_joint.x*ofGetWidth(), kinectOut->leftHand_joint.y*ofGetHeight(), 10+5*kinectOut->leftHand_joint.a, 10+5*kinectOut->leftHand_joint.a);

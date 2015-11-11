@@ -30,3 +30,13 @@ void PMSc4Palette_Choose::draw()
     drawSettingsNumbers(2);
     PMColorsSelector::getInstance().draw();
 }
+
+void PMSc4Palette_Choose::mouseMoved(int x, int y)
+{
+    
+}
+
+void PMSc4Palette_Choose::mousePressed(int x, int y, int mouse)
+{
+    
+}

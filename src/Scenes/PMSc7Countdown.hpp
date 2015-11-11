@@ -24,8 +24,8 @@ public:
     void update();
     void draw();
     void exit(){};
-    void updateEnter(){PMBaseScene::updateEnter();};
-    void updateExit(){PMBaseScene::updateExit();};
+    void updateEnter();
+    void updateExit();
 
 
 private:

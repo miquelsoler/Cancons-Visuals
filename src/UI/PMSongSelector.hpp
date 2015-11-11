@@ -14,6 +14,7 @@
 #include "PMColorContainer.hpp"
 #include "PMTextContainer.hpp"
 #include "ofxJSON.h"
+#include "ofxAppUtils.h"
 
 struct colorPalette{
     string name;
@@ -31,7 +32,7 @@ public:
         cout<<"color get instance"<<endl;
     }
     
-    void init(ofTrueTypeFont &font, ofTrueTypeFont &boldFont);
+    void init(ofTrueTypeFont &font);
     void update();
     void draw();
     
@@ -44,9 +45,10 @@ private:
     vector<PMTextContainer > songNamesBox;
     vector<string> songFilenames;
     ofTrueTypeFont *font;
-    ofTrueTypeFont *boldFont;
     int indexChoosed;
-    
+    vector<ofxTimer> timers;
+    vector<float> textScales;
+    vector<bool> selectedText;
     
 };
 

@@ -19,12 +19,14 @@ void PMSc3Song_Choose::setup()
 {
  
     selectFont.load("verdana.ttf", 30);
-    PMSongSelector::getInstance().init(baseFont, selectFont);
+    PMSongSelector::getInstance().init(selectFont);
 }
 
 void PMSc3Song_Choose::update()
 {
-    
+    if(!isEntering()){
+        PMSongSelector::getInstance().update();
+    }
 }
 
 void PMSc3Song_Choose::draw()

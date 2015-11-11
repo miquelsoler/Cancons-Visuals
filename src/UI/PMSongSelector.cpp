@@ -9,10 +9,9 @@
 #include "PMSongSelector.hpp"
 #include "dirent.h"
 
-void PMSongSelector::init(ofTrueTypeFont &_font, ofTrueTypeFont &_boldFont)
+void PMSongSelector::init(ofTrueTypeFont &_font)
 {
     font=&_font;
-    boldFont=&_boldFont;
     
     
     DIR *dpdf;
@@ -35,19 +34,34 @@ void PMSongSelector::init(ofTrueTypeFont &_font, ofTrueTypeFont &_boldFont)
     for(int i=0; i<songFilenames.size(); i++){
         x=ofGetWidth()/2;
         y=((ofGetHeight()-150)*(i+1)/(songFilenames.size()+1))+150;
-        songNamesBox.push_back(PMTextContainer(x, y, songFilenames[i].substr(0, songFilenames[i].find_last_of('.')), *font));
+        songNamesBox.push_back(PMTextContainer(x, y, songFilenames[i].substr(0, songFilenames[i].find_last_of('.')), *font, 0.5));
+    }
+    
+    for(int i=0; i<songFilenames.size(); i++){
+        ofxTimer tempTimer=ofxTimer();
+        tempTimer.set();
+        timers.push_back(tempTimer);
+        textScales.push_back(0.5);
+        selectedText.push_back(false);
     }
 }
 
 void PMSongSelector::update()
 {
-    
+    for(int i=0; i<timers.size(); i++){
+        if(timers[i].getDiff()<250 && selectedText[i]){
+            textScales[i]=0.5+((float)timers[i].getDiff()/500);
+        }
+        if(!selectedText[i]){
+            textScales[i]=0.5;
+        }
+    }
 }
 
 void PMSongSelector::draw()
 {
     for(int i=0; i<songNamesBox.size(); i++){
-        songNamesBox[i].draw();
+        songNamesBox[i].draw(textScales[i]);
     }
     
 }
@@ -60,9 +74,12 @@ void PMSongSelector::checkMousePassed(int x, int y)
         int y1=songNamesBox[i].getY()-songNamesBox[i].getHeight();
         int y2=songNamesBox[i].getY()+songNamesBox[i].getHeight();
         if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
-            songNamesBox[i].setFont(*boldFont);
+            if(!selectedText[i]){
+                timers[i].set();
+                selectedText[i]=true;
+            }
         }else{
-            songNamesBox[i].setFont(*font);
+            selectedText[i]=false;
         }
     }
 }
