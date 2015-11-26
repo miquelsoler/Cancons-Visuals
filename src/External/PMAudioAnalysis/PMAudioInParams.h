@@ -12,16 +12,16 @@
 
 struct baseAudioInParams
 {
+    unsigned int audioInputIndex;
     int deviceID;
     int channel;
 };
 
 struct pitchParams : public baseAudioInParams
 {
-    float freq;
+//    float freq;
     float confidence;
     float midiNote;
-    float midiNoteNoOctave;
 };
 
 struct energyParams : public baseAudioInParams
@@ -31,6 +31,8 @@ struct energyParams : public baseAudioInParams
 
 struct silenceParams : public baseAudioInParams
 {
+    bool isSilent;
+    float silenceTime;
 };
 
 struct freqBandsParams : public baseAudioInParams
@@ -41,6 +43,18 @@ struct freqBandsParams : public baseAudioInParams
 
 struct onsetParams : public baseAudioInParams
 {
+    bool isOnset;
+};
+
+struct shtParams : public baseAudioInParams
+{
+    float time;
+};
+
+struct  pauseParams: public baseAudioInParams
+{
+    bool isPaused;
+    float pauseTime;
 };
 
 
