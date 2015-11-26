@@ -13,8 +13,9 @@
 
 #include <stdio.h>
 #include "ofMain.h"
-#include "ofxAudioAnalyzer.h"
-#include "PMAudioOutParams.h"
+//#include "ofxAudioAnalyzer.h"
+#include "ofxAubio.h"
+#include "PMAudioInParams.h"
 
 typedef enum
 {
@@ -44,9 +45,12 @@ public:
      * - useMelBands: true if it needs obtaining mel bands
      * - numMelBands: number of mel bands (ignored when useMelBands=false)
      */
-    void setup(PMDAA_ChannelMode channelMode, int channelNumber,
-            bool useMelBands, int numMelBands,
-            bool useSilence, int silenceThreshold);
+    void setup(unsigned int audioInputIndex, PMDAA_ChannelMode channelMode, unsigned int channelNumber,
+            float minPitchMidiNote, float maxPitchMidiNote,
+            float energyThreshold,
+            bool useSilence, int silenceThreshold, unsigned int silenceQueueLength,
+            float onsetsThreshold, float onsetsAlpha,
+            float smoothingDelta);
 
     void start();
     void stop();
@@ -55,19 +59,25 @@ public:
 
     void audioIn(float *input, int bufferSize, int nChannels);
 
+    unsigned int getInputIndex() { return audioInputIndex; };
     int getDeviceID() { return deviceID; };
     int getChannelNumber() { return channelNumber; };
+    int getSamplerate();
+    int getNumChannels();
 
     // Events for listeners
     ofEvent<pitchParams>        eventPitchChanged;
     ofEvent<silenceParams>      eventSilenceStateChanged;
     ofEvent<energyParams>       eventEnergyChanged;
-    ofEvent<onsetParams>        eventOnsetDetected;
+    ofEvent<onsetParams>        eventOnsetStateChanged;
     ofEvent<freqBandsParams>    eventFreqBandsParams;
+    ofEvent<shtParams>          eventShtHappened;
+    ofEvent<pauseParams>        eventPauseStateChanged;
 
 private:
 
     // Setup
+    unsigned int                audioInputIndex;
     int                         deviceID;
     int                         inChannels;
     int                         outChannels;
@@ -79,22 +89,60 @@ private:
     PMDAA_ChannelMode           channelMode;
     int                         channelNumber;
 
-    // Mel bands
-    bool                        useMelBands;
-    int                         numMelBands;
+    // Pitch
+    float                       minPitchMidiNote;
+    float                       maxPitchMidiNote;
+
+    // Energy
+    float                       energyThreshold;
 
     // Silence
     bool                        useSilence;
-    int                         silenceThreshold;
     bool                        wasSilent;
 
-    // Internals
-    ofSoundStream               soundStream;
-    vector<ofxAudioAnalyzer *>  audioAnalyzers;
+    // Onsets
+    float                       onsetsThreshold;
+    float                       onsetsAlpha;
+    vector<bool>                oldOnsetState;
 
-    float                   **buffers; // buffers[ CHANNEL ][ CHANNEL BUFFER ]
+    // Smoothing
+    float                       smoothingDelta;
+    vector<float>               oldMidiNotesValues;
+
+    // Sound analysis
+
+    ofSoundStream               soundStream;
+
+//    ofxAubioPitch               aubioPitch;
+    vector<ofxAubioPitch *>     vAubioPitches;
+    vector<ofxAubioOnset *>     vAubioOnsets;
+    vector<ofxAubioMelBands *>  vAubioMelBands;
+
+//    vector<ofxAudioAnalyzer *>  audioAnalyzers;
+//    float                   **buffers; // buffers[ CHANNEL ][ CHANNEL BUFFER ]
 
     bool                    isSetup;
+    
+    vector<bool>                isInSilence;
+    vector<bool>                isInPause;
+    vector<float>               silenceBeginTime;
+    float                       silenceTimeTreshold;
+    float                       pauseTimeTreshold;
+
+    float getEnergy(unsigned int channel);
+    float getRms(float *input, int bufferSize);
+    float getAbsMean(float *input, int bufferSize, int channel);
+    void detectedSilence(int channel);
+    void updateSilenceTime(int channel);
+    void detectedEndSilence(int channel);
+    
+    
+    // sshht
+    vector<bool>                isShtSounding;
+    vector<float>               shtBeginTime;
+    float                       shtTimeTreshold;
+    
+    void checkShtSound(int channel);
 };
 
 #endif /* PMDeviceAudioAnalyzer_h */
