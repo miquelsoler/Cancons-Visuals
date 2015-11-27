@@ -22,6 +22,8 @@ struct pitchParams : public baseAudioInParams
 //    float freq;
     float confidence;
     float midiNote;
+    float smoothedMidiNote;
+    float midiPitchDivengence;
 };
 
 struct energyParams : public baseAudioInParams
@@ -48,6 +50,7 @@ struct onsetParams : public baseAudioInParams
 
 struct shtParams : public baseAudioInParams
 {
+    bool isSht;
     float time;
 };
 
@@ -55,6 +58,11 @@ struct  pauseParams: public baseAudioInParams
 {
     bool isPaused;
     float pauseTime;
+};
+
+struct melodyDirectionParams: public baseAudioInParams
+{
+    float direction;
 };
 
 
