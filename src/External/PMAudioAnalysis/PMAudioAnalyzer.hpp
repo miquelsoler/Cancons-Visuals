@@ -29,9 +29,9 @@ public:
 
     void init(float minPitchFreq, float maxPitchFreq,
             float energyThreshold,
-            bool useSilence, int silenceThreshold, unsigned int silenceQueueLength,
+            bool useSilence, float silenceThreshold, unsigned int silenceQueueLength,
             float onsetsThreshold, float onsetsAlpha,
-            float smoothingDelta);
+            float smoothingDelta, int ascDescAnalysisSize);
 
     PMDeviceAudioAnalyzer * addDeviceAudioAnalyzer(unsigned int audioInputIndex, int deviceID, int inChannels, int outChannels,
             int sampleRate, int bufferSize,
@@ -57,7 +57,7 @@ private:
 
     // Silence
     bool            useSilence;
-    int             silenceThreshold;
+    float           silenceThreshold;
     unsigned int    silenceQueueLength;
 
     // Onsets
@@ -66,6 +66,9 @@ private:
 
     // Smoothing
     float           smoothingDelta;
+    
+    // Ascendent Descendent Melody analysis
+    int             ascDescAnalysisSize;
 
     vector<PMDeviceAudioAnalyzer *> deviceAudioAnalyzers;
 };
