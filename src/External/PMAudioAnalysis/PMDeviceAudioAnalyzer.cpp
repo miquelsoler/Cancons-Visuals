@@ -7,7 +7,9 @@
 //
 
 #include "PMDeviceAudioAnalyzer.hpp"
-#include "PMRecorder.hpp"
+#ifdef WITH_RECORDER
+    #include "PMRecorder.hpp"
+#endif
 
 static const float SMOOTHING_INITIALVALUE = -999.0f;
 
@@ -291,9 +293,11 @@ void PMDeviceAudioAnalyzer::audioIn(float *input, int bufferSize, int nChannels)
 
     //Call to the Recorder
     //FIXME: Now records all channels, better to chose how many chanels to record
+    #ifdef WITH_RECORDER
     if(PMRecorder::getInstance().isRecording()){
         PMRecorder::getInstance().addAudioBuffer(input, bufferSize, inChannels);
     }
+    #endif
 }
 
 int PMDeviceAudioAnalyzer::getNumChannels()
