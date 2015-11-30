@@ -17,25 +17,17 @@ class PMAudioAnalyzer
 {
 public:
 
-    /**
-     * getInstance()
-     * Returns singleton instance
-     */
     static PMAudioAnalyzer &getInstance()
     {
         static PMAudioAnalyzer instance;
         return instance;
     }
 
-    void init(float minPitchFreq, float maxPitchFreq,
-            float energyThreshold,
-            bool useSilence, float silenceThreshold, unsigned int silenceQueueLength,
-            float onsetsThreshold, float onsetsAlpha,
-            float smoothingDelta, int ascDescAnalysisSize);
+    void init(float silenceThreshold, unsigned int silenceQueueLength,
+            float onsetsThreshold, int ascDescAnalysisSize);
 
-    PMDeviceAudioAnalyzer * addDeviceAudioAnalyzer(unsigned int audioInputIndex, int deviceID, int inChannels, int outChannels,
-            int sampleRate, int bufferSize,
-            PMDAA_ChannelMode channelMode, unsigned int channelNumber);
+    PMDeviceAudioAnalyzer *addDeviceAnalyzer(unsigned int audioInputIndex, int deviceID, int inChannels, int outChannels,
+            int sampleRate, int bufferSize, vector<unsigned int> channelNumbers);
 
     vector<PMDeviceAudioAnalyzer *> *getAudioAnalyzers();
 
@@ -48,15 +40,7 @@ public:
 
 private:
 
-    // Pitch
-    float           minPitchMidiNote;
-    float           maxPitchMidiNote;
-
-    // Energy
-    float           energyThreshold;
-
     // Silence
-    bool            useSilence;
     float           silenceThreshold;
     unsigned int    silenceQueueLength;
 
@@ -64,9 +48,6 @@ private:
     float           onsetsThreshold;
     float           onsetsAlpha;
 
-    // Smoothing
-    float           smoothingDelta;
-    
     // Ascendent Descendent Melody analysis
     int             ascDescAnalysisSize;
 

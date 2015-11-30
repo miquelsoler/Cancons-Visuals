@@ -13,139 +13,110 @@
 
 #include <stdio.h>
 #include "ofMain.h"
-//#include "ofxAudioAnalyzer.h"
 #include "ofxAubio.h"
 #include "PMAudioInParams.h"
 
-typedef enum
-{
-    PMDAA_CHANNEL_MULTI = 0,
-    PMDAA_CHANNEL_MONO = 1
-} PMDAA_ChannelMode;
 
 
 class PMDeviceAudioAnalyzer : public ofBaseSoundInput
 {
 public:
 
-    /**
-     * PMDeviceAudioAnalyzer(...)
-     * Constructor just sets sound stream attributes. Calling it doesn't start the sound stream analysis.
-     */
     PMDeviceAudioAnalyzer(int deviceID, int inChannels, int outChannels, int sampleRate, int bufferSize);
-
     PMDeviceAudioAnalyzer() {};
-
     ~PMDeviceAudioAnalyzer();
 
-    /**
-     * setup:
-     * - channelMode: mono or multichannel
-     * - channelNumber: 0..N (ignored when in multichannel mode)
-     * - useMelBands: true if it needs obtaining mel bands
-     * - numMelBands: number of mel bands (ignored when useMelBands=false)
-     */
-    void setup(unsigned int audioInputIndex, PMDAA_ChannelMode channelMode, unsigned int channelNumber,
-            float minPitchMidiNote, float maxPitchMidiNote,
-            float energyThreshold,
-            bool useSilence, float silenceThreshold, unsigned int silenceQueueLength,
-            float onsetsThreshold, float onsetsAlpha,
-            float smoothingDelta, int ascDescAnalysisSize);
+    void setup(unsigned int audioInputIndex, vector<unsigned int> channelNumbers,
+            float silenceThreshold, unsigned int silenceQueueLength,
+            float onsetsThreshold,
+            int ascDescAnalysisSize);
 
     void start();
     void stop();
-
     void clear();
 
     void audioIn(float *input, int bufferSize, int nChannels);
 
-    unsigned int getInputIndex() { return audioInputIndex; };
-    int getDeviceID() { return deviceID; };
-    int getChannelNumber() { return channelNumber; };
-    int getSamplerate();
-    int getNumChannels();
+    unsigned int            getInputIndex()     { return audioInputIndex; };
+    int                     getDeviceID()       { return deviceID; };
+    int                     getSampleRate()     { return sampleRate; };
+    int                     getNumChannels()    { return inChannels; };
+    vector<unsigned int>    getChannelNumbers() { return channelNumbers; };
+
+    void                    setSilenceThreshold(float value)   { silenceThreshold = value; };
+    void                    setSilenceQueueLength(float value) { silenceTimeTreshold = value; };
+    void                    setPauseTimeTreshold(float value)  { pauseTimeTreshold = value; };
+
+    void                    setOnsetsThreshold(float value);
 
     // Events for listeners
-    ofEvent<pitchParams>        eventPitchChanged;
-    ofEvent<silenceParams>      eventSilenceStateChanged;
-    ofEvent<energyParams>       eventEnergyChanged;
-    ofEvent<onsetParams>        eventOnsetStateChanged;
-    ofEvent<freqBandsParams>    eventFreqBandsParams;
-    ofEvent<shtParams>          eventShtStateChanged;
-    ofEvent<pauseParams>        eventPauseStateChanged;
+    ofEvent<pitchParams> eventPitchChanged;
+    ofEvent<silenceParams> eventSilenceStateChanged;
+    ofEvent<energyParams> eventEnergyChanged;
+    ofEvent<onsetParams> eventOnsetStateChanged;
+    ofEvent<freqBandsParams> eventFreqBandsParams;
+    ofEvent<shtParams> eventShtStateChanged;
+    ofEvent<pauseParams> eventPauseStateChanged;
     ofEvent<melodyDirectionParams> eventMelodyDirection;
 
 private:
-    
+
     // Setup
-    unsigned int                audioInputIndex;
-    int                         deviceID;
-    int                         inChannels;
-    int                         outChannels;
-    int                         sampleRate;
-    int                         bufferSize;
-    int                         numBuffers;
+    unsigned int audioInputIndex;
+    int deviceID;
+    int inChannels;
+    int outChannels;
+    int sampleRate;
+    int bufferSize;
+    int numBuffers;
 
-    // Channel mode
-    PMDAA_ChannelMode           channelMode;
-    int                         channelNumber;
-
-    // Pitch
-    float                       minPitchMidiNote;
-    float                       maxPitchMidiNote;
-
-    // Energy
-    float                       energyThreshold;
+    vector<unsigned int> channelNumbers;
 
     // Silence
-    bool                        useSilence;
-    bool                        wasSilent;
-    float                       silenceThreshold;
+    bool wasSilent;
+    float silenceThreshold;
 
     // Onsets
-    float                       onsetsThreshold;
-    float                       onsetsAlpha;
-    vector<bool>                oldOnsetState;
+    float onsetsThreshold;
+    bool oldOnsetState;
 
     // Smoothing
-    float                       smoothingDelta;
-    vector<float>               oldMidiNotesValues;
-    vector<deque<float> >       midiNoteHistory;
+    deque<float> midiNoteHistory;
 
     // Sound analysis
 
-    ofSoundStream               soundStream;
+    ofSoundStream soundStream;
 
-    vector<ofxAubioPitch *>     vAubioPitches;
-    vector<ofxAubioOnset *>     vAubioOnsets;
-    vector<ofxAubioMelBands *>  vAubioMelBands;
+    ofxAubioPitch *aubioPitch;
+    ofxAubioOnset *aubioOnset;
+    ofxAubioMelBands *aubioMelBands;
 
-    bool                        isSetup;
-    
-    vector<bool>                isInSilence;
-    vector<bool>                isInPause;
-    vector<float>               silenceBeginTime;
-    float                       silenceTimeTreshold;
-    float                       pauseTimeTreshold;
+    bool isSetup;
 
-    float getEnergy(unsigned int channel);
-    float getRms(float *input, int bufferSize, int channel);
-    float getAbsMean(float *input, int bufferSize, int channel);
-    void detectedSilence(int channel);
-    void updateSilenceTime(int channel);
-    void detectedEndSilence(int channel);
-    void checkMelodyDirection(int channel);
-    int                         ascDescAnalysisSize;
-    
-    
+    bool isInSilence;
+    bool isInPause;
+    float silenceBeginTime;
+    float silenceTimeTreshold;
+    float pauseTimeTreshold;
+
+    float getEnergy();
+    float getRms(float *input, int bufferSize);
+    float getAbsMean(float *input, int bufferSize);
+    void detectedSilence();
+    void updateSilenceTime();
+    void detectedEndSilence();
+    void checkMelodyDirection();
+
+    int ascDescAnalysisSize;
+
     // sshht
-    vector<bool>                isShtSounding;
-    vector<float>               shtBeginTime;
-    float                       shtTimeTreshold;
-    vector<bool>                isShtTrueSent;
-    vector<bool>                isShtFalseSent;
-    
-    void checkShtSound(int channel);
+    bool isShtSounding;
+    float shtBeginTime;
+    float shtTimeTreshold;
+    bool isShtTrueSent;
+    bool isShtFalseSent;
+
+    void checkShtSound();
 };
 
 #endif /* PMDeviceAudioAnalyzer_h */
