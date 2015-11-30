@@ -111,6 +111,7 @@
 		9F69EDD11BE8B2F9009018D9 /* PMSelectorContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F69EDCB1BE8B2F9009018D9 /* PMSelectorContainer.cpp */; };
 		9F69EDD21BE8B2F9009018D9 /* PMTextContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F69EDCD1BE8B2F9009018D9 /* PMTextContainer.cpp */; };
 		9FC1D4E51BDF85EA00DF31E3 /* PMAudioAnalyzer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FC1D4E31BDF85EA00DF31E3 /* PMAudioAnalyzer.cpp */; };
+		9FD5915C1C0C70AB009B2909 /* PMBaseRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5915A1C0C70AB009B2909 /* PMBaseRenderer.cpp */; };
 		9FD630471BE38BDF00B9F1E1 /* PMSc2Start.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FD630451BE38BDF00B9F1E1 /* PMSc2Start.cpp */; };
 		9FD6304A1BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FD630481BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.cpp */; };
 		9FD787E21BEA568800376552 /* PMSongSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FD787E01BEA568800376552 /* PMSongSelector.cpp */; };
@@ -501,6 +502,8 @@
 		9F69EDCE1BE8B2F9009018D9 /* PMTextContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PMTextContainer.hpp; path = UI/Containers/PMTextContainer.hpp; sourceTree = "<group>"; };
 		9FC1D4E31BDF85EA00DF31E3 /* PMAudioAnalyzer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMAudioAnalyzer.cpp; sourceTree = "<group>"; };
 		9FC1D4E41BDF85EA00DF31E3 /* PMAudioAnalyzer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMAudioAnalyzer.hpp; sourceTree = "<group>"; };
+		9FD5915A1C0C70AB009B2909 /* PMBaseRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PMBaseRenderer.cpp; path = Renderer/PMBaseRenderer.cpp; sourceTree = "<group>"; };
+		9FD5915B1C0C70AB009B2909 /* PMBaseRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PMBaseRenderer.hpp; path = Renderer/PMBaseRenderer.hpp; sourceTree = "<group>"; };
 		9FD630451BE38BDF00B9F1E1 /* PMSc2Start.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc2Start.cpp; sourceTree = "<group>"; };
 		9FD630461BE38BDF00B9F1E1 /* PMSc2Start.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSc2Start.hpp; sourceTree = "<group>"; };
 		9FD630481BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc6Kinect_Detect.cpp; sourceTree = "<group>"; };
@@ -1184,6 +1187,15 @@
 			name = Containers;
 			sourceTree = "<group>";
 		};
+		9FD5915D1C0C70B8009B2909 /* Renderer */ = {
+			isa = PBXGroup;
+			children = (
+				9FD5915A1C0C70AB009B2909 /* PMBaseRenderer.cpp */,
+				9FD5915B1C0C70AB009B2909 /* PMBaseRenderer.hpp */,
+			);
+			name = Renderer;
+			sourceTree = "<group>";
+		};
 		9FD787E51BEBE0EE00376552 /* ofxAppUtils-PM */ = {
 			isa = PBXGroup;
 			children = (
@@ -1484,6 +1496,7 @@
 				2A2337371BCEC097000612E4 /* Scenes */,
 				9FFB2E8B1BE7B6A300651A12 /* UI */,
 				2A23373C1BCEC097000612E4 /* Settings */,
+				9FD5915D1C0C70B8009B2909 /* Renderer */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1642,6 +1655,7 @@
 				DF0C851B244C4C867CEA8806 /* ofxUICircleSlider.cpp in Sources */,
 				9BE4AE0AA2B8C436BDFE9D4D /* ofxUIDragableLabelButton.cpp in Sources */,
 				F392A99D83698FC099127880 /* ofxUIDropDownList.cpp in Sources */,
+				9FD5915C1C0C70AB009B2909 /* PMBaseRenderer.cpp in Sources */,
 				9F3B37DA1BCFFF4800021E6E /* ofxOpenNI.cpp in Sources */,
 				9FD787E21BEA568800376552 /* PMSongSelector.cpp in Sources */,
 				9F530AF11BE28F6B0071941A /* PMSc7Countdown.cpp in Sources */,
