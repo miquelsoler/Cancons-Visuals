@@ -11,8 +11,9 @@
 
 void PMSongSelector::init(ofTrueTypeFont &_font)
 {
-    font=&_font;
+    indexChoosed=0;
     
+    font=&_font;
     
     DIR *dpdf;
     struct dirent *epdf;

@@ -9,6 +9,7 @@
 #include "PMSc8Main.hpp"
 #include "PMSongSelector.hpp"
 
+
 PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
 {
     setSingleSetup(false);
@@ -16,7 +17,12 @@ PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
 
 void PMSc8Main::setup()
 {
-
+    for(int i=0; i<4; i++){
+        PMRendererLayer tempRender = PMRendererLayer(i);
+        tempRender.setup();
+        renderers.push_back(tempRender);
+    }
+    
 }
 
 void PMSc8Main::update()
@@ -28,6 +34,11 @@ void PMSc8Main::update()
         }
     }
     ofSoundUpdate();
+    
+    for(int i=0; i<renderers.size(); i++){
+        renderers[i].update();
+    }
+    
 }
 
 void PMSc8Main::draw()
@@ -41,6 +52,10 @@ void PMSc8Main::draw()
 //    ofDrawEllipse(kinectOut->rightHand_joint.x*ofGetWidth(), kinectOut->rightHand_joint.y*ofGetHeight(), 10+5*kinectOut->rightHand_joint.a, 10+5*kinectOut->rightHand_joint.a);
 //    ofDrawEllipse(kinectOut->head_joint.x*ofGetWidth(), kinectOut->head_joint.y*ofGetHeight(), 10+7*kinectOut->head_joint.a, 10+7*kinectOut->head_joint.a);
 //    ofDrawEllipse(kinectOut->torso_joint.x*ofGetWidth(), kinectOut->torso_joint.y*ofGetHeight(), 10+10*kinectOut->torso_joint.a, 10+10*kinectOut->torso_joint.a);
+    
+    for(int i=0; i<renderers.size(); i++){
+        renderers[i].draw();
+    }
 }
 
 void PMSc8Main::updateEnter()

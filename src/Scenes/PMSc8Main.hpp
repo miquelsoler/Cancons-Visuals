@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "PMBaseScene.hpp"
 #include "PMMotionExtractor.hpp"
+#include "PMRendererLayer.hpp"
 
 #endif /* PMSc8Main_hpp */
 
@@ -38,5 +39,6 @@ private:
     
     ofSoundPlayer  song;
     bool    songIsStarted;
+    vector<PMRendererLayer> renderers;
 
 };

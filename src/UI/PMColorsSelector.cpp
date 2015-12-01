@@ -10,6 +10,9 @@
 
 void PMColorsSelector::init(ofTrueTypeFont &font)
 {
+    
+    indexChoosed=0;
+    
     json.open("colors/Colors.json");
     for(int i=0; i<6; i++){
         tempPalette.name=json["Colors"][i]["Name"].asString();
@@ -96,7 +99,7 @@ bool PMColorsSelector::checkMousePressed(int x, int y)
         int y1=rectSelector[i].getY()-rectSelector[i].getHeight();
         int y2=rectSelector[i].getY()+rectSelector[i].getHeight();
         if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
-            //indexChoosed=i;
+            indexChoosed=i;
             return true;
         }
     }

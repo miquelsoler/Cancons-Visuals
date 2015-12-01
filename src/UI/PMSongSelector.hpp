@@ -16,10 +16,10 @@
 #include "ofxJSON.h"
 #include "ofxAppUtils.h"
 
-struct colorPalette{
-    string name;
-    vector <ofColor> colors;
-};
+//struct colorPalette{
+//    string name;
+//    vector <ofColor> colors;
+//};
 
 class PMSongSelector
 {

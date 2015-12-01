@@ -12,31 +12,40 @@
 #include "ofMain.h"
 #include "PMAudioAnalyzer.hpp"
 
+#include "PMBrushesSelector.hpp"
+#include "PMImageContainer.hpp"
+#include "PMColorsSelector.hpp"
+#include "PMColorContainer.hpp"
+
 class PMBaseRenderer
 {
 public:
-    PMBaseRenderer(int layer){};
-    virtual void setup();
-    virtual void update();
-    virtual void draw();
-    virtual void clear();
+    PMBaseRenderer(int layer);
     
-    virtual void drawIntoFBO() = 0;
+    virtual void        setup();
+    virtual void        update();
+    virtual void        draw();
+//    virtual void        clear();
     
-    ofFbo*      getFbo(){return &fbo;};
-    int         getLayer(){return layer;};
+    virtual void        drawIntoFBO() = 0;
     
-    void showGUI(bool show);
+    ofFbo*              getFbo(){return &fbo;};
+    int                 getLayer(){return layer;};
+    
+    void                showGUI(bool show);
     
     // changed ...
-    virtual void pitchChanged(pitchParams pitchParams);
-    virtual void energyChanged(energyParams energyParams);
-    virtual void silenceStateChanged(silenceParams &silenceParams);
-    virtual void pauseStateChanged(pauseParams &pauseParams);
+//    virtual void        pitchChanged(pitchParams pitchParams);
+//    virtual void        energyChanged(energyParams energyParams);
+//    virtual void        silenceStateChanged(silenceParams &silenceParams);
+//    virtual void        pauseStateChanged(pauseParams &pauseParams);
     
 protected:
-    int         layer;
-    ofFbo       fbo;
+    int                 layer;
+    ofFbo               fbo;
+    
+    PMImageContainer    *brush;
+    ofColor             drawColor;
     
 };
 

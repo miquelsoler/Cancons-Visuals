@@ -11,6 +11,8 @@
 
 void PMBrushesSelector::init()
 {
+    indexChoosed=0;
+    
     DIR *dpdf;
     DIR *dpdf2;
     struct dirent *epdf;
@@ -112,7 +114,7 @@ bool PMBrushesSelector::checkMousePressed(int x, int y)
         int y1=rectSelector[i].getY()-rectSelector[i].getHeight();
         int y2=rectSelector[i].getY()+rectSelector[i].getHeight();
         if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
-            //indexChoosed=i;
+            indexChoosed=i;
             return true;
         }
     }

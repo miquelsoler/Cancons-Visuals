@@ -7,7 +7,7 @@
 //
 
 #include "PMDeviceAudioAnalyzer.hpp"
-#include "PMRecorder.hpp"
+//#include "PMRecorder.hpp"
 
 
 // TODO: Should be able to change to a custom number
@@ -177,9 +177,9 @@ void PMDeviceAudioAnalyzer::audioIn(float *input, int bufferSize, int nChannels)
     //Call to the Recorder
     // FIXME: Això no hauria d'estar a l'analitzador d'àudio, sino fora!!!
     // FIXME: Now records all channels, better to chose how many chanels to record
-    if (PMRecorder::getInstance().isRecording()) {
-        PMRecorder::getInstance().addAudioBuffer(input, bufferSize, inChannels);
-    }
+//    if (PMRecorder::getInstance().isRecording()) {
+//        PMRecorder::getInstance().addAudioBuffer(input, bufferSize, inChannels);
+//    }
 }
 
 float PMDeviceAudioAnalyzer::getEnergy()

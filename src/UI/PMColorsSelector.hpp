@@ -34,7 +34,7 @@ public:
     void update();
     void draw();
     
-    void getColor(){};
+    ofColor getColor(int layer){return colorPalettes[indexChoosed].colors[layer];};
     void checkMousePassed(int x, int y);
     bool checkMousePressed(int x, int y);
     
@@ -45,6 +45,8 @@ private:
     colorPalette tempPalette;
     vector<PMColorContainer > rectSelector;
     vector<PMTextContainer > paletteNames;
+    
+    int indexChoosed;
 };
 
 #endif /* PMColorsSelector_hpp */

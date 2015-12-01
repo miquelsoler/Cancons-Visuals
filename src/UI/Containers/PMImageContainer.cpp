@@ -39,8 +39,9 @@ void PMImageContainer::draw()
 {
     ofPushMatrix();
         ofSetRectMode(OF_RECTMODE_CENTER);
-        image.resize(width, height);
-        image.draw(x, y);
+//        image.resize(width, height);
+//    ofScale(width, height);
+        image.draw(x, y, width, height);
     ofPopMatrix();
 }
 
