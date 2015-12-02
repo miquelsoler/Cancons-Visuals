@@ -2,7 +2,7 @@
 
 
 #include "ofMain.h"
-#include "PMDeviceAudioAnalyzer.hpp"
+#include "PMAudioAnalyzer.hpp"
 #include "PMMotionExtractor.hpp"
 #include "ofxAppUtils.h"
 #include "ofxOpenNI.h"

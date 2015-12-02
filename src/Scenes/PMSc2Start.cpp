@@ -11,7 +11,7 @@
 PMSc2Start::PMSc2Start() : PMBaseScene("Scene 2")
 {
     //setFade(1000, 1000);
-    setFadeIn(1000);
+//    setFadeIn(1000);
 }
 
 void PMSc2Start::setup()

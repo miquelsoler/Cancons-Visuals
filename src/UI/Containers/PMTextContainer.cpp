@@ -51,7 +51,6 @@ void PMTextContainer::draw(float _scale)
         ofSetColor(121,43,53);
         font->drawString(s, 0, 0);
     ofPopMatrix();
-    cout<<width<<" "<<height<<endl;
 }
 
 void PMTextContainer::setFont(ofTrueTypeFont &_font)

@@ -26,6 +26,9 @@ public:
     void exit(){};
     void updateEnter(){PMBaseScene::updateEnter();};
     void updateExit(){PMBaseScene::updateExit();};
+    
+    void mouseMoved(int x, int y);
+    void mousePressed(int x, int y, int button);
 
     
 protected:

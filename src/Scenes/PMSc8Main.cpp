@@ -17,12 +17,30 @@ PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
 
 void PMSc8Main::setup()
 {
-    for(int i=0; i<4; i++){
+    for(int i=0; i<1; i++){
         PMRendererLayer tempRender = PMRendererLayer(i);
         tempRender.setup();
         renderers.push_back(tempRender);
     }
     
+    //Audio device analyzer
+    const unsigned int unsigint0=0;
+    const unsigned int unsigint1=1;
+    vector<unsigned int> audioChanels;
+    audioChanels.push_back(0);
+    audioChanels.push_back(1);
+    cout<<audioChanels.size()<<endl;
+    PMDeviceAudioAnalyzer *deviceAudioAnalyzer = PMAudioAnalyzer::getInstance().addDeviceAnalyzer(0, 0,
+                                                                                                  2, 0, 44100, 1024, audioChanels);
+    
+    ofAddListener(deviceAudioAnalyzer->eventPitchChanged, this, &PMSc8Main::pitchChanged);
+//    ofAddListener(deviceAudioAnalyzer->eventEnergyChanged, this, &PMScene2::energyChanged);
+//    
+//    ofAddListener(deviceAudioAnalyzer->eventSilenceStateChanged, this, &PMScene2::silenceStateChanged);
+//    ofAddListener(deviceAudioAnalyzer->eventPauseStateChanged, this, &PMScene2::pauseStateChanged);
+//    ofAddListener(deviceAudioAnalyzer->eventOnsetStateChanged, this, &PMScene2::onsetDetected);
+//    ofAddListener(deviceAudioAnalyzer->eventShtStateChanged, this, &PMScene2::shtDetected);
+//    ofAddListener(deviceAudioAnalyzer->eventMelodyDirection, this, &PMScene2::melodyDirection);
 }
 
 void PMSc8Main::update()
@@ -31,6 +49,8 @@ void PMSc8Main::update()
     if(songIsStarted){
         if (!song.isPlaying()) {
             cout<<"song_has_finished"<<endl;
+            string sceneToChange="Scene 2";
+//            ofNotifyEvent(goToSceneEvent, sceneToChange, this);
         }
     }
     ofSoundUpdate();
@@ -44,8 +64,8 @@ void PMSc8Main::update()
 void PMSc8Main::draw()
 {
     //ofBackground(255, 35, 32);
-    //ofSetColor(ofColor::red);
-    //ofDrawCircle(ofGetWidth()/2, ofGetHeight()/2, 200);
+    ofSetColor(ofColor::red);
+    ofDrawRectangle(0,0, ofGetWidth(), ofGetHeight());
 //    PMMotionExtractor::getInstance().draw();
 //    KinectInfo* kinectOut=PMMotionExtractor::getInstance().getKinectInfo();
 //    ofDrawEllipse(kinectOut->leftHand_joint.x*ofGetWidth(), kinectOut->leftHand_joint.y*ofGetHeight(), 10+5*kinectOut->leftHand_joint.a, 10+5*kinectOut->leftHand_joint.a);
@@ -62,10 +82,11 @@ void PMSc8Main::updateEnter()
 {
     PMBaseScene::updateEnter();
     string songPath="songs/"+PMSongSelector::getInstance().getFilename();
-    cout<<songPath<<endl;
     songIsStarted=false;
     loadSong(songPath);
     playSong();
+    
+    PMAudioAnalyzer::getInstance().start();
 }
 
 void PMSc8Main::updateExit()
@@ -87,4 +108,15 @@ void PMSc8Main::playSong()
     }
     song.play();
     songIsStarted=true;
+}
+
+
+
+
+
+//AUDIO struff
+
+void PMSc8Main::pitchChanged(pitchParams &pitchParams)
+{
+    cout<<pitchParams.midiNote<<endl;
 }

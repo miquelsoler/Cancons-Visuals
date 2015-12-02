@@ -11,7 +11,7 @@
 
 PMSc4Palette_Choose::PMSc4Palette_Choose() : PMBaseScene("Scene 4")
 {
-    setFade(1000, 1000);
+//    setFade(1000, 1000);
 }
 
 void PMSc4Palette_Choose::setup()
@@ -33,10 +33,14 @@ void PMSc4Palette_Choose::draw()
 
 void PMSc4Palette_Choose::mouseMoved(int x, int y)
 {
-    
+    PMColorsSelector::getInstance().checkMousePassed(x, y);
 }
 
 void PMSc4Palette_Choose::mousePressed(int x, int y, int mouse)
 {
-    
+    if(PMColorsSelector::getInstance().checkMousePressed(x, y)){
+        string sceneToChange="Scene 5";
+        ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+    }
+
 }

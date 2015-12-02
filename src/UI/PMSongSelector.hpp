@@ -29,7 +29,6 @@ public:
     {
         static PMSongSelector instance;
         return instance;
-        cout<<"color get instance"<<endl;
     }
     
     void init(ofTrueTypeFont &font);

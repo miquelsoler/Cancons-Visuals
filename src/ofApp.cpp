@@ -79,8 +79,14 @@ void ofApp::setup()
 //    audioAnalyzer->setup(PMDAA_CHANNEL_MONO, channelNumber, useMelBands, numMelBands);
 //
     
+    ofAddListener(scene1->goToSceneEvent, this, &ofApp::changeScene);
+    ofAddListener(scene2->goToSceneEvent, this, &ofApp::changeScene);
     ofAddListener(scene3->goToSceneEvent, this, &ofApp::changeScene);
+    ofAddListener(scene4->goToSceneEvent, this, &ofApp::changeScene);
+    ofAddListener(scene5->goToSceneEvent, this, &ofApp::changeScene);
+    ofAddListener(scene6->goToSceneEvent, this, &ofApp::changeScene);
     ofAddListener(scene7->goToSceneEvent, this, &ofApp::changeScene);
+    ofAddListener(scene8->goToSceneEvent, this, &ofApp::changeScene);
 }
 
 ///--------------------------------------------------------------

@@ -20,11 +20,11 @@ PMColorContainer::PMColorContainer(int _x, int _y, int _width, int _height, ofCo
 
 void PMColorContainer::draw()
 {
-    ofPushMatrix();
+    ofPushStyle();
         ofSetRectMode(OF_RECTMODE_CENTER);
         ofSetColor(color);
         ofDrawRectRounded(x, y, width, height, 2);
-    ofPopMatrix();
+    ofPopStyle();
 }
 
 void PMColorContainer::setColor(ofColor _color)

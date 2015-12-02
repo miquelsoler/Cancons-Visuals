@@ -17,6 +17,7 @@ PMRendererLayer::PMRendererLayer(int _layer) : PMBaseRenderer(_layer)
 void PMRendererLayer::setup()
 {
     PMBaseRenderer::setup();
+    brush->update(ofRandom((ofGetWidth())), ofRandom(ofGetHeight()));
 }
 
 void PMRendererLayer::update()
@@ -28,14 +29,19 @@ void PMRendererLayer::update()
 void PMRendererLayer::draw()
 {
     PMBaseRenderer::draw();
+//    ofSetColor(drawColor);
+//    brush->draw();
 }
 
 void PMRendererLayer::drawIntoFBO()
 {
     fbo.begin();
-    ofSetColor(255,0,0);
-    ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+//    ofDisableBlendMode();
+//        ofSetColor(255,0,0);
+//        ofDrawRectangle(0, 0, fbo.getWidth(), fbo.getHeight());
         ofSetColor(drawColor);
         brush->draw();
     fbo.end();
+    
+    ofSetColor(255, 255, 255, 255);
 }

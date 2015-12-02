@@ -12,7 +12,7 @@
 PMSc3Song_Choose::PMSc3Song_Choose() : PMBaseScene("Scene 3")
 {
     //setFade(1000, 1000);
-    setFadeIn(1000);
+//    setFadeIn(1000);
 }
 
 void PMSc3Song_Choose::setup()

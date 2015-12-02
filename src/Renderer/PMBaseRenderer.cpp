@@ -13,6 +13,7 @@ PMBaseRenderer::PMBaseRenderer(int _layer)
 {
     layer=_layer;
     fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA32F_ARB);
+//    fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
 }
 
 void PMBaseRenderer::setup()
@@ -30,11 +31,25 @@ void PMBaseRenderer::setup()
 
 void PMBaseRenderer::update()
 {
+    fbo.begin();
+    {
+        // background dimming
+        //ofFloatColor fc = ofFloatColor(0.0, 0.0, 0.0, gui->getFadeBackground());
+        ofFloatColor fc = ofFloatColor(0.0, 0.0, 0.0, 1);
+        //ofFloatColor fc = ofFloatColor(gui->getColorBackground().r,gui->getColorBackground().g,gui->getColorBackground().b,gui->getFadeBackground());
+        ofSetColor(fc);
+        
+        ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+//        ofDrawRectangle(0, 0, fbo.getWidth(), fbo.getHeight());
+    }
+    fbo.end();
     drawIntoFBO();
 }
 
 void PMBaseRenderer::draw()
 {
-    ofSetColor(255);
-    fbo.draw(0,0);
+    ofPushStyle();
+        ofSetColor(255);
+        fbo.draw(0,0);
+    ofPopStyle();
 }

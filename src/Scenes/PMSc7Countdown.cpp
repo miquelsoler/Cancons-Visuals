@@ -10,7 +10,7 @@
 
 PMSc7Countdown::PMSc7Countdown() : PMBaseScene("Scene 7")
 {
-    setFadeOut(0);
+//    setFadeOut(0);
 }
 
 void PMSc7Countdown::setup()
