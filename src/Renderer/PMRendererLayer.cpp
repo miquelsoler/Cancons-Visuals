@@ -26,13 +26,14 @@ void PMRendererLayer::setup()
     PMBaseRenderer::setup();
     brush->update(position.x, position.y);
     brush->setSize(size, size);
+    gui->setBrushColor(drawColor);
 }
 
 void PMRendererLayer::update()
 {
     
     PMBaseRenderer::update();
-    gui->setBrushColor(drawColor);
+    drawColor=gui->getBrushColor();
 //    brush->update(position.x, position.y);
 }
 
@@ -51,7 +52,7 @@ void PMRendererLayer::drawIntoFBO()
 //        ofDrawRectangle(0, 0, fbo.getWidth(), fbo.getHeight());
         ofSetColor(drawColor);
         drawColor.getHsb(hue, saturation, brightness);
-//        cout<<hue<<"   "<<saturation<<"    "<<brightness<<endl;
+        cout<<hue<<"   "<<saturation<<"    "<<brightness<<endl;
         brush->draw();
     ofDisableBlendMode();
     fbo.end();
@@ -75,5 +76,5 @@ void PMRendererLayer::setNodeReference(ofPoint nodePos)
 {
     direction=nodePos-position;
     direction.normalize();
-    cout<<direction<<endl;
+//    cout<<direction<<endl;
 }

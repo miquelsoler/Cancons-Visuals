@@ -67,29 +67,31 @@ void PMMotionExtractor::update()
     //wraper to kinectInfo struct
     int mean_values=5;
     
-    //LEFT HAND
-    kinectOut.leftHand_joint.x=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).x/kinectNI.getWidth();
-    kinectOut.leftHand_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).y/kinectNI.getHeight();
-    kinectOut.leftHand_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).z, 1000, 3000, 0, 1);
-    kinectOut.leftHand_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_LEFT_HAND, mean_values);
-    
-    //RIGHT HAND
-    kinectOut.rightHand_joint.x=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).x/kinectNI.getWidth();
-    kinectOut.rightHand_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).y/kinectNI.getHeight();
-    kinectOut.rightHand_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).z, 1000, 3000, 0, 1);
-    kinectOut.rightHand_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_RIGHT_HAND, mean_values);
-    
-    //HEAD
-    kinectOut.head_joint.x=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).x/kinectNI.getWidth();
-    kinectOut.head_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).y/kinectNI.getHeight();
-    kinectOut.head_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).z, 1000, 3000, 0, 1);
-    kinectOut.head_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_HEAD, mean_values);
-    
-    //TORSO
-    kinectOut.torso_joint.x=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).x/kinectNI.getWidth();
-    kinectOut.torso_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).y/kinectNI.getHeight();
-    kinectOut.torso_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).z, 1000, 3000, 0, 1);
-    kinectOut.torso_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_TORSO, mean_values);
+    if(isSomeoneTracked){
+        //LEFT HAND
+        kinectOut.leftHand_joint.x=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).x/kinectNI.getWidth();
+        kinectOut.leftHand_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).y/kinectNI.getHeight();
+        kinectOut.leftHand_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).z, 1000, 3000, 0, 1);
+        kinectOut.leftHand_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_LEFT_HAND, mean_values);
+        
+        //RIGHT HAND
+        kinectOut.rightHand_joint.x=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).x/kinectNI.getWidth();
+        kinectOut.rightHand_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).y/kinectNI.getHeight();
+        kinectOut.rightHand_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).z, 1000, 3000, 0, 1);
+        kinectOut.rightHand_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_RIGHT_HAND, mean_values);
+        
+        //HEAD
+        kinectOut.head_joint.x=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).x/kinectNI.getWidth();
+        kinectOut.head_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).y/kinectNI.getHeight();
+        kinectOut.head_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).z, 1000, 3000, 0, 1);
+        kinectOut.head_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_HEAD, mean_values);
+        
+        //TORSO
+        kinectOut.torso_joint.x=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).x/kinectNI.getWidth();
+        kinectOut.torso_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).y/kinectNI.getHeight();
+        kinectOut.torso_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).z, 1000, 3000, 0, 1);
+        kinectOut.torso_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_TORSO, mean_values);
+    }
 }
 
 ///--------------------------------------------------------------

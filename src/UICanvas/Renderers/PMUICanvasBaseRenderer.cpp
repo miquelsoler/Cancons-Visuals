@@ -41,12 +41,12 @@ void PMUICanvasBaseRenderer::init(int posX, int posY, bool autosize, int width, 
     presetsMatrix->setTriggerType(OFX_UI_TRIGGER_END);
     addSpacer();
 
-    addLabel("BACKGROUND");
-    addNumberDialer("Fade Background", 0.0,1.0,&guiFadeBackground,4);
-    addIntSlider("Background R", 0, 255, &guiColorBgRed);
-    addIntSlider("Background G", 0, 255, &guiColorBgGreen);
-    addIntSlider("Background B", 0, 255, &guiColorBgBlue);
-    addSpacer();
+//    addLabel("BACKGROUND");
+//    addNumberDialer("Fade Background", 0.0,1.0,&guiFadeBackground,4);
+//    addIntSlider("Background R", 0, 255, &guiColorBgRed);
+//    addIntSlider("Background G", 0, 255, &guiColorBgGreen);
+//    addIntSlider("Background B", 0, 255, &guiColorBgBlue);
+//    addSpacer();
 
     addLabel("ENERGY");
     addRangeSlider("Energy Min-Max",0.0,1.0,&guiEnergyMin,&guiEnergyMax);

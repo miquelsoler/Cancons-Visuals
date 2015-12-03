@@ -24,8 +24,10 @@ public:
     float       getParticleLife(){return particleLife;};
     float       getParticleVelocity(){return particleVelocity;};
     bool        getBouncyWalls(){return bounceWalls;};
-    ofColor     getBrushColor(){return paintColor;};
-    void        setBrushColor(ofColor newColor){paintColor=newColor; paintColor.getHsb(hue, saturation, brightness);};
+    ofColor     getBrushColor();
+    
+    //SETTERS
+    void        setBrushColor(ofColor newColor);
     
 private:
 
