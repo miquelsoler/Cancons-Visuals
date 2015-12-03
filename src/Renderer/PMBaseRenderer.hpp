@@ -16,6 +16,7 @@
 #include "PMImageContainer.hpp"
 #include "PMColorsSelector.hpp"
 #include "PMColorContainer.hpp"
+#include "PMUICanvasBaseRenderer.h"
 
 class PMBaseRenderer
 {
@@ -43,11 +44,13 @@ public:
 //    virtual void        pauseStateChanged(pauseParams &pauseParams);
     
 protected:
-    int                 layer;
-    ofFbo               fbo;
+    int                     layer;
+    ofFbo                   fbo;
     
-    PMImageContainer    *brush;
-    ofColor             drawColor;
+    PMImageContainer        *brush;
+    ofColor                 drawColor;
+    
+    PMUICanvasBaseRenderer* gui;
     
 };
 

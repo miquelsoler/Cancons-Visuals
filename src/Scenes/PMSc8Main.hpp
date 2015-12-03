@@ -49,5 +49,8 @@ private:
     ofSoundPlayer  song;
     bool    songIsStarted;
     vector<PMRendererLayer> renderers;
+    
+    PMMotionExtractor* motionExtractor;
+    KinectInfo* kinectInfo;
 
 };

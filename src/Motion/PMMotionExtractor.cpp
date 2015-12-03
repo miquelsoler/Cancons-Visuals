@@ -30,6 +30,8 @@ void PMMotionExtractor::setup()
     
     font.loadFont("verdana.ttf", 18);
     
+    isSomeoneTracked=false;
+    
     //ofAddListener(kinectNI.userEvent, this, &ofApp::userEvent);
 }
 
@@ -42,12 +44,13 @@ void PMMotionExtractor::update()
         //The following "if" statement is a hard-coded alternative for if(kinectNI.getUserGenerator().IsNewDataAvailable()), which doesn't work properly in ofxOpenNI
         if (user.getJoint((Joint)0).getWorldPosition() != ofPoint(0,0,0) &&
             user.getJoint((Joint)0).getWorldPosition() != kinectFeatures.getPosition(0) ) {
+            isSomeoneTracked=true;
             map<int, ofPoint> joints;
             for (int j = 0; j < user.getNumJoints(); j++) {
                 joints[j] = user.getJoint((Joint)j).getWorldPosition();
             }
             kinectFeatures.update(joints);
-        }
+        }else{isSomeoneTracked=false;}
     }
     
     //This is a trick to reset the user generator if all users are lost

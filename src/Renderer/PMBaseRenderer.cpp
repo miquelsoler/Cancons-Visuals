@@ -51,5 +51,6 @@ void PMBaseRenderer::draw()
 //    ofColor c = ofColor(ofColor::white);
 //    ofClear(c);
     fbo.draw(0,0);
+    
 }
 

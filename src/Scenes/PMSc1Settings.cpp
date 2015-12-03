@@ -7,6 +7,7 @@
 //
 
 #include "PMSc1Settings.hpp"
+#include "PMMotionExtractor.hpp"
 
 PMSc1Settings::PMSc1Settings() : PMBaseScene("Scene 1")
 {
@@ -17,6 +18,9 @@ PMSc1Settings::PMSc1Settings() : PMBaseScene("Scene 1")
 
 void PMSc1Settings::setup()
 {
+    PMMotionExtractor::getInstance().setup();
+    string sceneToChange="Scene 2";
+    ofNotifyEvent(goToSceneEvent, sceneToChange, this);
     
 }
 

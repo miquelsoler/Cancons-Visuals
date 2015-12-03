@@ -20,6 +20,7 @@ public:
     void draw();
     void setImage(ofImage image);
     void loadImage(string _filename);
+    void setSize(int _width, int _height){width=_width; height=_height;};
     
 private:
     ofImage image;

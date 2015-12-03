@@ -26,10 +26,18 @@ public:
     
     void                setPosition(ofPoint newPos);
     ofPoint             getPosition(){return position;};
+    void                addOffset(float offsetFactor);
+    
+    int                 getSize(){return size;};
+    
+    void setNodeReference(ofPoint nodePos);
+    
     
 private:
-    float size;
+    int size;
     ofPoint position;
+    ofPoint direction;
+    float hue, saturation, brightness;
 };
 
 #endif /* PMRendererLayer_hpp */

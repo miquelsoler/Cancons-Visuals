@@ -52,12 +52,16 @@ public:
     void exit();
     KinectInfo* getKinectInfo();
     
+    bool isReady(){return isSomeoneTracked;};
+    
 private:
     ofTrueTypeFont font;
     ofxKinectFeatures kinectFeatures;
     ofxOpenNI kinectNI;
     bool hadUsers;
     KinectInfo kinectOut;
+    
+    bool isSomeoneTracked;
 };
 
 #endif /* PMMotionExtractor_hpp */

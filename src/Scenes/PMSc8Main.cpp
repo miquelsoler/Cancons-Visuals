@@ -8,6 +8,7 @@
 
 #include "PMSc8Main.hpp"
 #include "PMSongSelector.hpp"
+#include "PMSettingsManagerGeneral.h"
 
 
 PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
@@ -17,6 +18,11 @@ PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
 
 void PMSc8Main::setup()
 {
+    motionExtractor = &PMMotionExtractor::getInstance();
+    
+    
+    
+        
     for(int i=0; i<4; i++){
         PMRendererLayer tempRender = PMRendererLayer(i);
         tempRender.setup();
@@ -28,7 +34,7 @@ void PMSc8Main::setup()
                 tempRender.setPosition(renderers[0].getPosition());
                 break;
             case 2:
-                tempRender.setPosition(ofPoint(0,0));
+                tempRender.setPosition(ofPoint(tempRender.getSize()/2,tempRender.getSize()/2));
                 break;
             case 3:
                 tempRender.setPosition(ofPoint(ofGetWidth()/2, ofGetHeight()/2));
@@ -61,7 +67,8 @@ void PMSc8Main::setup()
 
 void PMSc8Main::update()
 {
-    //PMMotionExtractor::getInstance().update();
+    motionExtractor->update();
+    kinectInfo = motionExtractor->getKinectInfo();
     if(songIsStarted){
         if (!song.isPlaying()) {
             cout<<"song_has_finished"<<endl;
@@ -74,6 +81,10 @@ void PMSc8Main::update()
     for(int i=0; i<renderers.size(); i++){
         renderers[i].update();
     }
+    renderers[0].setNodeReference(ofPoint(kinectInfo->rightHand_joint.x*ofGetWidth(), kinectInfo->rightHand_joint.y*ofGetHeight()));
+    renderers[1].setNodeReference(ofPoint(kinectInfo->leftHand_joint.x*ofGetWidth(), kinectInfo->leftHand_joint.y*ofGetHeight()));
+    renderers[2].setNodeReference(ofPoint(kinectInfo->head_joint.x*ofGetWidth(), kinectInfo->head_joint.y*ofGetHeight()));
+    renderers[3].setNodeReference(ofPoint(kinectInfo->torso_joint.x*ofGetWidth(), kinectInfo->torso_joint.y*ofGetHeight()));
     
 }
 
@@ -135,12 +146,14 @@ void PMSc8Main::playSong()
 
 void PMSc8Main::pitchChanged(pitchParams &pitchParams)
 {
-    cout<<pitchParams.midiNote<<endl;
+//    cout<<pitchParams.midiNote<<endl;
 }
 
 void PMSc8Main::energyChanged(energyParams &energyParams)
 {
-    
+    for(int i=0; i<renderers.size(); i++){
+        renderers[i].addOffset(energyParams.energy*20);
+    }
 }
 
 

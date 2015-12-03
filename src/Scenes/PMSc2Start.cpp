@@ -26,9 +26,9 @@ void PMSc2Start::update()
 
 void PMSc2Start::draw()
 {
-//    for(int i=0; i<textBoxes.size(); i++){
-//        //textBoxes[i].draw();
+    for(int i=0; i<textBoxes.size(); i++){
+       textBoxes[i].draw();
 //        ofSetColor(255);
-//        ofDrawCircle(200, 100, 20);
-//    }
+//       ofDrawCircle(200, 100, 20);
+    }
 }

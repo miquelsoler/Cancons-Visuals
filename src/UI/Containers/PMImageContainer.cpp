@@ -37,13 +37,14 @@ PMImageContainer::PMImageContainer(int _x, int _y, int _width, int _height, ofIm
 
 void PMImageContainer::draw()
 {
-    ofPushStyle();
+//    ofPushStyle();
         ofSetRectMode(OF_RECTMODE_CENTER);
 //        image.resize(width, height);
 //    ofScale(width, height);
-    ofSetColor(ofColor::red);
+    //ofSetColor(ofColor::red);
         image.draw(x, y, width, height);
-    ofPopStyle();
+    ofSetRectMode(OF_RECTMODE_CORNER);
+//    ofPopStyle();
 }
 
 void PMImageContainer::setImage(ofImage _image)
