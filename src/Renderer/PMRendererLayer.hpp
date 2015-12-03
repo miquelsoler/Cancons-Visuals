@@ -23,6 +23,13 @@ public:
     void draw();
     
     void drawIntoFBO();
+    
+    void                setPosition(ofPoint newPos);
+    ofPoint             getPosition(){return position;};
+    
+private:
+    float size;
+    ofPoint position;
 };
 
 #endif /* PMRendererLayer_hpp */

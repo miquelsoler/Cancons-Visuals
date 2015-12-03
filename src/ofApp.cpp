@@ -1,6 +1,7 @@
 #include "ofApp.h"
 #include "PMSettingsManager.h"
-#include "PMSettingsManagerGeneral.hpp"
+#include "PMSettingsManagerGeneral.h"
+#include "PMSettingsManagerAudioAnalyzers.h"
 #include "Defaults.h"
 
 #include "PMSc1Settings.hpp"
@@ -25,6 +26,17 @@ void ofApp::setup()
     isFullScreen = (DEFAULT_WINDOW_MODE == OF_FULLSCREEN);
 
     currentScene = 2;
+    
+    
+    // Initialize audio analyzer
+    {
+        PMSettingsManagerAudioAnalyzers settingsAA = PMSettingsManagerAudioAnalyzers::getInstance();
+        
+        PMAudioAnalyzer::getInstance().init(
+                                            settingsAA.getSilenceThreshold(), settingsAA.getSilenceQueueLength(),
+                                            settingsAA.getOnsetsThreshold(),
+                                            settingsAA.getAscDescAnalysisSize());
+    }
 
     // Settings
 

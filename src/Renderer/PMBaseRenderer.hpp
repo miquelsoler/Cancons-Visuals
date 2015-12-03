@@ -29,6 +29,8 @@ public:
     
     virtual void        drawIntoFBO() = 0;
     
+
+    
     ofFbo*              getFbo(){return &fbo;};
     int                 getLayer(){return layer;};
     

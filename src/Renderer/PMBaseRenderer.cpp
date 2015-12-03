@@ -48,8 +48,8 @@ void PMBaseRenderer::update()
 
 void PMBaseRenderer::draw()
 {
-    ofPushStyle();
-        ofSetColor(255);
-        fbo.draw(0,0);
-    ofPopStyle();
+//    ofColor c = ofColor(ofColor::white);
+//    ofClear(c);
+    fbo.draw(0,0);
 }
+

@@ -17,9 +17,25 @@ PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
 
 void PMSc8Main::setup()
 {
-    for(int i=0; i<1; i++){
+    for(int i=0; i<4; i++){
         PMRendererLayer tempRender = PMRendererLayer(i);
         tempRender.setup();
+        switch (i) {
+            case 0:
+                tempRender.setPosition(ofPoint(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())));
+                break;
+            case 1:
+                tempRender.setPosition(renderers[0].getPosition());
+                break;
+            case 2:
+                tempRender.setPosition(ofPoint(0,0));
+                break;
+            case 3:
+                tempRender.setPosition(ofPoint(ofGetWidth()/2, ofGetHeight()/2));
+                break;
+            default:
+                break;
+        }
         renderers.push_back(tempRender);
     }
     
@@ -34,7 +50,7 @@ void PMSc8Main::setup()
                                                                                                   2, 0, 44100, 1024, audioChanels);
     
     ofAddListener(deviceAudioAnalyzer->eventPitchChanged, this, &PMSc8Main::pitchChanged);
-//    ofAddListener(deviceAudioAnalyzer->eventEnergyChanged, this, &PMScene2::energyChanged);
+    ofAddListener(deviceAudioAnalyzer->eventEnergyChanged, this, &PMSc8Main::energyChanged);
 //    
 //    ofAddListener(deviceAudioAnalyzer->eventSilenceStateChanged, this, &PMScene2::silenceStateChanged);
 //    ofAddListener(deviceAudioAnalyzer->eventPauseStateChanged, this, &PMScene2::pauseStateChanged);
@@ -72,7 +88,8 @@ void PMSc8Main::draw()
 //    ofDrawEllipse(kinectOut->rightHand_joint.x*ofGetWidth(), kinectOut->rightHand_joint.y*ofGetHeight(), 10+5*kinectOut->rightHand_joint.a, 10+5*kinectOut->rightHand_joint.a);
 //    ofDrawEllipse(kinectOut->head_joint.x*ofGetWidth(), kinectOut->head_joint.y*ofGetHeight(), 10+7*kinectOut->head_joint.a, 10+7*kinectOut->head_joint.a);
 //    ofDrawEllipse(kinectOut->torso_joint.x*ofGetWidth(), kinectOut->torso_joint.y*ofGetHeight(), 10+10*kinectOut->torso_joint.a, 10+10*kinectOut->torso_joint.a);
-    
+    ofColor c = ofColor(ofColor::white);
+    ofClear(c);
     for(int i=0; i<renderers.size(); i++){
         renderers[i].draw();
     }
@@ -120,3 +137,10 @@ void PMSc8Main::pitchChanged(pitchParams &pitchParams)
 {
     cout<<pitchParams.midiNote<<endl;
 }
+
+void PMSc8Main::energyChanged(energyParams &energyParams)
+{
+    
+}
+
+

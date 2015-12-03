@@ -41,6 +41,7 @@ void PMImageContainer::draw()
         ofSetRectMode(OF_RECTMODE_CENTER);
 //        image.resize(width, height);
 //    ofScale(width, height);
+    ofSetColor(ofColor::red);
         image.draw(x, y, width, height);
     ofPopStyle();
 }
