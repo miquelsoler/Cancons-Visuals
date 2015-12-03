@@ -37,7 +37,7 @@ void PMBaseRenderer::update()
         //ofFloatColor fc = ofFloatColor(0.0, 0.0, 0.0, gui->getFadeBackground());
         ofFloatColor fc = ofFloatColor(0.0, 0.0, 0.0, 1);
         //ofFloatColor fc = ofFloatColor(gui->getColorBackground().r,gui->getColorBackground().g,gui->getColorBackground().b,gui->getFadeBackground());
-        ofSetColor(fc);
+//        ofSetColor(fc);
         
         ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 //        ofDrawRectangle(0, 0, fbo.getWidth(), fbo.getHeight());
@@ -50,6 +50,7 @@ void PMBaseRenderer::draw()
 {
 //    ofColor c = ofColor(ofColor::white);
 //    ofClear(c);
+    ofSetColor(255);
     fbo.draw(0,0);
     
 }

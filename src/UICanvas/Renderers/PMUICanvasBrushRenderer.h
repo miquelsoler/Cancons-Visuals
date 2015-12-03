@@ -25,7 +25,7 @@ public:
     float       getParticleVelocity(){return particleVelocity;};
     bool        getBouncyWalls(){return bounceWalls;};
     ofColor     getBrushColor(){return paintColor;};
-    void        setBrushColor(ofColor newColor){paintColor=newColor;};
+    void        setBrushColor(ofColor newColor){paintColor=newColor; paintColor.getHsb(hue, saturation, brightness);};
     
 private:
 

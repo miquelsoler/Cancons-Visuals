@@ -16,9 +16,9 @@ void PMUICanvasBrushRenderer::init(int posX, int posY, bool autosize, int width,
     addSpacer();
     addIntSlider("Mode",1,3,&guiMode);
     addSpacer();
-    addSlider("Brush R",0,255,paintColor.r);
-    addSlider("Brush G",0,255,paintColor.g);
-    addSlider("Brush B",0,255,paintColor.b);
+    addSlider("Brush H",0,360,&hue);
+    addSlider("Brush S",0,100,&saturation);
+    addSlider("Brush B",0,100,&brightness);
     addSpacer();
     addSlider("Particle live", 0, 10, &particleLife);
     addSlider("Particle velocity", 0, 5, &particleVelocity);
