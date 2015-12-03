@@ -23,7 +23,7 @@ void PMSc8Main::setup()
     
     
         
-    for(int i=0; i<4; i++){
+    for(int i=0; i<1; i++){
         PMRendererLayer tempRender = PMRendererLayer(i);
         tempRender.setup();
         switch (i) {

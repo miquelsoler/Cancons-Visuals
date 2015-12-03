@@ -16,7 +16,7 @@
 #include "PMImageContainer.hpp"
 #include "PMColorsSelector.hpp"
 #include "PMColorContainer.hpp"
-#include "PMUICanvasBaseRenderer.h"
+#include "PMUICanvasBrushRenderer.h"
 
 class PMBaseRenderer
 {
@@ -50,7 +50,7 @@ protected:
     PMImageContainer        *brush;
     ofColor                 drawColor;
     
-    PMUICanvasBaseRenderer* gui;
+    PMUICanvasBrushRenderer* gui;
     
 };
 

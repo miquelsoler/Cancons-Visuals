@@ -13,17 +13,11 @@ void PMUICanvasBrushRenderer::init(int posX, int posY, bool autosize, int width,
     PMUICanvasBaseRenderer::init(posX, posY, autosize, width, height);
     
     addSpacer();
-    addSpacer();
-    addIntSlider("Mode",1,3,&guiMode);
-    addSpacer();
     addSlider("Brush H",0,360,&hue);
     addSlider("Brush S",0,100,&saturation);
     addSlider("Brush B",0,100,&brightness);
     addSpacer();
-    addSlider("Particle live", 0, 10, &particleLife);
-    addSlider("Particle velocity", 0, 5, &particleVelocity);
     addToggle("Bouncy Walls", &bounceWalls);
-    addSlider("Change Direction Curve", 0, 100, &directionFactor);
     if (autosize) autoSizeToFitWidgets();
 
     loadPreset(0);
@@ -38,24 +32,6 @@ void PMUICanvasBrushRenderer::clear()
 void PMUICanvasBrushRenderer::handleEvents(ofxUIEventArgs &e)
 {
     PMUICanvasBaseRenderer::handleEvents(e);
-    
-    string name = e.getName();
-
-    if(name=="Brush R")
-    {
-        ofxUIIntSlider *s = (ofxUIIntSlider *) e.widget;
-        paintColor.r = s->getValue();
-    }
-    else if(name=="Brush G")
-    {
-        ofxUIIntSlider *s = (ofxUIIntSlider *) e.widget;
-        paintColor.g = s->getValue();
-    }
-    else if(name=="Brush B")
-    {
-        ofxUIIntSlider *s = (ofxUIIntSlider *) e.widget;
-        paintColor.b = s->getValue();
-    }
 }
 
 
@@ -63,4 +39,19 @@ void PMUICanvasBrushRenderer::handleEvents(ofxUIEventArgs &e)
 int PMUICanvasBrushRenderer::getMode()
 {
     return guiMode;
+}
+
+ofColor PMUICanvasBrushRenderer::getBrushColor()
+{
+    paintColor.setHsb(hue, saturation, brightness);
+    return paintColor;
+}
+
+
+//Setters
+
+void PMUICanvasBrushRenderer::setBrushColor(ofColor newColor)
+{
+    paintColor=newColor;
+    paintColor.getHsb(hue, saturation, brightness);
 }
