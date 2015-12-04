@@ -52,8 +52,8 @@ struct melodyDirectionParams : public baseAudioInParams {
 };
 
 struct melBandsParams : public baseAudioInParams {
-    float* bandsEnergy;
-    float* fullBandsEnergy;
+    vector<float> bandsEnergy;
+    vector<float> fullBandsEnergy;
 };
 
 
