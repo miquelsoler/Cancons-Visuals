@@ -1,10 +1,12 @@
 {
    "Debug Mode" : {
      "Show FPS" : true,
-     "Show GUI Scene2" : true
+     "Show GUI Scene2" : true,
+     "Scene7 Countdown Time": 1
    },
    "Release Mode" : {
      "Show FPS" : false,
-     "Show GUI Scene2" : false
+     "Show GUI Scene8" : false,
+     "Scene7 Countdown Time": 5
    }
 }

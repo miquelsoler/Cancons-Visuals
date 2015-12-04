@@ -9,7 +9,8 @@ static const string FILENAME            = "settings/general.json";
 static const string STR_DEBUG_MODE      = "Debug Mode";
 static const string STR_RELEASE_MODE    = "Release Mode";
 static const string STR_SHOW_FPS        = "Show FPS";
-static const string STR_SHOW_GUI        = "Show GUI Scene2";
+static const string STR_SHOW_GUI        = "Show GUI Scene8";
+static const string STR_COUNTDOWN       = "Scene7 Countdown Time";
 
 
 PMSettingsManagerGeneral::PMSettingsManagerGeneral() : PMSettingsManager()
@@ -30,9 +31,14 @@ bool PMSettingsManagerGeneral::getDebugShowFPS()
     return json[STR_DEBUG_MODE][STR_SHOW_FPS].asBool();
 }
 
-bool PMSettingsManagerGeneral::getDebugShowGUIScene2()
+bool PMSettingsManagerGeneral::getDebugShowGUIScene8()
 {
     return json[STR_DEBUG_MODE][STR_SHOW_GUI].asBool();
+}
+
+unsigned int PMSettingsManagerGeneral::getDebugScene7CountdownTime()
+{
+    return json[STR_DEBUG_MODE][STR_COUNTDOWN].asUInt();
 }
 
 bool PMSettingsManagerGeneral::getReleaseShowFPS()
@@ -40,7 +46,12 @@ bool PMSettingsManagerGeneral::getReleaseShowFPS()
     return json[STR_RELEASE_MODE][STR_SHOW_FPS].asBool();
 }
 
-bool PMSettingsManagerGeneral::getReleaseShowGUIScene2()
+bool PMSettingsManagerGeneral::getReleaseShowGUIScene8()
 {
     return json[STR_RELEASE_MODE][STR_SHOW_GUI].asBool();
+}
+
+unsigned int PMSettingsManagerGeneral::getReleaseScene7CountdownTime()
+{
+    return json[STR_RELEASE_MODE][STR_COUNTDOWN].asUInt();
 }

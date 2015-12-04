@@ -23,9 +23,11 @@ public:
     void createJSONSettings() {};
 
     bool getDebugShowFPS();
-    bool getDebugShowGUIScene2();
+    bool getDebugShowGUIScene8();
+    unsigned int getDebugScene7CountdownTime();
     bool getReleaseShowFPS();
-    bool getReleaseShowGUIScene2();
+    bool getReleaseShowGUIScene8();
+    unsigned int getReleaseScene7CountdownTime();
 };
 
 #endif //PMCONCERTPARAULES_PMSETTINGSMANAGERGENERAL_H

@@ -55,3 +55,7 @@ void PMBaseRenderer::draw()
     
 }
 
+void PMBaseRenderer::showGUI(bool show)
+{
+    gui->setVisible(show);
+}
