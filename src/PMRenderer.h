@@ -19,6 +19,8 @@ public:
     void update();
     void draw();
 
+    void exportToImage(string path);
+
 private:
 
     void drawIntoFBO();
