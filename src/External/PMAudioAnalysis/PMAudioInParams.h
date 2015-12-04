@@ -51,5 +51,9 @@ struct melodyDirectionParams : public baseAudioInParams {
     float direction;
 };
 
+struct melBandsParams : public baseAudioInParams {
+    vector<float> bandsEnergy;
+};
+
 
 #endif /* PMAudioOutParams_h */

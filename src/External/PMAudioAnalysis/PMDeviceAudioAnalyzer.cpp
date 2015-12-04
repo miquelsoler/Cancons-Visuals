@@ -109,6 +109,9 @@ void PMDeviceAudioAnalyzer::audioIn(float *input, int bufferSize, int nChannels)
     freqBandsParams freqBandsParams;
     freqBandsParams.deviceID = deviceID;
     freqBandsParams.audioInputIndex = audioInputIndex;
+    melBandsParams melBandsParams;
+    melBandsParams.deviceID = deviceID;
+    melBandsParams.audioInputIndex = audioInputIndex;
 
     aubioOnset->setThreshold(onsetsThreshold);
 
@@ -159,6 +162,18 @@ void PMDeviceAudioAnalyzer::audioIn(float *input, int bufferSize, int nChannels)
     {
         energyParams.energy = getAbsMean(input, bufferSize);
         ofNotifyEvent(eventEnergyChanged, energyParams, this);
+        
+        vector<float> melEnergies;
+        float *melBandsEnergies = aubioMelBands->energies;
+        for(int i=0; i<40; i+=10){
+            float energySum=0;
+            for(int j=i; j<i+10; j++){
+                energySum+=melBandsEnergies[j];
+            }
+            melEnergies.push_back(energySum/10);
+        }
+        melBandsParams.bandsEnergy=melEnergies;
+        ofNotifyEvent(eventMelBandsChanged, melBandsParams, this);
     }
 
     // Shhhht

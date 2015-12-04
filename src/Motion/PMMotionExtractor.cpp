@@ -97,7 +97,9 @@ void PMMotionExtractor::update()
 ///--------------------------------------------------------------
 void PMMotionExtractor::draw()
 {
-    kinectNI.drawImage();
+    ofSetRectMode(OF_RECTMODE_CENTER);
+        kinectNI.drawImage(ofGetWidth()/2,ofGetHeight()/2, ofGetWidth(), ofGetHeight()*(kinectNI.getHeight()/kinectNI.getWidth()));
+    ofSetRectMode(OF_RECTMODE_CORNER);
 //    cout<<kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).z << endl;
 //    //prova
 //    ofDrawEllipse(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).y, 20, 20);

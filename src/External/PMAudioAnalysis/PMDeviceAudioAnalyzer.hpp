@@ -58,6 +58,7 @@ public:
     ofEvent<shtParams> eventShtStateChanged;
     ofEvent<pauseParams> eventPauseStateChanged;
     ofEvent<melodyDirectionParams> eventMelodyDirection;
+    ofEvent<melBandsParams> eventMelBandsChanged;
 
 private:
 
