@@ -17,7 +17,7 @@ PMBaseScene::PMBaseScene(const string &name) : ofxFadeScene(name)
 
     // Disable fades
     //this->setSceneDuration(0.2, 0.2);
-    setFade(1000, 1000);
+    setFade(0, 0);
 
     backgroundColor = ofColor::green;
 }

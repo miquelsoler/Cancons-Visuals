@@ -161,11 +161,13 @@ void ofApp::keyReleased(int key)
             break;
         }
         case OF_KEY_UP:
+        case OF_KEY_RIGHT:
         {
             sceneManager.nextScene();
             break;
         }
         case OF_KEY_DOWN:
+        case OF_KEY_LEFT:
         {
             sceneManager.prevScene();
             break;
