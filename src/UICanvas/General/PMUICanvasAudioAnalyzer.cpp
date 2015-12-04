@@ -14,6 +14,12 @@ PMUICanvasAudioAnalyzer::PMUICanvasAudioAnalyzer(string title, int headerFontSiz
 {
     audioInputIndex = _audioInputIndex;
     savingPreset = false;
+    
+    fullMelBands = new float[40];
+    for(int i = 0; i < 40; i++) { fullMelBands[i] = ofNoise(i/100.0); }
+    melBands = new float[4];
+    for(int i = 0; i < 4; i++) { melBands[i] = ofNoise(i/100.0); }
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -101,6 +107,16 @@ void PMUICanvasAudioAnalyzer::init(int posX, int posY, bool autosize, int width,
         shtToggle->setTriggerType(OFX_UI_TRIGGER_NONE);
         addSpacer();
         ofAddListener((*itAudioAnalyzer)->eventShtStateChanged, this, &PMUICanvasAudioAnalyzer::shtStateChanged);
+        
+        addLabel("FULLMelBands");
+        fullMelSpectrum = addSpectrum("FullMelBands", fullMelBands, 40, 0.0, 1.0);
+        fullMelSpectrum->setTriggerType(OFX_UI_TRIGGER_CHANGE);
+        addSpacer();
+        addLabel("ScaledBands");
+        melSpectrum = addSpectrum("4 Bands", melBands, 4, 0.0, 1.0);
+        melSpectrum->setTriggerType(OFX_UI_TRIGGER_ALL);
+        ofAddListener((*itAudioAnalyzer)->eventMelBandsChanged, this, &PMUICanvasAudioAnalyzer::melBandsChanged);
+        
     }
 
     if (autosize) autoSizeToFitWidgets();
@@ -221,6 +237,13 @@ void PMUICanvasAudioAnalyzer::shtStateChanged(shtParams &_shtParams)
 {
     if (_shtParams.audioInputIndex != audioInputIndex) return;
     shtOn = _shtParams.isSht;
+}
+
+void PMUICanvasAudioAnalyzer::melBandsChanged(melBandsParams &_melBandsParams)
+{
+    if (_melBandsParams.audioInputIndex != audioInputIndex) return;
+    fullMelBands=_melBandsParams.fullBandsEnergy;
+    melBands=_melBandsParams.bandsEnergy;
 }
 
 //--------------------------------------------------------------------------------------------------

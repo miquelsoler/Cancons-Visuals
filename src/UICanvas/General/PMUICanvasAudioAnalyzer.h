@@ -89,6 +89,19 @@ private:
     
     void            keyPressed(int key);
     void            keyReleased(int key);
+    
+    
+    // MelBands---------------------------------
+    
+    void melBandsChanged(melBandsParams &_melBandsParams);
+    
+    ofxUISpectrum *fullMelSpectrum;
+    ofxUISpectrum *melSpectrum;
+    
+    float *fullMelBands;
+    float *melBands;
+    
+    
 
     // Settings
 

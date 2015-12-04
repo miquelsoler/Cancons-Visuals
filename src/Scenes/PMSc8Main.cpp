@@ -14,6 +14,7 @@
 PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
 {
     setSingleSetup(false);
+    guiAudioAnalyzerCreated=false;
 }
 
 void PMSc8Main::setup()
@@ -85,6 +86,19 @@ void PMSc8Main::update()
     renderers[1].setNodeReference(ofPoint(kinectInfo->leftHand_joint.x*ofGetWidth(), kinectInfo->leftHand_joint.y*ofGetHeight()));
     renderers[2].setNodeReference(ofPoint(kinectInfo->head_joint.x*ofGetWidth(), kinectInfo->head_joint.y*ofGetHeight()));
     renderers[3].setNodeReference(ofPoint(kinectInfo->torso_joint.x*ofGetWidth(), kinectInfo->torso_joint.y*ofGetHeight()));
+    
+    
+    // GUI
+    {
+        if (!guiAudioAnalyzerCreated)
+        {
+                guiAudioAnalyzer = new PMUICanvasAudioAnalyzer("AAUDIO ANALYZER", OFX_UI_FONT_MEDIUM, 0);
+                guiAudioAnalyzer->init(5, 5);
+                guiAudioAnalyzer->setBackgroundColor(ofColor::gray);
+                guiAudioAnalyzer->setVisible(true);
+        }
+        guiAudioAnalyzerCreated = true;
+    }
     
 }
 
