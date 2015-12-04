@@ -862,9 +862,9 @@
 			children = (
 				9FC1D4E31BDF85EA00DF31E3 /* PMAudioAnalyzer.cpp */,
 				9FC1D4E41BDF85EA00DF31E3 /* PMAudioAnalyzer.hpp */,
-				9F14B2B31C08684E00D834DE /* PMAudioInParams.h */,
 				9F0348F41BCFE39C00164C02 /* PMDeviceAudioAnalyzer.cpp */,
 				9F0348F51BCFE39C00164C02 /* PMDeviceAudioAnalyzer.hpp */,
+				9F14B2B31C08684E00D834DE /* PMAudioInParams.h */,
 			);
 			path = PMAudioAnalysis;
 			sourceTree = "<group>";
@@ -1199,9 +1199,9 @@
 		9F7FA6471C10C21100F34E63 /* UICanvas */ = {
 			isa = PBXGroup;
 			children = (
-				9F7FA6481C10C21100F34E63 /* General */,
 				9F7FA6551C10C21100F34E63 /* PMBaseUICanvas.cpp */,
 				9F7FA6561C10C21100F34E63 /* PMBaseUICanvas.h */,
+				9F7FA6481C10C21100F34E63 /* General */,
 				9F7FA6571C10C21100F34E63 /* Renderers */,
 			);
 			path = UICanvas;
@@ -1601,13 +1601,13 @@
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				2AB2A7EC1BCEC64100DEE302 /* Defaults.h */,
-				9F304D801BD6912B000E9FDA /* Motion */,
-				9F0348F11BCFE39C00164C02 /* External */,
 				2A2337371BCEC097000612E4 /* Scenes */,
+				9FD5915D1C0C70B8009B2909 /* Renderer */,
+				9F304D801BD6912B000E9FDA /* Motion */,
+				9F8BC66B1C0F64CF008CD29E /* Settings */,
 				9FFB2E8B1BE7B6A300651A12 /* UI */,
 				9F7FA6471C10C21100F34E63 /* UICanvas */,
-				9FD5915D1C0C70B8009B2909 /* Renderer */,
-				9F8BC66B1C0F64CF008CD29E /* Settings */,
+				9F0348F11BCFE39C00164C02 /* External */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -2122,7 +2122,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxAudioAnalyzer-PM/libs/essentia/include/";
 				WRAPPER_EXTENSION = app;
-				baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
 			};
 			name = Release;
 		};
