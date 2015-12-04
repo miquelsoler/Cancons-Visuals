@@ -51,8 +51,7 @@ void PMBaseRenderer::draw()
 //    ofColor c = ofColor(ofColor::white);
 //    ofClear(c);
     ofSetColor(255);
-    fbo.draw(0,0);
-    
+    fbo.draw(0,0);    
 }
 
 void PMBaseRenderer::showGUI(bool show)
