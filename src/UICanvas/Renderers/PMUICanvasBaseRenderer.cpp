@@ -10,7 +10,7 @@ static const unsigned int PRESETSMATRIX_NUMCOLS = 6;
 static const string STR_PRESETS = "PRESETS";
 static const string STR_PRESETS_INFO = "Click to LOAD | Shift+Click to SAVE";
 
-static const string STR_CANVAS_BASEPATH = "presets/";
+static const string STR_CANVAS_BASEPATH = "presets/renderer/";
 
 
 //--------------------------------------------------------------------------------------------------
@@ -131,14 +131,14 @@ void PMUICanvasBaseRenderer::setSmoothEnergy(float _e)
 //--------------------------------------------------------------------------------------------------
 void PMUICanvasBaseRenderer::loadPreset(int presetNumber)
 {
-    string presetPath = STR_CANVAS_BASEPATH + title + "/" + ofToString(presetNumber) + ".xml";
+    string presetPath = STR_CANVAS_BASEPATH + "/" + ofToString(presetNumber) + ".xml";
     loadSettings(presetPath);
 }
 
 //--------------------------------------------------------------------------------------------------
 void PMUICanvasBaseRenderer::savePreset(int presetNumber)
 {
-    string presetPath = STR_CANVAS_BASEPATH + title + "/" + ofToString(presetNumber) + ".xml";
+    string presetPath = STR_CANVAS_BASEPATH + "/" + ofToString(presetNumber) + ".xml";
     saveSettings(presetPath);
 }
 
