@@ -13,7 +13,11 @@ PMBaseRenderer::PMBaseRenderer(int _layer)
 {
     layer=_layer;
     fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA32F_ARB);
-//    fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
+
+    position=ofPoint(0,0);
+    direction=ofPoint(-1+layer, 2-layer);
+    size=ofRandom(fbo.getWidth()/30, fbo.getWidth()/20);
+
 }
 
 void PMBaseRenderer::setup()
@@ -27,6 +31,10 @@ void PMBaseRenderer::setup()
     fbo.end();
     brush = PMBrushesSelector::getInstance().getBrush(layer);
     drawColor = PMColorsSelector::getInstance().getColor(layer);
+
+    brush->update(position.x, position.y);
+    brush->setSize(size, size);
+    gui->setBrushColor(drawColor);
 }
 
 void PMBaseRenderer::update()
@@ -54,7 +62,50 @@ void PMBaseRenderer::draw()
     fbo.draw(0,0);    
 }
 
+void PMBaseRenderer::setPosition(ofPoint newPos)
+{
+    position=newPos;
+    brush->update(position.x, position.y);
+}
+
+void PMBaseRenderer::addOffset(float offsetFactor)
+{
+    position+=direction*offsetFactor;
+    brush->update(position.x, position.y);
+}
+
 void PMBaseRenderer::showGUI(bool show)
 {
     gui->setVisible(show);
+}
+
+#pragma mark - Kinect events
+
+void PMBaseRenderer::setNodeReference(ofPoint nodePos)
+{
+    direction=nodePos-position;
+    direction.normalize();
+//    cout<<direction<<endl;
+}
+
+#pragma mark - Audio events
+
+void PMBaseRenderer::pitchChanged(pitchParams pitchParams)
+{
+
+}
+
+void PMBaseRenderer::energyChanged(energyParams energyParams)
+{
+
+}
+
+void PMBaseRenderer::silenceStateChanged(silenceParams &silenceParams)
+{
+
+}
+
+void PMBaseRenderer::pauseStateChanged(pauseParams &pauseParams)
+{
+
 }

@@ -114,4 +114,4 @@ Desktop.ini
 # Playmodes
 #########################
 
-
+bin/data/presets/renderer/*.xml

@@ -29,21 +29,27 @@ public:
 //    virtual void        clear();
     
     virtual void        drawIntoFBO() = 0;
-    
 
-    
+    void                setPosition(ofPoint newPos);
+    ofPoint             getPosition() { return position; };
+    void                addOffset(float offsetFactor);
+
+    int                 getSize() { return size; };
+
     ofFbo*              getFbo(){return &fbo;};
     int                 getLayer(){return layer;};
     
     void                showGUI(bool show);
-    
-    // changed ...
-//    virtual void        pitchChanged(pitchParams pitchParams);
-//    virtual void        energyChanged(energyParams energyParams);
-//    virtual void        silenceStateChanged(silenceParams &silenceParams);
-//    virtual void        pauseStateChanged(pauseParams &pauseParams);
+
+    void setNodeReference(ofPoint nodePos);
+
+    virtual void        pitchChanged(pitchParams pitchParams);
+    virtual void        energyChanged(energyParams energyParams);
+    virtual void        silenceStateChanged(silenceParams &silenceParams);
+    virtual void        pauseStateChanged(pauseParams &pauseParams);
     
 protected:
+
     int                     layer;
     ofFbo                   fbo;
     
@@ -51,7 +57,12 @@ protected:
     ofColor                 drawColor;
     
     PMUICanvasBrushRenderer* gui;
-    
+
+    // TODO: Check which ones we really need for base renderer. Remove/move those who aren't shared.
+    int size;
+    ofPoint position;
+    ofPoint direction;
+    float hue, saturation, brightness;
 };
 
 #endif /* PMBaseRenderer_hpp */

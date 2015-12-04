@@ -21,17 +21,44 @@ PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
 
     setSingleSetup(false);
     guiAudioAnalyzerCreated=false;
+
+    renderer = new PMRenderer();
 }
 
 void PMSc8Main::setup()
 {
+    cout << "Scene 8 setup --------------------------------------" << endl;
     motionExtractor = &PMMotionExtractor::getInstance();
-    
-    
-    
-        
+
+//    ofPoint pos = ofPoint(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()));
+
+    renderer->setup();
+
+/*
+    PMRendererLayer1 *rendererLayer1 = new PMRendererLayer1(0);
+    rendererLayer1->setup();
+    rendererLayer1->setPosition(pos);
+    renderers.push_back(rendererLayer1);
+
+//    PMRendererLayer2 *rendererLayer2 = new PMRendererLayer2(0);
+//    rendererLayer2->setup();
+//    rendererLayer2->setPosition(pos);
+//    renderers.push_back(rendererLayer2);
+//
+//    PMRendererLayer3 *rendererLayer3 = new PMRendererLayer3(0);
+//    rendererLayer3->setup();
+//    rendererLayer3->setPosition(pos);
+//    renderers.push_back(rendererLayer3);
+//
+//    PMRendererLayer4 *rendererLayer4 = new PMRendererLayer4(0);
+//    rendererLayer4->setup();
+//    rendererLayer4->setPosition(pos);
+//    renderers.push_back(rendererLayer4);
+*/
+
+/*
     for(int i=0; i<1; i++){
-        PMRendererLayer tempRender = PMRendererLayer(i);
+        PMRendererLayer1 tempRender = PMRendererLayer1(i);
         tempRender.setup();
         switch (i) {
             case 0:
@@ -51,7 +78,8 @@ void PMSc8Main::setup()
         }
         renderers.push_back(tempRender);
     }
-    
+*/
+
     //Audio device analyzer
     const unsigned int unsigint0=0;
     const unsigned int unsigint1=1;
@@ -85,31 +113,38 @@ void PMSc8Main::update()
     }
     ofSoundUpdate();
     
+/*
     for(int i=0; i<renderers.size(); i++){
-        renderers[i].update();
+        renderers[i]->update();
     }
-    renderers[0].setNodeReference(ofPoint(kinectInfo->rightHand_joint.x*ofGetWidth(), kinectInfo->rightHand_joint.y*ofGetHeight()));
-    renderers[1].setNodeReference(ofPoint(kinectInfo->leftHand_joint.x*ofGetWidth(), kinectInfo->leftHand_joint.y*ofGetHeight()));
-    renderers[2].setNodeReference(ofPoint(kinectInfo->head_joint.x*ofGetWidth(), kinectInfo->head_joint.y*ofGetHeight()));
-    renderers[3].setNodeReference(ofPoint(kinectInfo->torso_joint.x*ofGetWidth(), kinectInfo->torso_joint.y*ofGetHeight()));
+
+    // Update Kinect info
+    renderers[0]->setNodeReference(ofPoint(kinectInfo->rightHand_joint.x*ofGetWidth(), kinectInfo->rightHand_joint.y*ofGetHeight()));
+//    renderers[1]->setNodeReference(ofPoint(kinectInfo->leftHand_joint.x*ofGetWidth(), kinectInfo->leftHand_joint.y*ofGetHeight()));
+//    renderers[2]->setNodeReference(ofPoint(kinectInfo->head_joint.x*ofGetWidth(), kinectInfo->head_joint.y*ofGetHeight()));
+//    renderers[3]->setNodeReference(ofPoint(kinectInfo->torso_joint.x*ofGetWidth(), kinectInfo->torso_joint.y*ofGetHeight()));
+*/
+
     
-    
-    // GUI
-    {
-        if (!guiAudioAnalyzerCreated)
-        {
-                guiAudioAnalyzer = new PMUICanvasAudioAnalyzer("AAUDIO ANALYZER", OFX_UI_FONT_MEDIUM, 0);
-                guiAudioAnalyzer->init(5, 5);
-                guiAudioAnalyzer->setBackgroundColor(ofColor::gray);
-                guiAudioAnalyzer->setVisible(true);
-        }
-        guiAudioAnalyzerCreated = true;
-    }
-    
+//    // GUI
+//    {
+//        if (!guiAudioAnalyzerCreated)
+//        {
+//                guiAudioAnalyzer = new PMUICanvasAudioAnalyzer("AAUDIO ANALYZER", OFX_UI_FONT_MEDIUM, 0);
+//                guiAudioAnalyzer->init(5, 5);
+//                guiAudioAnalyzer->setBackgroundColor(ofColor::gray);
+//                guiAudioAnalyzer->setVisible(true);
+//        }
+//        guiAudioAnalyzerCreated = true;
+//    }
+
+    renderer->update();
 }
 
 void PMSc8Main::draw()
 {
+    renderer->draw();
+/*
     //ofBackground(255, 35, 32);
     ofSetColor(ofColor::red);
     ofDrawRectangle(0,0, ofGetWidth(), ofGetHeight());
@@ -120,7 +155,7 @@ void PMSc8Main::draw()
     ofColor c = ofColor(ofColor::white);
     ofClear(c);
     for(int i=0; i<renderers.size(); i++){
-        renderers[i].draw();
+        renderers[i]->draw();
     }
     
     if(motionExtractor->isReady()){
@@ -181,15 +216,18 @@ void PMSc8Main::pitchChanged(pitchParams &pitchParams)
 
 void PMSc8Main::energyChanged(energyParams &energyParams)
 {
+/*
     for(int i=0; i<renderers.size(); i++){
-        renderers[i].addOffset(energyParams.energy*20);
+        renderers[i]->addOffset(energyParams.energy*20);
     }
+*/
 }
 
 
 void PMSc8Main::keyReleased(int key)
 {
     PMBaseScene::keyReleased(key);
+/*
     switch(key)
     {
         case 'g':
@@ -198,7 +236,7 @@ void PMSc8Main::keyReleased(int key)
             showGUI = !showGUI;
             // TODO: There should be only 1 GUI for all the renderers. Probably need to gmove GUI to scene8.
             for (int i=0; i<renderers.size(); ++i)
-                renderers[i].showGUI(showGUI);
+                renderers[i]->showGUI(showGUI);
 
             ofClear(backgroundColor);
 
@@ -206,4 +244,5 @@ void PMSc8Main::keyReleased(int key)
         }
         default: break;
     }
+*/
 }

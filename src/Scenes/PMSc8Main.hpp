@@ -12,7 +12,9 @@
 #include <stdio.h>
 #include "PMBaseScene.hpp"
 #include "PMMotionExtractor.hpp"
-#include "PMRendererLayer.hpp"
+//#include "PMBaseRenderer.hpp"
+//#include "PMRendererLayer1.hpp"
+#include "PMRenderer.h"
 #include "PMUICanvasAudioAnalyzer.h"
 
 #endif /* PMSc8Main_hpp */
@@ -49,15 +51,17 @@ protected:
 
 private:
     
-    ofSoundPlayer  song;
-    bool    songIsStarted;
-    vector<PMRendererLayer> renderers;
+    PMRenderer *renderer;
+//    vector<PMBaseRenderer *> renderers;
     
     PMUICanvasAudioAnalyzer* guiAudioAnalyzer;
     bool                    guiAudioAnalyzerCreated;
     
     PMMotionExtractor* motionExtractor;
     KinectInfo* kinectInfo;
+
+    ofSoundPlayer  song;
+    bool    songIsStarted;
 
     bool showGUI;
 };
