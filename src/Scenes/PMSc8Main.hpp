@@ -12,7 +12,8 @@
 #include <stdio.h>
 #include "PMBaseScene.hpp"
 #include "PMMotionExtractor.hpp"
-#include "PMRendererLayer.hpp"
+#include "PMBaseRenderer.hpp"
+#include "PMRendererLayer1.hpp"
 #include "PMUICanvasAudioAnalyzer.h"
 
 #endif /* PMSc8Main_hpp */
@@ -51,7 +52,7 @@ private:
     
     ofSoundPlayer  song;
     bool    songIsStarted;
-    vector<PMRendererLayer> renderers;
+    vector<PMBaseRenderer *> renderers;
     
     PMUICanvasAudioAnalyzer* guiAudioAnalyzer;
     bool                    guiAudioAnalyzerCreated;

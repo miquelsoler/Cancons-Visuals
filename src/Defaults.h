@@ -13,7 +13,7 @@
 
 static const float          WINDOW_SCALE_FACTOR         = 0.5f;
 
-static const int            DEFAULT_WINDOW_WIDTH        = int(1200.0f * WINDOW_SCALE_FACTOR);
+static const int            DEFAULT_WINDOW_WIDTH        = int(1080.0f * WINDOW_SCALE_FACTOR);
 static const int            DEFAULT_WINDOW_HEIGHT       = int(1920.0f * WINDOW_SCALE_FACTOR);
 
 static const ofWindowMode   DEFAULT_WINDOW_MODE         = OF_WINDOW;

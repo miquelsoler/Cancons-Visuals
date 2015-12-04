@@ -117,7 +117,7 @@
 		9F8BC6841C0F64CF008CD29E /* PMSettingsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F8BC6791C0F64CF008CD29E /* PMSettingsManager.cpp */; };
 		9F8BC6861C0F64CF008CD29E /* PMSettingsManagerRenderers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F8BC67F1C0F64CF008CD29E /* PMSettingsManagerRenderers.cpp */; };
 		9FC1D4E51BDF85EA00DF31E3 /* PMAudioAnalyzer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FC1D4E31BDF85EA00DF31E3 /* PMAudioAnalyzer.cpp */; };
-		9FC4AB5F1C0CD3200058FD0D /* PMRendererLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FC4AB5D1C0CD3200058FD0D /* PMRendererLayer.cpp */; };
+		9FC4AB5F1C0CD3200058FD0D /* PMRendererLayer1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FC4AB5D1C0CD3200058FD0D /* PMRendererLayer1.cpp */; };
 		9FD5915C1C0C70AB009B2909 /* PMBaseRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5915A1C0C70AB009B2909 /* PMBaseRenderer.cpp */; };
 		9FD630471BE38BDF00B9F1E1 /* PMSc2Start.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FD630451BE38BDF00B9F1E1 /* PMSc2Start.cpp */; };
 		9FD6304A1BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FD630481BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.cpp */; };
@@ -534,8 +534,8 @@
 		9F8BC6801C0F64CF008CD29E /* PMSettingsManagerRenderers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSettingsManagerRenderers.h; sourceTree = "<group>"; };
 		9FC1D4E31BDF85EA00DF31E3 /* PMAudioAnalyzer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMAudioAnalyzer.cpp; sourceTree = "<group>"; };
 		9FC1D4E41BDF85EA00DF31E3 /* PMAudioAnalyzer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMAudioAnalyzer.hpp; sourceTree = "<group>"; };
-		9FC4AB5D1C0CD3200058FD0D /* PMRendererLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PMRendererLayer.cpp; path = Renderer/PMRendererLayer.cpp; sourceTree = "<group>"; };
-		9FC4AB5E1C0CD3200058FD0D /* PMRendererLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PMRendererLayer.hpp; path = Renderer/PMRendererLayer.hpp; sourceTree = "<group>"; };
+		9FC4AB5D1C0CD3200058FD0D /* PMRendererLayer1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PMRendererLayer1.cpp; path = Renderer/PMRendererLayer1.cpp; sourceTree = "<group>"; };
+		9FC4AB5E1C0CD3200058FD0D /* PMRendererLayer1.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PMRendererLayer1.hpp; path = Renderer/PMRendererLayer1.hpp; sourceTree = "<group>"; };
 		9FD5915A1C0C70AB009B2909 /* PMBaseRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PMBaseRenderer.cpp; path = Renderer/PMBaseRenderer.cpp; sourceTree = "<group>"; };
 		9FD5915B1C0C70AB009B2909 /* PMBaseRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PMBaseRenderer.hpp; path = Renderer/PMBaseRenderer.hpp; sourceTree = "<group>"; };
 		9FD630451BE38BDF00B9F1E1 /* PMSc2Start.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc2Start.cpp; sourceTree = "<group>"; };
@@ -1295,8 +1295,8 @@
 			children = (
 				9FD5915A1C0C70AB009B2909 /* PMBaseRenderer.cpp */,
 				9FD5915B1C0C70AB009B2909 /* PMBaseRenderer.hpp */,
-				9FC4AB5D1C0CD3200058FD0D /* PMRendererLayer.cpp */,
-				9FC4AB5E1C0CD3200058FD0D /* PMRendererLayer.hpp */,
+				9FC4AB5D1C0CD3200058FD0D /* PMRendererLayer1.cpp */,
+				9FC4AB5E1C0CD3200058FD0D /* PMRendererLayer1.hpp */,
 			);
 			name = Renderer;
 			sourceTree = "<group>";
@@ -1782,7 +1782,7 @@
 				26874B150C8535AEA0F24C8C /* ofxUIImageSlider.cpp in Sources */,
 				FB8AA9FA6535767BE31806BC /* ofxUIImageToggle.cpp in Sources */,
 				7C3DC84C9BFCBD2866DB2B6C /* ofxUILabel.cpp in Sources */,
-				9FC4AB5F1C0CD3200058FD0D /* PMRendererLayer.cpp in Sources */,
+				9FC4AB5F1C0CD3200058FD0D /* PMRendererLayer1.cpp in Sources */,
 				FFD1EBFCA24DFB4E4427B4FE /* ofxUILabelButton.cpp in Sources */,
 				C30B3A2A37F8F32EE7318718 /* ofxUILabelToggle.cpp in Sources */,
 				9A83D1B3FB64456BC907667F /* ofxUIMinimalSlider.cpp in Sources */,
@@ -2106,7 +2106,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxAudioAnalyzer-PM/libs/essentia/include/";
 				WRAPPER_EXTENSION = app;
-				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
+				baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
 			};
 			name = Release;
 		};
