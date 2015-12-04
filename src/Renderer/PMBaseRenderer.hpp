@@ -36,20 +36,17 @@ public:
 
     int                 getSize() { return size; };
 
-    void setNodeReference(ofPoint nodePos);
-
-
     ofFbo*              getFbo(){return &fbo;};
     int                 getLayer(){return layer;};
     
     void                showGUI(bool show);
 
+    void setNodeReference(ofPoint nodePos);
 
-    // changed ...
-//    virtual void        pitchChanged(pitchParams pitchParams);
-//    virtual void        energyChanged(energyParams energyParams);
-//    virtual void        silenceStateChanged(silenceParams &silenceParams);
-//    virtual void        pauseStateChanged(pauseParams &pauseParams);
+    virtual void        pitchChanged(pitchParams pitchParams);
+    virtual void        energyChanged(energyParams energyParams);
+    virtual void        silenceStateChanged(silenceParams &silenceParams);
+    virtual void        pauseStateChanged(pauseParams &pauseParams);
     
 protected:
 

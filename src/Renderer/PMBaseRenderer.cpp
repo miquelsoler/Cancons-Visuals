@@ -74,6 +74,13 @@ void PMBaseRenderer::addOffset(float offsetFactor)
     brush->update(position.x, position.y);
 }
 
+void PMBaseRenderer::showGUI(bool show)
+{
+    gui->setVisible(show);
+}
+
+#pragma mark - Kinect events
+
 void PMBaseRenderer::setNodeReference(ofPoint nodePos)
 {
     direction=nodePos-position;
@@ -81,7 +88,24 @@ void PMBaseRenderer::setNodeReference(ofPoint nodePos)
 //    cout<<direction<<endl;
 }
 
-void PMBaseRenderer::showGUI(bool show)
+#pragma mark - Audio events
+
+void PMBaseRenderer::pitchChanged(pitchParams pitchParams)
 {
-    gui->setVisible(show);
+
+}
+
+void PMBaseRenderer::energyChanged(energyParams energyParams)
+{
+
+}
+
+void PMBaseRenderer::silenceStateChanged(silenceParams &silenceParams)
+{
+
+}
+
+void PMBaseRenderer::pauseStateChanged(pauseParams &pauseParams)
+{
+
 }
