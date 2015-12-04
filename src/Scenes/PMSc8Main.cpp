@@ -113,17 +113,24 @@ void PMSc8Main::draw()
     //ofBackground(255, 35, 32);
     ofSetColor(ofColor::red);
     ofDrawRectangle(0,0, ofGetWidth(), ofGetHeight());
-//    PMMotionExtractor::getInstance().draw();
-//    KinectInfo* kinectOut=PMMotionExtractor::getInstance().getKinectInfo();
-//    ofDrawEllipse(kinectOut->leftHand_joint.x*ofGetWidth(), kinectOut->leftHand_joint.y*ofGetHeight(), 10+5*kinectOut->leftHand_joint.a, 10+5*kinectOut->leftHand_joint.a);
-//    ofDrawEllipse(kinectOut->rightHand_joint.x*ofGetWidth(), kinectOut->rightHand_joint.y*ofGetHeight(), 10+5*kinectOut->rightHand_joint.a, 10+5*kinectOut->rightHand_joint.a);
-//    ofDrawEllipse(kinectOut->head_joint.x*ofGetWidth(), kinectOut->head_joint.y*ofGetHeight(), 10+7*kinectOut->head_joint.a, 10+7*kinectOut->head_joint.a);
-//    ofDrawEllipse(kinectOut->torso_joint.x*ofGetWidth(), kinectOut->torso_joint.y*ofGetHeight(), 10+10*kinectOut->torso_joint.a, 10+10*kinectOut->torso_joint.a);
+//    motionExtractor->draw();
+//    KinectInfo* kinectInfo=PMMotionExtractor::getInstance().getKinectInfo();
+   //    ofDrawEllipse(kinectInfo->head_joint.x*ofGetWidth(), kinectInfo->head_joint.y*ofGetHeight(), 10+7*kinectInfo->head_joint.a, 10+7*kinectInfo->head_joint.a);
+//    ofDrawEllipse(kinectInfo->torso_joint.x*ofGetWidth(), kinectInfo->torso_joint.y*ofGetHeight(), 10+10*kinectInfo->torso_joint.a, 10+10*kinectInfo->torso_joint.a);
     ofColor c = ofColor(ofColor::white);
     ofClear(c);
     for(int i=0; i<renderers.size(); i++){
         renderers[i].draw();
     }
+    
+    if(motionExtractor->isReady()){
+    ofSetColor(ofColor::red);
+    ofDrawEllipse(kinectInfo->leftHand_joint.x*ofGetWidth(), kinectInfo->leftHand_joint.y*ofGetHeight(), 10+5*kinectInfo->leftHand_joint.a, 10+5*kinectInfo->leftHand_joint.a);
+    ofDrawEllipse(kinectInfo->rightHand_joint.x*ofGetWidth(), kinectInfo->rightHand_joint.y*ofGetHeight(), 10+5*kinectInfo->rightHand_joint.a, 10+5*kinectInfo->rightHand_joint.a);
+    ofDrawLine(kinectInfo->leftHand_joint.x*ofGetWidth(), kinectInfo->leftHand_joint.y*ofGetHeight(), (kinectInfo->leftHand_joint.x*ofGetWidth())+(kinectInfo->leftHand_joint.v.x*10), (kinectInfo->leftHand_joint.y*ofGetHeight())+(kinectInfo->leftHand_joint.v.y*10));
+    ofDrawLine(kinectInfo->rightHand_joint.x*ofGetWidth(), kinectInfo->rightHand_joint.y*ofGetHeight(), (kinectInfo->rightHand_joint.x*ofGetWidth())+(kinectInfo->rightHand_joint.v.x*10), (kinectInfo->rightHand_joint.y*ofGetHeight())+(kinectInfo->rightHand_joint.v.y*10));
+    }
+
 }
 
 void PMSc8Main::updateEnter()
@@ -132,7 +139,7 @@ void PMSc8Main::updateEnter()
     string songPath="songs/"+PMSongSelector::getInstance().getFilename();
     songIsStarted=false;
     loadSong(songPath);
-    playSong();
+//    playSong();
     
     PMAudioAnalyzer::getInstance().start();
 }
@@ -141,6 +148,9 @@ void PMSc8Main::updateExit()
 {
     PMBaseScene::updateExit();
     song.stop();
+    ofPixels pix;
+//    fbo.readToPixels(pix);
+//    ofSaveImage(pix, "testimage.png", OF_IMAGE_QUALITY_BEST);
 }
 
 void PMSc8Main::loadSong(string filename){

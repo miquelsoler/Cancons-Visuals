@@ -23,6 +23,7 @@ struct KinectElement{
     float y;
     float z;
     float a;
+    ofPoint v;
 };
 struct KinectInfo{
     KinectElement leftHand_joint;
@@ -60,6 +61,7 @@ private:
     ofxOpenNI kinectNI;
     bool hadUsers;
     KinectInfo kinectOut;
+    KinectInfo oldKinectOut;
     
     bool isSomeoneTracked;
 };
