@@ -16,6 +16,7 @@ Before building, make sure you've already downloaded these add-ons:
 * [ofxSceneManager] (https://github.com/kokinomura/ofxSceneManager)
 * [ofxTween] (https://github.com/arturoc/ofxTween)
 * [ofxUI] (https://github.com/rezaali/ofxUI)
+* [ofxAubio] (https://github.com/aubio/ofxAubio) ->FOLLOW instruction, not downloading github source!
 * [ofxOpenNI-PM] (https://github.com/eduardfrigola/ofxOpenNI-PM)
 
 These add-ons are also needed, but they are already part of openframeworks:

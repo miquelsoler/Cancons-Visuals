@@ -41,7 +41,9 @@ public:
 //    void onsetDetected(onsetParams &onsetParams);
 //    void shtDetected(shtParams &shtParams);
 //    void melodyDirection(melodyDirectionParams &melodyDirectionParams);
-    
+
+    void keyReleased(int key);
+
 
 protected:
 
@@ -57,4 +59,5 @@ private:
     PMMotionExtractor* motionExtractor;
     KinectInfo* kinectInfo;
 
+    bool showGUI;
 };

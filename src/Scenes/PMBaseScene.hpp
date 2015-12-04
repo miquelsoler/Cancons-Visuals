@@ -33,7 +33,9 @@ public:
     
     virtual void drawCenteredFont(ofTrueTypeFont &font, string s, int x, int y);
     virtual void drawSettingsNumbers(int currentNumber);
-    
+
+    void keyReleased(int key) {};
+
     ofEvent<string> goToSceneEvent;
 
 protected:

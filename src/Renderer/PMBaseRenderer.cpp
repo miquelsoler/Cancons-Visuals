@@ -54,3 +54,7 @@ void PMBaseRenderer::draw()
     fbo.draw(0,0);    
 }
 
+void PMBaseRenderer::showGUI(bool show)
+{
+    gui->setVisible(show);
+}

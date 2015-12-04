@@ -1,24 +1,12 @@
 #include "ofApp.h"
-#include "PMSettingsManager.h"
 #include "PMSettingsManagerGeneral.h"
 #include "PMSettingsManagerAudioAnalyzers.h"
 #include "Defaults.h"
 
-#include "PMSc1Settings.hpp"
-#include "PMSc2Start.hpp"
-#include "PMSc3Song_Choose.hpp"
-#include "PMSc4Palette_Choose.hpp"
-#include "PMSc5Brushes_Choose.hpp"
-#include "PMSc6Kinect_Detect.hpp"
-#include "PMSc7Countdown.hpp"
-#include "PMSc8Main.hpp"
 
 ///--------------------------------------------------------------
 void ofApp::setup()
 {
-    //ofSetWindowShape(640, 480);
-    //ofSetLogLevel(OF_LOG_VERBOSE);
-    
     ofSetFrameRate(60);
     ofSetVerticalSync(true);
     //ofBackground(ofColor::black);
@@ -26,8 +14,8 @@ void ofApp::setup()
     isFullScreen = (DEFAULT_WINDOW_MODE == OF_FULLSCREEN);
 
     currentScene = 2;
-    
-    
+    currentSceneName = "";
+
     // Initialize audio analyzer
     {
         PMSettingsManagerAudioAnalyzers settingsAA = PMSettingsManagerAudioAnalyzers::getInstance();
@@ -38,38 +26,40 @@ void ofApp::setup()
                                             settingsAA.getAscDescAnalysisSize());
     }
 
-    // Settings
+    // General Settings
+    {
 
 #ifdef OF_DEBUG
     showFPS = PMSettingsManagerGeneral::getInstance().getDebugShowFPS();
 #else
     showFPS = PMSettingsManagerGeneral::getInstance().getReleaseShowFPS();
 #endif
+    }
 
     // Scenes
 
-    PMSc1Settings *scene1 = new PMSc1Settings();
+    scene1 = new PMSc1Settings();
     sceneManager.add(scene1);
     
-    PMSc2Start *scene2 = new PMSc2Start();
+    scene2 = new PMSc2Start();
     sceneManager.add(scene2);
     
-    PMSc3Song_Choose *scene3 = new PMSc3Song_Choose();
+    scene3 = new PMSc3Song_Choose();
     sceneManager.add(scene3);
     
-    PMSc4Palette_Choose *scene4 = new PMSc4Palette_Choose();
+    scene4 = new PMSc4Palette_Choose();
     sceneManager.add(scene4);
     
-    PMSc5Brushes_Choose *scene5 = new PMSc5Brushes_Choose();
+    scene5 = new PMSc5Brushes_Choose();
     sceneManager.add(scene5);
     
-    PMSc6Kinect_Detect *scene6 = new PMSc6Kinect_Detect();
+    scene6 = new PMSc6Kinect_Detect();
     sceneManager.add(scene6);
     
-    PMSc7Countdown *scene7 = new PMSc7Countdown();
+    scene7 = new PMSc7Countdown();
     sceneManager.add(scene7);
     
-    PMSc8Main *scene8 = new PMSc8Main();
+    scene8 = new PMSc8Main();
     sceneManager.add(scene8);
     
     
@@ -81,16 +71,7 @@ void ofApp::setup()
     setSceneManager(&sceneManager);
     sceneManager.gotoScene("Scene 1", false);
     
-    // For testing purposes
 
-//    audioAnalyzer = new PMDeviceAudioAnalyzer(0, 2, 0, 44100, 512);
-//
-//    int channelNumber = 0;
-//    bool useMelBands = true;
-//    int numMelBands = 24;
-//    audioAnalyzer->setup(PMDAA_CHANNEL_MONO, channelNumber, useMelBands, numMelBands);
-//
-    
     ofAddListener(scene1->goToSceneEvent, this, &ofApp::changeScene);
     ofAddListener(scene2->goToSceneEvent, this, &ofApp::changeScene);
     ofAddListener(scene3->goToSceneEvent, this, &ofApp::changeScene);
@@ -106,68 +87,69 @@ void ofApp::update()
 {
 #ifdef OF_DEBUG
     ofShowCursor();
+
+    currentScene = sceneManager.getCurrentSceneIndex();
 #endif
 }
 
 ///--------------------------------------------------------------
 void ofApp::draw()
 {
-    if (showFPS)
+    ofColor debugMessagesColor = ofColor(127);
+
+    if (showFPS && sceneManager.getCurrentSceneIndex() != -1)
     {
-        ofSetColor(ofColor::white);
-        ofDrawBitmapString(ofToString(ofGetFrameRate()) + "fps", 15, ofGetHeight() - 15);
+        ofSetColor(debugMessagesColor);
+        ofxBitmapString(15, ofGetHeight() - 15) << roundf(ofGetFrameRate()) << "fps" << endl;
     }
-    ofSetColor(200);
-    ofxBitmapString(12, ofGetHeight()-8)
-    << "Current Scene: " << sceneManager.getCurrentSceneIndex()
-    << " " << sceneManager.getCurrentSceneName() << endl;
+
+#if OF_DEBUG
+    ofSetColor(debugMessagesColor);
+    ofxBitmapString(15, ofGetHeight()-28)
+            << "[Current Scene] ID: " << sceneManager.getCurrentSceneIndex()
+            << " Name: " << sceneManager.getCurrentSceneName() << endl;
+#endif
+
+    ofSetColor(ofColor::white);
 }
 
 ///--------------------------------------------------------------
 void ofApp::exit()
 {
-    
 }
 
 ///--------------------------------------------------------------
 void ofApp::keyReleased(int key)
 {
-    switch(key)
-    {
+    switch(key) {
         case 'f':
-        case 'F':
-        {
+        case 'F': {
             // Change window mode
             isFullScreen = !isFullScreen;
             ofSetFullscreen(isFullScreen);
             break;
         }
         case 'p':
-        case 'P':
-        {
+        case 'P': {
             showFPS = !showFPS;
             break;
         }
-        case 'k':
-        case 'K':
-        {
-//            audioAnalyzer->start();
-            break;
-        }
-        case 'l':
-        case 'L':
-        {
-//            audioAnalyzer->stop();
-            break;
-        }
         case OF_KEY_UP:
-        {
+        case OF_KEY_RIGHT: {
             sceneManager.nextScene();
             break;
         }
         case OF_KEY_DOWN:
-        {
+        case OF_KEY_LEFT: {
             sceneManager.prevScene();
+            break;
+        }
+        case 'g':
+        case 'G':
+        {
+            if (currentSceneName == "Scene 8") {
+                scene8->keyReleased(key);
+            }
             break;
         }
         default:
@@ -180,6 +162,6 @@ void ofApp::keyReleased(int key)
 void ofApp::changeScene(string &scene)
 {
     sceneManager.gotoScene(scene);
-
+    currentSceneName = scene;
 }
 

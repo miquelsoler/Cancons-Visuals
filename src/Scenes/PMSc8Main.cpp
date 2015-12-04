@@ -13,6 +13,12 @@
 
 PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
 {
+#ifdef OF_DEBUG
+    showGUI= PMSettingsManagerGeneral::getInstance().getDebugShowGUIScene8();
+#else
+    showGUI = PMSettingsManagerGeneral::getInstance().getReleaseShowGUIScene8();
+#endif
+
     setSingleSetup(false);
     guiAudioAnalyzerCreated=false;
 }
@@ -171,3 +177,23 @@ void PMSc8Main::energyChanged(energyParams &energyParams)
 }
 
 
+void PMSc8Main::keyReleased(int key)
+{
+    PMBaseScene::keyReleased(key);
+    switch(key)
+    {
+        case 'g':
+        case 'G':
+        {
+            showGUI = !showGUI;
+            // TODO: There should be only 1 GUI for all the renderers. Probably need to gmove GUI to scene8.
+            for (int i=0; i<renderers.size(); ++i)
+                renderers[i].showGUI(showGUI);
+
+            ofClear(backgroundColor);
+
+            break;
+        }
+        default: break;
+    }
+}

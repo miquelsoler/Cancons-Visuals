@@ -2,7 +2,7 @@
 //  Config.h
 //  ConductrEnter
 //
-//  Created by Miquel Ëngel Soler on 5/6/15.
+//  Created by Miquel ï¿½ngel Soler on 5/6/15.
 //
 //
 
@@ -11,8 +11,10 @@
 #ifndef ConductrEnter_Config_h
 #define ConductrEnter_Config_h
 
-static const int            DEFAULT_WINDOW_WIDTH        = 1200/2;
-static const int            DEFAULT_WINDOW_HEIGHT       = 1920/2;
+static const float          WINDOW_SCALE_FACTOR         = 0.5f;
+
+static const int            DEFAULT_WINDOW_WIDTH        = int(1200.0f * WINDOW_SCALE_FACTOR);
+static const int            DEFAULT_WINDOW_HEIGHT       = int(1920.0f * WINDOW_SCALE_FACTOR);
 
 static const ofWindowMode   DEFAULT_WINDOW_MODE         = OF_WINDOW;
 
