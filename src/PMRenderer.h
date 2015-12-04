@@ -6,11 +6,8 @@
 #define PMCANCONS_VISUALS_PMRENDERER_H
 
 #include "ofMain.h"
+#include "PMBaseLayer.h"
 #include "PMUICanvasBrushRenderer.h"
-#include "PMLayer1.h"
-#include "PMLayer2.h"
-#include "PMLayer3.h"
-#include "PMLayer4.h"
 
 class PMRenderer
 {
@@ -21,8 +18,6 @@ public:
     void setup();
     void update();
     void draw();
-
-    void addLayer(PMBaseLayer *layer);
 
 private:
 

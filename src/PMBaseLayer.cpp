@@ -3,3 +3,9 @@
 //
 
 #include "PMBaseLayer.h"
+
+PMBaseLayer::PMBaseLayer(int _fboWidth, int _fboHeight)
+{
+    fboWidth = _fboWidth;
+    fboHeight = _fboHeight;
+}

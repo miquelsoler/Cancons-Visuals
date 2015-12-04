@@ -3,10 +3,28 @@
 //
 
 #include "PMRenderer.h"
+#include "PMLayer1.h"
+#include "PMLayer2.h"
+#include "PMLayer3.h"
+#include "PMLayer4.h"
+#include "Defaults.h"
+
 
 PMRenderer::PMRenderer()
 {
-    fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA32F_ARB);
+    int fboWidth = FBO_WIDTH;
+    int fboHeight = FBO_HEIGHT;
+
+    fbo.allocate(fboWidth, fboHeight, GL_RGBA32F_ARB);
+
+    PMLayer1 *layer1 = new PMLayer1(fboWidth, fboHeight);
+    layers.push_back(layer1);
+    PMLayer2 *layer2 = new PMLayer2(fboWidth, fboHeight);
+    layers.push_back(layer2);
+    PMLayer3 *layer3 = new PMLayer3(fboWidth, fboHeight);
+    layers.push_back(layer3);
+    PMLayer4 *layer4 = new PMLayer4(fboWidth, fboHeight);
+    layers.push_back(layer4);
 }
 
 void PMRenderer::setup()
@@ -24,6 +42,7 @@ void PMRenderer::update()
 {
     fbo.begin();
     {
+/*
         // background dimming
         //ofFloatColor fc = ofFloatColor(0.0, 0.0, 0.0, gui->getFadeBackground());
         ofFloatColor fc = ofFloatColor(1.0, 1.0, 1.0, 1);
@@ -33,8 +52,12 @@ void PMRenderer::update()
         ofEnableBlendMode(OF_BLENDMODE_ALPHA);
         ofDrawRectangle(0, 0, fbo.getWidth(), fbo.getHeight());
         ofDisableBlendMode();
+*/
     }
     fbo.end();
+
+    for (int i=0; i<layers.size(); ++i)
+        layers[i]->update();
 
     drawIntoFBO();
 }
@@ -43,23 +66,16 @@ void PMRenderer::draw()
 {
     ofClear(ofColor::white);
 
-//    ofColor c = ofColor(ofColor::white);
-//    ofClear(c);
     ofSetColor(255);
-    fbo.draw(0,0);
-}
-
-void PMRenderer::addLayer(PMBaseLayer *layer)
-{
-    layers.push_back(layer);
+    fbo.draw(0, 0, ofGetWidth(), ofGetHeight());
 }
 
 void PMRenderer::drawIntoFBO()
 {
     fbo.begin();
     {
-//        for (int i=0; i<layers.size(); ++i)
-//            layers[i]->draw();
+        for (int i=0; i<layers.size(); ++i)
+            layers[i]->draw();
     }
     fbo.end();
 }

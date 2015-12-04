@@ -30,7 +30,7 @@ void PMSc8Main::setup()
     cout << "Scene 8 setup --------------------------------------" << endl;
     motionExtractor = &PMMotionExtractor::getInstance();
 
-    ofPoint pos = ofPoint(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()));
+//    ofPoint pos = ofPoint(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()));
 
     renderer->setup();
 

@@ -9,7 +9,12 @@
 
 class PMLayer2 : public PMBaseLayer
 {
+public:
 
+    PMLayer2(int _fboWidth, int _fboHeight);
+
+    virtual void update();
+    virtual void draw();
 };
 
 
