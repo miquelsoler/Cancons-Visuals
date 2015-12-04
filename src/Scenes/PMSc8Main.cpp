@@ -157,7 +157,7 @@ void PMSc8Main::draw()
     for(int i=0; i<renderers.size(); i++){
         renderers[i]->draw();
     }
-    
+  */  
     if(motionExtractor->isReady()){
     ofSetColor(ofColor::red);
     ofDrawEllipse(kinectInfo->leftHand_joint.x*ofGetWidth(), kinectInfo->leftHand_joint.y*ofGetHeight(), 10+5*kinectInfo->leftHand_joint.a, 10+5*kinectInfo->leftHand_joint.a);
