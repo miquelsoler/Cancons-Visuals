@@ -157,13 +157,15 @@ void PMSc8Main::draw()
     for(int i=0; i<renderers.size(); i++){
         renderers[i]->draw();
     }
-  */  
+  */
     if(motionExtractor->isReady()){
-    ofSetColor(ofColor::red);
-    ofDrawEllipse(kinectInfo->leftHand_joint.x*ofGetWidth(), kinectInfo->leftHand_joint.y*ofGetHeight(), 10+5*kinectInfo->leftHand_joint.a, 10+5*kinectInfo->leftHand_joint.a);
-    ofDrawEllipse(kinectInfo->rightHand_joint.x*ofGetWidth(), kinectInfo->rightHand_joint.y*ofGetHeight(), 10+5*kinectInfo->rightHand_joint.a, 10+5*kinectInfo->rightHand_joint.a);
-    ofDrawLine(kinectInfo->leftHand_joint.x*ofGetWidth(), kinectInfo->leftHand_joint.y*ofGetHeight(), (kinectInfo->leftHand_joint.x*ofGetWidth())+(kinectInfo->leftHand_joint.v.x*10), (kinectInfo->leftHand_joint.y*ofGetHeight())+(kinectInfo->leftHand_joint.v.y*10));
-    ofDrawLine(kinectInfo->rightHand_joint.x*ofGetWidth(), kinectInfo->rightHand_joint.y*ofGetHeight(), (kinectInfo->rightHand_joint.x*ofGetWidth())+(kinectInfo->rightHand_joint.v.x*10), (kinectInfo->rightHand_joint.y*ofGetHeight())+(kinectInfo->rightHand_joint.v.y*10));
+        ofSetColor(ofColor::red);
+        ofDrawEllipse(kinectInfo->leftHand_joint.x*ofGetWidth(), kinectInfo->leftHand_joint.y*ofGetHeight(), kinectInfo->leftHand_joint.a, kinectInfo->leftHand_joint.a);
+        ofDrawEllipse(kinectInfo->rightHand_joint.x*ofGetWidth(), kinectInfo->rightHand_joint.y*ofGetHeight(), kinectInfo->rightHand_joint.a, kinectInfo->rightHand_joint.a);
+        ofSetLineWidth(5);
+        ofDrawLine(kinectInfo->leftHand_joint.x*ofGetWidth(), kinectInfo->leftHand_joint.y*ofGetHeight(), (kinectInfo->leftHand_joint.x*ofGetWidth())+(kinectInfo->leftHand_joint.v.x*100), (kinectInfo->leftHand_joint.y*ofGetHeight())+(kinectInfo->leftHand_joint.v.y*100));
+        ofDrawLine(kinectInfo->rightHand_joint.x*ofGetWidth(), kinectInfo->rightHand_joint.y*ofGetHeight(), (kinectInfo->rightHand_joint.x*ofGetWidth())+(kinectInfo->rightHand_joint.v.x*100), (kinectInfo->rightHand_joint.y*ofGetHeight())+(kinectInfo->rightHand_joint.v.y*100));
+        cout<<kinectInfo->leftHand_joint.v*1000<<endl;
     }
 
 }
@@ -182,6 +184,7 @@ void PMSc8Main::updateEnter()
 void PMSc8Main::updateExit()
 {
     PMBaseScene::updateExit();
+    motionExtractor->exit();
     song.stop();
     ofPixels pix;
 //    fbo.readToPixels(pix);

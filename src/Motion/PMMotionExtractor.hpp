@@ -61,7 +61,7 @@ private:
     ofxOpenNI kinectNI;
     bool hadUsers;
     KinectInfo kinectOut;
-    KinectInfo oldKinectOut;
+//    KinectInfo oldKinectOut;
     
     bool isSomeoneTracked;
 };

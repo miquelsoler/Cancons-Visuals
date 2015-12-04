@@ -73,30 +73,38 @@ void PMMotionExtractor::update()
         kinectOut.leftHand_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).y/kinectNI.getHeight();
         kinectOut.leftHand_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).z, 1000, 3000, 0, 1);
         kinectOut.leftHand_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_LEFT_HAND, mean_values);
-        kinectOut.leftHand_joint.v=ofPoint(oldKinectOut.leftHand_joint.x, oldKinectOut.leftHand_joint.y)-ofPoint(kinectOut.leftHand_joint.x, kinectOut.leftHand_joint.y);
+//        kinectOut.leftHand_joint.v=(ofPoint(kinectOut.leftHand_joint.x, kinectOut.leftHand_joint.y)-ofPoint(oldKinectOut.leftHand_joint.x, oldKinectOut.leftHand_joint.y)).normalize();
+        kinectOut.leftHand_joint.v=kinectFeatures.getVelocityMean(JOINT_LEFT_HAND, mean_values);
+        kinectOut.leftHand_joint.v.y*=-1;
         
         //RIGHT HAND
         kinectOut.rightHand_joint.x=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).x/kinectNI.getWidth();
         kinectOut.rightHand_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).y/kinectNI.getHeight();
         kinectOut.rightHand_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).z, 1000, 3000, 0, 1);
         kinectOut.rightHand_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_RIGHT_HAND, mean_values);
-        kinectOut.leftHand_joint.v=ofPoint(oldKinectOut.rightHand_joint.x, oldKinectOut.rightHand_joint.y)-ofPoint(kinectOut.rightHand_joint.x, kinectOut.rightHand_joint.y);
+//        kinectOut.rightHand_joint.v=(ofPoint(kinectOut.rightHand_joint.x, kinectOut.rightHand_joint.y)-ofPoint(oldKinectOut.rightHand_joint.x, oldKinectOut.rightHand_joint.y)).normalize();
+        kinectOut.rightHand_joint.v=kinectFeatures.getVelocityMean(JOINT_RIGHT_HAND, mean_values);
+        kinectOut.rightHand_joint.v.y*=-1;
         
         //HEAD
         kinectOut.head_joint.x=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).x/kinectNI.getWidth();
         kinectOut.head_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).y/kinectNI.getHeight();
         kinectOut.head_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).z, 1000, 3000, 0, 1);
         kinectOut.head_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_HEAD, mean_values);
-        kinectOut.leftHand_joint.v=ofPoint(oldKinectOut.head_joint.x, oldKinectOut.head_joint.y)-ofPoint(kinectOut.head_joint.x, kinectOut.head_joint.y);
+//        kinectOut.head_joint.v=(ofPoint(oldKinectOut.head_joint.x, oldKinectOut.head_joint.y)-ofPoint(oldKinectOut.head_joint.x, oldKinectOut.head_joint.y)).normalize();
+        kinectOut.head_joint.v=kinectFeatures.getVelocityMean(JOINT_HEAD, mean_values);
+        kinectOut.head_joint.v.y*=-1;
         
         //TORSO
         kinectOut.torso_joint.x=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).x/kinectNI.getWidth();
         kinectOut.torso_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).y/kinectNI.getHeight();
         kinectOut.torso_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).z, 1000, 3000, 0, 1);
         kinectOut.torso_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_TORSO, mean_values);
-        kinectOut.leftHand_joint.v=ofPoint(oldKinectOut.torso_joint.x, oldKinectOut.torso_joint.y)-ofPoint(kinectOut.torso_joint.x, kinectOut.torso_joint.y);
+//        kinectOut.torso_joint.v=(ofPoint(kinectOut.torso_joint.x, kinectOut.torso_joint.y)-ofPoint(oldKinectOut.torso_joint.x, oldKinectOut.torso_joint.y)).normalize();
+        kinectOut.torso_joint.v=kinectFeatures.getVelocityMean(JOINT_TORSO, mean_values);
+        kinectOut.torso_joint.v.y*=-1;
         
-        oldKinectOut=kinectOut;
+//        oldKinectOut=kinectOut;
     }
 }
 
