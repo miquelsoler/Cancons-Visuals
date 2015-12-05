@@ -6,6 +6,16 @@
 #define PMCANCONS_VISUALS_PMBASELAYER_H
 
 #include "ofMain.h"
+#include "PMBrushesSelector.hpp"
+#include "PMMotionExtractor.hpp"
+#include "PMAudioAnalyzer.hpp"
+#include "PMMotionExtractor.hpp"
+
+struct ofColorHSB{
+    float hue;
+    float saturation;
+    float brightness;
+};
 
 class PMBaseLayer
 {
@@ -13,12 +23,38 @@ public:
 
     PMBaseLayer(int _fboWidth, int _fboHeight);
 
-    virtual void update() = 0;
-    virtual void draw() = 0;
+    virtual void setup();//ofPoint position=ofPoint(0,0), int size=10, float alpha=1, float angle=0);
+    virtual void update();
+    virtual void draw();
+    void setSize(int size);
+    void setPosition(ofPoint pos){position=pos;};
+    void setAngle(float _angle){angle=_angle;}
+    
+    
+    //Audio listeners
+    virtual void pitchChanged(pitchParams &pitchParams){};
+    virtual void energyChanged(energyParams &energyParams){};
+    virtual void silenceStateChanged(silenceParams &silenceParams){};
+    virtual void pauseStateChanged(pauseParams &_auseParams){};
+    virtual void onsetDetected(onsetParams &onsetParams){};
+    virtual void shtDetected(shtParams &shtParams){};
+    virtual void melodyDirection(melodyDirectionParams &melodyDirectionParams){};
+    virtual void melBandsChanged(melBandsParams &melBandsParams){};
 
 protected:
 
-    int fboWidth, fboHeight;
+    int                     layerID;
+    int                     fboWidth, fboHeight;
+    PMImageContainer        *brush;
+    ofColor                 drawColor;
+    ofColorHSB              hsbColor;
+    
+    ofPoint                 position;
+    int                     size; //size of brush
+    float                   alpha; //value between 0 and 1
+    float                   angle; //in radians
+    KinectElement           kinectNodeData;
+    
 };
 
 

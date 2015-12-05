@@ -36,6 +36,9 @@ void PMRenderer::setup()
         ofClear(0, 0, 0, 0);
     }
     fbo.end();
+    for (int i=0; i<layers.size(); ++i)
+        layers[i]->setup();
+
 }
 
 void PMRenderer::update()
@@ -85,4 +88,8 @@ void PMRenderer::exportToImage(string path)
     // TODO: Aquí és on s'exporta el contingut de l'FBO
     // generant a una imatge que es grava en un arxiu que està al path
     // que ve com a paràmetre.
+    ofPixels pix;
+    fbo.readToPixels(pix);
+    ofSaveImage(pix, path+".png", OF_IMAGE_QUALITY_BEST);
+    
 }

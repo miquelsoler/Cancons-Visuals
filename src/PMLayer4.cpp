@@ -6,11 +6,13 @@
 
 PMLayer4::PMLayer4(int _fboWidth, int _fboHeight) : PMBaseLayer(_fboWidth, _fboHeight)
 {
+    layerID=4;
 }
 
 void PMLayer4::update()
 {
-
+    PMBaseLayer::update();
+    kinectNodeData=PMMotionExtractor::getInstance().getKinectInfo()->torso_joint;
 }
 
 void PMLayer4::draw()

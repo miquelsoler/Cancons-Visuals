@@ -6,10 +6,13 @@
 
 PMLayer3::PMLayer3(int _fboWidth, int _fboHeight) : PMBaseLayer(_fboWidth, _fboHeight)
 {
+    layerID=3;
 }
 
 void PMLayer3::update()
 {
+    PMBaseLayer::update();
+    kinectNodeData=PMMotionExtractor::getInstance().getKinectInfo()->head_joint;
 
 }
 

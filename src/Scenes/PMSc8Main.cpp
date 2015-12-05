@@ -80,19 +80,11 @@ void PMSc8Main::setup()
     }
 */
 
-    //Audio device analyzer
-    const unsigned int unsigint0=0;
-    const unsigned int unsigint1=1;
-    vector<unsigned int> audioChanels;
-    audioChanels.push_back(0);
-    audioChanels.push_back(1);
-    cout<<audioChanels.size()<<endl;
-    PMDeviceAudioAnalyzer *deviceAudioAnalyzer = PMAudioAnalyzer::getInstance().addDeviceAnalyzer(0, 0,
-                                                                                                  2, 0, 44100, 1024, audioChanels);
+   
     
-    ofAddListener(deviceAudioAnalyzer->eventPitchChanged, this, &PMSc8Main::pitchChanged);
-    ofAddListener(deviceAudioAnalyzer->eventEnergyChanged, this, &PMSc8Main::energyChanged);
-//    
+//    ofAddListener(deviceAudioAnalyzer->eventPitchChanged, this, &PMSc8Main::pitchChanged);
+//    ofAddListener(deviceAudioAnalyzer->eventEnergyChanged, this, &PMSc8Main::energyChanged);
+//
 //    ofAddListener(deviceAudioAnalyzer->eventSilenceStateChanged, this, &PMScene2::silenceStateChanged);
 //    ofAddListener(deviceAudioAnalyzer->eventPauseStateChanged, this, &PMScene2::pauseStateChanged);
 //    ofAddListener(deviceAudioAnalyzer->eventOnsetStateChanged, this, &PMScene2::onsetDetected);
@@ -158,16 +150,15 @@ void PMSc8Main::draw()
         renderers[i]->draw();
     }
   */
-    if(motionExtractor->isReady()){
-        ofSetColor(ofColor::red);
-        ofDrawEllipse(kinectInfo->leftHand_joint.x*ofGetWidth(), kinectInfo->leftHand_joint.y*ofGetHeight(), kinectInfo->leftHand_joint.a, kinectInfo->leftHand_joint.a);
-        ofDrawEllipse(kinectInfo->rightHand_joint.x*ofGetWidth(), kinectInfo->rightHand_joint.y*ofGetHeight(), kinectInfo->rightHand_joint.a, kinectInfo->rightHand_joint.a);
-        ofSetLineWidth(5);
-        ofDrawLine(kinectInfo->leftHand_joint.x*ofGetWidth(), kinectInfo->leftHand_joint.y*ofGetHeight(), (kinectInfo->leftHand_joint.x*ofGetWidth())+(kinectInfo->leftHand_joint.v.x*100), (kinectInfo->leftHand_joint.y*ofGetHeight())+(kinectInfo->leftHand_joint.v.y*100));
-        ofDrawLine(kinectInfo->rightHand_joint.x*ofGetWidth(), kinectInfo->rightHand_joint.y*ofGetHeight(), (kinectInfo->rightHand_joint.x*ofGetWidth())+(kinectInfo->rightHand_joint.v.x*100), (kinectInfo->rightHand_joint.y*ofGetHeight())+(kinectInfo->rightHand_joint.v.y*100));
-        cout<<kinectInfo->leftHand_joint.v*1000<<endl;
-    }
-
+//    if(motionExtractor->isReady()){
+//        ofSetColor(ofColor::red);
+//        ofDrawEllipse(kinectInfo->leftHand_joint.x*ofGetWidth(), kinectInfo->leftHand_joint.y*ofGetHeight(), kinectInfo->leftHand_joint.a, kinectInfo->leftHand_joint.a);
+//        ofDrawEllipse(kinectInfo->rightHand_joint.x*ofGetWidth(), kinectInfo->rightHand_joint.y*ofGetHeight(), kinectInfo->rightHand_joint.a, kinectInfo->rightHand_joint.a);
+//        ofSetLineWidth(5);
+//        ofDrawLine(kinectInfo->leftHand_joint.x*ofGetWidth(), kinectInfo->leftHand_joint.y*ofGetHeight(), (kinectInfo->leftHand_joint.x*ofGetWidth())+(kinectInfo->leftHand_joint.v.x*100), (kinectInfo->leftHand_joint.y*ofGetHeight())+(kinectInfo->leftHand_joint.v.y*100));
+//        ofDrawLine(kinectInfo->rightHand_joint.x*ofGetWidth(), kinectInfo->rightHand_joint.y*ofGetHeight(), (kinectInfo->rightHand_joint.x*ofGetWidth())+(kinectInfo->rightHand_joint.v.x*100), (kinectInfo->rightHand_joint.y*ofGetHeight())+(kinectInfo->rightHand_joint.v.y*100));
+//        cout<<kinectInfo->leftHand_joint.v*1000<<endl;
+//    }
 }
 
 void PMSc8Main::updateEnter()
@@ -186,9 +177,7 @@ void PMSc8Main::updateExit()
     PMBaseScene::updateExit();
     motionExtractor->exit();
     song.stop();
-    ofPixels pix;
-//    fbo.readToPixels(pix);
-//    ofSaveImage(pix, "testimage.png", OF_IMAGE_QUALITY_BEST);
+//    renderer->exportToImage("testImage_"+ofGetTimestampString());
 }
 
 void PMSc8Main::loadSong(string filename){
@@ -230,7 +219,7 @@ void PMSc8Main::energyChanged(energyParams &energyParams)
 void PMSc8Main::keyReleased(int key)
 {
     PMBaseScene::keyReleased(key);
-/*
+
     switch(key)
     {
         case 'g':
@@ -238,8 +227,9 @@ void PMSc8Main::keyReleased(int key)
         {
             showGUI = !showGUI;
             // TODO: There should be only 1 GUI for all the renderers. Probably need to gmove GUI to scene8.
-            for (int i=0; i<renderers.size(); ++i)
-                renderers[i]->showGUI(showGUI);
+//            for (int i=0; i<renderers.size(); ++i)
+//                renderers[i]->showGUI(showGUI);
+            renderer->exportToImage("testImage_"+ofGetTimestampString());
 
             ofClear(backgroundColor);
 
@@ -247,5 +237,5 @@ void PMSc8Main::keyReleased(int key)
         }
         default: break;
     }
-*/
+
 }

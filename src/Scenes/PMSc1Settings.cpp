@@ -18,9 +18,22 @@ PMSc1Settings::PMSc1Settings() : PMBaseScene("Scene 1")
 
 void PMSc1Settings::setup()
 {
+    //kinect Setup
     PMMotionExtractor::getInstance().setup();
+    
+    //Audio device analyzer
+    const unsigned int unsigint0=0;
+    const unsigned int unsigint1=1;
+    vector<unsigned int> audioChanels;
+    audioChanels.push_back(0);
+    audioChanels.push_back(1);
+    cout<<audioChanels.size()<<endl;
+    PMDeviceAudioAnalyzer *deviceAudioAnalyzer = PMAudioAnalyzer::getInstance().addDeviceAnalyzer(0, 0,
+                                                                                                  2, 0, 44100, 1024, audioChanels);
+    
     string sceneToChange="Scene 2";
     ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+    
     
 }
 

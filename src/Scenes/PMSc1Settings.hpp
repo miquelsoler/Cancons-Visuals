@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "PMBaseScene.hpp"
+#include "PMAudioAnalyzer.hpp"
 
 #include "ofxUI.h"
 
