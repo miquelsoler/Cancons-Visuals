@@ -27,8 +27,24 @@ void PMSc1Settings::setup()
     vector<unsigned int> audioChanels;
     audioChanels.push_back(0);
     audioChanels.push_back(1);
-    cout<<audioChanels.size()<<endl;
-    PMDeviceAudioAnalyzer *deviceAudioAnalyzer = PMAudioAnalyzer::getInstance().addDeviceAnalyzer(0, 0,
+    int soundFlowerID=-1;
+    cout<<"AUDIO DEVICES and STRING COMPARE"<<endl;
+//    vector<ofSoundDevice> devices = PMAudioAnalyzer::getInstance().getInputDevices();
+    ofSoundStream soundStream;
+    vector<ofSoundDevice> devices = soundStream.getDeviceList();
+    
+    for(int i=0; i<devices.size(); i++){
+        string devicename=devices[i].name;
+        bool isSoundflower=devicename.find("Soundflower")!=devicename.npos;
+        bool is2chanel=devicename.find("2ch")!=devicename.npos;
+        cout<<isSoundflower<<is2chanel<<endl;
+        if(devicename.find("Soundflower")!=devicename.npos && devicename.find("2ch")!=devicename.npos){
+            soundFlowerID=i;
+        }
+        
+    }
+    
+    PMDeviceAudioAnalyzer *deviceAudioAnalyzer = PMAudioAnalyzer::getInstance().addDeviceAnalyzer(0, soundFlowerID,
                                                                                                   2, 0, 44100, 1024, audioChanels);
     
     string sceneToChange="Scene 2";
