@@ -163,7 +163,7 @@ void PMDeviceAudioAnalyzer::audioIn(float *input, int bufferSize, int nChannels)
         energyParams.energy = getAbsMean(input, bufferSize);
         ofNotifyEvent(eventEnergyChanged, energyParams, this);
         
-        vector<float> melScaledVector;
+        //melbands
         vector<float> melScaledEnergies;
         float *melFullEnergies = aubioMelBands->energies;
         for(int i=0; i<40; i+=10){
@@ -171,18 +171,14 @@ void PMDeviceAudioAnalyzer::audioIn(float *input, int bufferSize, int nChannels)
             for(int j=i; j<i+10; j++){
                 energySum+=melFullEnergies[j];
             }
-//            melScaledVector.push_back(energySum/10);
             melScaledEnergies.push_back(energySum/10);
         }
-//        float *melScaledEnergies=&melScaledVector[0];
         for (int i=0; i<melScaledEnergies.size(); i++){
             melBandsParams.bandsEnergy.push_back(melScaledEnergies[i]);
         }
         for (int i=0; i<40; i++){
             melBandsParams.fullBandsEnergy.push_back(melFullEnergies[i]);
         }
-//        melBandsParams.bandsEnergy=melScaledEnergies;
-//        melBandsParams.fullBandsEnergy=melBandsEnergies;
         ofNotifyEvent(eventMelBandsChanged, melBandsParams, this);
     }
 
