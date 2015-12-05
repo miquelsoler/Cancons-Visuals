@@ -27,7 +27,7 @@ void PMSc1Settings::setup()
     vector<unsigned int> audioChanels;
     audioChanels.push_back(0);
     audioChanels.push_back(1);
-    int soundFlowerID=-1;
+    int soundFlowerID=0;
     cout<<"AUDIO DEVICES and STRING COMPARE"<<endl;
 //    vector<ofSoundDevice> devices = PMAudioAnalyzer::getInstance().getInputDevices();
     ofSoundStream soundStream;
