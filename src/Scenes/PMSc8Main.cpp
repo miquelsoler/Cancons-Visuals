@@ -118,17 +118,17 @@ void PMSc8Main::update()
 */
 
     
-//    // GUI
-//    {
-//        if (!guiAudioAnalyzerCreated)
-//        {
-//                guiAudioAnalyzer = new PMUICanvasAudioAnalyzer("AAUDIO ANALYZER", OFX_UI_FONT_MEDIUM, 0);
-//                guiAudioAnalyzer->init(5, 5);
-//                guiAudioAnalyzer->setBackgroundColor(ofColor::gray);
-//                guiAudioAnalyzer->setVisible(true);
-//        }
-//        guiAudioAnalyzerCreated = true;
-//    }
+    // GUI
+    {
+        if (!guiAudioAnalyzerCreated)
+        {
+                guiAudioAnalyzer = new PMUICanvasAudioAnalyzer("AUDIO ANALYZER", OFX_UI_FONT_MEDIUM, 0);
+                guiAudioAnalyzer->init(5, 5);
+                guiAudioAnalyzer->setBackgroundColor(ofColor::gray);
+                guiAudioAnalyzer->setVisible(true);
+        }
+        guiAudioAnalyzerCreated = true;
+    }
 
     renderer->update();
 }
@@ -167,7 +167,7 @@ void PMSc8Main::updateEnter()
     string songPath="songs/"+PMSongSelector::getInstance().getFilename();
     songIsStarted=false;
     loadSong(songPath);
-//    playSong();
+    playSong();
     
     PMAudioAnalyzer::getInstance().start();
 }
@@ -229,11 +229,16 @@ void PMSc8Main::keyReleased(int key)
             // TODO: There should be only 1 GUI for all the renderers. Probably need to gmove GUI to scene8.
 //            for (int i=0; i<renderers.size(); ++i)
 //                renderers[i]->showGUI(showGUI);
-            renderer->exportToImage("testImage_"+ofGetTimestampString());
+            guiAudioAnalyzer->setVisible(showGUI);
 
             ofClear(backgroundColor);
 
             break;
+        }
+        case 's':
+        case 'S':
+        {
+            renderer->exportToImage("testImage_"+ofGetTimestampString());
         }
         default: break;
     }
