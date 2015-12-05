@@ -17,7 +17,7 @@ void PMLayer4::update()
 
 void PMLayer4::draw()
 {
-    ofSetColor(ofColor::yellow);
+    ofSetColor(drawColor);
 
     int rectSize = 100;
     int x = fboWidth - rectSize;

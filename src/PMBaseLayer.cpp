@@ -17,11 +17,11 @@ void PMBaseLayer::setup()//ofPoint pos, int _size, float _alpha, float _angle)
 //    size=_size;
 //    alpha=_alpha;
 //    angle=_angle;
-    vector<int> layerToColorMap {2,3,4,5}; //per asignar un pinzell diferent a ordre pinzell 1, a la capa 1.
+    vector<int> layerToColorMap {1,2,3,4}; //per asignar un pinzell diferent a ordre pinzell 1, a la capa 1.
     //FIXME: Definir aquest vector per parametre o potser a la gui
-    brush = PMBrushesSelector::getInstance().getBrush(layerToColorMap[layerID]);
+    brush = PMBrushesSelector::getInstance().getBrush(layerID-1);
     drawColor = PMColorsSelector::getInstance().getColor(layerID);
-    drawColor.setHsb(hsbColor.hue, hsbColor.saturation, hsbColor.brightness);
+    drawColor.getHsb(hsbColor.hue, hsbColor.saturation, hsbColor.brightness);
     
     vector<PMDeviceAudioAnalyzer*> deviceAudioAnalyzers = *PMAudioAnalyzer::getInstance().getAudioAnalyzers();
     PMDeviceAudioAnalyzer* deviceAudioAnalyzer = deviceAudioAnalyzers[0];
@@ -44,7 +44,8 @@ void PMBaseLayer::update()
 
 void PMBaseLayer::draw()
 {
-    ofSetColor(drawColor);
+    ofSetColor(drawColor, alpha);
+    brush->draw();
 }
 
 void PMBaseLayer::setSize(int _size)

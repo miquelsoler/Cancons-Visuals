@@ -42,8 +42,9 @@ void PMLayer1::update()
 
 void PMLayer1::draw()
 {
-    ofSetColor(drawColor);
-    brush->draw();
+    PMBaseLayer::draw();
+//    ofSetColor(drawColor);
+//    brush->draw();
 }
 
 #pragma mark - Audio Events

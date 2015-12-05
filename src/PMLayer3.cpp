@@ -18,7 +18,7 @@ void PMLayer3::update()
 
 void PMLayer3::draw()
 {
-    ofSetColor(ofColor::blue);
+    ofSetColor(drawColor);
 
     int rectSize = 100;
     int x = 0;
