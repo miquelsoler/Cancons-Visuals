@@ -22,3 +22,7 @@ Before building, make sure you've already downloaded these add-ons:
 These add-ons are also needed, but they are already part of openframeworks:
 * [ofxGUI](http://openframeworks.cc/documentation/ofxGui/ofxGui.html)
 * [ofxXmlSettings] (http://openframeworks.cc/documentation/ofxXmlSettings/ofxXmlSettings.html)
+
+Also you need to have soundFlower installed:
+this release works on el capitan:
+* [SouondFlower] (https://github.com/crmne/Soundflower/releases)
