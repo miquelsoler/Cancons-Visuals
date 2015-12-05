@@ -44,7 +44,7 @@ void PMBaseLayer::update()
 
 void PMBaseLayer::draw()
 {
-    ofSetColor(drawColor, alpha);
+    ofSetColor(drawColor, alpha*255);
     brush->draw();
 }
 
