@@ -17,6 +17,8 @@ void PMLayer1::setup()
     size=ofRandom(20, 50);
     alpha=1;
     angle=0;
+    velocity=10;
+    curveSize=1;
 }
 
 
@@ -32,11 +34,16 @@ void PMLayer1::update()
     }
     //direction changes
     ofPoint newdirection=ofPoint(kinectNodeData.x*fboWidth, kinectNodeData.y*fboHeight)-position;
-    direction+=(newdirection.normalize());
+    direction+=((newdirection.normalize())*curveSize);
     direction.normalize();
-    direction+=(kinectNodeData.v.normalize());
-    direction.normalize();
-    position+=(direction*10);
+//    direction+=((kinectNodeData.v.normalize())*(kinectNodeData.a/50));
+//    cout<<kinectNodeData.a/30<<endl;
+//    
+    if(kinectNodeData.a/20>0.5){
+        direction+=(kinectNodeData.v.normalize()*(kinectNodeData.a/2));
+        cout<<kinectNodeData.a/20<<endl;
+    }
+    position+=(direction*velocity);
     brush->update(position.x, position.y);
 }
 

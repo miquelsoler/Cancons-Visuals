@@ -29,7 +29,8 @@ public:
     
 private:
     ofPoint         direction;
-//    ofPoint         velocity;
+    float           velocity;
+    float           curveSize;
 };
 
 
