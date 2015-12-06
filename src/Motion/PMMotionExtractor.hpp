@@ -53,7 +53,8 @@ public:
     void exit();
     KinectInfo* getKinectInfo();
     
-    bool isReady(){return hadUsers;};
+    bool isReady(){return isSomeoneTracked;};
+    bool isTracking(){return hadUsers;}
     
 private:
     ofTrueTypeFont font;

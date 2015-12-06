@@ -13,6 +13,7 @@ void PMLayer1::setup()
 {
     PMBaseLayer::setup();
     position=ofPoint(ofRandom(fboWidth), ofRandom(fboHeight));
+    prevPosition=position;
     direction=ofPoint(0,0);
     size=ofRandom(20, 50);
     alpha=1;
@@ -24,8 +25,9 @@ void PMLayer1::setup()
 
 void PMLayer1::update()
 {
+    prevPosition=position;
     PMBaseLayer::update();
-    if(PMMotionExtractor::getInstance().isReady()){
+    if(PMMotionExtractor::getInstance().isTracking()){
         kinectNodeData=PMMotionExtractor::getInstance().getKinectInfo()->rightHand_joint;
     }else{
         kinectNodeData.x=(float)ofGetMouseX()/ofGetWidth();
@@ -41,17 +43,25 @@ void PMLayer1::update()
 //    
     if(kinectNodeData.a/20>0.5){
         direction+=(kinectNodeData.v.normalize()*(kinectNodeData.a/2));
-        cout<<kinectNodeData.a/20<<endl;
     }
     position+=(direction*velocity);
+    direction.normalize();
     brush->update(position.x, position.y);
 }
 
 void PMLayer1::draw()
 {
     PMBaseLayer::draw();
-//    ofSetColor(drawColor);
-//    brush->draw();
+    if((prevPosition-position).length()>20){
+        while((prevPosition-position).length()>2){
+            prevPosition+=((position-prevPosition).normalize());
+//            cout<<prevPosition<<"-----"<<position<<endl;
+            brush->update(prevPosition.x, prevPosition.y);
+            ofSetColor(drawColor);
+            brush->draw();
+        }
+    }
+
 }
 
 #pragma mark - Audio Events

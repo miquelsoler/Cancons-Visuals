@@ -31,6 +31,7 @@ private:
     ofPoint         direction;
     float           velocity;
     float           curveSize;
+    ofPoint         prevPosition;
 };
 
 
