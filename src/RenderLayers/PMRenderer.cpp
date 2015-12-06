@@ -8,6 +8,7 @@
 #include "PMLayer3.h"
 #include "PMLayer4.h"
 #include "Defaults.h"
+#include "PMColorsSelector.hpp"
 
 
 PMRenderer::PMRenderer()
@@ -34,6 +35,8 @@ void PMRenderer::setup()
         // Often the FBO will contain artifacts from the memory that the graphics card has just allocated for it,
         // so it's good to clear it before starting to draw it
         ofClear(0, 0, 0, 0);
+        ofSetColor(PMColorsSelector::getInstance().getColor(0));
+        ofDrawRectangle(0, 0, FBO_WIDTH, FBO_HEIGHT);
     }
     fbo.end();
     for (int i=0; i<layers.size(); ++i)

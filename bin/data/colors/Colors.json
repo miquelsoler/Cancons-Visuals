@@ -2,19 +2,19 @@
     "Colors" : [
                 {
                 "Name" : "Vasili Kandinsky - Composition VIII (1923)",
-                "1" : "0x573059",
-                "2" : "0xF0B345",
-                "3" : "0xF4DBB1",
+                "1" : "0xF4DBB1",
+                "2" : "0x573059",
+                "3" : "0xF0B345",
                 "4" : "0xBE6148",
                 "5" : "0xBE1605"
                 },
                 {
                 "Name" : "Robert Delaunay - Rythme I (1938)",
-                "1" : "0x04175C",
-                "2" : "0x5C9ADB",
-                "3" : "0xD9D141",
-                "4" : "0xA3841D",
-                "5" : "0xBD2A2A"
+                "1" : "0x9AA5AB",
+                "2" : "0xB82527",
+                "3" : "0xA6861C",
+                "4" : "0x5D9BD9",
+                "5" : "0xCACC43"
                 },
                 {
                 "Name" : "Franz Marc - Blue Horse I (1911)",
@@ -26,11 +26,11 @@
                 },
                 {
                 "Name" : "Umberto Boccioni - La Strada Entra Nella Casa (1911)",
-                "1" : "0x131A59",
-                "2" : "0x6179C1",
-                "3" : "0x6179C1",
-                "4" : "0xC06843",
-                "5" : "0xC06843"
+                "1" : "0xA67998",
+                "2" : "0xC9D6CB",
+                "3" : "0x96A3A8",
+                "4" : "0xE0D3BC",
+                "5" : "0xBFA8B0"
                 },
                 {
                 "Name" : "Salvador Dali - La Persistencia de la Memoria (1931)",
@@ -49,14 +49,6 @@
                 "5" : "0xBF6443"
                 },
                 {
-                "Name" : "Leonardo da Vinci - Mona Lisa (1503-1519)",
-                "1" : "0x0E0104",
-                "2" : "0x8B772f",
-                "3" : "0xF3B63D",
-                "4" : "0x8C4215",
-                "5" : "0x582014"
-                },
-                {
                 "Name" : "Egon Schiele - Sitting Woman with Legs Drawn Up (1917)",
                 "1" : "0xEDDBCC",
                 "2" : "0x4D736E",
@@ -71,6 +63,14 @@
                 "3" : "0x7E91A6",
                 "4" : "0xBDBB80",
                 "5" : "0xBFA628"
+                },
+                {
+                "Name" : "Leonardo da Vinci - Mona Lisa (1503-1519)",
+                "1" : "0x0E0104",
+                "2" : "0x8B772f",
+                "3" : "0xF3B63D",
+                "4" : "0x8C4215",
+                "5" : "0x582014"
                 }
                 ]
 }
