@@ -219,7 +219,7 @@ void PMSc8Main::energyChanged(energyParams &energyParams)
 void PMSc8Main::keyReleased(int key)
 {
     PMBaseScene::keyReleased(key);
-
+    
     switch(key)
     {
         case 'g':
@@ -239,6 +239,7 @@ void PMSc8Main::keyReleased(int key)
         case 'S':
         {
             renderer->exportToImage("testImage_"+ofGetTimestampString());
+            break;
         }
         default: break;
     }
