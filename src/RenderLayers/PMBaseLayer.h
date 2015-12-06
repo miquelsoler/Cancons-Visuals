@@ -26,7 +26,7 @@ public:
     virtual void setup();//ofPoint position=ofPoint(0,0), int size=10, float alpha=1, float angle=0);
     virtual void update();
     virtual void draw();
-    void setSize(int size);
+    void setBrushSize(int brushSize);
     void setPosition(ofPoint pos){position=pos;};
     void setAngle(float _angle){angle=_angle;}
     
@@ -50,7 +50,7 @@ protected:
     ofColorHSB              hsbColor;
     
     ofPoint                 position;
-    int                     size; //size of brush
+    int                     brushSize; //size of brush
     float                   alpha; //value between 0 and 1
     float                   angle; //in radians
     KinectElement           kinectNodeData;

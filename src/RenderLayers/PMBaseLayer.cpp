@@ -48,9 +48,9 @@ void PMBaseLayer::draw()
     brush->draw();
 }
 
-void PMBaseLayer::setSize(int _size)
+void PMBaseLayer::setBrushSize(int _brushSize)
 {
-    size=_size;
-    brush->setSize(size, size);
+    brushSize =_brushSize;
+    brush->setSize(brushSize, brushSize);
 }
 

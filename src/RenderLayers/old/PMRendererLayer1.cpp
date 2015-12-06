@@ -13,7 +13,7 @@
 PMRendererLayer1::PMRendererLayer1(int _layer) : PMBaseRenderer(_layer)
 {
     gui = new PMUICanvasBrushRenderer(UI_RENDERERTYPE_PAINTBRUSH, "BRUSH_RENDERER",OFX_UI_FONT_SMALL);
-    gui->init(layer*150, 500, 200, 300);
+    gui->init(layer*150, 500, false, 200, 300);
 }
 
 void PMRendererLayer1::setup()
@@ -23,7 +23,6 @@ void PMRendererLayer1::setup()
 
 void PMRendererLayer1::update()
 {
-    
     PMBaseRenderer::update();
     drawColor=gui->getBrushColor();
 }

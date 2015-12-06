@@ -15,7 +15,7 @@ void PMLayer1::setup()
     position=ofPoint(ofRandom(fboWidth), ofRandom(fboHeight));
     prevPosition=position;
     direction=ofPoint(0,0);
-    size=ofRandom(20, 50);
+    brushSize =ofRandom(20, 50);
     alpha=1;
     angle=0;
     velocity=10;
