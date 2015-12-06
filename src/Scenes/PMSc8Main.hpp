@@ -34,15 +34,6 @@ public:
     
     void loadSong(string filename);
     void playSong();
-    
-    //AUdio
-    void pitchChanged(pitchParams &pitchParams);
-    void energyChanged(energyParams &energyParams);
-//    void silenceStateChanged(silenceParams &silenceParams);
-//    void pauseStateChanged(pauseParams &pauseParams);
-//    void onsetDetected(onsetParams &onsetParams);
-//    void shtDetected(shtParams &shtParams);
-//    void melodyDirection(melodyDirectionParams &melodyDirectionParams);
 
     void keyReleased(int key);
 
