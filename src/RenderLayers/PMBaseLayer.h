@@ -11,6 +11,21 @@
 #include "PMAudioAnalyzer.hpp"
 #include "PMMotionExtractor.hpp"
 
+const static unsigned int   KINECT_ACCEL_FACTOR = 20;
+const static float          KINECT_ACCEL_THRESHOLD = 0.5f;
+const static unsigned int   BRUSH_MIN_SIZE = 20;
+const static unsigned int   BRUSH_MAX_SIZE = 50;
+const static float          BRUSH_MAX_POSITION_DISTANCE = 20.0f;
+const static float          BRUSH_MIN_POSITION_DISTANCE = 2.0f;
+
+typedef enum
+{
+    KINECTNODE_HEAD         = 0,
+    KINECTNODE_LEFTHAND     = 1,
+    KINECTNODE_RIGHTHAND    = 2,
+    KINECTNODE_TORSO        = 3
+} KinectNodeType;
+
 struct ofColorHSB{
     float hue;
     float saturation;
@@ -21,38 +36,49 @@ class PMBaseLayer
 {
 public:
 
-    PMBaseLayer(int _fboWidth, int _fboHeight);
+    PMBaseLayer(int fboWidth, int fboHeight, KinectNodeType kinectNodeType);
 
-    virtual void setup();//ofPoint position=ofPoint(0,0), int size=10, float alpha=1, float angle=0);
+    virtual void setup();
     virtual void update();
     virtual void draw();
     void setBrushSize(int brushSize);
-    void setPosition(ofPoint pos){position=pos;};
-    void setAngle(float _angle){angle=_angle;}
-    
-    
-    //Audio listeners
-    virtual void pitchChanged(pitchParams &pitchParams){};
-    virtual void energyChanged(energyParams &energyParams){};
-    virtual void silenceStateChanged(silenceParams &silenceParams){};
-    virtual void pauseStateChanged(pauseParams &_auseParams){};
-    virtual void onsetDetected(onsetParams &onsetParams){};
-    virtual void shtDetected(shtParams &shtParams){};
-    virtual void melodyDirection(melodyDirectionParams &melodyDirectionParams){};
-    virtual void melBandsChanged(melBandsParams &melBandsParams){};
+    void setPosition(ofPoint pos) { brushPosition = pos; };
+    void setAngle(float _angle) { angle = _angle; };
+
+    // Audio listeners
+    virtual void pitchChanged(pitchParams &pitchParams) {};
+    virtual void energyChanged(energyParams &energyParams) {};
+    virtual void silenceStateChanged(silenceParams &silenceParams) {};
+    virtual void pauseStateChanged(pauseParams &_auseParams) {};
+    virtual void onsetDetected(onsetParams &onsetParams) {};
+    virtual void shtDetected(shtParams &shtParams) {};
+    virtual void melodyDirection(melodyDirectionParams &melodyDirectionParams) {};
+    virtual void melBandsChanged(melBandsParams &melBandsParams) {};
 
 protected:
 
     int                     layerID;
     int                     fboWidth, fboHeight;
+    KinectNodeType          kinectNodeType;
+
     PMImageContainer        *brush;
-    ofColor                 drawColor;
-    ofColorHSB              hsbColor;
-    
-    ofPoint                 position;
-    int                     brushSize; //size of brush
-    float                   alpha; //value between 0 and 1
-    float                   angle; //in radians
+
+    ofColor                 brushRGBColor;
+    // TODO: Remove if not used
+    ofColorHSB              brushHSBColor;
+    float                   brushAlpha; // value between 0 and 1
+
+    ofPoint                 brushPosition;
+    ofPoint                 brushPrevPosition;
+    int                     brushSize;
+    ofPoint                 brushDirection;
+    float                   brushSpeed;
+
+    float                   curveSize;
+
+    // TODO: Remove if not used
+    float                   angle; // in radians
+
     KinectElement           kinectNodeData;
     
 };

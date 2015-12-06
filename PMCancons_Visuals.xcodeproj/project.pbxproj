@@ -777,10 +777,10 @@
 		21476B94C85C5D0C8BC0E9D2 /* Containers */ = {
 			isa = PBXGroup;
 			children = (
-				21476C1E37787C8906B015C1 /* PMColorContainer.cpp */,
-				214762C7BCE1E381FCB30D83 /* PMColorContainer.hpp */,
 				21476E75A03E8968F9832D0E /* PMSelectorContainer.cpp */,
 				21476BC63BCD689A707005A0 /* PMSelectorContainer.hpp */,
+				21476C1E37787C8906B015C1 /* PMColorContainer.cpp */,
+				214762C7BCE1E381FCB30D83 /* PMColorContainer.hpp */,
 				21476DE613E43772A4AEF416 /* PMTextContainer.cpp */,
 				2147636314B61B018F8999D5 /* PMTextContainer.hpp */,
 			);

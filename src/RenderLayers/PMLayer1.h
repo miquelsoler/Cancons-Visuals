@@ -11,7 +11,7 @@ class PMLayer1 : public PMBaseLayer
 {
 public:
 
-    PMLayer1(int _fboWidth, int _fboHeight);
+    PMLayer1(int fboWidth, int fboHeight, KinectNodeType kinectNodeType);
     
     void setup();
     void update();
@@ -26,12 +26,6 @@ public:
     void shtDetected(shtParams &shtParams) override;
     void melodyDirection(melodyDirectionParams &melodyDirectionParams) override;
     void melBandsChanged(melBandsParams &melBandsParams) override;
-    
-private:
-    ofPoint         direction;
-    float           velocity;
-    float           curveSize;
-    ofPoint         prevPosition;
 };
 
 

@@ -4,24 +4,56 @@
 
 #include "PMLayer3.h"
 
-PMLayer3::PMLayer3(int _fboWidth, int _fboHeight) : PMBaseLayer(_fboWidth, _fboHeight)
+PMLayer3::PMLayer3(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType) : PMBaseLayer(_fboWidth, _fboHeight, _kinectNodeType)
 {
     layerID=3;
+}
+
+void PMLayer3::setup()
+{
+    PMBaseLayer::setup();
 }
 
 void PMLayer3::update()
 {
     PMBaseLayer::update();
-    kinectNodeData=PMMotionExtractor::getInstance().getKinectInfo()->head_joint;
-
 }
 
 void PMLayer3::draw()
 {
-    ofSetColor(drawColor);
+    PMBaseLayer::draw();
+}
 
-    int rectSize = 100;
-    int x = 0;
-    int y = fboHeight - rectSize;
-    ofDrawRectangle(x, y, rectSize, rectSize);
+#pragma mark - Audio Events
+
+void PMLayer3::pitchChanged(pitchParams &pitchParams)
+{
+}
+
+void PMLayer3::energyChanged(energyParams &energyParams)
+{
+}
+
+void PMLayer3::silenceStateChanged(silenceParams &silenceParams)
+{
+}
+
+void PMLayer3::pauseStateChanged(pauseParams &pauseParams)
+{
+}
+
+void PMLayer3::onsetDetected(onsetParams &onsetParams)
+{
+}
+
+void PMLayer3::shtDetected(shtParams &shtParams)
+{
+}
+
+void PMLayer3::melodyDirection(melodyDirectionParams &melodyDirectionParams)
+{
+}
+
+void PMLayer3::melBandsChanged(melBandsParams &melBandsParams)
+{
 }

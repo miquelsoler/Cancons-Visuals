@@ -5,30 +5,40 @@
 #include "PMBaseLayer.h"
 #include "PMColorsSelector.hpp"
 
-PMBaseLayer::PMBaseLayer(int _fboWidth, int _fboHeight)
+PMBaseLayer::PMBaseLayer(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType)
 {
     fboWidth = _fboWidth;
     fboHeight = _fboHeight;
+
+    kinectNodeType = kinectNodeType;
 }
 
-void PMBaseLayer::setup()//ofPoint pos, int _size, float _alpha, float _angle)
+void PMBaseLayer::setup()
 {
-//    position=pos;
-//    size=_size;
-//    alpha=_alpha;
-//    angle=_angle;
-    vector<int> layerToColorMap {1,2,3,4}; //per asignar un pinzell diferent a ordre pinzell 1, a la capa 1.
     //FIXME: Definir aquest vector per parametre o potser a la gui
-    brush = PMBrushesSelector::getInstance().getBrush(layerID-1);
-    drawColor = PMColorsSelector::getInstance().getColor(layerID);
-    drawColor.getHsb(hsbColor.hue, hsbColor.saturation, hsbColor.brightness);
-    
-    vector<PMDeviceAudioAnalyzer*> deviceAudioAnalyzers = *PMAudioAnalyzer::getInstance().getAudioAnalyzers();
-    PMDeviceAudioAnalyzer* deviceAudioAnalyzer = deviceAudioAnalyzers[0];
-    
+    vector<int> layerToColorMap{1, 2, 3, 4}; //per asignar un pinzell diferent a ordre pinzell 1, a la capa 1.
+
+    brush = PMBrushesSelector::getInstance().getBrush(layerID - 1);
+
+    brushPosition = ofPoint(ofRandom(fboWidth), ofRandom(fboHeight));
+    brushPrevPosition = brushPosition;
+    brushDirection = ofPoint(0, 0);
+    brushSize = int(ofRandom(BRUSH_MIN_SIZE, BRUSH_MAX_SIZE));
+
+    brushRGBColor = PMColorsSelector::getInstance().getColor(layerID);
+    brushRGBColor.getHsb(brushHSBColor.hue, brushHSBColor.saturation, brushHSBColor.brightness);
+    brushAlpha = 1;
+
+    angle = 0;
+    brushSpeed = 10;
+    curveSize = 1;
+
+    vector<PMDeviceAudioAnalyzer *> deviceAudioAnalyzers = *PMAudioAnalyzer::getInstance().getAudioAnalyzers();
+    PMDeviceAudioAnalyzer *deviceAudioAnalyzer = deviceAudioAnalyzers[0];
+
+    // TODO: Treure les crides que no s'utilitzin, si n'hi ha.
     ofAddListener(deviceAudioAnalyzer->eventPitchChanged, this, &PMBaseLayer::pitchChanged);
     ofAddListener(deviceAudioAnalyzer->eventEnergyChanged, this, &PMBaseLayer::energyChanged);
-    //
     ofAddListener(deviceAudioAnalyzer->eventSilenceStateChanged, this, &PMBaseLayer::silenceStateChanged);
     ofAddListener(deviceAudioAnalyzer->eventPauseStateChanged, this, &PMBaseLayer::pauseStateChanged);
     ofAddListener(deviceAudioAnalyzer->eventOnsetStateChanged, this, &PMBaseLayer::onsetDetected);
@@ -39,18 +49,70 @@ void PMBaseLayer::setup()//ofPoint pos, int _size, float _alpha, float _angle)
 
 void PMBaseLayer::update()
 {
-    
+    brushPrevPosition = brushPosition;
+
+    if (PMMotionExtractor::getInstance().isTracking())
+    {
+        switch(kinectNodeType)
+        {
+            case KINECTNODE_RIGHTHAND: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand_joint;
+                break;
+            }
+            case KINECTNODE_LEFTHAND: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand_joint;
+                break;
+            }
+            case KINECTNODE_HEAD: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head_joint;
+                break;
+            }
+            case KINECTNODE_TORSO: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso_joint;
+                break;
+            }
+        }
+    }
+    else
+    {
+        kinectNodeData.x = (float) ofGetMouseX() / ofGetWidth();
+        kinectNodeData.y = (float) ofGetMouseY() / ofGetHeight();
+        kinectNodeData.v = ofPoint(0, 0);
+    }
+    //direction changes
+    ofPoint newDirection = ofPoint(kinectNodeData.x * fboWidth, kinectNodeData.y * fboHeight) - brushPosition;
+    brushDirection += ((newDirection.normalize()) * curveSize);
+    brushDirection.normalize();
+//    direction+=((kinectNodeData.v.normalize())*(kinectNodeData.a/50));
+//    cout<<kinectNodeData.a/30<<endl;
+//
+    if (kinectNodeData.a / KINECT_ACCEL_FACTOR > KINECT_ACCEL_THRESHOLD) {
+        brushDirection += (kinectNodeData.v.normalize() * (kinectNodeData.a / 2));
+    }
+    brushPosition += (brushDirection * brushSpeed);
+    brushDirection.normalize();
+    brush->update(int(brushPosition.x), int(brushPosition.y));
 }
 
 void PMBaseLayer::draw()
 {
-    ofSetColor(drawColor, alpha*255);
+    ofSetColor(brushRGBColor, int(brushAlpha * 255));
     brush->draw();
+
+    if ((brushPrevPosition - brushPosition).length() > BRUSH_MAX_POSITION_DISTANCE)
+    {
+        while ((brushPrevPosition - brushPosition).length() > BRUSH_MIN_POSITION_DISTANCE)
+        {
+            brushPrevPosition += ((brushPosition - brushPrevPosition).normalize());
+            brush->update(int(brushPrevPosition.x), int(brushPrevPosition.y));
+            ofSetColor(brushRGBColor);
+            brush->draw();
+        }
+    }
 }
 
 void PMBaseLayer::setBrushSize(int _brushSize)
 {
-    brushSize =_brushSize;
+    brushSize = _brushSize;
     brush->setSize(brushSize, brushSize);
 }
-

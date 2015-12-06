@@ -11,10 +11,21 @@ class PMLayer3 : public PMBaseLayer
 {
 public:
 
-    PMLayer3(int _fboWidth, int _fboHeight);
+    PMLayer3(int fboWidth, int fboHeight, KinectNodeType kinectNodeType);
 
-    virtual void update();
-    virtual void draw();
+    void setup();
+    void update();
+    void draw();
+
+    //Audio listeners
+    void pitchChanged(pitchParams &pitchParams) override;
+    void energyChanged(energyParams &energyParams) override;
+    void silenceStateChanged(silenceParams &silenceParams) override;
+    void pauseStateChanged(pauseParams &_auseParams) override;
+    void onsetDetected(onsetParams &onsetParams) override;
+    void shtDetected(shtParams &shtParams) override;
+    void melodyDirection(melodyDirectionParams &melodyDirectionParams) override;
+    void melBandsChanged(melBandsParams &melBandsParams) override;
 };
 
 
