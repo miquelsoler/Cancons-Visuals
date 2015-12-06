@@ -10,7 +10,7 @@ PMBaseLayer::PMBaseLayer(int _fboWidth, int _fboHeight, KinectNodeType _kinectNo
     fboWidth = _fboWidth;
     fboHeight = _fboHeight;
 
-    kinectNodeType = kinectNodeType;
+    kinectNodeType = _kinectNodeType;
 }
 
 void PMBaseLayer::setup()

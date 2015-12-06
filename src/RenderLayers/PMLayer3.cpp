@@ -6,7 +6,7 @@
 
 PMLayer3::PMLayer3(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType) : PMBaseLayer(_fboWidth, _fboHeight, _kinectNodeType)
 {
-    layerID=3;
+    layerID = 3;
 }
 
 void PMLayer3::setup()

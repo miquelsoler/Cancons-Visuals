@@ -6,7 +6,7 @@
 
 PMLayer4::PMLayer4(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType) : PMBaseLayer(_fboWidth, _fboHeight, _kinectNodeType)
 {
-    layerID=4;
+    layerID = 4;
 }
 
 void PMLayer4::setup()

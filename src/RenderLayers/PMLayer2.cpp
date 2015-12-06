@@ -6,7 +6,7 @@
 
 PMLayer2::PMLayer2(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType) : PMBaseLayer(_fboWidth, _fboHeight, _kinectNodeType)
 {
-    layerID=2;
+    layerID = 2;
 }
 
 void PMLayer2::setup()
