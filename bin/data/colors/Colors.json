@@ -1,31 +1,55 @@
 {
     "Colors" : [
                 {
-                "Name" : "Vasili Kandinsky - Composition VIII",
+                "Name" : "Vasili Kandinsky - Composition VIII (1923)",
                 "1" : "0x573059",
                 "2" : "0xF0B345",
                 "3" : "0xF4DBB1",
                 "4" : "0xBE6148",
-                "5" : "0XBE1605"
+                "5" : "0xBE1605"
                 },
                 {
-                "Name" : "The Persistence Of Memory - Salvador Dali",
-                "1" : "0x7BA1D8",
-                "2" : "0xF5E6BB",
-                "3" : "0xF0BC54",
+                "Name" : "Robert Delaunay - Rythme I (1938)",
+                "1" : "0x04175C",
+                "2" : "0x5C9ADB",
+                "3" : "0xD9D141",
+                "4" : "0xA3841D",
+                "5" : "0xBD2A2A"
+                },
+                {
+                "Name" : "Franz Marc - Blue Horse I (1911)",
+                "1" : "0xA35366",
+                "2" : "0x075CAB",
+                "3" : "0x63913A",
+                "4" : "0xD4A406",
+                "5" : "0x8C2416"
+                },
+                {
+                "Name" : "Umberto Boccioni - La Strada Entra Nella Casa (1911)",
+                "1" : "0x131A59",
+                "2" : "0x6179C1",
+                "3" : "0x6179C1",
+                "4" : "0xC06843",
+                "5" : "0xC06843"
+                },
+                {
+                "Name" : "Salvador Dali - La Persistencia de la Memoria (1931)",
+                "1" : "0x7DA4DB",
+                "2" : "0xD3E0F5",
+                "3" : "0xF2E7BB",
                 "4" : "0xA6593A",
                 "5" : "0xDA573B"
                 },
                 {
-                "Name" : "EdvardMunch - TheScream",
-                "1" : "0x2D3958",
-                "2" : "0xF2BF5C",
-                "3" : "0xBE9864",
-                "4" : "0xD66F30",
-                "5" : "0xA54926"
+                "Name" : "Edvard Munch - The Scream (1893)",
+                "1" : "0x303E59",
+                "2" : "0x313D37",
+                "3" : "0xF2C366",
+                "4" : "0xBF9967",
+                "5" : "0xBF6443"
                 },
                 {
-                "Name" : "Mona Lisa - Leonardo da Vinci",
+                "Name" : "Leonardo da Vinci - Mona Lisa (1503-1519)",
                 "1" : "0x0E0104",
                 "2" : "0x8B772f",
                 "3" : "0xF3B63D",
@@ -33,20 +57,20 @@
                 "5" : "0x582014"
                 },
                 {
-                "Name" : "Sitting Woman with Legs Drawn Up 1917 - Egon Schiele",
-                "1" : "0x3D3741",
-                "2" : "0x538B7F",
-                "3" : "0xD7A06A",
-                "4" : "0xF2E3D1",
-                "5" : "0xC08369"
+                "Name" : "Egon Schiele - Sitting Woman with Legs Drawn Up (1917)",
+                "1" : "0xEDDBCC",
+                "2" : "0x4D736E",
+                "3" : "0x9DC7BF",
+                "4" : "0x5A5A61",
+                "5" : "0xB08256"
                 },
                 {
-                "Name" : "Starry Night - Vincent van Gogh",
-                "1" : "0x31488C",
-                "2" : "0x5578A7",
-                "3" : "0x7C90A7",
-                "4" : "0xBEBA7F",
-                "5" : "0xC2A529"
+                "Name" : "Starry Night - Vincent van Gogh (1889)",
+                "1" : "0x32468C",
+                "2" : "0x5175A8",
+                "3" : "0x7E91A6",
+                "4" : "0xBDBB80",
+                "5" : "0xBFA628"
                 }
                 ]
 }

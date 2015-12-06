@@ -14,7 +14,7 @@ void PMColorsSelector::init(ofTrueTypeFont &font)
     indexChoosed=0;
     
     json.open("colors/Colors.json");
-    for(int i=0; i<6; i++){
+    for(int i=0; json["Colors"][i]["Name"].asString()!=""; i++){
         tempPalette.name=json["Colors"][i]["Name"].asString();
         for(int j=1; j<=5; j++){
             ofColor tempColor=ofColor::fromHex(ofHexToInt(json["Colors"][i][ofToString(j)].asString()));
