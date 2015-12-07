@@ -35,8 +35,10 @@ void PMSc8Main::setup()
 
 void PMSc8Main::update()
 {
-    motionExtractor->update();
-    kinectInfo = motionExtractor->getKinectInfo();
+    if(WITH_KINECT){
+        motionExtractor->update();
+        kinectInfo = motionExtractor->getKinectInfo();
+    }
     if(songIsStarted){
         if (!song.isPlaying()) {
             cout<<"song_has_finished"<<endl;

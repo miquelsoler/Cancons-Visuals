@@ -22,8 +22,8 @@ PMSc1Settings::PMSc1Settings() : PMBaseScene("Scene 1")
 void PMSc1Settings::setup()
 {
     // Kinect Setup
-
-    PMMotionExtractor::getInstance().setup();
+    if(WITH_KINECT)
+        PMMotionExtractor::getInstance().setup();
 
     // Audio Analysis Setup
 

@@ -240,7 +240,7 @@
 		214764970F01A4256BF0C0DE /* PMBaseLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMBaseLayer.cpp; sourceTree = "<group>"; };
 		214764DA0D31043695336E59 /* PMLayer2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLayer2.h; sourceTree = "<group>"; };
 		214765ACAAEC1365109481B8 /* PMBaseRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMBaseRenderer.cpp; sourceTree = "<group>"; };
-		21476714CF0457B4D29CC8C5 /* PMImageContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMImageContainer.hpp; sourceTree = "<group>"; };
+		21476714CF0457B4D29CC8C5 /* PMImageContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PMImageContainer.hpp; path = ../../RenderLayers/PMImageContainer.hpp; sourceTree = "<group>"; };
 		214767A46A9235B8AA4B24DF /* PMRendererLayer1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMRendererLayer1.cpp; sourceTree = "<group>"; };
 		214767E422E94A9AE9721536 /* PMLayer4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLayer4.h; sourceTree = "<group>"; };
 		2147680ABD8A9BA05B6EA4D6 /* PMLayer3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMLayer3.cpp; sourceTree = "<group>"; };
@@ -254,7 +254,7 @@
 		21476BA841173EEF811EA3FA /* PMSettingsManagerLayers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSettingsManagerLayers.h; sourceTree = "<group>"; };
 		21476BC63BCD689A707005A0 /* PMSelectorContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSelectorContainer.hpp; sourceTree = "<group>"; };
 		21476C1E37787C8906B015C1 /* PMColorContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMColorContainer.cpp; sourceTree = "<group>"; };
-		21476D1FA71EE7CAB06CF093 /* PMImageContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMImageContainer.cpp; sourceTree = "<group>"; };
+		21476D1FA71EE7CAB06CF093 /* PMImageContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PMImageContainer.cpp; path = ../../RenderLayers/PMImageContainer.cpp; sourceTree = "<group>"; };
 		21476DE613E43772A4AEF416 /* PMTextContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMTextContainer.cpp; sourceTree = "<group>"; };
 		21476E75A03E8968F9832D0E /* PMSelectorContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSelectorContainer.cpp; sourceTree = "<group>"; };
 		21476E8F16520B449A574C13 /* PMLayer1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLayer1.h; sourceTree = "<group>"; };
@@ -782,8 +782,6 @@
 				21476B6CC398D74C52A27521 /* PMLayer3.h */,
 				21476FFF0EC4120B739D2565 /* PMLayer4.cpp */,
 				214767E422E94A9AE9721536 /* PMLayer4.h */,
-				21476D1FA71EE7CAB06CF093 /* PMImageContainer.cpp */,
-				21476714CF0457B4D29CC8C5 /* PMImageContainer.hpp */,
 				9F6E59C51C1572DB005B1C21 /* PMComplexPaintbrush.cpp */,
 				9F6E59C61C1572DB005B1C21 /* PMComplexPaintbrush.hpp */,
 				2147652784E81E069125A76F /* old */,
@@ -794,6 +792,8 @@
 		21476B94C85C5D0C8BC0E9D2 /* Containers */ = {
 			isa = PBXGroup;
 			children = (
+				21476D1FA71EE7CAB06CF093 /* PMImageContainer.cpp */,
+				21476714CF0457B4D29CC8C5 /* PMImageContainer.hpp */,
 				21476E75A03E8968F9832D0E /* PMSelectorContainer.cpp */,
 				21476BC63BCD689A707005A0 /* PMSelectorContainer.hpp */,
 				21476C1E37787C8906B015C1 /* PMColorContainer.cpp */,
@@ -2176,7 +2176,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxAudioAnalyzer-PM/libs/essentia/include/";
 				WRAPPER_EXTENSION = app;
-				baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
 			};
 			name = Release;
 		};

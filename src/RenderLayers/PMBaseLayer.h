@@ -10,6 +10,7 @@
 #include "PMMotionExtractor.hpp"
 #include "PMAudioAnalyzer.hpp"
 #include "PMMotionExtractor.hpp"
+#include "Defaults.h"
 
 const static unsigned int   KINECT_ACCEL_FACTOR = 20;
 const static float          KINECT_ACCEL_THRESHOLD = 0.5f;

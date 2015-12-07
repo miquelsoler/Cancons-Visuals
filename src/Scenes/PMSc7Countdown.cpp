@@ -37,7 +37,9 @@ void PMSc7Countdown::updateEnter()
 
 void PMSc7Countdown::update()
 {
-    PMMotionExtractor::getInstance().update();
+    if(WITH_KINECT)
+        PMMotionExtractor::getInstance().update();
+    
 //    cout<<(int)countdown.getDiff()/1000<<endl;
     if(countdown.alarm()){
         string toScene="Scene 8";

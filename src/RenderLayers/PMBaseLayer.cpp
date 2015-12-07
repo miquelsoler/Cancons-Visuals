@@ -22,35 +22,35 @@ void PMBaseLayer::setup()
     brush = PMBrushesSelector::getInstance().getBrush(layerID - 1);
     
     
-    if(PMMotionExtractor::getInstance().isReady()){
-    switch(kinectNodeType)
-    {
-        case KINECTNODE_RIGHTHAND: {
-            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand_joint;
-            break;
+    if(WITH_KINECT){
+        switch(kinectNodeType)
+        {
+            case KINECTNODE_RIGHTHAND: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand_joint;
+                break;
+            }
+            case KINECTNODE_LEFTHAND: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand_joint;
+                break;
+            }
+            case KINECTNODE_HEAD: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head_joint;
+                break;
+            }
+            case KINECTNODE_TORSO: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso_joint;
+                break;
+            }
         }
-        case KINECTNODE_LEFTHAND: {
-            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand_joint;
-            break;
-        }
-        case KINECTNODE_HEAD: {
-            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head_joint;
-            break;
-        }
-        case KINECTNODE_TORSO: {
-            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso_joint;
-            break;
-        }
-    }
-    nodeInitialZ=kinectNodeData.z;
-    brushPosition = ofPoint(kinectNodeData.x*fboWidth, kinectNodeData.y*fboHeight);
+        nodeInitialZ=kinectNodeData.z;
+        brushPosition = ofPoint(kinectNodeData.x*fboWidth, kinectNodeData.y*fboHeight);
     }else{
         brushPosition = ofPoint(ofRandom(fboWidth), ofRandom(fboHeight));
         nodeInitialZ=0;
     }
     
     brushPrevPosition = brushPosition;
-    brushDirection = ofPoint(0, 0);
+    brushDirection = ofPoint(ofRandom(-1, 1), ofRandom(-1, 1)).normalize();
 //    brushSize = int(ofRandom(BRUSH_MIN_SIZE, BRUSH_MAX_SIZE));
 //    brush->setSize(brushSize, brushSize);
     setBrushSize(int(ofRandom(BRUSH_MIN_SIZE, BRUSH_MAX_SIZE)));
@@ -96,7 +96,7 @@ void PMBaseLayer::update()
     
     brushPrevPosition = brushPosition;
 
-    if (PMMotionExtractor::getInstance().isTracking())
+    if (PMMotionExtractor::getInstance().isTracking() && WITH_KINECT)
     {
         switch(kinectNodeType)
         {
@@ -118,15 +118,16 @@ void PMBaseLayer::update()
             }
         }
     }
-    else if(!PMMotionExtractor::getInstance().isReady())
-    {
+    else if(!WITH_KINECT){
         kinectNodeData.x = (float) ofGetMouseX() / ofGetWidth();
         kinectNodeData.y = (float) ofGetMouseY() / ofGetHeight();
         kinectNodeData.v = ofPoint(0, 0);
     }
     //direction changes
-    ofPoint newDirection = ofPoint(kinectNodeData.x * fboWidth, kinectNodeData.y * fboHeight) - brushPosition;
-    brushDirection += ((newDirection.normalize()) * curveSize);
+    if(WITH_KINECT){
+        ofPoint newDirection = ofPoint(kinectNodeData.x * fboWidth, kinectNodeData.y * fboHeight) - brushPosition;
+        brushDirection += ((newDirection.normalize()) * curveSize);
+    }
     brushDirection.normalize();
 //    direction+=((kinectNodeData.v.normalize())*(kinectNodeData.a/50));
 //    cout<<kinectNodeData.a/30<<endl;
