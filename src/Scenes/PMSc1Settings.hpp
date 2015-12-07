@@ -33,13 +33,11 @@ public:
     void updateExit(){PMBaseScene::updateExit();};
     
     void setupGUI_SONG();
-    
-    
-
-
-protected:
 
 private:
+
     ofxUISuperCanvas *gui_song;
     ofxUIDropDownList *ddl;
+
+    int findSoundflowerDeviceIndex();
 };

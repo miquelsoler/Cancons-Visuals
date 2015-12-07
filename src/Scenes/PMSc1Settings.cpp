@@ -9,6 +9,9 @@
 #include "PMSc1Settings.hpp"
 #include "PMMotionExtractor.hpp"
 
+static const int AUDIO_SAMPLERATE = 44100;
+static const int AUDIO_BUFFERSIZE = 1024;
+
 PMSc1Settings::PMSc1Settings() : PMBaseScene("Scene 1")
 {
     ofBackground(150);
@@ -18,39 +21,29 @@ PMSc1Settings::PMSc1Settings() : PMBaseScene("Scene 1")
 
 void PMSc1Settings::setup()
 {
-    //kinect Setup
+    // Kinect Setup
+
     PMMotionExtractor::getInstance().setup();
     
-    //Audio device analyzer
-    const unsigned int unsigint0=0;
-    const unsigned int unsigint1=1;
-    vector<unsigned int> audioChanels;
-    audioChanels.push_back(0);
-    audioChanels.push_back(1);
-    int soundFlowerID=0;
-    cout<<"AUDIO DEVICES and STRING COMPARE"<<endl;
-//    vector<ofSoundDevice> devices = PMAudioAnalyzer::getInstance().getInputDevices();
-    ofSoundStream soundStream;
-    vector<ofSoundDevice> devices = soundStream.getDeviceList();
-    
-    for(int i=0; i<devices.size(); i++){
-        string devicename=devices[i].name;
-        bool isSoundflower=devicename.find("Soundflower")!=devicename.npos;
-        bool is2chanel=devicename.find("2ch")!=devicename.npos;
-        cout<<isSoundflower<<is2chanel<<endl;
-        if(devicename.find("Soundflower")!=devicename.npos && devicename.find("2ch")!=devicename.npos){
-            soundFlowerID=devices[i].deviceID;
-        }
-        
-    }
-    
-    PMDeviceAudioAnalyzer *deviceAudioAnalyzer = PMAudioAnalyzer::getInstance().addDeviceAnalyzer(0, soundFlowerID,
-                                                                                                  2, 0, 44100, 1024, audioChanels);
+    // Audio Analysis Setup
+
+    int iDev = findSoundflowerDeviceIndex();
+    if (iDev == -1) exit();
+
+    vector<ofSoundDevice> devices = PMAudioAnalyzer::getInstance().getInputDevices();
+
+    unsigned int audioInputIndex = (unsigned int)iDev;
+    vector<unsigned int> usedChannels;
+    for (int i=0; i<devices.size(); ++i)
+        usedChannels.push_back(i);
+
+    PMAudioAnalyzer::getInstance().addDeviceAnalyzer(audioInputIndex, devices[iDev].deviceID,
+            devices[iDev].inputChannels, devices[iDev].outputChannels,
+            AUDIO_SAMPLERATE, AUDIO_BUFFERSIZE,
+            usedChannels);
     
     string sceneToChange="Scene 2";
     ofNotifyEvent(goToSceneEvent, sceneToChange, this);
-    
-    
 }
 
 void PMSc1Settings::setupGUI_SONG(){
@@ -84,3 +77,20 @@ void PMSc1Settings::guiEvent(ofxUIEventArgs &e)
     
 }
 
+int PMSc1Settings::findSoundflowerDeviceIndex()
+{
+    int deviceIndex = -1;
+
+    vector<ofSoundDevice> devices = PMAudioAnalyzer::getInstance().getInputDevices();
+    bool found = false;
+
+    for (unsigned int i=0; i<devices.size() && !found; ++i)
+    {
+        string deviceName = devices[i].name;
+        found = (ofIsStringInString(deviceName, "Soundflower")) && (devices[i].inputChannels == 2);
+
+        if (found) deviceIndex = i;
+    }
+
+    return deviceIndex;
+}
