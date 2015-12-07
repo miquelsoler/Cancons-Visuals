@@ -96,7 +96,7 @@ void PMBaseLayer::update()
     
     brushPrevPosition = brushPosition;
 
-    if (PMMotionExtractor::getInstance().isReady())
+    if (PMMotionExtractor::getInstance().isTracking())
     {
         switch(kinectNodeType)
         {
@@ -118,7 +118,7 @@ void PMBaseLayer::update()
             }
         }
     }
-    else
+    else if(!PMMotionExtractor::getInstance().isReady())
     {
         kinectNodeData.x = (float) ofGetMouseX() / ofGetWidth();
         kinectNodeData.y = (float) ofGetMouseY() / ofGetHeight();
