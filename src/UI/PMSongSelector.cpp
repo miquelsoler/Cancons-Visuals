@@ -70,10 +70,10 @@ void PMSongSelector::draw()
 void PMSongSelector::checkMousePassed(int x, int y)
 {
     for(int i=0; i<songNamesBox.size(); i++){
-        int x1=songNamesBox[i].getX()-songNamesBox[i].getWidth();
-        int x2=songNamesBox[i].getX()+songNamesBox[i].getWidth();
-        int y1=songNamesBox[i].getY()-songNamesBox[i].getHeight();
-        int y2=songNamesBox[i].getY()+songNamesBox[i].getHeight();
+        int x1=songNamesBox[i].getX()-songNamesBox[i].getWidth()/2;
+        int x2=songNamesBox[i].getX()+songNamesBox[i].getWidth()/2;
+        int y1=songNamesBox[i].getY()-songNamesBox[i].getHeight()/2;
+        int y2=songNamesBox[i].getY()+songNamesBox[i].getHeight()/2;
         if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
             if(!selectedText[i]){
                 timers[i].set();
@@ -88,10 +88,10 @@ void PMSongSelector::checkMousePassed(int x, int y)
 bool PMSongSelector::checkMousePressed(int x, int y)
 {
     for(int i=0; i<songNamesBox.size(); i++){
-        int x1=songNamesBox[i].getX()-songNamesBox[i].getWidth();
-        int x2=songNamesBox[i].getX()+songNamesBox[i].getWidth();
-        int y1=songNamesBox[i].getY()-songNamesBox[i].getHeight();
-        int y2=songNamesBox[i].getY()+songNamesBox[i].getHeight();
+        int x1=songNamesBox[i].getX()-songNamesBox[i].getWidth()/2;
+        int x2=songNamesBox[i].getX()+songNamesBox[i].getWidth()/2;
+        int y1=songNamesBox[i].getY()-songNamesBox[i].getHeight()/2;
+        int y2=songNamesBox[i].getY()+songNamesBox[i].getHeight()/2;
         if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
             indexChoosed=i;
             return true;

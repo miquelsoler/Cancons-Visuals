@@ -8,6 +8,9 @@
 
 #include "PMColorsSelector.hpp"
 
+
+static const int NUM_ERASED_COLORS = 2; //for debuging purposes
+
 void PMColorsSelector::init(ofTrueTypeFont &font)
 {
     
@@ -24,7 +27,7 @@ void PMColorsSelector::init(ofTrueTypeFont &font)
         tempPalette.colors.clear();
     }
     
-    int rows=colorPalettes.size()-2;
+    int rows=colorPalettes.size()-NUM_ERASED_COLORS;
     int columns=colorPalettes[0].colors.size();
     int x,y;
     int width,height;
@@ -79,14 +82,12 @@ void PMColorsSelector::draw()
 void PMColorsSelector::checkMousePassed(int x, int y)
 {
     for(int i=0; i<rectSelector.size(); i++){
-        int x1=rectSelector[i].getX()-rectSelector[i].getWidth();
-        int x2=rectSelector[i].getX()+rectSelector[i].getWidth();
-        int y1=rectSelector[i].getY()-rectSelector[i].getHeight();
-        int y2=rectSelector[i].getY()+rectSelector[i].getHeight();
+        int x1=rectSelector[i].getX()-rectSelector[i].getWidth()/2;
+        int x2=rectSelector[i].getX()+rectSelector[i].getWidth()/2;
+        int y1=rectSelector[i].getY()-rectSelector[i].getHeight()/2;
+        int y2=rectSelector[i].getY()+rectSelector[i].getHeight()/2;
         if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
-            //rectSelector[i].setFont(*boldFont);
         }else{
-            //rectSelector[i].setFont(*font);
         }
     }
 }
@@ -94,10 +95,10 @@ void PMColorsSelector::checkMousePassed(int x, int y)
 bool PMColorsSelector::checkMousePressed(int x, int y)
 {
     for(int i=0; i<rectSelector.size(); i++){
-        int x1=rectSelector[i].getX()-rectSelector[i].getWidth();
-        int x2=rectSelector[i].getX()+rectSelector[i].getWidth();
-        int y1=rectSelector[i].getY()-rectSelector[i].getHeight();
-        int y2=rectSelector[i].getY()+rectSelector[i].getHeight();
+        int x1=rectSelector[i].getX()-rectSelector[i].getWidth()/2;
+        int x2=rectSelector[i].getX()+rectSelector[i].getWidth()/2;
+        int y1=rectSelector[i].getY()-rectSelector[i].getHeight()/2;
+        int y2=rectSelector[i].getY()+rectSelector[i].getHeight()/2;
         if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
             indexChoosed=i;
             return true;

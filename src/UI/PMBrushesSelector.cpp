@@ -94,12 +94,12 @@ void PMBrushesSelector::draw()
 void PMBrushesSelector::checkMousePassed(int x, int y)
 {
     for(int i=0; i<rectSelector.size(); i++){
-        int x1=rectSelector[i].getX()-rectSelector[i].getWidth();
-        int x2=rectSelector[i].getX()+rectSelector[i].getWidth();
-        int y1=rectSelector[i].getY()-rectSelector[i].getHeight();
-        int y2=rectSelector[i].getY()+rectSelector[i].getHeight();
+        int x1=rectSelector[i].getX()-rectSelector[i].getWidth()/2;
+        int x2=rectSelector[i].getX()+rectSelector[i].getWidth()/2;
+        int y1=rectSelector[i].getY()-rectSelector[i].getHeight()/2;
+        int y2=rectSelector[i].getY()+rectSelector[i].getHeight()/2;
         if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
-            //rectSelector[i].setFont(*boldFont);
+//            cout<<"index choosed: "<<i<<"----"<<ofGetTimestampString()<<endl;
         }else{
             //rectSelector[i].setFont(*font);
         }
@@ -109,10 +109,10 @@ void PMBrushesSelector::checkMousePassed(int x, int y)
 bool PMBrushesSelector::checkMousePressed(int x, int y)
 {
     for(int i=0; i<rectSelector.size(); i++){
-        int x1=rectSelector[i].getX()-rectSelector[i].getWidth();
-        int x2=rectSelector[i].getX()+rectSelector[i].getWidth();
-        int y1=rectSelector[i].getY()-rectSelector[i].getHeight();
-        int y2=rectSelector[i].getY()+rectSelector[i].getHeight();
+        int x1=rectSelector[i].getX()-rectSelector[i].getWidth()/2;
+        int x2=rectSelector[i].getX()+rectSelector[i].getWidth()/2;
+        int y1=rectSelector[i].getY()-rectSelector[i].getHeight()/2;
+        int y2=rectSelector[i].getY()+rectSelector[i].getHeight()/2;
         if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
             indexChoosed=i;
             return true;
