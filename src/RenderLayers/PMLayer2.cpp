@@ -18,7 +18,7 @@ void PMLayer2::setup()
 void PMLayer2::update()
 {
     PMBaseLayer::update();
-    setBrushSize(int((((nodeInitialZ-kinectNodeData.z)*Z_SIZE_FACTOR)+Z_SIZE_OFFSET)*BRUSH_MAX_SIZE));
+//    setBrushSize(int((((nodeInitialZ-kinectNodeData.z)*Z_SIZE_FACTOR)+Z_SIZE_OFFSET)*BRUSH_MAX_SIZE));
 }
 
 void PMLayer2::draw()
