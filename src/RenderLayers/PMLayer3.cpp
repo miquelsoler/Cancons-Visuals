@@ -34,8 +34,7 @@ void PMLayer3::pitchChanged(pitchParams &pitchParams)
 void PMLayer3::energyChanged(energyParams &energyParams)
 {
     int newbrushSize =(energyParams.energy+0.05)*BRUSH_MAX_SIZE*20;
-    brush->setSize(newbrushSize, newbrushSize);
-//    cout<<newbrushSize<<endl;
+    setBrushSize(int((((nodeInitialZ-kinectNodeData.z)*Z_SIZE_FACTOR)+Z_SIZE_OFFSET)*BRUSH_MAX_SIZE));
 }
 
 void PMLayer3::silenceStateChanged(silenceParams &silenceParams)

@@ -91,7 +91,7 @@ void PMSc8Main::updateExit()
 
 void PMSc8Main::loadSong(string filename){
     song.load(filename);
-    song.setVolume(0.75f);
+//    song.setVolume(0.75f);
     song.setMultiPlay(false);
 }
 

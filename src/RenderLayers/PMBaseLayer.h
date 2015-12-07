@@ -71,6 +71,7 @@ protected:
     int                     brushSize;
     ofPoint                 brushDirection;
     float                   brushSpeed;
+    float                   nodeInitialZ; //holds de first position found of the node
 
     float                   curveSize;
 
