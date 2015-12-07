@@ -10,7 +10,7 @@
 #include "PMMotionExtractor.hpp"
 #include "Defaults.h"
 
-#define ENABLE_SOUNDFLOWER false
+#define ENABLE_SOUNDFLOWER true
 
 PMSc1Settings::PMSc1Settings() : PMBaseScene("Scene 1")
 {
@@ -37,7 +37,8 @@ void PMSc1Settings::setup()
 
     vector<ofSoundDevice> devices = PMAudioAnalyzer::getInstance().getInputDevices();
 
-    unsigned int audioInputIndex = (unsigned int)iDev;
+//    unsigned int audioInputIndex = (unsigned int)iDev;
+    unsigned int audioInputIndex = 0;
     vector<unsigned int> enabledChannelNumbers;
     for (unsigned int i=0; i<devices[iDev].inputChannels; ++i)
         enabledChannelNumbers.push_back(i);

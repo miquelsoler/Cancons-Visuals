@@ -12,7 +12,6 @@ PMLayer3::PMLayer3(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType
 void PMLayer3::setup()
 {
     PMBaseLayer::setup();
-    energyScaleFactor = 10.0f;
 }
 
 void PMLayer3::update()
@@ -33,9 +32,6 @@ void PMLayer3::pitchChanged(pitchParams &pitchParams)
 
 void PMLayer3::energyChanged(energyParams &energyParams)
 {
-    int newbrushSize =(energyParams.energy+0.05)*BRUSH_MAX_SIZE*20;
-    brush->setSize(newbrushSize, newbrushSize);
-//    cout<<newbrushSize<<endl;
 }
 
 void PMLayer3::silenceStateChanged(silenceParams &silenceParams)
@@ -60,4 +56,9 @@ void PMLayer3::melodyDirection(melodyDirectionParams &melodyDirectionParams)
 
 void PMLayer3::melBandsChanged(melBandsParams &melBandsParams)
 {
+    float myEnergy = melBandsParams.bandsEnergy[3];
+    int newSize = int(ofMap(myEnergy, 0.0, bandMaxEnergy, brushMinSize, brushMaxSize, true));
+    brush->setSize(newSize, newSize);
+
+//    cout << "Brush Size L3> En:" << myEnergy << " Size: " << newSize << endl;
 }

@@ -12,7 +12,6 @@ PMLayer4::PMLayer4(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType
 void PMLayer4::setup()
 {
     PMBaseLayer::setup();
-    energyScaleFactor = 1000.0f;
 }
 
 void PMLayer4::update()
@@ -33,8 +32,6 @@ void PMLayer4::pitchChanged(pitchParams &pitchParams)
 
 void PMLayer4::energyChanged(energyParams &energyParams)
 {
-    brushHSBColor.brightness = energyParams.energy * energyScaleFactor;
-    brushRGBColor.setHsb(brushHSBColor.hue, brushHSBColor.saturation, brushHSBColor.brightness);
 }
 
 void PMLayer4::silenceStateChanged(silenceParams &silenceParams)
@@ -59,4 +56,9 @@ void PMLayer4::melodyDirection(melodyDirectionParams &melodyDirectionParams)
 
 void PMLayer4::melBandsChanged(melBandsParams &melBandsParams)
 {
+    float myEnergy = melBandsParams.bandsEnergy[0];
+    brushHSBColor.brightness = ofMap(myEnergy, 0.0, bandMaxEnergy, brushMinBrightness, brushMaxBrightness, true);
+    brushRGBColor.setHsb(brushHSBColor.hue, brushHSBColor.saturation, brushHSBColor.brightness);
+
+//    cout << "Brush Brightness L4> En:" << myEnergy << " Brightness: " << brushHSBColor.brightness << endl;
 }

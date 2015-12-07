@@ -4,6 +4,7 @@
 
 #include "PMBaseLayer.h"
 #include "PMColorsSelector.hpp"
+#include "PMSettingsManagerLayers.h"
 
 PMBaseLayer::PMBaseLayer(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType)
 {
@@ -55,6 +56,19 @@ void PMBaseLayer::setup()
 
     vector<PMDeviceAudioAnalyzer *> deviceAudioAnalyzers = *PMAudioAnalyzer::getInstance().getAudioAnalyzers();
     PMDeviceAudioAnalyzer *deviceAudioAnalyzer = deviceAudioAnalyzers[0];
+
+    // Mapping values initialization
+    {
+        PMSettingsManagerLayers settings = PMSettingsManagerLayers::getInstance();
+
+        bandMaxEnergy = settings.getBandMaxEnergy(layerID);
+        brushMinAlpha = settings.getMinAlpha(layerID);
+        brushMaxAlpha = settings.getMaxAlpha(layerID);
+        brushMinSize = settings.getMinSize(layerID);
+        brushMaxSize = settings.getMaxSize(layerID);
+        brushMinBrightness = settings.getMinBrightness(layerID);
+        brushMaxBrightness = settings.getMaxBrightness(layerID);
+    }
 
     // TODO: Treure les crides que no s'utilitzin, si n'hi ha.
     ofAddListener(deviceAudioAnalyzer->eventPitchChanged, this, &PMBaseLayer::pitchChanged);
@@ -139,5 +153,3 @@ void PMBaseLayer::setBrushSize(int _brushSize)
     brushSize = _brushSize;
     brush->setSize(brushSize, brushSize);
 }
-
-

@@ -27,6 +27,7 @@
 		214768D5E2539C90F8602AFB /* PMLayer1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21476B7C8BA4CC9C9BA84378 /* PMLayer1.cpp */; };
 		2147697F2BEA771A1073C1AD /* PMLayer4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21476FFF0EC4120B739D2565 /* PMLayer4.cpp */; };
 		21476B8C49410E0E5E67BD86 /* PMLayer3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2147680ABD8A9BA05B6EA4D6 /* PMLayer3.cpp */; };
+		21476BA8DB0296885F6B9ED6 /* PMSettingsManagerLayers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214763390AC4C5EB65B57047 /* PMSettingsManagerLayers.cpp */; };
 		21476EBD9373E3A5083CF6D2 /* PMSongSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21476263D53F92017E22A030 /* PMSongSelector.cpp */; };
 		22030CBDCC25D815E7ED6757 /* ofxUIFPSSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E592342D8B7FB73A6F64D /* ofxUIFPSSlider.cpp */; };
 		222C3AB10FA3158602718602 /* ofxUIMultiImageButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17E06821FB98542FDB806E50 /* ofxUIMultiImageButton.cpp */; };
@@ -234,6 +235,7 @@
 		21476263D53F92017E22A030 /* PMSongSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSongSelector.cpp; sourceTree = "<group>"; };
 		214762C7BCE1E381FCB30D83 /* PMColorContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMColorContainer.hpp; sourceTree = "<group>"; };
 		21476337440331A0E92ED98C /* PMBaseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMBaseLayer.h; sourceTree = "<group>"; };
+		214763390AC4C5EB65B57047 /* PMSettingsManagerLayers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSettingsManagerLayers.cpp; sourceTree = "<group>"; };
 		2147636314B61B018F8999D5 /* PMTextContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMTextContainer.hpp; sourceTree = "<group>"; };
 		214764970F01A4256BF0C0DE /* PMBaseLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMBaseLayer.cpp; sourceTree = "<group>"; };
 		214764DA0D31043695336E59 /* PMLayer2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLayer2.h; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 		21476B6CC398D74C52A27521 /* PMLayer3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLayer3.h; sourceTree = "<group>"; };
 		21476B7C8BA4CC9C9BA84378 /* PMLayer1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMLayer1.cpp; sourceTree = "<group>"; };
 		21476BA1FA911871380CCF28 /* PMBaseRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMBaseRenderer.hpp; sourceTree = "<group>"; };
+		21476BA841173EEF811EA3FA /* PMSettingsManagerLayers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSettingsManagerLayers.h; sourceTree = "<group>"; };
 		21476BC63BCD689A707005A0 /* PMSelectorContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSelectorContainer.hpp; sourceTree = "<group>"; };
 		21476C1E37787C8906B015C1 /* PMColorContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMColorContainer.cpp; sourceTree = "<group>"; };
 		21476D1FA71EE7CAB06CF093 /* PMImageContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMImageContainer.cpp; sourceTree = "<group>"; };
@@ -726,6 +729,15 @@
 				6E54289412D2D94F45A05113 /* libs */,
 			);
 			name = ofxXmlSettings;
+			sourceTree = "<group>";
+		};
+		2147637AC0FBF34FFB9A686B /* LayerMappings */ = {
+			isa = PBXGroup;
+			children = (
+				214763390AC4C5EB65B57047 /* PMSettingsManagerLayers.cpp */,
+				21476BA841173EEF811EA3FA /* PMSettingsManagerLayers.h */,
+			);
+			path = LayerMappings;
 			sourceTree = "<group>";
 		};
 		2147641F6DC3284FDC40DD57 /* UI */ = {
@@ -1319,6 +1331,7 @@
 				9F8BC66C1C0F64CF008CD29E /* AudioAnalyzer */,
 				9F8BC66F1C0F64CF008CD29E /* AudioDevices */,
 				9F8BC67E1C0F64CF008CD29E /* Renderer */,
+				2147637AC0FBF34FFB9A686B /* LayerMappings */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1884,6 +1897,7 @@
 				214765DAF920126D50835BCA /* PMColorContainer.cpp in Sources */,
 				214764BE9BEE53C4E04AB48C /* PMSelectorContainer.cpp in Sources */,
 				214766AD2C93A732338F4AD8 /* PMTextContainer.cpp in Sources */,
+				21476BA8DB0296885F6B9ED6 /* PMSettingsManagerLayers.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,6 @@ PMLayer2::PMLayer2(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType
 void PMLayer2::setup()
 {
     PMBaseLayer::setup();
-    energyScaleFactor = 10.0f;
 }
 
 void PMLayer2::update()
@@ -35,7 +34,6 @@ void PMLayer2::pitchChanged(pitchParams &pitchParams)
 
 void PMLayer2::energyChanged(energyParams &energyParams)
 {
-    brushAlpha = energyParams.energy * energyScaleFactor;
 }
 
 void PMLayer2::silenceStateChanged(silenceParams &silenceParams)
@@ -60,4 +58,8 @@ void PMLayer2::melodyDirection(melodyDirectionParams &melodyDirectionParams)
 
 void PMLayer2::melBandsChanged(melBandsParams &melBandsParams)
 {
+    float myEnergy = melBandsParams.bandsEnergy[2];
+    brushAlpha = ofMap(myEnergy, 0.0, bandMaxEnergy, brushMinAlpha, brushMaxAlpha, true);
+
+//    cout << "Brush Alpha L2> En:" << myEnergy << " Alpha: " << brushAlpha << endl;
 }

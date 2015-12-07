@@ -75,7 +75,13 @@ protected:
     float                   curveSize;
 
     // Audio to render mappings
-    float                   energyScaleFactor;
+    float                   bandMaxEnergy;
+    float                   brushMinAlpha;
+    float                   brushMaxAlpha;
+    float                   brushMinSize;
+    float                   brushMaxSize;
+    float                   brushMinBrightness;
+    float                   brushMaxBrightness;
 
     KinectElement           kinectNodeData;
     
