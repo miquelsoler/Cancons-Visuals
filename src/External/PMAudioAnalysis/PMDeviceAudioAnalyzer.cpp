@@ -169,9 +169,9 @@ void PMDeviceAudioAnalyzer::audioIn(float *input, int bufferSize, int nChannels)
         for(int i=0; i<40; i+=10){
             float energySum=0;
             for(int j=i; j<i+10; j++){
-                energySum+=melFullEnergies[j];
+                energySum=max(energySum,melFullEnergies[j]);
             }
-            melScaledEnergies.push_back(energySum/10);
+            melScaledEnergies.push_back(energySum);
         }
         for (int i=0; i<melScaledEnergies.size(); i++){
             melBandsParams.bandsEnergy.push_back(melScaledEnergies[i]);
