@@ -51,7 +51,8 @@ void PMSc8Main::update()
     {
         if (!guiAudioAnalyzerCreated)
         {
-                guiAudioAnalyzer = new PMUICanvasAudioAnalyzer("AUDIO ANALYZER", OFX_UI_FONT_MEDIUM, 0);
+            int audioInputIndex = 0;
+                guiAudioAnalyzer = new PMUICanvasAudioAnalyzer("AUDIO ANALYZER", OFX_UI_FONT_MEDIUM, audioInputIndex);
                 guiAudioAnalyzer->init(5, 5);
                 guiAudioAnalyzer->setBackgroundColor(ofColor::gray);
                 guiAudioAnalyzer->setVisible(false);
