@@ -44,7 +44,7 @@ void PMSc1Settings::setup()
         
     }
     
-    PMDeviceAudioAnalyzer *deviceAudioAnalyzer = PMAudioAnalyzer::getInstance().addDeviceAnalyzer(0, soundFlowerID,
+    PMDeviceAudioAnalyzer *deviceAudioAnalyzer = PMAudioAnalyzer::getInstance().addDeviceAnalyzer(0, 0,
                                                                                                   2, 0, 44100, 1024, audioChanels);
     
     string sceneToChange="Scene 2";
