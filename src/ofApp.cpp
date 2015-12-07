@@ -160,6 +160,10 @@ void ofApp::keyReleased(int key)
             }
             break;
         }
+        case ' ':
+            if (currentSceneName == "Scene 8") {
+                scene8->keyReleased(key);
+            }
         default:
             break;
     }

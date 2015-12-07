@@ -90,11 +90,7 @@ void PMRenderer::drawIntoFBO()
 
 void PMRenderer::exportToImage(string path)
 {
-    // TODO: Aquí és on s'exporta el contingut de l'FBO
-    // generant a una imatge que es grava en un arxiu que està al path
-    // que ve com a paràmetre.
     ofPixels pix;
     fbo.readToPixels(pix);
     ofSaveImage(pix, path+".png", OF_IMAGE_QUALITY_BEST);
-    
 }

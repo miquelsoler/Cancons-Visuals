@@ -30,9 +30,7 @@ void PMSc8Main::setup()
     cout << "Scene 8 setup --------------------------------------" << endl;
     motionExtractor = &PMMotionExtractor::getInstance();
     renderer->setup();
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    
-
+//    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 }
 
 void PMSc8Main::update()
@@ -89,9 +87,10 @@ void PMSc8Main::updateExit()
 //    renderer->exportToImage("testImage_"+ofGetTimestampString());
 }
 
-void PMSc8Main::loadSong(string filename){
+void PMSc8Main::loadSong(string filename)
+{
     song.load(filename);
-    song.setVolume(0.75f);
+    song.setVolume(1.0f);
     song.setMultiPlay(false);
 }
 
@@ -101,7 +100,8 @@ void PMSc8Main::playSong()
         cout<<"Error - No loaded Sound!"<<endl;
     }
     song.play();
-    songIsStarted=true;
+    songIsStarted = true;
+    songIsPlaying = true;
 }
 
 
@@ -115,13 +115,8 @@ void PMSc8Main::keyReleased(int key)
         case 'G':
         {
             showGUI = !showGUI;
-            // TODO: There should be only 1 GUI for all the renderers. Probably need to gmove GUI to scene8.
-//            for (int i=0; i<renderers.size(); ++i)
-//                renderers[i]->showGUI(showGUI);
             guiAudioAnalyzer->setVisible(showGUI);
-
 //            ofClear(backgroundColor);
-
             break;
         }
         case 's':
@@ -130,7 +125,14 @@ void PMSc8Main::keyReleased(int key)
             renderer->exportToImage("testImage_"+ofGetTimestampString());
             break;
         }
+        case ' ':
+        {
+#ifdef OF_DEBUG
+            songIsPlaying = !songIsPlaying;
+            song.setPaused(!songIsPlaying);
+#endif
+            break;
+        }
         default: break;
     }
-
 }
