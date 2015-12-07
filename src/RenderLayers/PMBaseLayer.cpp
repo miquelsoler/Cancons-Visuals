@@ -19,8 +19,29 @@ void PMBaseLayer::setup()
     vector<int> layerToColorMap{1, 2, 3, 4}; //per asignar un pinzell diferent a ordre pinzell 1, a la capa 1.
 
     brush = PMBrushesSelector::getInstance().getBrush(layerID - 1);
-
-    brushPosition = ofPoint(ofRandom(fboWidth), ofRandom(fboHeight));
+    
+    PMMotionExtractor::getInstance().update();
+    switch(kinectNodeType)
+    {
+        case KINECTNODE_RIGHTHAND: {
+            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand_joint;
+            break;
+        }
+        case KINECTNODE_LEFTHAND: {
+            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand_joint;
+            break;
+        }
+        case KINECTNODE_HEAD: {
+            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head_joint;
+            break;
+        }
+        case KINECTNODE_TORSO: {
+            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso_joint;
+            break;
+        }
+    }
+    brushPosition = ofPoint(kinectNodeData.x, kinectNodeData.y);
+//    brushPosition = ofPoint(ofRandom(fboWidth), ofRandom(fboHeight));
     brushPrevPosition = brushPosition;
     brushDirection = ofPoint(0, 0);
     brushSize = int(ofRandom(BRUSH_MIN_SIZE, BRUSH_MAX_SIZE));
@@ -116,3 +137,5 @@ void PMBaseLayer::setBrushSize(int _brushSize)
     brushSize = _brushSize;
     brush->setSize(brushSize, brushSize);
 }
+
+

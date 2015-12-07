@@ -17,6 +17,11 @@ void PMLayer1::setup()
 void PMLayer1::update()
 {
     PMBaseLayer::update();
+    float smoothDelta=0.1;
+//    int newbrushSize=(brushSize*(1-smoothDelta))+(kinectNodeData.z*smoothDelta);
+    int newbrushSize =(1-kinectNodeData.z)*BRUSH_MAX_SIZE*2;
+//    cout<<brushSize<<"------------"<<newbrushSize<<endl;
+    brush->setSize(newbrushSize, newbrushSize);
 }
 
 void PMLayer1::draw()
@@ -32,6 +37,7 @@ void PMLayer1::pitchChanged(pitchParams &pitchParams)
 
 void PMLayer1::energyChanged(energyParams &energyParams)
 {
+    
 }
 
 void PMLayer1::silenceStateChanged(silenceParams &silenceParams)

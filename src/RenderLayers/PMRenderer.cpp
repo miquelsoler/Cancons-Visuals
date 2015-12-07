@@ -80,8 +80,10 @@ void PMRenderer::drawIntoFBO()
 {
     fbo.begin();
     {
+        ofEnableBlendMode(OF_BLENDMODE_ALPHA);
         for (int i=0; i<layers.size(); ++i)
             layers[i]->draw();
+        ofDisableBlendMode();
     }
     fbo.end();
 }

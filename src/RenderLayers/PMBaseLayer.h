@@ -47,7 +47,7 @@ public:
 
     // Audio listeners
     virtual void pitchChanged(pitchParams &pitchParams) {};
-    virtual void energyChanged(energyParams &energyParams) {};
+    virtual void energyChanged(energyParams &energyParams){};
     virtual void silenceStateChanged(silenceParams &silenceParams) {};
     virtual void pauseStateChanged(pauseParams &_auseParams) {};
     virtual void onsetDetected(onsetParams &onsetParams) {};

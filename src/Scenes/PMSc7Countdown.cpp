@@ -8,6 +8,7 @@
 
 #include "PMSc7Countdown.hpp"
 #include "PMSettingsManagerGeneral.h"
+#include "PMMotionExtractor.hpp"
 
 
 PMSc7Countdown::PMSc7Countdown() : PMBaseScene("Scene 7")
@@ -36,6 +37,7 @@ void PMSc7Countdown::updateEnter()
 
 void PMSc7Countdown::update()
 {
+    PMMotionExtractor::getInstance().update();
 //    cout<<(int)countdown.getDiff()/1000<<endl;
     if(countdown.alarm()){
         string toScene="Scene 8";
