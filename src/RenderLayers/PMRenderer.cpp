@@ -70,7 +70,7 @@ void PMRenderer::update()
 
 void PMRenderer::draw()
 {
-    ofClear(ofColor::white);
+//    ofClear(ofColor::white);
 
     ofSetColor(255);
     fbo.draw(0, 0, ofGetWidth(), ofGetHeight());
