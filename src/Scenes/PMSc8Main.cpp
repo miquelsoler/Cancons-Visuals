@@ -19,7 +19,7 @@ PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
     showGUI = PMSettingsManagerGeneral::getInstance().getReleaseShowGUIScene8();
 #endif
 
-    setSingleSetup(false);
+    setSingleSetup(true);
     guiAudioAnalyzerCreated=false;
 
     renderer = new PMRenderer();
@@ -29,8 +29,10 @@ void PMSc8Main::setup()
 {
     cout << "Scene 8 setup --------------------------------------" << endl;
     motionExtractor = &PMMotionExtractor::getInstance();
-
     renderer->setup();
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    
+
 }
 
 void PMSc8Main::update()
@@ -69,6 +71,7 @@ void PMSc8Main::draw()
 
 void PMSc8Main::updateEnter()
 {
+    
     PMBaseScene::updateEnter();
     string songPath="songs/"+PMSongSelector::getInstance().getFilename();
     songIsStarted=false;
@@ -117,7 +120,7 @@ void PMSc8Main::keyReleased(int key)
 //                renderers[i]->showGUI(showGUI);
             guiAudioAnalyzer->setVisible(showGUI);
 
-            ofClear(backgroundColor);
+//            ofClear(backgroundColor);
 
             break;
         }

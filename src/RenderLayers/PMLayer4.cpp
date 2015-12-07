@@ -32,6 +32,8 @@ void PMLayer4::pitchChanged(pitchParams &pitchParams)
 
 void PMLayer4::energyChanged(energyParams &energyParams)
 {
+    brushHSBColor.brightness=energyParams.energy*1000;
+    brushRGBColor.setHsb(brushHSBColor.hue, brushHSBColor.saturation, brushHSBColor.brightness);
 }
 
 void PMLayer4::silenceStateChanged(silenceParams &silenceParams)

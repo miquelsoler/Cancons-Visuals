@@ -32,7 +32,7 @@ void PMLayer3::pitchChanged(pitchParams &pitchParams)
 
 void PMLayer3::energyChanged(energyParams &energyParams)
 {
-    int newbrushSize =(energyParams.energy+0.2)*BRUSH_MAX_SIZE*10;
+    int newbrushSize =(energyParams.energy+0.05)*BRUSH_MAX_SIZE*20;
     brush->setSize(newbrushSize, newbrushSize);
 //    cout<<newbrushSize<<endl;
 }

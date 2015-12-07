@@ -17,7 +17,7 @@ void PMLayer2::setup()
 void PMLayer2::update()
 {
     PMBaseLayer::update();
-    int newbrushSize =(1-kinectNodeData.z)*BRUSH_MAX_SIZE*2;;
+    int newbrushSize =(1-kinectNodeData.z)*BRUSH_MAX_SIZE*5;
     brush->setSize(newbrushSize, newbrushSize);
 }
 
@@ -34,6 +34,7 @@ void PMLayer2::pitchChanged(pitchParams &pitchParams)
 
 void PMLayer2::energyChanged(energyParams &energyParams)
 {
+    brushAlpha = energyParams.energy*10;
 }
 
 void PMLayer2::silenceStateChanged(silenceParams &silenceParams)

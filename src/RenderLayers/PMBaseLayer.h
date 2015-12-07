@@ -16,7 +16,7 @@ const static float          KINECT_ACCEL_THRESHOLD = 0.5f;
 const static unsigned int   BRUSH_MIN_SIZE = 20;
 const static unsigned int   BRUSH_MAX_SIZE = 50;
 const static float          BRUSH_MAX_POSITION_DISTANCE = 20.0f;
-const static float          BRUSH_MIN_POSITION_DISTANCE = 2.0f;
+const static float          BRUSH_MIN_POSITION_DISTANCE = 10;
 
 typedef enum
 {

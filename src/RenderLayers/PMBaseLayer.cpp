@@ -124,9 +124,9 @@ void PMBaseLayer::draw()
     {
         while ((brushPrevPosition - brushPosition).length() > BRUSH_MIN_POSITION_DISTANCE)
         {
-            brushPrevPosition += ((brushPosition - brushPrevPosition).normalize());
+            brushPrevPosition += ((brushPosition - brushPrevPosition).normalize()*BRUSH_MIN_POSITION_DISTANCE);
             brush->update(int(brushPrevPosition.x), int(brushPrevPosition.y));
-            ofSetColor(brushRGBColor);
+//            ofSetColor(brushRGBColor, int(brushAlpha)*255);
             brush->draw();
         }
     }
