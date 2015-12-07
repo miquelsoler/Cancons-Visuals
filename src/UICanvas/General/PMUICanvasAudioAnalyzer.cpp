@@ -109,11 +109,11 @@ void PMUICanvasAudioAnalyzer::init(int posX, int posY, bool autosize, int width,
         ofAddListener((*itAudioAnalyzer)->eventShtStateChanged, this, &PMUICanvasAudioAnalyzer::shtStateChanged);
         
         addLabel("FULLMelBands");
-        fullMelSpectrum = addSpectrum("FullMelBands", fullMelBands, 40, 0.0, 1.0);
+        fullMelSpectrum = addSpectrum("FullMelBands", fullMelBands, 40, 0.0, 0.1);
 //        fullMelSpectrum->setTriggerType(OFX_UI_TRIGGER_CHANGE);
         addSpacer();
         addLabel("ScaledBands");
-        melSpectrum = addSpectrum("4 Bands", melBands, 4, 0.0, 1.0);
+        melSpectrum = addSpectrum("4 Bands", melBands, 4, 0.0, 0.1);
 //        melSpectrum->setTriggerType(OFX_UI_TRIGGER_ALL);
         ofAddListener((*itAudioAnalyzer)->eventMelBandsChanged, this, &PMUICanvasAudioAnalyzer::melBandsChanged);
         

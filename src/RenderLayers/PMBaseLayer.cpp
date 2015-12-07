@@ -40,7 +40,7 @@ void PMBaseLayer::setup()
             break;
         }
     }
-    brushPosition = ofPoint(kinectNodeData.x, kinectNodeData.y);
+    brushPosition = ofPoint(kinectNodeData.x*fboWidth, kinectNodeData.y*fboHeight);
 //    brushPosition = ofPoint(ofRandom(fboWidth), ofRandom(fboHeight));
     brushPrevPosition = brushPosition;
     brushDirection = ofPoint(0, 0);
@@ -70,6 +70,9 @@ void PMBaseLayer::setup()
 
 void PMBaseLayer::update()
 {
+    
+    //FIXME: Hack perquè no inicialitzi posició a 0.0
+    
     brushPrevPosition = brushPosition;
 
     if (PMMotionExtractor::getInstance().isTracking())

@@ -47,7 +47,7 @@ void PMBaseRenderer::update()
         //ofFloatColor fc = ofFloatColor(gui->getColorBackground().r,gui->getColorBackground().g,gui->getColorBackground().b,gui->getFadeBackground());
 //        ofSetColor(fc);
         
-        ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+        ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 //        ofDrawRectangle(0, 0, fbo.getWidth(), fbo.getHeight());
     }
     fbo.end();
