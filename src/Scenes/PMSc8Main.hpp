@@ -51,8 +51,9 @@ private:
     PMMotionExtractor* motionExtractor;
     KinectInfo* kinectInfo;
 
-    ofSoundPlayer  song;
-    bool    songIsStarted;
+    ofSoundPlayer   song;
+    bool            songIsStarted;
+    bool            songIsPlaying;
 
     bool showGUI;
 };
