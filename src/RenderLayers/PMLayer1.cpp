@@ -37,7 +37,8 @@ void PMLayer1::pitchChanged(pitchParams &pitchParams)
 
 void PMLayer1::energyChanged(energyParams &energyParams)
 {
-    brushAlpha = energyParams.energy*10;
+//    cout << "New energy: " << energyParams.energy << endl;
+    brushAlpha = energyParams.energy * 10;
 }
 
 void PMLayer1::silenceStateChanged(silenceParams &silenceParams)

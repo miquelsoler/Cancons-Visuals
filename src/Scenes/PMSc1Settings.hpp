@@ -32,7 +32,7 @@ public:
     void updateEnter(){PMBaseScene::updateEnter();};
     void updateExit(){PMBaseScene::updateExit();};
     
-    void setupGUI_SONG();
+//    void setupGUI_SONG();
 
 private:
 

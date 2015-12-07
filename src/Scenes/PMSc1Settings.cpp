@@ -8,9 +8,9 @@
 
 #include "PMSc1Settings.hpp"
 #include "PMMotionExtractor.hpp"
+#include "Defaults.h"
 
-static const int AUDIO_SAMPLERATE = 44100;
-static const int AUDIO_BUFFERSIZE = 1024;
+#define ENABLE_SOUNDFLOWER false
 
 PMSc1Settings::PMSc1Settings() : PMBaseScene("Scene 1")
 {
@@ -24,43 +24,51 @@ void PMSc1Settings::setup()
     // Kinect Setup
 
     PMMotionExtractor::getInstance().setup();
-    
+
     // Audio Analysis Setup
 
-    int iDev = findSoundflowerDeviceIndex();
+    int iDev;
+#if ENABLE_SOUNDFLOWER
+    iDev = findSoundflowerDeviceIndex();
     if (iDev == -1) exit();
+#else
+    iDev = 0;
+#endif
 
     vector<ofSoundDevice> devices = PMAudioAnalyzer::getInstance().getInputDevices();
 
     unsigned int audioInputIndex = (unsigned int)iDev;
-    vector<unsigned int> usedChannels;
-    for (int i=0; i<devices.size(); ++i)
-        usedChannels.push_back(i);
+    vector<unsigned int> enabledChannelNumbers;
+    for (unsigned int i=0; i<devices[iDev].inputChannels; ++i)
+        enabledChannelNumbers.push_back(i);
 
     PMAudioAnalyzer::getInstance().addDeviceAnalyzer(audioInputIndex, devices[iDev].deviceID,
             devices[iDev].inputChannels, devices[iDev].outputChannels,
-            AUDIO_SAMPLERATE, AUDIO_BUFFERSIZE,
-            usedChannels);
+            DEFAULT_SAMPLERATE, DEFAULT_BUFFERSIZE,
+            enabledChannelNumbers);
     
     string sceneToChange="Scene 2";
     ofNotifyEvent(goToSceneEvent, sceneToChange, this);
 }
 
-void PMSc1Settings::setupGUI_SONG(){
-//    gui_song = new ofxUISuperCanvas("Welcome to Visual Songs");
-//    gui_song->addSpacer();
-//    gui_song->addSpacer();
-//    vector<string> song_names;
-//    song_names.push_back("ONhdfjkdshflaksjdhflksajdhflkjashdljfhE");    song_names.push_back("TWO");    song_names.push_back("THREE");    song_names.push_back("FOUR");    song_names.push_back("FIVE");
-//    gui_song->setWidgetFontSize(OFX_UI_FONT_SMALL);
-//    ddl = gui_song->addDropDownList("CHOSE YOUR SONG", song_names);
-//    ddl->setAllowMultiple(false);
-//    ddl->setAutoClose(true);
-//    gui_song->autoSizeToFitWidgets();
-//    gui_song->setDrawWidgetPadding(true);
-//    //gui_song->set
-//    ofAddListener(gui_song->newGUIEvent, this, &PMSc1Settings::guiEvent);
+/*
+void PMSc1Settings::setupGUI_SONG()
+{
+    gui_song = new ofxUISuperCanvas("Welcome to Visual Songs");
+    gui_song->addSpacer();
+    gui_song->addSpacer();
+    vector<string> song_names;
+    song_names.push_back("ONhdfjkdshflaksjdhflksajdhflkjashdljfhE");    song_names.push_back("TWO");    song_names.push_back("THREE");    song_names.push_back("FOUR");    song_names.push_back("FIVE");
+    gui_song->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    ddl = gui_song->addDropDownList("CHOSE YOUR SONG", song_names);
+    ddl->setAllowMultiple(false);
+    ddl->setAutoClose(true);
+    gui_song->autoSizeToFitWidgets();
+    gui_song->setDrawWidgetPadding(true);
+    //gui_song->set
+    ofAddListener(gui_song->newGUIEvent, this, &PMSc1Settings::guiEvent);
 }
+*/
 
 void PMSc1Settings::update()
 {
