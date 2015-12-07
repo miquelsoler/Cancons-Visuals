@@ -43,7 +43,6 @@ public:
     virtual void draw();
     void setBrushSize(int brushSize);
     void setPosition(ofPoint pos) { brushPosition = pos; };
-    void setAngle(float _angle) { angle = _angle; };
 
     // Audio listeners
     virtual void pitchChanged(pitchParams &pitchParams) {};
@@ -64,7 +63,6 @@ protected:
     PMImageContainer        *brush;
 
     ofColor                 brushRGBColor;
-    // TODO: Remove if not used
     ofColorHSB              brushHSBColor;
     float                   brushAlpha; // value between 0 and 1
 
@@ -76,8 +74,8 @@ protected:
 
     float                   curveSize;
 
-    // TODO: Remove if not used
-    float                   angle; // in radians
+    // Audio to render mappings
+    float                   energyScaleFactor;
 
     KinectElement           kinectNodeData;
     

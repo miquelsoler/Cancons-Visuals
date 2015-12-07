@@ -50,7 +50,6 @@ void PMBaseLayer::setup()
     brushRGBColor.getHsb(brushHSBColor.hue, brushHSBColor.saturation, brushHSBColor.brightness);
     brushAlpha = 1;
 
-    angle = 0;
     brushSpeed = 10;
     curveSize = 1;
 

@@ -12,6 +12,7 @@ PMLayer3::PMLayer3(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType
 void PMLayer3::setup()
 {
     PMBaseLayer::setup();
+    energyScaleFactor = 10.0f;
 }
 
 void PMLayer3::update()

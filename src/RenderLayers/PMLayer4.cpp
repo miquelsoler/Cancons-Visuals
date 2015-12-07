@@ -12,6 +12,7 @@ PMLayer4::PMLayer4(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType
 void PMLayer4::setup()
 {
     PMBaseLayer::setup();
+    energyScaleFactor = 1000.0f;
 }
 
 void PMLayer4::update()
@@ -32,7 +33,7 @@ void PMLayer4::pitchChanged(pitchParams &pitchParams)
 
 void PMLayer4::energyChanged(energyParams &energyParams)
 {
-    brushHSBColor.brightness=energyParams.energy*1000;
+    brushHSBColor.brightness = energyParams.energy * energyScaleFactor;
     brushRGBColor.setHsb(brushHSBColor.hue, brushHSBColor.saturation, brushHSBColor.brightness);
 }
 

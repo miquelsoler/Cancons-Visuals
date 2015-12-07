@@ -12,15 +12,17 @@ PMLayer1::PMLayer1(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType
 void PMLayer1::setup()
 {
     PMBaseLayer::setup();
+    energyScaleFactor = 10.0f;
 }
 
 void PMLayer1::update()
 {
     PMBaseLayer::update();
+
     float smoothDelta=0.1;
 //    int newbrushSize=(brushSize*(1-smoothDelta))+(kinectNodeData.z*smoothDelta);
-    int newbrushSize =(1-kinectNodeData.z)*BRUSH_MAX_SIZE*5;
-//    cout<<brushSize<<"------------"<<newbrushSize<<endl;
+
+    int newbrushSize = int((1.0f - kinectNodeData.z) * BRUSH_MAX_SIZE * 5.0f);
     brush->setSize(newbrushSize, newbrushSize);
 }
 
@@ -38,7 +40,7 @@ void PMLayer1::pitchChanged(pitchParams &pitchParams)
 void PMLayer1::energyChanged(energyParams &energyParams)
 {
 //    cout << "New energy: " << energyParams.energy << endl;
-    brushAlpha = energyParams.energy * 10;
+    brushAlpha = energyParams.energy * energyScaleFactor;
 }
 
 void PMLayer1::silenceStateChanged(silenceParams &silenceParams)
