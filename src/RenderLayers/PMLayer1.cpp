@@ -18,11 +18,7 @@ void PMLayer1::update()
 {
     PMBaseLayer::update();
 
-    float smoothDelta=0.1;
-//    int newbrushSize=(brushSize*(1-smoothDelta))+(kinectNodeData.z*smoothDelta);
-
-    int newbrushSize = int((1.0f - kinectNodeData.z) * BRUSH_MAX_SIZE * 5.0f);
-    brush->setSize(newbrushSize, newbrushSize);
+    setBrushSize(int((((nodeInitialZ-kinectNodeData.z)*Z_SIZE_FACTOR)+Z_SIZE_OFFSET)*BRUSH_MAX_SIZE));
 }
 
 void PMLayer1::draw()

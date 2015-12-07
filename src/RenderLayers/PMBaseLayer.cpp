@@ -21,7 +21,8 @@ void PMBaseLayer::setup()
 
     brush = PMBrushesSelector::getInstance().getBrush(layerID - 1);
     
-    PMMotionExtractor::getInstance().update();
+    
+    if(PMMotionExtractor::getInstance().isReady()){
     switch(kinectNodeType)
     {
         case KINECTNODE_RIGHTHAND: {
@@ -41,11 +42,18 @@ void PMBaseLayer::setup()
             break;
         }
     }
+    nodeInitialZ=kinectNodeData.z;
     brushPosition = ofPoint(kinectNodeData.x*fboWidth, kinectNodeData.y*fboHeight);
-//    brushPosition = ofPoint(ofRandom(fboWidth), ofRandom(fboHeight));
+    }else{
+        brushPosition = ofPoint(ofRandom(fboWidth), ofRandom(fboHeight));
+        nodeInitialZ=0;
+    }
+    
     brushPrevPosition = brushPosition;
     brushDirection = ofPoint(0, 0);
-    brushSize = int(ofRandom(BRUSH_MIN_SIZE, BRUSH_MAX_SIZE));
+//    brushSize = int(ofRandom(BRUSH_MIN_SIZE, BRUSH_MAX_SIZE));
+//    brush->setSize(brushSize, brushSize);
+    setBrushSize(int(ofRandom(BRUSH_MIN_SIZE, BRUSH_MAX_SIZE)));
 
     brushRGBColor = PMColorsSelector::getInstance().getColor(layerID);
     brushRGBColor.getHsb(brushHSBColor.hue, brushHSBColor.saturation, brushHSBColor.brightness);
@@ -88,7 +96,7 @@ void PMBaseLayer::update()
     
     brushPrevPosition = brushPosition;
 
-    if (PMMotionExtractor::getInstance().isTracking())
+    if (PMMotionExtractor::getInstance().isReady())
     {
         switch(kinectNodeType)
         {

@@ -7,6 +7,9 @@
 
 #include "PMBaseLayer.h"
 
+static const float Z_SIZE_OFFSET  = 1;
+static const float Z_SIZE_FACTOR = 10;
+
 class PMLayer1 : public PMBaseLayer
 {
 public:

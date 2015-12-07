@@ -43,10 +43,15 @@ void PMSc1Settings::setup()
     for (unsigned int i=0; i<devices[iDev].inputChannels; ++i)
         enabledChannelNumbers.push_back(i);
 
-    PMAudioAnalyzer::getInstance().addDeviceAnalyzer(audioInputIndex, devices[iDev].deviceID,
-            devices[iDev].inputChannels, devices[iDev].outputChannels,
-            DEFAULT_SAMPLERATE, DEFAULT_BUFFERSIZE,
-            enabledChannelNumbers);
+//    PMAudioAnalyzer::getInstance().addDeviceAnalyzer(audioInputIndex, devices[iDev].deviceID,
+//            devices[iDev].inputChannels, devices[iDev].outputChannels,
+//            DEFAULT_SAMPLERATE, DEFAULT_BUFFERSIZE,
+//            enabledChannelNumbers);
+    
+    PMAudioAnalyzer::getInstance().addDeviceAnalyzer(0, devices[iDev].deviceID,
+                                                                 devices[iDev].inputChannels, devices[iDev].outputChannels,
+                                                                 DEFAULT_SAMPLERATE, DEFAULT_BUFFERSIZE,
+                                                                 enabledChannelNumbers);
     
     string sceneToChange="Scene 2";
     ofNotifyEvent(goToSceneEvent, sceneToChange, this);
