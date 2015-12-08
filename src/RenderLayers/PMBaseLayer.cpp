@@ -156,7 +156,7 @@ void PMBaseLayer::draw()
 {
 #if ENABLE_MULTIPLE_FBOS
     layerFBO.begin();
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+//    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 #endif
     ofSetColor(brushRGBColor, int(brushAlpha * 255));
     brush->draw();
@@ -171,7 +171,7 @@ void PMBaseLayer::draw()
     }
 
 #if ENABLE_MULTIPLE_FBOS
-    ofDisableBlendMode();
+//    ofDisableBlendMode();
     layerFBO.end();
 #endif
 }
