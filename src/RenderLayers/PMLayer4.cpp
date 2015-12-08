@@ -10,6 +10,7 @@ static const float SPEED_DECREMENT = 0.3; //la desecaleració
 static const int SIZE_DECREMENT = 1; //com varia de mida
 static const int INITIAL_SHAKE_SIZE = BRUSH_MAX_SIZE*4; //la mida inicial del pinzell quan es dispara
 static const int    DIR_HISTORY_SIZE = 10; //es perque agafi be la direcció
+static const float CURVE_SIZE=10;
 
 PMLayer4::PMLayer4(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType)
         : PMBaseLayer(_fboWidth, _fboHeight, _kinectNodeType)
@@ -135,6 +136,8 @@ void PMLayer4::shtDetected(shtParams &shtParams)
 
 void PMLayer4::melodyDirection(melodyDirectionParams &melodyDirectionParams)
 {
+    if(didShake)
+        brushDirection.rotate(melodyDirectionParams.direction*CURVE_SIZE, ofVec3f(0,0,1)); //rotate arround z axis
 }
 
 void PMLayer4::melBandsChanged(melBandsParams &melBandsParams)
