@@ -156,6 +156,8 @@ void PMLayer4::melBandsChanged(melBandsParams &melBandsParams)
 #endif
         brush->setSize(newSize, newSize);
     }
+    
+    brushAlpha = ofMap(myEnergy, 0.0, bandMaxEnergy, brushMinAlpha, brushMaxAlpha);
 
 //    cout << "Brush Brightness L4> En:" << myEnergy << " Brightness: " << brushHSBColor.brightness << endl;
 }

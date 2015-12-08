@@ -143,6 +143,8 @@ void PMLayer3::melBandsChanged(melBandsParams &melBandsParams)
     brushHSBColor.brightness = ofMap(myEnergy, 0.0, bandMaxEnergy, brushMinBrightness, brushMaxBrightness, true);
     brushRGBColor.setHsb(brushHSBColor.hue, brushHSBColor.saturation, brushHSBColor.brightness);
     
+    brushAlpha = ofMap(myEnergy, 0.0, bandMaxEnergy, brushMinAlpha, brushMaxAlpha);
+    
 //    float myEnergy = melBandsParams.bandsEnergy[3];
 //    if(!didShake){
 //        int newSize = int(ofMap(myEnergy, 0.0, bandMaxEnergy, brushMinSize, brushMaxSize, true));
