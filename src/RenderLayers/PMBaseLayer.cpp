@@ -11,11 +11,25 @@ PMBaseLayer::PMBaseLayer(int _fboWidth, int _fboHeight, KinectNodeType _kinectNo
     fboWidth = _fboWidth;
     fboHeight = _fboHeight;
 
+#if ENABLE_MULTIPLE_FBOS
+    layerFBO.allocate(fboWidth, fboHeight, GL_RGBA32F_ARB);
+#endif
+
     kinectNodeType = _kinectNodeType;
 }
 
 void PMBaseLayer::setup()
 {
+#if ENABLE_MULTIPLE_FBOS
+    layerFBO.begin();
+    {
+        // Often the FBO will contain artifacts from the memory that the graphics card has just allocated for it,
+        // so it's good to clear it before starting to draw it
+        ofClear(0, 0, 0, 0);
+    }
+    layerFBO.end();
+#endif
+
     brush = PMBrushesSelector::getInstance().getBrush(layerID - 1);
 
 #if ENABLE_KINECT
@@ -140,6 +154,10 @@ void PMBaseLayer::update()
 
 void PMBaseLayer::draw()
 {
+#if ENABLE_MULTIPLE_FBOS
+    layerFBO.begin();
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+#endif
     ofSetColor(brushRGBColor, int(brushAlpha * 255));
     brush->draw();
 
@@ -151,6 +169,11 @@ void PMBaseLayer::draw()
             brush->draw();
         }
     }
+
+#if ENABLE_MULTIPLE_FBOS
+    ofDisableBlendMode();
+    layerFBO.end();
+#endif
 }
 
 void PMBaseLayer::setBrushSize(int _brushSize)

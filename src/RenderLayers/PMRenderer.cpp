@@ -16,7 +16,10 @@ PMRenderer::PMRenderer()
     int fboWidth = FBO_WIDTH;
     int fboHeight = FBO_HEIGHT;
 
-    fbo.allocate(fboWidth, fboHeight, GL_RGBA32F_ARB);
+    mainFBO.allocate(fboWidth, fboHeight, GL_RGBA32F_ARB);
+#if ENABLE_MULTIPLE_FBOS
+    backgroundFBO.allocate(fboWidth, fboHeight, GL_RGBA32F_ARB);
+#endif
 
     PMLayer1 *layer1 = new PMLayer1(fboWidth, fboHeight, KINECTNODE_RIGHTHAND);
     layers.push_back(layer1);
@@ -30,7 +33,7 @@ PMRenderer::PMRenderer()
 
 void PMRenderer::setup()
 {
-    fbo.begin();
+    mainFBO.begin();
     {
         // Often the FBO will contain artifacts from the memory that the graphics card has just allocated for it,
         // so it's good to clear it before starting to draw it
@@ -38,18 +41,30 @@ void PMRenderer::setup()
         ofSetColor(PMColorsSelector::getInstance().getColor(0));
         ofDrawRectangle(0, 0, FBO_WIDTH, FBO_HEIGHT);
     }
-    fbo.end();
+    mainFBO.end();
+
+#if ENABLE_MULTIPLE_FBOS
+    backgroundFBO.begin();
+    {
+        // Often the FBO will contain artifacts from the memory that the graphics card has just allocated for it,
+        // so it's good to clear it before starting to draw it
+        ofClear(0, 0, 0, 0);
+        ofSetColor(PMColorsSelector::getInstance().getColor(0));
+        ofDrawRectangle(0, 0, FBO_WIDTH, FBO_HEIGHT);
+    }
+    backgroundFBO.end();
+#endif
+
     for (int i=0; i<layers.size(); ++i)
         layers[i]->setup();
-
 }
 
 void PMRenderer::update()
 {
-    fbo.begin();
+    mainFBO.begin();
     {
     }
-    fbo.end();
+    mainFBO.end();
 
     for (int i=0; i<layers.size(); ++i)
         layers[i]->update();
@@ -62,24 +77,45 @@ void PMRenderer::draw()
 //    ofClear(ofColor::white);
 
     ofSetColor(255);
-    fbo.draw(0, 0, ofGetWidth(), ofGetHeight());
+    mainFBO.draw(0, 0, ofGetWidth(), ofGetHeight());
 }
 
 void PMRenderer::drawIntoFBO()
 {
-    fbo.begin();
+#if ENABLE_MULTIPLE_FBOS
+    backgroundFBO.begin();
     {
-        ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+        ofSetColor(PMColorsSelector::getInstance().getColor(0));
+        ofDrawRectangle(0, 0, FBO_WIDTH, FBO_HEIGHT);
+    }
+    backgroundFBO.end();
+
+    for (int i=0; i<layers.size(); ++i)
+        layers[i]->draw();
+
+    mainFBO.begin();
+    {
+//        backgroundFBO.draw(0, 0);
+        for (int i=0; i<layers.size(); ++i)
+        {
+            ofFbo *layerFBO = layers[i]->getFBO();
+            layerFBO->draw(0, 0);
+        }
+    }
+    mainFBO.end();
+#else
+    mainFBO.begin();
+    {
         for (int i=0; i<layers.size(); ++i)
             layers[i]->draw();
-        ofDisableBlendMode();
     }
-    fbo.end();
+    mainFBO.end();
+#endif
 }
 
 void PMRenderer::exportToImage(string path)
 {
     ofPixels pix;
-    fbo.readToPixels(pix);
+    mainFBO.readToPixels(pix);
     ofSaveImage(pix, path+".png", OF_IMAGE_QUALITY_BEST);
 }
