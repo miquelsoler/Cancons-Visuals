@@ -24,7 +24,7 @@ void PMLayer2::update()
     PMBaseLayer::update();
 #if ENABLE_KINECT
     int newBrushSize = int((((nodeInitialZ-kinectNodeData.z)*Z_SIZE_FACTOR)+Z_SIZE_OFFSET)*BRUSH_MAX_SIZE);
-    cout<<newBrushSize<<endl;
+//    cout<<newBrushSize<<endl;
     if(newBrushSize<BRUSH_MIN_SIZE)
         setBrushSize(BRUSH_MIN_SIZE);
     else if(newBrushSize>BRUSH_MAX_SIZE)
