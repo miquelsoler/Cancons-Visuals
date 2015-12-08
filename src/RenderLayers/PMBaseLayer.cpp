@@ -131,6 +131,7 @@ void PMBaseLayer::update()
 //
     if (kinectNodeData.a / KINECT_ACCEL_FACTOR > KINECT_ACCEL_THRESHOLD) {
         brushDirection += (kinectNodeData.v.normalize() * (kinectNodeData.a / 2));
+//        cout<<layerID<<"--IS Aceletrstrefd"<<ofGetTimestampString()<<endl;
     }
     brushPosition += (brushDirection * brushSpeed);
     brushDirection.normalize();
@@ -142,10 +143,8 @@ void PMBaseLayer::draw()
     ofSetColor(brushRGBColor, int(brushAlpha * 255));
     brush->draw();
 
-    if ((brushPrevPosition - brushPosition).length() > BRUSH_MAX_POSITION_DISTANCE)
-    {
-        while ((brushPrevPosition - brushPosition).length() > BRUSH_MIN_POSITION_DISTANCE)
-        {
+    if ((brushPrevPosition - brushPosition).length() > BRUSH_MAX_POSITION_DISTANCE) {
+        while ((brushPrevPosition - brushPosition).length() > BRUSH_MIN_POSITION_DISTANCE) {
             brushPrevPosition += ((brushPosition - brushPrevPosition).normalize() * BRUSH_MIN_POSITION_DISTANCE);
             brush->update(int(brushPrevPosition.x), int(brushPrevPosition.y));
 //            ofSetColor(brushRGBColor, int(brushAlpha)*255);

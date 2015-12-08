@@ -7,6 +7,8 @@
 
 #include "PMBaseLayer.h"
 
+static const int MARGIN = 50;
+
 class PMLayer4 : public PMBaseLayer
 {
 public:
@@ -26,10 +28,10 @@ public:
     void shtDetected(shtParams &shtParams) override;
     void melodyDirection(melodyDirectionParams &melodyDirectionParams) override;
     void melBandsChanged(melBandsParams &melBandsParams) override;
-
+    
 private:
-
     bool didShake;
+    float       beginShakeTime;
 };
 
 
