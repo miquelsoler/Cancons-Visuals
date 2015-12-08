@@ -12,7 +12,7 @@
 #define ConductrEnter_Config_h
 
 #define ENABLE_SOUNDFLOWER true
-#define ENABLE_KINECT false
+#define ENABLE_KINECT true
 
 static const float          WINDOW_SCALE_FACTOR         = 0.5f;
 static const float          FBO_SCALE_FACTOR            = 3.0f;

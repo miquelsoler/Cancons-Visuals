@@ -9,6 +9,8 @@ PMLayer4::PMLayer4(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType
 {
     layerID = 4;
     didShake = false;
+    for(int i=0; i<DIR_HISTORY_SIZE; i++)
+        directionHistory.push_back(ofPoint(0,0));
 }
 
 void PMLayer4::setup()
@@ -46,8 +48,8 @@ void PMLayer4::update()
     if (didShake)
     {
         // TODO: setBrushSize espera un enter, però se li passa un paràmetre al qual se li resta un float.
-        setBrushSize(brushSize - 0.2);
-        brushSpeed -= 0.5;
+        setBrushSize(brushSize - SIZE_DECREMENT);
+        brushSpeed -= SPEED_DECREMENT;
         if (brushSize <= BRUSH_MIN_SIZE || brushSpeed <= 0)
             didShake = false;
     }
@@ -59,14 +61,22 @@ void PMLayer4::update()
         brushSpeed = newDirection.length()*5;
 
         brushDirection.normalize();
-//        cout<<"Velocity: "<<kinectNodeData.v.length()<<"     Aceleration: "<<kinectNodeData.a<<"   Velocity*Acceleration: "<<kinectNodeData.v.length()*kinectNodeData.a<<endl;
+        
+        //direction history
+        directionHistory.push_back(kinectNodeData.v);
+        directionHistory.pop_front();
         if (kinectNodeData.v.length() * kinectNodeData.a > KINECT_VELO_THRESHOLD)
         {
             beginShakeTime = ofGetElapsedTimeMillis();
             setBrushSize(BRUSH_MAX_SIZE * 4);
-            brushDirection = kinectNodeData.v;
             brushSpeed = 30;
             didShake = true;
+            int directionHistoryMaxIndex=0;
+            for(int i=0; i<directionHistory.size(); i++){
+                if(directionHistoryMaxIndex < directionHistory[i].length())
+                    directionHistoryMaxIndex = i;
+            }
+            brushDirection=directionHistory[directionHistoryMaxIndex];
         }
     }
     brushPosition += (brushDirection * brushSpeed);
