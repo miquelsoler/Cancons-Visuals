@@ -27,7 +27,7 @@ public:
     void melodyDirection(melodyDirectionParams &melodyDirectionParams) override;
     void melBandsChanged(melBandsParams &melBandsParams) override;
 private:
-    bool        isShaked;
+    bool didShake;
 };
 
 

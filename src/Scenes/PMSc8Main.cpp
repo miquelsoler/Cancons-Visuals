@@ -14,45 +14,43 @@
 PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
 {
 #ifdef OF_DEBUG
-    showGUI= PMSettingsManagerGeneral::getInstance().getDebugShowGUIScene8();
+    showGUI = PMSettingsManagerGeneral::getInstance().getDebugShowGUIScene8();
 #else
     showGUI = PMSettingsManagerGeneral::getInstance().getReleaseShowGUIScene8();
 #endif
 
     setSingleSetup(true);
-    guiAudioAnalyzerCreated=false;
+    guiAudioAnalyzerCreated = false;
 
     renderer = new PMRenderer();
 }
 
 void PMSc8Main::setup()
 {
-    cout << "Scene 8 setup --------------------------------------" << endl;
     motionExtractor = &PMMotionExtractor::getInstance();
     renderer->setup();
-//    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 }
 
 void PMSc8Main::update()
 {
-    if(WITH_KINECT){
-        motionExtractor->update();
-        kinectInfo = motionExtractor->getKinectInfo();
-    }
-    if(songIsStarted){
+#if ENABLE_KINECT
+    motionExtractor->update();
+    kinectInfo = motionExtractor->getKinectInfo();
+#endif
+
+    if (songIsStarted) {
         if (!song.isPlaying()) {
-            cout<<"song_has_finished"<<endl;
-            string sceneToChange="Scene 2";
+            cout << "song_has_finished" << endl;
+            string sceneToChange = "Scene 2";
 //            ofNotifyEvent(goToSceneEvent, sceneToChange, this);
         }
     }
     ofSoundUpdate();
 
-    
+
     // GUI
     {
-        if (!guiAudioAnalyzerCreated)
-        {
+        if (!guiAudioAnalyzerCreated) {
             int audioInputIndex = 0;
             guiAudioAnalyzer = new PMUICanvasAudioAnalyzer("AUDIO ANALYZER", OFX_UI_FONT_MEDIUM, audioInputIndex);
             guiAudioAnalyzer->init(5, 5);
@@ -72,13 +70,13 @@ void PMSc8Main::draw()
 
 void PMSc8Main::updateEnter()
 {
-    
+
     PMBaseScene::updateEnter();
-    string songPath="songs/"+PMSongSelector::getInstance().getFilename();
-    songIsStarted=false;
+    string songPath = "songs/" + PMSongSelector::getInstance().getFilename();
+    songIsStarted = false;
     loadSong(songPath);
     playSong();
-    
+
     PMAudioAnalyzer::getInstance().start();
 }
 
@@ -99,8 +97,8 @@ void PMSc8Main::loadSong(string filename)
 
 void PMSc8Main::playSong()
 {
-    if (!song.isLoaded()){
-        cout<<"Error - No loaded Sound!"<<endl;
+    if (!song.isLoaded()) {
+        cout << "Error - No loaded Sound!" << endl;
     }
     song.play();
     songIsStarted = true;
@@ -111,31 +109,28 @@ void PMSc8Main::playSong()
 void PMSc8Main::keyReleased(int key)
 {
     PMBaseScene::keyReleased(key);
-    
-    switch(key)
-    {
+
+    switch (key) {
         case 'g':
-        case 'G':
-        {
+        case 'G': {
             showGUI = !showGUI;
             guiAudioAnalyzer->setVisible(showGUI);
 //            ofClear(backgroundColor);
             break;
         }
         case 's':
-        case 'S':
-        {
-            renderer->exportToImage("testImage_"+ofGetTimestampString());
+        case 'S': {
+            renderer->exportToImage("testImage_" + ofGetTimestampString());
             break;
         }
-        case ' ':
-        {
+        case ' ': {
 #ifdef OF_DEBUG
             songIsPlaying = !songIsPlaying;
             song.setPaused(!songIsPlaying);
 #endif
             break;
         }
-        default: break;
+        default:
+            break;
     }
 }

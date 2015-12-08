@@ -12,8 +12,6 @@
 #include <stdio.h>
 #include "PMBaseScene.hpp"
 #include "PMMotionExtractor.hpp"
-//#include "PMBaseRenderer.hpp"
-//#include "PMRendererLayer1.hpp"
 #include "PMRenderer.h"
 #include "PMUICanvasAudioAnalyzer.h"
 

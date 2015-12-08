@@ -18,14 +18,16 @@
 
 #define MAX_DEVICES 1
 
-struct KinectElement{
+struct KinectElement
+{
     float x;
     float y;
     float z;
     float a;
     ofPoint v;
 };
-struct KinectInfo{
+struct KinectInfo
+{
     KinectElement leftHand_joint;
     KinectElement rightHand_joint;
     KinectElement head_joint;
@@ -44,26 +46,33 @@ public:
         static PMMotionExtractor instance;
         return instance;
     }
-    
+
     PMMotionExtractor() {};
     ~PMMotionExtractor() {};
+
     void setup();
+
     void update();
+
     void draw(); //noexistirà?
     void exit();
-    KinectInfo* getKinectInfo();
-    
-    bool isReady(){return isSomeoneTracked;};
-    bool isTracking(){return hadUsers;}
-    
+
+    KinectInfo *getKinectInfo();
+
+    bool isReady() { return isSomeoneTracked; };
+
+    bool isTracking()
+    {
+        return hadUsers;
+    }
+
 private:
     ofTrueTypeFont font;
     ofxKinectFeatures kinectFeatures;
     ofxOpenNI kinectNI;
     bool hadUsers;
     KinectInfo kinectOut;
-//    KinectInfo oldKinectOut;
-    
+
     bool isSomeoneTracked;
 };
 

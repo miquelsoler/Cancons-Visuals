@@ -4,10 +4,11 @@
 
 #include "PMLayer3.h"
 
-PMLayer3::PMLayer3(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType) : PMBaseLayer(_fboWidth, _fboHeight, _kinectNodeType)
+PMLayer3::PMLayer3(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType)
+        : PMBaseLayer(_fboWidth, _fboHeight, _kinectNodeType)
 {
     layerID = 3;
-    isShaked=false;
+    didShake = false;
 }
 
 void PMLayer3::setup()
@@ -19,8 +20,9 @@ void PMLayer3::update()
 {
 //    PMBaseLayer::update();
     brushPrevPosition = brushPosition;
-    
-    if (PMMotionExtractor::getInstance().isTracking() && WITH_KINECT)
+
+#if ENABLE_KINECT
+    if (PMMotionExtractor::getInstance().isTracking())
     {
         switch(kinectNodeType)
         {
@@ -42,26 +44,30 @@ void PMLayer3::update()
             }
         }
     }
-    else if(!WITH_KINECT){
-        kinectNodeData.x = (float) ofGetMouseX() / ofGetWidth();
-        kinectNodeData.y = (float) ofGetMouseY() / ofGetHeight();
-        kinectNodeData.v = ofPoint(0, 0);
+#else
+    kinectNodeData.x = (float) ofGetMouseX() / ofGetWidth();
+    kinectNodeData.y = (float) ofGetMouseY() / ofGetHeight();
+    kinectNodeData.v = ofPoint(0, 0);
+#endif
+
+    if (didShake)
+    {
+        didShake = false;
     }
-    
-    if(isShaked){
-        isShaked=false;
-    }else{
-        //direction changes
-        if(WITH_KINECT){
-            ofPoint newDirection = kinectNodeData.v;
-            brushDirection = newDirection.normalize();
-            brushSpeed = newDirection.length()*5;
-        }
+    else
+    {
+#if ENABLE_KINECT
+        // Direction changes
+        ofPoint newDirection = kinectNodeData.v;
+        brushDirection = newDirection.normalize();
+        brushSpeed = newDirection.length()*5;
+#endif
+
         brushDirection.normalize();
 //        cout<<kinectNodeData.a / KINECT_ACCEL_FACTOR<<endl;
         if (kinectNodeData.a / KINECT_ACCEL_FACTOR > 1) {
 //            cout<<layerID<<"--IS Aceletrstrefd"<<ofGetTimestampString()<<endl;
-            isShaked = true;
+            didShake = true;
         }
     }
     brushPosition += (brushDirection * brushSpeed);

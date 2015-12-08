@@ -4,10 +4,11 @@
 
 #include "PMLayer4.h"
 
-PMLayer4::PMLayer4(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType) : PMBaseLayer(_fboWidth, _fboHeight, _kinectNodeType)
+PMLayer4::PMLayer4(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType)
+        : PMBaseLayer(_fboWidth, _fboHeight, _kinectNodeType)
 {
     layerID = 4;
-    isShaked=false;
+    didShake = false;
 }
 
 void PMLayer4::setup()
@@ -17,9 +18,11 @@ void PMLayer4::setup()
 
 void PMLayer4::update()
 {
+//    PMBaseLayer::update();
     brushPrevPosition = brushPosition;
-    
-    if (PMMotionExtractor::getInstance().isTracking() && WITH_KINECT)
+
+#if ENABLE_KINECT
+    if (PMMotionExtractor::getInstance().isTracking())
     {
         switch(kinectNodeType)
         {
@@ -41,40 +44,47 @@ void PMLayer4::update()
             }
         }
     }
-    else if(!WITH_KINECT){
-        kinectNodeData.x = (float) ofGetMouseX() / ofGetWidth();
-        kinectNodeData.y = (float) ofGetMouseY() / ofGetHeight();
-        kinectNodeData.v = ofPoint(0, 0);
+#else
+    kinectNodeData.x = (float) ofGetMouseX() / ofGetWidth();
+    kinectNodeData.y = (float) ofGetMouseY() / ofGetHeight();
+    kinectNodeData.v = ofPoint(0, 0);
+#endif
+
+    if (didShake)
+    {
+        // TODO: setBrushSize espera un enter, però se li passa un paràmetre al qual se li resta un float.
+        setBrushSize(brushSize - 0.2);
+        brushSpeed -= 0.5;
+        if (brushSize <= BRUSH_MIN_SIZE || brushSpeed <= 0)
+            didShake = false;
     }
-    
-    if(isShaked){
-        setBrushSize(brushSize-SIZE_DECREMENT);
-        brushSpeed-=SPEED_DECREMENT;
-        if(brushSize<=BRUSH_MIN_SIZE || brushSpeed<=0)
-            isShaked=false;
-    }else{
-        //direction changes
-        if(WITH_KINECT){
-            ofPoint newDirection = kinectNodeData.v;
-            brushDirection = newDirection.normalize();
-            brushSpeed = newDirection.length()*5;
-        }
+    else
+    {
+#if ENABLE_KINECT
+        // Direction changes
+        ofPoint newDirection = kinectNodeData.v;
+        brushDirection = newDirection.normalize();
+        brushSpeed = newDirection.length()*5;
+#endif
+
         brushDirection.normalize();
-        if (kinectNodeData.v.length()*kinectNodeData.a > KINECT_VELO_THRESHOLD) {
-            beginShakeTime=ofGetElapsedTimeMillis();
-            setBrushSize(INITIAL_SHAKE_SIZE);
-            brushDirection=kinectNodeData.v;
-            brushSpeed=INITIAL_SHAKE_SPEED;
-            isShaked = true;
+//        cout<<"Velocity: "<<kinectNodeData.v.length()<<"     Aceleration: "<<kinectNodeData.a<<"   Velocity*Acceleration: "<<kinectNodeData.v.length()*kinectNodeData.a<<endl;
+        if (kinectNodeData.v.length() * kinectNodeData.a > KINECT_VELO_THRESHOLD)
+        {
+            beginShakeTime = ofGetElapsedTimeMillis();
+            setBrushSize(BRUSH_MAX_SIZE * 4);
+            brushDirection = kinectNodeData.v;
+            brushSpeed = 30;
+            didShake = true;
         }
     }
     brushPosition += (brushDirection * brushSpeed);
-    
-    if(brushPosition.x<-MARGIN) brushPosition.x=-MARGIN;
-    if(brushPosition.y<-MARGIN) brushPosition.y=-MARGIN;
-    if(brushPosition.x>fboWidth+MARGIN) brushPosition.x=fboWidth+MARGIN;
-    if(brushPosition.y>fboHeight+MARGIN) brushPosition.y=fboHeight+MARGIN;
-    
+
+    if (brushPosition.x < -MARGIN) brushPosition.x = -MARGIN;
+    if (brushPosition.y < -MARGIN) brushPosition.y = -MARGIN;
+    if (brushPosition.x > fboWidth + MARGIN) brushPosition.x = fboWidth + MARGIN;
+    if (brushPosition.y > fboHeight + MARGIN) brushPosition.y = fboHeight + MARGIN;
+
     brushDirection.normalize();
     brush->update(int(brushPosition.x), int(brushPosition.y));
 }

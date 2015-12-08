@@ -11,6 +11,9 @@
 #ifndef ConductrEnter_Config_h
 #define ConductrEnter_Config_h
 
+#define ENABLE_SOUNDFLOWER true
+#define ENABLE_KINECT false
+
 static const float          WINDOW_SCALE_FACTOR         = 0.5f;
 static const float          FBO_SCALE_FACTOR            = 3.0f;
 
@@ -27,6 +30,5 @@ static const ofWindowMode   DEFAULT_WINDOW_MODE         = OF_WINDOW;
 
 static const int            DEFAULT_SAMPLERATE          = 44100;
 static const int            DEFAULT_BUFFERSIZE          = 512;
-static const bool           WITH_KINECT                 = true;
 
 #endif

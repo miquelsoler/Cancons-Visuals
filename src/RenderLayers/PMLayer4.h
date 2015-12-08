@@ -34,7 +34,7 @@ public:
     void melBandsChanged(melBandsParams &melBandsParams) override;
     
 private:
-    bool        isShaked;
+    bool didShake;
     float       beginShakeTime;
 };
 

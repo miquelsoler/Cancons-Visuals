@@ -16,38 +16,35 @@ PMBaseLayer::PMBaseLayer(int _fboWidth, int _fboHeight, KinectNodeType _kinectNo
 
 void PMBaseLayer::setup()
 {
-    //FIXME: Definir aquest vector per parametre o potser a la gui
-    vector<int> layerToColorMap{1, 2, 3, 4}; //per asignar un pinzell diferent a ordre pinzell 1, a la capa 1.
-
     brush = PMBrushesSelector::getInstance().getBrush(layerID - 1);
-    
-    
-    if(WITH_KINECT){
-        switch(kinectNodeType)
-        {
-            case KINECTNODE_RIGHTHAND: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand_joint;
-                break;
-            }
-            case KINECTNODE_LEFTHAND: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand_joint;
-                break;
-            }
-            case KINECTNODE_HEAD: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head_joint;
-                break;
-            }
-            case KINECTNODE_TORSO: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso_joint;
-                break;
-            }
+
+#if ENABLE_KINECT
+    switch (kinectNodeType)
+    {
+        case KINECTNODE_RIGHTHAND: {
+            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand_joint;
+            break;
         }
-        nodeInitialZ=kinectNodeData.z;
-        //brushPosition = ofPoint(kinectNodeData.x*fboWidth, kinectNodeData.y*fboHeight);
-    }else{
-        brushPosition = ofPoint(ofRandom(fboWidth), ofRandom(fboHeight));
-        nodeInitialZ=0;
+        case KINECTNODE_LEFTHAND: {
+            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand_joint;
+            break;
+        }
+        case KINECTNODE_HEAD: {
+            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head_joint;
+            break;
+        }
+        case KINECTNODE_TORSO: {
+            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso_joint;
+            break;
+        }
     }
+    nodeInitialZ = kinectNodeData.z;
+    //brushPosition = ofPoint(kinectNodeData.x*fboWidth, kinectNodeData.y*fboHeight);
+#else
+    brushPosition = ofPoint(ofRandom(fboWidth), ofRandom(fboHeight));
+    nodeInitialZ = 0;
+#endif
+
     brushPosition = ofPoint(ofRandom(fboWidth), ofRandom(fboHeight));
     brushPrevPosition = brushPosition;
     brushDirection = ofPoint(ofRandom(-1, 1), ofRandom(-1, 1)).normalize();
@@ -91,13 +88,13 @@ void PMBaseLayer::setup()
 
 void PMBaseLayer::update()
 {
-    
+
     brushPrevPosition = brushPosition;
 
-    if (PMMotionExtractor::getInstance().isTracking() && WITH_KINECT)
+#if ENABLE_KINECT
+    if (PMMotionExtractor::getInstance().isTracking())
     {
-        switch(kinectNodeType)
-        {
+        switch (kinectNodeType) {
             case KINECTNODE_RIGHTHAND: {
                 kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand_joint;
                 break;
@@ -116,16 +113,18 @@ void PMBaseLayer::update()
             }
         }
     }
-    else if(!WITH_KINECT){
-        kinectNodeData.x = (float) ofGetMouseX() / ofGetWidth();
-        kinectNodeData.y = (float) ofGetMouseY() / ofGetHeight();
-        kinectNodeData.v = ofPoint(0, 0);
-    }
-    //direction changes
-    if(WITH_KINECT){
-        ofPoint newDirection = ofPoint(kinectNodeData.x * fboWidth, kinectNodeData.y * fboHeight) - brushPosition;
-        brushDirection += ((newDirection.normalize()) * curveSize);
-    }
+#else
+    kinectNodeData.x = (float) ofGetMouseX() / ofGetWidth();
+    kinectNodeData.y = (float) ofGetMouseY() / ofGetHeight();
+    kinectNodeData.v = ofPoint(0, 0);
+#endif
+
+#if ENABLE_KINECT
+    // Direction changes
+    ofPoint newDirection = ofPoint(kinectNodeData.x * fboWidth, kinectNodeData.y * fboHeight) - brushPosition;
+    brushDirection += ((newDirection.normalize()) * curveSize);
+#endif
+
     brushDirection.normalize();
 //    direction+=((kinectNodeData.v.normalize())*(kinectNodeData.a/50));
 //    cout<<kinectNodeData.a/30<<endl;
@@ -144,11 +143,9 @@ void PMBaseLayer::draw()
     ofSetColor(brushRGBColor, int(brushAlpha * 255));
     brush->draw();
 
-    if ((brushPrevPosition - brushPosition).length() > BRUSH_MAX_POSITION_DISTANCE)
-    {
-        while ((brushPrevPosition - brushPosition).length() > BRUSH_MIN_POSITION_DISTANCE)
-        {
-            brushPrevPosition += ((brushPosition - brushPrevPosition).normalize()*BRUSH_MIN_POSITION_DISTANCE);
+    if ((brushPrevPosition - brushPosition).length() > BRUSH_MAX_POSITION_DISTANCE) {
+        while ((brushPrevPosition - brushPosition).length() > BRUSH_MIN_POSITION_DISTANCE) {
+            brushPrevPosition += ((brushPosition - brushPrevPosition).normalize() * BRUSH_MIN_POSITION_DISTANCE);
             brush->update(int(brushPrevPosition.x), int(brushPrevPosition.y));
 //            ofSetColor(brushRGBColor, int(brushAlpha)*255);
             brush->draw();
