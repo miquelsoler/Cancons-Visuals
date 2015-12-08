@@ -31,6 +31,7 @@ public:
     };
 
     void setup(ofImage image, int size, ofPoint initialPos);
+    void setup();
 
     void update(ofPoint position, ofPoint direction, float speed, int size);
 
