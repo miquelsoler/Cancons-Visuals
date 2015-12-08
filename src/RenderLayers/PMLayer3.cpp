@@ -112,10 +112,6 @@ void PMLayer3::melBandsChanged(melBandsParams &melBandsParams)
 {
     float myEnergy = melBandsParams.bandsEnergy[3];
     int newSize = int(ofMap(myEnergy, 0.0, bandMaxEnergy, brushMinSize, brushMaxSize, true));
-#if ENABLE_MULTIPLE_FBOS
-    // TODO: Remove after multiple FBO tests succeed.
-    newSize *= 10;
-#endif
     brush->setSize(newSize, newSize);
 //    cout << "Brush Size L3> En:" << myEnergy << " Size: " << newSize << endl;
 }

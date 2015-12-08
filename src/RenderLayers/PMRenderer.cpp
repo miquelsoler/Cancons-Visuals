@@ -115,14 +115,15 @@ void PMRenderer::drawIntoFBO()
         ofSetColor(255, 255, 255, 255);
         backgroundFBO.draw(0, 0);
 
-        glBlendEquation(GL_MAX);
-        //glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_DST_ALPHA);
-        glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+//        glBlendEquation(GL_MAX);
+//        //glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_DST_ALPHA);
+//        glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
+        glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
         for (int i=0; i<layers.size(); ++i)
         {
-            ofSetColor(255, 255, 255, 255);
             ofFbo *layerFBO = layers[i]->getFBO();
+            ofSetColor(255, 255, 255, 255);
             layerFBO->draw(0, 0);
         }
     }

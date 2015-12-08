@@ -156,9 +156,10 @@ void PMBaseLayer::draw()
 {
 #if ENABLE_MULTIPLE_FBOS
     layerFBO.begin();
-//    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 #endif
     ofSetColor(brushRGBColor, int(brushAlpha * 255));
+    glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
     brush->draw();
 
     if ((brushPrevPosition - brushPosition).length() > BRUSH_MAX_POSITION_DISTANCE) {
@@ -171,7 +172,6 @@ void PMBaseLayer::draw()
     }
 
 #if ENABLE_MULTIPLE_FBOS
-//    ofDisableBlendMode();
     layerFBO.end();
 #endif
 }
