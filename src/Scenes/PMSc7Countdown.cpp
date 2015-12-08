@@ -9,6 +9,7 @@
 #include "PMSc7Countdown.hpp"
 #include "PMSettingsManagerGeneral.h"
 #include "PMMotionExtractor.hpp"
+#include "PMAudioAnalyzer.hpp"
 
 
 PMSc7Countdown::PMSc7Countdown() : PMBaseScene("Scene 7")
@@ -31,6 +32,7 @@ void PMSc7Countdown::updateEnter()
     countdown.set();
     countdown.setAlarm(countdownTime * 1000);
     PMBaseScene::updateEnter();
+    PMAudioAnalyzer::getInstance().start();
 }
 
 void PMSc7Countdown::update()

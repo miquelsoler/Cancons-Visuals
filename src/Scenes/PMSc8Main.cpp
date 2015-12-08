@@ -77,7 +77,7 @@ void PMSc8Main::updateEnter()
     loadSong(songPath);
     playSong();
 
-    PMAudioAnalyzer::getInstance().start();
+    
 }
 
 void PMSc8Main::updateExit()
