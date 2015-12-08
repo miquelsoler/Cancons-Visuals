@@ -17,9 +17,10 @@ void PMLayer1::setup()
 void PMLayer1::update()
 {
     PMBaseLayer::update();
-    
-    if(WITH_KINECT)
-        setBrushSize(int((((nodeInitialZ-kinectNodeData.z)*Z_SIZE_FACTOR)+Z_SIZE_OFFSET)*BRUSH_MAX_SIZE));
+
+#if ENABLE_KINECT
+    setBrushSize(int((((nodeInitialZ-kinectNodeData.z)*Z_SIZE_FACTOR)+Z_SIZE_OFFSET)*BRUSH_MAX_SIZE));
+#endif
 }
 
 void PMLayer1::draw()

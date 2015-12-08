@@ -48,17 +48,6 @@ void PMRenderer::update()
 {
     fbo.begin();
     {
-/*
-        // background dimming
-        //ofFloatColor fc = ofFloatColor(0.0, 0.0, 0.0, gui->getFadeBackground());
-        ofFloatColor fc = ofFloatColor(1.0, 1.0, 1.0, 1);
-        //ofFloatColor fc = ofFloatColor(gui->getColorBackground().r,gui->getColorBackground().g,gui->getColorBackground().b,gui->getFadeBackground());
-        ofSetColor(fc);
-
-        ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-        ofDrawRectangle(0, 0, fbo.getWidth(), fbo.getHeight());
-        ofDisableBlendMode();
-*/
     }
     fbo.end();
 

@@ -10,7 +10,6 @@
 #include "PMMotionExtractor.hpp"
 #include "Defaults.h"
 
-#define ENABLE_SOUNDFLOWER true
 
 PMSc1Settings::PMSc1Settings() : PMBaseScene("Scene 1")
 {
@@ -22,8 +21,9 @@ PMSc1Settings::PMSc1Settings() : PMBaseScene("Scene 1")
 void PMSc1Settings::setup()
 {
     // Kinect Setup
-    if(WITH_KINECT)
-        PMMotionExtractor::getInstance().setup();
+#if ENABLE_KINECT
+    PMMotionExtractor::getInstance().setup();
+#endif
 
     // Audio Analysis Setup
 
@@ -43,12 +43,7 @@ void PMSc1Settings::setup()
     for (unsigned int i=0; i<devices[iDev].inputChannels; ++i)
         enabledChannelNumbers.push_back(i);
 
-//    PMAudioAnalyzer::getInstance().addDeviceAnalyzer(audioInputIndex, devices[iDev].deviceID,
-//            devices[iDev].inputChannels, devices[iDev].outputChannels,
-//            DEFAULT_SAMPLERATE, DEFAULT_BUFFERSIZE,
-//            enabledChannelNumbers);
-    
-    PMAudioAnalyzer::getInstance().addDeviceAnalyzer(0, devices[iDev].deviceID,
+    PMAudioAnalyzer::getInstance().addDeviceAnalyzer(audioInputIndex, devices[iDev].deviceID,
                                                                  devices[iDev].inputChannels, devices[iDev].outputChannels,
                                                                  DEFAULT_SAMPLERATE, DEFAULT_BUFFERSIZE,
                                                                  enabledChannelNumbers);

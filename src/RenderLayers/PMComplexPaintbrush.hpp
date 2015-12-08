@@ -11,29 +11,35 @@
 
 #include "ofMain.h"
 
-const static int          BRUSH_FILAMENTS_NUM = 10;
+const static int BRUSH_FILAMENTS_NUM = 10;
 
-struct BrushSimpleContainer{
+struct BrushSimpleContainer
+{
     ofImage image;
     int size;
     ofPoint position;
-    
+
 };
 
 class PMComplexPaintbrush
 {
 public:
     PMComplexPaintbrush();
-    ~PMComplexPaintbrush(){};
-    
+
+    ~PMComplexPaintbrush()
+    {
+    };
+
     void setup(ofImage image, int size, ofPoint initialPos);
+
     void update();
+
     void draw();
-    
+
     vector<BrushSimpleContainer> brushes;
-    ofPoint                         birthLine; //Where all brushes are painted;
-    ofPoint                         position;
-    
+    ofPoint birthLine; //Where all brushes are painted;
+    ofPoint position;
+
 };
 
 #endif /* PMComplexPaintbrush_hpp */

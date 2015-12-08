@@ -13,12 +13,10 @@
 
 PMSc7Countdown::PMSc7Countdown() : PMBaseScene("Scene 7")
 {
-//    setFadeOut(0);
 }
 
 void PMSc7Countdown::setup()
 {
-
 }
 
 void PMSc7Countdown::updateEnter()
@@ -37,12 +35,12 @@ void PMSc7Countdown::updateEnter()
 
 void PMSc7Countdown::update()
 {
-    if(WITH_KINECT)
-        PMMotionExtractor::getInstance().update();
-    
-//    cout<<(int)countdown.getDiff()/1000<<endl;
-    if(countdown.alarm()){
-        string toScene="Scene 8";
+#if ENABLE_KINECT
+    PMMotionExtractor::getInstance().update();
+#endif
+
+    if (countdown.alarm()) {
+        string toScene = "Scene 8";
         ofNotifyEvent(goToSceneEvent, toScene, this);
     }
 }
@@ -56,10 +54,9 @@ void PMSc7Countdown::draw()
     countdownTime = PMSettingsManagerGeneral::getInstance().getReleaseScene7CountdownTime();
 #endif
 
-    drawCenteredFont(baseFont, ofToString(countdownTime-(int)countdown.getDiff()/1000), ofGetWidth()/2, ofGetHeight()/2);
+    drawCenteredFont(baseFont, ofToString(countdownTime - (int) countdown.getDiff() / 1000), ofGetWidth() / 2, ofGetHeight() / 2);
 }
 
 void PMSc7Countdown::updateExit()
 {
-    
 }

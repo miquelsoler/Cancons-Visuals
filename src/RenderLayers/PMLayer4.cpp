@@ -4,10 +4,11 @@
 
 #include "PMLayer4.h"
 
-PMLayer4::PMLayer4(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType) : PMBaseLayer(_fboWidth, _fboHeight, _kinectNodeType)
+PMLayer4::PMLayer4(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType)
+        : PMBaseLayer(_fboWidth, _fboHeight, _kinectNodeType)
 {
     layerID = 4;
-    isShaked=false;
+    didShake = false;
 }
 
 void PMLayer4::setup()
@@ -19,11 +20,11 @@ void PMLayer4::update()
 {
 //    PMBaseLayer::update();
     brushPrevPosition = brushPosition;
-    
-    if (PMMotionExtractor::getInstance().isTracking() && WITH_KINECT)
+
+#if ENABLE_KINECT
+    if (PMMotionExtractor::getInstance().isTracking())
     {
-        switch(kinectNodeType)
-        {
+        switch (kinectNodeType) {
             case KINECTNODE_RIGHTHAND: {
                 kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand_joint;
                 break;
@@ -42,24 +43,26 @@ void PMLayer4::update()
             }
         }
     }
-    else if(!WITH_KINECT){
-        kinectNodeData.x = (float) ofGetMouseX() / ofGetWidth();
-        kinectNodeData.y = (float) ofGetMouseY() / ofGetHeight();
-        kinectNodeData.v = ofPoint(0, 0);
+#else
+    kinectNodeData.x = (float) ofGetMouseX() / ofGetWidth();
+    kinectNodeData.y = (float) ofGetMouseY() / ofGetHeight();
+    kinectNodeData.v = ofPoint(0, 0);
+#endif
+
+    if (didShake)
+    {
+        didShake = false;
     }
-    
-    if(isShaked){
-        isShaked=false;
-    }else{
-        //direction changes
-        if(WITH_KINECT){
-            ofPoint newDirection = kinectNodeData.v;
-            brushDirection = newDirection.normalize();
-            brushSpeed = newDirection.length()*5;
-        }
+    else {
+#if ENABLE_KINECT
+        // Direction changes
+        ofPoint newDirection = kinectNodeData.v;
+        brushDirection = newDirection.normalize();
+        brushSpeed = newDirection.length() * 5;
+#endif
         brushDirection.normalize();
         if (kinectNodeData.a / KINECT_ACCEL_FACTOR > KINECT_ACCEL_THRESHOLD) {
-            isShaked = true;
+            didShake = true;
         }
     }
     brushPosition += (brushDirection * brushSpeed);
