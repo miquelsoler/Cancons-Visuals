@@ -85,7 +85,24 @@ void PMRenderer::drawIntoFBO()
 #if ENABLE_MULTIPLE_FBOS
     backgroundFBO.begin();
     {
+// Original (no va)
         ofSetColor(PMColorsSelector::getInstance().getColor(0));
+
+// Gairebé va, però no (només 1 pinzell i els altres o no hi són o es "perden")
+//        ofColor bgColor = PMColorsSelector::getInstance().getColor(0);
+//        bgColor.r = 0;
+//        bgColor.g = 0;
+//        bgColor.b = 255;
+//        bgColor.a = 255;
+//        ofSetColor(bgColor);
+
+// Gairebé va, però no (només 1 pinzell i els altres o no hi són o es "perden")
+//        ofSetColor(ofColor::blue);
+
+// Gairebé va, però no (només 1 pinzell i els altres o no hi són o es "perden")
+//        ofColor color(255, 0, 0, 255);
+//        ofSetColor(color);
+
         ofDrawRectangle(0, 0, FBO_WIDTH, FBO_HEIGHT);
     }
     backgroundFBO.end();
@@ -95,14 +112,24 @@ void PMRenderer::drawIntoFBO()
 
     mainFBO.begin();
     {
-//        backgroundFBO.draw(0, 0);
+        ofSetColor(255, 255, 255, 255);
+        backgroundFBO.draw(0, 0);
+
+        glBlendEquation(GL_MAX);
+        //glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_DST_ALPHA);
+        glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
         for (int i=0; i<layers.size(); ++i)
         {
+            ofSetColor(255, 255, 255, 255);
             ofFbo *layerFBO = layers[i]->getFBO();
             layerFBO->draw(0, 0);
         }
     }
     mainFBO.end();
+
+    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+    ofEnableAlphaBlending();
 #else
     mainFBO.begin();
     {
