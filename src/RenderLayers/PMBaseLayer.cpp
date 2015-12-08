@@ -132,6 +132,7 @@ void PMBaseLayer::update()
 //
     if (kinectNodeData.a / KINECT_ACCEL_FACTOR > KINECT_ACCEL_THRESHOLD) {
         brushDirection += (kinectNodeData.v.normalize() * (kinectNodeData.a / 2));
+//        cout<<layerID<<"--IS Aceletrstrefd"<<ofGetTimestampString()<<endl;
     }
     brushPosition += (brushDirection * brushSpeed);
     brushDirection.normalize();

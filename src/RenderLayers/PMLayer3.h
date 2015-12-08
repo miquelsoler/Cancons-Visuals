@@ -26,6 +26,8 @@ public:
     void shtDetected(shtParams &shtParams) override;
     void melodyDirection(melodyDirectionParams &melodyDirectionParams) override;
     void melBandsChanged(melBandsParams &melBandsParams) override;
+private:
+    bool        isShaked;
 };
 
 

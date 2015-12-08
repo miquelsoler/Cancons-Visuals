@@ -14,6 +14,7 @@
 
 const static unsigned int   KINECT_ACCEL_FACTOR = 20;
 const static float          KINECT_ACCEL_THRESHOLD = 0.5f;
+const static float          KINECT_VELO_THRESHOLD = 30;
 const static unsigned int   BRUSH_MIN_SIZE = 20;
 const static unsigned int   BRUSH_MAX_SIZE = 50;
 const static float          BRUSH_MAX_POSITION_DISTANCE = 20.0f;

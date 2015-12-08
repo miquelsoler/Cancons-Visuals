@@ -49,7 +49,10 @@ void PMLayer4::update()
     }
     
     if(isShaked){
-        isShaked=false;
+        setBrushSize(brushSize-0.2);
+        brushSpeed-=0.5;
+        if(brushSize<=BRUSH_MIN_SIZE || brushSpeed<=0)
+            isShaked=false;
     }else{
         //direction changes
         if(WITH_KINECT){
@@ -58,11 +61,22 @@ void PMLayer4::update()
             brushSpeed = newDirection.length()*5;
         }
         brushDirection.normalize();
-        if (kinectNodeData.a / KINECT_ACCEL_FACTOR > KINECT_ACCEL_THRESHOLD) {
+//        cout<<"Velocity: "<<kinectNodeData.v.length()<<"     Aceleration: "<<kinectNodeData.a<<"   Velocity*Acceleration: "<<kinectNodeData.v.length()*kinectNodeData.a<<endl;
+        if (kinectNodeData.v.length()*kinectNodeData.a > KINECT_VELO_THRESHOLD) {
+            beginShakeTime=ofGetElapsedTimeMillis();
+            setBrushSize(BRUSH_MAX_SIZE*4);
+            brushDirection=kinectNodeData.v;
+            brushSpeed=30;
             isShaked = true;
         }
     }
     brushPosition += (brushDirection * brushSpeed);
+    
+    if(brushPosition.x<-MARGIN) brushPosition.x=-MARGIN;
+    if(brushPosition.y<-MARGIN) brushPosition.y=-MARGIN;
+    if(brushPosition.x>fboWidth+MARGIN) brushPosition.x=fboWidth+MARGIN;
+    if(brushPosition.y>fboHeight+MARGIN) brushPosition.y=fboHeight+MARGIN;
+    
     brushDirection.normalize();
     brush->update(int(brushPosition.x), int(brushPosition.y));
 }

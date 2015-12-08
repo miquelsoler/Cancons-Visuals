@@ -66,6 +66,7 @@ void PMMotionExtractor::update()
     
     //wraper to kinectInfo struct
     int mean_values=5;
+    int mean_values2=2; //for torso joint that acelere¡ates low time
     
     if(isSomeoneTracked){
         //LEFT HAND
@@ -90,7 +91,8 @@ void PMMotionExtractor::update()
         kinectOut.head_joint.x=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).x/kinectNI.getWidth();
         kinectOut.head_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).y/kinectNI.getHeight();
         kinectOut.head_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).z, 1000, 3000, 0, 1);
-        kinectOut.head_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_HEAD, mean_values);
+//        kinectOut.head_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_HEAD, mean_values2);
+        kinectOut.head_joint.a=kinectFeatures.getAccelerationMagnitude(JOINT_HEAD);
 //        kinectOut.head_joint.v=(ofPoint(oldKinectOut.head_joint.x, oldKinectOut.head_joint.y)-ofPoint(oldKinectOut.head_joint.x, oldKinectOut.head_joint.y)).normalize();
         kinectOut.head_joint.v=kinectFeatures.getVelocityMean(JOINT_HEAD, mean_values);
         kinectOut.head_joint.v.y*=-1;
@@ -99,7 +101,7 @@ void PMMotionExtractor::update()
         kinectOut.torso_joint.x=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).x/kinectNI.getWidth();
         kinectOut.torso_joint.y=kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).y/kinectNI.getHeight();
         kinectOut.torso_joint.z=ofMap(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).z, 1000, 3000, 0, 1);
-        kinectOut.torso_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_TORSO, mean_values);
+        kinectOut.torso_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_TORSO, mean_values2);
 //        kinectOut.torso_joint.v=(ofPoint(kinectOut.torso_joint.x, kinectOut.torso_joint.y)-ofPoint(oldKinectOut.torso_joint.x, oldKinectOut.torso_joint.y)).normalize();
         kinectOut.torso_joint.v=kinectFeatures.getVelocityMean(JOINT_TORSO, mean_values);
         kinectOut.torso_joint.v.y*=-1;
