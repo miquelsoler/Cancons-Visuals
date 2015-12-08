@@ -7,6 +7,7 @@
 PMLayer4::PMLayer4(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType) : PMBaseLayer(_fboWidth, _fboHeight, _kinectNodeType)
 {
     layerID = 4;
+    isShaked=false;
 }
 
 void PMLayer4::setup()
@@ -16,7 +17,54 @@ void PMLayer4::setup()
 
 void PMLayer4::update()
 {
-    PMBaseLayer::update();
+//    PMBaseLayer::update();
+    brushPrevPosition = brushPosition;
+    
+    if (PMMotionExtractor::getInstance().isTracking() && WITH_KINECT)
+    {
+        switch(kinectNodeType)
+        {
+            case KINECTNODE_RIGHTHAND: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand_joint;
+                break;
+            }
+            case KINECTNODE_LEFTHAND: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand_joint;
+                break;
+            }
+            case KINECTNODE_HEAD: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head_joint;
+                break;
+            }
+            case KINECTNODE_TORSO: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso_joint;
+                break;
+            }
+        }
+    }
+    else if(!WITH_KINECT){
+        kinectNodeData.x = (float) ofGetMouseX() / ofGetWidth();
+        kinectNodeData.y = (float) ofGetMouseY() / ofGetHeight();
+        kinectNodeData.v = ofPoint(0, 0);
+    }
+    
+    if(isShaked){
+        isShaked=false;
+    }else{
+        //direction changes
+        if(WITH_KINECT){
+            ofPoint newDirection = kinectNodeData.v;
+            brushDirection = newDirection.normalize();
+            brushSpeed = newDirection.length()*5;
+        }
+        brushDirection.normalize();
+        if (kinectNodeData.a / KINECT_ACCEL_FACTOR > KINECT_ACCEL_THRESHOLD) {
+            isShaked = true;
+        }
+    }
+    brushPosition += (brushDirection * brushSpeed);
+    brushDirection.normalize();
+    brush->update(int(brushPosition.x), int(brushPosition.y));
 }
 
 void PMLayer4::draw()

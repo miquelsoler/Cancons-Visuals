@@ -92,8 +92,6 @@ void PMBaseLayer::setup()
 void PMBaseLayer::update()
 {
     
-    //FIXME: Hack perquè no inicialitzi posició a 0.0
-    
     brushPrevPosition = brushPosition;
 
     if (PMMotionExtractor::getInstance().isTracking() && WITH_KINECT)

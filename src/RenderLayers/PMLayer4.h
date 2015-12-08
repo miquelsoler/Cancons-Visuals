@@ -14,7 +14,7 @@ public:
     PMLayer4(int fboWidth, int fboHeight, KinectNodeType kinectNodeType);
 
     void setup();
-    void update();
+    void update() override;
     void draw();
 
     //Audio listeners
@@ -26,6 +26,8 @@ public:
     void shtDetected(shtParams &shtParams) override;
     void melodyDirection(melodyDirectionParams &melodyDirectionParams) override;
     void melBandsChanged(melBandsParams &melBandsParams) override;
+private:
+    bool        isShaked;
 };
 
 
