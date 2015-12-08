@@ -32,13 +32,14 @@ public:
 
     void setup(ofImage image, int size, ofPoint initialPos);
 
-    void update();
+    void update(ofPoint position, ofPoint direction, float speed, int size);
 
     void draw();
 
     vector<BrushSimpleContainer> brushes;
     ofPoint birthLine; //Where all brushes are painted;
     ofPoint position;
+    float birthLineWith;
 
 };
 
