@@ -46,6 +46,10 @@ public:
     void setBrushSize(int brushSize);
     void setPosition(ofPoint pos) { brushPosition = pos; };
 
+#if ENABLE_MULTIPLE_FBOS
+    ofFbo *getFBO() { return &layerFBO; };
+#endif
+
     // Audio listeners
     virtual void pitchChanged(pitchParams &pitchParams) {};
     virtual void energyChanged(energyParams &energyParams){};
@@ -58,6 +62,9 @@ public:
 
 protected:
 
+#if ENABLE_MULTIPLE_FBOS
+    ofFbo                   layerFBO;
+#endif
     int                     layerID;
     int                     fboWidth, fboHeight;
     KinectNodeType          kinectNodeType;
@@ -77,7 +84,7 @@ protected:
 
     float                   curveSize;
 
-    // Audio to render mappings
+    // Audio-to-render mappings
     float                   bandMaxEnergy;
     float                   brushMinAlpha;
     float                   brushMaxAlpha;
@@ -87,7 +94,6 @@ protected:
     float                   brushMaxBrightness;
 
     KinectElement           kinectNodeData;
-    
 };
 
 
