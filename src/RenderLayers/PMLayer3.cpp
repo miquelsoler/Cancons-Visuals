@@ -138,15 +138,20 @@ void PMLayer3::melodyDirection(melodyDirectionParams &melodyDirectionParams)
 
 void PMLayer3::melBandsChanged(melBandsParams &melBandsParams)
 {
-    float myEnergy = melBandsParams.bandsEnergy[3];
-    if(!didShake){
-        int newSize = int(ofMap(myEnergy, 0.0, bandMaxEnergy, brushMinSize, brushMaxSize, true));
     
-#if ENABLE_MULTIPLE_FBOS
-    // TODO: Remove after multiple FBO tests succeed.
-    newSize *= 10;
-#endif
-    brush->setSize(newSize, newSize);
-    }
+    float myEnergy = melBandsParams.bandsEnergy[3];
+    brushHSBColor.brightness = ofMap(myEnergy, 0.0, bandMaxEnergy, brushMinBrightness, brushMaxBrightness, true);
+    brushRGBColor.setHsb(brushHSBColor.hue, brushHSBColor.saturation, brushHSBColor.brightness);
+    
+//    float myEnergy = melBandsParams.bandsEnergy[3];
+//    if(!didShake){
+//        int newSize = int(ofMap(myEnergy, 0.0, bandMaxEnergy, brushMinSize, brushMaxSize, true));
+//    
+//#if ENABLE_MULTIPLE_FBOS
+//    // TODO: Remove after multiple FBO tests succeed.
+//    newSize *= 10;
+//#endif
+//    brush->setSize(newSize, newSize);
+//    }
 //    cout << "Brush Size L3> En:" << myEnergy << " Size: " << newSize << endl;
 }
