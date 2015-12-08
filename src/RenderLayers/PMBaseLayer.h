@@ -40,7 +40,7 @@ public:
 
     PMBaseLayer(int fboWidth, int fboHeight, KinectNodeType kinectNodeType);
 
-    virtual void setup();
+    virtual void setup(ofPoint initialPosition);
     virtual void update();
     virtual void draw();
     void setBrushSize(int brushSize);

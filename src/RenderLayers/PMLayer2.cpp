@@ -4,20 +4,27 @@
 
 #include "PMLayer2.h"
 
+static const float Z_SIZE_OFFSET  = 1;
+static const float Z_SIZE_FACTOR = 10;
+
 PMLayer2::PMLayer2(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType) : PMBaseLayer(_fboWidth, _fboHeight, _kinectNodeType)
 {
     layerID = 2;
 }
 
-void PMLayer2::setup()
+void PMLayer2::setup(ofPoint initialPosition)
 {
-    PMBaseLayer::setup();
+    PMBaseLayer::setup(initialPosition);
 }
 
 void PMLayer2::update()
 {
     PMBaseLayer::update();
-//    setBrushSize(int((((nodeInitialZ-kinectNodeData.z)*Z_SIZE_FACTOR)+Z_SIZE_OFFSET)*BRUSH_MAX_SIZE));
+#if ENABLE_KINECT
+    int newBrushSize = int((((nodeInitialZ-kinectNodeData.z)*Z_SIZE_FACTOR)+Z_SIZE_OFFSET)*BRUSH_MAX_SIZE);
+    if(newBrushSize>BRUSH_MIN_SIZE)
+        setBrushSize(newBrushSize);
+#endif
 }
 
 void PMLayer2::draw()

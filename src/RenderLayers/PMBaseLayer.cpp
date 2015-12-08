@@ -18,7 +18,7 @@ PMBaseLayer::PMBaseLayer(int _fboWidth, int _fboHeight, KinectNodeType _kinectNo
     kinectNodeType = _kinectNodeType;
 }
 
-void PMBaseLayer::setup()
+void PMBaseLayer::setup(ofPoint initialPosition)
 {
 #if ENABLE_MULTIPLE_FBOS
     layerFBO.begin();
@@ -53,17 +53,13 @@ void PMBaseLayer::setup()
         }
     }
     nodeInitialZ = kinectNodeData.z;
-    //brushPosition = ofPoint(kinectNodeData.x*fboWidth, kinectNodeData.y*fboHeight);
 #else
-    brushPosition = ofPoint(ofRandom(fboWidth), ofRandom(fboHeight));
     nodeInitialZ = 0;
 #endif
 
-    brushPosition = ofPoint(ofRandom(fboWidth), ofRandom(fboHeight));
+    brushPosition = initialPosition;
     brushPrevPosition = brushPosition;
     brushDirection = ofPoint(ofRandom(-1, 1), ofRandom(-1, 1)).normalize();
-//    brushSize = int(ofRandom(BRUSH_MIN_SIZE, BRUSH_MAX_SIZE));
-//    brush->setSize(brushSize, brushSize);
     setBrushSize(int(ofRandom(BRUSH_MIN_SIZE, BRUSH_MAX_SIZE)));
 
     brushRGBColor = PMColorsSelector::getInstance().getColor(layerID);

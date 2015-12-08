@@ -37,7 +37,7 @@
       "Brush Max Alpha (N)" : 1.0,
       "Brush Min Size" : 20.0,
       "Brush Max Size" : 400.0,
-      "Brush Min Brightness (N)": 0.0,
+      "Brush Min Brightness (N)": 50.0,
       "Brush Max Brightness (N)": 100.0
     }
   ]

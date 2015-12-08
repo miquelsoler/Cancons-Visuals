@@ -7,8 +7,8 @@
 
 #include "PMBaseLayer.h"
 
-static const float Z_SIZE_OFFSET  = 1;
-static const float Z_SIZE_FACTOR = 10;
+//static const float Z_SIZE_OFFSET  = 1;
+//static const float Z_SIZE_FACTOR = 10;
 
 class PMLayer1 : public PMBaseLayer
 {
@@ -16,7 +16,7 @@ public:
 
     PMLayer1(int fboWidth, int fboHeight, KinectNodeType kinectNodeType);
     
-    void setup();
+    void setup(ofPoint initialPosition);
     void update();
     void draw();
     

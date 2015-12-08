@@ -7,12 +7,12 @@
 
 #include "PMBaseLayer.h"
 
-static const int MARGIN = -50;
-static const int INITIAL_SHAKE_SPEED = 30;
-static const float SPEED_DECREMENT = 0.5;
-static const int SIZE_DECREMENT = 1;
-static const int INITIAL_SHAKE_SIZE = BRUSH_MAX_SIZE*4;
-static const int    DIR_HISTORY_SIZE = 10;
+//static const int MARGIN = -50;
+//static const int INITIAL_SHAKE_SPEED = 30;
+//static const float SPEED_DECREMENT = 0.3;
+//static const int SIZE_DECREMENT = 1;
+//static const int INITIAL_SHAKE_SIZE = BRUSH_MAX_SIZE*4;
+//static const int    DIR_HISTORY_SIZE = 10;
 
 class PMLayer4 : public PMBaseLayer
 {
@@ -20,8 +20,8 @@ public:
 
     PMLayer4(int fboWidth, int fboHeight, KinectNodeType kinectNodeType);
 
-    void setup();
-    void update() override;
+    void setup(ofPoint initialPosition);
+    void update();
     void draw();
 
     //Audio listeners

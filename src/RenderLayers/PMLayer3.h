@@ -7,13 +7,15 @@
 
 #include "PMBaseLayer.h"
 
+
+
 class PMLayer3 : public PMBaseLayer
 {
 public:
 
     PMLayer3(int fboWidth, int fboHeight, KinectNodeType kinectNodeType);
 
-    void setup();
+    void setup(ofPoint initialPosition);
     void update();
     void draw();
 
@@ -28,6 +30,8 @@ public:
     void melBandsChanged(melBandsParams &melBandsParams) override;
 private:
     bool didShake;
+    float       beginShakeTime;
+    deque<ofPoint> directionHistory;
 };
 
 
