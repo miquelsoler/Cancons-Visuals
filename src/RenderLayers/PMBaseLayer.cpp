@@ -119,11 +119,11 @@ void PMBaseLayer::update()
     kinectNodeData.v = ofPoint(0, 0);
 #endif
 
-#if ENABLE_KINECT
+//#if ENABLE_KINECT
     // Direction changes
     ofPoint newDirection = ofPoint(kinectNodeData.x * fboWidth, kinectNodeData.y * fboHeight) - brushPosition;
     brushDirection += ((newDirection.normalize()) * curveSize);
-#endif
+//#endif
 
     brushDirection.normalize();
 //    direction+=((kinectNodeData.v.normalize())*(kinectNodeData.a/50));

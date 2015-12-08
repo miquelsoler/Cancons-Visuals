@@ -18,10 +18,9 @@ void PMLayer3::setup()
 
 void PMLayer3::update()
 {
-//    PMBaseLayer::update();
+#if ENABLE_KINECT
     brushPrevPosition = brushPosition;
 
-#if ENABLE_KINECT
     if (PMMotionExtractor::getInstance().isTracking())
     {
         switch(kinectNodeType)
@@ -44,11 +43,7 @@ void PMLayer3::update()
             }
         }
     }
-#else
-    kinectNodeData.x = (float) ofGetMouseX() / ofGetWidth();
-    kinectNodeData.y = (float) ofGetMouseY() / ofGetHeight();
-    kinectNodeData.v = ofPoint(0, 0);
-#endif
+
 
     if (didShake)
     {
@@ -56,12 +51,12 @@ void PMLayer3::update()
     }
     else
     {
-#if ENABLE_KINECT
+
         // Direction changes
         ofPoint newDirection = kinectNodeData.v;
         brushDirection = newDirection.normalize();
         brushSpeed = newDirection.length()*5;
-#endif
+
 
         brushDirection.normalize();
 //        cout<<kinectNodeData.a / KINECT_ACCEL_FACTOR<<endl;
@@ -73,6 +68,9 @@ void PMLayer3::update()
     brushPosition += (brushDirection * brushSpeed);
     brushDirection.normalize();
     brush->update(int(brushPosition.x), int(brushPosition.y));
+#else
+    PMBaseLayer::update();
+#endif
 }
 
 void PMLayer3::draw()
