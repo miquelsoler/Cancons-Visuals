@@ -8,6 +8,10 @@
 #include "PMBaseLayer.h"
 
 static const int MARGIN = 50;
+static const int INITIAL_SHAKE_SPEED = 30;
+static const float SPEED_DECREMENT = 0.5;
+static const float SIZE_DECREMENT = 0.2f;
+static const int INITIAL_SHAKE_SIZE = BRUSH_MAX_SIZE*4;
 
 class PMLayer4 : public PMBaseLayer
 {

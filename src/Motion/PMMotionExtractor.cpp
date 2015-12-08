@@ -20,19 +20,9 @@ void PMMotionExtractor::setup()
     kinectNI.addUserGenerator();
     kinectNI.setMaxNumUsers(1);
     kinectNI.setSkeletonProfile(XN_SKEL_PROFILE_ALL);
-    //kinectNI.addHandsGenerator();
-    //kinectNI.addUserGenerator();
-    //kinectNI.addAllHandFocusGestures();
-    //kinectNI.setMaxNumHands(2);
     kinectNI.start();
     
-    //ofSetWindowShape(640, 480);
-    
-    font.loadFont("verdana.ttf", 18);
-    
     isSomeoneTracked=false;
-    
-    //ofAddListener(kinectNI.userEvent, this, &ofApp::userEvent);
 }
 
 ///--------------------------------------------------------------
@@ -116,13 +106,6 @@ void PMMotionExtractor::draw()
     ofSetRectMode(OF_RECTMODE_CENTER);
         kinectNI.drawImage(ofGetWidth()/2,ofGetHeight()/2, ofGetWidth(), ofGetHeight()*(kinectNI.getHeight()/kinectNI.getWidth()));
     ofSetRectMode(OF_RECTMODE_CORNER);
-//    cout<<kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).z << endl;
-//    //prova
-//    ofDrawEllipse(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).y, 20, 20);
-//    ofDrawEllipse(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).y, 20, 20);
-//    ofDrawEllipse(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).y, 20, 20);
-//    ofDrawEllipse(kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).y, 20, 20);
-    //font.drawString(ofToString(kinectFeatures.getAcceleration(JOINT_RIGHT_HAND).y), kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).x, kinectNI.worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).y);
 }
 
 ///--------------------------------------------------------------
