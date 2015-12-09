@@ -176,4 +176,3 @@ void ofApp::changeScene(string &scene)
     sceneManager.gotoScene(scene);
     currentSceneName = scene;
 }
-

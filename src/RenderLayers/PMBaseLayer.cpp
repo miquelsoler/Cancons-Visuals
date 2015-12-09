@@ -81,8 +81,11 @@ void PMBaseLayer::setup(ofPoint initialPosition)
         sizeMin = settings.getSizeMin(layerID);
         sizeMax = settings.getSizeMax(layerID);
         hueScaleFactor = settings.getHueScaleFactor(layerID);
+        hueVariation = settings.getHueVariation(layerID);
         saturationScaleFactor = settings.getSaturationScaleFactor(layerID);
+        saturationVariation = settings.getSaturationVariation(layerID);
         brightnessScaleFactor = settings.getBrightnessScaleFactor(layerID);
+        brightnessVariation = settings.getBrightnessVariation(layerID);
         alphaMin = settings.getAlphaMin(layerID);
         alphaMax = settings.getAlphaMax(layerID);
         alphaScaleFactor = settings.getAlphaScaleFactor(layerID);

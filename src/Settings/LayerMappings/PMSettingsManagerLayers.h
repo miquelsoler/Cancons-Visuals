@@ -27,22 +27,17 @@ public:
     unsigned int getSizeMax(int layerID);
 
     float getHueScaleFactor(int layerID);
+    float getHueVariation(int layerID);
 
     float getSaturationScaleFactor(int layerID);
+    float getSaturationVariation(int layerID);
 
     float getBrightnessScaleFactor(int layerID);
+    float getBrightnessVariation(int layerID);
 
     float getAlphaMin(int layerID);
     float getAlphaMax(int layerID);
     float getAlphaScaleFactor(int layerID);
-
-//    float getBandMaxEnergy(int layerID);
-//    float getMinAlpha(int layerID);
-//    float getMaxAlpha(int layerID);
-//    float getMinSize(int layerID);
-//    float getMaxSize(int layerID);
-//    float getMinBrightness(int layerID);
-//    float getMaxBrightness(int layerID);
 
 private:
 

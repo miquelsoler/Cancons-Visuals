@@ -84,8 +84,11 @@ protected:
     unsigned int            sizeMin;
     unsigned int            sizeMax;
     float                   hueScaleFactor;
+    float                   hueVariation;
     float                   saturationScaleFactor;
+    float                   saturationVariation;
     float                   brightnessScaleFactor;
+    float                   brightnessVariation;
     float                   alphaMin;
     float                   alphaMax;
     float                   alphaScaleFactor;

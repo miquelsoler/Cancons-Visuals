@@ -11,13 +11,16 @@
 				"Max": 100
 			},
    	   		"Hue": {
-   	   			"Scale Factor": 1.5
+   	   			"Scale Factor": 1.5,
+                "Variation": 0.05
   	    	},
   	    	"Saturation": {
-   	   			"Scale Factor": 1.5
+              "Scale Factor": 1.5,
+              "Variation": 0.05
   	    	},
   	    	"Brightness": {
-   	   			"Scale Factor": 1.5
+              "Scale Factor": 1.5,
+              "Variation": 0.05
   	    	},
   	    	"Alpha": {
       			"Min (N)": 0.0,
@@ -36,13 +39,16 @@
 				"Max": 100
 			},
    	   		"Hue": {
-   	   			"Scale Factor": 1.5
+              "Scale Factor": 1.5,
+              "Variation": 0.05
   	    	},
   	    	"Saturation": {
-   	   			"Scale Factor": 1.5
+              "Scale Factor": 1.5,
+              "Variation": 0.05
   	    	},
   	    	"Brightness": {
-   	   			"Scale Factor": 1.5
+              "Scale Factor": 1.5,
+              "Variation": 0.05
   	    	},
   	    	"Alpha": {
       			"Min (N)": 0.0,
@@ -61,13 +67,16 @@
 				"Max": 100
 			},
    	   		"Hue": {
-   	   			"Scale Factor": 1.5
+              "Scale Factor": 1.5,
+              "Variation": 0.05
   	    	},
   	    	"Saturation": {
-   	   			"Scale Factor": 1.5
+              "Scale Factor": 1.5,
+              "Variation": 0.05
   	    	},
   	    	"Brightness": {
-   	   			"Scale Factor": 1.5
+              "Scale Factor": 1.5,
+              "Variation": 0.05
   	    	},
   	    	"Alpha": {
       			"Min (N)": 0.0,
@@ -86,13 +95,16 @@
 				"Max": 100
 			},
    	   		"Hue": {
-   	   			"Scale Factor": 1.5
+              "Scale Factor": 1.5,
+              "Variation": 0.05
   	    	},
   	    	"Saturation": {
-   	   			"Scale Factor": 1.5
+              "Scale Factor": 1.5,
+              "Variation": 0.05
   	    	},
   	    	"Brightness": {
-   	   			"Scale Factor": 1.5
+              "Scale Factor": 1.5,
+              "Variation": 0.05
   	    	},
   	    	"Alpha": {
       			"Min (N)": 0.0,

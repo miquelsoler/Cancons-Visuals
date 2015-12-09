@@ -16,10 +16,13 @@ static const string STR_SIZE_MIN                = "Min";
 static const string STR_SIZE_MAX                = "Max";
 static const string STR_HUE                     = "Hue";
 static const string STR_HUE_SCALE_FACTOR        = "Scale Factor";
+static const string STR_HUE_VARIATION           = "Variation";
 static const string STR_SATURATION              = "Saturation";
 static const string STR_SATURATION_SCALE_FACTOR = "Scale Factor";
+static const string STR_SATURATION_VARIATION    = "Variation";
 static const string STR_BRIGHTNESS              = "Brightness";
 static const string STR_BRIGHTNESS_SCALE_FACTOR = "Scale Factor";
+static const string STR_BRIGHTNESS_VARIATION    = "Variation";
 static const string STR_ALPHA                   = "Alpha";
 static const string STR_ALPHA_MIN               = "Min (N)";
 static const string STR_ALPHA_MAX               = "Max (N)";
@@ -38,57 +41,6 @@ PMSettingsManagerLayers::PMSettingsManagerLayers() : PMSettingsManager()
         std::exit(EXIT_FAILURE);
     }
 }
-
-/*
-float PMSettingsManagerLayers::getBandMaxEnergy(int layerID)
-{
-    int index = getIndexOfLayerWithID(layerID);
-    Json::Value jsonLayer = json[STR_LAYERS][index];
-    return jsonLayer[STR_LAYER_BAND_MAX_ENERGY].asFloat();
-}
-
-float PMSettingsManagerLayers::getMinAlpha(int layerID)
-{
-    int index = getIndexOfLayerWithID(layerID);
-    Json::Value jsonLayer = json[STR_LAYERS][index];
-    return jsonLayer[STR_LAYER_MIN_ALPHA].asFloat();
-}
-
-float PMSettingsManagerLayers::getMaxAlpha(int layerID)
-{
-    int index = getIndexOfLayerWithID(layerID);
-    Json::Value jsonLayer = json[STR_LAYERS][index];
-    return jsonLayer[STR_LAYER_MAX_ALPHA].asFloat();
-}
-
-float PMSettingsManagerLayers::getMinSize(int layerID)
-{
-    int index = getIndexOfLayerWithID(layerID);
-    Json::Value jsonLayer = json[STR_LAYERS][index];
-    return jsonLayer[STR_LAYER_MIN_SIZE].asFloat();
-}
-
-float PMSettingsManagerLayers::getMaxSize(int layerID)
-{
-    int index = getIndexOfLayerWithID(layerID);
-    Json::Value jsonLayer = json[STR_LAYERS][index];
-    return jsonLayer[STR_LAYER_MAX_SIZE].asFloat();
-}
-
-float PMSettingsManagerLayers::getMinBrightness(int layerID)
-{
-    int index = getIndexOfLayerWithID(layerID);
-    Json::Value jsonLayer = json[STR_LAYERS][index];
-    return jsonLayer[STR_LAYER_MIN_BRIGHTNESS].asFloat();
-}
-
-float PMSettingsManagerLayers::getMaxBrightness(int layerID)
-{
-    int index = getIndexOfLayerWithID(layerID);
-    Json::Value jsonLayer = json[STR_LAYERS][index];
-    return jsonLayer[STR_LAYER_MAX_BRIGHTNESS].asFloat();
-}
-*/
 
 float PMSettingsManagerLayers::getEnergyMin(int layerID)
 {
@@ -125,6 +77,13 @@ float PMSettingsManagerLayers::getHueScaleFactor(int layerID)
     return jsonLayer[STR_HUE_SCALE_FACTOR].asFloat();
 }
 
+float PMSettingsManagerLayers::getHueVariation(int layerID)
+{
+    int index = getIndexOfLayerWithID(layerID);
+    Json::Value jsonLayer = json[STR_LAYERS][index][STR_HUE];
+    return jsonLayer[STR_HUE_VARIATION].asFloat();
+}
+
 float PMSettingsManagerLayers::getSaturationScaleFactor(int layerID)
 {
     int index = getIndexOfLayerWithID(layerID);
@@ -132,11 +91,25 @@ float PMSettingsManagerLayers::getSaturationScaleFactor(int layerID)
     return jsonLayer[STR_SATURATION_SCALE_FACTOR].asFloat();
 }
 
+float PMSettingsManagerLayers::getSaturationVariation(int layerID)
+{
+    int index = getIndexOfLayerWithID(layerID);
+    Json::Value jsonLayer = json[STR_LAYERS][index][STR_SATURATION];
+    return jsonLayer[STR_SATURATION_VARIATION].asFloat();
+}
+
 float PMSettingsManagerLayers::getBrightnessScaleFactor(int layerID)
 {
     int index = getIndexOfLayerWithID(layerID);
     Json::Value jsonLayer = json[STR_LAYERS][index][STR_BRIGHTNESS];
     return jsonLayer[STR_BRIGHTNESS_SCALE_FACTOR].asFloat();
+}
+
+float PMSettingsManagerLayers::getBrightnessVariation(int layerID)
+{
+    int index = getIndexOfLayerWithID(layerID);
+    Json::Value jsonLayer = json[STR_LAYERS][index][STR_BRIGHTNESS];
+    return jsonLayer[STR_BRIGHTNESS_VARIATION].asFloat();
 }
 
 float PMSettingsManagerLayers::getAlphaMin(int layerID)
