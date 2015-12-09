@@ -7,8 +7,6 @@
 
 #include "PMBaseLayer.h"
 
-
-
 class PMLayer3 : public PMBaseLayer
 {
 public:
@@ -19,19 +17,11 @@ public:
     void update();
     void draw();
 
-    //Audio listeners
-    void pitchChanged(pitchParams &pitchParams) override;
-    void energyChanged(energyParams &energyParams) override;
-    void silenceStateChanged(silenceParams &silenceParams) override;
-    void pauseStateChanged(pauseParams &_auseParams) override;
-    void onsetDetected(onsetParams &onsetParams) override;
-    void shtDetected(shtParams &shtParams) override;
-    void melodyDirection(melodyDirectionParams &melodyDirectionParams) override;
-    void melBandsChanged(melBandsParams &melBandsParams) override;
 private:
-    bool didShake;
-    float       beginShakeTime;
-    deque<ofPoint> directionHistory;
+
+    bool            didShake;
+    float           beginShakeTime;
+    deque<ofPoint>  directionHistory;
 };
 
 

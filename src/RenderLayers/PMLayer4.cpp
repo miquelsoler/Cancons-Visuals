@@ -4,13 +4,7 @@
 
 #include "PMLayer4.h"
 
-static const int MARGIN = 50; //Valor on es queda el pinzell encomptes de marxar a l'infinit
-static const int INITIAL_SHAKE_SPEED = 30; //la velocitat en la qual es dispara
-static const float SPEED_DECREMENT = 0.3; //la desecaleració
-static const int SIZE_DECREMENT = 1; //com varia de mida
-static const int INITIAL_SHAKE_SIZE = BRUSH_MAX_SIZE*4; //la mida inicial del pinzell quan es dispara
-static const int    DIR_HISTORY_SIZE = 10; //es perque agafi be la direcció
-static const float CURVE_SIZE=10;
+static const int DIR_HISTORY_SIZE = 10; //es perque agafi be la direcció
 
 PMLayer4::PMLayer4(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType)
         : PMBaseLayer(_fboWidth, _fboHeight, _kinectNodeType)
@@ -106,53 +100,4 @@ void PMLayer4::update()
 void PMLayer4::draw()
 {
     PMBaseLayer::draw();
-}
-
-#pragma mark - Audio Events
-
-void PMLayer4::pitchChanged(pitchParams &pitchParams)
-{
-}
-
-void PMLayer4::energyChanged(energyParams &energyParams)
-{
-}
-
-void PMLayer4::silenceStateChanged(silenceParams &silenceParams)
-{
-}
-
-void PMLayer4::pauseStateChanged(pauseParams &pauseParams)
-{
-}
-
-void PMLayer4::onsetDetected(onsetParams &onsetParams)
-{
-}
-
-void PMLayer4::shtDetected(shtParams &shtParams)
-{
-}
-
-void PMLayer4::melodyDirection(melodyDirectionParams &melodyDirectionParams)
-{
-    if(didShake)
-        brushDirection.rotate(melodyDirectionParams.direction*CURVE_SIZE, ofVec3f(0,0,1)); //rotate arround z axis
-}
-
-void PMLayer4::melBandsChanged(melBandsParams &melBandsParams)
-{
-//    float myEnergy = melBandsParams.bandsEnergy[0];
-//    brushHSBColor.brightness = ofMap(myEnergy, 0.0, bandMaxEnergy, brushMinBrightness, brushMaxBrightness, true);
-//    brushRGBColor.setHsb(brushHSBColor.hue, brushHSBColor.saturation, brushHSBColor.brightness);
-//    
-    float myEnergy = melBandsParams.bandsEnergy[3];
-    if(!didShake){
-        int newSize = int(ofMap(myEnergy, 0.0, bandMaxEnergy, brushMinSize, brushMaxSize, true));
-        brush->setSize(newSize, newSize);
-    }
-    
-    brushAlpha = ofMap(myEnergy, 0.0, bandMaxEnergy, brushMinAlpha, brushMaxAlpha);
-
-//    cout << "Brush Brightness L4> En:" << myEnergy << " Brightness: " << brushHSBColor.brightness << endl;
 }

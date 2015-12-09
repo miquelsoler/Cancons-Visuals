@@ -7,9 +7,6 @@
 
 #include "PMBaseLayer.h"
 
-//static const float Z_SIZE_OFFSET  = 1;
-//static const float Z_SIZE_FACTOR = 10;
-
 class PMLayer2 : public PMBaseLayer
 {
 public:
@@ -19,16 +16,6 @@ public:
     void setup(ofPoint initialPosition);
     void update();
     void draw();
-
-    //Audio listeners
-    void pitchChanged(pitchParams &pitchParams) override;
-    void energyChanged(energyParams &energyParams) override;
-    void silenceStateChanged(silenceParams &silenceParams) override;
-    void pauseStateChanged(pauseParams &_auseParams) override;
-    void onsetDetected(onsetParams &onsetParams) override;
-    void shtDetected(shtParams &shtParams) override;
-    void melodyDirection(melodyDirectionParams &melodyDirectionParams) override;
-    void melBandsChanged(melBandsParams &melBandsParams) override;
 };
 
 

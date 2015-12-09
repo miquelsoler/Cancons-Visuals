@@ -28,7 +28,8 @@ typedef enum
     KINECTNODE_TORSO        = 3
 } KinectNodeType;
 
-struct ofColorHSB{
+struct ofColorHSB
+{
     float hue;
     float saturation;
     float brightness;
@@ -51,14 +52,7 @@ public:
 #endif
 
     // Audio listeners
-    virtual void pitchChanged(pitchParams &pitchParams) {};
-    virtual void energyChanged(energyParams &energyParams){};
-    virtual void silenceStateChanged(silenceParams &silenceParams) {};
-    virtual void pauseStateChanged(pauseParams &_auseParams) {};
-    virtual void onsetDetected(onsetParams &onsetParams) {};
-    virtual void shtDetected(shtParams &shtParams) {};
-    virtual void melodyDirection(melodyDirectionParams &melodyDirectionParams) {};
-    virtual void melBandsChanged(melBandsParams &melBandsParams) {};
+    virtual void melBandsChanged(melBandsParams &melBandsParams);
 
 protected:
 
@@ -85,13 +79,16 @@ protected:
     float                   curveSize;
 
     // Audio-to-render mappings
-    float                   bandMaxEnergy;
-    float                   brushMinAlpha;
-    float                   brushMaxAlpha;
-    float                   brushMinSize;
-    float                   brushMaxSize;
-    float                   brushMinBrightness;
-    float                   brushMaxBrightness;
+    float                   energyMin;
+    float                   energyMax;
+    unsigned int            sizeMin;
+    unsigned int            sizeMax;
+    float                   hueScaleFactor;
+    float                   saturationScaleFactor;
+    float                   brightnessScaleFactor;
+    float                   alphaMin;
+    float                   alphaMax;
+    float                   alphaScaleFactor;
 
     KinectElement           kinectNodeData;
 };

@@ -76,23 +76,19 @@ void PMBaseLayer::setup(ofPoint initialPosition)
     {
         PMSettingsManagerLayers settings = PMSettingsManagerLayers::getInstance();
 
-        bandMaxEnergy = settings.getBandMaxEnergy(layerID);
-        brushMinAlpha = settings.getMinAlpha(layerID);
-        brushMaxAlpha = settings.getMaxAlpha(layerID);
-        brushMinSize = settings.getMinSize(layerID);
-        brushMaxSize = settings.getMaxSize(layerID);
-        brushMinBrightness = settings.getMinBrightness(layerID);
-        brushMaxBrightness = settings.getMaxBrightness(layerID);
+        energyMin = settings.getEnergyMin(layerID);
+        energyMax = settings.getEnergyMax(layerID);
+        sizeMin = settings.getSizeMin(layerID);
+        sizeMax = settings.getSizeMax(layerID);
+        hueScaleFactor = settings.getHueScaleFactor(layerID);
+        saturationScaleFactor = settings.getSaturationScaleFactor(layerID);
+        brightnessScaleFactor = settings.getBrightnessScaleFactor(layerID);
+        alphaMin = settings.getAlphaMin(layerID);
+        alphaMax = settings.getAlphaMax(layerID);
+        alphaScaleFactor = settings.getAlphaScaleFactor(layerID);
     }
 
     // TODO: Treure les crides que no s'utilitzin, si n'hi ha.
-    ofAddListener(deviceAudioAnalyzer->eventPitchChanged, this, &PMBaseLayer::pitchChanged);
-    ofAddListener(deviceAudioAnalyzer->eventEnergyChanged, this, &PMBaseLayer::energyChanged);
-    ofAddListener(deviceAudioAnalyzer->eventSilenceStateChanged, this, &PMBaseLayer::silenceStateChanged);
-    ofAddListener(deviceAudioAnalyzer->eventPauseStateChanged, this, &PMBaseLayer::pauseStateChanged);
-    ofAddListener(deviceAudioAnalyzer->eventOnsetStateChanged, this, &PMBaseLayer::onsetDetected);
-    ofAddListener(deviceAudioAnalyzer->eventShtStateChanged, this, &PMBaseLayer::shtDetected);
-    ofAddListener(deviceAudioAnalyzer->eventMelodyDirection, this, &PMBaseLayer::melodyDirection);
     ofAddListener(deviceAudioAnalyzer->eventMelBandsChanged, this, &PMBaseLayer::melBandsChanged);
 }
 
@@ -176,4 +172,56 @@ void PMBaseLayer::setBrushSize(int _brushSize)
 {
     brushSize = _brushSize;
     brush->setSize(brushSize, brushSize);
+}
+
+#pragma mark - Audio events
+
+void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
+{
+    // Layer4: band0 - Layer1: band1 - Layer2: band2 - Layer3: band3
+    int melBandIndex = (layerID != 4) ? layerID : 0;
+    float energy = melBandsParams.bandsEnergy[melBandIndex];
+    float normalizedEnergy = ofMap(energy, energyMin, energyMax, 0, 1);
+
+    int hsbMin = 0, hsbMax = 255;
+
+    // Size
+    {
+        int newSize = int(ofMap(energy, energyMin, energyMax, sizeMin, sizeMax));
+        setBrushSize(newSize);
+    }
+
+    // Alpha
+    {
+        brushAlpha = ofMap(energy, energyMin, energyMax, alphaMin, alphaMax) * alphaScaleFactor;
+        if (brushAlpha < 0.0f) brushAlpha = 0.0f;
+        if (brushAlpha > 1.0f) brushAlpha = 1.0f;
+    }
+
+    // Hue
+    {
+        int hue = int(brushHSBColor.hue * (normalizedEnergy * hueScaleFactor));
+        if (hue < hsbMin) hue = hsbMin;
+        if (hue > hsbMax) hue = hsbMax;
+
+        brushRGBColor.setHue(hue);
+    }
+
+    // Saturation
+    {
+        int saturation = int(brushHSBColor.saturation * (normalizedEnergy * saturationScaleFactor));
+        if (saturation < hsbMin) saturation = hsbMin;
+        if (saturation > hsbMax) saturation = hsbMax;
+
+        brushRGBColor.setSaturation(saturation);
+    }
+
+    // Brightness
+    {
+        int brightness = int(brushHSBColor.brightness * (normalizedEnergy * brightnessScaleFactor));
+        if (brightness < hsbMin) brightness = hsbMin;
+        if (brightness > hsbMax) brightness = hsbMax;
+
+        brushRGBColor.setBrightness(brightness);
+    }
 }

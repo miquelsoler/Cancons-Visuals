@@ -1,44 +1,104 @@
 {
-  "Layers" : [
-    {
-      "ID" : 1,
-      "Band Max Energy (N)" : 0.1,
-      "Brush Min Alpha (N)" : 0.1,
-      "Brush Max Alpha (N)" : 1.0,
-      "Brush Min Size" : 20.0,
-      "Brush Max Size" : 100.0,
-      "Brush Min Brightness (N)": 0.0,
-      "Brush Max Brightness (N)": 1.0
-    },
-    {
-      "ID" : 2,
-      "Band Max Energy (N)" : 0.1,
-      "Brush Min Alpha (N)" : 0.1,
-      "Brush Max Alpha (N)" : 1.0,
-      "Brush Min Size" : 20.0,
-      "Brush Max Size" : 100.0,
-      "Brush Min Brightness (N)": 0.0,
-      "Brush Max Brightness (N)": 1.0
-    },
-    {
-      "ID" : 3,
-      "Band Max Energy (N)" : 0.03,
-      "Brush Min Alpha (N)" : 0.1,
-      "Brush Max Alpha (N)" : 1.0,
-      "Brush Min Size" : 20.0,
-      "Brush Max Size" : 400.0,
-      "Brush Min Brightness (N)": 0.0,
-      "Brush Max Brightness (N)": 1.0
-    },
-    {
-      "ID" : 4,
-      "Band Max Energy (N)" : 0.1,
-      "Brush Min Alpha (N)" : 0.1,
-      "Brush Max Alpha (N)" : 1.0,
-      "Brush Min Size" : 20.0,
-      "Brush Max Size" : 400.0,
-      "Brush Min Brightness (N)": 50.0,
-      "Brush Max Brightness (N)": 100.0
-    }
-  ]
+	"Layers" : [
+		{
+			"ID" : 1,
+			"Energy": {
+      			"Min (N)": 0.0,
+      			"Max (N)": 0.1
+			},
+			"Size": {
+				"Min": 20,
+				"Max": 100
+			},
+   	   		"Hue": {
+   	   			"Scale Factor": 1.5
+  	    	},
+  	    	"Saturation": {
+   	   			"Scale Factor": 1.5
+  	    	},
+  	    	"Brightness": {
+   	   			"Scale Factor": 1.5
+  	    	},
+  	    	"Alpha": {
+      			"Min (N)": 0.0,
+      			"Max (N)": 0.1,
+   	   			"Scale Factor": 1.5
+ 	     	}
+		},
+		{
+			"ID" : 2,
+			"Energy": {
+      			"Min (N)": 0.0,
+      			"Max (N)": 0.1
+			},
+			"Size": {
+				"Min": 20,
+				"Max": 100
+			},
+   	   		"Hue": {
+   	   			"Scale Factor": 1.5
+  	    	},
+  	    	"Saturation": {
+   	   			"Scale Factor": 1.5
+  	    	},
+  	    	"Brightness": {
+   	   			"Scale Factor": 1.5
+  	    	},
+  	    	"Alpha": {
+      			"Min (N)": 0.0,
+      			"Max (N)": 0.1,
+   	   			"Scale Factor": 1.5
+ 	     	}
+		},
+		{
+			"ID" : 3,
+			"Energy": {
+      			"Min (N)": 0.0,
+      			"Max (N)": 0.1
+			},
+			"Size": {
+				"Min": 20,
+				"Max": 100
+			},
+   	   		"Hue": {
+   	   			"Scale Factor": 1.5
+  	    	},
+  	    	"Saturation": {
+   	   			"Scale Factor": 1.5
+  	    	},
+  	    	"Brightness": {
+   	   			"Scale Factor": 1.5
+  	    	},
+  	    	"Alpha": {
+      			"Min (N)": 0.0,
+      			"Max (N)": 0.1,
+   	   			"Scale Factor": 1.5
+ 	     	}
+		},
+		{
+			"ID" : 4,
+			"Energy": {
+      			"Min (N)": 0.0,
+      			"Max (N)": 0.1
+			},
+			"Size": {
+				"Min": 20,
+				"Max": 100
+			},
+   	   		"Hue": {
+   	   			"Scale Factor": 1.5
+  	    	},
+  	    	"Saturation": {
+   	   			"Scale Factor": 1.5
+  	    	},
+  	    	"Brightness": {
+   	   			"Scale Factor": 1.5
+  	    	},
+  	    	"Alpha": {
+      			"Min (N)": 0.0,
+      			"Max (N)": 0.1,
+   	   			"Scale Factor": 1.5
+ 	     	}
+		}
+	]
 }
