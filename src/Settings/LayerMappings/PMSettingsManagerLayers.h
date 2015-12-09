@@ -38,7 +38,15 @@ public:
     float getAlphaMin(int layerID);
     float getAlphaMax(int layerID);
     float getAlphaScaleFactor(int layerID);
-
+    
+    float getSizeEnergyFactor(int layerID);
+    float getSizeAccelerationFactor(int layerID);
+    float getSizeZFactor(int layerID);
+    
+    float getAlphaEnergyFactor(int layerID);
+    float getAlphaVelocityFactor(int layerID);
+    float getAlphaZFactor(int layerID);
+    
 private:
 
     int getIndexOfLayerWithID(int layerID);

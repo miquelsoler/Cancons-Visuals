@@ -66,7 +66,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
     brushRGBColor.getHsb(brushHSBColor.hue, brushHSBColor.saturation, brushHSBColor.brightness);
     brushAlpha = 1;
 
-    brushSpeed = 10;
+    brushSpeed = 3;
     curveSize = 1;
 
     vector<PMDeviceAudioAnalyzer *> deviceAudioAnalyzers = *PMAudioAnalyzer::getInstance().getAudioAnalyzers();
@@ -89,6 +89,14 @@ void PMBaseLayer::setup(ofPoint initialPosition)
         alphaMin = settings.getAlphaMin(layerID);
         alphaMax = settings.getAlphaMax(layerID);
         alphaScaleFactor = settings.getAlphaScaleFactor(layerID);
+        //Size Factors
+        sizeEnergyScaleFactor = settings.getSizeEnergyFactor(layerID);
+        sizeZScaleFactor = settings.getSizeZFactor(layerID);
+        sizeAccelerationScaleFactor = settings.getSizeAccelerationFactor(layerID);
+        //Alpha factors
+        alphaEnergyScaleFactor = settings.getAlphaEnergyFactor(layerID);
+        alphaZScaleFactor = settings.getAlphaZFactor(layerID);
+        alphaVelocityScaleFactor = settings.getAlphaVelocityFactor(layerID);
     }
 
     // TODO: Treure les crides que no s'utilitzin, si n'hi ha.
@@ -123,8 +131,8 @@ void PMBaseLayer::update()
         }
     }
 #else
-    kinectNodeData.x = (float) ofGetMouseX() / ofGetWidth();
-    kinectNodeData.y = (float) ofGetMouseY() / ofGetHeight();
+    kinectNodeData.x = (float) (ofGetMouseX() + (layerID-2)*30 )/ ofGetWidth();
+    kinectNodeData.y = (float) (ofGetMouseY() + (layerID-2)*30 )/ ofGetHeight();
     kinectNodeData.v = ofPoint(0, 0);
 #endif
 
@@ -184,29 +192,56 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
     // Layer4: band0 - Layer1: band1 - Layer2: band2 - Layer3: band3
     int melBandIndex = (layerID != 4) ? layerID : 0;
     float energy = melBandsParams.bandsEnergy[melBandIndex];
+    //Aquest valors son arbitraris ja que el que volem es aconseguir tots els paràmetres que vagin de 0 a 1
     float normalizedEnergy = ofMap(energy, energyMin, energyMax, 0, 1);
-
+#if ENABLE_KINECT
+    float normalizedZ = ofMap((nodeInitialZ-kinectNodeData.z), -0.3, 0.3, 0, 1);
+    float normalizedVelocity = ofMap(kinectNodeData.v.length(), 0, 100, 0, 1);
+    float normalizedAcceleration = ofMap(kinectNodeData.a, 0, 20, 0, 1);
+#endif
+    
 //    int hsbMin = 0, hsbMax = 255;
 
     // Size Miquel, sols depen de l'energia
 //    {
-        int newSize = int(ofMap(energy, energyMin, energyMax, sizeMin, sizeMax));
-        setBrushSize(newSize);
+//        int newSize = int(ofMap(energy, energyMin, energyMax, sizeMin, sizeMax));
+//        setBrushSize(newSize);
 //    }
     
     //Size Edu
     {
-//        float factorizedEnergySize = normalizedEnergy*sizeEnergyScaleFactor;
-//        float factorizedZSize = (nodeInitialZ-kinectNodeData.z)*sizeZScaleFactor; //de -1 a 1
-//        float factorizedAccel = kinectNodeData.a*sizeAccelerationScaleFactor; //de 0 a 1
-//        int newBrushSize = ofMap(factorizedEnergySize + factorizedZSize + factorizedAccel, 0, 3, sizeMin, sizeMax, true);
+        //Aqui tenim els valors entre 0 i 1, i el factor el que fa es donar importància
+        float factorizedEnergySize = normalizedEnergy*sizeEnergyScaleFactor;
+#if ENABLE_KINECT
+        float factorizedZSize = normalizedZ*sizeZScaleFactor;
+        float factorizedAccel = normalizedAcceleration*sizeAccelerationScaleFactor;
+        int newBrushSize = ofMap(factorizedEnergySize + factorizedZSize + factorizedAccel, 0, 3, sizeMin, sizeMax, true);
+//        if(layerID==2)
+//            cout<<"Energy: "<<factorizedEnergySize<<"----Z: "<<factorizedZSize<<"----Accel: "<<factorizedAccel<<"---BrushSize: "<<newBrushSize<<endl;
+#else
+        int newBrushSize = ofMap(factorizedEnergySize, 0, 1, sizeMin, sizeMax);
+#endif
+        setBrushSize(newBrushSize);
     }
 
-    // Alpha
+    // Alpha Miquel
+//    {
+//        brushAlpha = ofMap(energy, energyMin, energyMax, alphaMin, alphaMax) * alphaScaleFactor;
+//        if (brushAlpha < 0.0f) brushAlpha = 0.0f;
+//        if (brushAlpha > 1.0f) brushAlpha = 1.0f;
+//    }
+    
+    // Alpha Edu
     {
-        brushAlpha = ofMap(energy, energyMin, energyMax, alphaMin, alphaMax) * alphaScaleFactor;
-        if (brushAlpha < 0.0f) brushAlpha = 0.0f;
-        if (brushAlpha > 1.0f) brushAlpha = 1.0f;
+        float factorizedEnergyAlpha = normalizedEnergy*alphaEnergyScaleFactor;
+#if ENABLE_KINECT
+        float factorizedZAlpha = normalizedZ*alphaZScaleFactor;
+        float factorizedVel;
+        if(kinectNodeData.v.length()!= 1) factorizedVel=normalizedVelocity*alphaVelocityScaleFactor; else factorizedVel=0.5;
+        brushAlpha = ofMap(factorizedEnergyAlpha *factorizedVel * factorizedZAlpha, 0, 1, alphaMin, alphaMax, true);
+#else
+        brushAlpha = ofMap(factorizedEnergyAlpha, 0, 1, alphaMin, alphaMax, true);
+#endif
     }
 
     // Hue Miquel

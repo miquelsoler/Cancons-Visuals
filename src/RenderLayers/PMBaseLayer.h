@@ -92,6 +92,14 @@ protected:
     float                   alphaMin;
     float                   alphaMax;
     float                   alphaScaleFactor;
+    
+    float                   sizeEnergyScaleFactor;
+    float                   sizeZScaleFactor;
+    float                   sizeAccelerationScaleFactor;
+    
+    float                   alphaEnergyScaleFactor;
+    float                   alphaZScaleFactor;
+    float                   alphaVelocityScaleFactor;
 
     KinectElement           kinectNodeData;
 };

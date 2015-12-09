@@ -8,24 +8,30 @@
 			},
 			"Size": {
 				"Min": 20,
-				"Max": 100
+				"Max": 100,
+                "Scale Energy Factor": 1,
+                "Scale Acceleration Factor": 1,
+                "Scale Z Factor": 1
 			},
    	   		"Hue": {
    	   			"Scale Factor": 1,
-                "Variation": 0.7
+                "Variation": 0.05
   	    	},
   	    	"Saturation": {
               "Scale Factor": 1.5,
-              "Variation": 0.05
+              "Variation": 0.15
   	    	},
   	    	"Brightness": {
               "Scale Factor": 1.5,
-              "Variation": 0.05
+              "Variation": 0.10
   	    	},
   	    	"Alpha": {
-      			"Min (N)": 0.0,
+      			"Min (N)": 0.1,
       			"Max (N)": 1,
-   	   			"Scale Factor": 1.5
+   	   			"Scale Factor": 1.5,
+                "Scale Energy Factor": 1,
+                "Scale Velocity Factor": 1,
+                "Scale Z Factor": 1
  	     	}
 		},
 		{
@@ -36,7 +42,10 @@
 			},
 			"Size": {
 				"Min": 20,
-				"Max": 100
+				"Max": 300,
+                "Scale Energy Factor": 1,
+                "Scale Acceleration Factor": 1,
+                "Scale Z Factor": 1
 			},
    	   		"Hue": {
               "Scale Factor": 1.5,
@@ -51,9 +60,12 @@
               "Variation": 0.05
   	    	},
   	    	"Alpha": {
-      			"Min (N)": 0.0,
+      			"Min (N)": 0.1,
       			"Max (N)": 1,
-   	   			"Scale Factor": 1.5
+   	   			"Scale Factor": 1.5,
+                "Scale Energy Factor": 1,
+                "Scale Velocity Factor": 1,
+                "Scale Z Factor": 1
  	     	}
 		},
 		{
@@ -64,7 +76,10 @@
 			},
 			"Size": {
 				"Min": 20,
-				"Max": 100
+				"Max": 100,
+                "Scale Energy Factor": 1,
+                "Scale Acceleration Factor": 1,
+                "Scale Z Factor": 1
 			},
    	   		"Hue": {
               "Scale Factor": 1.5,
@@ -79,9 +94,12 @@
               "Variation": 0.05
   	    	},
   	    	"Alpha": {
-      			"Min (N)": 0.0,
+      			"Min (N)": 0.1,
       			"Max (N)": 1,
-   	   			"Scale Factor": 1.5
+   	   			"Scale Factor": 1.5,
+                "Scale Energy Factor": 1,
+                "Scale Velocity Factor": 1,
+                "Scale Z Factor": 1
  	     	}
 		},
 		{
@@ -92,7 +110,10 @@
 			},
 			"Size": {
 				"Min": 20,
-				"Max": 100
+				"Max": 100,
+                "Scale Energy Factor": 1,
+                "Scale Acceleration Factor": 1,
+                "Scale Z Factor": 1
 			},
    	   		"Hue": {
               "Scale Factor": 1.5,
@@ -107,9 +128,12 @@
               "Variation": 0.05
   	    	},
   	    	"Alpha": {
-      			"Min (N)": 0.0,
+      			"Min (N)": 0.1,
       			"Max (N)": 1,
-   	   			"Scale Factor": 1.5
+   	   			"Scale Factor": 1.5,
+                "Scale Energy Factor": 1,
+                "Scale Velocity Factor": 1,
+                "Scale Z Factor": 1
  	     	}
 		}
 	]
