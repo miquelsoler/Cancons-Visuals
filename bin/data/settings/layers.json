@@ -11,8 +11,8 @@
 				"Max": 100
 			},
    	   		"Hue": {
-   	   			"Scale Factor": 1.5,
-                "Variation": 0.05
+   	   			"Scale Factor": 1,
+                "Variation": 0.7
   	    	},
   	    	"Saturation": {
               "Scale Factor": 1.5,

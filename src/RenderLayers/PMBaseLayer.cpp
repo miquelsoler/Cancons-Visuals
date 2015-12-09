@@ -186,13 +186,15 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
     float energy = melBandsParams.bandsEnergy[melBandIndex];
     float normalizedEnergy = ofMap(energy, energyMin, energyMax, 0, 1);
 
-    int hsbMin = 0, hsbMax = 255;
+//    int hsbMin = 0, hsbMax = 255;
 
-    // Size
+    // Size Miquel, sols depen de l'energia
     {
         int newSize = int(ofMap(energy, energyMin, energyMax, sizeMin, sizeMax));
         setBrushSize(newSize);
     }
+    
+    //Size Edu
 
     // Alpha
     {
@@ -201,30 +203,55 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
         if (brushAlpha > 1.0f) brushAlpha = 1.0f;
     }
 
-    // Hue
+    // Hue Miquel
+//    {
+//        int hue = int(brushHSBColor.hue * (normalizedEnergy * hueScaleFactor));
+//        if (hue < hsbMin) hue = hsbMin;
+//        if (hue > hsbMax) hue = hsbMax;
+//
+//        brushRGBColor.setHue(hue);
+//    }
+    
+    //Hue Edu
     {
-        int hue = int(brushHSBColor.hue * (normalizedEnergy * hueScaleFactor));
-        if (hue < hsbMin) hue = hsbMin;
-        if (hue > hsbMax) hue = hsbMax;
-
-        brushRGBColor.setHue(hue);
+        float hueOffset = ofMap(hueVariation, 0, 1, 0, 255, true); //Maps % to absolute hue variation values
+        int hueIncrement=ofMap(energy, 0, 1, -1, 1)*hueScaleFactor*hueOffset; //maps energy to -1 1, then aplies scale factor to finaly get a number between -hueOffset and hueoffset
+        hueIncrement=ofMap(hueIncrement, -hueOffset, hueOffset, -hueOffset, hueOffset, true);
+        brushRGBColor.setHue(brushHSBColor.hue+hueIncrement);
     }
 
-    // Saturation
+    // Saturation Miquel
+//    {
+//        int saturation = int(brushHSBColor.saturation * (normalizedEnergy * saturationScaleFactor));
+//        if (saturation < hsbMin) saturation = hsbMin;
+//        if (saturation > hsbMax) saturation = hsbMax;
+//
+//        brushRGBColor.setSaturation(saturation);
+//    }
+    
+    //Saturation Edu
     {
-        int saturation = int(brushHSBColor.saturation * (normalizedEnergy * saturationScaleFactor));
-        if (saturation < hsbMin) saturation = hsbMin;
-        if (saturation > hsbMax) saturation = hsbMax;
-
-        brushRGBColor.setSaturation(saturation);
+        float saturationOffset = ofMap(saturationVariation, 0, 1, 0, 255, true); //Maps % to absolute Saturation variation values
+        int saturationIncrement=ofMap(energy, 0, 1, -1, 1)*saturationScaleFactor*saturationOffset;
+        saturationIncrement=ofMap(saturationIncrement, -saturationOffset, saturationOffset, -saturationOffset, saturationOffset, true);
+        brushRGBColor.setSaturation(brushHSBColor.saturation+saturationIncrement);
     }
 
-    // Brightness
+    // Brightness Miquel
+//    {
+//        int brightness = int(brushHSBColor.brightness * (normalizedEnergy * brightnessScaleFactor));
+//        if (brightness < hsbMin) brightness = hsbMin;
+//        if (brightness > hsbMax) brightness = hsbMax;
+//
+//        brushRGBColor.setBrightness(brightness);
+//    }
+    
+    
+    //Brightness Edu
     {
-        int brightness = int(brushHSBColor.brightness * (normalizedEnergy * brightnessScaleFactor));
-        if (brightness < hsbMin) brightness = hsbMin;
-        if (brightness > hsbMax) brightness = hsbMax;
-
-        brushRGBColor.setBrightness(brightness);
+        float brightnessOffset = ofMap(brightnessVariation, 0, 1, 0, 255, true); //Maps % to absolute brightness variation values
+        int brightnessIncrement=ofMap(energy, 0, 1, -1, 1)*brightnessScaleFactor*brightnessOffset;
+        brightnessIncrement=ofMap(brightnessIncrement, -brightnessOffset, brightnessOffset, -brightnessOffset, brightnessOffset, true);
+        brushRGBColor.setBrightness(brushHSBColor.brightness+brightnessIncrement);
     }
 }
