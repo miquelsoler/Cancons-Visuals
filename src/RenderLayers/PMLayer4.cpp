@@ -18,6 +18,9 @@ PMLayer4::PMLayer4(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType
 void PMLayer4::setup(ofPoint initialPosition)
 {
     PMBaseLayer::setup(initialPosition);
+    shootSizeDecrement=0.2;
+    shootSpeedDecrement=0.4;
+    shootMargin=30;
 }
 
 void PMLayer4::update()
@@ -49,11 +52,11 @@ void PMLayer4::update()
 
     if (didShake)
     {
-        setBrushSize(brushSize - SIZE_DECREMENT);
-        brushSpeed -= SPEED_DECREMENT;
-        if (brushSize <= BRUSH_MIN_SIZE || brushSpeed <= 0){
+        setBrushSize(brushSize - shootSizeDecrement);
+        brushSpeed -= shootSpeedDecrement;
+        if (brushSize <= sizeMin || brushSpeed <= 0){
             didShake = false;
-            setBrushSize(BRUSH_MIN_SIZE);
+            setBrushSize(sizeMin);
         }
     }
     else
@@ -85,10 +88,10 @@ void PMLayer4::update()
     }
     brushPosition += (brushDirection * brushSpeed);
 
-    if (brushPosition.x < -MARGIN) brushPosition.x = -MARGIN;
-    if (brushPosition.y < -MARGIN) brushPosition.y = -MARGIN;
-    if (brushPosition.x > fboWidth + MARGIN) brushPosition.x = fboWidth + MARGIN;
-    if (brushPosition.y > fboHeight + MARGIN) brushPosition.y = fboHeight + MARGIN;
+    if (brushPosition.x < -shootMargin) brushPosition.x = -shootMargin;
+    if (brushPosition.y < -shootMargin) brushPosition.y = -shootMargin;
+    if (brushPosition.x > fboWidth + shootMargin) brushPosition.x = fboWidth + shootMargin;
+    if (brushPosition.y > fboHeight + shootMargin) brushPosition.y = fboHeight + shootMargin;
 
     brushDirection.normalize();
     brush->update(int(brushPosition.x), int(brushPosition.y));

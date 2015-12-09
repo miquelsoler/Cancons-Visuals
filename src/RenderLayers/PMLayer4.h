@@ -21,6 +21,10 @@ private:
     bool            didShake;
     float           beginShakeTime;
     deque<ofPoint>  directionHistory;
+    
+    float           shootSizeDecrement;
+    float           shootSpeedDecrement;
+    int             shootMargin;
 };
 
 

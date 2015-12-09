@@ -24,7 +24,7 @@
   	    	},
   	    	"Alpha": {
       			"Min (N)": 0.0,
-      			"Max (N)": 0.1,
+      			"Max (N)": 1,
    	   			"Scale Factor": 1.5
  	     	}
 		},
@@ -52,7 +52,7 @@
   	    	},
   	    	"Alpha": {
       			"Min (N)": 0.0,
-      			"Max (N)": 0.1,
+      			"Max (N)": 1,
    	   			"Scale Factor": 1.5
  	     	}
 		},
@@ -80,7 +80,7 @@
   	    	},
   	    	"Alpha": {
       			"Min (N)": 0.0,
-      			"Max (N)": 0.1,
+      			"Max (N)": 1,
    	   			"Scale Factor": 1.5
  	     	}
 		},
@@ -108,7 +108,7 @@
   	    	},
   	    	"Alpha": {
       			"Min (N)": 0.0,
-      			"Max (N)": 0.1,
+      			"Max (N)": 1,
    	   			"Scale Factor": 1.5
  	     	}
 		}
