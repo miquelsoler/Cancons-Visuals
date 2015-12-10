@@ -38,8 +38,7 @@ public:
 private:
     
     PMRenderer *renderer;
-//    vector<PMBaseRenderer *> renderers;
-    
+
     PMUICanvasAudioAnalyzer* guiAudioAnalyzer;
     bool                    guiAudioAnalyzerCreated;
     

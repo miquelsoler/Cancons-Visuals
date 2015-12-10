@@ -8,6 +8,7 @@
 #include "ofMain.h"
 #include "PMBaseLayer.h"
 #include "Defaults.h"
+#include "PMUICanvasLayers.h"
 
 class PMRenderer
 {
@@ -30,6 +31,9 @@ private:
 #if ENABLE_MULTIPLE_FBOS
     ofFbo                       backgroundFBO;
 #endif
+
+    PMUICanvasLayers            *gui;
+    bool                        guiCreated;
 };
 
 

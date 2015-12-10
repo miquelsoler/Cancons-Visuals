@@ -27,11 +27,6 @@ void PMUICanvasAudioAnalyzer::init(int posX, int posY, bool autosize, int width,
 {
     PMBaseUICanvas::init(posX, posY, autosize, width, height);
 
-//    settings = &PMSettingsManagerAudioAnalyzers::getInstance();
-//
-//    pitchMinMidiNote = settings->getMaxPitchMidiNote();
-//    pitchMaxMidiNote = settings->getMinPitchMidiNote();
-
     silenceOn = false;
 
     audioAnalyzers = PMAudioAnalyzer::getInstance().getAudioAnalyzers();
@@ -180,34 +175,13 @@ void PMUICanvasAudioAnalyzer::handleEvents(ofxUIEventArgs &e)
             (*itAudioAnalyzer)->setOnsetsThreshold(e.getFloat());
         }
     }
-//    else if(name == "FullMelBands")
-//    {
-//        vector<PMDeviceAudioAnalyzer *>::iterator itAudioAnalyzer;
-//        for (itAudioAnalyzer = audioAnalyzers->begin(); itAudioAnalyzer != audioAnalyzers->end(); ++itAudioAnalyzer)
-//        {
-//            if ((*itAudioAnalyzer)->getInputIndex() != audioInputIndex) continue;
-//            (*itAudioAnalyzer)->setOnsetsThreshold(e.getFloat());
-//        }
-//    }
-    
 }
 
 //--------------------------------------------------------------------------------------------------
 void PMUICanvasAudioAnalyzer::pitchChanged(pitchParams &pitchParams)
 {
     if (pitchParams.audioInputIndex != audioInputIndex) return;
-
     pitchCurrentMidiNote = pitchParams.midiNote;
-
-//    pitchMinMidiNote = pitchParams.midiNote;
-//    if ((pitchParams.midiNote > settings->getMinPitchMidiNote()) && (pitchParams.midiNote < pitchMinMidiNote)) {
-//        
-//    }
-
-//    if (pitchParams.midiNote > pitchMaxMidiNote) {
-//        pitchMaxMidiNote = pitchParams.midiNote;
-//    }
-
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -223,7 +197,6 @@ void PMUICanvasAudioAnalyzer::silenceStateChanged(silenceParams &silenceParams)
 {
     if (silenceParams.audioInputIndex != audioInputIndex) return;
     silenceOn = silenceParams.isSilent;
-//    cout << "Silent is " << silenceOn << "En.Curr : " << energyCurrent << "Silence Thr , Length  :  " << silenceThreshold << " , " << silenceQueueLength << endl;
 }
 
 //--------------------------------------------------------------------------------------------------

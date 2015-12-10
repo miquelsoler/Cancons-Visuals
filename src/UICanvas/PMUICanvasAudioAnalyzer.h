@@ -44,7 +44,7 @@ private:
 
     ofxUISlider         *pitchSlider;
     float               pitchMinMidiNote, pitchMaxMidiNote;
-    float pitchCurrentMidiNote;
+    float               pitchCurrentMidiNote;
 
     // Energy -----------------------------------
 
@@ -99,12 +99,6 @@ private:
     
     float *fullMelBands;
     float *melBands;
-    
-    
-
-    // Settings
-
-    //PMSettingsManagerAudioAnalyzers *settings;
 };
 
 

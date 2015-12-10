@@ -29,6 +29,8 @@ PMRenderer::PMRenderer()
     layers.push_back(layer3);
     PMLayer4 *layer4 = new PMLayer4(fboWidth, fboHeight, KINECTNODE_TORSO);
     layers.push_back(layer4);
+
+    guiCreated = false;
 }
 
 void PMRenderer::setup()
@@ -67,10 +69,25 @@ void PMRenderer::update()
     }
     mainFBO.end();
 
-    for (int i=0; i<layers.size(); ++i)
-        layers[i]->update();
+    // GUI
+    {
+        if (!guiCreated)
+        {
+            gui = new PMUICanvasLayers("LAYERS", OFX_UI_FONT_MEDIUM);
+            gui->init(300, 5);
+            gui->setBackgroundColor(ofColor::gray);
+            gui->setVisible(true);
+        }
+        guiCreated = true;
+    }
 
-    drawIntoFBO();
+    // Layers
+    {
+        for (int i=0; i<layers.size(); ++i)
+            layers[i]->update();
+
+        drawIntoFBO();
+    }
 }
 
 void PMRenderer::draw()

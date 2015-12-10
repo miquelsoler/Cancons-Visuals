@@ -7,6 +7,39 @@
 
 #include "PMBaseUICanvas.h"
 
+class LayerParams
+{
+public:
+    float energyMin;
+    float energyMax;
+
+    float sizeMin;
+    float sizeMax;
+    float sizeScaleEnergyFactor;
+    float sizeScaleAccelerationFactor;
+    float sizeScaleZFactor;
+
+    float hueVariation;
+    float saturationVariation;
+    float brightnessVariation;
+
+    float alphaMin;
+    float alphaMax;
+    float alphaScaleEnergyFactor;
+    float alphaScaleVelocityFactor;
+    float alphaScaleZFactor;
+
+    int behaviorSpeed;
+    int behaviorCurveSize;
+
+    int shootBehaviorInitialSize;
+    int shootBehaviorInitialSpeed;
+    float shootBehaviorSpeedDecrement;
+    int shootBehaviorSizeDecrement;
+    int shootBehaviorCurveAmount;
+};
+
+
 class PMUICanvasLayers : public PMBaseUICanvas
 {
 public:
@@ -17,6 +50,8 @@ public:
     virtual void clear();
 
     virtual void handleEvents(ofxUIEventArgs &e);
+    void keyPressed(int key);
+    void keyReleased(int key);
 
 protected:
 
@@ -25,6 +60,13 @@ protected:
 
 private:
 
+    vector<LayerParams> layers;
+
+    // Matrix --------------------------------
+
+    ofxUIToggleMatrix       *presetsMatrix;
+    int                     getActivePreset();
+    bool                    savingPreset;
 };
 
 
