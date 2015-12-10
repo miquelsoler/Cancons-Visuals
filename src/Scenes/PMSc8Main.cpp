@@ -19,15 +19,16 @@ PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
     showGUI = PMSettingsManagerGeneral::getInstance().getReleaseShowGUIScene8();
 #endif
 
-    setSingleSetup(true);
+    setSingleSetup(false);
     guiAudioAnalyzerCreated = false;
 
     renderer = new PMRenderer();
+    motionExtractor = &PMMotionExtractor::getInstance();
 }
 
 void PMSc8Main::setup()
 {
-    motionExtractor = &PMMotionExtractor::getInstance();
+    
     renderer->setup();
 }
 

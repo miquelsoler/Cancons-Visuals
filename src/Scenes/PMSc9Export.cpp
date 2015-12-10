@@ -11,14 +11,16 @@
 
 PMSc9Export::PMSc9Export() : PMBaseScene("Scene 9")
 {
-    painting.load("TempRender.png");
     bigFont.load("fonts/NeutraTextTF-Book.otf", 40, true, true, false, 0.3, 72);
     smallFont.load("fonts/NeutraTextTF-Light.otf", 30, true, true, false, 0.3, 72);
-    textInput="Eduard Frigola";
+    textInput="";
+    setSingleSetup(false);
 }
 
 void PMSc9Export::setup()
 {
+    painting.load("TempRender.png");
+    textInput="";
     ofClear(0,0,0);
     timestamp=ofGetElapsedTimef()-1;
     isSlash=false;
