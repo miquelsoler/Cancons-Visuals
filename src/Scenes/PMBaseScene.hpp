@@ -44,6 +44,7 @@ protected:
     ofColor backgroundColor;
 
     ofTrueTypeFont  baseFont;
+    ofTrueTypeFont  baseBoldFont;
     ofTrueTypeFont  numberFont;
     ofTrueTypeFont  numberBoldFont;
 };

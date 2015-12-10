@@ -17,7 +17,7 @@
 #define ENABLE_MULTILAYER_EXPORT true
 
 
-static const float          WINDOW_SCALE_FACTOR         = 0.5f;
+static const float          WINDOW_SCALE_FACTOR         = 1;
 static const float          FBO_SCALE_FACTOR            = 3.0f;
 
 static const int            WINDOW_WIDTH                = 1080;

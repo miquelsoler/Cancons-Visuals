@@ -27,9 +27,9 @@ public:
     void updateExit(){PMBaseScene::updateExit();};
 
     
-    
-protected:
-    
 private:
+    
+    ofImage     plantilla;
+    ofTrueTypeFont bigFont, smallFont;
     
 };

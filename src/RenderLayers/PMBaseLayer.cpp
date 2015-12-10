@@ -67,7 +67,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 
     brushRGBColor = PMColorsSelector::getInstance().getColor(layerID);
     brushRGBColor.getHsb(brushHSBColor.hue, brushHSBColor.saturation, brushHSBColor.brightness);
-    brushAlpha = 1;
+    brushAlpha = 0;
     didShoot = false;
 
     vector<PMDeviceAudioAnalyzer *> deviceAudioAnalyzers = *PMAudioAnalyzer::getInstance().getAudioAnalyzers();
@@ -155,12 +155,9 @@ void PMBaseLayer::update()
 //#endif
 
     brushDirection.normalize();
-//    direction+=((kinectNodeData.v.normalize())*(kinectNodeData.a/50));
-//    cout<<kinectNodeData.a/30<<endl;
-//
+
     if (kinectNodeData.a / KINECT_ACCEL_FACTOR > KINECT_ACCEL_THRESHOLD) {
         brushDirection += (kinectNodeData.v.normalize() * (kinectNodeData.a / 2));
-//        cout<<layerID<<"--IS Aceletrstrefd"<<ofGetTimestampString()<<endl;
     }
     brushPosition += (brushDirection * brushSpeed);
     brushDirection.normalize();

@@ -11,9 +11,11 @@
 ///--------------------------------------------------------------
 PMBaseScene::PMBaseScene(const string &name) : ofxFadeScene(name)
 {
-    baseFont.load(OF_TTF_SANS, 20, true, true, false, 0.3, 72);
-    numberFont.load(OF_TTF_SERIF, 50, true, true, false, 0.3, 72);
-    numberBoldFont.load(OF_TTF_SANS, 50, true, true, false, 0.3, 72);
+//    baseFont.load(OF_TTF_SANS, 20, true, true, false, 0.3, 72);
+    baseFont.load("fonts/NeutraTextTF-Light.otf", 50, true, true, false, 0.3, 72);
+    baseBoldFont.load("fonts/NeutraTextTF-Book.otf", 50, true, true, false, 0.3, 72);
+    numberFont.load("fonts/NeutraTextTF-Light.otf", 50, true, true, false, 0.3, 72);
+    numberBoldFont.load("fonts/NeutraTextTF-Book.otf", 50, true, true, false, 0.3, 72);
 
     // Disable fades
     //this->setSceneDuration(0.2, 0.2);
