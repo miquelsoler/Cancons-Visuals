@@ -18,7 +18,7 @@ PMSc3Song_Choose::PMSc3Song_Choose() : PMBaseScene("Scene 3")
 void PMSc3Song_Choose::setup()
 {
  
-    selectFont.load("verdana.ttf", 30);
+    selectFont.load("fonts/NeutraTextTF-Book.otf", 40);
     PMSongSelector::getInstance().init(selectFont);
 }
 
@@ -34,7 +34,6 @@ void PMSc3Song_Choose::draw()
     ofBackground(0);
     drawSettingsNumbers(1);
     PMSongSelector::getInstance().draw();
-    
 }
 
 void PMSc3Song_Choose::mouseMoved(int x, int y)
