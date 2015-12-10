@@ -12,11 +12,12 @@ PMSc2Start::PMSc2Start() : PMBaseScene("Scene 2")
 {
     //setFade(1000, 1000);
 //    setFadeIn(1000);
+    backgroundImage.load("escena2.jpg");
 }
 
 void PMSc2Start::setup()
 {
-    textBoxes.push_back(PMTextContainer(ofGetWidth()/2, ofGetHeight()/10,"Cançons Visuals", baseFont));
+    
 }
 
 void PMSc2Start::update()
@@ -26,9 +27,9 @@ void PMSc2Start::update()
 
 void PMSc2Start::draw()
 {
-    for(int i=0; i<textBoxes.size(); i++){
-       textBoxes[i].draw();
-//        ofSetColor(255);
-//       ofDrawCircle(200, 100, 20);
-    }
+    ofPushStyle();
+    ofSetRectMode(OF_RECTMODE_CORNER);
+    ofSetColor(255);
+    backgroundImage.draw(0,0, ofGetWidth(), ofGetHeight());
+    ofPopStyle();
 }

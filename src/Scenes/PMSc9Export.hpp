@@ -31,7 +31,7 @@ public:
     
 private:
     
-    ofImage     plantilla;
+    ofImage     painting;
     ofTrueTypeFont bigFont, smallFont;
     string  textInput;
     float   timestamp;

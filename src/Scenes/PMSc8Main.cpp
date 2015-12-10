@@ -72,6 +72,7 @@ void PMSc8Main::exit()
 {
     song.stop();
     PMAudioAnalyzer::getInstance().stop();
+    renderer->exportToImage("TempRender");
 }
 
 void PMSc8Main::updateEnter()
@@ -126,7 +127,7 @@ void PMSc8Main::keyReleased(int key)
         }
         case 's':
         case 'S': {
-            renderer->exportToImage("testImage_" + ofGetTimestampString());
+            renderer->exportToImage("TempRender");
             break;
         }
         case ' ': {

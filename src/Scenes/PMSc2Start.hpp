@@ -29,5 +29,5 @@ public:
     void updateExit(){ofxFadeScene::updateExit();};
     
 private:
-    vector<PMTextContainer > textBoxes;
+    ofImage backgroundImage;
 };

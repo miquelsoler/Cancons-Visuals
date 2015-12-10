@@ -11,7 +11,7 @@
 
 PMSc9Export::PMSc9Export() : PMBaseScene("Scene 9")
 {
-    plantilla.load("escena9.jpg");
+    painting.load("TempRender.png");
     bigFont.load("fonts/NeutraTextTF-Book.otf", 40, true, true, false, 0.3, 72);
     smallFont.load("fonts/NeutraTextTF-Light.otf", 30, true, true, false, 0.3, 72);
     textInput="Eduard Frigola";
@@ -58,7 +58,8 @@ void PMSc9Export::draw()
     ofNoFill();
     ofSetLineWidth(3);
     ofDrawRectangle(ofGetWidth()/2, 480, 850, 85);
-    ofDrawRectangle(ofGetWidth()/2, 1200, ofGetWidth()/1.7, ofGetHeight()/1.7);
+//    ofDrawRectangle(ofGetWidth()/2, 1200, ofGetWidth()/1.7, ofGetHeight()/1.7);
+    painting.draw(ofGetWidth()/2, 1200, ofGetWidth()/1.7, ofGetHeight()/1.7);
     ofPopStyle();
 }
 
