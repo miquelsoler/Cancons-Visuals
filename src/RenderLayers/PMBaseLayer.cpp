@@ -18,6 +18,8 @@ PMBaseLayer::PMBaseLayer(int _fboWidth, int _fboHeight, KinectNodeType _kinectNo
     kinectNodeType = _kinectNodeType;
 
     directionHistory.assign(10 , ofPoint(0,0));
+
+    settings = PMSettingsManagerLayers::getInstance();
 }
 
 void PMBaseLayer::setup(ofPoint initialPosition)
@@ -73,10 +75,10 @@ void PMBaseLayer::setup(ofPoint initialPosition)
     vector<PMDeviceAudioAnalyzer *> deviceAudioAnalyzers = *PMAudioAnalyzer::getInstance().getAudioAnalyzers();
     PMDeviceAudioAnalyzer *deviceAudioAnalyzer = deviceAudioAnalyzers[0];
 
+    settings.reload();
+
     // Mapping values initialization
     {
-        PMSettingsManagerLayers settings = PMSettingsManagerLayers::getInstance();
-
         energyMin = settings.getEnergyMin(layerID);
         energyMax = settings.getEnergyMax(layerID);
         sizeMin = settings.getSizeMin(layerID);

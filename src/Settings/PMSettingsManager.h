@@ -20,6 +20,8 @@ class PMSettingsManager
 public:
     virtual void write();
 
+    void reload();
+
 protected:
 
     PMSettingsManager() {};

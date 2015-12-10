@@ -30,3 +30,8 @@ bool PMSettingsManager::fileExists(string filename)
 
     return fileExists;
 }
+
+void PMSettingsManager::reload()
+{
+    load(filename);
+}
