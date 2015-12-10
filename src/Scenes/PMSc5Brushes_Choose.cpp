@@ -33,6 +33,7 @@ void PMSc5Brushes_Choose::draw()
     ofScale(scaleX, scaleY);
     ofBackground(0);
     drawSettingsNumbers(3);
+    drawCenteredFont(baseBoldFont, "Tria els teus pinzells", 1080/2, 200);
     PMBrushesSelector::getInstance().draw();
     ofPopMatrix();
 }

@@ -50,7 +50,7 @@ void PMSc9Export::draw()
     ofPopStyle();
     
     ofSetColor(ofColor::white);
-    ofDrawBitmapString("Current X: "+ofToString(ofGetMouseX())+"  Y: "+ofToString(ofGetMouseY()), 15, 28);
+//    ofDrawBitmapString("Current X: "+ofToString(ofGetMouseX())+"  Y: "+ofToString(ofGetMouseY()), 15, 28);
     drawCenteredFont(bigFont, "Enhorabona!", originalWidth/2, 145);
     drawCenteredFont(bigFont, "Aquesta és la teva interpretació!", originalWidth/2, 190);
     drawCenteredFont(bigFont, "Si us plau, introdueix el teu nom", originalWidth/2, 265);

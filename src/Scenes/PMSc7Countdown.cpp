@@ -14,6 +14,7 @@
 
 PMSc7Countdown::PMSc7Countdown() : PMBaseScene("Scene 7")
 {
+    countdownFont.load("fonts/NeutraTextTF-Book.otf", 100, true, true, false, 0.3, 72);
 }
 
 void PMSc7Countdown::setup()
@@ -28,6 +29,7 @@ void PMSc7Countdown::setup()
     countdown.set();
     countdown.setAlarm(countdownTime * 1000);
     PMAudioAnalyzer::getInstance().start();
+    line=ofPoint(0, 200);
 }
 
 void PMSc7Countdown::updateEnter()
@@ -46,18 +48,36 @@ void PMSc7Countdown::update()
         string toScene = "Scene 8";
         ofNotifyEvent(goToSceneEvent, toScene, this);
     }
+    float timeElapsed=countdown.getDiff()/(float)1000;
+    timeElapsed-=(int)timeElapsed;
+    line.x=400*sin(timeElapsed*2*PI);
+    line.y=-400*cos(timeElapsed*2*PI);
 }
 
 void PMSc7Countdown::draw()
 {
+    ofBackground(0,0,0,0);
+    ofEnableAlphaBlending();
     unsigned int countdownTime;
 #ifdef OF_DEBUG
     countdownTime = PMSettingsManagerGeneral::getInstance().getDebugScene7CountdownTime();
 #else
     countdownTime = PMSettingsManagerGeneral::getInstance().getReleaseScene7CountdownTime();
 #endif
-
-    drawCenteredFont(baseFont, ofToString(countdownTime - (int) countdown.getDiff() / 1000), ofGetWidth() / 2, ofGetHeight() / 2);
+    ofPushMatrix();
+    float scaleX=(float)ofGetWidth()/(float)1080;
+    float scaleY=(float)ofGetHeight()/(float)1920;
+    ofScale(scaleX, scaleY);
+    ofPoint center=ofPoint(1080/2, 1920/2);
+//    ofSetColor(ofColor::gray);
+//    ofDrawLine(center, center+line);
+//    ofColor(127, 127, 127, 127);
+//    ofDrawCircle(center.x, center.y, 100);
+    ofSetColor(ofColor::white);
+    drawCenteredFont(countdownFont, ofToString(countdownTime - (int) countdown.getDiff() / 1000), center.x, center.y);
+  
+    ofPopMatrix();
+    ofDisableAlphaBlending();
 }
 
 void PMSc7Countdown::updateExit()

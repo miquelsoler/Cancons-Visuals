@@ -29,8 +29,8 @@ public:
 
 
 private:
-    
+    ofTrueTypeFont countdownFont;
     ofxTimer countdown;
-    
+    ofPoint line;
     
 };

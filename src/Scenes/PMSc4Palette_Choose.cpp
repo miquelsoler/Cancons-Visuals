@@ -32,6 +32,7 @@ void PMSc4Palette_Choose::draw()
     ofScale(scaleX, scaleY);
     ofBackground(0);
     drawSettingsNumbers(2);
+    drawCenteredFont(baseBoldFont, "Tria els teus colors", 1080/2, 200);
     PMColorsSelector::getInstance().draw();
     ofPopMatrix();
 }
