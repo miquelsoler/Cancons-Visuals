@@ -33,6 +33,17 @@ static const string STR_ALPHA_SCALE_FACTOR      = "Scale Factor";
 static const string STR_ALPHA_ENERGY_FACTOR     = "Scale Energy Factor";
 static const string STR_ALPHA_VELOCITY_FACTOR   = "Scale Velocity Factor";
 static const string STR_ALPHA_Z_FACTOR          = "Scale Z Factor";
+static const string STR_BEHAVIOUR               = "Behaviour";
+static const string STR_BEHAVIOUR_SPEED         = "Speed";
+static const string STR_BEHAVIOUR_CURVE_SIZE    = "Curve Size";
+static const string STR_SHOOT                   = "Shoot Behaviour";
+static const string STR_SHOOT_INITIAL_SIZE      = "Initial Size";
+static const string STR_SHOOT_INITIAL_SPEED     = "Initial Speed";
+static const string STR_SHOOT_SPEED_DECREMENT   = "Speed Decrement";
+static const string STR_SHOOT_SIZE_DECREMENT    = "Size Decrement";
+static const string STR_SHOOT_CURVE_AMOUNT      = "Curve Amount";
+
+
 
 
 PMSettingsManagerLayers::PMSettingsManagerLayers() : PMSettingsManager()
@@ -184,6 +195,60 @@ float PMSettingsManagerLayers::getAlphaZFactor(int layerID)
     Json::Value jsonLayer = json[STR_LAYERS][index][STR_ALPHA];
     return jsonLayer[STR_ALPHA_Z_FACTOR].asFloat();
 }
+
+#pragma mark Behavoiur
+
+float PMSettingsManagerLayers::getSpeed(int layerID)
+{
+    int index = getIndexOfLayerWithID(layerID);
+    Json::Value jsonLayer = json[STR_LAYERS][index][STR_BEHAVIOUR];
+    return jsonLayer[STR_BEHAVIOUR_SPEED].asFloat();
+}
+
+float PMSettingsManagerLayers::getCurveSize(int layerID)
+{
+    int index = getIndexOfLayerWithID(layerID);
+    Json::Value jsonLayer = json[STR_LAYERS][index][STR_BEHAVIOUR];
+    return jsonLayer[STR_BEHAVIOUR_CURVE_SIZE].asFloat();
+}
+
+#pragma mark Shoot Behaviour
+
+float   PMSettingsManagerLayers::getShootInitialSpeed(int layerID)
+{
+    int index = getIndexOfLayerWithID(layerID);
+    Json::Value jsonLayer = json[STR_LAYERS][index][STR_SHOOT];
+    return jsonLayer[STR_SHOOT_INITIAL_SPEED].asFloat();
+}
+
+float   PMSettingsManagerLayers::getShootInitialSize(int layerID)
+{
+    int index = getIndexOfLayerWithID(layerID);
+    Json::Value jsonLayer = json[STR_LAYERS][index][STR_SHOOT];
+    return jsonLayer[STR_SHOOT_INITIAL_SIZE].asFloat();
+}
+
+float   PMSettingsManagerLayers::getShootSpeedDecrement(int layerID)
+{
+    int index = getIndexOfLayerWithID(layerID);
+    Json::Value jsonLayer = json[STR_LAYERS][index][STR_SHOOT];
+    return jsonLayer[STR_SHOOT_SPEED_DECREMENT].asFloat();
+}
+
+float   PMSettingsManagerLayers::getShootSizeDecrement(int layerID)
+{
+    int index = getIndexOfLayerWithID(layerID);
+    Json::Value jsonLayer = json[STR_LAYERS][index][STR_SHOOT];
+    return jsonLayer[STR_SHOOT_SIZE_DECREMENT].asFloat();
+}
+
+float   PMSettingsManagerLayers::getShootCurveAmount(int layerID)
+{
+    int index = getIndexOfLayerWithID(layerID);
+    Json::Value jsonLayer = json[STR_LAYERS][index][STR_SHOOT];
+    return jsonLayer[STR_SHOOT_CURVE_AMOUNT].asFloat();
+}
+
 
 int PMSettingsManagerLayers::getIndexOfLayerWithID(int layerID)
 {

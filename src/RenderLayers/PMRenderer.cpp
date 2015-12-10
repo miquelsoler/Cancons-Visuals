@@ -54,8 +54,9 @@ void PMRenderer::setup()
     }
     backgroundFBO.end();
 #endif
-    ofPoint initialPosition = ofPoint(ofRandom(FBO_WIDTH), ofRandom(FBO_HEIGHT));
-    for (int i=0; i<layers.size(); ++i)
+    int INITIAL_POS_MARGIN_X=FBO_WIDTH*0.2;
+    int INITIAL_POS_MARGIN_Y=FBO_HEIGHT*0.2;
+    ofPoint initialPosition = ofPoint(ofRandom(INITIAL_POS_MARGIN_X, FBO_WIDTH-INITIAL_POS_MARGIN_X), ofRandom(INITIAL_POS_MARGIN_Y, FBO_HEIGHT-INITIAL_POS_MARGIN_Y));    for (int i=0; i<layers.size(); ++i)
         layers[i]->setup(initialPosition);
 }
 

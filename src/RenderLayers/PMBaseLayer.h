@@ -15,10 +15,8 @@
 const static unsigned int   KINECT_ACCEL_FACTOR = 20;
 const static float          KINECT_ACCEL_THRESHOLD = 0.5f;
 const static float          KINECT_VELO_THRESHOLD = 30;
-const static unsigned int   BRUSH_MIN_SIZE = 20;
-const static unsigned int   BRUSH_MAX_SIZE = 50;
-const static float          BRUSH_MAX_POSITION_DISTANCE = 20.0f;
-const static float          BRUSH_MIN_POSITION_DISTANCE = 10;
+const static float          BRUSH_MAX_POSITION_DISTANCE = 20.0f; //USED to print more than one brish when hispeed
+const static float          BRUSH_MIN_POSITION_DISTANCE = 10; //also
 
 typedef enum
 {
@@ -43,6 +41,7 @@ public:
 
     virtual void setup(ofPoint initialPosition);
     virtual void update();
+    void updateToShoot();
     virtual void draw();
     void setBrushSize(int brushSize);
     void setPosition(ofPoint pos) { brushPosition = pos; };
@@ -69,6 +68,7 @@ protected:
     ofColorHSB              brushHSBColor;
     float                   brushAlpha; // value between 0 and 1
 
+    ofPoint                 brushInitalPosition;
     ofPoint                 brushPosition;
     ofPoint                 brushPrevPosition;
     int                     brushSize;
@@ -77,6 +77,18 @@ protected:
     float                   nodeInitialZ; //holds de first position found of the node
 
     float                   curveSize;
+    
+    // UpdateToShake behaviour
+    bool            didShoot;
+    float           beginShakeTime;
+    deque<ofPoint>  directionHistory;
+    
+    float           sizeShootDecrement;
+    float           speedShootDecrement;
+    float           initialShootSpeeed;
+    float           initialShootSize;
+    float           shootCurveAmount;
+    
 
     // Audio-to-render mappings
     float                   energyMin;
@@ -100,6 +112,7 @@ protected:
     float                   alphaEnergyScaleFactor;
     float                   alphaZScaleFactor;
     float                   alphaVelocityScaleFactor;
+
 
     KinectElement           kinectNodeData;
 };

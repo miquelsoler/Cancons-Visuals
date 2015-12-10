@@ -47,6 +47,18 @@ public:
     float getAlphaVelocityFactor(int layerID);
     float getAlphaZFactor(int layerID);
     
+    //behavoiur
+    float getSpeed(int layerID);
+    float getCurveSize(int layerID);
+    
+    //shoot behavoiur
+    float getShootInitialSpeed(int layerID);
+    float getShootInitialSize(int layerID);
+    float getShootSpeedDecrement(int layerID);
+    float getShootSizeDecrement(int layerID);
+    float getShootCurveAmount(int layerID);
+    
+    
 private:
 
     int getIndexOfLayerWithID(int layerID);

@@ -16,6 +16,8 @@ PMBaseLayer::PMBaseLayer(int _fboWidth, int _fboHeight, KinectNodeType _kinectNo
 #endif
 
     kinectNodeType = _kinectNodeType;
+
+    directionHistory.assign(10 , ofPoint(0,0));
 }
 
 void PMBaseLayer::setup(ofPoint initialPosition)
@@ -59,15 +61,14 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 
     brushPosition = initialPosition;
     brushPrevPosition = brushPosition;
+    brushInitalPosition = brushPosition;
     brushDirection = ofPoint(ofRandom(-1, 1), ofRandom(-1, 1)).normalize();
-    setBrushSize(int(ofRandom(BRUSH_MIN_SIZE, BRUSH_MAX_SIZE)));
+    setBrushSize(int(ofRandom(sizeMin, sizeMax)));
 
     brushRGBColor = PMColorsSelector::getInstance().getColor(layerID);
     brushRGBColor.getHsb(brushHSBColor.hue, brushHSBColor.saturation, brushHSBColor.brightness);
     brushAlpha = 1;
-
-    brushSpeed = 3;
-    curveSize = 1;
+    didShoot = false;
 
     vector<PMDeviceAudioAnalyzer *> deviceAudioAnalyzers = *PMAudioAnalyzer::getInstance().getAudioAnalyzers();
     PMDeviceAudioAnalyzer *deviceAudioAnalyzer = deviceAudioAnalyzers[0];
@@ -97,6 +98,17 @@ void PMBaseLayer::setup(ofPoint initialPosition)
         alphaEnergyScaleFactor = settings.getAlphaEnergyFactor(layerID);
         alphaZScaleFactor = settings.getAlphaZFactor(layerID);
         alphaVelocityScaleFactor = settings.getAlphaVelocityFactor(layerID);
+        
+        //Behaviour parameters
+        brushSpeed = settings.getSpeed(layerID);
+        curveSize = settings.getCurveSize(layerID);
+        
+        //Shoot parameters
+        sizeShootDecrement = settings.getShootSizeDecrement(layerID);
+        speedShootDecrement = settings.getShootSpeedDecrement(layerID);
+        initialShootSpeeed = settings.getShootInitialSpeed(layerID);
+        initialShootSize = settings.getShootInitialSize(layerID);
+        shootCurveAmount = settings.getShootCurveAmount(layerID);
     }
 
     // TODO: Treure les crides que no s'utilitzin, si n'hi ha.
@@ -151,6 +163,84 @@ void PMBaseLayer::update()
 //        cout<<layerID<<"--IS Aceletrstrefd"<<ofGetTimestampString()<<endl;
     }
     brushPosition += (brushDirection * brushSpeed);
+    brushDirection.normalize();
+    brush->update(int(brushPosition.x), int(brushPosition.y));
+}
+
+void PMBaseLayer::updateToShoot()
+{
+    brushPrevPosition = brushPosition;
+    
+    if (PMMotionExtractor::getInstance().isTracking())
+    {
+        switch(kinectNodeType)
+        {
+            case KINECTNODE_RIGHTHAND: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand_joint;
+                break;
+            }
+            case KINECTNODE_LEFTHAND: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand_joint;
+                break;
+            }
+            case KINECTNODE_HEAD: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head_joint;
+                break;
+            }
+            case KINECTNODE_TORSO: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso_joint;
+                break;
+            }
+        }
+    }
+    
+    if (didShoot)
+    {
+        setBrushSize(brushSize - sizeShootDecrement);
+        brushSpeed -= speedShootDecrement;
+        if (brushSize <= sizeMin){
+            setBrushSize(sizeMin);
+        }
+        if(brushSpeed <= 0){
+            didShoot=false;
+            brushSpeed = PMSettingsManagerLayers::getInstance().getSpeed(layerID);
+            setBrushSize(ofRandom(sizeMin, sizeMax));
+        }
+        brushDirection.rotate(shootCurveAmount, ofPoint(0,0,1));
+    }
+    else
+    {
+        // Direction changes
+        ofPoint newDirection = brushInitalPosition-brushPosition;
+        brushDirection = newDirection.getNormalized();
+//        brushSpeed = newDirection.length()*5;
+        brushDirection.normalize();
+        
+        //direction history
+        directionHistory.push_back(kinectNodeData.v);
+        directionHistory.pop_front();
+        if (kinectNodeData.v.length() * kinectNodeData.a > KINECT_VELO_THRESHOLD)
+        {
+            beginShakeTime = ofGetElapsedTimeMillis();
+            setBrushSize(initialShootSize);
+            brushSpeed = initialShootSpeeed;
+            didShoot = true;
+            int directionHistoryMaxIndex=0;
+            for(int i=0; i<directionHistory.size(); i++){
+                if(directionHistoryMaxIndex < directionHistory[i].length())
+                    directionHistoryMaxIndex = i;
+            }
+            brushDirection=directionHistory[directionHistoryMaxIndex];
+        }
+    }
+    brushPosition += (brushDirection * brushSpeed);
+    
+//    int MARGIN=30;
+//    if (brushPosition.x < -MARGIN) brushPosition.x = -MARGIN;
+//    if (brushPosition.y < -MARGIN) brushPosition.y = -MARGIN;
+//    if (brushPosition.x > fboWidth + MARGIN) brushPosition.x = fboWidth + MARGIN;
+//    if (brushPosition.y > fboHeight + MARGIN) brushPosition.y = fboHeight + MARGIN;
+    
     brushDirection.normalize();
     brush->update(int(brushPosition.x), int(brushPosition.y));
 }
@@ -221,7 +311,8 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
 #else
         int newBrushSize = ofMap(factorizedEnergySize, 0, 1, sizeMin, sizeMax);
 #endif
-        setBrushSize(newBrushSize);
+        if(!didShoot)
+            setBrushSize(newBrushSize);
     }
 
     // Alpha Miquel
