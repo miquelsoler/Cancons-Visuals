@@ -17,8 +17,8 @@
 #define ENABLE_MULTILAYER_EXPORT true
 
 
-static const float          WINDOW_SCALE_FACTOR         = 1;
-static const float          FBO_SCALE_FACTOR            = 3.0f;
+static const float          WINDOW_SCALE_FACTOR         = 0.5f;
+static const float          FBO_SCALE_FACTOR            = 1.0f;
 
 static const int            WINDOW_WIDTH                = 1080;
 static const int            WINDOW_HEIGHT               = 1920;
@@ -27,8 +27,6 @@ static const int            DEFAULT_WINDOW_WIDTH        = int(float(WINDOW_WIDTH
 static const int            DEFAULT_WINDOW_HEIGHT       = int(float(WINDOW_HEIGHT) * WINDOW_SCALE_FACTOR);
 
 #if ENABLE_MULTIPLE_FBOS
-//static const int            FBO_WIDTH                   = WINDOW_WIDTH;
-//static const int            FBO_HEIGHT                  = WINDOW_HEIGHT;
 static const int            FBO_WIDTH                   = int(float(WINDOW_WIDTH) * FBO_SCALE_FACTOR);
 static const int            FBO_HEIGHT                  = int(float(WINDOW_HEIGHT) * FBO_SCALE_FACTOR);
 #else
