@@ -25,6 +25,8 @@ public:
     void exit(){};
     void updateEnter(){PMBaseScene::updateEnter();};
     void updateExit(){PMBaseScene::updateExit();};
+    
+    void drawIntoFbo();
 
     
 private:
@@ -32,5 +34,8 @@ private:
     ofImage         plantilla;
     ofTrueTypeFont  bigFont, smallFont;
     int             originalWidth, originalHeight;
+    
+    ofFbo           printFbo;
+    ofImage         print_testImage;
     
 };
