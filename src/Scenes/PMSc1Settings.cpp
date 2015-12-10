@@ -14,8 +14,8 @@
 PMSc1Settings::PMSc1Settings() : PMBaseScene("Scene 1")
 {
     ofBackground(150);
-    setFade(1000, 1000);
-    //setupGUI_SONG();
+//    setFade(1000, 1000);
+//    setupGUI_SONG();
 }
 
 void PMSc1Settings::setup()
@@ -73,17 +73,10 @@ void PMSc1Settings::setupGUI_SONG()
 
 void PMSc1Settings::update()
 {
-    
 }
 
 void PMSc1Settings::draw()
 {
-    
-}
-
-void PMSc1Settings::guiEvent(ofxUIEventArgs &e)
-{
-    
 }
 
 int PMSc1Settings::findSoundflowerDeviceIndex()

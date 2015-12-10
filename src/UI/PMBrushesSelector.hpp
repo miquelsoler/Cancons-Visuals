@@ -31,7 +31,7 @@ public:
     void draw();
     void setInitialState();
     
-    PMImageContainer* getBrush(int layer){return &brushes[(indexChoosed*brushesXpalette)+layer];};
+    PMImageContainer* getBrush(int layer);
     void checkMousePassed(int x, int y);
     bool checkMousePressed(int x, int y);
     
@@ -40,7 +40,7 @@ private:
     int brushesXpalette;
     vector<PMImageContainer > brushes;
     vector<PMColorContainer > rectSelector;
-    int indexChoosed;
+    int selectedPaletteIndex;
     
 };
 
