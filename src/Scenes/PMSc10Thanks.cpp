@@ -22,7 +22,7 @@ PMSc10Thanks::PMSc10Thanks() : PMBaseScene("Scene Thanks")
 void PMSc10Thanks::setup()
 {
     ofClear(0,0,0);
-    print_testImage.load("assets/export_plantilla.png");
+    print_testImage.load("assets/export_plantilla.jpg");
     printFbo.allocate(1181, 1772, GL_RGB);
     drawIntoFbo();
 }
@@ -53,7 +53,8 @@ void PMSc10Thanks::draw()
     drawCenteredFont(bigFont, "Cançons Visuals", originalWidth/2, 938);
     drawCenteredFont(smallFont, "www.xavibove.com", originalWidth/2, 988);
     ofPopMatrix();
-    printFbo.draw(0,0, ofGetWidth(), ofGetWidth()*printFbo.getWidth()/printFbo.getHeight());
+    printFbo.draw(0,0, ofGetWidth(), ofGetWidth()/printFbo.getWidth()*printFbo.getHeight());
+//    print_testImage.draw(0,0, ofGetWidth(), ofGetWidth()*printFbo.getWidth()/printFbo.getHeight());
 }
 
 
