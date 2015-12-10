@@ -74,6 +74,7 @@ void PMSc8Main::exit()
     song.stop();
     PMAudioAnalyzer::getInstance().stop();
     renderer->exportToImage("TempRender");
+    renderer->exportToImage("testImage_"+ofGetTimestampString());
 
     cout << "Deleting renderer" << endl;
     delete renderer;
@@ -128,7 +129,8 @@ void PMSc8Main::keyReleased(int key)
         }
         case 's':
         case 'S': {
-            renderer->exportToImage("TempRender");
+//            renderer->exportToImage("TempRender");
+            renderer->exportToImage("testImage_"+ofGetTimestampString());
             break;
         }
         case ' ': {
