@@ -97,7 +97,7 @@ void PMRenderer::drawIntoFBO()
     mainFBO.begin();
     {
         ofSetColor(255, 255, 255, 255);
-        backgroundFBO.draw(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+        backgroundFBO.draw(0, 0, FBO_WIDTH, FBO_HEIGHT);
 
 //        glBlendEquation(GL_MAX);
 //        //glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_DST_ALPHA);
