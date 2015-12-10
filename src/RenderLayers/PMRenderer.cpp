@@ -18,7 +18,7 @@ PMRenderer::PMRenderer()
 
     mainFBO.allocate(fboWidth, fboHeight, GL_RGBA32F_ARB);
 #if ENABLE_MULTIPLE_FBOS
-    backgroundFBO.allocate(fboWidth, fboHeight, GL_RGBA32F_ARB);
+    backgroundFBO.allocate(1, 1, GL_RGBA32F_ARB);
 #endif
 
     PMLayer1 *layer1 = new PMLayer1(fboWidth, fboHeight, KINECTNODE_RIGHTHAND);
@@ -97,7 +97,7 @@ void PMRenderer::drawIntoFBO()
     mainFBO.begin();
     {
         ofSetColor(255, 255, 255, 255);
-        backgroundFBO.draw(0, 0);
+        backgroundFBO.draw(0, 0, DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 
 //        glBlendEquation(GL_MAX);
 //        //glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_DST_ALPHA);
