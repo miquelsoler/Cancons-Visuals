@@ -117,3 +117,4 @@ Desktop.ini
 bin/data/presets/renderer/*.xml
 bin/data/*.png
 bin/data/*.jpg
+bin/data/presets/AUDIO_ANALYZER/*.xml
