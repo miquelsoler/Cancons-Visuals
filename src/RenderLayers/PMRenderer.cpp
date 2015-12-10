@@ -127,7 +127,7 @@ void PMRenderer::drawIntoFBO()
 
 void PMRenderer::exportToImage(string path)
 {
-#if ENABLE_MULTILAYER_EXPORT
+#if ENABLE_MULTILAYER_EXPORT && ENABLE_MULTIPLE_FBOS
     ofPixels bgPixels;
     string bgPath = path + "-Background";
     backgroundFBO.readToPixels(bgPixels);
