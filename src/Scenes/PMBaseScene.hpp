@@ -42,6 +42,7 @@ public:
 protected:
 
     ofColor backgroundColor;
+    ofImage backgroundImage;
 
     ofTrueTypeFont  baseFont;
     ofTrueTypeFont  baseBoldFont;

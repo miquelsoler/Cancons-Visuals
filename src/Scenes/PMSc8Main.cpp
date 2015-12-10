@@ -22,13 +22,13 @@ PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
     setSingleSetup(false);
     guiAudioAnalyzerCreated = false;
 
-    renderer = new PMRenderer();
+//    renderer = new PMRenderer();
     motionExtractor = &PMMotionExtractor::getInstance();
 }
 
 void PMSc8Main::setup()
 {
-    
+    renderer = new PMRenderer();
     renderer->setup();
 }
 
@@ -74,6 +74,7 @@ void PMSc8Main::exit()
     song.stop();
     PMAudioAnalyzer::getInstance().stop();
     renderer->exportToImage("TempRender");
+    song.unload();
 }
 
 void PMSc8Main::updateEnter()
@@ -82,6 +83,7 @@ void PMSc8Main::updateEnter()
     PMBaseScene::updateEnter();
     string songPath = "songs/" + PMSongSelector::getInstance().getFilename();
     songIsStarted = false;
+    songIsPlaying = false;
     loadSong(songPath);
     playSong();
 

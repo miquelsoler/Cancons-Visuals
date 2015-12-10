@@ -22,12 +22,17 @@ PMBaseScene::PMBaseScene(const string &name) : ofxFadeScene(name)
     setFade(0, 0);
 
     backgroundColor = ofColor::green;
+    backgroundImage.load("assets/background.png");
 }
 
 ///--------------------------------------------------------------
 void PMBaseScene::draw()
 {
     ofClear(backgroundColor);
+    ofPushStyle();
+    ofSetColor(244);
+    backgroundImage.draw(0,0, ofGetWidth(), ofGetHeight());
+    ofPopStyle();
 }
 
 void PMBaseScene::updateEnter()

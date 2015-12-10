@@ -81,6 +81,12 @@ void PMSc9Export::keyPressed(int key)
             textInput=textInput.substr(0, textInput.length()-1);
             break;
         }
+        case OF_KEY_RETURN:
+        {
+            string sceneToChange = "Scene Thanks";
+            ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+            break;
+        }
         default:
         {
             textInput.append(1, (char)key);

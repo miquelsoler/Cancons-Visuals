@@ -15,6 +15,7 @@
 PMSc7Countdown::PMSc7Countdown() : PMBaseScene("Scene 7")
 {
     countdownFont.load("fonts/NeutraTextTF-Book.otf", 100, true, true, false, 0.3, 72);
+    setSingleSetup(false);
 }
 
 void PMSc7Countdown::setup()
