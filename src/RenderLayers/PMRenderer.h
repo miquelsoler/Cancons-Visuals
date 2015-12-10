@@ -7,7 +7,6 @@
 
 #include "ofMain.h"
 #include "PMBaseLayer.h"
-#include "PMUICanvasBrushRenderer.h"
 #include "Defaults.h"
 
 class PMRenderer
@@ -31,8 +30,6 @@ private:
 #if ENABLE_MULTIPLE_FBOS
     ofFbo                       backgroundFBO;
 #endif
-
-    PMUICanvasBrushRenderer     *gui;
 };
 
 
