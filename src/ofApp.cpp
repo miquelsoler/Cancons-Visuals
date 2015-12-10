@@ -155,14 +155,6 @@ void ofApp::keyReleased(int key)
             sceneManager.prevScene();
             break;
         }
-        case 'g':
-        case 'G':
-        {
-            if (currentSceneName == "Scene 8") {
-                scene8->keyReleased(key);
-            }
-            break;
-        }
         case 's':
         case 'S':
         {
