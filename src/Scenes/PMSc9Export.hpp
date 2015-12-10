@@ -36,4 +36,5 @@ private:
     string  textInput;
     float   timestamp;
     bool isSlash;
+    int             originalWidth, originalHeight;
 };

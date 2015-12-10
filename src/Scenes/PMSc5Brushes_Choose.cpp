@@ -27,18 +27,31 @@ void PMSc5Brushes_Choose::update()
 
 void PMSc5Brushes_Choose::draw()
 {
+    ofPushMatrix();
+    float scaleX=(float)ofGetWidth()/(float)1080;
+    float scaleY=(float)ofGetHeight()/(float)1920;
+    ofScale(scaleX, scaleY);
     ofBackground(0);
     drawSettingsNumbers(3);
     PMBrushesSelector::getInstance().draw();
+    ofPopMatrix();
 }
 
 void PMSc5Brushes_Choose::mouseMoved(int x, int y)
 {
+    float scaleX=(float)ofGetWidth()/(float)1080;
+    float scaleY=(float)ofGetHeight()/(float)1920;
+    x/=scaleX;
+    y/=scaleY;
     PMBrushesSelector::getInstance().checkMousePassed(x, y);
 }
 
 void PMSc5Brushes_Choose::mousePressed(int x, int y, int mouse)
 {
+    float scaleX=(float)ofGetWidth()/(float)1080;
+    float scaleY=(float)ofGetHeight()/(float)1920;
+    x/=scaleX;
+    y/=scaleY;
     if(PMBrushesSelector::getInstance().checkMousePressed(x, y)){
         string sceneToChange="Scene 6";
         ofNotifyEvent(goToSceneEvent, sceneToChange, this);

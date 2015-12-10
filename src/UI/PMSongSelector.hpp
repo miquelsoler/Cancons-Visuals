@@ -49,6 +49,8 @@ private:
     vector<float> textScales;
     vector<bool> selectedText;
     
+    int originalWidth, originalHeight;
+    
 };
 
 #endif /* PMSongSelector_hpp */

@@ -15,6 +15,8 @@ PMSc9Export::PMSc9Export() : PMBaseScene("Scene 9")
     smallFont.load("fonts/NeutraTextTF-Light.otf", 30, true, true, false, 0.3, 72);
     textInput="";
     setSingleSetup(false);
+    originalWidth=1080;
+    originalHeight=1920;
 }
 
 void PMSc9Export::setup()
@@ -36,6 +38,10 @@ void PMSc9Export::update()
 
 void PMSc9Export::draw()
 {
+    ofPushMatrix();
+    float scaleX=(float)ofGetWidth()/(float)originalWidth;
+    float scaleY=(float)ofGetHeight()/(float)originalHeight;
+    ofScale(scaleX, scaleY);
     ofBackground(0);
     ofPushStyle();
     ofSetRectMode(OF_RECTMODE_CORNER);
@@ -44,34 +50,26 @@ void PMSc9Export::draw()
     ofPopStyle();
     
     ofSetColor(ofColor::white);
-//    ofDrawBitmapString("Current X: "+ofToString(ofGetMouseX())+"  Y: "+ofToString(ofGetMouseY()), 15, 28);
-//    drawCenteredFont(bigFont, "Enhorabona!", ofGetWidth()/2, 145);
-    drawCenteredFont(bigFont, "Enhorabona!", ofGetWidth()/2, ofGetHeight()/13.25);
-//    drawCenteredFont(bigFont, "Aquesta és la teva interpretació!", ofGetWidth()/2, 190);
-    drawCenteredFont(bigFont, "Aquesta és la teva interpretació!", ofGetWidth()/2, ofGetHeight()/10.1);
-//    drawCenteredFont(bigFont, "Si us plau, introdueix el teu nom", ofGetWidth()/2, 265);
-    drawCenteredFont(bigFont, "Si us plau, introdueix el teu nom", ofGetWidth()/2, ofGetHeight()/7.25);
-//    drawCenteredFont(bigFont, "i emporta't una impressió de la teva obra!", ofGetWidth()/2, 315);
-    drawCenteredFont(bigFont, "i emporta't una impressió de la teva obra!", ofGetWidth()/2, ofGetHeight()/6.1);
-    drawCenteredFont(smallFont, "(màxim 25 caràcters)", ofGetWidth()/2, 550);
-    drawCenteredFont(smallFont, "(màxim 25 caràcters)", ofGetWidth()/2, ofGetHeight()/3.5);
-//    if(isSlash)
-//        bigFont.drawString(textInput, 140, 495);
-//    else
-//        bigFont.drawString(textInput+'|', 140, 495);
+    ofDrawBitmapString("Current X: "+ofToString(ofGetMouseX())+"  Y: "+ofToString(ofGetMouseY()), 15, 28);
+    drawCenteredFont(bigFont, "Enhorabona!", originalWidth/2, 145);
+    drawCenteredFont(bigFont, "Aquesta és la teva interpretació!", originalWidth/2, 190);
+    drawCenteredFont(bigFont, "Si us plau, introdueix el teu nom", originalWidth/2, 265);
+    drawCenteredFont(bigFont, "i emporta't una impressió de la teva obra!", originalWidth/2, 315);
+    drawCenteredFont(smallFont, "(màxim 25 caràcters)", originalWidth/2, 550);
     if(isSlash)
-        bigFont.drawString(textInput, 140, ofGetHeight()/3.88);
+        bigFont.drawString(textInput, 140, 495);
     else
-        bigFont.drawString(textInput+'|', 140, ofGetHeight()/3.88);
+        bigFont.drawString(textInput+'|', 140, 495);
     
     ofPushStyle();
     ofSetRectMode(OF_RECTMODE_CENTER);
     ofNoFill();
     ofSetLineWidth(3);
-    ofDrawRectangle(ofGetWidth()/2, ofGetHeight()/4, 850, 85);
-//    ofDrawRectangle(ofGetWidth()/2, 1200, ofGetWidth()/1.7, ofGetHeight()/1.7);
-    painting.draw(ofGetWidth()/2, ofGetHeight()/1.6, ofGetWidth()/1.7, ofGetHeight()/1.7);
+    ofDrawRectangle(originalWidth/2, 480, 850, 85);
+    ofDrawRectangle(originalWidth/2, 1200, originalWidth/1.7, originalHeight/1.7);
+    painting.draw(originalWidth/2, 1200, originalWidth/1.7, originalHeight/1.7);
     ofPopStyle();
+    ofPopMatrix();
 }
 
 void PMSc9Export::keyPressed(int key)

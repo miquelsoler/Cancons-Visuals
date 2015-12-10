@@ -38,7 +38,7 @@ PMTextContainer::PMTextContainer(int _x, int _y, string _s, ofTrueTypeFont &_fon
 
 void PMTextContainer::draw()
 {
-    ofSetColor(121,43,53);
+    ofSetColor(ofColor::white);
     font->drawString(s, x-scaledWidth/2, y+scaledHeight/2);
 }
 
@@ -48,7 +48,7 @@ void PMTextContainer::draw(float _scale)
     ofPushMatrix();
         ofTranslate(x-(scaledWidth)/2, y+(scaledHeight)/2);
         ofScale(scale, scale);
-        ofSetColor(121,43,53);
+        ofSetColor(ofColor::white);
         font->drawString(s, 0, 0);
     ofPopMatrix();
 }

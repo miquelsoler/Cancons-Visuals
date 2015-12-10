@@ -41,6 +41,7 @@ private:
     vector<PMImageContainer > brushes;
     vector<PMColorContainer > rectSelector;
     int selectedPaletteIndex;
+    int originalWidth, originalHeight;
     
 };
 

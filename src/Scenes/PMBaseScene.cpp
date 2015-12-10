@@ -12,10 +12,10 @@
 PMBaseScene::PMBaseScene(const string &name) : ofxFadeScene(name)
 {
 //    baseFont.load(OF_TTF_SANS, 20, true, true, false, 0.3, 72);
-    baseFont.load("fonts/NeutraTextTF-Light.otf", 50, true, true, false, 0.3, 72);
+    baseFont.load("fonts/NeutraTextTF-Light.otf", 30, true, true, false, 0.3, 72);
     baseBoldFont.load("fonts/NeutraTextTF-Book.otf", 50, true, true, false, 0.3, 72);
-    numberFont.load("fonts/NeutraTextTF-Light.otf", 50, true, true, false, 0.3, 72);
-    numberBoldFont.load("fonts/NeutraTextTF-Book.otf", 50, true, true, false, 0.3, 72);
+    numberFont.load("fonts/NeutraTextTF-Light.otf", 110, true, true, false, 0.3, 72);
+    numberBoldFont.load("fonts/NeutraTextTF-Book.otf", 110, true, true, false, 0.3, 72);
 
     // Disable fades
     //this->setSceneDuration(0.2, 0.2);
@@ -55,10 +55,11 @@ void PMBaseScene::drawCenteredFont(ofTrueTypeFont &font, string s, int x, int y)
 void PMBaseScene::drawSettingsNumbers(int currentNumber)
 {
     int numHeight=numberFont.getLineHeight();
+    int originalWidth=1080;
     
     //settings number
     ofPoint numberPos;
-    numberPos.x=ofGetWidth()/4;
+    numberPos.x=originalWidth/4;
     numberPos.y=50;
     //draw number
     if(currentNumber==1){
@@ -76,7 +77,7 @@ void PMBaseScene::drawSettingsNumbers(int currentNumber)
     
     
     //settings number
-    numberPos.x=ofGetWidth()/2;
+    numberPos.x=originalWidth/2;
     numberPos.y=50;
     //draw number
     if(currentNumber==2){
@@ -95,7 +96,7 @@ void PMBaseScene::drawSettingsNumbers(int currentNumber)
     
     
     //settings number
-    numberPos.x=ofGetWidth()*3/4;
+    numberPos.x=originalWidth*3/4;
     numberPos.y=50;
     //draw number
     if(currentNumber==3){

@@ -13,6 +13,8 @@ static const int NUM_ERASED_COLORS = 2; //for debuging purposes
 
 void PMColorsSelector::init(ofTrueTypeFont &font)
 {
+    originalWidth=1080;
+    originalHeight=1920;
     
     indexChoosed=0;
     
@@ -32,25 +34,25 @@ void PMColorsSelector::init(ofTrueTypeFont &font)
     int x,y;
     int width,height;
     for(int i=0; i<rows; i++){
-        y=(((ofGetHeight()-150)*(i+1)/((rows)+1))+150);
+        y=(((originalHeight-150)*(i+1)/((rows)+1))+150);
         for(int j=0; j<columns; j++){
-            x=(ofGetWidth()*(j+1)/(columns+1));
-            width=((ofGetWidth()/(columns*2))-1);
+            x=(originalWidth*(j+1)/(columns+1));
+            width=((originalWidth/(columns*2))-1);
             height=width;
             PMColorContainer tempContainer(x, y, width, height, colorPalettes[i].colors[j]);
             colorContainers.push_back(tempContainer);
         }
     }
     for(int i=0; i<colorContainers.size(); i=i+colorPalettes[0].colors.size()){
-        int x=ofGetWidth()/2;
+        int x=originalWidth/2;
         int y=colorContainers[i].getY()+20;
-        int width=ofGetWidth()-(2*colorContainers[i].getX()-colorContainers[i].getWidth())+20;
+        int width=originalWidth-(2*colorContainers[i].getX()-colorContainers[i].getWidth())+20;
         int height=colorContainers[i].getHeight()+60;
         rectSelector.push_back(PMColorContainer(x, y, width, height, ofColor(127)));
     }
     
     for(int i=0; i<colorContainers.size(); i=i+colorPalettes[0].colors.size()){
-        int x=ofGetWidth()/2;
+        int x=originalWidth/2;
         int y=colorContainers[i].getY()+20+colorContainers[i].getHeight()/2;
         paletteNames.push_back(PMTextContainer(x, y, colorPalettes[i/colorPalettes[0].colors.size()].name, font));
     }

@@ -31,5 +31,6 @@ private:
     
     ofImage         plantilla;
     ofTrueTypeFont  bigFont, smallFont;
+    int             originalWidth, originalHeight;
     
 };

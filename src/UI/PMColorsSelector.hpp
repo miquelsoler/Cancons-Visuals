@@ -45,6 +45,7 @@ private:
     colorPalette tempPalette;
     vector<PMColorContainer > rectSelector;
     vector<PMTextContainer > paletteNames;
+    int originalWidth, originalHeight;
     
     int indexChoosed;
 };
