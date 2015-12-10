@@ -131,8 +131,8 @@ void ofApp::keyReleased(int key)
         case 'f':
         case 'F': {
             // Change window mode
-            isFullScreen = !isFullScreen;
-            ofSetFullscreen(isFullScreen);
+//            isFullScreen = !isFullScreen;
+//            ofSetFullscreen(isFullScreen);
             break;
         }
         case 'p':

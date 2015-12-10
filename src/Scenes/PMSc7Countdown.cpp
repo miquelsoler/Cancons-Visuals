@@ -56,8 +56,6 @@ void PMSc7Countdown::update()
 
 void PMSc7Countdown::draw()
 {
-    ofBackground(0,0,0,0);
-    ofEnableAlphaBlending();
     unsigned int countdownTime;
 #ifdef OF_DEBUG
     countdownTime = PMSettingsManagerGeneral::getInstance().getDebugScene7CountdownTime();
@@ -77,7 +75,6 @@ void PMSc7Countdown::draw()
     drawCenteredFont(countdownFont, ofToString(countdownTime - (int) countdown.getDiff() / 1000), center.x, center.y);
   
     ofPopMatrix();
-    ofDisableAlphaBlending();
 }
 
 void PMSc7Countdown::updateExit()
