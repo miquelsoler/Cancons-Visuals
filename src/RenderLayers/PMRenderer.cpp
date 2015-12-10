@@ -128,18 +128,29 @@ void PMRenderer::drawIntoFBO()
 void PMRenderer::exportToImage(string path)
 {
 #if ENABLE_MULTILAYER_EXPORT && ENABLE_MULTIPLE_FBOS
-    ofPixels bgPixels;
-    string bgPath = path + "-Background";
-    backgroundFBO.readToPixels(bgPixels);
-    ofSaveImage(bgPixels, bgPath + ".png", OF_IMAGE_QUALITY_BEST);
-
-    for (int i=0; i<layers.size(); ++i)
+    // Export separate layers
     {
-        ofPixels layerPixels;
-        string layerPath = path + "-Layer" + ofToString(i+1);
-        ofFbo *layerFBO = layers[i]->getFBO();
-        layerFBO->readToPixels(layerPixels);
-        ofSaveImage(layerPixels, layerPath + ".png", OF_IMAGE_QUALITY_BEST);
+        ofPixels bgPixels;
+        string bgPath = path + "-Background";
+        backgroundFBO.readToPixels(bgPixels);
+        ofSaveImage(bgPixels, bgPath + ".png", OF_IMAGE_QUALITY_BEST);
+
+        for (int i=0; i<layers.size(); ++i)
+        {
+            ofPixels layerPixels;
+            string layerPath = path + "-Layer" + ofToString(i+1);
+            ofFbo *layerFBO = layers[i]->getFBO();
+            layerFBO->readToPixels(layerPixels);
+            ofSaveImage(layerPixels, layerPath + ".png", OF_IMAGE_QUALITY_BEST);
+        }
+    }
+
+    // Export full composition
+    {
+        ofPixels fullPixels;
+        string fullPath = path + "-FULL";
+        mainFBO.readToPixels(fullPixels);
+        ofSaveImage(fullPixels, fullPath + ".png", OF_IMAGE_QUALITY_BEST);
     }
 #else
     ofPixels pix;
