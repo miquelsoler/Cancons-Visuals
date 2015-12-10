@@ -115,4 +115,5 @@ Desktop.ini
 #########################
 
 bin/data/presets/renderer/*.xml
-bin/data/testImage*
+bin/data/*.png
+bin/data/*.jpg
