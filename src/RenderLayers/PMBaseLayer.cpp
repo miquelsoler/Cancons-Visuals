@@ -211,10 +211,16 @@ void PMBaseLayer::updateToShoot()
     else
     {
         // Direction changes
-        ofPoint newDirection = brushInitalPosition-brushPosition;
+        ofPoint noise;
+        float noiseAmount=100;
+        noise.x= ofMap(ofSignedNoise(ofGetElapsedTimef()/2.0, -1000), -1, 1, -noiseAmount, noiseAmount);
+        noise.y= ofMap(ofSignedNoise(ofGetElapsedTimef()/2.0, 1000), -1, 1, -noiseAmount, noiseAmount);
+        ofPoint newDirection = (brushInitalPosition+noise)-brushPosition;
         brushDirection = newDirection.getNormalized();
 //        brushSpeed = newDirection.length()*5;
         brushDirection.normalize();
+        if(brushAlpha>alphaMin)
+            brushAlpha-=0.04;
         
         //direction history
         directionHistory.push_back(kinectNodeData.v);
@@ -329,7 +335,8 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
         float factorizedZAlpha = normalizedZ*alphaZScaleFactor;
         float factorizedVel;
         if(kinectNodeData.v.length()!= 1) factorizedVel=normalizedVelocity*alphaVelocityScaleFactor; else factorizedVel=0.5;
-        brushAlpha = ofMap(factorizedEnergyAlpha *factorizedVel * factorizedZAlpha, 0, 1, alphaMin, alphaMax, true);
+        if(didShoot)
+            brushAlpha = ofMap(factorizedEnergyAlpha *factorizedVel * factorizedZAlpha, 0, 1, alphaMin, alphaMax, true);
 #else
         brushAlpha = ofMap(factorizedEnergyAlpha, 0, 1, alphaMin, alphaMax, true);
 #endif
