@@ -21,6 +21,7 @@
 		214766AD2C93A732338F4AD8 /* PMTextContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21476DE613E43772A4AEF416 /* PMTextContainer.cpp */; };
 		2147679EC81742949BF7FF17 /* PMBrushesSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21476A3ECE655FA970DA51FA /* PMBrushesSelector.cpp */; };
 		2147688C8F6B17C5E1C1A7E8 /* PMBaseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214764970F01A4256BF0C0DE /* PMBaseLayer.cpp */; };
+		214768BADE80175E3657E74F /* PMUICanvasLayers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2147659265514CA35C238193 /* PMUICanvasLayers.cpp */; };
 		214768D5E2539C90F8602AFB /* PMLayer1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21476B7C8BA4CC9C9BA84378 /* PMLayer1.cpp */; };
 		2147697F2BEA771A1073C1AD /* PMLayer4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21476FFF0EC4120B739D2565 /* PMLayer4.cpp */; };
 		21476B8C49410E0E5E67BD86 /* PMLayer3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2147680ABD8A9BA05B6EA4D6 /* PMLayer3.cpp */; };
@@ -228,7 +229,9 @@
 		2147636314B61B018F8999D5 /* PMTextContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMTextContainer.hpp; sourceTree = "<group>"; };
 		214764970F01A4256BF0C0DE /* PMBaseLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMBaseLayer.cpp; sourceTree = "<group>"; };
 		214764DA0D31043695336E59 /* PMLayer2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLayer2.h; sourceTree = "<group>"; };
+		2147659265514CA35C238193 /* PMUICanvasLayers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMUICanvasLayers.cpp; sourceTree = "<group>"; };
 		21476714CF0457B4D29CC8C5 /* PMImageContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PMImageContainer.hpp; path = ../../RenderLayers/PMImageContainer.hpp; sourceTree = "<group>"; };
+		214767CAF1172B1920B30814 /* PMUICanvasLayers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMUICanvasLayers.h; sourceTree = "<group>"; };
 		214767E422E94A9AE9721536 /* PMLayer4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLayer4.h; sourceTree = "<group>"; };
 		2147680ABD8A9BA05B6EA4D6 /* PMLayer3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMLayer3.cpp; sourceTree = "<group>"; };
 		21476938BD4744CBEE408C68 /* PMSongSelector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSongSelector.hpp; sourceTree = "<group>"; };
@@ -1245,6 +1248,8 @@
 				9F7FA6561C10C21100F34E63 /* PMBaseUICanvas.h */,
 				2AE527F91C19E9E2002A87E4 /* PMUICanvasAudioAnalyzer.h */,
 				2AE527FA1C19E9E2002A87E4 /* PMUICanvasAudioAnalyzer.cpp */,
+				214767CAF1172B1920B30814 /* PMUICanvasLayers.h */,
+				2147659265514CA35C238193 /* PMUICanvasLayers.cpp */,
 			);
 			path = UICanvas;
 			sourceTree = "<group>";
@@ -1816,6 +1821,7 @@
 				214764BE9BEE53C4E04AB48C /* PMSelectorContainer.cpp in Sources */,
 				214766AD2C93A732338F4AD8 /* PMTextContainer.cpp in Sources */,
 				21476BA8DB0296885F6B9ED6 /* PMSettingsManagerLayers.cpp in Sources */,
+				214768BADE80175E3657E74F /* PMUICanvasLayers.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

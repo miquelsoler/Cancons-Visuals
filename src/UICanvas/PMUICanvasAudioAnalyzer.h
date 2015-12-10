@@ -9,7 +9,6 @@
 
 #include "PMAudioInParams.h"
 #include "PMAudioAnalyzer.hpp"
-//#include "PMSettingsManagerAudioAnalyzers.h"
 
 class PMUICanvasAudioAnalyzer : public PMBaseUICanvas
 {
