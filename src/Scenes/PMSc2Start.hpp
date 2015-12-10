@@ -28,6 +28,8 @@ public:
     void updateEnter(){ofxFadeScene::updateEnter();};
     void updateExit(){ofxFadeScene::updateExit();};
     
+    void keyPressed(int key);
+    
 private:
     ofImage backgroundImage;
 };

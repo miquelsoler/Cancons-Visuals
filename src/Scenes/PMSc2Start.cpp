@@ -33,3 +33,10 @@ void PMSc2Start::draw()
     backgroundImage.draw(0,0, ofGetWidth(), ofGetHeight());
     ofPopStyle();
 }
+
+void PMSc2Start::keyPressed(int key)
+{
+    string sceneToChange = "Scene 3";
+    if(key == ' ')
+        ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+}
