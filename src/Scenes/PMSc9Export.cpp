@@ -45,23 +45,32 @@ void PMSc9Export::draw()
     
     ofSetColor(ofColor::white);
 //    ofDrawBitmapString("Current X: "+ofToString(ofGetMouseX())+"  Y: "+ofToString(ofGetMouseY()), 15, 28);
-    drawCenteredFont(bigFont, "Enhorabona!", ofGetWidth()/2, 145);
-    drawCenteredFont(bigFont, "Aquesta és la teva interpretació!", ofGetWidth()/2, 190);
-    drawCenteredFont(bigFont, "Si us plau, introdueix el teu nom", ofGetWidth()/2, 265);
-    drawCenteredFont(bigFont, "i emporta't una impressió de la teva obra!", ofGetWidth()/2, 315);
+//    drawCenteredFont(bigFont, "Enhorabona!", ofGetWidth()/2, 145);
+    drawCenteredFont(bigFont, "Enhorabona!", ofGetWidth()/2, ofGetHeight()/13.25);
+//    drawCenteredFont(bigFont, "Aquesta és la teva interpretació!", ofGetWidth()/2, 190);
+    drawCenteredFont(bigFont, "Aquesta és la teva interpretació!", ofGetWidth()/2, ofGetHeight()/10.1);
+//    drawCenteredFont(bigFont, "Si us plau, introdueix el teu nom", ofGetWidth()/2, 265);
+    drawCenteredFont(bigFont, "Si us plau, introdueix el teu nom", ofGetWidth()/2, ofGetHeight()/7.25);
+//    drawCenteredFont(bigFont, "i emporta't una impressió de la teva obra!", ofGetWidth()/2, 315);
+    drawCenteredFont(bigFont, "i emporta't una impressió de la teva obra!", ofGetWidth()/2, ofGetHeight()/6.1);
     drawCenteredFont(smallFont, "(màxim 25 caràcters)", ofGetWidth()/2, 550);
+    drawCenteredFont(smallFont, "(màxim 25 caràcters)", ofGetWidth()/2, ofGetHeight()/3.5);
+//    if(isSlash)
+//        bigFont.drawString(textInput, 140, 495);
+//    else
+//        bigFont.drawString(textInput+'|', 140, 495);
     if(isSlash)
-        bigFont.drawString(textInput, 140, 495);
+        bigFont.drawString(textInput, 140, ofGetHeight()/3.88);
     else
-        bigFont.drawString(textInput+'|', 140, 495);
+        bigFont.drawString(textInput+'|', 140, ofGetHeight()/3.88);
     
     ofPushStyle();
     ofSetRectMode(OF_RECTMODE_CENTER);
     ofNoFill();
     ofSetLineWidth(3);
-    ofDrawRectangle(ofGetWidth()/2, 480, 850, 85);
+    ofDrawRectangle(ofGetWidth()/2, ofGetHeight()/4, 850, 85);
 //    ofDrawRectangle(ofGetWidth()/2, 1200, ofGetWidth()/1.7, ofGetHeight()/1.7);
-    painting.draw(ofGetWidth()/2, 1200, ofGetWidth()/1.7, ofGetHeight()/1.7);
+    painting.draw(ofGetWidth()/2, ofGetHeight()/1.6, ofGetWidth()/1.7, ofGetHeight()/1.7);
     ofPopStyle();
 }
 
