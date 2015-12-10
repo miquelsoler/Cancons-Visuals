@@ -17,6 +17,7 @@
 #include "PMSc6Kinect_Detect.hpp"
 #include "PMSc7Countdown.hpp"
 #include "PMSc8Main.hpp"
+#include "PMSc9Export.hpp"
 
 class ofApp : public ofxApp
 {
@@ -63,4 +64,5 @@ private:
     PMSc6Kinect_Detect      *scene6;
     PMSc7Countdown          *scene7;
     PMSc8Main               *scene8;
+    PMSc9Export             *scene9;
 };

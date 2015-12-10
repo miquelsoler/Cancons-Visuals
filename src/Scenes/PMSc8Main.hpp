@@ -26,7 +26,7 @@ public:
     void setup();
     void update();
     void draw();
-    void exit(){};
+    void exit();
     void updateEnter();
     void updateExit();
     
@@ -34,9 +34,6 @@ public:
     void playSong();
 
     void keyReleased(int key);
-
-
-protected:
 
 private:
     

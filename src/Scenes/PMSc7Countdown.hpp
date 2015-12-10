@@ -23,7 +23,7 @@ public:
     void setup();
     void update();
     void draw();
-    void exit(){};
+    void exit();
     void updateEnter();
     void updateExit();
 

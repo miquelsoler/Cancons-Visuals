@@ -130,6 +130,7 @@
 		9F8BC6831C0F64CF008CD29E /* PMSettingsManagerGeneral.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F8BC6771C0F64CF008CD29E /* PMSettingsManagerGeneral.cpp */; };
 		9F8BC6841C0F64CF008CD29E /* PMSettingsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F8BC6791C0F64CF008CD29E /* PMSettingsManager.cpp */; };
 		9F8BC6861C0F64CF008CD29E /* PMSettingsManagerRenderers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F8BC67F1C0F64CF008CD29E /* PMSettingsManagerRenderers.cpp */; };
+		9FAE57DE1C19869400CB7F8B /* PMSc9Export.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE57DC1C19869400CB7F8B /* PMSc9Export.cpp */; };
 		9FC1D4E51BDF85EA00DF31E3 /* PMAudioAnalyzer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FC1D4E31BDF85EA00DF31E3 /* PMAudioAnalyzer.cpp */; };
 		9FD630471BE38BDF00B9F1E1 /* PMSc2Start.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FD630451BE38BDF00B9F1E1 /* PMSc2Start.cpp */; };
 		9FD6304A1BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FD630481BE38CBF00B9F1E1 /* PMSc6Kinect_Detect.cpp */; };
@@ -569,6 +570,8 @@
 		9F8BC67A1C0F64CF008CD29E /* PMSettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSettingsManager.h; sourceTree = "<group>"; };
 		9F8BC67F1C0F64CF008CD29E /* PMSettingsManagerRenderers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSettingsManagerRenderers.cpp; sourceTree = "<group>"; };
 		9F8BC6801C0F64CF008CD29E /* PMSettingsManagerRenderers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSettingsManagerRenderers.h; sourceTree = "<group>"; };
+		9FAE57DC1C19869400CB7F8B /* PMSc9Export.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc9Export.cpp; sourceTree = "<group>"; };
+		9FAE57DD1C19869400CB7F8B /* PMSc9Export.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSc9Export.hpp; sourceTree = "<group>"; };
 		9FC1D4E31BDF85EA00DF31E3 /* PMAudioAnalyzer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMAudioAnalyzer.cpp; sourceTree = "<group>"; };
 		9FC1D4E41BDF85EA00DF31E3 /* PMAudioAnalyzer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMAudioAnalyzer.hpp; sourceTree = "<group>"; };
 		9FD630451BE38BDF00B9F1E1 /* PMSc2Start.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSc2Start.cpp; sourceTree = "<group>"; };
@@ -844,6 +847,8 @@
 				9F530AF01BE28F6B0071941A /* PMSc7Countdown.hpp */,
 				2A23373A1BCEC097000612E4 /* PMSc8Main.cpp */,
 				2A23373B1BCEC097000612E4 /* PMSc8Main.hpp */,
+				9FAE57DC1C19869400CB7F8B /* PMSc9Export.cpp */,
+				9FAE57DD1C19869400CB7F8B /* PMSc9Export.hpp */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -1865,6 +1870,7 @@
 				9F530AF41BE28FB10071941A /* PMSc4Palette_Choose.cpp in Sources */,
 				9FD788001BEBE0EE00376552 /* ofxTransformer.cpp in Sources */,
 				BFEFCE32DAFE10A8EB519F6C /* ofxUISpacer.cpp in Sources */,
+				9FAE57DE1C19869400CB7F8B /* PMSc9Export.cpp in Sources */,
 				52AFF80A869790144ACCC9BA /* ofxUISpectrum.cpp in Sources */,
 				9F7FA6601C10C21100F34E63 /* PMUICanvasAudioAnalyzer.cpp in Sources */,
 				1DAAC3FB4B98B08AE63F4687 /* ofxUISuperCanvas.cpp in Sources */,

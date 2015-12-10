@@ -29,6 +29,7 @@ public:
     void init();
     void update();
     void draw();
+    void setInitialState();
     
     PMImageContainer* getBrush(int layer){return &brushes[(indexChoosed*brushesXpalette)+layer];};
     void checkMousePassed(int x, int y);

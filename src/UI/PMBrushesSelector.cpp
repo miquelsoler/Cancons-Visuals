@@ -51,6 +51,34 @@ void PMBrushesSelector::init()
             }
         }
     }
+    
+    setInitialState();
+    
+//    int index=0;
+//    int x,y;
+//    int width,height;
+//    for(int i=1; i<=brushes.size()/brushesXpalette; i++){
+//        y=(((ofGetHeight()-150)*i/((brushes.size()/brushesXpalette)+1))+150);
+//        for(int j=0; j<brushesXpalette; j++){
+//            x=(ofGetWidth()*(j+1)/(brushesXpalette+1));
+//            width=((ofGetWidth()/(brushesXpalette*2))-1);
+//            height=width;
+//            brushes[index].update(x, y, width, height);
+//            index++;
+//        }
+//    }
+//    
+//    for(int i=0; i<brushes.size(); i=i+brushesXpalette){
+//        int x=ofGetWidth()/2;
+//        int y=brushes[i].getY();
+//        int width=ofGetWidth()-(2*brushes[i].getX()-brushes[i].getWidth())+20;
+//        int height=brushes[i].getHeight()+20;
+//        rectSelector.push_back(PMColorContainer(x, y, width, height, ofColor(127)));
+//    }
+}
+
+void PMBrushesSelector::setInitialState()
+{
     int index=0;
     int x,y;
     int width,height;
@@ -64,7 +92,7 @@ void PMBrushesSelector::init()
             index++;
         }
     }
-    
+
     for(int i=0; i<brushes.size(); i=i+brushesXpalette){
         int x=ofGetWidth()/2;
         int y=brushes[i].getY();

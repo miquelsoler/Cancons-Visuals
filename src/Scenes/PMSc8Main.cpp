@@ -68,6 +68,11 @@ void PMSc8Main::draw()
     renderer->draw();
 }
 
+void PMSc8Main::exit()
+{
+    song.stop();
+}
+
 void PMSc8Main::updateEnter()
 {
 
@@ -83,8 +88,8 @@ void PMSc8Main::updateEnter()
 void PMSc8Main::updateExit()
 {
     PMBaseScene::updateExit();
-    motionExtractor->exit();
-    song.stop();
+    //motionExtractor->exit();
+    
 //    renderer->exportToImage("testImage_"+ofGetTimestampString());
 }
 

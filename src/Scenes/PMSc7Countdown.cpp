@@ -18,21 +18,21 @@ PMSc7Countdown::PMSc7Countdown() : PMBaseScene("Scene 7")
 
 void PMSc7Countdown::setup()
 {
-}
-
-void PMSc7Countdown::updateEnter()
-{
     unsigned int countdownTime;
 #ifdef OF_DEBUG
     countdownTime = PMSettingsManagerGeneral::getInstance().getDebugScene7CountdownTime();
 #else
     countdownTime = PMSettingsManagerGeneral::getInstance().getReleaseScene7CountdownTime();
 #endif
-
+    
     countdown.set();
     countdown.setAlarm(countdownTime * 1000);
-    PMBaseScene::updateEnter();
     PMAudioAnalyzer::getInstance().start();
+}
+
+void PMSc7Countdown::updateEnter()
+{
+    PMBaseScene::updateEnter();
 }
 
 void PMSc7Countdown::update()
@@ -42,6 +42,7 @@ void PMSc7Countdown::update()
 #endif
 
     if (countdown.alarm()) {
+        countdown.resetAlarm();
         string toScene = "Scene 8";
         ofNotifyEvent(goToSceneEvent, toScene, this);
     }
@@ -61,4 +62,10 @@ void PMSc7Countdown::draw()
 
 void PMSc7Countdown::updateExit()
 {
+    PMBaseScene::updateExit();
+}
+
+void PMSc7Countdown::exit()
+{
+    countdown.~ofxTimer();
 }
