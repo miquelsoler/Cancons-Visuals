@@ -332,11 +332,8 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
         float factorizedZAlpha = normalizedZ*alphaZScaleFactor;
         float factorizedVel;
         if(kinectNodeData.v.length()!= 1) factorizedVel=normalizedVelocity*alphaVelocityScaleFactor; else factorizedVel=0.5;
-//        if(didShoot || layerID==1 || layerID ==2)
-        if(didShoot || layerID ==2)
+        if(didShoot || layerID==1 || layerID ==2)
             brushAlpha = ofMap(factorizedEnergyAlpha *factorizedVel * factorizedZAlpha, 0, 1, alphaMin, alphaMax, true);
-        if(layerID == 1)
-             brushAlpha = ofMap(factorizedEnergyAlpha +factorizedVel + factorizedZAlpha, 0, 3, alphaMin, alphaMax, true);
 #else
         brushAlpha = ofMap(factorizedEnergyAlpha, 0, 1, alphaMin, alphaMax, true);
 #endif
