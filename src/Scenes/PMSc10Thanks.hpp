@@ -1,23 +1,23 @@
 //
-//  PMSc9Export.hpp
+//  PMSc10Thanks.hpp
 //  PMCancons_Visuals
 //
 //  Created by Eduard Frigola on 30/10/15.
 //
 //
 
-#ifndef PMSc9Export_hpp
-#define PMSc9Export_hpp
+#ifndef PMSc10Thanks_hpp
+#define PMSc10Thanks_hpp
 
 #include "PMBaseScene.hpp"
 
-#endif /* PMSc9Export_hpp */
+#endif /* PMSc10Thanks_hpp */
 
-class PMSc9Export : public PMBaseScene
+class PMSc10Thanks : public PMBaseScene
 {
 public:
     
-    PMSc9Export();
+    PMSc10Thanks();
     
     void setup();
     void update();
@@ -25,15 +25,11 @@ public:
     void exit(){};
     void updateEnter(){PMBaseScene::updateEnter();};
     void updateExit(){PMBaseScene::updateExit();};
-    
-    void keyPressed(int key);
 
     
 private:
     
-    ofImage     plantilla;
-    ofTrueTypeFont bigFont, smallFont;
-    string  textInput;
-    float   timestamp;
-    bool isSlash;
+    ofImage         plantilla;
+    ofTrueTypeFont  bigFont, smallFont;
+    
 };

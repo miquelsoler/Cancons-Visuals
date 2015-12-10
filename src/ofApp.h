@@ -18,6 +18,7 @@
 #include "PMSc7Countdown.hpp"
 #include "PMSc8Main.hpp"
 #include "PMSc9Export.hpp"
+#include "PMSc10Thanks.hpp"
 
 class ofApp : public ofxApp
 {
@@ -65,4 +66,7 @@ private:
     PMSc7Countdown          *scene7;
     PMSc8Main               *scene8;
     PMSc9Export             *scene9;
+    PMSc10Thanks            *scene10;
+    
+    
 };

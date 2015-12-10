@@ -65,6 +65,9 @@ void ofApp::setup()
     scene9 = new PMSc9Export();
     sceneManager.add(scene9);
     
+    scene10 = new PMSc10Thanks();
+    sceneManager.add(scene10);
+    
     
     
     sceneManager.setup(false);
@@ -139,7 +142,7 @@ void ofApp::keyReleased(int key)
         }
         case OF_KEY_UP:
         case OF_KEY_RIGHT: {
-            if(currentScene!=8)
+            if(currentScene!=9)
                 sceneManager.nextScene(true);
             else{
                 string toScene = "Scene 2";

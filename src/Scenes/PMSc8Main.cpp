@@ -71,6 +71,7 @@ void PMSc8Main::draw()
 void PMSc8Main::exit()
 {
     song.stop();
+    PMAudioAnalyzer::getInstance().stop();
 }
 
 void PMSc8Main::updateEnter()

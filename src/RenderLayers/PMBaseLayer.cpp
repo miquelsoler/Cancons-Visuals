@@ -351,7 +351,7 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
     //Hue Edu
     {
         float hueOffset = ofMap(hueVariation, 0, 1, 0, 255, true); //Maps % to absolute hue variation values
-        int hueIncrement=ofMap(normalizedEnergy, 0, 1, -1, 1)*hueScaleFactor*hueOffset; //maps energy to -1 1, then aplies scale factor to finaly get a number between -hueOffset and hueoffset
+        int hueIncrement=ofMap(normalizedEnergy, 0, 1, -1, 1)*hueOffset; //maps energy to -1 1, then aplies scale factor to finaly get a number between -hueOffset and hueoffset
         hueIncrement=ofMap(hueIncrement, -hueOffset, hueOffset, -hueOffset, hueOffset, true);
         brushRGBColor.setHue(brushHSBColor.hue+hueIncrement);
     }
@@ -368,7 +368,7 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
     //Saturation Edu
     {
         float saturationOffset = ofMap(saturationVariation, 0, 1, 0, 255, true); //Maps % to absolute Saturation variation values
-        int saturationIncrement=ofMap(normalizedEnergy, 0, 1, -1, 1)*saturationScaleFactor*saturationOffset;
+        int saturationIncrement=ofMap(normalizedEnergy, 0, 1, -1, 1)*saturationOffset;
         saturationIncrement=ofMap(saturationIncrement, -saturationOffset, saturationOffset, -saturationOffset, saturationOffset, true);
         brushRGBColor.setSaturation(brushHSBColor.saturation+saturationIncrement);
     }
@@ -386,7 +386,7 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
     //Brightness Edu
     {
         float brightnessOffset = ofMap(brightnessVariation, 0, 1, 0, 255, true); //Maps % to absolute brightness variation values
-        int brightnessIncrement=ofMap(normalizedEnergy, 0, 1, -1, 1)*brightnessScaleFactor*brightnessOffset;
+        int brightnessIncrement=ofMap(normalizedEnergy, 0, 1, -1, 1)*brightnessOffset;
         brightnessIncrement=ofMap(brightnessIncrement, -brightnessOffset, brightnessOffset, -brightnessOffset, brightnessOffset, true);
         brushRGBColor.setBrightness(brushHSBColor.brightness+brightnessIncrement);
     }
