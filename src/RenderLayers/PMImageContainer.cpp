@@ -15,6 +15,7 @@ PMImageContainer::PMImageContainer(ofImage _image)
     this->y=ofRandomHeight();
     this->width=20;
     this->height=20;
+    this->angle=0;
 }
 
 PMImageContainer::PMImageContainer(string filename)
@@ -24,6 +25,7 @@ PMImageContainer::PMImageContainer(string filename)
     this->y=ofRandomHeight();
     this->width=20;
     this->height=20;
+    this->angle=0;
 }
 
 PMImageContainer::PMImageContainer(int _x, int _y, int _width, int _height, ofImage _image)
@@ -33,18 +35,18 @@ PMImageContainer::PMImageContainer(int _x, int _y, int _width, int _height, ofIm
     this->y=_y;
     this->width=_width;
     this->height=_height;
+    this->angle=0;
 }
 
 void PMImageContainer::draw()
 {
-//    ofPushStyle();
         ofSetRectMode(OF_RECTMODE_CENTER);
-//        image.resize(width, height);
-//    ofScale(width, height);
-    //ofSetColor(ofColor::red);
-        image.draw(x, y, width, height);
+    ofPushMatrix();
+        ofTranslate(x, y, 0);
+        ofRotateZ(angle);
+        image.draw(0,0,width, height);
+    ofPopMatrix();
     ofSetRectMode(OF_RECTMODE_CORNER);
-//    ofPopStyle();
 }
 
 void PMImageContainer::setImage(ofImage _image)
@@ -55,4 +57,9 @@ void PMImageContainer::setImage(ofImage _image)
 void PMImageContainer::loadImage(string filename)
 {
     image.load(filename);
+}
+
+void PMImageContainer::setAngle(float _angle)
+{
+    angle=_angle;
 }

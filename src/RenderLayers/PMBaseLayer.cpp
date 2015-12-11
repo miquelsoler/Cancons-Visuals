@@ -119,7 +119,8 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 
 void PMBaseLayer::update()
 {
-
+    float anglenoise=ofNoise(ofGetElapsedTimeMicros()*layerID)*360;
+    brush->setAngle(anglenoise);
     brushPrevPosition = brushPosition;
 
 #if ENABLE_KINECT
@@ -159,7 +160,7 @@ void PMBaseLayer::update()
     brushDirection.normalize();
 
     if (kinectNodeData.a / KINECT_ACCEL_FACTOR > KINECT_ACCEL_THRESHOLD) {
-        brushDirection += (kinectNodeData.v.normalize() * (kinectNodeData.a / 2));
+        brushDirection += (kinectNodeData.v.normalize() * (kinectNodeData.a / 6));
     }
     brushPosition += (brushDirection * brushSpeed);
     brushDirection.normalize();
@@ -168,6 +169,8 @@ void PMBaseLayer::update()
 
 void PMBaseLayer::updateToShoot()
 {
+    float anglenoise=ofNoise(ofGetElapsedTimeMicros()*layerID)*360;
+    brush->setAngle(anglenoise);
     brushPrevPosition = brushPosition;
     
     if (PMMotionExtractor::getInstance().isTracking())
@@ -205,7 +208,7 @@ void PMBaseLayer::updateToShoot()
             brushSpeed = PMSettingsManagerLayers::getInstance().getSpeed(layerID);
             setBrushSize(ofRandom(sizeMin, sizeMax));
         }
-        brushDirection.rotate(shootCurveAmount, ofPoint(0,0,1));
+        brushDirection.rotate(shootCurveAmount+ofSignedNoise(ofGetElapsedTimef()), ofPoint(0,0,1));
     }
     else
     {
@@ -218,8 +221,9 @@ void PMBaseLayer::updateToShoot()
         brushDirection = newDirection.getNormalized();
 //        brushSpeed = newDirection.length()*5;
         brushDirection.normalize();
-        if(brushAlpha>alphaMin)
-            brushAlpha-=0.04;
+        brushAlpha-=0.1;
+        if(brushAlpha<0)
+            brushAlpha=0;
         
         //direction history
         directionHistory.push_back(kinectNodeData.v);
@@ -235,6 +239,7 @@ void PMBaseLayer::updateToShoot()
                 if(directionHistoryMaxIndex < directionHistory[i].length())
                     directionHistoryMaxIndex = i;
             }
+            brushAlpha=alphaMax;
             brushDirection=directionHistory[directionHistoryMaxIndex];
         }
     }
@@ -260,9 +265,13 @@ void PMBaseLayer::draw()
 
     brush->draw();
 
-    if ((brushPrevPosition - brushPosition).length() > BRUSH_MAX_POSITION_DISTANCE) {
-        while ((brushPrevPosition - brushPosition).length() > BRUSH_MIN_POSITION_DISTANCE) {
-            brushPrevPosition += ((brushPosition - brushPrevPosition).normalize() * BRUSH_MIN_POSITION_DISTANCE);
+    if ((brushPrevPosition - brushPosition).length() > brushSpeed) {
+        while ((brushPrevPosition - brushPosition).length() > brushSpeed*2) {
+            float anglenoise=ofNoise(brushPrevPosition.x*brushPrevPosition.y)*360;
+            brush->setAngle(anglenoise);
+            ofPoint tempDirection = (brushPosition - brushPrevPosition).normalize();
+            tempDirection.rotate(ofSignedNoise(brushPosition.x, brushPosition.y), ofPoint(0,0,1));
+            brushPrevPosition += tempDirection* brushSpeed;
             brush->update(int(brushPrevPosition.x), int(brushPrevPosition.y));
 //            ofSetColor(brushRGBColor, int(brushAlpha)*255);
             brush->draw();

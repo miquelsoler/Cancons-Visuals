@@ -30,8 +30,8 @@
       			"Max (N)": 0.8,
    	   			"Scale Factor": 1,
                 "Scale Energy Factor": 1,
-                "Scale Velocity Factor": 1,
-                "Scale Z Factor": 1
+                "Scale Velocity Factor": 0.5,
+                "Scale Z Factor": 0.5
             },
             "Behaviour": {
                 "Speed": 2,
@@ -41,7 +41,7 @@
 		{
 			"ID" : 2,
 			"Energy": {
-      			"Min (N)": 0.1,
+      			"Min (N)": 0.0,
       			"Max (N)": 0.1
 			},
 			"Size": {
@@ -85,7 +85,7 @@
 			"Size": {
 				"Min": 50,
 				"Max": 100,
-                "Scale Energy Factor": 0.1,
+                "Scale Energy Factor": 1,
                 "Scale Acceleration Factor": 0.5,
                 "Scale Z Factor": 0.5
 			},
@@ -114,9 +114,9 @@
                 "Curve Size": 6
             },
             "Shoot Behaviour": {
-                "Initial Size": 80,
-                "Initial Speed": 30,
-                "Speed Decrement": 0.3,
+                "Initial Size": 20,
+                "Initial Speed": 8,
+                "Speed Decrement": 0.1,
                 "Size Decrement": 2,
                 "Curve Amount": 3
             }
@@ -159,9 +159,9 @@
                 "Curve Size": 6
             },
             "Shoot Behaviour": {
-                "Initial Size": 50,
-                "Initial Speed": 20,
-                "Speed Decrement": 0.5,
+                "Initial Size": 2,
+                "Initial Speed": 7,
+                "Speed Decrement": 0.1,
                 "Size Decrement": 1,
                 "Curve Amount": 3
             }

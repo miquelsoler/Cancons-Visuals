@@ -21,9 +21,11 @@ public:
     void setImage(ofImage image);
     void loadImage(string _filename);
     void setSize(int _width, int _height){width=_width; height=_height;};
+    void setAngle(float angle);
     
 private:
     ofImage image;
+    float angle;
 };
 
 #endif /* PMImageContainer_hpp */
