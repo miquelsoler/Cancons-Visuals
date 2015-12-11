@@ -10,7 +10,7 @@
 #include "PMSongSelector.hpp"
 #include "PMSettingsManagerGeneral.h"
 
-static const int MINIMUM_SONG_TIME = 30;
+static const int MINIMUM_SONG_TIME = 10;
 
 
 PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
@@ -78,8 +78,7 @@ void PMSc8Main::exit()
 {
     song.stop();
     PMAudioAnalyzer::getInstance().stop();
-    if (enteredScene)
-    {
+    if (enteredScene) {
         delete renderer;
     }
 
@@ -91,8 +90,7 @@ void PMSc8Main::exit()
 
 void PMSc8Main::updateEnter()
 {
-    if (isEnteringFirst())
-    {
+    if (isEnteringFirst()) {
         enteredScene = true;
         disablePainting = false;
 
@@ -151,11 +149,14 @@ void PMSc8Main::keyReleased(int key)
             renderer->exportToImage("exports/unprocessed/testImage_" + ofGetTimestampString());
             break;
         }
-        case ' ': {
+        case 'z':
+        case 'Z': {
 #ifdef OF_DEBUG
             songIsPlaying = !songIsPlaying;
             song.setPaused(!songIsPlaying);
 #endif
+        }
+        case ' ': {
             if (ofGetElapsedTimef() - timeBeginSong > MINIMUM_SONG_TIME) {
                 disablePainting = true;
                 exportImageAndLeaveScene();
