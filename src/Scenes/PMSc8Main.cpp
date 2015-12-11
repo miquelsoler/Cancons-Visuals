@@ -23,13 +23,12 @@ PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
     guiAudioAnalyzerCreated = false;
 
     motionExtractor = &PMMotionExtractor::getInstance();
+
+    enteredScene = false;
 }
 
 void PMSc8Main::setup()
 {
-    cout << "Creating renderer" << endl;
-    renderer = new PMRenderer();
-    renderer->setup();
 }
 
 void PMSc8Main::update()
@@ -73,27 +72,40 @@ void PMSc8Main::exit()
 {
     song.stop();
     PMAudioAnalyzer::getInstance().stop();
-    renderer->exportToImage("TempRender");
-    renderer->exportToImage("testImage_"+ofGetTimestampString());
+    if (enteredScene)
+    {
+        renderer->exportToImage("TempRender");
+        renderer->exportToImage("testImage_"+ofGetTimestampString());
 
-    cout << "Deleting renderer" << endl;
-    delete renderer;
+        delete renderer;
+    }
 
     song.unload();
+
+    enteredScene = false;
 }
 
 void PMSc8Main::updateEnter()
 {
-    PMBaseScene::updateEnter();
-    string songPath = "songs/" + PMSongSelector::getInstance().getFilename();
-    songIsStarted = false;
-    songIsPlaying = false;
-    loadSong(songPath);
-    playSong();
+    if (isEnteringFirst())
+    {
+        enteredScene = true;
+
+        renderer = new PMRenderer();
+        renderer->setup();
+
+        PMBaseScene::updateEnter();
+        string songPath = "songs/" + PMSongSelector::getInstance().getFilename();
+        songIsStarted = false;
+        songIsPlaying = false;
+        loadSong(songPath);
+        playSong();
+    }
 }
 
 void PMSc8Main::updateExit()
 {
+    cout << "S8 updateExit()" << endl;
     PMBaseScene::updateExit();
 }
 
