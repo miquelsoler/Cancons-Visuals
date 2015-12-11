@@ -53,4 +53,6 @@ private:
     bool            enteredScene;
 
     bool showGUI;
+    
+    float           timeBeginSong;
 };

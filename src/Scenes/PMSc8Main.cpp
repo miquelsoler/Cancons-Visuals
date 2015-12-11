@@ -10,6 +10,8 @@
 #include "PMSongSelector.hpp"
 #include "PMSettingsManagerGeneral.h"
 
+static const int    MINIMUM_SONG_TIME = 30;
+
 
 PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
 {
@@ -29,6 +31,12 @@ PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
 
 void PMSc8Main::setup()
 {
+    string songPath = "songs/" + PMSongSelector::getInstance().getFilename();
+    songIsStarted = false;
+    songIsPlaying = false; 
+    loadSong(songPath);
+    playSong();
+
 }
 
 void PMSc8Main::update()
@@ -40,9 +48,11 @@ void PMSc8Main::update()
 
     if (songIsStarted) {
         if (!song.isPlaying()) {
+            renderer->exportToImage("TempRender");
+            renderer->exportToImage("testImage_"+ofGetTimestampString());
             cout << "song_has_finished" << endl;
-            string sceneToChange = "Scene 2";
-//            ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+            string sceneToChange = "Scene 9";
+            ofNotifyEvent(goToSceneEvent, sceneToChange, this);
         }
     }
     ofSoundUpdate();
@@ -74,8 +84,8 @@ void PMSc8Main::exit()
     PMAudioAnalyzer::getInstance().stop();
     if (enteredScene)
     {
-        renderer->exportToImage("TempRender");
-        renderer->exportToImage("testImage_"+ofGetTimestampString());
+//        renderer->exportToImage("TempRender");
+//        renderer->exportToImage("testImage_"+ofGetTimestampString());
 
         delete renderer;
     }
@@ -95,11 +105,11 @@ void PMSc8Main::updateEnter()
         renderer->setup();
 
         PMBaseScene::updateEnter();
-        string songPath = "songs/" + PMSongSelector::getInstance().getFilename();
-        songIsStarted = false;
-        songIsPlaying = false;
-        loadSong(songPath);
-        playSong();
+//        string songPath = "songs/" + PMSongSelector::getInstance().getFilename();
+//        songIsStarted = false;
+//        songIsPlaying = false;
+//        loadSong(songPath);
+//        playSong();
     }
 }
 
@@ -124,6 +134,7 @@ void PMSc8Main::playSong()
     song.play();
     songIsStarted = true;
     songIsPlaying = true;
+    timeBeginSong=ofGetElapsedTimef();
 }
 
 
@@ -150,6 +161,12 @@ void PMSc8Main::keyReleased(int key)
             songIsPlaying = !songIsPlaying;
             song.setPaused(!songIsPlaying);
 #endif
+            if(ofGetElapsedTimef() - timeBeginSong > MINIMUM_SONG_TIME){
+                renderer->exportToImage("TempRender");
+                renderer->exportToImage("testImage_"+ofGetTimestampString());
+                string sceneToChange = "Scene 9";
+                ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+            }
             break;
         }
         default:
