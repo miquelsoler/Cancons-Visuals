@@ -137,8 +137,8 @@ void ofApp::keyReleased(int key)
 //            ofSetFullscreen(isFullScreen);
             break;
         }
-        case 'p':
-        case 'P': {
+        case '*':
+        {
             showFPS = !showFPS;
             break;
         }
