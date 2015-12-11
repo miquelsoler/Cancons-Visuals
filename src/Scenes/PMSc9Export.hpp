@@ -20,7 +20,7 @@ public:
     void setup();
     void update();
     void draw();
-    void exit(){};
+    void exit();
     void updateEnter(){PMBaseScene::updateEnter();};
     void updateExit(){PMBaseScene::updateExit();};
     

@@ -21,6 +21,7 @@ public:
     void draw(float scale);
     void setFont(ofTrueTypeFont &font);
     void setScale(float _scale);
+    string getString(){return s;};
     
 private:
     string s;

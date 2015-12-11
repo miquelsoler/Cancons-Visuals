@@ -22,20 +22,24 @@ public:
     void setup();
     void update();
     void draw();
-    void exit(){};
+    void exit();
     void updateEnter() { PMBaseScene::updateEnter(); };
     void updateExit() { PMBaseScene::updateExit(); };
     
     void drawIntoFbo();
+    
+    void drawRightAlignString(ofTrueTypeFont &font, string s, int x, int y);
 
     
 private:
-    
-    ofImage         plantilla;
-    ofTrueTypeFont  bigFont, smallFont;
+    ofTrueTypeFont  bigFont, smallFont, smallestFont;
     int             originalWidth, originalHeight;
     
     ofFbo           printFbo;
-    ofImage         print_testImage;
+    ofImage         printImage;
+    
+    string          userName;
+    string           songName;
+    string          dateName;
     
 };

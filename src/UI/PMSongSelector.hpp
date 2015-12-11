@@ -36,6 +36,7 @@ public:
     void draw();
     
     string getFilename(){return songFilenames[indexChoosed];};
+    string getSongname(){return songNamesBox[indexChoosed].getString();};
     void checkMousePassed(int x, int y);
     bool checkMousePressed(int x, int y);
     

@@ -37,6 +37,11 @@ void PMSc9Export::update()
     }
 }
 
+void PMSc9Export::exit()
+{
+    PMSharedSettings::getInstance().setUserName(textInput);
+}
+
 void PMSc9Export::draw()
 {
     ofPushMatrix();
