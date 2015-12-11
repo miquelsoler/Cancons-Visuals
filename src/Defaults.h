@@ -18,7 +18,7 @@
 
 
 static const float          WINDOW_SCALE_FACTOR         = 0.5;
-static const float          FBO_SCALE_FACTOR            = 1.0f;
+static const float          FBO_SCALE_FACTOR            = 2.0f;
 
 static const int            WINDOW_WIDTH                = 1080;
 static const int            WINDOW_HEIGHT               = 1920;
