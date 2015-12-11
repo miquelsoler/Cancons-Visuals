@@ -1254,7 +1254,7 @@
 			path = UICanvas;
 			sourceTree = "<group>";
 		};
-		9F8BC66B1C0F64CF008CD29E /* Settings */ = {
+		9F8BC66B1C0F64CF008CD29E /* JSONSettings */ = {
 			isa = PBXGroup;
 			children = (
 				9F8BC6791C0F64CF008CD29E /* PMSettingsManager.cpp */,
@@ -1265,7 +1265,7 @@
 				9F8BC67E1C0F64CF008CD29E /* Renderer */,
 				2147637AC0FBF34FFB9A686B /* LayerMappings */,
 			);
-			path = Settings;
+			path = JSONSettings;
 			sourceTree = "<group>";
 		};
 		9F8BC66C1C0F64CF008CD29E /* AudioAnalyzer */ = {
@@ -1583,7 +1583,7 @@
 				2A2337371BCEC097000612E4 /* Scenes */,
 				214768D0C4E0011BF6EED3DC /* RenderLayers */,
 				9F304D801BD6912B000E9FDA /* Motion */,
-				9F8BC66B1C0F64CF008CD29E /* Settings */,
+				9F8BC66B1C0F64CF008CD29E /* JSONSettings */,
 				2147641F6DC3284FDC40DD57 /* UI */,
 				9F7FA6471C10C21100F34E63 /* UICanvas */,
 				9F0348F11BCFE39C00164C02 /* External */,
@@ -2012,7 +2012,7 @@
 					"$(SRCROOT)/bin/data/openni/lib",
 					"$(SRCROOT)/bin/data/openni/config",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-mtune=native",
@@ -2086,7 +2086,7 @@
 					"$(SRCROOT)/bin/data/openni/lib",
 					"$(SRCROOT)/bin/data/openni/config",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-mtune=native",
