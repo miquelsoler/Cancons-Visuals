@@ -74,29 +74,6 @@ void PMSc9Export::draw()
     ofPopMatrix();
 }
 
-//void PMSc9Export::keyPressed(int key)
-//{
-//    switch (key) {
-//        case OF_KEY_DEL:
-//        case OF_KEY_BACKSPACE:
-//        {
-//            textInput=textInput.substr(0, textInput.length()-1);
-//            break;
-//        }
-//        case OF_KEY_RETURN:
-//        {
-//            PMSharedSettings::getInstance().setUserName(textInput);
-//            string sceneToChange = "Scene Thanks";
-//            ofNotifyEvent(goToSceneEvent, sceneToChange, this);
-//            break;
-//        }
-//        default:
-//        {
-//            textInput.append(1, (char)key);
-//            break;
-//        }
-//    }
-//}
 
 void PMSc9Export::drawTextBox(ofTrueTypeFont &font, string s, bool slash)
 {

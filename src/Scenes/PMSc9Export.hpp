@@ -24,7 +24,6 @@ public:
     void updateEnter(){PMBaseScene::updateEnter();};
     void updateExit(){PMBaseScene::updateExit();};
     
-//    void keyPressed(int key);
     void keyPressed(ofKeyEventArgs &keyargs);
     
     void drawTextBox(ofTrueTypeFont &font, string s, bool slash);
