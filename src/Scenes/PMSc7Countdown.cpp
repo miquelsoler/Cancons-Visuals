@@ -57,6 +57,7 @@ void PMSc7Countdown::update()
 
 void PMSc7Countdown::draw()
 {
+    PMBaseScene::draw();
     unsigned int countdownTime;
 #ifdef OF_DEBUG
     countdownTime = PMSettingsManagerGeneral::getInstance().getDebugScene7CountdownTime();

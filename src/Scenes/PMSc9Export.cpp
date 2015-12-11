@@ -45,11 +45,12 @@ void PMSc9Export::exit()
 
 void PMSc9Export::draw()
 {
+    PMBaseScene::draw();
     ofPushMatrix();
     float scaleX=(float)ofGetWidth()/(float)originalWidth;
     float scaleY=(float)ofGetHeight()/(float)originalHeight;
     ofScale(scaleX, scaleY);
-    ofBackground(0);
+//    ofBackground(0);
     ofPushStyle();
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofSetColor(ofColor::red);
@@ -134,6 +135,7 @@ void PMSc9Export::keyPressed(ofKeyEventArgs  &keyargs){
                 }
                 case OF_KEY_RETURN:
                 {
+                    PMSharedSettings::getInstance().setUserName(textInput);
                     string sceneToChange = "Scene Thanks";
                     ofNotifyEvent(goToSceneEvent, sceneToChange, this);
                     break;
@@ -174,6 +176,7 @@ void PMSc9Export::keyPressed(ofKeyEventArgs  &keyargs){
                 }
                 case OF_KEY_RETURN:
                 {
+                    PMSharedSettings::getInstance().setUserName(textInput);
                     string sceneToChange = "Scene Thanks";
                     ofNotifyEvent(goToSceneEvent, sceneToChange, this);
                     break;
@@ -244,6 +247,7 @@ void PMSc9Export::keyPressed(ofKeyEventArgs  &keyargs){
                 }
                 case OF_KEY_RETURN:
                 {
+                    PMSharedSettings::getInstance().setUserName(textInput);
                     string sceneToChange = "Scene Thanks";
                     ofNotifyEvent(goToSceneEvent, sceneToChange, this);
                     break;

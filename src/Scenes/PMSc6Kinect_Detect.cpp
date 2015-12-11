@@ -36,6 +36,7 @@ void PMSc6Kinect_Detect::update()
 
 void PMSc6Kinect_Detect::draw()
 {
+    PMBaseScene::draw();
     ofPushMatrix();
     float scaleX=(float)ofGetWidth()/(float)1080;
     float scaleY=(float)ofGetHeight()/(float)1920;
