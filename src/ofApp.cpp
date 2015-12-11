@@ -86,6 +86,8 @@ void ofApp::setup()
     ofAddListener(scene6->goToSceneEvent, this, &ofApp::changeScene);
     ofAddListener(scene7->goToSceneEvent, this, &ofApp::changeScene);
     ofAddListener(scene8->goToSceneEvent, this, &ofApp::changeScene);
+    ofAddListener(scene9->goToSceneEvent, this, &ofApp::changeScene);
+    ofAddListener(scene10->goToSceneEvent, this, &ofApp::changeScene);
 }
 
 ///--------------------------------------------------------------
@@ -173,6 +175,9 @@ void ofApp::keyReleased(int key)
     
 }
 
+void ofApp::keyPressed(ofKeyEventArgs &keyargs){
+//    scene9->keyPressed(keyargs);
+}
 
 void ofApp::changeScene(string &scene)
 {
