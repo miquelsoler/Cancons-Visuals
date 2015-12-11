@@ -153,14 +153,21 @@ void PMBaseLayer::update()
 
 //#if ENABLE_KINECT
     // Direction changes
-    ofPoint newDirection = ofPoint(kinectNodeData.x * fboWidth, kinectNodeData.y * fboHeight) - brushPosition;
+    ofPoint newDirection;
+    if(layerID==1)
+        newDirection = ofPoint(ofMap(kinectNodeData.x, 0.5,1, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+    else if(layerID==2)
+        newDirection = ofPoint(ofMap(kinectNodeData.x, 0,0.5, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+    else if(layerID==3 || layerID==4)
+        newDirection = ofPoint(kinectNodeData.x * fboWidth, kinectNodeData.y * fboHeight) - brushPosition;
+    
     brushDirection += ((newDirection.normalize()) * curveSize);
 //#endif
 
     brushDirection.normalize();
 
     if (kinectNodeData.a / KINECT_ACCEL_FACTOR > KINECT_ACCEL_THRESHOLD) {
-        brushDirection += (kinectNodeData.v.normalize() * (kinectNodeData.a / 6));
+        brushDirection += (kinectNodeData.v.normalize() * (kinectNodeData.a / 3));
     }
     brushPosition += (brushDirection * brushSpeed);
     brushDirection.normalize();
@@ -169,6 +176,12 @@ void PMBaseLayer::update()
 
 void PMBaseLayer::updateToShoot()
 {
+    if(layerID==4){
+        ofPoint layer1pos=ofPoint(ofMap(kinectNodeData.x, 0.5,1, 0, fboWidth), kinectNodeData.y * fboHeight);
+        ofPoint layer2pos=ofPoint(ofMap(kinectNodeData.x, 0,0.5, 0, fboWidth), kinectNodeData.y * fboHeight);
+        brushInitalPosition=(layer1pos+layer2pos)/2;
+    }
+    
     float anglenoise=ofNoise(ofGetElapsedTimeMicros()*layerID)*360;
     brush->setAngle(anglenoise);
     brushPrevPosition = brushPosition;

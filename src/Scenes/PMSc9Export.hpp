@@ -37,4 +37,5 @@ private:
     float   timestamp;
     bool isSlash;
     int             originalWidth, originalHeight;
+    bool accentCharacter;
 };
