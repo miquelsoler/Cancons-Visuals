@@ -11,19 +11,20 @@
 
 PMSc6Kinect_Detect::PMSc6Kinect_Detect() : PMBaseScene("Scene 6")
 {
-
+    setSingleSetup(false);
 }
 
 void PMSc6Kinect_Detect::setup()
 {
-
+    PMMotionExtractor::getInstance().start();
 }
 
 void PMSc6Kinect_Detect::update()
 {
 #if ENABLE_KINECT
     PMMotionExtractor::getInstance().update();
-    if (PMMotionExtractor::getInstance().isReady())
+    
+    if (PMMotionExtractor::getInstance().isTracking())
     {
         string sceneToChange = "Scene 7";
         ofNotifyEvent(goToSceneEvent, sceneToChange, this);
@@ -36,6 +37,7 @@ void PMSc6Kinect_Detect::update()
 
 void PMSc6Kinect_Detect::draw()
 {
+    PMBaseScene::draw();
     ofPushMatrix();
     float scaleX=(float)ofGetWidth()/(float)1080;
     float scaleY=(float)ofGetHeight()/(float)1920;

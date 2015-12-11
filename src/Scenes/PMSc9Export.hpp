@@ -24,17 +24,20 @@ public:
     void updateEnter(){PMBaseScene::updateEnter();};
     void updateExit(){PMBaseScene::updateExit();};
     
-    void keyPressed(int key);
+//    void keyPressed(int key);
+    void keyPressed(ofKeyEventArgs &keyargs);
+    
+    void drawTextBox(ofTrueTypeFont &font, string s, bool slash);
 
 private:
     
-    ofImage     painting;
-    ofTrueTypeFont bigFont, smallFont;
-    string  textInput;
-    float   timestamp;
-    bool isSlash;
+    ofImage         painting;
+    ofTrueTypeFont  bigFont, smallFont;
+    string          textInput;
+    float           timestamp;
+    bool            isSlash;
     int             originalWidth, originalHeight;
-    bool accentCharacter;
+    int            accentCharacter;
 };
 
 #endif /* PMSc9Export_hpp */

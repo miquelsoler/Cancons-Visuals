@@ -27,11 +27,12 @@ void PMSc5Brushes_Choose::update()
 
 void PMSc5Brushes_Choose::draw()
 {
+    PMBaseScene::draw();
     ofPushMatrix();
     float scaleX=(float)ofGetWidth()/(float)1080;
     float scaleY=(float)ofGetHeight()/(float)1920;
     ofScale(scaleX, scaleY);
-    ofBackground(0);
+//    ofBackground(0);
     drawSettingsNumbers(3);
     drawCenteredFont(baseBoldFont, "Tria els teus pinzells", 1080/2, 200);
     PMBrushesSelector::getInstance().draw();

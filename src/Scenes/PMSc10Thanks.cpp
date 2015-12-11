@@ -10,6 +10,8 @@
 #include "PMSongSelector.hpp"
 #include "PMSharedSettings.h"
 
+const static int COUNTDOWN_TIME = 5;
+
 PMSc10Thanks::PMSc10Thanks() : PMBaseScene("Scene Thanks")
 {
     bigFont.load("fonts/NeutraTextTF-Book.otf", 28, true, true, false, 0.3, 72);
@@ -53,6 +55,9 @@ void PMSc10Thanks::setup()
     // I després el d'imprimir (la comanda és: lp -o media=Custom.10x15cm filename)
     string c="lp -o media=Custom.10x15cm -o page-left=0 -o page-right=0 -o page-top=0 -o page-bottom=0 "+ofToDataPath(saveFilename);
     system(c.c_str());
+    
+    countdown.set();
+    countdown.setAlarm(COUNTDOWN_TIME * 1000);
 }
 
 void PMSc10Thanks::exit()
@@ -62,6 +67,11 @@ void PMSc10Thanks::exit()
 
 void PMSc10Thanks::update()
 {
+    if (countdown.alarm()) {
+        countdown.resetAlarm();
+        string toScene = "Scene 2";
+        ofNotifyEvent(goToSceneEvent, toScene, this);
+    }
 }
 
 void PMSc10Thanks::draw()
@@ -107,7 +117,8 @@ void PMSc10Thanks::drawIntoFbo()
 //        ofDrawRectangle(151, 40, 873, 1552);
         drawRightAlignString(bigFont, songName, 1024, 1633);
         drawRightAlignString(bigFont, userName, 1024, 1675);
-        drawRightAlignString(smallFont, dateName, 1024, 1716);
+//        drawRightAlignString(smallFont, dateName, 1024, 1716);
+        drawLeftAlignString(smallFont, dateName, 151, 1633);
         ofPushMatrix();
         ofTranslate(1047, 349);
         ofRotateZ(-90);
@@ -126,4 +137,10 @@ void PMSc10Thanks::drawRightAlignString(ofTrueTypeFont &font, string s, int x, i
     int halfStringHeight = font.stringHeight(s)/2;
     int stringWidth = font.stringWidth(s);
     font.drawString(s, x-stringWidth, y+halfStringHeight);
+}
+
+void PMSc10Thanks::drawLeftAlignString(ofTrueTypeFont &font, string s, int x, int y)
+{
+    int halfStringHeight = font.stringHeight(s)/2;
+    font.drawString(s, x, y+halfStringHeight);
 }

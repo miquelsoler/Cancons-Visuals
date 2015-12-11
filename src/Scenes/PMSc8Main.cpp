@@ -10,6 +10,8 @@
 #include "PMSongSelector.hpp"
 #include "PMSettingsManagerGeneral.h"
 
+static const int    MINIMUM_SONG_TIME = 30;
+
 
 PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
 {
@@ -23,13 +25,19 @@ PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
     guiAudioAnalyzerCreated = false;
 
     motionExtractor = &PMMotionExtractor::getInstance();
+
+    enteredScene = false;
 }
 
 void PMSc8Main::setup()
 {
-    cout << "Creating renderer" << endl;
-    renderer = new PMRenderer();
-    renderer->setup();
+    
+    string songPath = "songs/" + PMSongSelector::getInstance().getFilename();
+    songIsStarted = false;
+    songIsPlaying = false; 
+    loadSong(songPath);
+    playSong();
+
 }
 
 void PMSc8Main::update()
@@ -41,9 +49,11 @@ void PMSc8Main::update()
 
     if (songIsStarted) {
         if (!song.isPlaying()) {
+            renderer->exportToImage("TempRender");
+            renderer->exportToImage("exports/unprocessed/testImage_"+ofGetTimestampString());
             cout << "song_has_finished" << endl;
-            string sceneToChange = "Scene 2";
-//            ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+            string sceneToChange = "Scene 9";
+            ofNotifyEvent(goToSceneEvent, sceneToChange, this);
         }
     }
     ofSoundUpdate();
@@ -73,27 +83,41 @@ void PMSc8Main::exit()
 {
     song.stop();
     PMAudioAnalyzer::getInstance().stop();
-    renderer->exportToImage("TempRender");
-    renderer->exportToImage("testImage_"+ofGetTimestampString());
+    if (enteredScene)
+    {
+//        renderer->exportToImage("TempRender");
+//        renderer->exportToImage("testImage_"+ofGetTimestampString());
 
-    cout << "Deleting renderer" << endl;
-    delete renderer;
+        delete renderer;
+    }
 
     song.unload();
+
+    enteredScene = false;
+    PMMotionExtractor::getInstance().stop();
 }
 
 void PMSc8Main::updateEnter()
 {
-    PMBaseScene::updateEnter();
-    string songPath = "songs/" + PMSongSelector::getInstance().getFilename();
-    songIsStarted = false;
-    songIsPlaying = false;
-    loadSong(songPath);
-    playSong();
+    if (isEnteringFirst())
+    {
+        enteredScene = true;
+
+        renderer = new PMRenderer();
+        renderer->setup();
+
+        PMBaseScene::updateEnter();
+//        string songPath = "songs/" + PMSongSelector::getInstance().getFilename();
+//        songIsStarted = false;
+//        songIsPlaying = false;
+//        loadSong(songPath);
+//        playSong();
+    }
 }
 
 void PMSc8Main::updateExit()
 {
+    cout << "S8 updateExit()" << endl;
     PMBaseScene::updateExit();
 }
 
@@ -112,6 +136,7 @@ void PMSc8Main::playSong()
     song.play();
     songIsStarted = true;
     songIsPlaying = true;
+    timeBeginSong=ofGetElapsedTimef();
 }
 
 
@@ -130,7 +155,7 @@ void PMSc8Main::keyReleased(int key)
         case 's':
         case 'S': {
 //            renderer->exportToImage("TempRender");
-            renderer->exportToImage("testImage_"+ofGetTimestampString());
+            renderer->exportToImage("exports/unprocessed/testImage_"+ofGetTimestampString());
             break;
         }
         case ' ': {
@@ -138,6 +163,12 @@ void PMSc8Main::keyReleased(int key)
             songIsPlaying = !songIsPlaying;
             song.setPaused(!songIsPlaying);
 #endif
+            if(ofGetElapsedTimef() - timeBeginSong > MINIMUM_SONG_TIME){
+                renderer->exportToImage("TempRender");
+                renderer->exportToImage("exports/unprocessed/testImage_"+ofGetTimestampString());
+                string sceneToChange = "Scene 9";
+                ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+            }
             break;
         }
         default:

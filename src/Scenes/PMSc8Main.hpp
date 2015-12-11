@@ -50,5 +50,9 @@ private:
     bool            songIsStarted;
     bool            songIsPlaying;
 
+    bool            enteredScene;
+
     bool showGUI;
+    
+    float           timeBeginSong;
 };

@@ -29,6 +29,7 @@ public:
     void drawIntoFbo();
     
     void drawRightAlignString(ofTrueTypeFont &font, string s, int x, int y);
+    void drawLeftAlignString(ofTrueTypeFont &font, string s, int x, int y);
 
     
 private:
@@ -41,5 +42,7 @@ private:
     string          userName;
     string           songName;
     string          dateName;
+    
+    ofxTimer        countdown;
     
 };

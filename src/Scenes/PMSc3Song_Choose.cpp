@@ -30,11 +30,12 @@ void PMSc3Song_Choose::update()
 
 void PMSc3Song_Choose::draw()
 {
+    PMBaseScene::draw();
     ofPushMatrix();
     float scaleX=(float)ofGetWidth()/(float)1080;
     float scaleY=(float)ofGetHeight()/(float)1920;
     ofScale(scaleX, scaleY);
-    ofBackground(0);
+//    ofBackground(0);
     drawSettingsNumbers(1);
     drawCenteredFont(baseBoldFont, "Tria la teva cançó", 1080/2, 200);
     PMSongSelector::getInstance().draw();

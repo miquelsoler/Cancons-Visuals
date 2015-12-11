@@ -86,6 +86,8 @@ void ofApp::setup()
     ofAddListener(scene6->goToSceneEvent, this, &ofApp::changeScene);
     ofAddListener(scene7->goToSceneEvent, this, &ofApp::changeScene);
     ofAddListener(scene8->goToSceneEvent, this, &ofApp::changeScene);
+    ofAddListener(scene9->goToSceneEvent, this, &ofApp::changeScene);
+    ofAddListener(scene10->goToSceneEvent, this, &ofApp::changeScene);
 }
 
 ///--------------------------------------------------------------
@@ -142,37 +144,45 @@ void ofApp::keyReleased(int key)
         }
         case OF_KEY_UP:
         case OF_KEY_RIGHT: {
+#ifdef OF_DEBUG
+
             if(currentScene!=9)
                 sceneManager.nextScene(true);
             else{
                 string toScene = "Scene 2";
                 changeScene(toScene);
             }
+#endif
             break;
         }
         case OF_KEY_DOWN:
         case OF_KEY_LEFT: {
+#ifdef OF_DEBUG
             sceneManager.prevScene();
+#endif
             break;
         }
-        case 's':
-        case 'S':
-        {
-            if (currentSceneName == "Scene 8") {
-                scene8->keyReleased(key);
-            }
-            break;
-        }
-        case ' ':
-            if (currentSceneName == "Scene 8") {
-                scene8->keyReleased(key);
-            }
+//        case 's':
+//        case 'S':
+//        {
+//            if (currentSceneName == "Scene 8") {
+//                scene8->keyReleased(key);
+//            }
+//            break;
+//        }
+//        case ' ':
+//            if (currentSceneName == "Scene 8") {
+//                scene8->keyReleased(key);
+//            }
         default:
             break;
     }
     
 }
 
+void ofApp::keyPressed(ofKeyEventArgs &keyargs){
+
+}
 
 void ofApp::changeScene(string &scene)
 {

@@ -26,11 +26,12 @@ void PMSc4Palette_Choose::update()
 
 void PMSc4Palette_Choose::draw()
 {
+    PMBaseScene::draw();
     ofPushMatrix();
     float scaleX=(float)ofGetWidth()/(float)1080;
     float scaleY=(float)ofGetHeight()/(float)1920;
     ofScale(scaleX, scaleY);
-    ofBackground(0);
+//    ofBackground(0);
     drawSettingsNumbers(2);
     drawCenteredFont(baseBoldFont, "Tria els teus colors", 1080/2, 200);
     PMColorsSelector::getInstance().draw();
