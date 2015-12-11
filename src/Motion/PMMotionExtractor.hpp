@@ -65,6 +65,18 @@ public:
     {
         return hadUsers;
     }
+    
+    void resetUsers();
+    void stop(){
+        hadUsers = false;
+        kinectNI.setPaused(true);
+        kinectNI.removeUserGenerator();
+        
+    };
+    void start(){
+        kinectNI.addUserGenerator();
+        kinectNI.setPaused(false);
+    };
 
 private:
     ofTrueTypeFont font;

@@ -19,8 +19,12 @@ void PMMotionExtractor::setup()
     kinectNI.setMirror(true);
     kinectNI.addUserGenerator();
     kinectNI.setMaxNumUsers(1);
-    kinectNI.setSkeletonProfile(XN_SKEL_PROFILE_ALL);
+//    kinectNI.setSkeletonProfile(XN_SKEL_PROFILE_ALL);
+    kinectNI.setSkeletonProfile(XN_SKEL_PROFILE_UPPER);
     kinectNI.start();
+    kinectNI.setPaused(true);
+//    kinectNI.stop();
+//    kinectNI.start();
     
     isSomeoneTracked=false;
 }
@@ -47,11 +51,12 @@ void PMMotionExtractor::update()
     if (kinectNI.getNumTrackedUsers()) {
         hadUsers = true;
     } else if (!kinectNI.getNumTrackedUsers() && hadUsers){
-        hadUsers = false;
-        kinectNI.setPaused(true);
-        kinectNI.removeUserGenerator();
-        kinectNI.addUserGenerator();
-        kinectNI.setPaused(false);
+//        hadUsers = false;
+//        kinectNI.setPaused(true);
+//        kinectNI.removeUserGenerator();
+//        kinectNI.addUserGenerator();
+//        kinectNI.setPaused(false);
+        resetUsers();
     }
     
     //wraper to kinectInfo struct
@@ -118,3 +123,14 @@ KinectInfo* PMMotionExtractor::getKinectInfo()
 {
     return &kinectOut;
 }
+
+void PMMotionExtractor::resetUsers()
+{
+    hadUsers = false;
+    kinectNI.setPaused(true);
+    kinectNI.removeUserGenerator();
+    kinectNI.addUserGenerator();
+    kinectNI.setPaused(false);
+}
+
+

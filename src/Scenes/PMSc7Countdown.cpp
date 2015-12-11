@@ -20,6 +20,7 @@ PMSc7Countdown::PMSc7Countdown() : PMBaseScene("Scene 7")
 
 void PMSc7Countdown::setup()
 {
+    
     unsigned int countdownTime;
 #ifdef OF_DEBUG
     countdownTime = PMSettingsManagerGeneral::getInstance().getDebugScene7CountdownTime();
