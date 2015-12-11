@@ -7,7 +7,8 @@
 //
 
 #include "PMSc10Thanks.hpp"
-#include "PMMotionExtractor.hpp"
+
+#include "PMSharedSettings.h"
 
 PMSc10Thanks::PMSc10Thanks() : PMBaseScene("Scene Thanks")
 {
@@ -27,8 +28,12 @@ void PMSc10Thanks::setup()
     drawIntoFbo();
 
     // Edu:
+
     // Aquí hi haurà el codi de generació de FBO que servirà per imprimir
+
     // Després el de pillar el nom
+    string userName = PMSharedSettings::getInstance().getUserName();
+
     // I després el d'imprimir (la comanda és: lp -o media=Custom.10x15cm filename)
 }
 

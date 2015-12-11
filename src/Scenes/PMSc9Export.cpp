@@ -8,6 +8,7 @@
 
 #include "PMSc9Export.hpp"
 #include "PMMotionExtractor.hpp"
+#include "PMSharedSettings.h"
 
 PMSc9Export::PMSc9Export() : PMBaseScene("Scene 9")
 {
@@ -83,6 +84,7 @@ void PMSc9Export::keyPressed(int key)
         }
         case OF_KEY_RETURN:
         {
+            PMSharedSettings::getInstance().setUserName(textInput);
             string sceneToChange = "Scene Thanks";
             ofNotifyEvent(goToSceneEvent, sceneToChange, this);
             break;

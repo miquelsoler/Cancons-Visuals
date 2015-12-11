@@ -11,8 +11,6 @@
 
 #include "PMBaseScene.hpp"
 
-#endif /* PMSc9Export_hpp */
-
 class PMSc9Export : public PMBaseScene
 {
 public:
@@ -28,7 +26,6 @@ public:
     
     void keyPressed(int key);
 
-    
 private:
     
     ofImage     painting;
@@ -39,3 +36,6 @@ private:
     int             originalWidth, originalHeight;
     bool accentCharacter;
 };
+
+#endif /* PMSc9Export_hpp */
+

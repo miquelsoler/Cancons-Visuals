@@ -26,6 +26,7 @@
 		2147697F2BEA771A1073C1AD /* PMLayer4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21476FFF0EC4120B739D2565 /* PMLayer4.cpp */; };
 		21476B8C49410E0E5E67BD86 /* PMLayer3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2147680ABD8A9BA05B6EA4D6 /* PMLayer3.cpp */; };
 		21476BA8DB0296885F6B9ED6 /* PMSettingsManagerLayers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214763390AC4C5EB65B57047 /* PMSettingsManagerLayers.cpp */; };
+		21476E63B4DB4D07FD748B20 /* PMSharedSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214769905D081C2058DE7BE2 /* PMSharedSettings.cpp */; };
 		21476EBD9373E3A5083CF6D2 /* PMSongSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21476263D53F92017E22A030 /* PMSongSelector.cpp */; };
 		22030CBDCC25D815E7ED6757 /* ofxUIFPSSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E592342D8B7FB73A6F64D /* ofxUIFPSSlider.cpp */; };
 		222C3AB10FA3158602718602 /* ofxUIMultiImageButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17E06821FB98542FDB806E50 /* ofxUIMultiImageButton.cpp */; };
@@ -222,6 +223,7 @@
 		2147609202D364F4170FF9E5 /* PMBrushesSelector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMBrushesSelector.hpp; sourceTree = "<group>"; };
 		214760BA4905387816196695 /* PMColorsSelector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMColorsSelector.hpp; sourceTree = "<group>"; };
 		21476143216D31FC10A81FB8 /* PMRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMRenderer.cpp; sourceTree = "<group>"; };
+		214761D6CB501AA674E113CE /* PMSharedSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSharedSettings.h; sourceTree = "<group>"; };
 		21476263D53F92017E22A030 /* PMSongSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSongSelector.cpp; sourceTree = "<group>"; };
 		214762C7BCE1E381FCB30D83 /* PMColorContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMColorContainer.hpp; sourceTree = "<group>"; };
 		21476337440331A0E92ED98C /* PMBaseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMBaseLayer.h; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 		2147680ABD8A9BA05B6EA4D6 /* PMLayer3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMLayer3.cpp; sourceTree = "<group>"; };
 		21476938BD4744CBEE408C68 /* PMSongSelector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMSongSelector.hpp; sourceTree = "<group>"; };
 		2147694754D4109205F3DBA8 /* PMLayer2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMLayer2.cpp; sourceTree = "<group>"; };
+		214769905D081C2058DE7BE2 /* PMSharedSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMSharedSettings.cpp; sourceTree = "<group>"; };
 		21476A3ECE655FA970DA51FA /* PMBrushesSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMBrushesSelector.cpp; sourceTree = "<group>"; };
 		21476B6CC398D74C52A27521 /* PMLayer3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLayer3.h; sourceTree = "<group>"; };
 		21476B7C8BA4CC9C9BA84378 /* PMLayer1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMLayer1.cpp; sourceTree = "<group>"; };
@@ -747,6 +750,15 @@
 				9F6E59C61C1572DB005B1C21 /* PMComplexPaintbrush.hpp */,
 			);
 			path = RenderLayers;
+			sourceTree = "<group>";
+		};
+		21476960AA9A24AB21E21687 /* SharedSettings */ = {
+			isa = PBXGroup;
+			children = (
+				214769905D081C2058DE7BE2 /* PMSharedSettings.cpp */,
+				214761D6CB501AA674E113CE /* PMSharedSettings.h */,
+			);
+			path = SharedSettings;
 			sourceTree = "<group>";
 		};
 		21476B94C85C5D0C8BC0E9D2 /* Containers */ = {
@@ -1584,6 +1596,7 @@
 				214768D0C4E0011BF6EED3DC /* RenderLayers */,
 				9F304D801BD6912B000E9FDA /* Motion */,
 				9F8BC66B1C0F64CF008CD29E /* JSONSettings */,
+				21476960AA9A24AB21E21687 /* SharedSettings */,
 				2147641F6DC3284FDC40DD57 /* UI */,
 				9F7FA6471C10C21100F34E63 /* UICanvas */,
 				9F0348F11BCFE39C00164C02 /* External */,
@@ -1822,6 +1835,7 @@
 				214766AD2C93A732338F4AD8 /* PMTextContainer.cpp in Sources */,
 				21476BA8DB0296885F6B9ED6 /* PMSettingsManagerLayers.cpp in Sources */,
 				214768BADE80175E3657E74F /* PMUICanvasLayers.cpp in Sources */,
+				21476E63B4DB4D07FD748B20 /* PMSharedSettings.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2100,7 +2114,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxAudioAnalyzer-PM/libs/essentia/include/";
 				WRAPPER_EXTENSION = app;
-				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
+				baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
 			};
 			name = Release;
 		};
