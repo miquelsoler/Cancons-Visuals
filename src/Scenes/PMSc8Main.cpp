@@ -10,7 +10,7 @@
 #include "PMSongSelector.hpp"
 #include "PMSettingsManagerGeneral.h"
 
-static const int    MINIMUM_SONG_TIME = 30;
+static const int MINIMUM_SONG_TIME = 30;
 
 
 PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
@@ -31,13 +31,11 @@ PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
 
 void PMSc8Main::setup()
 {
-    
     string songPath = "songs/" + PMSongSelector::getInstance().getFilename();
     songIsStarted = false;
-    songIsPlaying = false; 
+    songIsPlaying = false;
     loadSong(songPath);
     playSong();
-
 }
 
 void PMSc8Main::update()
@@ -49,11 +47,7 @@ void PMSc8Main::update()
 
     if (songIsStarted) {
         if (!song.isPlaying()) {
-            renderer->exportToImage("TempRender");
-            renderer->exportToImage("exports/unprocessed/testImage_"+ofGetTimestampString());
-            cout << "song_has_finished" << endl;
-            string sceneToChange = "Scene 9";
-            ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+            exportImageAndLeaveScene();
         }
     }
     ofSoundUpdate();
@@ -71,7 +65,8 @@ void PMSc8Main::update()
         guiAudioAnalyzerCreated = true;
     }
 
-    renderer->update();
+    if (!disablePainting)
+        renderer->update();
 }
 
 void PMSc8Main::draw()
@@ -85,9 +80,6 @@ void PMSc8Main::exit()
     PMAudioAnalyzer::getInstance().stop();
     if (enteredScene)
     {
-//        renderer->exportToImage("TempRender");
-//        renderer->exportToImage("testImage_"+ofGetTimestampString());
-
         delete renderer;
     }
 
@@ -102,6 +94,7 @@ void PMSc8Main::updateEnter()
     if (isEnteringFirst())
     {
         enteredScene = true;
+        disablePainting = false;
 
         renderer = new PMRenderer();
         renderer->setup();
@@ -136,7 +129,7 @@ void PMSc8Main::playSong()
     song.play();
     songIsStarted = true;
     songIsPlaying = true;
-    timeBeginSong=ofGetElapsedTimef();
+    timeBeginSong = ofGetElapsedTimef();
 }
 
 
@@ -155,7 +148,7 @@ void PMSc8Main::keyReleased(int key)
         case 's':
         case 'S': {
 //            renderer->exportToImage("TempRender");
-            renderer->exportToImage("exports/unprocessed/testImage_"+ofGetTimestampString());
+            renderer->exportToImage("exports/unprocessed/testImage_" + ofGetTimestampString());
             break;
         }
         case ' ': {
@@ -163,15 +156,22 @@ void PMSc8Main::keyReleased(int key)
             songIsPlaying = !songIsPlaying;
             song.setPaused(!songIsPlaying);
 #endif
-            if(ofGetElapsedTimef() - timeBeginSong > MINIMUM_SONG_TIME){
-                renderer->exportToImage("TempRender");
-                renderer->exportToImage("exports/unprocessed/testImage_"+ofGetTimestampString());
-                string sceneToChange = "Scene 9";
-                ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+            if (ofGetElapsedTimef() - timeBeginSong > MINIMUM_SONG_TIME) {
+                disablePainting = true;
+                exportImageAndLeaveScene();
             }
             break;
         }
         default:
             break;
     }
+}
+
+void PMSc8Main::exportImageAndLeaveScene()
+{
+    renderer->exportToImage("TempRender");
+    renderer->exportToImage("exports/unprocessed/testImage_" + ofGetTimestampString());
+    cout << "song_has_finished" << endl;
+    string sceneToChange = "Scene 9";
+    ofNotifyEvent(goToSceneEvent, sceneToChange, this);
 }

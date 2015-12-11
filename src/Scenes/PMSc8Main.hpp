@@ -51,8 +51,11 @@ private:
     bool            songIsPlaying;
 
     bool            enteredScene;
+    bool            disablePainting;
 
-    bool showGUI;
+    bool            showGUI;
     
     float           timeBeginSong;
+
+    void exportImageAndLeaveScene();
 };
