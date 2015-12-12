@@ -57,11 +57,16 @@ void PMSc10Thanks::setup()
     system(c.c_str());
 
 /*
-    // Test tria de safata d'entrada:
+    // Test tria de safata d'entrada: upper/lower
     string c = "lp -o media=Custom.10x15cm -o upper -o page-left=0 -o page-right=0 -o page-top=0 -o page-bottom=0 " + ofToDataPath(saveFilename);
     system(c.c_str());
-
     string cTest = "lp -o media=Custom.10x15cm -o lower -o page-left=0 -o page-right=0 -o page-top=0 -o page-bottom=0 " + ofToDataPath(saveFilename);
+    system(cTest.c_str());
+
+    // Test tria de safata d'entrada: tray1/tray2 (NO HA FUNCIONAT)
+    string c = "lp -o media=Custom.10x15cm -o tray1 -o page-left=0 -o page-right=0 -o page-top=0 -o page-bottom=0 " + ofToDataPath(saveFilename);
+    system(c.c_str());
+    string cTest = "lp -o media=Custom.10x15cm -o tray2 -o page-left=0 -o page-right=0 -o page-top=0 -o page-bottom=0 " + ofToDataPath(saveFilename);
     system(cTest.c_str());
 */
 
