@@ -10,7 +10,7 @@
 #include "PMSongSelector.hpp"
 #include "PMSettingsManagerGeneral.h"
 
-static const int MINIMUM_SONG_TIME = 10;
+static const int MINIMUM_SONG_TIME = 30;
 
 
 PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
