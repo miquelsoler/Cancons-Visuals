@@ -11,7 +11,7 @@
 
 PMSc4Palette_Choose::PMSc4Palette_Choose() : PMBaseScene("Scene 4")
 {
-
+    infoFont.load("fonts/NeutraTextTF-Light.otf", 20, true, true, false, 0.3, 72);
 }
 
 void PMSc4Palette_Choose::setup()
@@ -33,7 +33,12 @@ void PMSc4Palette_Choose::draw()
     ofScale(scaleX, scaleY);
 //    ofBackground(0);
     drawSettingsNumbers(2);
-    drawCenteredFont(baseBoldFont, "Tria els teus colors", 1080/2, 200);
+    drawCenteredFont(baseBoldFont, "Tria els teus colors", 1080/2, 150);
+    drawCenteredFont(infoFont, "Fons", 180, 290);
+    drawCenteredFont(infoFont, "Mà dreta", 360, 290);
+    drawCenteredFont(infoFont, "Mà esquerra", 540, 290);
+    drawCenteredFont(infoFont, "Cap", 720, 290);
+    drawCenteredFont(infoFont, "Tors", 900, 290);
     PMColorsSelector::getInstance().draw();
     ofPopMatrix();
 }
