@@ -59,7 +59,7 @@ public:
 
     KinectInfo *getKinectInfo();
 
-    bool isReady() { return isSomeoneTracked; };
+    bool isReady() { return (isSomeoneTracked<30 && hadUsers); };
 
     bool isTracking()
     {
@@ -69,23 +69,31 @@ public:
     void resetUsers();
     void stop(){
         hadUsers = false;
-        kinectNI.setPaused(true);
-        kinectNI.removeUserGenerator();
-        
+        kinectNI->setPaused(true);
+        kinectNI->removeUserGenerator();
+        isSomeoneTracked=0;
     };
+    
+    void hardStart(){kinectNI->start();};
     void start(){
-        kinectNI.addUserGenerator();
-        kinectNI.setPaused(false);
+        kinectNI->addUserGenerator();
+//        kinectNI->setMaxNumUsers(1);
+        kinectNI->setPaused(false);
+        isSomeoneTracked=0;
     };
+    
+    int getNumUsers(){
+        return kinectNI->getNumTrackedUsers();
+    }
 
 private:
     ofTrueTypeFont font;
     ofxKinectFeatures kinectFeatures;
-    ofxOpenNI kinectNI;
+    ofxOpenNI* kinectNI;
     bool hadUsers;
     KinectInfo kinectOut;
 
-    bool isSomeoneTracked;
+    int isSomeoneTracked;
 };
 
 #endif /* PMMotionExtractor_hpp */

@@ -44,5 +44,6 @@ private:
     string          dateName;
     
     ofxTimer        countdown;
+    int count;
     
 };

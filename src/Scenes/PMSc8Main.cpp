@@ -10,7 +10,7 @@
 #include "PMSongSelector.hpp"
 #include "PMSettingsManagerGeneral.h"
 
-static const int MINIMUM_SONG_TIME = 30;
+static const int MINIMUM_SONG_TIME = 10;
 
 
 PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
@@ -40,10 +40,22 @@ void PMSc8Main::setup()
 
 void PMSc8Main::update()
 {
-#if ENABLE_KINECT
-    motionExtractor->update();
-    kinectInfo = motionExtractor->getKinectInfo();
-#endif
+//#if ENABLE_KINECT
+//    cout<<"update"<<endl;
+    PMMotionExtractor::getInstance().update();
+//    kinectInfo = motionExtractor->getKinectInfo();
+//    if(motionExtractor->getNumUsers() != 1)
+//        renderer->exportToImage("TempRender");
+    
+//    cout<<kinectInfo->rightHand_joint.x<<" "<<kinectInfo->rightHand_joint.y<<endl;
+//    cout<<motionExtractor->isReady()<<endl;
+//    if(motionExtractor->isReady() & kinectInfo->rightHand_joint.x == 0 && kinectInfo->rightHand_joint.y == 0 && kinectInfo->leftHand_joint.x == 0 && kinectInfo->leftHand_joint.y == 0){
+//    if(!motionExtractor->isReady()){
+//        motionExtractor->resetUsers();
+//        renderer->resetPositions();
+//        cout<<"reset Users"<<endl;
+//    }
+//#endif
 
     if (songIsStarted) {
         if (!song.isPlaying()) {
@@ -85,7 +97,7 @@ void PMSc8Main::exit()
     song.unload();
 
     enteredScene = false;
-    PMMotionExtractor::getInstance().stop();
+//    motionExtractor->stop();
 }
 
 void PMSc8Main::updateEnter()
@@ -160,6 +172,9 @@ void PMSc8Main::keyReleased(int key)
             if (ofGetElapsedTimef() - timeBeginSong > MINIMUM_SONG_TIME) {
                 disablePainting = true;
                 exportImageAndLeaveScene();
+            }else{
+                string sceneToChange = "Scene 2";
+                ofNotifyEvent(goToSceneEvent, sceneToChange, this);
             }
             break;
         }

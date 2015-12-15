@@ -9,8 +9,9 @@
 #include "PMSc10Thanks.hpp"
 #include "PMSongSelector.hpp"
 #include "PMSharedSettings.h"
+#include "PMMotionExtractor.hpp"
 
-const static int COUNTDOWN_TIME = 5;
+const static int COUNTDOWN_TIME = 15;
 
 PMSc10Thanks::PMSc10Thanks() : PMBaseScene("Scene Thanks")
 {
@@ -53,31 +54,18 @@ void PMSc10Thanks::setup()
     //imprimir fbo.
 
 
-    string c = "lp -o media=Custom.10x15cm -o page-left=0 -o page-right=0 -o page-top=0 -o page-bottom=0 " + ofToDataPath(saveFilename);
+    string c = "lp -o media=Custom.4x6in -o page-left=0 -o page-right=0 -o page-top=0 -o page-bottom=0 " + ofToDataPath(saveFilename);
     system(c.c_str());
-
-/*
-    // Test tria de safata d'entrada: upper/lower
-    string c = "lp -o media=Custom.10x15cm -o upper -o page-left=0 -o page-right=0 -o page-top=0 -o page-bottom=0 " + ofToDataPath(saveFilename);
-    system(c.c_str());
-    string cTest = "lp -o media=Custom.10x15cm -o lower -o page-left=0 -o page-right=0 -o page-top=0 -o page-bottom=0 " + ofToDataPath(saveFilename);
-    system(cTest.c_str());
-
-    // Test tria de safata d'entrada: tray1/tray2 (NO HA FUNCIONAT)
-    string c = "lp -o media=Custom.10x15cm -o tray1 -o page-left=0 -o page-right=0 -o page-top=0 -o page-bottom=0 " + ofToDataPath(saveFilename);
-    system(c.c_str());
-    string cTest = "lp -o media=Custom.10x15cm -o tray2 -o page-left=0 -o page-right=0 -o page-top=0 -o page-bottom=0 " + ofToDataPath(saveFilename);
-    system(cTest.c_str());
-*/
-
 
     countdown.set();
     countdown.setAlarm(COUNTDOWN_TIME * 1000);
+    
+    count=0;
 }
 
 void PMSc10Thanks::exit()
 {
-    printFbo.unbind();
+//    printFbo.unbind();
 }
 
 void PMSc10Thanks::update()
@@ -87,6 +75,12 @@ void PMSc10Thanks::update()
         string toScene = "Scene 2";
         ofNotifyEvent(goToSceneEvent, toScene, this);
     }
+    if(count==2){
+        PMMotionExtractor::getInstance().exit();
+    }else if(count==60){
+        PMMotionExtractor::getInstance().setup();
+    }
+    count++;
 }
 
 void PMSc10Thanks::draw()
@@ -132,8 +126,8 @@ void PMSc10Thanks::drawIntoFbo()
 //        ofDrawRectangle(151, 40, 873, 1552);
         drawRightAlignString(bigFont, songName, 1024, 1633);
         drawRightAlignString(bigFont, userName, 1024, 1675);
-//        drawRightAlignString(smallFont, dateName, 1024, 1716);
-        drawLeftAlignString(smallFont, dateName, 151, 1633);
+        drawRightAlignString(smallFont, dateName, 1024, 1716);
+//        drawLeftAlignString(smallFont, dateName, 151, 1633);
         ofPushMatrix();
         ofTranslate(1047, 349);
         ofRotateZ(-90);
