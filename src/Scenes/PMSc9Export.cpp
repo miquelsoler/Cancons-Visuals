@@ -28,6 +28,7 @@ void PMSc9Export::setup()
     timestamp=ofGetElapsedTimef()-1;
     isSlash=false;
     accentCharacter=0;
+    PMMotionExtractor::getInstance().stop();
 }
 
 void PMSc9Export::update()
@@ -68,7 +69,7 @@ void PMSc9Export::draw()
     ofNoFill();
     ofSetLineWidth(3);
     ofDrawRectangle(originalWidth/2, 480, 850, 85);
-    ofDrawRectangle(originalWidth/2, 1200, originalWidth/1.7, originalHeight/1.7);
+//    ofDrawRectangle(originalWidth/2, 1200, originalWidth/1.7, originalHeight/1.7);
     painting.draw(originalWidth/2, 1200, originalWidth/1.7, originalHeight/1.7);
     ofPopStyle();
     ofPopMatrix();

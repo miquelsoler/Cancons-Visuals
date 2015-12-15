@@ -14,11 +14,14 @@ PMSc3Song_Choose::PMSc3Song_Choose() : PMBaseScene("Scene 3")
     //setFade(1000, 1000);
 //    setFadeIn(1000);
     selectFont.load("fonts/NeutraTextTF-Book.otf", 43);
+    PMSongSelector::getInstance().init(selectFont);
+    setSingleSetup(false);
 }
 
 void PMSc3Song_Choose::setup()
 {
-    PMSongSelector::getInstance().init(selectFont);
+    PMSongSelector::getInstance().resetSize();
+    ofShowCursor();
 }
 
 void PMSc3Song_Choose::update()
@@ -37,9 +40,10 @@ void PMSc3Song_Choose::draw()
     ofScale(scaleX, scaleY);
 //    ofBackground(0);
     drawSettingsNumbers(1);
-    drawCenteredFont(baseBoldFont, "Tria la teva cançó", 1080/2, 200);
+    drawCenteredFont(baseBoldFont, "Tria la teva cançó", 1080/2, 150);
     PMSongSelector::getInstance().draw();
     ofPopMatrix();
+    
 }
 
 void PMSc3Song_Choose::mouseMoved(int x, int y)

@@ -13,6 +13,7 @@ PMSc5Brushes_Choose::PMSc5Brushes_Choose() : PMBaseScene("Scene 5")
 {
     PMBrushesSelector::getInstance().init();
     setSingleSetup(false);
+    infoFont.load("fonts/NeutraTextTF-Light.otf", 20, true, true, false, 0.3, 72);
 }
 
 void PMSc5Brushes_Choose::setup()
@@ -34,7 +35,11 @@ void PMSc5Brushes_Choose::draw()
     ofScale(scaleX, scaleY);
 //    ofBackground(0);
     drawSettingsNumbers(3);
-    drawCenteredFont(baseBoldFont, "Tria els teus pinzells", 1080/2, 200);
+    drawCenteredFont(baseBoldFont, "Tria els teus pinzells", 1080/2, 150);
+    drawCenteredFont(infoFont, "Mà dreta", 220, 245);
+    drawCenteredFont(infoFont, "Mà esquerra", 435, 245);
+    drawCenteredFont(infoFont, "Cap", 650, 245);
+    drawCenteredFont(infoFont, "Tors", 865, 245);
     PMBrushesSelector::getInstance().draw();
     ofPopMatrix();
 }

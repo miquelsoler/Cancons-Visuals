@@ -158,3 +158,16 @@ void PMRenderer::exportToImage(string path)
     ofSaveImage(pix, path + ".png", OF_IMAGE_QUALITY_BEST);
 #endif
 }
+
+void PMRenderer::resetPositions()
+{
+    KinectElement kinectNodeData;
+    kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand_joint;
+    layers[0]->setPosition(ofPoint(ofGetWidth()/2, ofGetHeight()/2));
+    kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand_joint;
+    layers[1]->setPosition(ofPoint(ofGetWidth()/2, ofGetHeight()/2));
+    kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head_joint;
+    layers[2]->setPosition(ofPoint(ofGetWidth()/2, ofGetHeight()/2));
+    kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso_joint;
+    layers[3]->setPosition(ofPoint(ofGetWidth()/2, ofGetHeight()/2));
+}

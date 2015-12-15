@@ -34,6 +34,13 @@ public:
     void playSong();
 
     void keyReleased(int key);
+    void keyPressed(ofKeyEventArgs &keyargs){
+        if(keyargs.keycode==291){
+            motionExtractor->resetUsers();
+            motionExtractor->update();
+            renderer->resetPositions();
+        }
+    }
 
 private:
     

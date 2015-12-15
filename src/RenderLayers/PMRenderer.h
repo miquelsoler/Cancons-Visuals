@@ -20,6 +20,7 @@ public:
     void draw();
 
     void exportToImage(string path);
+    void resetPositions();
 
 private:
 

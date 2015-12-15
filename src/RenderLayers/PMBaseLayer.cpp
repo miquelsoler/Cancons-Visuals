@@ -155,9 +155,9 @@ void PMBaseLayer::update()
     // Direction changes
     ofPoint newDirection;
     if(layerID==1)
-        newDirection = ofPoint(ofMap(kinectNodeData.x, 0.5,1, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+        newDirection = ofPoint(ofMap(kinectNodeData.x, 0.2,1, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
     else if(layerID==2)
-        newDirection = ofPoint(ofMap(kinectNodeData.x, 0,0.5, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+        newDirection = ofPoint(ofMap(kinectNodeData.x, 0,0.8, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
     else if(layerID==3 || layerID==4)
         newDirection = ofPoint(kinectNodeData.x * fboWidth, kinectNodeData.y * fboHeight) - brushPosition;
     
@@ -177,8 +177,8 @@ void PMBaseLayer::update()
 void PMBaseLayer::updateToShoot()
 {
     if(layerID==4){
-        ofPoint layer1pos=ofPoint(ofMap(kinectNodeData.x, 0.5,1, 0, fboWidth), kinectNodeData.y * fboHeight);
-        ofPoint layer2pos=ofPoint(ofMap(kinectNodeData.x, 0,0.5, 0, fboWidth), kinectNodeData.y * fboHeight);
+        ofPoint layer1pos=ofPoint(ofMap(kinectNodeData.x, 0.2,1, 0, fboWidth), kinectNodeData.y * fboHeight);
+        ofPoint layer2pos=ofPoint(ofMap(kinectNodeData.x, 0,0.8, 0, fboWidth), kinectNodeData.y * fboHeight);
         brushInitalPosition=(layer1pos+layer2pos)/2;
     }
     
