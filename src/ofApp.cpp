@@ -88,6 +88,7 @@ void ofApp::setup()
     ofAddListener(scene8->goToSceneEvent, this, &ofApp::changeScene);
     ofAddListener(scene9->goToSceneEvent, this, &ofApp::changeScene);
     ofAddListener(scene10->goToSceneEvent, this, &ofApp::changeScene);
+    
 }
 
 ///--------------------------------------------------------------
@@ -115,7 +116,8 @@ void ofApp::draw()
     ofSetColor(debugMessagesColor);
     ofxBitmapString(15, ofGetHeight()-28)
             << "[Current Scene] ID: " << sceneManager.getCurrentSceneIndex()
-            << " Name: " << sceneManager.getCurrentSceneName() << endl;
+            << " Name: " << sceneManager.getCurrentSceneName()
+            << " Screen Size: " << ofGetWidth()<<" "<<ofGetHeight() << endl;
 #endif
 
     ofSetColor(ofColor::white);
@@ -181,7 +183,11 @@ void ofApp::keyReleased(int key)
 }
 
 void ofApp::keyPressed(ofKeyEventArgs &keyargs){
-
+    if(keyargs.keycode == 290){
+        sceneManager.gotoScene(1);
+        PMMotionExtractor::getInstance().exit();
+        PMMotionExtractor::getInstance().setup();
+    }
 }
 
 void ofApp::changeScene(string &scene)
