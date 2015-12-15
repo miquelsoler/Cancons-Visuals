@@ -102,3 +102,10 @@ bool PMSongSelector::checkMousePressed(int x, int y)
     }
     return false;
 }
+
+
+void PMSongSelector::resetSize()
+{
+    for(auto & textScale : textScales)
+        textScale=0.5;
+}

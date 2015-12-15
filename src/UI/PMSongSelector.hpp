@@ -39,6 +39,7 @@ public:
     string getSongname(){return songNamesBox[indexChoosed].getString();};
     void checkMousePassed(int x, int y);
     bool checkMousePressed(int x, int y);
+    void resetSize();
     
 private:
     
