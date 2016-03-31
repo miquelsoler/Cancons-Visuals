@@ -122,6 +122,8 @@ void PMBaseLayer::update()
     float anglenoise=ofNoise(ofGetElapsedTimeMicros()*layerID)*360;
     brush->setAngle(anglenoise);
     brushPrevPosition = brushPosition;
+    
+    //NEW BRANCH TEST
 
 #if ENABLE_KINECT
     if (PMMotionExtractor::getInstance().isTracking())
