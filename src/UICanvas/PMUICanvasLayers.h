@@ -13,7 +13,7 @@ public:
 
     PMUICanvasLayers(string title, int headerFontSize);
 
-    virtual void init(int posX, int posY, bool autosize = true, int width = 0, int height = 0);
+    virtual void init(int layerNum, int posX, int posY, bool autosize = true, int width = 0, int height = 0);
     virtual void clear();
 
     virtual void handleEvents(ofxUIEventArgs &e);
@@ -24,6 +24,39 @@ protected:
     void            savePreset(int presetNumber = 0);
 
 private:
+    
+    int layer;
+    
+    // Matrix --------------------------------
+    ofxUIToggleMatrix       *presetsMatrix;
+    int                     getActivePreset();
+    bool                    savingPreset;
+    
+    //Energy
+    float                   minEnergy, maxEnergy;
+    
+    //Size
+    int                     minSize, maxSize;
+    float                   scaleEnergy_Size, scaleAcceleration_Size, scaleZ_Size;
+    
+    //Hue
+    float                   scaleHue, variationHue;
+    
+    //Saturation
+    float                   scaleSaturation, variationSaturation;
+    
+    //Brightness
+    float                   scaleBrightness, variationBrightness;
+    
+    //Alpha
+    float                   minAlpha, maxAlpha, scaleAlpha, scaleEnergy_Alpha, scaleVelocity_Alpha, scaleZ_Alpha;
+    
+    //Behaviour
+    int                     curveSpeed, curveSize;
+    
+    
+    void                    keyPressed(int key);
+    void                    keyReleased(int key);
 
 };
 
