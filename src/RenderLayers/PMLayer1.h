@@ -16,6 +16,8 @@ public:
     void setup(ofPoint initialPosition);
     void update();
     void draw();
+    
+    
 };
 
 

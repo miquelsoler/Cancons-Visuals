@@ -30,8 +30,8 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
     addSpacer();
     
     addLabel("Energy");
-    addSlider("Min", 0, 1, &minEnergy);
-    addSlider("Max", 0, 1, &maxEnergy);
+    addSlider("Min", 0, 1, minEnergy);
+    addSlider("Max", 0, 1, maxEnergy);
     
     addSpacer();
     

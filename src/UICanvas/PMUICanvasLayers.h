@@ -17,6 +17,12 @@ public:
     virtual void clear();
 
     virtual void handleEvents(ofxUIEventArgs &e);
+    
+    //variable binding
+    void bindEnergy(float *_minEnergy, float *_maxEnergy){
+        minEnergy = _minEnergy;
+        maxEnergy = _maxEnergy;
+    }
 
 protected:
 
@@ -33,26 +39,26 @@ private:
     bool                    savingPreset;
     
     //Energy
-    float                   minEnergy, maxEnergy;
+    float                   *minEnergy, *maxEnergy;
     
     //Size
-    int                     minSize, maxSize;
-    float                   scaleEnergy_Size, scaleAcceleration_Size, scaleZ_Size;
+    int*                     minSize, maxSize;
+    float*                   scaleEnergy_Size, scaleAcceleration_Size, scaleZ_Size;
     
     //Hue
-    float                   scaleHue, variationHue;
+    float*                   scaleHue, variationHue;
     
     //Saturation
-    float                   scaleSaturation, variationSaturation;
+    float*                   scaleSaturation, variationSaturation;
     
     //Brightness
-    float                   scaleBrightness, variationBrightness;
+    float*                   scaleBrightness, variationBrightness;
     
     //Alpha
-    float                   minAlpha, maxAlpha, scaleAlpha, scaleEnergy_Alpha, scaleVelocity_Alpha, scaleZ_Alpha;
+    float*                   minAlpha, maxAlpha, scaleAlpha, scaleEnergy_Alpha, scaleVelocity_Alpha, scaleZ_Alpha;
     
     //Behaviour
-    int                     curveSpeed, curveSize;
+    int*                     curveSpeed, curveSize;
     
     
     void                    keyPressed(int key);

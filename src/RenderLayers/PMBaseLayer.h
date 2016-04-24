@@ -12,6 +12,7 @@
 #include "PMMotionExtractor.hpp"
 #include "Defaults.h"
 #include "PMSettingsManagerLayers.h"
+#include "PMUICanvasLayers.h"
 
 const static unsigned int   KINECT_ACCEL_FACTOR = 20;
 const static float          KINECT_ACCEL_THRESHOLD = 0.5f;
@@ -46,6 +47,9 @@ public:
     virtual void draw();
     void setBrushSize(int brushSize);
     void setPosition(ofPoint pos) { brushPosition = pos; };
+    
+    void keyPressed(ofKeyEventArgs &a);
+    void keyReleased(ofKeyEventArgs &a);
 
 #if ENABLE_MULTIPLE_FBOS
     ofFbo *getFBO() { return &layerFBO; };
@@ -112,6 +116,9 @@ protected:
     float                   alphaEnergyScaleFactor;
     float                   alphaZScaleFactor;
     float                   alphaVelocityScaleFactor;
+    
+    //Gui
+    PMUICanvasLayers*       layersGui;
 
     // JSON settings
     PMSettingsManagerLayers settings;

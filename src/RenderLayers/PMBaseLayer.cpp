@@ -24,6 +24,10 @@ PMBaseLayer::PMBaseLayer(int _fboWidth, int _fboHeight, KinectNodeType _kinectNo
 
 void PMBaseLayer::setup(ofPoint initialPosition)
 {
+    
+    ofRegisterKeyEvents(this);
+    
+    
 #if ENABLE_MULTIPLE_FBOS
     layerFBO.begin();
     {
@@ -112,6 +116,13 @@ void PMBaseLayer::setup(ofPoint initialPosition)
         initialShootSize = settings.getShootInitialSize(layerID);
         shootCurveAmount = settings.getShootCurveAmount(layerID);
     }
+    
+    layersGui = new PMUICanvasLayers("LAYER PARAMETERS", OFX_UI_FONT_MEDIUM);
+    layersGui->bindEnergy(&energyMin, &energyMax);
+    layersGui->init(layerID, 5, 5);
+    layersGui->setBackgroundColor(ofColor::gray);
+    layersGui->setVisible(true);
+    
 
     // TODO: Treure les crides que no s'utilitzin, si n'hi ha.
     ofAddListener(deviceAudioAnalyzer->eventMelBandsChanged, this, &PMBaseLayer::melBandsChanged);
@@ -311,6 +322,7 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
     float energy = melBandsParams.bandsEnergy[melBandIndex];
     //Aquest valors son arbitraris ja que el que volem es aconseguir tots els paràmetres que vagin de 0 a 1
     float normalizedEnergy = ofMap(energy, energyMin, energyMax, 0, 1);
+    cout<<energyMin<<" "<<energyMax<<endl;
 #if ENABLE_KINECT
     float normalizedZ = ofMap((nodeInitialZ-kinectNodeData.z), -0.3, 0.3, 0, 1);
     float normalizedVelocity = ofMap(kinectNodeData.v.length(), 0, 100, 0, 1);
@@ -414,4 +426,15 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
         brightnessIncrement=ofMap(brightnessIncrement, -brightnessOffset, brightnessOffset, -brightnessOffset, brightnessOffset, true);
         brushRGBColor.setBrightness(brushHSBColor.brightness+brightnessIncrement);
     }
+}
+
+void PMBaseLayer::keyPressed(ofKeyEventArgs &a){
+    int key=a.key;
+    if(key != ofToChar(ofToString(layerID))) return;
+    if(layersGui->isVisible()) layersGui->setVisible(false);
+    else layersGui->setVisible(true);
+}
+
+void PMBaseLayer::keyReleased(ofKeyEventArgs &a){
+    
 }

@@ -181,6 +181,7 @@ void PMSc8Main::keyReleased(int key)
         default:
             break;
     }
+    
 }
 
 void PMSc8Main::exportImageAndLeaveScene()
