@@ -23,6 +23,45 @@ public:
         minEnergy = _minEnergy;
         maxEnergy = _maxEnergy;
     }
+    
+    void bindSize(int *_minSize, int *_maxSize, float *_scaleEnergy_Size, float *_scaleAcceleration_Size, float *_scaleZ_Size){
+        minSize = _minSize;
+        maxSize = _maxSize;
+        scaleEnergy_Size = _scaleEnergy_Size;
+        scaleAcceleration_Size = _scaleAcceleration_Size;
+        scaleZ_Size = _scaleZ_Size;
+    }
+    
+    void bindHue(float *_scaleHue, float *_variationHue){
+        scaleHue = _scaleHue;
+        variationHue = _variationHue;
+    }
+    
+    void bindSaturation(float *_scaleSaturation, float *_variationSaturation){
+        scaleSaturation = _scaleSaturation;
+        variationSaturation = _variationSaturation;
+    }
+
+    void bindBrightness(float *_scaleBrightness, float *_variationBrightness){
+        scaleBrightness = _scaleBrightness;
+        variationBrightness = _variationBrightness;
+    }
+    
+    void bindAlpha(float *_minAlpha, float *_maxAlpha, float *_scaleAlpha, float *_scaleEnergy_Alpha, float *_scaleVelocity_Alpha, float *_scaleZ_Alpha){
+        minAlpha = _minAlpha;
+        maxAlpha = _maxAlpha;
+        scaleAlpha = _scaleAlpha;
+        scaleEnergy_Alpha = _scaleEnergy_Alpha;
+        scaleVelocity_Alpha = _scaleVelocity_Alpha;
+        scaleZ_Alpha = _scaleZ_Alpha;
+    }
+    
+    void bindBehaviour(float *_curveSpeed, float *_curveSize){
+        curveSpeed = _curveSpeed;
+        curveSize = _curveSize;
+    }
+
+    
 
 protected:
 
@@ -42,23 +81,23 @@ private:
     float                   *minEnergy, *maxEnergy;
     
     //Size
-    int*                     minSize, maxSize;
-    float*                   scaleEnergy_Size, scaleAcceleration_Size, scaleZ_Size;
+    int                     *minSize, *maxSize;
+    float                   *scaleEnergy_Size, *scaleAcceleration_Size, *scaleZ_Size;
     
     //Hue
-    float*                   scaleHue, variationHue;
+    float                   *scaleHue, *variationHue;
     
     //Saturation
-    float*                   scaleSaturation, variationSaturation;
+    float                   *scaleSaturation, *variationSaturation;
     
     //Brightness
-    float*                   scaleBrightness, variationBrightness;
+    float                   *scaleBrightness, *variationBrightness;
     
     //Alpha
-    float*                   minAlpha, maxAlpha, scaleAlpha, scaleEnergy_Alpha, scaleVelocity_Alpha, scaleZ_Alpha;
+    float                   *minAlpha, *maxAlpha, *scaleAlpha, *scaleEnergy_Alpha, *scaleVelocity_Alpha, *scaleZ_Alpha;
     
     //Behaviour
-    int*                     curveSpeed, curveSize;
+    float                     *curveSpeed, *curveSize;
     
     
     void                    keyPressed(int key);

@@ -97,8 +97,8 @@ protected:
     // Audio-to-render mappings
     float                   energyMin;
     float                   energyMax;
-    unsigned int            sizeMin;
-    unsigned int            sizeMax;
+    int                     sizeMin;
+    int                     sizeMax;
     float                   hueScaleFactor;
     float                   hueVariation;
     float                   saturationScaleFactor;

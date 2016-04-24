@@ -117,11 +117,22 @@ void PMBaseLayer::setup(ofPoint initialPosition)
         shootCurveAmount = settings.getShootCurveAmount(layerID);
     }
     
+    //createGui
     layersGui = new PMUICanvasLayers("LAYER PARAMETERS", OFX_UI_FONT_MEDIUM);
+    
+    //bindVariables
     layersGui->bindEnergy(&energyMin, &energyMax);
+    layersGui->bindSize(&sizeMin, &sizeMax, &sizeEnergyScaleFactor, &sizeAccelerationScaleFactor, &sizeZScaleFactor);
+    layersGui->bindHue(&hueScaleFactor, &hueVariation);
+    layersGui->bindSaturation(&saturationScaleFactor, &saturationVariation);
+    layersGui->bindBrightness(&brightnessScaleFactor, &brightnessVariation);
+    layersGui->bindAlpha(&alphaMin, &alphaMax, &alphaScaleFactor, &alphaEnergyScaleFactor, &alphaVelocityScaleFactor, &alphaZScaleFactor);
+    layersGui->bindBehaviour(&brushSpeed, &curveSize);
+    
+    //setup Gui
     layersGui->init(layerID, 5, 5);
     layersGui->setBackgroundColor(ofColor::gray);
-    layersGui->setVisible(true);
+    layersGui->setVisible(false);
     
 
     // TODO: Treure les crides que no s'utilitzin, si n'hi ha.
@@ -322,7 +333,7 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
     float energy = melBandsParams.bandsEnergy[melBandIndex];
     //Aquest valors son arbitraris ja que el que volem es aconseguir tots els paràmetres que vagin de 0 a 1
     float normalizedEnergy = ofMap(energy, energyMin, energyMax, 0, 1);
-    cout<<energyMin<<" "<<energyMax<<endl;
+//    cout<<energyMin<<" "<<energyMax<<endl;
 #if ENABLE_KINECT
     float normalizedZ = ofMap((nodeInitialZ-kinectNodeData.z), -0.3, 0.3, 0, 1);
     float normalizedVelocity = ofMap(kinectNodeData.v.length(), 0, 100, 0, 1);
