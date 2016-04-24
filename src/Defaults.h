@@ -12,7 +12,7 @@
 #define ConductrEnter_Config_h
 
 #define ENABLE_SOUNDFLOWER false
-#define ENABLE_KINECT true
+#define ENABLE_KINECT false
 #define ENABLE_MULTIPLE_FBOS true
 #define ENABLE_MULTILAYER_EXPORT false
 

@@ -40,7 +40,7 @@ void PMSc8Main::setup()
 
 void PMSc8Main::update()
 {
-//#if ENABLE_KINECT
+#if ENABLE_KINECT
 //    cout<<"update"<<endl;
     PMMotionExtractor::getInstance().update();
 //    kinectInfo = motionExtractor->getKinectInfo();
@@ -55,7 +55,7 @@ void PMSc8Main::update()
 //        renderer->resetPositions();
 //        cout<<"reset Users"<<endl;
 //    }
-//#endif
+#endif
 
     if (songIsStarted) {
         if (!song.isPlaying()) {

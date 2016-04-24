@@ -16,8 +16,10 @@ PMSc6Kinect_Detect::PMSc6Kinect_Detect() : PMBaseScene("Scene 6")
 
 void PMSc6Kinect_Detect::setup()
 {
+#if ENABLE_KINECT
     PMMotionExtractor::getInstance().start();
     ofHideCursor();
+#endif
 }
 
 void PMSc6Kinect_Detect::update()
