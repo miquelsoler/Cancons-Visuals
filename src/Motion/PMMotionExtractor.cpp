@@ -85,6 +85,14 @@ void PMMotionExtractor::update()
         kinectOut.rightHand_joint.v=kinectFeatures.getVelocityMean(JOINT_RIGHT_HAND, mean_values);
         kinectOut.rightHand_joint.v.y*=-1;
         
+        //LEFT KNEE
+        kinectOut.leftKnee_joint = kinectOut.leftHand_joint;
+        kinectOut.leftKnee_joint.y = 1 - kinectOut.leftKnee_joint.y;
+        
+        //RIGHT KNEE
+        kinectOut.rightKnee_joint = kinectOut.rightHand_joint;
+        kinectOut.rightKnee_joint.y = 1 - kinectOut.rightKnee_joint.y;
+        
         //HEAD
         kinectOut.head_joint.x=kinectNI->worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).x/kinectNI->getWidth();
         kinectOut.head_joint.y=kinectNI->worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).y/kinectNI->getHeight();

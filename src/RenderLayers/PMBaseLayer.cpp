@@ -157,6 +157,16 @@ void PMBaseLayer::update()
                 kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand_joint;
                 break;
             }
+#if ENABLE_KNEES_DETECTION
+            case KINECTNODE_HEAD: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightKnee_joint;
+                break;
+            }
+            case KINECTNODE_TORSO: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftKnee_joint;
+                break;
+            }
+#else
             case KINECTNODE_HEAD: {
                 kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head_joint;
                 break;
@@ -165,6 +175,7 @@ void PMBaseLayer::update()
                 kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso_joint;
                 break;
             }
+#endif
         }
     }
 #else
