@@ -180,8 +180,16 @@ void PMBaseLayer::update()
         newDirection = ofPoint(ofMap(kinectNodeData.x, 0.2,1, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
     else if(layerID==2)
         newDirection = ofPoint(ofMap(kinectNodeData.x, 0,0.8, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+#if ENABLE_KNEES_DETECTION
+    //detection of knees
+    else if(layerID == 3)
+        newDirection = ofPoint(ofMap(kinectNodeData.x, 0.2,1, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+    else if(layerID == 4)
+        newDirection = ofPoint(ofMap(kinectNodeData.x, 0,0.8, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+#else
     else if(layerID==3 || layerID==4)
         newDirection = ofPoint(kinectNodeData.x * fboWidth, kinectNodeData.y * fboHeight) - brushPosition;
+#endif
     
     brushDirection += ((newDirection.normalize()) * curveSize);
 //#endif
@@ -380,8 +388,12 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
         float factorizedZAlpha = normalizedZ*alphaZScaleFactor;
         float factorizedVel;
         if(kinectNodeData.v.length()!= 1) factorizedVel=normalizedVelocity*alphaVelocityScaleFactor; else factorizedVel=0.5;
+#if ENABLE_KNEES_DETECTION
+        brushAlpha = ofMap(factorizedEnergyAlpha *factorizedVel * factorizedZAlpha, 0, 1, alphaMin, alphaMax, true);
+#else
         if(didShoot || layerID==1 || layerID ==2)
             brushAlpha = ofMap(factorizedEnergyAlpha *factorizedVel * factorizedZAlpha, 0, 1, alphaMin, alphaMax, true);
+#endif
 #else
         brushAlpha = ofMap(factorizedEnergyAlpha, 0, 1, alphaMin, alphaMax, true);
 #endif

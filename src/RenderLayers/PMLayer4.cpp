@@ -22,7 +22,7 @@ void PMLayer4::setup(ofPoint initialPosition)
 
 void PMLayer4::update()
 {
-#if ENABLE_KINECT
+#if ENABLE_KINECT && !ENABLE_KNEES_DETECTION
     PMBaseLayer::updateToShoot();
 #else
     PMBaseLayer::update();
