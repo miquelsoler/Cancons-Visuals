@@ -30,44 +30,44 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
     addSpacer();
     
     addLabel("Energy");
-    addSlider("Min", 0, 1, minEnergy);
-    addSlider("Max", 0, 1, maxEnergy);
+    addSlider("Min Energy", 0, 1, minEnergy);
+    addSlider("Max Energy", 0, 1, maxEnergy);
     
     addSpacer();
     
     addLabel("Size");
-    addIntSlider("Min", 0, 200, minSize);
-    addIntSlider("Max", 0, 200, maxSize);
-    addSlider("Scale Energy Factor", 0, 1, scaleEnergy_Size);
-    addSlider("Scale Acceleration Factor", 0, 1, scaleAcceleration_Size);
-    addSlider("Scale Z Factor", 0, 1, scaleZ_Size);
+    addIntSlider("Min Size", 0, 200, minSize);
+    addIntSlider("Max Size", 0, 200, maxSize);
+    addSlider("Scale Energy Factor Size", 0, 1, scaleEnergy_Size);
+    addSlider("Scale Acceleration Factor Size", 0, 1, scaleAcceleration_Size);
+    addSlider("Scale Z Factor Size", 0, 1, scaleZ_Size);
     
     addSpacer();
     
     addLabel("Hue");
-    addSlider("Scale Factor", 0, 1, scaleHue);
-    addSlider("Variation", 0, 1, variationHue);
+    addSlider("Hue Scale Factor", 0, 1, scaleHue);
+    addSlider("Hue Variation", 0, 1, variationHue);
     
     addSpacer();
     
     addLabel("Saturation");
-    addSlider("Scale Factor", 0, 1, scaleSaturation);
-    addSlider("Variation", 0, 1, variationSaturation);
+    addSlider("Saturation Scale Factor", 0, 1, scaleSaturation);
+    addSlider("Saturation Variation", 0, 1, variationSaturation);
     
     addSpacer();
     
     addLabel("Brightness");
-    addSlider("Scale Factor", 0, 1, scaleBrightness);
-    addSlider("Variation", 0, 1, variationBrightness);
+    addSlider("Brightness Scale Factor", 0, 1, scaleBrightness);
+    addSlider("Brightness Variation", 0, 1, variationBrightness);
     
     addSpacer();
     
     addLabel("Alpha");
-    addSlider("Min", 0, 200, minAlpha);
-    addSlider("Max", 0, 200, maxAlpha);
-    addSlider("Scale Energy Factor", 0, 1, scaleEnergy_Alpha);
-    addSlider("Scale Velocity Factor", 0, 1, scaleVelocity_Alpha);
-    addSlider("Scale Z Factor", 0, 1, scaleZ_Alpha);
+    addSlider("Min Alpha", 0, 200, minAlpha);
+    addSlider("Max Alpha", 0, 200, maxAlpha);
+    addSlider("Scale Energy Factor Alpha", 0, 1, scaleEnergy_Alpha);
+    addSlider("Scale Velocity Factor Alpha", 0, 1, scaleVelocity_Alpha);
+    addSlider("Scale Z Factor Alpha", 0, 1, scaleZ_Alpha);
     
     addSpacer();
     
