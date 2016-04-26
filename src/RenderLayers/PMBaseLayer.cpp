@@ -355,7 +355,8 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
 #if ENABLE_KINECT
         float factorizedZSize = normalizedZ*sizeZScaleFactor;
         float factorizedAccel = normalizedAcceleration*sizeAccelerationScaleFactor;
-        int newBrushSize = ofMap(factorizedEnergySize + factorizedZSize + factorizedAccel, 0, 3, sizeMin, sizeMax, true);
+        float scales_total = sizeEnergyScaleFactor+sizeZScaleFactor+sizeAccelerationScaleFactor;
+        int newBrushSize = ofMap(factorizedEnergySize + factorizedZSize + factorizedAccel, 0, scales_total, sizeMin, sizeMax, true);
 //        if(layerID==2)
 //            cout<<"Energy: "<<factorizedEnergySize<<"----Z: "<<factorizedZSize<<"----Accel: "<<factorizedAccel<<"---BrushSize: "<<newBrushSize<<endl;
 #else
