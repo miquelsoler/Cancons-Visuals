@@ -13,7 +13,7 @@
 
 #define ENABLE_SOUNDFLOWER false
 #define ENABLE_KINECT false
-#define ENABLE_MULTIPLE_FBOS true
+#define ENABLE_MULTIPLE_FBOS false
 #define ENABLE_MULTILAYER_EXPORT false
 
 
