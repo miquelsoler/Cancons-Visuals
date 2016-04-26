@@ -21,7 +21,7 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
     
     // Presets
     addLabel("PRESETS");
-    auto presetsMatrix = addToggleMatrix("PRESETS", PRESETSMATRIX_NUMROWS, PRESETSMATRIX_NUMCOLS,200/PRESETSMATRIX_NUMCOLS,20);
+    presetsMatrix = addToggleMatrix("PRESETS", PRESETSMATRIX_NUMROWS, PRESETSMATRIX_NUMCOLS,200/PRESETSMATRIX_NUMCOLS,20);
     presetsMatrix->setAllowMultiple(false);
     presetsMatrix->setTriggerType(OFX_UI_TRIGGER_NONE );
     
@@ -111,7 +111,7 @@ void PMUICanvasLayers::savePreset(int presetNumber)
 {
     string presetPath = "presets/LAYERS/" + ofToString(presetNumber) + ".xml";
     saveSettings(presetPath);
-    cout << "AudioAnalyzer :: saving preset : " << presetNumber << " to " << presetPath << endl;
+    cout << "PMUICanvasLayers :: saving preset : " << presetNumber << " to " << presetPath << endl;
 }
 
 //--------------------------------------------------------------------------------------------------
