@@ -7,7 +7,6 @@
 //
 
 #include "PMSongSelector.hpp"
-#include "dirent.h"
 
 void PMSongSelector::init(ofTrueTypeFont &_font)
 {
@@ -18,20 +17,10 @@ void PMSongSelector::init(ofTrueTypeFont &_font)
     
     font=&_font;
     
-    DIR *dpdf;
-    struct dirent *epdf;
-    
-    dpdf = opendir(ofToDataPath("songs/", true).c_str());
-    if(dpdf == NULL){
-        return false;
-    }
-    while((epdf = readdir(dpdf))){
-        if (true){
-            string songname=string(epdf->d_name);
-            if(songname[0]!='.'){
-                songFilenames.push_back(songname);
-            }
-        }
+    ofDirectory dir;
+    dir.listDir("songs/");
+    for(int i = 0; i < (int)dir.size(); i++){
+        songFilenames.push_back(dir.getName(i));
     }
     
     int x,y;
