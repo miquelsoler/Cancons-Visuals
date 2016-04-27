@@ -179,8 +179,8 @@ void PMBaseLayer::update()
         }
     }
 #else
-    kinectNodeData.x = (float) (ofGetMouseX() + (layerID-2)*30 )/ ofGetWidth();
-    kinectNodeData.y = (float) (ofGetMouseY() + (layerID-2)*30 )/ ofGetHeight();
+    kinectNodeData.pos.x = (float) (ofGetMouseX() + (layerID-2)*30 )/ ofGetWidth();
+    kinectNodeData.pos.y = (float) (ofGetMouseY() + (layerID-2)*30 )/ ofGetHeight();
     kinectNodeData.v = ofPoint(0, 0);
 #endif
 
@@ -188,18 +188,18 @@ void PMBaseLayer::update()
     // Direction changes
     ofPoint newDirection;
     if(layerID==1)
-        newDirection = ofPoint(ofMap(kinectNodeData.x, 0.2,1, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+        newDirection = ofPoint(ofMap(kinectNodeData.pos.x, 0.2,1, 0, fboWidth), kinectNodeData.pos.y * fboHeight) - brushPosition;
     else if(layerID==2)
-        newDirection = ofPoint(ofMap(kinectNodeData.x, 0,0.8, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+        newDirection = ofPoint(ofMap(kinectNodeData.pos.x, 0,0.8, 0, fboWidth), kinectNodeData.pos.y * fboHeight) - brushPosition;
 #if ENABLE_KNEES_DETECTION
     //detection of knees
     else if(layerID == 3)
-        newDirection = ofPoint(ofMap(kinectNodeData.x, 0.2,1, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+        newDirection = ofPoint(ofMap(kinectNodeData.pos.x, 0.2,1, 0, fboWidth), kinectNodeData.pos.y * fboHeight) - brushPosition;
     else if(layerID == 4)
-        newDirection = ofPoint(ofMap(kinectNodeData.x, 0,0.8, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+        newDirection = ofPoint(ofMap(kinectNodeData.pos.x, 0,0.8, 0, fboWidth), kinectNodeData.pos.y * fboHeight) - brushPosition;
 #else
     else if(layerID==3 || layerID==4)
-        newDirection = ofPoint(kinectNodeData.x * fboWidth, kinectNodeData.y * fboHeight) - brushPosition;
+        newDirection = ofPoint(kinectNodeData.pos.x * fboWidth, kinectNodeData.pos.y * fboHeight) - brushPosition;
 #endif
     
     brushDirection += ((newDirection.normalize()) * curveSize);
@@ -218,8 +218,8 @@ void PMBaseLayer::update()
 void PMBaseLayer::updateToShoot()
 {
     if(layerID==4){
-        ofPoint layer1pos=ofPoint(ofMap(kinectNodeData.x, 0.2,1, 0, fboWidth), kinectNodeData.y * fboHeight);
-        ofPoint layer2pos=ofPoint(ofMap(kinectNodeData.x, 0,0.8, 0, fboWidth), kinectNodeData.y * fboHeight);
+        ofPoint layer1pos=ofPoint(ofMap(kinectNodeData.pos.x, 0.2,1, 0, fboWidth), kinectNodeData.pos.y * fboHeight);
+        ofPoint layer2pos=ofPoint(ofMap(kinectNodeData.pos.x, 0,0.8, 0, fboWidth), kinectNodeData.pos.y * fboHeight);
         brushInitalPosition=(layer1pos+layer2pos)/2;
     }
     

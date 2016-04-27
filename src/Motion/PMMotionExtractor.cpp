@@ -8,149 +8,256 @@
 
 #include "PMMotionExtractor.hpp"
 
-
 ///--------------------------------------------------------------
-void PMMotionExtractor::setup()
+bool PMMotionExtractor::setup()
 {
-    kinectNI= new ofxOpenNI;
-    kinectNI->setup();
-    kinectNI->addDepthGenerator();
-    kinectNI->addImageGenerator();
-    kinectNI->setRegister(false);
-    kinectNI->setMirror(true);
-    kinectNI->addUserGenerator();
-//    kinectNI->setMaxNumUsers(1);
-//    kinectNI->setSafeThreading(true);
-    kinectNI->setSkeletonProfile(XN_SKEL_PROFILE_UPPER);
-    kinectNI->start();
-    kinectNI->setPaused(true);
-//    kinectNI->removeUserGenerator();
-//    kinectNI->stop();
-//    kinectNI->start();
-    
-    isSomeoneTracked=0;
+	positionDetectedCounter = 0;
+
+	kinect.open();
+	kinect.initDepthSource();
+	kinect.initColorSource();
+	kinect.initInfraredSource();
+	kinect.initBodySource();
+	kinect.initBodyIndexSource();
+
+	//TODO: Implement kinect detection
+	//hasKinect = kinect.isOpen();
+	hasKinect = true;
+	return hasKinect;
 }
 
 ///--------------------------------------------------------------
 void PMMotionExtractor::update()
 {
-    kinectNI->update();
-    for (int i = 0; i < kinectNI->getNumTrackedUsers(); i++) {
-        ofxOpenNIUser user = kinectNI->getTrackedUser(i);
-        //The following "if" statement is a hard-coded alternative for if(kinectNI->getUserGenerator().IsNewDataAvailable()), which doesn't work properly in ofxOpenNI
-        if (user.getJoint((Joint)0).getWorldPosition() != ofPoint(0,0,0) &&
-            user.getJoint((Joint)0).getWorldPosition() != kinectFeatures.getPosition(0) ) {
-            isSomeoneTracked=0;
-            map<int, ofPoint> joints;
-            for (int j = 0; j < user.getNumJoints(); j++) {
-                joints[j] = user.getJoint((Joint)j).getWorldPosition();
-            }
-            kinectFeatures.update(joints);
-        }else{isSomeoneTracked++;}
-    }
-    
-    //This is a trick to reset the user generator if all users are lost
-    if (kinectNI->getNumTrackedUsers()) {
-        hadUsers = true;
-    } else if (!kinectNI->getNumTrackedUsers() && hadUsers){
-        hadUsers = false;
-        kinectNI->setPaused(true);
-        kinectNI->removeUserGenerator();
-        kinectNI->addUserGenerator();
-        kinectNI->setPaused(false);
-//        resetUsers();
-    }
-    
-    //wraper to kinectInfo struct
-    int mean_values=5;
-    int mean_values2=2; //for torso joint that acelerates low time
-    
-    if(isSomeoneTracked<30){
-        //LEFT HAND
-        cout<<"new Values!"<<endl;
-        kinectOut.leftHand_joint.x=kinectNI->worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).x/kinectNI->getWidth();
-        kinectOut.leftHand_joint.y=kinectNI->worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).y/kinectNI->getHeight();
-        kinectOut.leftHand_joint.z=ofMap(kinectNI->worldToProjective(kinectFeatures.getPosition(JOINT_LEFT_HAND)).z, 1000, 3000, 0, 1);
-        kinectOut.leftHand_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_LEFT_HAND, mean_values);
-//        kinectOut.leftHand_joint.v=(ofPoint(kinectOut.leftHand_joint.x, kinectOut.leftHand_joint.y)-ofPoint(oldKinectOut.leftHand_joint.x, oldKinectOut.leftHand_joint.y)).normalize();
-        kinectOut.leftHand_joint.v=kinectFeatures.getVelocityMean(JOINT_LEFT_HAND, mean_values);
-        kinectOut.leftHand_joint.v.y*=-1;
-        
-        //RIGHT HAND
-        kinectOut.rightHand_joint.x=kinectNI->worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).x/kinectNI->getWidth();
-        kinectOut.rightHand_joint.y=kinectNI->worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).y/kinectNI->getHeight();
-        kinectOut.rightHand_joint.z=ofMap(kinectNI->worldToProjective(kinectFeatures.getPosition(JOINT_RIGHT_HAND)).z, 1000, 3000, 0, 1);
-        kinectOut.rightHand_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_RIGHT_HAND, mean_values);
-//        kinectOut.rightHand_joint.v=(ofPoint(kinectOut.rightHand_joint.x, kinectOut.rightHand_joint.y)-ofPoint(oldKinectOut.rightHand_joint.x, oldKinectOut.rightHand_joint.y)).normalize();
-        kinectOut.rightHand_joint.v=kinectFeatures.getVelocityMean(JOINT_RIGHT_HAND, mean_values);
-        kinectOut.rightHand_joint.v.y*=-1;
-        
-        //LEFT KNEE
-        kinectOut.leftKnee_joint = kinectOut.leftHand_joint;
-        kinectOut.leftKnee_joint.y = 1 - kinectOut.leftKnee_joint.y;
-        
-        //RIGHT KNEE
-        kinectOut.rightKnee_joint = kinectOut.rightHand_joint;
-        kinectOut.rightKnee_joint.y = 1 - kinectOut.rightKnee_joint.y;
-        
-        //HEAD
-        kinectOut.head_joint.x=kinectNI->worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).x/kinectNI->getWidth();
-        kinectOut.head_joint.y=kinectNI->worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).y/kinectNI->getHeight();
-        kinectOut.head_joint.z=ofMap(kinectNI->worldToProjective(kinectFeatures.getPosition(JOINT_HEAD)).z, 1000, 3000, 0, 1);
-//        kinectOut.head_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_HEAD, mean_values2);
-        kinectOut.head_joint.a=kinectFeatures.getAccelerationMagnitude(JOINT_HEAD);
-//        kinectOut.head_joint.v=(ofPoint(oldKinectOut.head_joint.x, oldKinectOut.head_joint.y)-ofPoint(oldKinectOut.head_joint.x, oldKinectOut.head_joint.y)).normalize();
-        kinectOut.head_joint.v=kinectFeatures.getVelocityMean(JOINT_HEAD, mean_values);
-        kinectOut.head_joint.v.y*=-1;
-        
-        //TORSO
-        kinectOut.torso_joint.x=kinectNI->worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).x/kinectNI->getWidth();
-        kinectOut.torso_joint.y=kinectNI->worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).y/kinectNI->getHeight();
-        kinectOut.torso_joint.z=ofMap(kinectNI->worldToProjective(kinectFeatures.getPosition(JOINT_TORSO)).z, 1000, 3000, 0, 1);
-        kinectOut.torso_joint.a=kinectFeatures.getAccelerationMagnitudeMean(JOINT_TORSO, mean_values2);
-//        kinectOut.torso_joint.v=(ofPoint(kinectOut.torso_joint.x, kinectOut.torso_joint.y)-ofPoint(oldKinectOut.torso_joint.x, oldKinectOut.torso_joint.y)).normalize();
-        kinectOut.torso_joint.v=kinectFeatures.getVelocityMean(JOINT_TORSO, mean_values);
-        kinectOut.torso_joint.v.y*=-1;
-        
-//        oldKinectOut=kinectOut;
-    }
+	if (hasKinect) {
+		kinect.update();
+		// Count number of tracked bodies
+		int numBodiesTracked = 0;
+		auto& bodies = kinect.getBodySource()->getBodies();
+		for (auto& body : bodies) {
+			if (body.tracked) {
+				numBodiesTracked++;
+			}
+		}
+		if (numBodiesTracked != 0) {
+			if (!hasUser) {
+				hasUser = true;
+				ofNotifyEvent(eventUserDetection, hasUser, this);
+			}
+			//--
+			//Getting joint positions (skeleton tracking)
+			//--
+			//
+			{
+				auto closestBody = findClosestBody();
+				//auto bodies = kinect.getBodySource()->getBodies();
+				for (auto body : bodies) {
+					if (body.trackingId == closestBody->trackingId)
+						break;
+					//cout << body.trackingId << endl;
+					for (auto joint : body.joints) {
+						if (joint.first == JointType_HandLeft) {
+							handsInfo.leftHand.pos = joint.second.getProjected(kinect.getBodySource()->getCoordinateMapper(), ofxKFW2::ProjectionCoordinates::DepthCamera);
+							handsInfo.leftHand.pos.x /= 512;
+							handsInfo.leftHand.pos.y /= 424;
+							handsInfo.leftHand.pos.z = joint.second.getPosition().z;
+						}
+						else if (joint.first == JointType_HandRight) {
+							handsInfo.rightHand.pos = joint.second.getProjected(kinect.getBodySource()->getCoordinateMapper(), ofxKFW2::ProjectionCoordinates::DepthCamera);
+							handsInfo.rightHand.pos.x /= 512;
+							handsInfo.rightHand.pos.y /= 424;
+							handsInfo.rightHand.pos.z = joint.second.getPosition().z;
+						}
+						else if (joint.first == JointType_Head) {
+							auto headPos = joint.second.getProjected(kinect.getBodySource()->getCoordinateMapper(), ofxKFW2::ProjectionCoordinates::DepthCamera);
+							headPos.y /= 424;
+							if (abs(headPos.y - handsInfo.leftHand.pos.y) < 0.05 && abs(headPos.y - handsInfo.rightHand.pos.y) < 0.05) {
+								positionDetectedCounter++;
+							}
+							else {
+								positionDetectedCounter = 0;
+							}
+
+							if (positionDetectedCounter >= 60) {
+								auto userPositioned = true;
+								ofNotifyEvent(eventUserPositioned, userPositioned, this);
+								positionDetectedCounter = 0;
+							}
+						}
+					}
+				}
+				computeVelocity(5);
+			}
+		}
+		else {
+			if (hasUser) {
+				hasUser = false;
+				ofNotifyEvent(eventUserDetection, hasUser, this);
+				rHandPosHist.clear();
+				lHandPosHist.clear();
+			}
+		}
+
+	}
+	else if (ofGetMousePressed()) {
+		hasUser = true;
+		ofNotifyEvent(eventUserDetection, hasUser, this);
+		handsInfo.leftHand.pos.x = (float)ofGetMouseX() / (float)ofGetWidth();
+		handsInfo.leftHand.pos.y = (float)ofGetMouseY() / (float)ofGetHeight();
+		handsInfo.leftHand.pos.z = 1;
+		handsInfo.rightHand.pos.x = ofMap(handsInfo.leftHand.pos.x, 0, 1, 1, 0);
+		handsInfo.rightHand.pos.y = handsInfo.leftHand.pos.y;
+		handsInfo.leftHand.pos.z = 1;
+		computeVelocity(5);
+		//cout << ofGetMouseX() << endl;
+	}
+	else {
+		hasUser = false;
+		ofNotifyEvent(eventUserDetection, hasUser, this);
+		rHandPosHist.clear();
+		lHandPosHist.clear();
+	}
+
 }
 
 ///--------------------------------------------------------------
-void PMMotionExtractor::draw()
+void PMMotionExtractor::draw(bool drawImage, bool drawHands)
 {
-    ofSetRectMode(OF_RECTMODE_CENTER);
-        kinectNI->drawImage(ofGetWidth()/2,ofGetHeight()/2, ofGetWidth(), ofGetHeight()*(kinectNI->getHeight()/kinectNI->getWidth()));
-    ofSetRectMode(OF_RECTMODE_CORNER);
+	if (hasKinect && drawImage) {
+		auto infraredImage = kinect.getInfraredSource();
+		auto infraredPixels = infraredImage->getPixels();
+		for (auto & pixel : infraredPixels) {
+			pixel += pixel * 2;
+		}
+		ofTexture drawTexture;
+		drawTexture.allocate(512, 424, GL_LUMINANCE);
+		drawTexture.loadData(infraredPixels);
+		drawTexture.draw(0, 0, ofGetWidth(), ofGetHeight());
+	}
+	if (drawHands) {
+		ofPushStyle();
+		ofNoFill();
+		ofSetLineWidth(3);
+		ofSetColor(ofColor::red);
+		ofDrawEllipse(handsInfo.rightHand.pos.x * ofGetWidth(), handsInfo.rightHand.pos.y * ofGetHeight(), 20 + 20 * (handsInfo.rightHand.v.x), 20 + 20 * (handsInfo.rightHand.v.y));
+		ofDrawEllipse(handsInfo.leftHand.pos.x * ofGetWidth(), handsInfo.leftHand.pos.y * ofGetHeight(), 20 + 20 * (handsInfo.leftHand.v.x), 20 + 20 * (handsInfo.leftHand.v.y));
+		ofPopStyle();
+	}
+	ofDrawBitmapString(positionDetectedCounter, 0, 0);
 }
 
 ///--------------------------------------------------------------
 void PMMotionExtractor::exit()
 {
-    kinectNI->removeUserGenerator();
-    kinectNI->removeDepthGenerator();
-    kinectNI->removeImageGenerator();
-    kinectNI->stop();
-    if (kinectNI){
-        kinectNI->waitForThread(true);
-//        kinectNI->unlock();
-        delete kinectNI;
-    }
+	kinect.close();
 }
 
-KinectInfo* PMMotionExtractor::getKinectInfo()
+KinectInfo PMMotionExtractor::getKinectInfo() {
+	KinectInfo tempInfo = handsInfo;
+
+	//Compute hand Mean value;
+	ofPoint lHandPosMean = ofPoint(0);
+	for (auto & tempPos : lHandPosHist) {
+		lHandPosMean += tempPos;
+	}
+	lHandPosMean /= lHandPosHist.size();
+
+	ofPoint rHandPosMean = ofPoint(0);
+	for (auto & tempPos : rHandPosHist) {
+		rHandPosMean += tempPos;
+	}
+	rHandPosMean /= rHandPosHist.size();
+
+	//Assign mean value to output value;
+	tempInfo.leftHand.pos = lHandPosMean;
+	tempInfo.rightHand.pos = rHandPosMean;
+
+	return tempInfo;
+}
+
+ofxKFW2::Data::Body* PMMotionExtractor::findClosestBody()
 {
-    return &kinectOut;
+	ofxKFW2::Data::Body* result = nullptr;
+
+	double closestBodyDistance = 10000000.0;
+
+	auto& bodies = kinect.getBodySource()->getBodies();
+	for (auto& body : bodies) {
+		if (body.tracked) {
+
+		}
+	}
+
+	for (auto body : bodies)
+	{
+		if (body.tracked)
+		{
+			auto joints = body.joints;
+
+			auto currentLocation = joints[JointType_SpineBase].getPosition();
+
+			auto currentDistance = sqrt(pow(currentLocation.x, 2) + pow(currentLocation.y, 2) + pow(currentLocation.z, 2));
+
+			if (result == nullptr || currentDistance < closestBodyDistance)
+			{
+				result = &body;
+				closestBodyDistance = currentDistance;
+			}
+		}
+	}
+
+	return result;
 }
 
-void PMMotionExtractor::resetUsers()
+
+void PMMotionExtractor::computeVelocity(int meanSize)
 {
-    hadUsers = false;
-    kinectNI->setPaused(true);
-    kinectNI->removeUserGenerator();
-    kinectNI->addUserGenerator();
-    kinectNI->setPaused(false);
-    isSomeoneTracked=0;
+	while (rHandPosHist.size() > meanSize)
+		rHandPosHist.pop_back();
+	while (lHandPosHist.size() > meanSize)
+		lHandPosHist.pop_back();
+
+	rHandPosHist.push_front(handsInfo.rightHand.pos);
+	lHandPosHist.push_front(handsInfo.leftHand.pos);
+
+	ofPoint rHandPosMean = ofPoint(0);
+	for (auto & tempPos : rHandPosHist) {
+		rHandPosMean += tempPos;
+	}
+	rHandPosMean /= rHandPosHist.size();
+
+	ofPoint lHandPosMean = ofPoint(0);
+	for (auto & tempPos : lHandPosHist) {
+		lHandPosMean += tempPos;
+	}
+	lHandPosMean /= lHandPosHist.size();
+
+	ofPoint rHandVel = ofPoint(0);
+	for (auto & tempPos : rHandPosHist) {
+		rHandVel = (tempPos - rHandPosMean)*(tempPos - rHandPosMean);
+	}
+	rHandVel /= rHandPosHist.size();
+	rHandVel *= 1000;
+	handsInfo.rightHand.v = rHandVel;
+
+	ofPoint lHandVel = ofPoint(0);
+	for (auto & tempPos : lHandPosHist) {
+		lHandVel = (tempPos - lHandPosMean)*(tempPos - lHandPosMean);
+	}
+	lHandVel /= lHandPosHist.size();
+	lHandVel *= 1000;
+	handsInfo.leftHand.v = lHandVel;
+}
+
+bool PMMotionExtractor::reset(bool kinectActivated) {
+	kinect.close();
+	kinect.open();
+
+	return true;
 }
 
 
+ofPixels PMMotionExtractor::getColorPixels() {
+	auto ColoredImage = kinect.getColorSource();
+	return ColoredImage->getPixels();
+}

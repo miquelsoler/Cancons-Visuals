@@ -1,0 +1,1029 @@
+<?xml version="1.0"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<ClCompile Include="src\ofApp.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\main.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\External\PMAudioAnalysis\.gitignore">
+			<Filter>src\External\PMAudioAnalysis</Filter>
+		</ClCompile>
+		<ClCompile Include="src\External\PMAudioAnalysis\PMAudioAnalyzer.cpp">
+			<Filter>src\External\PMAudioAnalysis</Filter>
+		</ClCompile>
+		<ClCompile Include="src\External\PMAudioAnalysis\PMDeviceAudioAnalyzer.cpp">
+			<Filter>src\External\PMAudioAnalysis</Filter>
+		</ClCompile>
+		<ClCompile Include="src\JSONSettings\AudioAnalyzer\PMSettingsManagerAudioAnalyzers.cpp">
+			<Filter>src\JSONSettings\AudioAnalyzer</Filter>
+		</ClCompile>
+		<ClCompile Include="src\JSONSettings\AudioDevices\PMSettingsManagerAudioDevices.cpp">
+			<Filter>src\JSONSettings\AudioDevices</Filter>
+		</ClCompile>
+		<ClCompile Include="src\JSONSettings\General\PMSettingsManagerGeneral.cpp">
+			<Filter>src\JSONSettings\General</Filter>
+		</ClCompile>
+		<ClCompile Include="src\JSONSettings\LayerMappings\PMSettingsManagerLayers.cpp">
+			<Filter>src\JSONSettings\LayerMappings</Filter>
+		</ClCompile>
+		<ClCompile Include="src\JSONSettings\PMSettingsManager.cpp">
+			<Filter>src\JSONSettings</Filter>
+		</ClCompile>
+		<ClCompile Include="src\JSONSettings\Renderer\PMSettingsManagerRenderers.cpp">
+			<Filter>src\JSONSettings\Renderer</Filter>
+		</ClCompile>
+		<ClCompile Include="src\main.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\Motion\PMMotionExtractor.cpp">
+			<Filter>src\Motion</Filter>
+		</ClCompile>
+		<ClCompile Include="src\ofApp.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\RenderLayers\PMBaseLayer.cpp">
+			<Filter>src\RenderLayers</Filter>
+		</ClCompile>
+		<ClCompile Include="src\RenderLayers\PMLayer1.cpp">
+			<Filter>src\RenderLayers</Filter>
+		</ClCompile>
+		<ClCompile Include="src\RenderLayers\PMLayer2.cpp">
+			<Filter>src\RenderLayers</Filter>
+		</ClCompile>
+		<ClCompile Include="src\RenderLayers\PMLayer3.cpp">
+			<Filter>src\RenderLayers</Filter>
+		</ClCompile>
+		<ClCompile Include="src\RenderLayers\PMLayer4.cpp">
+			<Filter>src\RenderLayers</Filter>
+		</ClCompile>
+		<ClCompile Include="src\RenderLayers\PMRenderer.cpp">
+			<Filter>src\RenderLayers</Filter>
+		</ClCompile>
+		<ClCompile Include="src\Scenes\PMBaseScene.cpp">
+			<Filter>src\Scenes</Filter>
+		</ClCompile>
+		<ClCompile Include="src\Scenes\PMSc10Thanks.cpp">
+			<Filter>src\Scenes</Filter>
+		</ClCompile>
+		<ClCompile Include="src\Scenes\PMSc1Settings.cpp">
+			<Filter>src\Scenes</Filter>
+		</ClCompile>
+		<ClCompile Include="src\Scenes\PMSc2Start.cpp">
+			<Filter>src\Scenes</Filter>
+		</ClCompile>
+		<ClCompile Include="src\Scenes\PMSc3Song_Choose.cpp">
+			<Filter>src\Scenes</Filter>
+		</ClCompile>
+		<ClCompile Include="src\Scenes\PMSc4Palette_Choose.cpp">
+			<Filter>src\Scenes</Filter>
+		</ClCompile>
+		<ClCompile Include="src\Scenes\PMSc5Brushes_Choose.cpp">
+			<Filter>src\Scenes</Filter>
+		</ClCompile>
+		<ClCompile Include="src\Scenes\PMSc6Kinect_Detect.cpp">
+			<Filter>src\Scenes</Filter>
+		</ClCompile>
+		<ClCompile Include="src\Scenes\PMSc7Countdown.cpp">
+			<Filter>src\Scenes</Filter>
+		</ClCompile>
+		<ClCompile Include="src\Scenes\PMSc8Main.cpp">
+			<Filter>src\Scenes</Filter>
+		</ClCompile>
+		<ClCompile Include="src\Scenes\PMSc9Export.cpp">
+			<Filter>src\Scenes</Filter>
+		</ClCompile>
+		<ClCompile Include="src\SharedSettings\PMSharedSettings.cpp">
+			<Filter>src\SharedSettings</Filter>
+		</ClCompile>
+		<ClCompile Include="src\UI\Containers\PMColorContainer.cpp">
+			<Filter>src\UI\Containers</Filter>
+		</ClCompile>
+		<ClCompile Include="src\UI\Containers\PMImageContainer.cpp">
+			<Filter>src\UI\Containers</Filter>
+		</ClCompile>
+		<ClCompile Include="src\UI\Containers\PMSelectorContainer.cpp">
+			<Filter>src\UI\Containers</Filter>
+		</ClCompile>
+		<ClCompile Include="src\UI\Containers\PMTextContainer.cpp">
+			<Filter>src\UI\Containers</Filter>
+		</ClCompile>
+		<ClCompile Include="src\UI\PMBrushesSelector.cpp">
+			<Filter>src\UI</Filter>
+		</ClCompile>
+		<ClCompile Include="src\UI\PMColorsSelector.cpp">
+			<Filter>src\UI</Filter>
+		</ClCompile>
+		<ClCompile Include="src\UI\PMSongSelector.cpp">
+			<Filter>src\UI</Filter>
+		</ClCompile>
+		<ClCompile Include="src\UICanvas\PMBaseUICanvas.cpp">
+			<Filter>src\UICanvas</Filter>
+		</ClCompile>
+		<ClCompile Include="src\UICanvas\PMUICanvasAudioAnalyzer.cpp">
+			<Filter>src\UICanvas</Filter>
+		</ClCompile>
+		<ClCompile Include="src\UICanvas\PMUICanvasLayers.cpp">
+			<Filter>src\UICanvas</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxApp.cpp">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxParticle.cpp">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxQuadWarper.cpp">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxScene.cpp">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxSceneManager.cpp">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxTransformer.cpp">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxTransformPanel.cpp">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxAubio\src\ofxAubioBeat.cpp">
+			<Filter>addons\ofxAubio\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxAubio\src\ofxAubioBlock.cpp">
+			<Filter>addons\ofxAubio\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxAubio\src\ofxAubioMelBands.cpp">
+			<Filter>addons\ofxAubio\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxAubio\src\ofxAubioOnset.cpp">
+			<Filter>addons\ofxAubio\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxAubio\src\ofxAubioPitch.cpp">
+			<Filter>addons\ofxAubio\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxLabel.cpp">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxPanel.cpp">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.cpp">
+			<Filter>addons\ofxJSON\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\jsoncpp.cpp">
+			<Filter>addons\ofxJSON\libs\jsoncpp\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Body.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Device.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BaseImage.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Body.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BodyIndex.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Color.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Depth.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Infrared.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\LongExposureInfraRed.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Utils.cpp">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxSceneManager\src\ofxSceneManager.cpp">
+			<Filter>addons\ofxSceneManager\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasing.cpp">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingBack.cpp">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingBounce.cpp">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingCirc.cpp">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingCubic.cpp">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingElastic.cpp">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingExpo.cpp">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingLinear.cpp">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuad.cpp">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuart.cpp">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuint.cpp">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingSine.cpp">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxTween\src\ofxTween.cpp">
+			<Filter>addons\ofxTween\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUI2DGraph.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUI2DPad.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIBaseDraws.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIBiLabelSlider.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIButton.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUICanvas.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUICircleSlider.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIDragableLabelButton.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIDropDownList.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIEventArgs.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIFPS.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIFPSSlider.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIImage.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIImageButton.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIImageSampler.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIImageSlider.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIImageToggle.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUILabel.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUILabelButton.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUILabelToggle.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIMinimalSlider.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIMovingGraph.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIMultiImageButton.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIMultiImageToggle.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUINumberDialer.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIRadio.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIRangeSlider.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIRectangle.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIRotarySlider.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIScrollableCanvas.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUISlider.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUISortableList.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUISpacer.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUISpectrum.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUISuperCanvas.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUITabBar.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUITextArea.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUITextInput.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIToggle.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIToggleMatrix.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIValuePlotter.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIWaveform.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIWidget.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIWidgetWithLabel.cpp">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp">
+			<Filter>addons\ofxXmlSettings\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp">
+			<Filter>addons\ofxXmlSettings\libs</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp">
+			<Filter>addons\ofxXmlSettings\libs</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp">
+			<Filter>addons\ofxXmlSettings\libs</Filter>
+		</ClCompile>
+	</ItemGroup>
+	<ItemGroup>
+		<Filter Include="src">
+			<UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="src\External">
+			<UniqueIdentifier>{BCC31923-1FB9-369A-3656-F4A8}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="src\External\PMAudioAnalysis">
+			<UniqueIdentifier>{56EC4895-4EFA-8EC0-7DF1-66A3}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="src\JSONSettings">
+			<UniqueIdentifier>{AD24B3DE-F0A0-A73E-C1CC-D8C1}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="src\JSONSettings\AudioAnalyzer">
+			<UniqueIdentifier>{CCD41604-19D9-20D4-6FE9-CCD2}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="src\JSONSettings\AudioDevices">
+			<UniqueIdentifier>{F8311435-3935-1CFE-D84B-3BC9}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="src\JSONSettings\General">
+			<UniqueIdentifier>{BB55D89F-1FBE-A201-63CE-1429}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="src\JSONSettings\LayerMappings">
+			<UniqueIdentifier>{C569BCD1-BF25-559E-5683-8F4D}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="src\JSONSettings\Renderer">
+			<UniqueIdentifier>{BBC5F6DD-0A72-9547-85BF-1DCB}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="src\Motion">
+			<UniqueIdentifier>{433F6CAB-4FDD-B372-0872-A013}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="src\RenderLayers">
+			<UniqueIdentifier>{B79C0F12-D3AD-ECD2-27EA-AD47}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="src\Scenes">
+			<UniqueIdentifier>{6A6AB684-C3B3-7377-6FC5-6FBF}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="src\SharedSettings">
+			<UniqueIdentifier>{A1E45EE7-8638-1E62-988B-95CF}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="src\UI">
+			<UniqueIdentifier>{84D1D96F-E3B3-317B-5087-963B}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="src\UI\Containers">
+			<UniqueIdentifier>{851D46E9-8709-5AF1-91FC-B21D}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="src\UICanvas">
+			<UniqueIdentifier>{DDBF4CD3-2F41-B245-4967-6BC1}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons">
+			<UniqueIdentifier>{71834F65-F3A9-211E-73B8-DC85}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxAppUtils-PM">
+			<UniqueIdentifier>{5ACA6855-BB6A-E272-6695-E3A9}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxAppUtils-PM\src">
+			<UniqueIdentifier>{C45743C9-4EB5-2F79-B82B-A9EC}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxAubio">
+			<UniqueIdentifier>{1CBAF820-EF1A-EEEC-30B9-95EC}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxAubio\src">
+			<UniqueIdentifier>{AE1FA0F8-1771-95A7-4E66-B0F9}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxGui">
+			<UniqueIdentifier>{4F2A59AF-5F4E-704B-D067-EC13}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxGui\src">
+			<UniqueIdentifier>{645E9533-4DCD-6179-1CDF-CB65}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxJSON">
+			<UniqueIdentifier>{CF86E01B-D8D7-A112-88F3-5883}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxJSON\src">
+			<UniqueIdentifier>{CE83AFE9-FE4A-682E-D5C9-50B4}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxJSON\libs">
+			<UniqueIdentifier>{5302B3F8-ECDD-0465-334A-F39E}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxJSON\libs\jsoncpp">
+			<UniqueIdentifier>{87D6C548-39D9-FD9F-093E-9F4E}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxJSON\libs\jsoncpp\include">
+			<UniqueIdentifier>{0B6CA981-484E-6E8C-776C-7298}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxJSON\libs\jsoncpp\include\json">
+			<UniqueIdentifier>{5FF260B2-1497-3EFE-19D5-40DB}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxJSON\libs\jsoncpp\src">
+			<UniqueIdentifier>{6D569A5B-6719-AEFD-C08E-5CE5}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinectForWindows2">
+			<UniqueIdentifier>{79EE9CEE-5877-E1B3-C373-D5C8}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinectForWindows2\src">
+			<UniqueIdentifier>{BBA641E3-A9C6-8646-2A06-7A9D}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinectForWindows2\src\ofxKinectForWindows2">
+			<UniqueIdentifier>{849A6419-451E-EB51-E82D-5D04}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data">
+			<UniqueIdentifier>{D3FA8E7E-7250-B64E-BCC8-522E}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source">
+			<UniqueIdentifier>{D8ABF3AE-C83C-4B28-80F0-8B6D}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxSceneManager">
+			<UniqueIdentifier>{2E853C58-2842-A29B-0427-C449}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxSceneManager\src">
+			<UniqueIdentifier>{4AD0981E-D464-84DA-017B-F545}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxTween">
+			<UniqueIdentifier>{8A8810E8-A79D-7A1D-2F0A-7203}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxTween\src">
+			<UniqueIdentifier>{40AC4B42-6A5A-9537-EB82-D1B8}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxTween\src\Easings">
+			<UniqueIdentifier>{EF0F6A8B-B04F-E782-21EF-D4BA}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxUI">
+			<UniqueIdentifier>{B492C5B0-FF91-9C5A-638A-3142}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxUI\src">
+			<UniqueIdentifier>{A00C2D23-6C11-BC86-3993-2CF0}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxXmlSettings">
+			<UniqueIdentifier>{877F005D-13E6-0592-1D97-F2E3}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxXmlSettings\src">
+			<UniqueIdentifier>{CCB2AC63-49D2-977C-CFE8-AEAD}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxXmlSettings\libs">
+			<UniqueIdentifier>{687714A8-1662-FA1C-261F-50F0}</UniqueIdentifier>
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="src\ofApp.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="src\Defaults.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="src\External\PMAudioAnalysis\PMAudioAnalyzer.hpp">
+			<Filter>src\External\PMAudioAnalysis</Filter>
+		</ClInclude>
+		<ClInclude Include="src\External\PMAudioAnalysis\PMAudioInParams.h">
+			<Filter>src\External\PMAudioAnalysis</Filter>
+		</ClInclude>
+		<ClInclude Include="src\External\PMAudioAnalysis\PMDeviceAudioAnalyzer.hpp">
+			<Filter>src\External\PMAudioAnalysis</Filter>
+		</ClInclude>
+		<ClInclude Include="src\JSONSettings\AudioAnalyzer\PMSettingsManagerAudioAnalyzers.h">
+			<Filter>src\JSONSettings\AudioAnalyzer</Filter>
+		</ClInclude>
+		<ClInclude Include="src\JSONSettings\AudioDevices\PMSettingsDevice.h">
+			<Filter>src\JSONSettings\AudioDevices</Filter>
+		</ClInclude>
+		<ClInclude Include="src\JSONSettings\AudioDevices\PMSettingsDeviceChannel.h">
+			<Filter>src\JSONSettings\AudioDevices</Filter>
+		</ClInclude>
+		<ClInclude Include="src\JSONSettings\AudioDevices\PMSettingsManagerAudioDevices.h">
+			<Filter>src\JSONSettings\AudioDevices</Filter>
+		</ClInclude>
+		<ClInclude Include="src\JSONSettings\AudioDevices\PMSettingsRenderer.h">
+			<Filter>src\JSONSettings\AudioDevices</Filter>
+		</ClInclude>
+		<ClInclude Include="src\JSONSettings\AudioDevices\PMSettingsRendererSpecific.h">
+			<Filter>src\JSONSettings\AudioDevices</Filter>
+		</ClInclude>
+		<ClInclude Include="src\JSONSettings\General\PMSettingsManagerGeneral.h">
+			<Filter>src\JSONSettings\General</Filter>
+		</ClInclude>
+		<ClInclude Include="src\JSONSettings\LayerMappings\PMSettingsManagerLayers.h">
+			<Filter>src\JSONSettings\LayerMappings</Filter>
+		</ClInclude>
+		<ClInclude Include="src\JSONSettings\PMSettingsManager.h">
+			<Filter>src\JSONSettings</Filter>
+		</ClInclude>
+		<ClInclude Include="src\JSONSettings\Renderer\PMSettingsManagerRenderers.h">
+			<Filter>src\JSONSettings\Renderer</Filter>
+		</ClInclude>
+		<ClInclude Include="src\Motion\PMMotionExtractor.hpp">
+			<Filter>src\Motion</Filter>
+		</ClInclude>
+		<ClInclude Include="src\ofApp.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="src\RenderLayers\PMBaseLayer.h">
+			<Filter>src\RenderLayers</Filter>
+		</ClInclude>
+		<ClInclude Include="src\RenderLayers\PMLayer1.h">
+			<Filter>src\RenderLayers</Filter>
+		</ClInclude>
+		<ClInclude Include="src\RenderLayers\PMLayer2.h">
+			<Filter>src\RenderLayers</Filter>
+		</ClInclude>
+		<ClInclude Include="src\RenderLayers\PMLayer3.h">
+			<Filter>src\RenderLayers</Filter>
+		</ClInclude>
+		<ClInclude Include="src\RenderLayers\PMLayer4.h">
+			<Filter>src\RenderLayers</Filter>
+		</ClInclude>
+		<ClInclude Include="src\RenderLayers\PMRenderer.h">
+			<Filter>src\RenderLayers</Filter>
+		</ClInclude>
+		<ClInclude Include="src\Scenes\PMBaseScene.hpp">
+			<Filter>src\Scenes</Filter>
+		</ClInclude>
+		<ClInclude Include="src\Scenes\PMSc10Thanks.hpp">
+			<Filter>src\Scenes</Filter>
+		</ClInclude>
+		<ClInclude Include="src\Scenes\PMSc1Settings.hpp">
+			<Filter>src\Scenes</Filter>
+		</ClInclude>
+		<ClInclude Include="src\Scenes\PMSc2Start.hpp">
+			<Filter>src\Scenes</Filter>
+		</ClInclude>
+		<ClInclude Include="src\Scenes\PMSc3Song_Choose.hpp">
+			<Filter>src\Scenes</Filter>
+		</ClInclude>
+		<ClInclude Include="src\Scenes\PMSc4Palette_Choose.hpp">
+			<Filter>src\Scenes</Filter>
+		</ClInclude>
+		<ClInclude Include="src\Scenes\PMSc5Brushes_Choose.hpp">
+			<Filter>src\Scenes</Filter>
+		</ClInclude>
+		<ClInclude Include="src\Scenes\PMSc6Kinect_Detect.hpp">
+			<Filter>src\Scenes</Filter>
+		</ClInclude>
+		<ClInclude Include="src\Scenes\PMSc7Countdown.hpp">
+			<Filter>src\Scenes</Filter>
+		</ClInclude>
+		<ClInclude Include="src\Scenes\PMSc8Main.hpp">
+			<Filter>src\Scenes</Filter>
+		</ClInclude>
+		<ClInclude Include="src\Scenes\PMSc9Export.hpp">
+			<Filter>src\Scenes</Filter>
+		</ClInclude>
+		<ClInclude Include="src\SharedSettings\PMSharedSettings.h">
+			<Filter>src\SharedSettings</Filter>
+		</ClInclude>
+		<ClInclude Include="src\UI\Containers\PMColorContainer.hpp">
+			<Filter>src\UI\Containers</Filter>
+		</ClInclude>
+		<ClInclude Include="src\UI\Containers\PMImageContainer.hpp">
+			<Filter>src\UI\Containers</Filter>
+		</ClInclude>
+		<ClInclude Include="src\UI\Containers\PMSelectorContainer.hpp">
+			<Filter>src\UI\Containers</Filter>
+		</ClInclude>
+		<ClInclude Include="src\UI\Containers\PMTextContainer.hpp">
+			<Filter>src\UI\Containers</Filter>
+		</ClInclude>
+		<ClInclude Include="src\UI\PMBrushesSelector.hpp">
+			<Filter>src\UI</Filter>
+		</ClInclude>
+		<ClInclude Include="src\UI\PMColorsSelector.hpp">
+			<Filter>src\UI</Filter>
+		</ClInclude>
+		<ClInclude Include="src\UI\PMSongSelector.hpp">
+			<Filter>src\UI</Filter>
+		</ClInclude>
+		<ClInclude Include="src\UICanvas\PMBaseUICanvas.h">
+			<Filter>src\UICanvas</Filter>
+		</ClInclude>
+		<ClInclude Include="src\UICanvas\PMUICanvasAudioAnalyzer.h">
+			<Filter>src\UICanvas</Filter>
+		</ClInclude>
+		<ClInclude Include="src\UICanvas\PMUICanvasLayers.h">
+			<Filter>src\UICanvas</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\matrix_funcs.h">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxApp.h">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxAppUtils.h">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxBitmapString.h">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxMovingAverage.h">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxParticle.h">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxParticleManager.h">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxQuadWarper.h">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxScene.h">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxSceneManager.h">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxTimer.h">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxTransformer.h">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxTransformPanel.h">
+			<Filter>addons\ofxAppUtils-PM\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAubio\src\ofxAubio.h">
+			<Filter>addons\ofxAubio\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAubio\src\ofxAubioBeat.h">
+			<Filter>addons\ofxAubio\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAubio\src\ofxAubioBlock.h">
+			<Filter>addons\ofxAubio\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAubio\src\ofxAubioMelBands.h">
+			<Filter>addons\ofxAubio\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAubio\src\ofxAubioOnset.h">
+			<Filter>addons\ofxAubio\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxAubio\src\ofxAubioPitch.h">
+			<Filter>addons\ofxAubio\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxLabel.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxPanel.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h">
+			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSON.h">
+			<Filter>addons\ofxJSON\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.h">
+			<Filter>addons\ofxJSON\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json-forwards.h">
+			<Filter>addons\ofxJSON\libs\jsoncpp\include\json</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json.h">
+			<Filter>addons\ofxJSON\libs\jsoncpp\include\json</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Body.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Joint.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Device.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Base.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BaseImage.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Body.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BodyIndex.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Color.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Depth.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Infrared.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\LongExposureInfrared.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Utils.h">
+			<Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2.h">
+			<Filter>addons\ofxKinectForWindows2\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxSceneManager\src\ofxScene.h">
+			<Filter>addons\ofxSceneManager\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxSceneManager\src\ofxSceneManager.h">
+			<Filter>addons\ofxSceneManager\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxTween\src\Easings\easing_terms_of_use.html">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasing.h">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingBack.h">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingBounce.h">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingCirc.h">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingCubic.h">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingElastic.h">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingExpo.h">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingLinear.h">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuad.h">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuart.h">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingQuint.h">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingSine.h">
+			<Filter>addons\ofxTween\src\Easings</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxTween\src\ofxTween.h">
+			<Filter>addons\ofxTween\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUI.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUI2DGraph.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUI2DPad.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIBaseDraws.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIBiLabelSlider.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIButton.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUICanvas.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUICircleSlider.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIDefines.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIDragableLabelButton.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIDropDownList.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIEventArgs.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIFPS.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIFPSSlider.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIImage.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIImageButton.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIImageSampler.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIImageSlider.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIImageToggle.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUILabel.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUILabelButton.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUILabelToggle.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIMinimalSlider.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIMovingGraph.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIMultiImageButton.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIMultiImageToggle.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUINumberDialer.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIOFWrapper.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIRadio.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIRangeSlider.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIRectangle.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIRotarySlider.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIScrollableCanvas.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUISlider.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUISortableList.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUISpacer.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUISpectrum.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUISuperCanvas.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUITabBar.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUITextArea.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUITextInput.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIToggle.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIToggleMatrix.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIUtils.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIValuePlotter.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWaveform.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWidget.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWidgets.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWidgetWithLabel.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWrapper.h">
+			<Filter>addons\ofxUI\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h">
+			<Filter>addons\ofxXmlSettings\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h">
+			<Filter>addons\ofxXmlSettings\libs</Filter>
+		</ClInclude>
+	</ItemGroup>
+	<ItemGroup>
+		<ResourceCompile Include="icon.rc" />
+	</ItemGroup>
+</Project>

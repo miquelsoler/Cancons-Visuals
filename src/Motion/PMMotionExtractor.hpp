@@ -1,4 +1,4 @@
-//
+////
 //  PMMotionExtractor.hpp
 //  PMCancons_Visuals
 //
@@ -13,89 +13,72 @@
 
 #include <stdio.h>
 #include "ofMain.h"
-#include "ofxKinectFeatures.h"
-#include "ofxOpenNI.h"
-
-#define MAX_DEVICES 1
+#include "ofxKinectForWindows2.h"
 
 struct KinectElement
 {
-    float x;
-    float y;
-    float z;
-    float a;
-    ofPoint v;
+	ofPoint pos;
+	ofPoint v;
+	float a;
 };
 struct KinectInfo
 {
-    KinectElement leftHand_joint;
-    KinectElement rightHand_joint;
-    KinectElement leftKnee_joint;
-    KinectElement rightKnee_joint;
-    KinectElement head_joint;
-    KinectElement torso_joint;
+	KinectElement leftHand;
+	KinectElement rightHand;
+	KinectElement rightHand_joint;
+	KinectElement leftHand_joint;
+	KinectElement head_joint;
+	KinectElement torso_joint;
 };
 
 class PMMotionExtractor
 {
 public:
-    /**
-     * getInstance()
-     * Returns singleton instance
-     */
-    static PMMotionExtractor &getInstance()
-    {
-        static PMMotionExtractor instance;
-        return instance;
-    }
+	/**
+	* getInstance()
+	* Returns singleton instance
+	*/
+	static PMMotionExtractor &getInstance()
+	{
+		static PMMotionExtractor instance;
+		return instance;
+	}
 
-    PMMotionExtractor() {};
-    ~PMMotionExtractor() {};
+	PMMotionExtractor() {};
+	~PMMotionExtractor() {};
 
-    void setup();
+	bool setup();
+	void update();
+	void draw(bool drawImage, bool drawHands);
+	void exit();
 
-    void update();
+	bool reset(bool kinectActivated);
+	bool isTracking() {
+		return true;
+	};
 
-    void draw(); //noexistirà?
-    void exit();
+	void computeVelocity(int meanSize);
+	ofPixels getColorPixels();
 
-    KinectInfo *getKinectInfo();
+	KinectInfo getKinectInfo();
 
-    bool isReady() { return (isSomeoneTracked<30 && hadUsers); };
+	ofxKFW2::Data::Body* findClosestBody();
 
-    bool isTracking()
-    {
-        return hadUsers;
-    }
-    
-    void resetUsers();
-    void stop(){
-        hadUsers = false;
-        kinectNI->setPaused(true);
-        kinectNI->removeUserGenerator();
-        isSomeoneTracked=0;
-    };
-    
-    void hardStart(){kinectNI->start();};
-    void start(){
-        kinectNI->addUserGenerator();
-//        kinectNI->setMaxNumUsers(1);
-        kinectNI->setPaused(false);
-        isSomeoneTracked=0;
-    };
-    
-    int getNumUsers(){
-        return kinectNI->getNumTrackedUsers();
-    }
+	ofEvent<bool> eventUserDetection;
+	ofEvent<bool> eventUserPositioned;
 
 private:
-    ofTrueTypeFont font;
-    ofxKinectFeatures kinectFeatures;
-    ofxOpenNI* kinectNI;
-    bool hadUsers;
-    KinectInfo kinectOut;
+	ofxKFW2::Device kinect;
+	KinectInfo kinectOut;
+	KinectInfo handsInfo;
+	bool hasUser, hasKinect;
 
-    int isSomeoneTracked;
+	//for computing velocity
+	deque<ofPoint> rHandPosHist;
+	deque<ofPoint> lHandPosHist;
+
+	//positioning variable
+	int positionDetectedCounter;
 };
 
 #endif /* PMMotionExtractor_hpp */

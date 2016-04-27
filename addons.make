@@ -1,6 +1,9 @@
-ofxXmlSettings
-ofxAudioAnalyzer
+ofxAppUtils-PM
+ofxAubio
+ofxGui
 ofxJSON
+ofxKinectForWindows2
 ofxSceneManager
 ofxTween
 ofxUI
+ofxXmlSettings

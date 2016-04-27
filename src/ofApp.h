@@ -5,8 +5,6 @@
 #include "PMAudioAnalyzer.hpp"
 #include "PMMotionExtractor.hpp"
 #include "ofxAppUtils.h"
-#include "ofxOpenNI.h"
-#include "ofxKinectFeatures.h"
 
 
 #include "PMSc1Settings.hpp"
