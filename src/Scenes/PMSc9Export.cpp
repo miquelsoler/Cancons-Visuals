@@ -44,6 +44,7 @@ void PMSc9Export::update()
 
 void PMSc9Export::exit()
 {
+    ofEnableAlphaBlending();
 //    PMSharedSettings::getInstance().setUserName(textInput);
 }
 
