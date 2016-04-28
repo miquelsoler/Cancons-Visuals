@@ -30,6 +30,8 @@ struct KinectInfo
 {
     KinectElement leftHand_joint;
     KinectElement rightHand_joint;
+    KinectElement leftKnee_joint;
+    KinectElement rightKnee_joint;
     KinectElement head_joint;
     KinectElement torso_joint;
 };

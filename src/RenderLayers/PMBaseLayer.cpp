@@ -24,6 +24,10 @@ PMBaseLayer::PMBaseLayer(int _fboWidth, int _fboHeight, KinectNodeType _kinectNo
 
 void PMBaseLayer::setup(ofPoint initialPosition)
 {
+    
+    ofRegisterKeyEvents(this);
+    
+    
 #if ENABLE_MULTIPLE_FBOS
     layerFBO.begin();
     {
@@ -112,6 +116,24 @@ void PMBaseLayer::setup(ofPoint initialPosition)
         initialShootSize = settings.getShootInitialSize(layerID);
         shootCurveAmount = settings.getShootCurveAmount(layerID);
     }
+    
+    //createGui
+    layersGui = new PMUICanvasLayers("LAYER PARAMETERS", OFX_UI_FONT_MEDIUM);
+    
+    //bindVariables
+    layersGui->bindEnergy(&energyMin, &energyMax);
+    layersGui->bindSize(&sizeMin, &sizeMax, &sizeEnergyScaleFactor, &sizeAccelerationScaleFactor, &sizeZScaleFactor);
+    layersGui->bindHue(&hueScaleFactor, &hueVariation);
+    layersGui->bindSaturation(&saturationScaleFactor, &saturationVariation);
+    layersGui->bindBrightness(&brightnessScaleFactor, &brightnessVariation);
+    layersGui->bindAlpha(&alphaMin, &alphaMax, &alphaScaleFactor, &alphaEnergyScaleFactor, &alphaVelocityScaleFactor, &alphaZScaleFactor);
+    layersGui->bindBehaviour(&brushSpeed, &curveSize);
+    
+    //setup Gui
+    layersGui->init(layerID, 5, 5);
+    layersGui->setBackgroundColor(ofColor::gray);
+    layersGui->setVisible(false);
+    
 
     // TODO: Treure les crides que no s'utilitzin, si n'hi ha.
     ofAddListener(deviceAudioAnalyzer->eventMelBandsChanged, this, &PMBaseLayer::melBandsChanged);
@@ -135,6 +157,16 @@ void PMBaseLayer::update()
                 kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand_joint;
                 break;
             }
+#if ENABLE_KNEES_DETECTION
+            case KINECTNODE_HEAD: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightKnee_joint;
+                break;
+            }
+            case KINECTNODE_TORSO: {
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftKnee_joint;
+                break;
+            }
+#else
             case KINECTNODE_HEAD: {
                 kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head_joint;
                 break;
@@ -143,6 +175,7 @@ void PMBaseLayer::update()
                 kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso_joint;
                 break;
             }
+#endif
         }
     }
 #else
@@ -158,8 +191,16 @@ void PMBaseLayer::update()
         newDirection = ofPoint(ofMap(kinectNodeData.x, 0.2,1, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
     else if(layerID==2)
         newDirection = ofPoint(ofMap(kinectNodeData.x, 0,0.8, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+#if ENABLE_KNEES_DETECTION
+    //detection of knees
+    else if(layerID == 3)
+        newDirection = ofPoint(ofMap(kinectNodeData.x, 0.2,1, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+    else if(layerID == 4)
+        newDirection = ofPoint(ofMap(kinectNodeData.x, 0,0.8, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+#else
     else if(layerID==3 || layerID==4)
         newDirection = ofPoint(kinectNodeData.x * fboWidth, kinectNodeData.y * fboHeight) - brushPosition;
+#endif
     
     brushDirection += ((newDirection.normalize()) * curveSize);
 //#endif
@@ -311,6 +352,7 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
     float energy = melBandsParams.bandsEnergy[melBandIndex];
     //Aquest valors son arbitraris ja que el que volem es aconseguir tots els paràmetres que vagin de 0 a 1
     float normalizedEnergy = ofMap(energy, energyMin, energyMax, 0, 1);
+//    cout<<energyMin<<" "<<energyMax<<endl;
 #if ENABLE_KINECT
     float normalizedZ = ofMap((nodeInitialZ-kinectNodeData.z), -0.3, 0.3, 0, 1);
     float normalizedVelocity = ofMap(kinectNodeData.v.length(), 0, 100, 0, 1);
@@ -332,7 +374,8 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
 #if ENABLE_KINECT
         float factorizedZSize = normalizedZ*sizeZScaleFactor;
         float factorizedAccel = normalizedAcceleration*sizeAccelerationScaleFactor;
-        int newBrushSize = ofMap(factorizedEnergySize + factorizedZSize + factorizedAccel, 0, 3, sizeMin, sizeMax, true);
+        float scales_total = sizeEnergyScaleFactor+sizeZScaleFactor+sizeAccelerationScaleFactor;
+        int newBrushSize = ofMap(factorizedEnergySize + factorizedZSize + factorizedAccel, 0, scales_total, sizeMin, sizeMax, true);
 //        if(layerID==2)
 //            cout<<"Energy: "<<factorizedEnergySize<<"----Z: "<<factorizedZSize<<"----Accel: "<<factorizedAccel<<"---BrushSize: "<<newBrushSize<<endl;
 #else
@@ -356,8 +399,12 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
         float factorizedZAlpha = normalizedZ*alphaZScaleFactor;
         float factorizedVel;
         if(kinectNodeData.v.length()!= 1) factorizedVel=normalizedVelocity*alphaVelocityScaleFactor; else factorizedVel=0.5;
+#if ENABLE_KNEES_DETECTION
+        brushAlpha = ofMap(factorizedEnergyAlpha *factorizedVel * factorizedZAlpha, 0, 1, alphaMin, alphaMax, true);
+#else
         if(didShoot || layerID==1 || layerID ==2)
             brushAlpha = ofMap(factorizedEnergyAlpha *factorizedVel * factorizedZAlpha, 0, 1, alphaMin, alphaMax, true);
+#endif
 #else
         brushAlpha = ofMap(factorizedEnergyAlpha, 0, 1, alphaMin, alphaMax, true);
 #endif
@@ -414,4 +461,15 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
         brightnessIncrement=ofMap(brightnessIncrement, -brightnessOffset, brightnessOffset, -brightnessOffset, brightnessOffset, true);
         brushRGBColor.setBrightness(brushHSBColor.brightness+brightnessIncrement);
     }
+}
+
+void PMBaseLayer::keyPressed(ofKeyEventArgs &a){
+    int key=a.key;
+    if(key != ofToChar(ofToString(layerID))) return;
+    if(layersGui->isVisible()) layersGui->setVisible(false);
+    else layersGui->setVisible(true);
+}
+
+void PMBaseLayer::keyReleased(ofKeyEventArgs &a){
+    
 }

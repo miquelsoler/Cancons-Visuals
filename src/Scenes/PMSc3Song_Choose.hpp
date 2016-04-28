@@ -9,8 +9,6 @@
 #ifndef PMSc3Song_Choose_hpp
 #define PMSc3Song_Choose_hpp
 
-#include <stdio.h>
-#include <dirent.h>
 #include "PMBaseScene.hpp"
 
 #endif /* PMSc3Song_Choose_hpp */
