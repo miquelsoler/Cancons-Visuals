@@ -156,3 +156,12 @@ void PMSc10Thanks::drawLeftAlignString(ofTrueTypeFont &font, string s, int x, in
     int halfStringHeight = font.stringHeight(s) / 2;
     font.drawString(s, x, y + halfStringHeight);
 }
+
+void PMSc10Thanks::keyPressed(ofKeyEventArgs &keyargs){
+#ifdef OF_DEBUG
+    if(keyargs.key == ' '){
+        string sceneToChange = "Scene 2";
+        ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+    }
+#endif
+}
