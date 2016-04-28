@@ -1,10 +1,4 @@
-    // Scale son valors normalitzats (O a 1)
-    // Min (N), Max (N) son valors normalitzats (O a 1)
-    // Min, Max no son valors normalitzats
-    // La resta no son valors normalitzats
-
-
-    {
+{
 	"Layers" : [
 		{
 			"ID" : 1,
@@ -14,9 +8,9 @@
 			},
 			"Size": {
 				"Min": 10,
-				"Max": 250,
-                "Scale Energy Factor": 0.5,
-                "Scale Acceleration Factor": 1,
+				"Max": 120,
+                "Scale Energy Factor": 1,
+                "Scale Acceleration Factor": 0.5,
                 "Scale Z Factor": 0.5
 			},
    	   		"Hue": {
@@ -29,13 +23,13 @@
   	    	},
   	    	"Brightness": {
               "Scale Factor": 1.5,
-              "Variation": 0.1
+              "Variation": 0.3
   	    	},
   	    	"Alpha": {
-      			"Min (N)": 0.05,
-      			"Max (N)": 0.7,
+      			"Min (N)": 0.1,
+      			"Max (N)": 0.8,
    	   			"Scale Factor": 1,
-                "Scale Energy Factor": 0.5,
+                "Scale Energy Factor": 1,
                 "Scale Velocity Factor": 0.5,
                 "Scale Z Factor": 0.5
             },
@@ -52,10 +46,10 @@
 			},
 			"Size": {
 				"Min": 10,
-				"Max": 200,
+				"Max": 120,
                 "Scale Energy Factor": 1,
                 "Scale Acceleration Factor": 0.5,
-                "Scale Z Factor": 0.7
+                "Scale Z Factor": 0.5
 			},
    	   		"Hue": {
               "Scale Factor": 1,
@@ -67,15 +61,15 @@
   	    	},
   	    	"Brightness": {
               "Scale Factor": 1,
-              "Variation": 0.2
+              "Variation": 0.1
   	    	},
   	    	"Alpha": {
-      			"Min (N)": 0.05,
+      			"Min (N)": 0.1,
       			"Max (N)": 0.8,
    	   			"Scale Factor": 1,
                 "Scale Energy Factor": 1,
                 "Scale Velocity Factor": 0.5,
-                "Scale Z Factor": 0.7
+                "Scale Z Factor": 0.5
             },
             "Behaviour": {
                 "Speed": 3,
@@ -90,7 +84,7 @@
 			},
 			"Size": {
 				"Min": 50,
-				"Max": 300,
+				"Max": 100,
                 "Scale Energy Factor": 1,
                 "Scale Acceleration Factor": 0.5,
                 "Scale Z Factor": 0.5
@@ -101,7 +95,7 @@
   	    	},
   	    	"Saturation": {
               "Scale Factor": 1,
-              "Variation": 0.2
+              "Variation": 0.1
   	    	},
   	    	"Brightness": {
               "Scale Factor": 1,
@@ -109,7 +103,7 @@
   	    	},
   	    	"Alpha": {
       			"Min (N)": 0.1,
-      			"Max (N)": 0.3,
+      			"Max (N)": 0.7,
    	   			"Scale Factor": 1.,
                 "Scale Energy Factor": 1,
                 "Scale Velocity Factor": 0.5,
@@ -120,12 +114,12 @@
                 "Curve Size": 6
             },
             "Shoot Behaviour": {
-                "Initial Size": 50,
-                "Initial Speed": 2,
-                "Speed Decrement": 0.02,
+                "Initial Size": 20,
+                "Initial Speed": 8,
+                "Speed Decrement": 0.1,
                 "Size Decrement": 2,
-                "Curve Amount": 1
-            } 
+                "Curve Amount": 3
+            }
 		},
 		{
 			"ID" : 4,
@@ -134,9 +128,9 @@
                 "Max (N)": 0.1
             },
             "Size": {
-                "Min": 40,
-                "Max": 350,
-                "Scale Energy Factor": 0.3,
+                "Min": 1,
+                "Max": 120,
+                "Scale Energy Factor": 0.1,
                 "Scale Acceleration Factor": 0.5,
                 "Scale Z Factor": 0.5
             },
@@ -150,14 +144,14 @@
             },
             "Brightness": {
                 "Scale Factor": 1,
-                "Variation": 0.1
+                "Variation": 0.5
             },
             "Alpha": {
-                "Min (N)": 0.05,
-                "Max (N)": 0.4,
+                "Min (N)": 0.1,
+                "Max (N)": 0.7,
                 "Scale Factor": 1,
                 "Scale Energy Factor": 1,
-                "Scale Velocity Factor": 0.6,
+                "Scale Velocity Factor": 0.5,
                 "Scale Z Factor": 0.5
             },
             "Behaviour": {
@@ -165,11 +159,11 @@
                 "Curve Size": 6
             },
             "Shoot Behaviour": {
-                "Initial Size": 40,
-                "Initial Speed": 3,
-                "Speed Decrement": 0.05,
+                "Initial Size": 2,
+                "Initial Speed": 7,
+                "Speed Decrement": 0.1,
                 "Size Decrement": 1,
-                "Curve Amount": 2
+                "Curve Amount": 3
             }
 		}
 	]
