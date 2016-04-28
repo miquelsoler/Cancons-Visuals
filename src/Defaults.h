@@ -16,6 +16,7 @@
 #define ENABLE_MULTIPLE_FBOS false
 #define ENABLE_MULTILAYER_EXPORT false
 #define ENABLE_KNEES_DETECTION false
+#define ENABLE_PRINTING false
 
 
 static const float          WINDOW_SCALE_FACTOR         = 0.5;

@@ -53,9 +53,10 @@ void PMSc10Thanks::setup()
 
     //imprimir fbo.
 
-
+#if ENABLE_PRINTING
     string c = "lp -o media=Custom.4x6in -o page-left=0 -o page-right=0 -o page-top=0 -o page-bottom=0 " + ofToDataPath(saveFilename);
     system(c.c_str());
+#endif
 
     countdown.set();
     countdown.setAlarm(COUNTDOWN_TIME * 1000);
@@ -75,11 +76,13 @@ void PMSc10Thanks::update()
         string toScene = "Scene 2";
         ofNotifyEvent(goToSceneEvent, toScene, this);
     }
+#if ENABLE_KINECT
     if(count==2){
         PMMotionExtractor::getInstance().exit();
     }else if(count==60){
         PMMotionExtractor::getInstance().setup();
     }
+#endif
     count++;
 }
 
