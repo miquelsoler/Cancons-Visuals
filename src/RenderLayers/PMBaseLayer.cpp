@@ -5,6 +5,7 @@
 #include "PMBaseLayer.h"
 #include "PMColorsSelector.hpp"
 #include "PMSettingsManagerLayers.h"
+#include "PMSharedSettings.h"
 
 PMBaseLayer::PMBaseLayer(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType)
 {
@@ -117,8 +118,10 @@ void PMBaseLayer::setup(ofPoint initialPosition)
         shootCurveAmount = settings.getShootCurveAmount(layerID);
     }
     
-    //createGui
-    layersGui = new PMUICanvasLayers("LAYER PARAMETERS", OFX_UI_FONT_MEDIUM);
+    
+    //createGui to guiApp
+    PMSharedSettings shared = PMSharedSettings::getInstance();
+    auto layersGui = shared.guiApp->getGuiOfLayer(layerID);
     
     //bindVariables
     layersGui->bindEnergy(&energyMin, &energyMax);
@@ -134,6 +137,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
     layersGui->setBackgroundColor(ofColor::gray);
     layersGui->setVisible(false);
     
+    shared.guiApp->layoutGuis();
 
     // TODO: Treure les crides que no s'utilitzin, si n'hi ha.
     ofAddListener(deviceAudioAnalyzer->eventMelBandsChanged, this, &PMBaseLayer::melBandsChanged);
@@ -464,10 +468,7 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
 }
 
 void PMBaseLayer::keyPressed(ofKeyEventArgs &a){
-    int key=a.key;
-    if(key != ofToChar(ofToString(layerID))) return;
-    if(layersGui->isVisible()) layersGui->setVisible(false);
-    else layersGui->setVisible(true);
+
 }
 
 void PMBaseLayer::keyReleased(ofKeyEventArgs &a){

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "GUIApp.h"
 
 #include "ofMain.h"
 #include "PMAudioAnalyzer.hpp"
@@ -7,7 +8,7 @@
 #include "ofxAppUtils.h"
 #include "ofxOpenNI.h"
 #include "ofxKinectFeatures.h"
-
+#include "PMSharedSettings.h"
 
 #include "PMSc1Settings.hpp"
 #include "PMSc2Start.hpp"
@@ -46,8 +47,15 @@ public:
 //    void dragEvent(ofDragInfo dragInfo);
 //    void gotMessage(ofMessage msg);
     void changeScene(string &scene);
+    
+    void setGuiApp(const shared_ptr<GUIApp> &guiApp) {
+        ofApp::guiApp = guiApp;
+        PMSharedSettings::getInstance().guiApp = guiApp;
+    };
 
 private:
+    
+    shared_ptr<GUIApp> guiApp;
 
     PMDeviceAudioAnalyzer *audioAnalyzer;
 

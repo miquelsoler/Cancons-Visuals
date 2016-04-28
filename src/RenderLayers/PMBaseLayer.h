@@ -117,8 +117,6 @@ protected:
     float                   alphaZScaleFactor;
     float                   alphaVelocityScaleFactor;
     
-    //Gui
-    PMUICanvasLayers*       layersGui;
 
     // JSON settings
     PMSettingsManagerLayers settings;

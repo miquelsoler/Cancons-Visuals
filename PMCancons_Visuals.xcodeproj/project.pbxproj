@@ -86,6 +86,7 @@
 		9F14B2C41C0868AA00D834DE /* ofxAubioOnset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F14B2BD1C0868AA00D834DE /* ofxAubioOnset.cpp */; };
 		9F14B2C51C0868AA00D834DE /* ofxAubioPitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F14B2BF1C0868AA00D834DE /* ofxAubioPitch.cpp */; };
 		9F304D831BD6912B000E9FDA /* PMMotionExtractor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F304D811BD6912B000E9FDA /* PMMotionExtractor.cpp */; };
+		9F3172E71CD22A85005CCC1D /* GUIApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F3172E51CD22A85005CCC1D /* GUIApp.cpp */; };
 		9F3B37DA1BCFFF4800021E6E /* ofxOpenNI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B37D51BCFFF4800021E6E /* ofxOpenNI.cpp */; };
 		9F3B37DB1BCFFF4800021E6E /* ofxOpenNITypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F3B37D71BCFFF4800021E6E /* ofxOpenNITypes.cpp */; };
 		9F3B37F81BD016E800021E6E /* libnimCodecs.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3B37EA1BD016E800021E6E /* libnimCodecs.dylib */; };
@@ -359,6 +360,8 @@
 		9F14B2C01C0868AA00D834DE /* ofxAubioPitch.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ofxAubioPitch.h; sourceTree = "<group>"; };
 		9F304D811BD6912B000E9FDA /* PMMotionExtractor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMMotionExtractor.cpp; sourceTree = "<group>"; };
 		9F304D821BD6912B000E9FDA /* PMMotionExtractor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PMMotionExtractor.hpp; sourceTree = "<group>"; };
+		9F3172E51CD22A85005CCC1D /* GUIApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GUIApp.cpp; sourceTree = "<group>"; };
+		9F3172E61CD22A85005CCC1D /* GUIApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIApp.h; sourceTree = "<group>"; };
 		9F3B37D51BCFFF4800021E6E /* ofxOpenNI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOpenNI.cpp; sourceTree = "<group>"; };
 		9F3B37D61BCFFF4800021E6E /* ofxOpenNI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenNI.h; sourceTree = "<group>"; };
 		9F3B37D71BCFFF4800021E6E /* ofxOpenNITypes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOpenNITypes.cpp; sourceTree = "<group>"; };
@@ -1591,6 +1594,8 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
+				9F3172E51CD22A85005CCC1D /* GUIApp.cpp */,
+				9F3172E61CD22A85005CCC1D /* GUIApp.h */,
 				2AB2A7EC1BCEC64100DEE302 /* Defaults.h */,
 				2A2337371BCEC097000612E4 /* Scenes */,
 				214768D0C4E0011BF6EED3DC /* RenderLayers */,
@@ -1750,6 +1755,7 @@
 				9FD787FF1BEBE0EE00376552 /* ofxSceneManager.cpp in Sources */,
 				9F8BC6841C0F64CF008CD29E /* PMSettingsManager.cpp in Sources */,
 				4B3ED367CA852D522E2EE996 /* ofxUI2DPad.cpp in Sources */,
+				9F3172E71CD22A85005CCC1D /* GUIApp.cpp in Sources */,
 				F1E8DE8734BA6F69A5112FA8 /* ofxUIBaseDraws.cpp in Sources */,
 				9F14B2C11C0868AA00D834DE /* ofxAubioBeat.cpp in Sources */,
 				C381F2B7CFD84C0E540EB4BC /* ofxUIBiLabelSlider.cpp in Sources */,
@@ -2114,7 +2120,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxAudioAnalyzer-PM/libs/essentia/include/";
 				WRAPPER_EXTENSION = app;
-				baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
 			};
 			name = Release;
 		};
