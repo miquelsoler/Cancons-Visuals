@@ -198,6 +198,7 @@ C:\Users\eduard\Documents\openFrameworks\addons\ofxXmlSettings\libs</AdditionalI
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp" />
+    <ClCompile Include="src\GUIApp.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\JSONSettings\General\PMSettingsManagerGeneral.cpp" />
@@ -329,6 +330,7 @@ C:\Users\eduard\Documents\openFrameworks\addons\ofxXmlSettings\libs</AdditionalI
     <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
+    <ClInclude Include="src\GUIApp.h" />
     <ClInclude Include="src\JSONSettings\AudioDevices\PMSettingsRenderer.h" />
     <ClInclude Include="src\JSONSettings\AudioDevices\PMSettingsRendererSpecific.h" />
     <ClInclude Include="src\ofApp.h" />

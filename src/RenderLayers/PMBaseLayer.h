@@ -8,7 +8,7 @@
 #include "ofMain.h"
 #include "PMBrushesSelector.hpp"
 #include "PMMotionExtractor.hpp"
-#include "PMAudioAnalyzer.hpp"
+//#include "PMAudioAnalyzer.hpp"
 #include "PMMotionExtractor.hpp"
 #include "Defaults.h"
 #include "PMSettingsManagerLayers.h"
@@ -56,7 +56,7 @@ public:
 #endif
 
     // Audio listeners
-    virtual void melBandsChanged(melBandsParams &melBandsParams);
+    //virtual void melBandsChanged(melBandsParams &melBandsParams);
 
 protected:
 

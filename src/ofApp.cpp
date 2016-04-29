@@ -112,7 +112,7 @@ void ofApp::draw()
         ofxBitmapString(15, ofGetHeight() - 15) << roundf(ofGetFrameRate()) << "fps" << endl;
     }
 
-#if OF_DEBUG
+#ifdef OF_DEBUG
     ofSetColor(debugMessagesColor);
     ofxBitmapString(15, ofGetHeight()-28)
             << "[Current Scene] ID: " << sceneManager.getCurrentSceneIndex()
@@ -146,7 +146,7 @@ void ofApp::keyReleased(int key)
         }
         case OF_KEY_UP:
         case OF_KEY_RIGHT: {
-//#ifdef OF_DEBUG
+#ifdef OF_DEBUG
 			cout << "nextScene" << endl;
             if(currentScene!=9)
                 sceneManager.nextScene(true);
@@ -154,7 +154,7 @@ void ofApp::keyReleased(int key)
                 string toScene = "Scene 2";
                 changeScene(toScene);
             }
-//#endif
+#endif
             break;
         }
         case OF_KEY_DOWN:

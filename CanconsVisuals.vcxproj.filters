@@ -373,6 +373,9 @@
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp">
       <Filter>addons\ofxXmlSettings\libs</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUIApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -913,6 +916,9 @@
     </ClInclude>
     <ClInclude Include="src\JSONSettings\AudioDevices\PMSettingsRendererSpecific.h">
       <Filter>src\JSONSettings\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUIApp.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

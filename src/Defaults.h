@@ -8,6 +8,11 @@
 
 #pragma once
 
+#ifdef _DEBUG
+#define OF_DEBUG
+#endif // _DEBUG
+
+
 #ifndef ConductrEnter_Config_h
 #define ConductrEnter_Config_h
 

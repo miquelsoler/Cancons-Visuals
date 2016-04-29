@@ -61,7 +61,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
             break;
         }
     }
-    nodeInitialZ = kinectNodeData.z;
+    nodeInitialZ = kinectNodeData.pos.z;
 #else
     nodeInitialZ = 0;
 #endif
@@ -77,8 +77,8 @@ void PMBaseLayer::setup(ofPoint initialPosition)
     brushAlpha = 0;
     didShoot = false;
 
-    vector<PMDeviceAudioAnalyzer *> deviceAudioAnalyzers = *PMAudioAnalyzer::getInstance().getAudioAnalyzers();
-    PMDeviceAudioAnalyzer *deviceAudioAnalyzer = deviceAudioAnalyzers[0];
+    //vector<PMDeviceAudioAnalyzer *> deviceAudioAnalyzers = *PMAudioAnalyzer::getInstance().getAudioAnalyzers();
+    //PMDeviceAudioAnalyzer *deviceAudioAnalyzer = deviceAudioAnalyzers[0];
 
     settings.reload();
 
@@ -140,7 +140,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
     shared.guiApp->layoutGuis();
 
     // TODO: Treure les crides que no s'utilitzin, si n'hi ha.
-    ofAddListener(deviceAudioAnalyzer->eventMelBandsChanged, this, &PMBaseLayer::melBandsChanged);
+    //ofAddListener(deviceAudioAnalyzer->eventMelBandsChanged, this, &PMBaseLayer::melBandsChanged);
 }
 
 void PMBaseLayer::update()
@@ -183,8 +183,8 @@ void PMBaseLayer::update()
         }
     }
 #else
-    kinectNodeData.x = (float) (ofGetMouseX() + (layerID-2)*30 )/ ofGetWidth();
-    kinectNodeData.y = (float) (ofGetMouseY() + (layerID-2)*30 )/ ofGetHeight();
+    kinectNodeData.pos.x = (float) (ofGetMouseX() + (layerID-2)*30 )/ ofGetWidth();
+    kinectNodeData.pos.y = (float) (ofGetMouseY() + (layerID-2)*30 )/ ofGetHeight();
     kinectNodeData.v = ofPoint(0, 0);
 #endif
 
@@ -192,18 +192,18 @@ void PMBaseLayer::update()
     // Direction changes
     ofPoint newDirection;
     if(layerID==1)
-        newDirection = ofPoint(ofMap(kinectNodeData.x, 0.2,1, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+        newDirection = ofPoint(ofMap(kinectNodeData.pos.x, 0.2,1, 0, fboWidth), kinectNodeData.pos.y * fboHeight) - brushPosition;
     else if(layerID==2)
-        newDirection = ofPoint(ofMap(kinectNodeData.x, 0,0.8, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+        newDirection = ofPoint(ofMap(kinectNodeData.pos.x, 0,0.8, 0, fboWidth), kinectNodeData.pos.y * fboHeight) - brushPosition;
 #if ENABLE_KNEES_DETECTION
     //detection of knees
     else if(layerID == 3)
-        newDirection = ofPoint(ofMap(kinectNodeData.x, 0.2,1, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+        newDirection = ofPoint(ofMap(kinectNodeData.pos.x, 0.2,1, 0, fboWidth), kinectNodeData.pos.y * fboHeight) - brushPosition;
     else if(layerID == 4)
-        newDirection = ofPoint(ofMap(kinectNodeData.x, 0,0.8, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
+        newDirection = ofPoint(ofMap(kinectNodeData.pos.x, 0,0.8, 0, fboWidth), kinectNodeData.pos.y * fboHeight) - brushPosition;
 #else
     else if(layerID==3 || layerID==4)
-        newDirection = ofPoint(kinectNodeData.x * fboWidth, kinectNodeData.y * fboHeight) - brushPosition;
+        newDirection = ofPoint(kinectNodeData.pos.x * fboWidth, kinectNodeData.pos.y * fboHeight) - brushPosition;
 #endif
     
     brushDirection += ((newDirection.normalize()) * curveSize);
@@ -222,8 +222,8 @@ void PMBaseLayer::update()
 void PMBaseLayer::updateToShoot()
 {
     if(layerID==4){
-        ofPoint layer1pos=ofPoint(ofMap(kinectNodeData.x, 0.2,1, 0, fboWidth), kinectNodeData.y * fboHeight);
-        ofPoint layer2pos=ofPoint(ofMap(kinectNodeData.x, 0,0.8, 0, fboWidth), kinectNodeData.y * fboHeight);
+        ofPoint layer1pos=ofPoint(ofMap(kinectNodeData.pos.x, 0.2,1, 0, fboWidth), kinectNodeData.pos.y * fboHeight);
+        ofPoint layer2pos=ofPoint(ofMap(kinectNodeData.pos.x, 0,0.8, 0, fboWidth), kinectNodeData.pos.y * fboHeight);
         brushInitalPosition=(layer1pos+layer2pos)/2;
     }
     
@@ -304,10 +304,10 @@ void PMBaseLayer::updateToShoot()
     brushPosition += (brushDirection * brushSpeed);
     
 //    int MARGIN=30;
-//    if (brushPosition.x < -MARGIN) brushPosition.x = -MARGIN;
-//    if (brushPosition.y < -MARGIN) brushPosition.y = -MARGIN;
-//    if (brushPosition.x > fboWidth + MARGIN) brushPosition.x = fboWidth + MARGIN;
-//    if (brushPosition.y > fboHeight + MARGIN) brushPosition.y = fboHeight + MARGIN;
+//    if (brushPosition.pos.pos.x < -MARGIN) brushPosition.pos.x = -MARGIN;
+//    if (brushPosition.pos.y < -MARGIN) brushPosition.pos.y = -MARGIN;
+//    if (brushPosition.pos.x > fboWidth + MARGIN) brushPosition.pos.x = fboWidth + MARGIN;
+//    if (brushPosition.pos.y > fboHeight + MARGIN) brushPosition.pos.y = fboHeight + MARGIN;
     
     brushDirection.normalize();
     brush->update(int(brushPosition.x), int(brushPosition.y));
@@ -348,7 +348,7 @@ void PMBaseLayer::setBrushSize(int _brushSize)
 }
 
 #pragma mark - Audio events
-
+/*
 void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
 {
     // Layer4: band0 - Layer1: band1 - Layer2: band2 - Layer3: band3
@@ -358,7 +358,7 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
     float normalizedEnergy = ofMap(energy, energyMin, energyMax, 0, 1);
 //    cout<<energyMin<<" "<<energyMax<<endl;
 #if ENABLE_KINECT
-    float normalizedZ = ofMap((nodeInitialZ-kinectNodeData.z), -0.3, 0.3, 0, 1);
+    float normalizedZ = ofMap((nodeInitialZ-kinectNodeData.pos.z), -0.3, 0.3, 0, 1);
     float normalizedVelocity = ofMap(kinectNodeData.v.length(), 0, 100, 0, 1);
     float normalizedAcceleration = ofMap(kinectNodeData.a, 0, 20, 0, 1);
 #endif
@@ -466,6 +466,7 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
         brushRGBColor.setBrightness(brushHSBColor.brightness+brightnessIncrement);
     }
 }
+*/
 
 void PMBaseLayer::keyPressed(ofKeyEventArgs &a){
 
