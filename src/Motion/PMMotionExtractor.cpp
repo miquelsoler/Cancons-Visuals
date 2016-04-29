@@ -68,6 +68,18 @@ void PMMotionExtractor::update()
 							handsInfo.rightHand.pos.y /= 424;
 							handsInfo.rightHand.pos.z = joint.second.getPosition().z;
 						}
+						else if (joint.first == JointType_KneeLeft) {
+							handsInfo.leftKnee.pos = joint.second.getProjected(kinect.getBodySource()->getCoordinateMapper(), ofxKFW2::ProjectionCoordinates::DepthCamera);
+							handsInfo.leftKnee.pos.x /= 512;
+							handsInfo.leftKnee.pos.y /= 424;
+							handsInfo.leftKnee.pos.z = joint.second.getPosition().z;
+						}
+						else if (joint.first == JointType_KneeRight) {
+							handsInfo.rightKnee.pos = joint.second.getProjected(kinect.getBodySource()->getCoordinateMapper(), ofxKFW2::ProjectionCoordinates::DepthCamera);
+							handsInfo.rightKnee.pos.x /= 512;
+							handsInfo.rightKnee.pos.y /= 424;
+							handsInfo.rightKnee.pos.z = joint.second.getPosition().z;
+						}
 						else if (joint.first == JointType_Head) {
 							auto headPos = joint.second.getProjected(kinect.getBodySource()->getCoordinateMapper(), ofxKFW2::ProjectionCoordinates::DepthCamera);
 							headPos.y /= 424;
@@ -95,6 +107,8 @@ void PMMotionExtractor::update()
 				ofNotifyEvent(eventUserDetection, hasUser, this);
 				rHandPosHist.clear();
 				lHandPosHist.clear();
+				rKneePosHist.clear();
+				lKneePosHist.clear();
 			}
 		}
 
@@ -168,9 +182,26 @@ KinectInfo* PMMotionExtractor::getKinectInfo() {
 	}
 	rHandPosMean /= rHandPosHist.size();
 
+	//Compute knee Mean value;
+	ofPoint lKneePosMean = ofPoint(0);
+	for (auto & tempPos : lKneePosHist) {
+		lKneePosMean += tempPos;
+	}
+	lKneePosMean /= lKneePosHist.size();
+
+	ofPoint rKneePosMean = ofPoint(0);
+	for (auto & tempPos : rKneePosHist) {
+		rKneePosMean += tempPos;
+	}
+	rKneePosMean /= rKneePosHist.size();
+
 	//Assign mean value to output value;
 	tempInfo.leftHand.pos = lHandPosMean;
 	tempInfo.rightHand.pos = rHandPosMean;
+
+	//Assign mean value to output value;
+	tempInfo.leftKnee.pos = lKneePosMean;
+	tempInfo.rightKnee.pos = rKneePosMean;
 
 	handsInfo = tempInfo;
 	return &handsInfo;
@@ -213,14 +244,27 @@ ofxKFW2::Data::Body* PMMotionExtractor::findClosestBody()
 
 void PMMotionExtractor::computeVelocity(int meanSize)
 {
+	//HANDS
 	while (rHandPosHist.size() > meanSize)
 		rHandPosHist.pop_back();
 	while (lHandPosHist.size() > meanSize)
 		lHandPosHist.pop_back();
 
+	//KNEES
+	while (rKneePosHist.size() > meanSize)
+		rKneePosHist.pop_back();
+	while (lKneePosHist.size() > meanSize)
+		lKneePosHist.pop_back();
+
+	//HANDS
 	rHandPosHist.push_front(handsInfo.rightHand.pos);
 	lHandPosHist.push_front(handsInfo.leftHand.pos);
 
+	//KNEES
+	rKneePosHist.push_front(handsInfo.rightKnee.pos);
+	lKneePosHist.push_front(handsInfo.leftKnee.pos);
+
+	//HANDS
 	ofPoint rHandPosMean = ofPoint(0);
 	for (auto & tempPos : rHandPosHist) {
 		rHandPosMean += tempPos;
@@ -233,6 +277,21 @@ void PMMotionExtractor::computeVelocity(int meanSize)
 	}
 	lHandPosMean /= lHandPosHist.size();
 
+	//KNEES
+	ofPoint rKneePosMean = ofPoint(0);
+	for (auto & tempPos : rKneePosHist) {
+		rKneePosMean += tempPos;
+	}
+	rKneePosMean /= rKneePosHist.size();
+
+	ofPoint lKneePosMean = ofPoint(0);
+	for (auto & tempPos : lKneePosHist) {
+		lKneePosMean += tempPos;
+	}
+	lKneePosMean /= lKneePosHist.size();
+
+
+	//HANDS
 	ofPoint rHandVel = ofPoint(0);
 	for (auto & tempPos : rHandPosHist) {
 		rHandVel = (tempPos - rHandPosMean)*(tempPos - rHandPosMean);
@@ -248,6 +307,24 @@ void PMMotionExtractor::computeVelocity(int meanSize)
 	lHandVel /= lHandPosHist.size();
 	lHandVel *= 1000;
 	handsInfo.leftHand.v = lHandVel;
+
+
+	//Knees
+	ofPoint rKneeVel = ofPoint(0);
+	for (auto & tempPos : rKneePosHist) {
+		rKneeVel = (tempPos - rKneePosMean)*(tempPos - rKneePosMean);
+	}
+	rKneeVel /= rKneePosHist.size();
+	rKneeVel *= 1000;
+	handsInfo.rightKnee.v = rKneeVel;
+
+	ofPoint lKneeVel = ofPoint(0);
+	for (auto & tempPos : lKneePosHist) {
+		lKneeVel = (tempPos - lKneePosMean)*(tempPos - lKneePosMean);
+	}
+	lKneeVel /= lKneePosHist.size();
+	lKneeVel *= 1000;
+	handsInfo.leftKnee.v = lKneeVel;
 }
 
 bool PMMotionExtractor::reset(bool kinectActivated) {

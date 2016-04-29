@@ -80,6 +80,9 @@ private:
 	deque<ofPoint> rHandPosHist;
 	deque<ofPoint> lHandPosHist;
 
+	deque<ofPoint> rKneePosHist;
+	deque<ofPoint> lKneePosHist;
+
 	//positioning variable
 	int positionDetectedCounter;
 };
