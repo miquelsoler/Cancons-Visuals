@@ -111,19 +111,19 @@ void PMBaseLayer::setup(ofPoint initialPosition)
     switch (kinectNodeType)
     {
         case KINECTNODE_RIGHTHAND: {
-            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand_joint;
+            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand;
             break;
         }
         case KINECTNODE_LEFTHAND: {
-            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand_joint;
+            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand;
             break;
         }
         case KINECTNODE_HEAD: {
-            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head_joint;
+            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head;
             break;
         }
         case KINECTNODE_TORSO: {
-            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso_joint;
+            kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso;
             break;
         }
     }
@@ -140,7 +140,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 
     brushRGBColor = PMColorsSelector::getInstance().getColor(layerID);
     brushRGBColor.getHsb(brushHSBColor.hue, brushHSBColor.saturation, brushHSBColor.brightness);
-    brushAlpha = 0;
+    brushAlpha = 1;
     didShoot = false;
 
 }
@@ -156,29 +156,29 @@ void PMBaseLayer::update()
     {
         switch (kinectNodeType) {
             case KINECTNODE_RIGHTHAND: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand_joint;
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand;
                 break;
             }
             case KINECTNODE_LEFTHAND: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand_joint;
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand;
                 break;
             }
 #if ENABLE_KNEES_DETECTION
             case KINECTNODE_HEAD: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightKnee_joint;
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightKnee;
                 break;
             }
             case KINECTNODE_TORSO: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftKnee_joint;
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftKnee;
                 break;
             }
 #else
             case KINECTNODE_HEAD: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head_joint;
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head;
                 break;
             }
             case KINECTNODE_TORSO: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso_joint;
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso;
                 break;
             }
 #endif
@@ -238,19 +238,19 @@ void PMBaseLayer::updateToShoot()
         switch(kinectNodeType)
         {
             case KINECTNODE_RIGHTHAND: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand_joint;
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand;
                 break;
             }
             case KINECTNODE_LEFTHAND: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand_joint;
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand;
                 break;
             }
             case KINECTNODE_HEAD: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head_joint;
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head;
                 break;
             }
             case KINECTNODE_TORSO: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso_joint;
+                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso;
                 break;
             }
         }

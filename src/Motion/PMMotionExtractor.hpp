@@ -24,10 +24,10 @@ struct KinectInfo
 {
 	KinectElement leftHand;
 	KinectElement rightHand;
-	KinectElement rightHand_joint;
-	KinectElement leftHand_joint;
-	KinectElement head_joint;
-	KinectElement torso_joint;
+	KinectElement leftKnee;
+	KinectElement rightKnee;
+	KinectElement head;
+	KinectElement torso;
 };
 
 class PMMotionExtractor

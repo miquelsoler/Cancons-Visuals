@@ -162,12 +162,12 @@ void PMRenderer::exportToImage(string path)
 void PMRenderer::resetPositions()
 {
     KinectElement kinectNodeData;
-    kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand_joint;
+    kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand;
     layers[0]->setPosition(ofPoint(ofGetWidth()/2, ofGetHeight()/2));
-    kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand_joint;
+    kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand;
     layers[1]->setPosition(ofPoint(ofGetWidth()/2, ofGetHeight()/2));
-    kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head_joint;
+    kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head;
     layers[2]->setPosition(ofPoint(ofGetWidth()/2, ofGetHeight()/2));
-    kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso_joint;
+    kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso;
     layers[3]->setPosition(ofPoint(ofGetWidth()/2, ofGetHeight()/2));
 }

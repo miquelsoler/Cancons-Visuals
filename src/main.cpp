@@ -27,8 +27,8 @@ int main()
     shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(mainSettings);
     
     ofGLFWWindowSettings guiSettings;
-    guiSettings.width = 530;
-    guiSettings.height = 700;
+    guiSettings.width = 1000;
+    guiSettings.height = 900;
     guiSettings.windowMode = OF_WINDOW;
     guiSettings.resizable = true;
     shared_ptr<ofAppBaseWindow> guiWindow = ofCreateWindow(guiSettings);
