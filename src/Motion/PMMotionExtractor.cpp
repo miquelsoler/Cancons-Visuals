@@ -121,9 +121,9 @@ void PMMotionExtractor::update()
 }
 
 ///--------------------------------------------------------------
-void PMMotionExtractor::draw(bool drawImage, bool drawHands)
+void PMMotionExtractor::draw()
 {
-	if (hasKinect && drawImage) {
+	if (true) {
 		auto infraredImage = kinect.getInfraredSource();
 		auto infraredPixels = infraredImage->getPixels();
 		for (auto & pixel : infraredPixels) {
@@ -134,7 +134,7 @@ void PMMotionExtractor::draw(bool drawImage, bool drawHands)
 		drawTexture.loadData(infraredPixels);
 		drawTexture.draw(0, 0, ofGetWidth(), ofGetHeight());
 	}
-	if (drawHands) {
+	if (false) {
 		ofPushStyle();
 		ofNoFill();
 		ofSetLineWidth(3);

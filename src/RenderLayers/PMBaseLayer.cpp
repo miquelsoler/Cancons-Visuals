@@ -27,6 +27,72 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 {
     
     ofRegisterKeyEvents(this);
+
+
+	//vector<PMDeviceAudioAnalyzer *> deviceAudioAnalyzers = *PMAudioAnalyzer::getInstance().getAudioAnalyzers();
+	//PMDeviceAudioAnalyzer *deviceAudioAnalyzer = deviceAudioAnalyzers[0];
+
+	settings.reload();
+
+	// Mapping values initialization
+	{
+		energyMin = settings.getEnergyMin(layerID);
+		energyMax = settings.getEnergyMax(layerID);
+		sizeMin = settings.getSizeMin(layerID);
+		sizeMax = settings.getSizeMax(layerID);
+		hueScaleFactor = settings.getHueScaleFactor(layerID);
+		hueVariation = settings.getHueVariation(layerID);
+		saturationScaleFactor = settings.getSaturationScaleFactor(layerID);
+		saturationVariation = settings.getSaturationVariation(layerID);
+		brightnessScaleFactor = settings.getBrightnessScaleFactor(layerID);
+		brightnessVariation = settings.getBrightnessVariation(layerID);
+		alphaMin = settings.getAlphaMin(layerID);
+		alphaMax = settings.getAlphaMax(layerID);
+		alphaScaleFactor = settings.getAlphaScaleFactor(layerID);
+		//Size Factors
+		sizeEnergyScaleFactor = settings.getSizeEnergyFactor(layerID);
+		sizeZScaleFactor = settings.getSizeZFactor(layerID);
+		sizeAccelerationScaleFactor = settings.getSizeAccelerationFactor(layerID);
+		//Alpha factors
+		alphaEnergyScaleFactor = settings.getAlphaEnergyFactor(layerID);
+		alphaZScaleFactor = settings.getAlphaZFactor(layerID);
+		alphaVelocityScaleFactor = settings.getAlphaVelocityFactor(layerID);
+
+		//Behaviour parameters
+		brushSpeed = settings.getSpeed(layerID);
+		curveSize = settings.getCurveSize(layerID);
+
+		//Shoot parameters
+		sizeShootDecrement = settings.getShootSizeDecrement(layerID);
+		speedShootDecrement = settings.getShootSpeedDecrement(layerID);
+		initialShootSpeeed = settings.getShootInitialSpeed(layerID);
+		initialShootSize = settings.getShootInitialSize(layerID);
+		shootCurveAmount = settings.getShootCurveAmount(layerID);
+}
+
+
+	//createGui to guiApp
+	PMSharedSettings shared = PMSharedSettings::getInstance();
+	auto layersGui = shared.guiApp->getGuiOfLayer(layerID);
+
+	//bindVariables
+	layersGui->bindEnergy(&energyMin, &energyMax);
+	layersGui->bindSize(&sizeMin, &sizeMax, &sizeEnergyScaleFactor, &sizeAccelerationScaleFactor, &sizeZScaleFactor);
+	layersGui->bindHue(&hueScaleFactor, &hueVariation);
+	layersGui->bindSaturation(&saturationScaleFactor, &saturationVariation);
+	layersGui->bindBrightness(&brightnessScaleFactor, &brightnessVariation);
+	layersGui->bindAlpha(&alphaMin, &alphaMax, &alphaScaleFactor, &alphaEnergyScaleFactor, &alphaVelocityScaleFactor, &alphaZScaleFactor);
+	layersGui->bindBehaviour(&brushSpeed, &curveSize);
+
+	//setup Gui
+	layersGui->init(layerID, 5, 5);
+	layersGui->setBackgroundColor(ofColor::gray);
+	layersGui->setVisible(false);
+
+	shared.guiApp->layoutGuis();
+
+	// TODO: Treure les crides que no s'utilitzin, si n'hi ha.
+	//ofAddListener(deviceAudioAnalyzer->eventMelBandsChanged, this, &PMBaseLayer::melBandsChanged);
     
     
 #if ENABLE_MULTIPLE_FBOS
@@ -77,70 +143,6 @@ void PMBaseLayer::setup(ofPoint initialPosition)
     brushAlpha = 0;
     didShoot = false;
 
-    //vector<PMDeviceAudioAnalyzer *> deviceAudioAnalyzers = *PMAudioAnalyzer::getInstance().getAudioAnalyzers();
-    //PMDeviceAudioAnalyzer *deviceAudioAnalyzer = deviceAudioAnalyzers[0];
-
-    settings.reload();
-
-    // Mapping values initialization
-    {
-        energyMin = settings.getEnergyMin(layerID);
-        energyMax = settings.getEnergyMax(layerID);
-        sizeMin = settings.getSizeMin(layerID);
-        sizeMax = settings.getSizeMax(layerID);
-        hueScaleFactor = settings.getHueScaleFactor(layerID);
-        hueVariation = settings.getHueVariation(layerID);
-        saturationScaleFactor = settings.getSaturationScaleFactor(layerID);
-        saturationVariation = settings.getSaturationVariation(layerID);
-        brightnessScaleFactor = settings.getBrightnessScaleFactor(layerID);
-        brightnessVariation = settings.getBrightnessVariation(layerID);
-        alphaMin = settings.getAlphaMin(layerID);
-        alphaMax = settings.getAlphaMax(layerID);
-        alphaScaleFactor = settings.getAlphaScaleFactor(layerID);
-        //Size Factors
-        sizeEnergyScaleFactor = settings.getSizeEnergyFactor(layerID);
-        sizeZScaleFactor = settings.getSizeZFactor(layerID);
-        sizeAccelerationScaleFactor = settings.getSizeAccelerationFactor(layerID);
-        //Alpha factors
-        alphaEnergyScaleFactor = settings.getAlphaEnergyFactor(layerID);
-        alphaZScaleFactor = settings.getAlphaZFactor(layerID);
-        alphaVelocityScaleFactor = settings.getAlphaVelocityFactor(layerID);
-        
-        //Behaviour parameters
-        brushSpeed = settings.getSpeed(layerID);
-        curveSize = settings.getCurveSize(layerID);
-        
-        //Shoot parameters
-        sizeShootDecrement = settings.getShootSizeDecrement(layerID);
-        speedShootDecrement = settings.getShootSpeedDecrement(layerID);
-        initialShootSpeeed = settings.getShootInitialSpeed(layerID);
-        initialShootSize = settings.getShootInitialSize(layerID);
-        shootCurveAmount = settings.getShootCurveAmount(layerID);
-    }
-    
-    
-    //createGui to guiApp
-    PMSharedSettings shared = PMSharedSettings::getInstance();
-    auto layersGui = shared.guiApp->getGuiOfLayer(layerID);
-    
-    //bindVariables
-    layersGui->bindEnergy(&energyMin, &energyMax);
-    layersGui->bindSize(&sizeMin, &sizeMax, &sizeEnergyScaleFactor, &sizeAccelerationScaleFactor, &sizeZScaleFactor);
-    layersGui->bindHue(&hueScaleFactor, &hueVariation);
-    layersGui->bindSaturation(&saturationScaleFactor, &saturationVariation);
-    layersGui->bindBrightness(&brightnessScaleFactor, &brightnessVariation);
-    layersGui->bindAlpha(&alphaMin, &alphaMax, &alphaScaleFactor, &alphaEnergyScaleFactor, &alphaVelocityScaleFactor, &alphaZScaleFactor);
-    layersGui->bindBehaviour(&brushSpeed, &curveSize);
-    
-    //setup Gui
-    layersGui->init(layerID, 5, 5);
-    layersGui->setBackgroundColor(ofColor::gray);
-    layersGui->setVisible(false);
-    
-    shared.guiApp->layoutGuis();
-
-    // TODO: Treure les crides que no s'utilitzin, si n'hi ha.
-    //ofAddListener(deviceAudioAnalyzer->eventMelBandsChanged, this, &PMBaseLayer::melBandsChanged);
 }
 
 void PMBaseLayer::update()

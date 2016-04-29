@@ -48,12 +48,15 @@ public:
 
 	bool setup();
 	void update();
-	void draw(bool drawImage, bool drawHands);
+	void draw();
 	void exit();
+
+	void start() {};
+	void stop() {};
 
 	bool reset(bool kinectActivated);
 	bool isTracking() {
-		return true;
+		return hasUser;
 	};
 
 	void computeVelocity(int meanSize);
