@@ -31,7 +31,9 @@ void PMSc10Thanks::setup()
     //Primer ha de pillar el nom, sino No es pot generar l'fbo
     songName = PMSongSelector::getInstance().getSongname();
     userName = "Interpretat per " + PMSharedSettings::getInstance().getUserName();
-    dateName = ofGetTimestampString("%d/%m/%Y, %H%:%M");
+	//TODO: Fix this, is not working on win
+    //dateName = ofGetTimestampString("%d/%m/%Y, %H%:%M");
+	dateName = "01/12/16, 10:26";
 
     //carrega la imatge, alloca el fbo i genera fbo
     ofClear(0, 0, 0);

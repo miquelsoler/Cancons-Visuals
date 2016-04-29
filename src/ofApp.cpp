@@ -146,15 +146,15 @@ void ofApp::keyReleased(int key)
         }
         case OF_KEY_UP:
         case OF_KEY_RIGHT: {
-#ifdef OF_DEBUG
-
+//#ifdef OF_DEBUG
+			cout << "nextScene" << endl;
             if(currentScene!=9)
                 sceneManager.nextScene(true);
             else{
                 string toScene = "Scene 2";
                 changeScene(toScene);
             }
-#endif
+//#endif
             break;
         }
         case OF_KEY_DOWN:
