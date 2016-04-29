@@ -6,12 +6,13 @@
 #define PMCANCONS_VISUALS_PMBASELAYER_H
 
 #include "ofMain.h"
-#include "../UI/PMBrushesSelector.hpp"
-#include "../Motion/PMMotionExtractor.hpp"
-//#include "PMAudioAnalyzer.hpp"
-#include "../Defaults.h"
-#include "../JSONSettings/LayerMappings/PMSettingsManagerLayers.h"
-#include "../UICanvas/PMUICanvasLayers.h"
+#include "PMBrushesSelector.hpp"
+#include "PMMotionExtractor.hpp"
+#include "PMAudioAnalyzer.hpp"
+#include "PMMotionExtractor.hpp"
+#include "Defaults.h"
+#include "PMSettingsManagerLayers.h"
+#include "PMUICanvasLayers.h"
 
 const static unsigned int   KINECT_ACCEL_FACTOR = 20;
 const static float          KINECT_ACCEL_THRESHOLD = 0.5f;
@@ -55,7 +56,7 @@ public:
 #endif
 
     // Audio listeners
-    //virtual void melBandsChanged(melBandsParams &melBandsParams);
+    virtual void melBandsChanged(melBandsParams &melBandsParams);
 
 protected:
 
@@ -116,8 +117,6 @@ protected:
     float                   alphaZScaleFactor;
     float                   alphaVelocityScaleFactor;
     
-    //Gui
-    PMUICanvasLayers*       layersGui;
 
     // JSON settings
     PMSettingsManagerLayers settings;

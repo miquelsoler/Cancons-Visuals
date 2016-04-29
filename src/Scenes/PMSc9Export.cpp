@@ -31,6 +31,7 @@ void PMSc9Export::setup()
 #if ENABLE_KINECT
     PMMotionExtractor::getInstance().stop();
 #endif
+    ofDisableAlphaBlending();
 }
 
 void PMSc9Export::update()
@@ -43,6 +44,7 @@ void PMSc9Export::update()
 
 void PMSc9Export::exit()
 {
+    ofEnableAlphaBlending();
 //    PMSharedSettings::getInstance().setUserName(textInput);
 }
 

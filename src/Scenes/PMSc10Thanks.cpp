@@ -7,9 +7,9 @@
 //
 
 #include "PMSc10Thanks.hpp"
-#include "../UI/PMSongSelector.hpp"
-#include "../SharedSettings/PMSharedSettings.h"
-#include "../Motion/PMMotionExtractor.hpp"
+#include "PMSongSelector.hpp"
+#include "PMSharedSettings.h"
+#include "PMMotionExtractor.hpp"
 
 const static int COUNTDOWN_TIME = 15;
 
@@ -31,9 +31,7 @@ void PMSc10Thanks::setup()
     //Primer ha de pillar el nom, sino No es pot generar l'fbo
     songName = PMSongSelector::getInstance().getSongname();
     userName = "Interpretat per " + PMSharedSettings::getInstance().getUserName();
-	//TODO: Fix this, is not working on win
-    //dateName = ofGetTimestampString("%d/%m/%Y, %H%:%M");
-	dateName = "01/12/16, 10:26";
+    dateName = ofGetTimestampString("%d/%m/%Y, %H%:%M");
 
     //carrega la imatge, alloca el fbo i genera fbo
     ofClear(0, 0, 0);
@@ -55,9 +53,10 @@ void PMSc10Thanks::setup()
 
     //imprimir fbo.
 
-
+#if ENABLE_PRINTING
     string c = "lp -o media=Custom.4x6in -o page-left=0 -o page-right=0 -o page-top=0 -o page-bottom=0 " + ofToDataPath(saveFilename);
     system(c.c_str());
+#endif
 
     countdown.set();
     countdown.setAlarm(COUNTDOWN_TIME * 1000);
@@ -77,11 +76,13 @@ void PMSc10Thanks::update()
         string toScene = "Scene 2";
         ofNotifyEvent(goToSceneEvent, toScene, this);
     }
+#if ENABLE_KINECT
     if(count==2){
         PMMotionExtractor::getInstance().exit();
     }else if(count==60){
         PMMotionExtractor::getInstance().setup();
     }
+#endif
     count++;
 }
 
@@ -154,4 +155,13 @@ void PMSc10Thanks::drawLeftAlignString(ofTrueTypeFont &font, string s, int x, in
 {
     int halfStringHeight = font.stringHeight(s) / 2;
     font.drawString(s, x, y + halfStringHeight);
+}
+
+void PMSc10Thanks::keyPressed(ofKeyEventArgs &keyargs){
+#ifdef OF_DEBUG
+    if(keyargs.key == ' '){
+        string sceneToChange = "Scene 2";
+        ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+    }
+#endif
 }

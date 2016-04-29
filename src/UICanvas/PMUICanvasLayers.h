@@ -71,6 +71,7 @@ protected:
 private:
     
     int layer;
+    bool guiCreated;
     
     // Matrix --------------------------------
     ofxUIToggleMatrix       *presetsMatrix;

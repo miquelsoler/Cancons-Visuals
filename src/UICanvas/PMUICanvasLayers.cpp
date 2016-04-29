@@ -9,10 +9,12 @@ static const unsigned int PRESETSMATRIX_NUMCOLS = 6;
 
 PMUICanvasLayers::PMUICanvasLayers(string title, int headerFontSize) : PMBaseUICanvas(title, headerFontSize)
 {
+    guiCreated=false;
 }
 
 void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int width, int height)
 {
+    if(guiCreated) clearWidgets();
     PMBaseUICanvas::init(posX, posY, autosize, width, height);
     layer = layerNum;
     
@@ -76,6 +78,8 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
     addSlider("Curve Size", 0, 20, curveSize);
     
     if (autosize) autoSizeToFitWidgets();
+    
+    guiCreated = true;
 }
 
 void PMUICanvasLayers::clear()

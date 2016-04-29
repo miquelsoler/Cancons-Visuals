@@ -6,6 +6,7 @@
 #define PMCANCONS_VISUALS_PMSHAREDSETTINGS_H
 
 #include "ofMain.h"
+#include "guiApp.h"
 
 class PMSharedSettings
 {
@@ -26,6 +27,8 @@ public:
     {
         PMSharedSettings::userName = userName;
     }
+    
+    shared_ptr<GUIApp> guiApp;
 
 private:
 

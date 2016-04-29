@@ -1,0 +1,170 @@
+{
+	"Layers" : [
+		{
+			"ID" : 1,
+			"Energy": {
+      			"Min (N)": 0.0,
+      			"Max (N)": 0.1
+			},
+			"Size": {
+				"Min": 10,
+				"Max": 120,
+                "Scale Energy Factor": 1,
+                "Scale Acceleration Factor": 0.5,
+                "Scale Z Factor": 0.5
+			},
+   	   		"Hue": {
+   	   			"Scale Factor": 1,
+                "Variation": 0.05
+  	    	},
+  	    	"Saturation": {
+              "Scale Factor": 1,
+              "Variation": 0.1
+  	    	},
+  	    	"Brightness": {
+              "Scale Factor": 1.5,
+              "Variation": 0.3
+  	    	},
+  	    	"Alpha": {
+      			"Min (N)": 0.1,
+      			"Max (N)": 0.8,
+   	   			"Scale Factor": 1,
+                "Scale Energy Factor": 1,
+                "Scale Velocity Factor": 0.5,
+                "Scale Z Factor": 0.5
+            },
+            "Behaviour": {
+                "Speed": 2,
+                "Curve Size": 7
+            }
+		},
+		{
+			"ID" : 2,
+			"Energy": {
+      			"Min (N)": 0.0,
+      			"Max (N)": 0.1
+			},
+			"Size": {
+				"Min": 10,
+				"Max": 120,
+                "Scale Energy Factor": 1,
+                "Scale Acceleration Factor": 0.5,
+                "Scale Z Factor": 0.5
+			},
+   	   		"Hue": {
+              "Scale Factor": 1,
+              "Variation": 0.05
+  	    	},
+  	    	"Saturation": {
+              "Scale Factor": 1,
+              "Variation": 0.05
+  	    	},
+  	    	"Brightness": {
+              "Scale Factor": 1,
+              "Variation": 0.1
+  	    	},
+  	    	"Alpha": {
+      			"Min (N)": 0.1,
+      			"Max (N)": 0.8,
+   	   			"Scale Factor": 1,
+                "Scale Energy Factor": 1,
+                "Scale Velocity Factor": 0.5,
+                "Scale Z Factor": 0.5
+            },
+            "Behaviour": {
+                "Speed": 3,
+                "Curve Size": 2
+            }
+		},
+		{
+			"ID" : 3,    // la que fa els cercles
+			"Energy": {
+      			"Min (N)": 0.0,
+      			"Max (N)": 0.1
+			},
+			"Size": {
+				"Min": 50,
+				"Max": 100,
+                "Scale Energy Factor": 1,
+                "Scale Acceleration Factor": 0.5,
+                "Scale Z Factor": 0.5
+			},
+   	   		"Hue": {
+              "Scale Factor": 1,
+              "Variation": 0.0
+  	    	},
+  	    	"Saturation": {
+              "Scale Factor": 1,
+              "Variation": 0.1
+  	    	},
+  	    	"Brightness": {
+              "Scale Factor": 1,
+              "Variation": 0.1
+  	    	},
+  	    	"Alpha": {
+      			"Min (N)": 0.1,
+      			"Max (N)": 0.7,
+   	   			"Scale Factor": 1.,
+                "Scale Energy Factor": 1,
+                "Scale Velocity Factor": 0.5,
+                "Scale Z Factor": 0.5
+ 	     	},
+            "Behaviour": {
+                "Speed": 2,
+                "Curve Size": 6
+            },
+            "Shoot Behaviour": {
+                "Initial Size": 20,
+                "Initial Speed": 8,
+                "Speed Decrement": 0.1,
+                "Size Decrement": 2,
+                "Curve Amount": 3
+            }
+		},
+		{
+			"ID" : 4,
+                "Energy": {
+                "Min (N)": 0.0,
+                "Max (N)": 0.1
+            },
+            "Size": {
+                "Min": 1,
+                "Max": 120,
+                "Scale Energy Factor": 0.1,
+                "Scale Acceleration Factor": 0.5,
+                "Scale Z Factor": 0.5
+            },
+            "Hue": {
+                "Scale Factor": 1,
+                "Variation": 0.0
+            },
+            "Saturation": {
+                "Scale Factor": 1,
+                "Variation": 0.1
+            },
+            "Brightness": {
+                "Scale Factor": 1,
+                "Variation": 0.5
+            },
+            "Alpha": {
+                "Min (N)": 0.1,
+                "Max (N)": 0.7,
+                "Scale Factor": 1,
+                "Scale Energy Factor": 1,
+                "Scale Velocity Factor": 0.5,
+                "Scale Z Factor": 0.5
+            },
+            "Behaviour": {
+                "Speed": 2,
+                "Curve Size": 6
+            },
+            "Shoot Behaviour": {
+                "Initial Size": 2,
+                "Initial Speed": 7,
+                "Speed Decrement": 0.1,
+                "Size Decrement": 1,
+                "Curve Amount": 3
+            }
+		}
+	]
+}

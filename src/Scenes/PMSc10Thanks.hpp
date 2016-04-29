@@ -26,6 +26,8 @@ public:
     void updateEnter() { PMBaseScene::updateEnter(); };
     void updateExit() { PMBaseScene::updateExit(); };
     
+    void keyPressed(ofKeyEventArgs &keyargs);
+    
     void drawIntoFbo();
     
     void drawRightAlignString(ofTrueTypeFont &font, string s, int x, int y);

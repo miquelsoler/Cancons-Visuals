@@ -1,22 +1,25 @@
 #pragma once
 
+#include "GUIApp.h"
 
 #include "ofMain.h"
-//#include "PMAudioAnalyzer.hpp"
-#include "Motion/PMMotionExtractor.hpp"
+#include "PMAudioAnalyzer.hpp"
+#include "PMMotionExtractor.hpp"
 #include "ofxAppUtils.h"
+#include "ofxOpenNI.h"
+#include "ofxKinectFeatures.h"
+#include "PMSharedSettings.h"
 
-
-#include "Scenes/PMSc1Settings.hpp"
-#include "Scenes/PMSc2Start.hpp"
-#include "Scenes/PMSc3Song_Choose.hpp"
-#include "Scenes/PMSc4Palette_Choose.hpp"
-#include "Scenes/PMSc5Brushes_Choose.hpp"
-#include "Scenes/PMSc6Kinect_Detect.hpp"
-#include "Scenes/PMSc7Countdown.hpp"
-#include "Scenes/PMSc8Main.hpp"
-#include "Scenes/PMSc9Export.hpp"
-#include "Scenes/PMSc10Thanks.hpp"
+#include "PMSc1Settings.hpp"
+#include "PMSc2Start.hpp"
+#include "PMSc3Song_Choose.hpp"
+#include "PMSc4Palette_Choose.hpp"
+#include "PMSc5Brushes_Choose.hpp"
+#include "PMSc6Kinect_Detect.hpp"
+#include "PMSc7Countdown.hpp"
+#include "PMSc8Main.hpp"
+#include "PMSc9Export.hpp"
+#include "PMSc10Thanks.hpp"
 
 class ofApp : public ofxApp
 {
@@ -44,10 +47,17 @@ public:
 //    void dragEvent(ofDragInfo dragInfo);
 //    void gotMessage(ofMessage msg);
     void changeScene(string &scene);
+    
+    void setGuiApp(const shared_ptr<GUIApp> &guiApp) {
+        ofApp::guiApp = guiApp;
+        PMSharedSettings::getInstance().guiApp = guiApp;
+    };
 
 private:
+    
+    shared_ptr<GUIApp> guiApp;
 
-    //PMDeviceAudioAnalyzer *audioAnalyzer;
+    PMDeviceAudioAnalyzer *audioAnalyzer;
 
     bool showFPS;
     bool isFullScreen;

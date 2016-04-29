@@ -3,8 +3,9 @@
 //
 
 #include "PMBaseLayer.h"
-#include "../UI/PMColorsSelector.hpp"
-#include "../JSONSettings/LayerMappings/PMSettingsManagerLayers.h"
+#include "PMColorsSelector.hpp"
+#include "PMSettingsManagerLayers.h"
+#include "PMSharedSettings.h"
 
 PMBaseLayer::PMBaseLayer(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType)
 {
@@ -76,8 +77,8 @@ void PMBaseLayer::setup(ofPoint initialPosition)
     brushAlpha = 0;
     didShoot = false;
 
-    //vector<PMDeviceAudioAnalyzer *> deviceAudioAnalyzers = *PMAudioAnalyzer::getInstance().getAudioAnalyzers();
-    //PMDeviceAudioAnalyzer *deviceAudioAnalyzer = deviceAudioAnalyzers[0];
+    vector<PMDeviceAudioAnalyzer *> deviceAudioAnalyzers = *PMAudioAnalyzer::getInstance().getAudioAnalyzers();
+    PMDeviceAudioAnalyzer *deviceAudioAnalyzer = deviceAudioAnalyzers[0];
 
     settings.reload();
 
@@ -117,8 +118,10 @@ void PMBaseLayer::setup(ofPoint initialPosition)
         shootCurveAmount = settings.getShootCurveAmount(layerID);
     }
     
-    //createGui
-    layersGui = new PMUICanvasLayers("LAYER PARAMETERS", OFX_UI_FONT_MEDIUM);
+    
+    //createGui to guiApp
+    PMSharedSettings shared = PMSharedSettings::getInstance();
+    auto layersGui = shared.guiApp->getGuiOfLayer(layerID);
     
     //bindVariables
     layersGui->bindEnergy(&energyMin, &energyMax);
@@ -134,9 +137,10 @@ void PMBaseLayer::setup(ofPoint initialPosition)
     layersGui->setBackgroundColor(ofColor::gray);
     layersGui->setVisible(false);
     
+    shared.guiApp->layoutGuis();
 
     // TODO: Treure les crides que no s'utilitzin, si n'hi ha.
-    //ofAddListener(deviceAudioAnalyzer->eventMelBandsChanged, this, &PMBaseLayer::melBandsChanged);
+    ofAddListener(deviceAudioAnalyzer->eventMelBandsChanged, this, &PMBaseLayer::melBandsChanged);
 }
 
 void PMBaseLayer::update()
@@ -179,8 +183,8 @@ void PMBaseLayer::update()
         }
     }
 #else
-    kinectNodeData.pos.x = (float) (ofGetMouseX() + (layerID-2)*30 )/ ofGetWidth();
-    kinectNodeData.pos.y = (float) (ofGetMouseY() + (layerID-2)*30 )/ ofGetHeight();
+    kinectNodeData.x = (float) (ofGetMouseX() + (layerID-2)*30 )/ ofGetWidth();
+    kinectNodeData.y = (float) (ofGetMouseY() + (layerID-2)*30 )/ ofGetHeight();
     kinectNodeData.v = ofPoint(0, 0);
 #endif
 
@@ -188,18 +192,18 @@ void PMBaseLayer::update()
     // Direction changes
     ofPoint newDirection;
     if(layerID==1)
-        newDirection = ofPoint(ofMap(kinectNodeData.pos.x, 0.2,1, 0, fboWidth), kinectNodeData.pos.y * fboHeight) - brushPosition;
+        newDirection = ofPoint(ofMap(kinectNodeData.x, 0.2,1, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
     else if(layerID==2)
-        newDirection = ofPoint(ofMap(kinectNodeData.pos.x, 0,0.8, 0, fboWidth), kinectNodeData.pos.y * fboHeight) - brushPosition;
+        newDirection = ofPoint(ofMap(kinectNodeData.x, 0,0.8, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
 #if ENABLE_KNEES_DETECTION
     //detection of knees
     else if(layerID == 3)
-        newDirection = ofPoint(ofMap(kinectNodeData.pos.x, 0.2,1, 0, fboWidth), kinectNodeData.pos.y * fboHeight) - brushPosition;
+        newDirection = ofPoint(ofMap(kinectNodeData.x, 0.2,1, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
     else if(layerID == 4)
-        newDirection = ofPoint(ofMap(kinectNodeData.pos.x, 0,0.8, 0, fboWidth), kinectNodeData.pos.y * fboHeight) - brushPosition;
+        newDirection = ofPoint(ofMap(kinectNodeData.x, 0,0.8, 0, fboWidth), kinectNodeData.y * fboHeight) - brushPosition;
 #else
     else if(layerID==3 || layerID==4)
-        newDirection = ofPoint(kinectNodeData.pos.x * fboWidth, kinectNodeData.pos.y * fboHeight) - brushPosition;
+        newDirection = ofPoint(kinectNodeData.x * fboWidth, kinectNodeData.y * fboHeight) - brushPosition;
 #endif
     
     brushDirection += ((newDirection.normalize()) * curveSize);
@@ -218,8 +222,8 @@ void PMBaseLayer::update()
 void PMBaseLayer::updateToShoot()
 {
     if(layerID==4){
-        ofPoint layer1pos=ofPoint(ofMap(kinectNodeData.pos.x, 0.2,1, 0, fboWidth), kinectNodeData.pos.y * fboHeight);
-        ofPoint layer2pos=ofPoint(ofMap(kinectNodeData.pos.x, 0,0.8, 0, fboWidth), kinectNodeData.pos.y * fboHeight);
+        ofPoint layer1pos=ofPoint(ofMap(kinectNodeData.x, 0.2,1, 0, fboWidth), kinectNodeData.y * fboHeight);
+        ofPoint layer2pos=ofPoint(ofMap(kinectNodeData.x, 0,0.8, 0, fboWidth), kinectNodeData.y * fboHeight);
         brushInitalPosition=(layer1pos+layer2pos)/2;
     }
     
@@ -345,7 +349,6 @@ void PMBaseLayer::setBrushSize(int _brushSize)
 
 #pragma mark - Audio events
 
-/*
 void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
 {
     // Layer4: band0 - Layer1: band1 - Layer2: band2 - Layer3: band3
@@ -463,13 +466,9 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
         brushRGBColor.setBrightness(brushHSBColor.brightness+brightnessIncrement);
     }
 }
-*/
 
 void PMBaseLayer::keyPressed(ofKeyEventArgs &a){
-    int key=a.key;
-    if(key != ofToChar(ofToString(layerID))) return;
-    if(layersGui->isVisible()) layersGui->setVisible(false);
-    else layersGui->setVisible(true);
+
 }
 
 void PMBaseLayer::keyReleased(ofKeyEventArgs &a){
