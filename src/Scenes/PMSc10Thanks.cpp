@@ -7,9 +7,9 @@
 //
 
 #include "PMSc10Thanks.hpp"
-#include "PMSongSelector.hpp"
-#include "PMSharedSettings.h"
-#include "PMMotionExtractor.hpp"
+#include "../UI/PMSongSelector.hpp"
+#include "../SharedSettings/PMSharedSettings.h"
+#include "../Motion/PMMotionExtractor.hpp"
 
 const static int COUNTDOWN_TIME = 15;
 

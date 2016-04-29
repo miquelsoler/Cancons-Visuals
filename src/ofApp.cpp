@@ -18,12 +18,12 @@ void ofApp::setup()
 
     // Initialize audio analyzer
     {
-        PMSettingsManagerAudioAnalyzers settingsAA = PMSettingsManagerAudioAnalyzers::getInstance();
+        //PMSettingsManagerAudioAnalyzers settingsAA = PMSettingsManagerAudioAnalyzers::getInstance();
         
-        PMAudioAnalyzer::getInstance().init(
-                                            settingsAA.getSilenceThreshold(), settingsAA.getSilenceQueueLength(),
-                                            settingsAA.getOnsetsThreshold(),
-                                            settingsAA.getAscDescAnalysisSize());
+       // PMAudioAnalyzer::getInstance().init(
+       //                                     settingsAA.getSilenceThreshold(), settingsAA.getSilenceQueueLength(),
+       //                                     settingsAA.getOnsetsThreshold(),
+       //                                     settingsAA.getAscDescAnalysisSize());
     }
 
     // General Settings

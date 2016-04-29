@@ -9,11 +9,10 @@
 #ifndef PMSc8Main_hpp
 #define PMSc8Main_hpp
 
-#include <stdio.h>
 #include "PMBaseScene.hpp"
-#include "PMMotionExtractor.hpp"
-#include "PMRenderer.h"
-#include "PMUICanvasAudioAnalyzer.h"
+#include "../motion/PMMotionExtractor.hpp"
+#include "../RenderLayers/PMRenderer.h"
+//#include "PMUICanvasAudioAnalyzer.h"
 
 #endif /* PMSc8Main_hpp */
 
@@ -47,8 +46,8 @@ private:
     PMRenderer *renderer;
 //    vector<PMBaseRenderer *> renderers;
     
-    PMUICanvasAudioAnalyzer* guiAudioAnalyzer;
-    bool                    guiAudioAnalyzerCreated;
+    //PMUICanvasAudioAnalyzer* guiAudioAnalyzer;
+    //bool                    guiAudioAnalyzerCreated;
     
     PMMotionExtractor* motionExtractor;
     KinectInfo* kinectInfo;

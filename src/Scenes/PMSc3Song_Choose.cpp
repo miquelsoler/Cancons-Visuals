@@ -7,7 +7,7 @@
 //
 
 #include "PMSc3Song_Choose.hpp"
-#include "PMSongSelector.hpp"
+#include "../UI/PMSongSelector.hpp"
 
 PMSc3Song_Choose::PMSc3Song_Choose() : PMBaseScene("Scene 3")
 {

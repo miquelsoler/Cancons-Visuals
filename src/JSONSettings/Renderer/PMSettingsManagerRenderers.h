@@ -7,8 +7,8 @@
 #ifndef PMCONCERTPARAULES_PMSETTINGSMANAGERRENDERERS_H
 #define PMCONCERTPARAULES_PMSETTINGSMANAGERRENDERERS_H
 
-#include "PMSettingsManager.h"
-#include "PMSettingsRenderer.h"
+#include "../PMSettingsManager.h"
+#include "../AudioDevices/PMSettingsRenderer.h"
 
 
 class PMSettingsManagerRenderers : public PMSettingsManager

@@ -10,10 +10,9 @@
 #define PMBrushesSelector_hpp
 
 
-#include <stdio.h>
 #include "ofMain.h"
-#include "PMImageContainer.hpp"
-#include "PMColorContainer.hpp"
+#include "Containers/PMImageContainer.hpp"
+#include "Containers/PMColorContainer.hpp"
 
 class PMBrushesSelector
 {

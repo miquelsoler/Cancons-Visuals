@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include "PMBaseScene.hpp"
-#include "PMTextContainer.hpp"
+#include "../UI/Containers/PMTextContainer.hpp"
 
 #endif /* PMSc2Start_hpp */
 

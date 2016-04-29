@@ -1,9 +1,7 @@
-ofxAppUtils-PM
-ofxAubio
 ofxGui
+ofxXmlSettings
+ofxAppUtils-PM
 ofxJSON
 ofxKinectForWindows2
-ofxSceneManager
 ofxTween
 ofxUI
-ofxXmlSettings

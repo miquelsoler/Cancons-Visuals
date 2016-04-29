@@ -9,9 +9,7 @@
 #ifndef PMSc1Settings_hpp
 #define PMSc1Settings_hpp
 
-#include <stdio.h>
 #include "PMBaseScene.hpp"
-#include "PMAudioAnalyzer.hpp"
 
 #include "ofxUI.h"
 
@@ -38,5 +36,5 @@ private:
     ofxUISuperCanvas *gui_song;
     ofxUIDropDownList *ddl;
 
-    int findSoundflowerDeviceIndex();
+    //int findSoundflowerDeviceIndex();
 };

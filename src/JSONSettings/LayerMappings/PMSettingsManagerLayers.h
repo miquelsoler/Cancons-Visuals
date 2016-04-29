@@ -5,7 +5,7 @@
 #ifndef PMCANCONS_VISUALS_PMLAYERMAPPINGS_H
 #define PMCANCONS_VISUALS_PMLAYERMAPPINGS_H
 
-#include "PMSettingsManager.h"
+#include "../PMSettingsManager.h"
 
 class PMSettingsManagerLayers : public PMSettingsManager
 {

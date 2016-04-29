@@ -11,7 +11,6 @@
 
 #pragma once
 
-#include <stdio.h>
 #include "ofMain.h"
 #include "ofxKinectForWindows2.h"
 
@@ -60,7 +59,8 @@ public:
 	void computeVelocity(int meanSize);
 	ofPixels getColorPixels();
 
-	KinectInfo getKinectInfo();
+	KinectInfo *getKinectInfo();
+	void resetUsers() {};
 
 	ofxKFW2::Data::Body* findClosestBody();
 

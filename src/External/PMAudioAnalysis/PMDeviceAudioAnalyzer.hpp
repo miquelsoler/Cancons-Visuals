@@ -11,7 +11,6 @@
 #ifndef PMDeviceAudioAnalyzer_hpp
 #define PMDeviceAudioAnalyzer_hpp
 
-#include <stdio.h>
 #include "ofMain.h"
 #include "ofxAubio.h"
 #include "PMAudioInParams.h"

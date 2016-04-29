@@ -11,7 +11,7 @@
 #ifndef __ConductrEnter__SettingsManager__
 #define __ConductrEnter__SettingsManager__
 
-#include <stdio.h>
+#include "ofMain.h"
 #include "ofxJSON.h"
 
 

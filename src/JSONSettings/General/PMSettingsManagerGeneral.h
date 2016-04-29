@@ -7,7 +7,7 @@
 #ifndef PMCONCERTPARAULES_PMSETTINGSMANAGERGENERAL_H
 #define PMCONCERTPARAULES_PMSETTINGSMANAGERGENERAL_H
 
-#include "PMSettingsManager.h"
+#include "../PMSettingsManager.h"
 
 class PMSettingsManagerGeneral : public PMSettingsManager
 {

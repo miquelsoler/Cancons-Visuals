@@ -152,7 +152,7 @@ void PMMotionExtractor::exit()
 	kinect.close();
 }
 
-KinectInfo PMMotionExtractor::getKinectInfo() {
+KinectInfo* PMMotionExtractor::getKinectInfo() {
 	KinectInfo tempInfo = handsInfo;
 
 	//Compute hand Mean value;
@@ -172,7 +172,8 @@ KinectInfo PMMotionExtractor::getKinectInfo() {
 	tempInfo.leftHand.pos = lHandPosMean;
 	tempInfo.rightHand.pos = rHandPosMean;
 
-	return tempInfo;
+	handsInfo = tempInfo;
+	return &handsInfo;
 }
 
 ofxKFW2::Data::Body* PMMotionExtractor::findClosestBody()

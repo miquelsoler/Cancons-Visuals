@@ -35,18 +35,18 @@ void PMSc1Settings::setup()
     iDev = 0;
 #endif
 
-    vector<ofSoundDevice> devices = PMAudioAnalyzer::getInstance().getInputDevices();
-
-//    unsigned int audioInputIndex = (unsigned int)iDev;
-    unsigned int audioInputIndex = 0;
-    vector<unsigned int> enabledChannelNumbers;
-    for (unsigned int i=0; i<devices[iDev].inputChannels; ++i)
-        enabledChannelNumbers.push_back(i);
-
-    PMAudioAnalyzer::getInstance().addDeviceAnalyzer(audioInputIndex, devices[iDev].deviceID,
-                                                                 devices[iDev].inputChannels, devices[iDev].outputChannels,
-                                                                 DEFAULT_SAMPLERATE, DEFAULT_BUFFERSIZE,
-                                                                 enabledChannelNumbers);
+//    vector<ofSoundDevice> devices = PMAudioAnalyzer::getInstance().getInputDevices();
+//
+////    unsigned int audioInputIndex = (unsigned int)iDev;
+//    unsigned int audioInputIndex = 0;
+//    vector<unsigned int> enabledChannelNumbers;
+//    for (unsigned int i=0; i<devices[iDev].inputChannels; ++i)
+//        enabledChannelNumbers.push_back(i);
+//
+//    PMAudioAnalyzer::getInstance().addDeviceAnalyzer(audioInputIndex, devices[iDev].deviceID,
+//                                                                 devices[iDev].inputChannels, devices[iDev].outputChannels,
+//                                                                 DEFAULT_SAMPLERATE, DEFAULT_BUFFERSIZE,
+//                                                                 enabledChannelNumbers);
     
     string sceneToChange="Scene 2";
     ofNotifyEvent(goToSceneEvent, sceneToChange, this);
@@ -79,20 +79,20 @@ void PMSc1Settings::draw()
 {
 }
 
-int PMSc1Settings::findSoundflowerDeviceIndex()
-{
-    int deviceIndex = -1;
-
-    vector<ofSoundDevice> devices = PMAudioAnalyzer::getInstance().getInputDevices();
-    bool found = false;
-
-    for (unsigned int i=0; i<devices.size() && !found; ++i)
-    {
-        string deviceName = devices[i].name;
-        found = (ofIsStringInString(deviceName, "Soundflower")) && (devices[i].inputChannels == 2);
-
-        if (found) deviceIndex = i;
-    }
-
-    return deviceIndex;
-}
+//int PMSc1Settings::findSoundflowerDeviceIndex()
+//{
+//    int deviceIndex = -1;
+//
+//    vector<ofSoundDevice> devices = PMAudioAnalyzer::getInstance().getInputDevices();
+//    bool found = false;
+//
+//    for (unsigned int i=0; i<devices.size() && !found; ++i)
+//    {
+//        string deviceName = devices[i].name;
+//        found = (ofIsStringInString(deviceName, "Soundflower")) && (devices[i].inputChannels == 2);
+//
+//        if (found) deviceIndex = i;
+//    }
+//
+//    return deviceIndex;
+//}

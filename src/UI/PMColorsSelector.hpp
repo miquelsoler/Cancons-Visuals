@@ -11,8 +11,8 @@
 
 #include <stdio.h>
 #include "ofMain.h"
-#include "PMColorContainer.hpp"
-#include "PMTextContainer.hpp"
+#include "Containers/PMColorContainer.hpp"
+#include "Containers/PMTextContainer.hpp"
 #include "ofxJSON.h"
 
 struct colorPalette{

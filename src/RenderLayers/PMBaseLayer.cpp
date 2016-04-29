@@ -3,8 +3,8 @@
 //
 
 #include "PMBaseLayer.h"
-#include "PMColorsSelector.hpp"
-#include "PMSettingsManagerLayers.h"
+#include "../UI/PMColorsSelector.hpp"
+#include "../JSONSettings/LayerMappings/PMSettingsManagerLayers.h"
 
 PMBaseLayer::PMBaseLayer(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType)
 {
@@ -76,8 +76,8 @@ void PMBaseLayer::setup(ofPoint initialPosition)
     brushAlpha = 0;
     didShoot = false;
 
-    vector<PMDeviceAudioAnalyzer *> deviceAudioAnalyzers = *PMAudioAnalyzer::getInstance().getAudioAnalyzers();
-    PMDeviceAudioAnalyzer *deviceAudioAnalyzer = deviceAudioAnalyzers[0];
+    //vector<PMDeviceAudioAnalyzer *> deviceAudioAnalyzers = *PMAudioAnalyzer::getInstance().getAudioAnalyzers();
+    //PMDeviceAudioAnalyzer *deviceAudioAnalyzer = deviceAudioAnalyzers[0];
 
     settings.reload();
 
@@ -136,7 +136,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
     
 
     // TODO: Treure les crides que no s'utilitzin, si n'hi ha.
-    ofAddListener(deviceAudioAnalyzer->eventMelBandsChanged, this, &PMBaseLayer::melBandsChanged);
+    //ofAddListener(deviceAudioAnalyzer->eventMelBandsChanged, this, &PMBaseLayer::melBandsChanged);
 }
 
 void PMBaseLayer::update()
@@ -345,6 +345,7 @@ void PMBaseLayer::setBrushSize(int _brushSize)
 
 #pragma mark - Audio events
 
+/*
 void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
 {
     // Layer4: band0 - Layer1: band1 - Layer2: band2 - Layer3: band3
@@ -462,6 +463,7 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
         brushRGBColor.setBrightness(brushHSBColor.brightness+brightnessIncrement);
     }
 }
+*/
 
 void PMBaseLayer::keyPressed(ofKeyEventArgs &a){
     int key=a.key;

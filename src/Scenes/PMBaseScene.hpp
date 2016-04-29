@@ -11,11 +11,10 @@
 
 #pragma once
 
-#include <stdio.h>
 #include "ofMain.h"
 #include "ofxSceneManager.h"
 #include "ofxScene.h"
-#include "Defaults.h"
+#include "../Defaults.h"
 
 class PMBaseScene : public ofxFadeScene
 {

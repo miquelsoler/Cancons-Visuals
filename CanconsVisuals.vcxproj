@@ -99,14 +99,15 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\External\PMAudioAnalysis;src\JSONSettings;src\JSONSettings\AudioAnalyzer;src\JSONSettings\AudioDevices;src\JSONSettings\General;src\JSONSettings\LayerMappings;src\JSONSettings\Renderer;src\Motion;src\RenderLayers;src\Scenes;src\SharedSettings;src\UI;src\UICanvas;src\UI\Containers;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxAubio\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxJSON\libs;..\..\..\addons\ofxJSON\libs\jsoncpp;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxKinectForWindows2\src;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\addons\ofxSceneManager\src;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\External\PMAudioAnalysis;src\JSONSettings;src\JSONSettings\AudioAnalyzer;src\JSONSettings\AudioDevices;src\JSONSettings\General;src\JSONSettings\LayerMappings;src\JSONSettings\Renderer;src\Motion;src\RenderLayers;src\Scenes;src\SharedSettings;src\UI;src\UICanvas;src\UI\Containers;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxAubio\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxJSON\libs;..\..\..\addons\ofxJSON\libs\jsoncpp;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxKinectForWindows2\src;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\addons\ofxSceneManager\src;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxAppUtils-PM\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxJSON\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxJSON\libs\jsoncpp\include;C:\Users\eduard\Documents\openFrameworks\addons\ofxJSON\libs\jsoncpp\include\json;C:\Users\eduard\Documents\openFrameworks\addons\ofxGui\src;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxXmlSettings\src;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxXmlSettings\libs</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
@@ -118,15 +119,14 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\External\PMAudioAnalysis;src\JSONSettings;src\JSONSettings\AudioAnalyzer;src\JSONSettings\AudioDevices;src\JSONSettings\General;src\JSONSettings\LayerMappings;src\JSONSettings\Renderer;src\Motion;src\RenderLayers;src\Scenes;src\SharedSettings;src\UI;src\UICanvas;src\UI\Containers;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxAubio\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxJSON\libs;..\..\..\addons\ofxJSON\libs\jsoncpp;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxKinectForWindows2\src;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\addons\ofxSceneManager\src;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>C:\Users\eduard\Documents\openFrameworks\apps\XaviBove\CanconsVisuals\src;C:\Users\eduard\Documents\openFrameworks\apps\XaviBove\CanconsVisuals\src\UICanvas;C:\Users\eduard\Documents\openFrameworks\apps\XaviBove\CanconsVisuals\src\UI;C:\Users\eduard\Documents\openFrameworks\apps\XaviBove\CanconsVisuals\src\UI\Containers;C:\Users\eduard\Documents\openFrameworks\apps\XaviBove\CanconsVisuals\src\SharedSettings;C:\Users\eduard\Documents\openFrameworks\apps\XaviBove\CanconsVisuals\src\Scenes;C:\Users\eduard\Documents\openFrameworks\apps\XaviBove\CanconsVisuals\src\RenderLayers;C:\Users\eduard\Documents\openFrameworks\apps\XaviBove\CanconsVisuals\src\Motion;C:\Users\eduard\Documents\openFrameworks\apps\XaviBove\CanconsVisuals\src\JSONSettings;C:\Users\eduard\Documents\openFrameworks\apps\XaviBove\CanconsVisuals\src\JSONSettings\Renderer;C:\Users\eduard\Documents\openFrameworks\apps\XaviBove\CanconsVisuals\src\JSONSettings\LayerMappings;C:\Users\eduard\Documents\openFrameworks\apps\XaviBove\CanconsVisuals\src\JSONSettings\General;C:\Users\eduard\Documents\openFrameworks\apps\XaviBove\CanconsVisuals\src\JSONSettings\AudioDevices;C:\Users\eduard\Documents\openFrameworks\apps\XaviBove\CanconsVisuals\src\JSONSettings\AudioAnalyzer;C:\Users\eduard\Documents\openFrameworks\apps\XaviBove\CanconsVisuals\src\External\PMAudioAnalysis;C:\Users\eduard\Documents\openFrameworks\addons\ofxTween\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxTween\src\Easings;C:\Users\eduard\Documents\openFrameworks\addons\ofxUI\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxGui\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxXmlSettings\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxJSON\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxXmlSettings\libs;C:\Users\eduard\Documents\openFrameworks\addons\ofxAppUtils-PM\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxJSON\libs\jsoncpp\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxJSON\libs\jsoncpp\include\json;C:\Users\eduard\Documents\openFrameworks\addons\ofxJSON\libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
@@ -137,7 +137,9 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\External\PMAudioAnalysis;src\JSONSettings;src\JSONSettings\AudioAnalyzer;src\JSONSettings\AudioDevices;src\JSONSettings\General;src\JSONSettings\LayerMappings;src\JSONSettings\Renderer;src\Motion;src\RenderLayers;src\Scenes;src\SharedSettings;src\UI;src\UICanvas;src\UI\Containers;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxAubio\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxJSON\libs;..\..\..\addons\ofxJSON\libs\jsoncpp;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxKinectForWindows2\src;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\addons\ofxSceneManager\src;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\External\PMAudioAnalysis;src\JSONSettings;src\JSONSettings\AudioAnalyzer;src\JSONSettings\AudioDevices;src\JSONSettings\General;src\JSONSettings\LayerMappings;src\JSONSettings\Renderer;src\Motion;src\RenderLayers;src\Scenes;src\SharedSettings;src\UI;src\UICanvas;src\UI\Containers;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxAubio\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxJSON\libs;..\..\..\addons\ofxJSON\libs\jsoncpp;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxKinectForWindows2\src;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\addons\ofxSceneManager\src;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxAppUtils-PM\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxJSON\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxJSON\libs\jsoncpp\include;C:\Users\eduard\Documents\openFrameworks\addons\ofxJSON\libs\jsoncpp\include\json;C:\Users\eduard\Documents\openFrameworks\addons\ofxGui\src;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxXmlSettings\src;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxXmlSettings\libs</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -148,7 +150,6 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
@@ -159,7 +160,9 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\External\PMAudioAnalysis;src\JSONSettings;src\JSONSettings\AudioAnalyzer;src\JSONSettings\AudioDevices;src\JSONSettings\General;src\JSONSettings\LayerMappings;src\JSONSettings\Renderer;src\Motion;src\RenderLayers;src\Scenes;src\SharedSettings;src\UI;src\UICanvas;src\UI\Containers;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxAubio\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxJSON\libs;..\..\..\addons\ofxJSON\libs\jsoncpp;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxKinectForWindows2\src;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\addons\ofxSceneManager\src;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\External\PMAudioAnalysis;src\JSONSettings;src\JSONSettings\AudioAnalyzer;src\JSONSettings\AudioDevices;src\JSONSettings\General;src\JSONSettings\LayerMappings;src\JSONSettings\Renderer;src\Motion;src\RenderLayers;src\Scenes;src\SharedSettings;src\UI;src\UICanvas;src\UI\Containers;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxAubio\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxJSON\libs;..\..\..\addons\ofxJSON\libs\jsoncpp;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxKinectForWindows2\src;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\addons\ofxSceneManager\src;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxAppUtils-PM\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxJSON\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxJSON\libs\jsoncpp\include;C:\Users\eduard\Documents\openFrameworks\addons\ofxJSON\libs\jsoncpp\include\json;C:\Users\eduard\Documents\openFrameworks\addons\ofxGui\src;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxXmlSettings\src;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxXmlSettings\libs</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -169,19 +172,34 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxApp.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxParticle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxQuadWarper.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxScene.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxSceneManager.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxTransformer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxTransformPanel.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxLabel.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxPanel.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\jsoncpp.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
-    <ClCompile Include="src\External\PMAudioAnalysis\.gitignore" />
-    <ClCompile Include="src\External\PMAudioAnalysis\PMAudioAnalyzer.cpp" />
-    <ClCompile Include="src\External\PMAudioAnalysis\PMDeviceAudioAnalyzer.cpp" />
-    <ClCompile Include="src\JSONSettings\AudioAnalyzer\PMSettingsManagerAudioAnalyzers.cpp" />
-    <ClCompile Include="src\JSONSettings\AudioDevices\PMSettingsManagerAudioDevices.cpp" />
     <ClCompile Include="src\JSONSettings\General\PMSettingsManagerGeneral.cpp" />
     <ClCompile Include="src\JSONSettings\LayerMappings\PMSettingsManagerLayers.cpp" />
     <ClCompile Include="src\JSONSettings\PMSettingsManager.cpp" />
@@ -213,30 +231,7 @@
     <ClCompile Include="src\UI\PMColorsSelector.cpp" />
     <ClCompile Include="src\UI\PMSongSelector.cpp" />
     <ClCompile Include="src\UICanvas\PMBaseUICanvas.cpp" />
-    <ClCompile Include="src\UICanvas\PMUICanvasAudioAnalyzer.cpp" />
     <ClCompile Include="src\UICanvas\PMUICanvasLayers.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxApp.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxParticle.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxQuadWarper.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxScene.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxSceneManager.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxTransformer.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxAppUtils-PM\src\ofxTransformPanel.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxAubio\src\ofxAubioBeat.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxAubio\src\ofxAubioBlock.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxAubio\src\ofxAubioMelBands.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxAubio\src\ofxAubioOnset.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxAubio\src\ofxAubioPitch.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxLabel.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxPanel.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\jsoncpp.cpp" />
     <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Body.cpp" />
     <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Device.cpp" />
     <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BaseImage.cpp" />
@@ -247,7 +242,6 @@
     <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Infrared.cpp" />
     <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\LongExposureInfraRed.cpp" />
     <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Utils.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxSceneManager\src\ofxSceneManager.cpp" />
     <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasing.cpp" />
     <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingBack.cpp" />
     <ClCompile Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingBounce.cpp" />
@@ -305,23 +299,40 @@
     <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIWaveform.cpp" />
     <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIWidget.cpp" />
     <ClCompile Include="..\..\..\addons\ofxUI\src\ofxUIWidgetWithLabel.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\ofApp.h" />
-    <ClInclude Include="src\Defaults.h" />
-    <ClInclude Include="src\External\PMAudioAnalysis\PMAudioAnalyzer.hpp" />
-    <ClInclude Include="src\External\PMAudioAnalysis\PMAudioInParams.h" />
-    <ClInclude Include="src\External\PMAudioAnalysis\PMDeviceAudioAnalyzer.hpp" />
-    <ClInclude Include="src\JSONSettings\AudioAnalyzer\PMSettingsManagerAudioAnalyzers.h" />
-    <ClInclude Include="src\JSONSettings\AudioDevices\PMSettingsDevice.h" />
-    <ClInclude Include="src\JSONSettings\AudioDevices\PMSettingsDeviceChannel.h" />
-    <ClInclude Include="src\JSONSettings\AudioDevices\PMSettingsManagerAudioDevices.h" />
+    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\matrix_funcs.h" />
+    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxApp.h" />
+    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxAppUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxBitmapString.h" />
+    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxMovingAverage.h" />
+    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxParticle.h" />
+    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxParticleManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxQuadWarper.h" />
+    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxScene.h" />
+    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxSceneManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxTimer.h" />
+    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxTransformer.h" />
+    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxTransformPanel.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxLabel.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxPanel.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json-forwards.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSON.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.h" />
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
     <ClInclude Include="src\JSONSettings\AudioDevices\PMSettingsRenderer.h" />
     <ClInclude Include="src\JSONSettings\AudioDevices\PMSettingsRendererSpecific.h" />
+    <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\Defaults.h" />
     <ClInclude Include="src\JSONSettings\General\PMSettingsManagerGeneral.h" />
     <ClInclude Include="src\JSONSettings\LayerMappings\PMSettingsManagerLayers.h" />
     <ClInclude Include="src\JSONSettings\PMSettingsManager.h" />
@@ -353,40 +364,7 @@
     <ClInclude Include="src\UI\PMColorsSelector.hpp" />
     <ClInclude Include="src\UI\PMSongSelector.hpp" />
     <ClInclude Include="src\UICanvas\PMBaseUICanvas.h" />
-    <ClInclude Include="src\UICanvas\PMUICanvasAudioAnalyzer.h" />
     <ClInclude Include="src\UICanvas\PMUICanvasLayers.h" />
-    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\matrix_funcs.h" />
-    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxApp.h" />
-    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxAppUtils.h" />
-    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxBitmapString.h" />
-    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxMovingAverage.h" />
-    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxParticle.h" />
-    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxParticleManager.h" />
-    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxQuadWarper.h" />
-    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxScene.h" />
-    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxSceneManager.h" />
-    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxTimer.h" />
-    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxTransformer.h" />
-    <ClInclude Include="..\..\..\addons\ofxAppUtils-PM\src\ofxTransformPanel.h" />
-    <ClInclude Include="..\..\..\addons\ofxAubio\src\ofxAubio.h" />
-    <ClInclude Include="..\..\..\addons\ofxAubio\src\ofxAubioBeat.h" />
-    <ClInclude Include="..\..\..\addons\ofxAubio\src\ofxAubioBlock.h" />
-    <ClInclude Include="..\..\..\addons\ofxAubio\src\ofxAubioMelBands.h" />
-    <ClInclude Include="..\..\..\addons\ofxAubio\src\ofxAubioOnset.h" />
-    <ClInclude Include="..\..\..\addons\ofxAubio\src\ofxAubioPitch.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxLabel.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxPanel.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h" />
-    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSON.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json-forwards.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json.h" />
     <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Body.h" />
     <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Joint.h" />
     <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Device.h" />
@@ -400,8 +378,6 @@
     <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\LongExposureInfrared.h" />
     <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Utils.h" />
     <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2.h" />
-    <ClInclude Include="..\..\..\addons\ofxSceneManager\src\ofxScene.h" />
-    <ClInclude Include="..\..\..\addons\ofxSceneManager\src\ofxSceneManager.h" />
     <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\easing_terms_of_use.html" />
     <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasing.h" />
     <ClInclude Include="..\..\..\addons\ofxTween\src\Easings\ofxEasingBack.h" />
@@ -466,8 +442,6 @@
     <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWidgets.h" />
     <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWidgetWithLabel.h" />
     <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWrapper.h" />
-    <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
-    <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
@@ -483,6 +457,9 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>$(OF_ROOT)\libs\openFrameworksCompiled\project\vs</AdditionalIncludeDirectories>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ProjectExtensions>

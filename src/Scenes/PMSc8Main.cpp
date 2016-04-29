@@ -22,7 +22,7 @@ PMSc8Main::PMSc8Main() : PMBaseScene("Scene 8")
 #endif
 
     setSingleSetup(false);
-    guiAudioAnalyzerCreated = false;
+    //guiAudioAnalyzerCreated = false;
 
     motionExtractor = &PMMotionExtractor::getInstance();
 
@@ -66,16 +66,16 @@ void PMSc8Main::update()
 
 
     // GUI
-    {
-        if (!guiAudioAnalyzerCreated) {
-            int audioInputIndex = 0;
-            guiAudioAnalyzer = new PMUICanvasAudioAnalyzer("AUDIO ANALYZER", OFX_UI_FONT_MEDIUM, audioInputIndex);
-            guiAudioAnalyzer->init(5, 5);
-            guiAudioAnalyzer->setBackgroundColor(ofColor::gray);
-            guiAudioAnalyzer->setVisible(false);
-        }
-        guiAudioAnalyzerCreated = true;
-    }
+    //{
+    //    if (!guiAudioAnalyzerCreated) {
+    //        int audioInputIndex = 0;
+    //        guiAudioAnalyzer = new PMUICanvasAudioAnalyzer("AUDIO ANALYZER", OFX_UI_FONT_MEDIUM, audioInputIndex);
+    //        guiAudioAnalyzer->init(5, 5);
+    //        guiAudioAnalyzer->setBackgroundColor(ofColor::gray);
+    //        guiAudioAnalyzer->setVisible(false);
+    //    }
+    //    guiAudioAnalyzerCreated = true;
+    //}
 
     if (!disablePainting)
         renderer->update();
@@ -89,7 +89,7 @@ void PMSc8Main::draw()
 void PMSc8Main::exit()
 {
     song.stop();
-    PMAudioAnalyzer::getInstance().stop();
+    //PMAudioAnalyzer::getInstance().stop();
     if (enteredScene) {
         delete renderer;
     }
@@ -151,7 +151,7 @@ void PMSc8Main::keyReleased(int key)
         case 'g':
         case 'G': {
             showGUI = !showGUI;
-            guiAudioAnalyzer->setVisible(showGUI);
+            //guiAudioAnalyzer->setVisible(showGUI);
 //            ofClear(backgroundColor);
             break;
         }

@@ -11,8 +11,8 @@
 
 #include <stdio.h>
 #include "ofMain.h"
-#include "PMColorContainer.hpp"
-#include "PMTextContainer.hpp"
+#include "../UI/Containers/PMColorContainer.hpp"
+#include "../UI/Containers/PMTextContainer.hpp"
 #include "ofxJSON.h"
 #include "ofxAppUtils.h"
 

@@ -9,7 +9,7 @@
 #ifndef PMSc4Palette_Choose_hpp
 #define PMSc4Palette_Choose_hpp
 
-#include <stdio.h>
+
 #include "PMBaseScene.hpp"
 
 #endif /* PMSc4Palette_Choose_hpp */

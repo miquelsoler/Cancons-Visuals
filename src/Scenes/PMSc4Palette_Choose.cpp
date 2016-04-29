@@ -7,7 +7,7 @@
 //
 
 #include "PMSc4Palette_Choose.hpp"
-#include "PMColorsSelector.hpp"
+#include "../UI/PMColorsSelector.hpp"
 
 PMSc4Palette_Choose::PMSc4Palette_Choose() : PMBaseScene("Scene 4")
 {
