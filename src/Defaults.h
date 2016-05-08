@@ -17,13 +17,13 @@
 #define ConductrEnter_Config_h 
 
 #define ENABLE_SOUNDFLOWER false
-#define ENABLE_KINECT true
+#define ENABLE_KINECT false
 #define ENABLE_MULTIPLE_FBOS false
 #define ENABLE_MULTILAYER_EXPORT false
 #define ENABLE_KNEES_DETECTION true
 
 
-static const float          WINDOW_SCALE_FACTOR         = 0.5;
+static const float          WINDOW_SCALE_FACTOR         = 1;
 static const float          FBO_SCALE_FACTOR            = 1.0f;
 
 static const int            WINDOW_WIDTH                = 1080;

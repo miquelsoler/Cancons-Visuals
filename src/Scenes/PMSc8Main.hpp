@@ -29,6 +29,7 @@ public:
     void updateEnter();
     void updateExit();
     
+	void computeFFT();
     void loadSong(string filename);
     void playSong();
 
@@ -41,13 +42,10 @@ public:
         }
     }
 
+
 private:
     
     PMRenderer *renderer;
-//    vector<PMBaseRenderer *> renderers;
-    
-    //PMUICanvasAudioAnalyzer* guiAudioAnalyzer;
-    //bool                    guiAudioAnalyzerCreated;
     
     PMMotionExtractor* motionExtractor;
     KinectInfo* kinectInfo;
@@ -55,6 +53,11 @@ private:
     ofSoundPlayer   song;
     bool            songIsStarted;
     bool            songIsPlaying;
+
+	float			*fftSmoothed;
+	vector<float> 	melBands;
+	int				nBandsToGet;
+	int				nMelBands;
 
     bool            enteredScene;
     bool            disablePainting;

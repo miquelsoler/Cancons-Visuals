@@ -350,12 +350,12 @@ void PMBaseLayer::setBrushSize(int _brushSize)
 }
 
 #pragma mark - Audio events
-/*
-void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
+
+void PMBaseLayer::melBandsChanged(float energy)
 {
     // Layer4: band0 - Layer1: band1 - Layer2: band2 - Layer3: band3
-    int melBandIndex = (layerID != 4) ? layerID : 0;
-    float energy = melBandsParams.bandsEnergy[melBandIndex];
+    //int melBandIndex = (layerID != 4) ? layerID : 0;
+    //float energy = melBandsParams.bandsEnergy[melBandIndex];
     //Aquest valors son arbitraris ja que el que volem es aconseguir tots els paràmetres que vagin de 0 a 1
     float normalizedEnergy = ofMap(energy, energyMin, energyMax, 0, 1);
 //    cout<<energyMin<<" "<<energyMax<<endl;
@@ -468,7 +468,7 @@ void PMBaseLayer::melBandsChanged(melBandsParams &melBandsParams)
         brushRGBColor.setBrightness(brushHSBColor.brightness+brightnessIncrement);
     }
 }
-*/
+
 
 void PMBaseLayer::keyPressed(ofKeyEventArgs &a){
 

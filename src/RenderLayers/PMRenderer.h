@@ -22,6 +22,8 @@ public:
     void exportToImage(string path);
     void resetPositions();
 
+	void melBandsChange(vector<float> melBands);
+
 private:
 
     void drawIntoFBO();

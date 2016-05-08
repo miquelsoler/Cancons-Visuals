@@ -36,25 +36,24 @@ void PMSc8Main::setup()
     songIsPlaying = false;
     loadSong(songPath);
     playSong();
+
+	//FFT
+	fftSmoothed = new float[8192];
+	for (int i = 0; i < 8192; i++)
+		fftSmoothed[i] = 0;
+
+	nMelBands = 4;
+	for (int i = 0; i < nMelBands; i++)
+		melBands.push_back(0);
+
+	nBandsToGet = 8;
+	
 }
 
 void PMSc8Main::update()
 {
 #if ENABLE_KINECT
-//    cout<<"update"<<endl;
     PMMotionExtractor::getInstance().update();
-//    kinectInfo = motionExtractor->getKinectInfo();
-//    if(motionExtractor->getNumUsers() != 1)
-//        renderer->exportToImage("TempRender");
-    
-//    cout<<kinectInfo->rightHand_joint.x<<" "<<kinectInfo->rightHand_joint.y<<endl;
-//    cout<<motionExtractor->isReady()<<endl;
-//    if(motionExtractor->isReady() & kinectInfo->rightHand_joint.x == 0 && kinectInfo->rightHand_joint.y == 0 && kinectInfo->leftHand_joint.x == 0 && kinectInfo->leftHand_joint.y == 0){
-//    if(!motionExtractor->isReady()){
-//        motionExtractor->resetUsers();
-//        renderer->resetPositions();
-//        cout<<"reset Users"<<endl;
-//    }
 #endif
 
     if (songIsStarted) {
@@ -63,19 +62,7 @@ void PMSc8Main::update()
         }
     }
     ofSoundUpdate();
-
-
-    // GUI
-    //{
-    //    if (!guiAudioAnalyzerCreated) {
-    //        int audioInputIndex = 0;
-    //        guiAudioAnalyzer = new PMUICanvasAudioAnalyzer("AUDIO ANALYZER", OFX_UI_FONT_MEDIUM, audioInputIndex);
-    //        guiAudioAnalyzer->init(5, 5);
-    //        guiAudioAnalyzer->setBackgroundColor(ofColor::gray);
-    //        guiAudioAnalyzer->setVisible(false);
-    //    }
-    //    guiAudioAnalyzerCreated = true;
-    //}
+	computeFFT();
 
     if (!disablePainting)
         renderer->update();
@@ -122,6 +109,19 @@ void PMSc8Main::updateExit()
 {
     cout << "S8 updateExit()" << endl;
     PMBaseScene::updateExit();
+}
+
+void PMSc8Main::computeFFT()
+{
+	float * val = ofSoundGetSpectrum(nBandsToGet);
+	for (int i = 0; i < nBandsToGet; i++) {
+		fftSmoothed[i] *= 0.96f;
+		if (fftSmoothed[i] < val[i]) fftSmoothed[i] = val[i];
+	}
+	for (int i = 0; i < nMelBands; i++)
+		melBands[i] = fftSmoothed[i];
+
+	renderer->melBandsChange(melBands);
 }
 
 void PMSc8Main::loadSong(string filename)

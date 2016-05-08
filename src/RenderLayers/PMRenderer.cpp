@@ -171,3 +171,11 @@ void PMRenderer::resetPositions()
     kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso;
     layers[3]->setPosition(ofPoint(ofGetWidth()/2, ofGetHeight()/2));
 }
+
+void PMRenderer::melBandsChange(vector<float> melBands)
+{
+	for (auto layer : layers) {
+		int melBandIndex = (layer->getLayerID() != 4) ? layer->getLayerID() : 0;
+		layer->melBandsChanged(melBands[melBandIndex]);
+	}
+}

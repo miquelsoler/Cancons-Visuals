@@ -50,13 +50,14 @@ public:
     
     void keyPressed(ofKeyEventArgs &a);
     void keyReleased(ofKeyEventArgs &a);
+	int getLayerID() { return layerID; };
 
 #if ENABLE_MULTIPLE_FBOS
     ofFbo *getFBO() { return &layerFBO; };
 #endif
 
     // Audio listeners
-    //virtual void melBandsChanged(melBandsParams &melBandsParams);
+    void melBandsChanged(float bandEnergy);
 
 protected:
 
