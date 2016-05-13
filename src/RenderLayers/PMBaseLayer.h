@@ -13,6 +13,7 @@
 #include "Defaults.h"
 #include "PMSettingsManagerLayers.h"
 #include "PMUICanvasLayers.h"
+#include "Stroke.h"
 
 const static unsigned int   KINECT_ACCEL_FACTOR = 20;
 const static float          KINECT_ACCEL_THRESHOLD = 0.5f;
@@ -51,6 +52,9 @@ public:
     void keyPressed(ofKeyEventArgs &a);
     void keyReleased(ofKeyEventArgs &a);
 	int getLayerID() { return layerID; };
+	void addPointToRibbon(ofPoint point, ofPoint direction, float thickness);
+	void drawStrokes();
+	void finishStroke();
 
 #if ENABLE_MULTIPLE_FBOS
     ofFbo *getFBO() { return &layerFBO; };
@@ -83,6 +87,9 @@ protected:
     float                   nodeInitialZ; //holds de first position found of the node
 
     float                   curveSize;
+
+	float distanceThreshold ;
+	bool showWireframe;
     
     // UpdateToShake behaviour
     bool            didShoot;
@@ -123,6 +130,14 @@ protected:
     PMSettingsManagerLayers settings;
 
     KinectElement           kinectNodeData;
+
+	// Fort Pienc version
+	vector<ofVec3f> points;
+	vector<Stroke> pastStrokes;
+	ofMesh ribbon;
+	
+	ofImage strokeTex;
+	float maxPoints = 50;
 };
 
 

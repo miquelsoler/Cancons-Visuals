@@ -44,11 +44,11 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
     addSlider("Scale Acceleration Factor Size", 0, 1, scaleAcceleration_Size);
     addSlider("Scale Z Factor Size", 0, 1, scaleZ_Size);
     
-    addSpacer();
+   /* addSpacer();
     
     addLabel("Hue");
     addSlider("Hue Scale Factor", 0, 1, scaleHue);
-    addSlider("Hue Variation", 0, 1, variationHue);
+    addSlider("Hue Variation", 0, 1, variationHue);*/
     
     addSpacer();
     
@@ -56,11 +56,11 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
     addSlider("Saturation Scale Factor", 0, 1, scaleSaturation);
     addSlider("Saturation Variation", 0, 1, variationSaturation);
     
-    addSpacer();
+   /* addSpacer();
     
     addLabel("Brightness");
     addSlider("Brightness Scale Factor", 0, 1, scaleBrightness);
-    addSlider("Brightness Variation", 0, 1, variationBrightness);
+    addSlider("Brightness Variation", 0, 1, variationBrightness);*/
     
     addSpacer();
     
@@ -76,6 +76,11 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
     addLabel("Behaviour");
     addSlider("Speed", 0, 10, curveSpeed);
     addSlider("Curve Size", 0, 20, curveSize);
+
+	addSpacer();
+	addLabel("Stroke");
+	addSlider("Threshold", 0, 40, distanceThreshold);
+	addToggle("wireframe", showWireframe);
     
     if (autosize) autoSizeToFitWidgets();
     

@@ -118,6 +118,7 @@ void PMRenderer::drawIntoFBO()
 #else
     mainFBO.begin();
     {
+		ofBackground(PMColorsSelector::getInstance().getColor(0));
         for (int i=0; i<layers.size(); ++i)
             layers[i]->draw();
     }

@@ -61,6 +61,14 @@ public:
         curveSize = _curveSize;
     }
 
+	void bindDistanceThreshold(float *_distThres) {
+		distanceThreshold = _distThres;
+	}
+
+	void bindWireframeToggle(bool *_showWireframe) {
+		showWireframe = _showWireframe;
+	}
+
     
 
 protected:
@@ -99,6 +107,10 @@ private:
     
     //Behaviour
     float                     *curveSpeed, *curveSize;
+
+	// Stroke
+	float *distanceThreshold;
+	bool *showWireframe;
     
     
     void                    keyPressed(int key);

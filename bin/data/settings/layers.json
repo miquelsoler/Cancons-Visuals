@@ -8,7 +8,7 @@
 			},
 			"Size": {
 				"Min": 10,
-				"Max": 120,
+				"Max": 20,
                 "Scale Energy Factor": 1,
                 "Scale Acceleration Factor": 0.5,
                 "Scale Z Factor": 0.5
@@ -26,7 +26,7 @@
               "Variation": 0.3
   	    	},
   	    	"Alpha": {
-      			"Min (N)": 0.1,
+      			"Min (N)": 0.4,
       			"Max (N)": 0.8,
    	   			"Scale Factor": 1,
                 "Scale Energy Factor": 1,
@@ -46,7 +46,7 @@
 			},
 			"Size": {
 				"Min": 10,
-				"Max": 120,
+				"Max": 20,
                 "Scale Energy Factor": 1,
                 "Scale Acceleration Factor": 0.5,
                 "Scale Z Factor": 0.5
@@ -64,7 +64,7 @@
               "Variation": 0.1
   	    	},
   	    	"Alpha": {
-      			"Min (N)": 0.1,
+      			"Min (N)": 0.4,
       			"Max (N)": 0.8,
    	   			"Scale Factor": 1,
                 "Scale Energy Factor": 1,
@@ -84,7 +84,7 @@
 			},
 			"Size": {
 				"Min": 50,
-				"Max": 100,
+				"Max": 20,
                 "Scale Energy Factor": 1,
                 "Scale Acceleration Factor": 0.5,
                 "Scale Z Factor": 0.5
@@ -102,7 +102,7 @@
               "Variation": 0.1
   	    	},
   	    	"Alpha": {
-      			"Min (N)": 0.1,
+      			"Min (N)": 0.4,
       			"Max (N)": 0.7,
    	   			"Scale Factor": 1.,
                 "Scale Energy Factor": 1,
@@ -129,7 +129,7 @@
             },
             "Size": {
                 "Min": 1,
-                "Max": 120,
+                "Max": 20,
                 "Scale Energy Factor": 0.1,
                 "Scale Acceleration Factor": 0.5,
                 "Scale Z Factor": 0.5
@@ -147,7 +147,7 @@
                 "Variation": 0.5
             },
             "Alpha": {
-                "Min (N)": 0.1,
+                "Min (N)": 0.4,
                 "Max (N)": 0.7,
                 "Scale Factor": 1,
                 "Scale Energy Factor": 1,

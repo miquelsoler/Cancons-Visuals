@@ -376,6 +376,9 @@
     <ClCompile Include="src\GUIApp.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\RenderLayers\Stroke.cpp">
+      <Filter>src\RenderLayers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -919,6 +922,9 @@
     </ClInclude>
     <ClInclude Include="src\GUIApp.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RenderLayers\Stroke.h">
+      <Filter>src\RenderLayers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -7,6 +7,8 @@
 #include "PMSettingsManagerLayers.h"
 #include "PMSharedSettings.h"
 
+
+
 PMBaseLayer::PMBaseLayer(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType)
 {
     fboWidth = _fboWidth;
@@ -70,7 +72,6 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 		shootCurveAmount = settings.getShootCurveAmount(layerID);
 }
 
-
 	//createGui to guiApp
 	PMSharedSettings shared = PMSharedSettings::getInstance();
 	auto layersGui = shared.guiApp->getGuiOfLayer(layerID);
@@ -83,6 +84,9 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 	layersGui->bindBrightness(&brightnessScaleFactor, &brightnessVariation);
 	layersGui->bindAlpha(&alphaMin, &alphaMax, &alphaScaleFactor, &alphaEnergyScaleFactor, &alphaVelocityScaleFactor, &alphaZScaleFactor);
 	layersGui->bindBehaviour(&brushSpeed, &curveSize);
+
+	layersGui->bindDistanceThreshold(&distanceThreshold);
+	layersGui->bindWireframeToggle(&showWireframe);
 
 	//setup Gui
 	layersGui->init(layerID, 5, 5);
@@ -143,6 +147,9 @@ void PMBaseLayer::setup(ofPoint initialPosition)
     brushAlpha = 1;
     didShoot = false;
 
+	//ofEnableNormalizedTexCoords();
+	strokeTex.load("stroke.png");
+	ribbon.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 }
 
 void PMBaseLayer::update()
@@ -185,9 +192,10 @@ void PMBaseLayer::update()
         }
     }
 #else
-    kinectNodeData.pos.x = (float) (ofGetMouseX() + (layerID-2)*30 )/ ofGetWidth();
-    kinectNodeData.pos.y = (float) (ofGetMouseY() + (layerID-2)*30 )/ ofGetHeight();
+    kinectNodeData.pos.x =  (ofGetMouseX() + (layerID-1)*200 )/ (float)ofGetWidth();
+    kinectNodeData.pos.y = (ofGetMouseY() + (layerID-1)*200 )/ (float)ofGetHeight();
     kinectNodeData.v = ofPoint(0, 0);
+	
 #endif
 
 //#if ENABLE_KINECT
@@ -217,8 +225,19 @@ void PMBaseLayer::update()
         brushDirection += (kinectNodeData.v.normalize() * (kinectNodeData.a / 3));
     }
     brushPosition += (brushDirection * brushSpeed);
+	ofPoint brushDirectionUnormalized = brushDirection;
     brushDirection.normalize();
     brush->update(int(brushPosition.x), int(brushPosition.y));
+	
+	//Fort Pienc version
+	brushPosition.z = 0;
+	
+//	cout << "mouse pos normalized " << kinectNodeData.pos << endl;
+	ofPoint newPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), 0);
+	addPointToRibbon(newPoint, brushDirectionUnormalized, brushSize);
+	//cout << "mouse pos " << newPoint << endl;
+	if (points.size() > maxPoints)
+		finishStroke();
 }
 
 void PMBaseLayer::updateToShoot()
@@ -321,6 +340,7 @@ void PMBaseLayer::draw()
     layerFBO.begin();
     glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 #endif
+	//ofBackground(PMColorsSelector::getInstance().getColor(0));
     ofSetColor(brushRGBColor, int(brushAlpha * 255));
 
     brush->draw();
@@ -337,10 +357,94 @@ void PMBaseLayer::draw()
             brush->draw();
         }
     }
+	drawStrokes(); 
+	/*ofSetColor(255, 0, 0);
+	ofFill();
+	ofDrawRectangle(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), 200, 200);*/
 
 #if ENABLE_MULTIPLE_FBOS
     layerFBO.end();
 #endif
+}
+
+void PMBaseLayer::addPointToRibbon(ofPoint point, ofPoint direction, float thickness) {
+	points.push_back(point);
+
+	/*ribbon.clear();
+	ribbon.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+	for (unsigned int i = 1; i < points.size(); i++) {*/
+
+	int index = points.size() - 2;
+	if (index < 0)
+		return;
+	//find this point and the next point
+	ofVec3f thisPoint = point;
+	ofVec3f nextPoint = points[index];
+
+	//ofVec3f direction = (nextPoint - thisPoint);
+	
+
+	//get the distance from one point to the next
+	float distance = direction.length();
+	if (distance < distanceThreshold) {
+		points.pop_back();
+		return;
+	}
+
+	ofVec3f unitDirection = direction.getNormalized();
+
+	//find both directions to the left and to the right
+	ofVec3f toTheLeft = unitDirection.getRotated(-90, ofVec3f(0, 0, 1));
+	ofVec3f toTheRight = unitDirection.getRotated(90, ofVec3f(0, 0, 1));
+
+	//		cout << "brush size " << thisPoint.z << endl;
+	//float thickness = 20;// (thisPoint.z, 0, 150, 20, 30, true);// ofMap(distance, 0, 100, 20, 10, true);
+	//calculate the points to the left and to the right
+	//by extending the current point in the direction of left/right by the length
+	ofVec3f leftPoint = thisPoint + toTheLeft*thickness;
+	ofVec3f rightPoint = thisPoint + toTheRight*thickness;
+
+	ofVec3f check = leftPoint - rightPoint;
+	cout << "Check distance " << check.length() << endl;
+	//add these points to the triangle strip
+	ofFloatColor c(brushRGBColor.r / 255.0f, brushRGBColor.g / 255.0f, brushRGBColor.b / 255.0f, brushAlpha);
+	
+	//cout << "Adding points to ribbon " << leftPoint << " - " << rightPoint << endl;
+	ribbon.addVertex(ofVec3f(leftPoint.x, leftPoint.y, 0));
+	ribbon.addTexCoord(ofVec2f(index / maxPoints * strokeTex.getWidth(), 0));
+	ribbon.addColor(c);
+		
+	ribbon.addVertex(ofVec3f(rightPoint.x, rightPoint.y, 0));
+	ribbon.addTexCoord(ofVec2f(index / maxPoints * strokeTex.getWidth(), strokeTex.getHeight()));
+	ribbon.addColor(c);
+
+
+	//}
+}
+
+void PMBaseLayer::drawStrokes() {
+	ofScale(1.6f, 1.6f, 1.0f);
+	for (Stroke & m : pastStrokes) {
+		m.draw();
+		if (showWireframe) {
+			ofSetColor(100, 100, 100);
+			m.drawWireframe();
+		}
+	}
+
+	strokeTex.getTextureReference().bind();
+	ribbon.draw();
+	strokeTex.getTextureReference().unbind();
+	if (showWireframe) {
+		ofSetColor(100, 100, 100);
+		ribbon.drawWireframe();
+	}
+}
+
+void PMBaseLayer::finishStroke() {
+	pastStrokes.push_back(Stroke(ribbon, strokeTex.getTexture(), ofColor(brushRGBColor, int(brushAlpha * 255))));
+	ribbon.clear();
+	points.clear();
 }
 
 void PMBaseLayer::setBrushSize(int _brushSize)
@@ -365,14 +469,6 @@ void PMBaseLayer::melBandsChanged(float energy)
     float normalizedAcceleration = ofMap(kinectNodeData.a, 0, 20, 0, 1);
 #endif
     
-//    int hsbMin = 0, hsbMax = 255;
-
-    // Size Miquel, sols depen de l'energia
-//    {
-//        int newSize = int(ofMap(energy, energyMin, energyMax, sizeMin, sizeMax));
-//        setBrushSize(newSize);
-//    }
-    
     //Size Edu
     {
         //Aqui tenim els valors entre 0 i 1, i el factor el que fa es donar importància
@@ -387,17 +483,10 @@ void PMBaseLayer::melBandsChanged(float energy)
 #else
         int newBrushSize = ofMap(factorizedEnergySize, 0, 1, sizeMin, sizeMax);
 #endif
-        if(!didShoot)
+        //if(!didShoot)
             setBrushSize(newBrushSize);
     }
 
-    // Alpha Miquel
-//    {
-//        brushAlpha = ofMap(energy, energyMin, energyMax, alphaMin, alphaMax) * alphaScaleFactor;
-//        if (brushAlpha < 0.0f) brushAlpha = 0.0f;
-//        if (brushAlpha > 1.0f) brushAlpha = 1.0f;
-//    }
-    
     // Alpha Edu
     {
         float factorizedEnergyAlpha = normalizedEnergy*alphaEnergyScaleFactor;
@@ -416,15 +505,6 @@ void PMBaseLayer::melBandsChanged(float energy)
 #endif
     }
 
-    // Hue Miquel
-//    {
-//        int hue = int(brushHSBColor.hue * (normalizedEnergy * hueScaleFactor));
-//        if (hue < hsbMin) hue = hsbMin;
-//        if (hue > hsbMax) hue = hsbMax;
-//
-//        brushRGBColor.setHue(hue);
-//    }
-    
     //Hue Edu
     {
         float hueOffset = ofMap(hueVariation, 0, 1, 0, 255, true); //Maps % to absolute hue variation values
@@ -433,15 +513,6 @@ void PMBaseLayer::melBandsChanged(float energy)
         brushRGBColor.setHue(brushHSBColor.hue+hueIncrement);
     }
 
-    // Saturation Miquel
-//    {
-//        int saturation = int(brushHSBColor.saturation * (normalizedEnergy * saturationScaleFactor));
-//        if (saturation < hsbMin) saturation = hsbMin;
-//        if (saturation > hsbMax) saturation = hsbMax;
-//
-//        brushRGBColor.setSaturation(saturation);
-//    }
-    
     //Saturation Edu
     {
         float saturationOffset = ofMap(saturationVariation, 0, 1, 0, 255, true); //Maps % to absolute Saturation variation values
@@ -449,17 +520,7 @@ void PMBaseLayer::melBandsChanged(float energy)
         saturationIncrement=ofMap(saturationIncrement, -saturationOffset, saturationOffset, -saturationOffset, saturationOffset, true);
         brushRGBColor.setSaturation(brushHSBColor.saturation+saturationIncrement);
     }
-
-    // Brightness Miquel
-//    {
-//        int brightness = int(brushHSBColor.brightness * (normalizedEnergy * brightnessScaleFactor));
-//        if (brightness < hsbMin) brightness = hsbMin;
-//        if (brightness > hsbMax) brightness = hsbMax;
-//
-//        brushRGBColor.setBrightness(brightness);
-//    }
-    
-    
+   
     //Brightness Edu
     {
         float brightnessOffset = ofMap(brightnessVariation, 0, 1, 0, 255, true); //Maps % to absolute brightness variation values
