@@ -8,7 +8,7 @@ openFrameworksDebug.a
 openFrameworksUniversal.a
 libs/openFrameworksCompiled/lib/*/*
 !libs/openFrameworksCompiled/lib/*/.gitkeep
-
+bin/*.exe
 # apothecary
 scripts/apothecary/build
 
