@@ -86,6 +86,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 	layersGui->bindBehaviour(&brushSpeed, &curveSize);
 
 	layersGui->bindDistanceThreshold(&distanceThreshold);
+	showWireframe = false;
 	layersGui->bindWireframeToggle(&showWireframe);
 
 	//setup Gui
