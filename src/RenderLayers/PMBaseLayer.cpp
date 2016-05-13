@@ -149,6 +149,15 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 
 	//ofEnableNormalizedTexCoords();
 	strokeTex.load("stroke.png");
+	ofImage tex;
+	tex.loadImage("strokes/oil/oil1.png");
+	textures.push_back(tex);
+	tex.loadImage("strokes/oil/oil2.png");
+	textures.push_back(tex);
+	tex.loadImage("strokes/oil/oil3.png");
+	textures.push_back(tex);
+	tex.loadImage("strokes/oil/oil4.png");
+	currentTexture = 0;
 	ribbon.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 }
 
@@ -404,8 +413,8 @@ void PMBaseLayer::addPointToRibbon(ofPoint point, ofPoint direction, float thick
 	ofVec3f leftPoint = thisPoint + toTheLeft*thickness;
 	ofVec3f rightPoint = thisPoint + toTheRight*thickness;
 
-	ofVec3f check = leftPoint - rightPoint;
-	cout << "Check distance " << check.length() << endl;
+	//ofVec3f check = leftPoint - rightPoint;
+	//cout << "Check distance " << check.length() << endl;
 	//add these points to the triangle strip
 	ofFloatColor c(brushRGBColor.r / 255.0f, brushRGBColor.g / 255.0f, brushRGBColor.b / 255.0f, brushAlpha);
 	
@@ -432,9 +441,9 @@ void PMBaseLayer::drawStrokes() {
 		}
 	}
 
-	strokeTex.getTextureReference().bind();
+	textures[currentTexture].getTextureReference().bind();
 	ribbon.draw();
-	strokeTex.getTextureReference().unbind();
+	textures[currentTexture].getTextureReference().unbind();
 	if (showWireframe) {
 		ofSetColor(100, 100, 100);
 		ribbon.drawWireframe();
@@ -442,9 +451,10 @@ void PMBaseLayer::drawStrokes() {
 }
 
 void PMBaseLayer::finishStroke() {
-	pastStrokes.push_back(Stroke(ribbon, strokeTex.getTexture(), ofColor(brushRGBColor, int(brushAlpha * 255))));
+	pastStrokes.push_back(Stroke(ribbon, textures[currentTexture].getTexture(), ofColor(brushRGBColor, int(brushAlpha * 255))));
 	ribbon.clear();
 	points.clear();
+	currentTexture = (int)ofRandom(0, textures.size());
 }
 
 void PMBaseLayer::setBrushSize(int _brushSize)

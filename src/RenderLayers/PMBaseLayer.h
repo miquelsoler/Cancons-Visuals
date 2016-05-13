@@ -137,6 +137,9 @@ protected:
 	ofMesh ribbon;
 	
 	ofImage strokeTex;
+	vector<ofImage> textures;
+	int currentTexture;
+
 	float maxPoints = 50;
 };
 
