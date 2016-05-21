@@ -88,6 +88,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 	layersGui->bindDistanceThreshold(&distanceThreshold);
 	showWireframe = false;
 	layersGui->bindWireframeToggle(&showWireframe);
+	layersGui->bindmaxDistance(&maxDistance);
 
 	//setup Gui
 	layersGui->init(layerID, 5, 5);
@@ -244,6 +245,21 @@ void PMBaseLayer::update()
 	
 //	cout << "mouse pos normalized " << kinectNodeData.pos << endl;
 	ofPoint newPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), 0);
+
+	int index = points.size() - 1;
+	if (index >= 0) {
+		ofVec3f thisPoint = newPoint;
+		ofVec3f nextPoint = points[index];
+		ofVec3f direction = (nextPoint - thisPoint);
+		float distance = direction.length();
+		if (distance > maxDistance) {
+			//crear nuevos vertices intermedio
+			cout << "Creating vertices" << endl;
+			ofPoint n = (thisPoint + nextPoint) / 2.0f;
+			addPointToRibbon(n, brushDirectionUnormalized, brushSize);
+		}
+	}
+
 	addPointToRibbon(newPoint, brushDirectionUnormalized, brushSize);
 	//cout << "mouse pos " << newPoint << endl;
 	if (points.size() > maxPoints)
@@ -380,10 +396,6 @@ void PMBaseLayer::draw()
 void PMBaseLayer::addPointToRibbon(ofPoint point, ofPoint direction, float thickness) {
 	points.push_back(point);
 
-	/*ribbon.clear();
-	ribbon.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
-	for (unsigned int i = 1; i < points.size(); i++) {*/
-
 	int index = points.size() - 2;
 	if (index < 0)
 		return;
@@ -392,10 +404,8 @@ void PMBaseLayer::addPointToRibbon(ofPoint point, ofPoint direction, float thick
 	ofVec3f nextPoint = points[index];
 
 	//ofVec3f direction = (nextPoint - thisPoint);
-	
-
 	//get the distance from one point to the next
-	float distance = direction.length();
+	float distance = (nextPoint - thisPoint).length();
 	if (distance < distanceThreshold) {
 		points.pop_back();
 		return;
@@ -428,8 +438,6 @@ void PMBaseLayer::addPointToRibbon(ofPoint point, ofPoint direction, float thick
 	ribbon.addTexCoord(ofVec2f(index / maxPoints * strokeTex.getWidth(), strokeTex.getHeight()));
 	ribbon.addColor(c);
 
-
-	//}
 }
 
 void PMBaseLayer::drawStrokes() {
