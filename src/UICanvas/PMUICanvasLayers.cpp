@@ -80,6 +80,7 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
 	addSpacer();
 	addLabel("Stroke");
 	addSlider("Threshold", 0, 40, distanceThreshold);
+	addSlider("Max distance", 0, 40, maxDistance);
 	addToggle("wireframe", showWireframe);
     
     if (autosize) autoSizeToFitWidgets();

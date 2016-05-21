@@ -69,6 +69,9 @@ public:
 		showWireframe = _showWireframe;
 	}
 
+	void bindmaxDistance(float *_maxDistance) {
+		maxDistance = _maxDistance;
+	}
     
 
 protected:
@@ -111,7 +114,7 @@ private:
 	// Stroke
 	float *distanceThreshold;
 	bool *showWireframe;
-    
+	float maxDistance;
     
     void                    keyPressed(int key);
     void                    keyReleased(int key);
