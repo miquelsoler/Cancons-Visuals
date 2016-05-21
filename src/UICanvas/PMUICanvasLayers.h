@@ -114,7 +114,7 @@ private:
 	// Stroke
 	float *distanceThreshold;
 	bool *showWireframe;
-	float maxDistance;
+	float *maxDistance;
     
     void                    keyPressed(int key);
     void                    keyReleased(int key);
