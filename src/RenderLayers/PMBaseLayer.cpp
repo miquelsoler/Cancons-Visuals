@@ -242,9 +242,9 @@ void PMBaseLayer::update()
 	
 	//Fort Pienc version
 	brushPosition.z = 0;
-	
-//	cout << "mouse pos normalized " << kinectNodeData.pos << endl;
+	//cout << "Adding point normalized " << kinectNodeData.pos << endl;
 	ofPoint newPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), 0);
+	//cout << "Adding point " << newPoint << endl;
 
 	int index = points.size() - 1;
 	if (index >= 0) {
@@ -369,24 +369,20 @@ void PMBaseLayer::draw()
 	//ofBackground(PMColorsSelector::getInstance().getColor(0));
     ofSetColor(brushRGBColor, int(brushAlpha * 255));
 
-    brush->draw();
-
-    if ((brushPrevPosition - brushPosition).length() > brushSpeed) {
-        while ((brushPrevPosition - brushPosition).length() > brushSpeed*2) {
-            float anglenoise=ofNoise(brushPrevPosition.x*brushPrevPosition.y)*360;
-            brush->setAngle(anglenoise);
-            ofPoint tempDirection = (brushPosition - brushPrevPosition).normalize();
-            tempDirection.rotate(ofSignedNoise(brushPosition.x, brushPosition.y), ofPoint(0,0,1));
-            brushPrevPosition += tempDirection* brushSpeed;
-            brush->update(int(brushPrevPosition.x), int(brushPrevPosition.y));
-//            ofSetColor(brushRGBColor, int(brushAlpha)*255);
-            brush->draw();
-        }
-    }
+//    brush->draw();
+//    if ((brushPrevPosition - brushPosition).length() > brushSpeed) {
+//        while ((brushPrevPosition - brushPosition).length() > brushSpeed*2) {
+//            float anglenoise=ofNoise(brushPrevPosition.x*brushPrevPosition.y)*360;
+//            brush->setAngle(anglenoise);
+//            ofPoint tempDirection = (brushPosition - brushPrevPosition).normalize();
+//            tempDirection.rotate(ofSignedNoise(brushPosition.x, brushPosition.y), ofPoint(0,0,1));
+//            brushPrevPosition += tempDirection* brushSpeed;
+//            brush->update(int(brushPrevPosition.x), int(brushPrevPosition.y));
+////            ofSetColor(brushRGBColor, int(brushAlpha)*255);
+//            brush->draw();
+//        }
+//    }
 	drawStrokes(); 
-	/*ofSetColor(255, 0, 0);
-	ofFill();
-	ofDrawRectangle(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), 200, 200);*/
 
 #if ENABLE_MULTIPLE_FBOS
     layerFBO.end();
@@ -419,13 +415,9 @@ void PMBaseLayer::addPointToRibbon(ofPoint point, ofPoint direction, float thick
 
 	//		cout << "brush size " << thisPoint.z << endl;
 	//float thickness = 20;// (thisPoint.z, 0, 150, 20, 30, true);// ofMap(distance, 0, 100, 20, 10, true);
-	//calculate the points to the left and to the right
-	//by extending the current point in the direction of left/right by the length
 	ofVec3f leftPoint = thisPoint + toTheLeft*thickness;
 	ofVec3f rightPoint = thisPoint + toTheRight*thickness;
 
-	//ofVec3f check = leftPoint - rightPoint;
-	//cout << "Check distance " << check.length() << endl;
 	//add these points to the triangle strip
 	ofFloatColor c(brushRGBColor.r / 255.0f, brushRGBColor.g / 255.0f, brushRGBColor.b / 255.0f, brushAlpha);
 	
@@ -437,11 +429,9 @@ void PMBaseLayer::addPointToRibbon(ofPoint point, ofPoint direction, float thick
 	ribbon.addVertex(ofVec3f(rightPoint.x, rightPoint.y, 0));
 	ribbon.addTexCoord(ofVec2f(index / maxPoints * strokeTex.getWidth(), strokeTex.getHeight()));
 	ribbon.addColor(c);
-
 }
 
 void PMBaseLayer::drawStrokes() {
-	ofScale(1.6f, 1.6f, 1.0f);
 	for (Stroke & m : pastStrokes) {
 		m.draw();
 		if (showWireframe) {
