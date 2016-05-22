@@ -14,5 +14,6 @@ void Stroke::draw() {
 }
 
 void Stroke::drawWireframe() {
+	ofSetLineWidth(1);
 	ribbon.drawWireframe();
 }
