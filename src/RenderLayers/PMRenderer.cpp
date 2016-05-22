@@ -24,11 +24,11 @@ PMRenderer::PMRenderer()
     PMLayer1 *layer1 = new PMLayer1(fboWidth, fboHeight, KINECTNODE_RIGHTHAND);
     layers.push_back(layer1);
     PMLayer2 *layer2 = new PMLayer2(fboWidth, fboHeight, KINECTNODE_LEFTHAND);
-    layers.push_back(layer2);
+    //layers.push_back(layer2);
     PMLayer3 *layer3 = new PMLayer3(fboWidth, fboHeight, KINECTNODE_HEAD);
-    layers.push_back(layer3);
+    //layers.push_back(layer3);
     PMLayer4 *layer4 = new PMLayer4(fboWidth, fboHeight, KINECTNODE_TORSO);
-    layers.push_back(layer4);
+    //layers.push_back(layer4);
 }
 
 void PMRenderer::setup()
@@ -118,7 +118,7 @@ void PMRenderer::drawIntoFBO()
 #else
     mainFBO.begin();
     {
-		ofPushStyle();
+		ofPushMatrix();
 		float scaleX = (float)ofGetWidth() / (float)1080;
 		float scaleY = (float)ofGetHeight() / (float)1920;
 		ofScale(1.0/scaleX, 1.0/scaleY);
