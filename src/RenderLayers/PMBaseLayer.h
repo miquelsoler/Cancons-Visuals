@@ -88,9 +88,9 @@ protected:
 
     float                   curveSize;
 
-	float distanceThreshold ;
-	bool showWireframe;
-	float maxDistance;
+	float distanceThreshold = 0 ;
+	bool showWireframe = false;
+	float maxDistance = 40;
     
     // UpdateToShake behaviour
     bool            didShoot;
