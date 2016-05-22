@@ -471,7 +471,7 @@ void PMBaseLayer::melBandsChanged(float energy)
     //int melBandIndex = (layerID != 4) ? layerID : 0;
     //float energy = melBandsParams.bandsEnergy[melBandIndex];
     //Aquest valors son arbitraris ja que el que volem es aconseguir tots els paràmetres que vagin de 0 a 1
-    float normalizedEnergy = ofMap(energy, energyMin, energyMax, 0, 1);
+    float normalizedEnergy = ofMap(energy, energyMin, energyMax, 0, 1, true);
 //    cout<<energyMin<<" "<<energyMax<<endl;
 #if ENABLE_KINECT
     float normalizedZ = ofMap((nodeInitialZ-kinectNodeData.pos.z), -0.3, 0.3, 0, 1);
@@ -516,27 +516,28 @@ void PMBaseLayer::melBandsChanged(float energy)
     }
 
     //Hue Edu
-    {
-        float hueOffset = ofMap(hueVariation, 0, 1, 0, 255, true); //Maps % to absolute hue variation values
-        int hueIncrement=ofMap(normalizedEnergy, 0, 1, -1, 1)*hueOffset; //maps energy to -1 1, then aplies scale factor to finaly get a number between -hueOffset and hueoffset
-        hueIncrement=ofMap(hueIncrement, -hueOffset, hueOffset, -hueOffset, hueOffset, true);
-        brushRGBColor.setHue(brushHSBColor.hue+hueIncrement);
-    }
+    //{
+    //    float hueOffset = ofMap(hueVariation, 0, 1, 0, 255, true); //Maps % to absolute hue variation values
+    //    int hueIncrement=ofMap(normalizedEnergy, 0, 1, -1, 1)*hueOffset; //maps energy to -1 1, then aplies scale factor to finaly get a number between -hueOffset and hueoffset
+    //    hueIncrement=ofMap(hueIncrement, -hueOffset, hueOffset, -hueOffset, hueOffset, true);
+    //    brushRGBColor.setHue(brushHSBColor.hue+hueIncrement);
+    //}
 
-    //Saturation Edu
-    {
-        float saturationOffset = ofMap(saturationVariation, 0, 1, 0, 255, true); //Maps % to absolute Saturation variation values
-        int saturationIncrement=ofMap(normalizedEnergy, 0, 1, -1, 1)*saturationOffset;
-        saturationIncrement=ofMap(saturationIncrement, -saturationOffset, saturationOffset, -saturationOffset, saturationOffset, true);
-        brushRGBColor.setSaturation(brushHSBColor.saturation+saturationIncrement);
-    }
+    ////Saturation Edu
+    //{
+    //    float saturationOffset = ofMap(saturationVariation, 0, 1, 0, 255, true); //Maps % to absolute Saturation variation values
+    //    int saturationIncrement=ofMap(normalizedEnergy, 0, 1, -1, 1)*saturationOffset;
+    //    saturationIncrement=ofMap(saturationIncrement, -saturationOffset, saturationOffset, -saturationOffset, saturationOffset, true);
+    //    brushRGBColor.setSaturation(brushHSBColor.saturation+saturationIncrement);
+    //}
    
     //Brightness Edu
     {
-        float brightnessOffset = ofMap(brightnessVariation, 0, 1, 0, 255, true); //Maps % to absolute brightness variation values
-        int brightnessIncrement=ofMap(normalizedEnergy, 0, 1, -1, 1)*brightnessOffset;
-        brightnessIncrement=ofMap(brightnessIncrement, -brightnessOffset, brightnessOffset, -brightnessOffset, brightnessOffset, true);
-        brushRGBColor.setBrightness(brushHSBColor.brightness+brightnessIncrement);
+		float brightnessOffset =  ofMap(brightnessVariation, 0, 1, 0, 255, true); //Maps % to absolute brightness variation values
+        int brightnessIncrement = ofMap(normalizedEnergy, 0, 1, -0.5, 0.5)*brightnessOffset;
+        //brightnessIncrement=ofMap(brightnessIncrement, -brightnessOffset, brightnessOffset, -brightnessOffset, brightnessOffset, true);
+        brushRGBColor.setBrightness(brushHSBColor.brightness + brightnessIncrement);
+		cout << normalizedEnergy << endl;
     }
 }
 

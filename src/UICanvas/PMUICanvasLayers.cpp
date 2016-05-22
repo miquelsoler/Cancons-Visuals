@@ -50,17 +50,17 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
     addSlider("Hue Scale Factor", 0, 1, scaleHue);
     addSlider("Hue Variation", 0, 1, variationHue);*/
     
-    addSpacer();
+   /* addSpacer();
     
     addLabel("Saturation");
     addSlider("Saturation Scale Factor", 0, 1, scaleSaturation);
-    addSlider("Saturation Variation", 0, 1, variationSaturation);
+    addSlider("Saturation Variation", 0, 1, variationSaturation);*/
     
-   /* addSpacer();
-    
+   addSpacer();
+   
     addLabel("Brightness");
     addSlider("Brightness Scale Factor", 0, 1, scaleBrightness);
-    addSlider("Brightness Variation", 0, 1, variationBrightness);*/
+    addSlider("Brightness Variation", 0, 1, variationBrightness);
     
     addSpacer();
     
