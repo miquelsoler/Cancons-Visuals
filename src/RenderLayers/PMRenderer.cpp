@@ -118,9 +118,17 @@ void PMRenderer::drawIntoFBO()
 #else
     mainFBO.begin();
     {
+		ofPushStyle();
+		float scaleX = (float)ofGetWidth() / (float)1080;
+		float scaleY = (float)ofGetHeight() / (float)1920;
+		ofScale(1.0/scaleX, 1.0/scaleY);
 		ofBackground(PMColorsSelector::getInstance().getColor(0));
+//#if ENABLE_KINECT
+//		PMMotionExtractor::getInstance().draw();
+//#endif
         for (int i=0; i<layers.size(); ++i)
             layers[i]->draw();
+		ofPopMatrix();
     }
     mainFBO.end();
 #endif
