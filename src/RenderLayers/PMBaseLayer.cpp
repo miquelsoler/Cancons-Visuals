@@ -387,14 +387,13 @@ void PMBaseLayer::melBandsChanged(float energy)
     //Size Edu
     {
         //Aqui tenim els valors entre 0 i 1, i el factor el que fa es donar importància
-        float factorizedEnergySize = normalizedEnergy*sizeEnergyScaleFactor;
+        float factorizedEnergySize = normalizedEnergy * sizeEnergyScaleFactor;
 #if ENABLE_KINECT
-        float factorizedZSize = normalizedZ*sizeZScaleFactor;
-        float factorizedAccel = normalizedAcceleration*sizeAccelerationScaleFactor;
-        float scales_total = sizeEnergyScaleFactor+sizeZScaleFactor+sizeAccelerationScaleFactor;
-        int newBrushSize = ofMap(factorizedEnergySize + factorizedZSize + factorizedAccel, 0, scales_total, sizeMin, sizeMax, true);
-//        if(layerID==2)
-//            cout<<"Energy: "<<factorizedEnergySize<<"----Z: "<<factorizedZSize<<"----Accel: "<<factorizedAccel<<"---BrushSize: "<<newBrushSize<<endl;
+        //float factorizedZSize = normalizedZ * sizeZScaleFactor;
+        //float factorizedAccel = normalizedAcceleration * sizeAccelerationScaleFactor;
+		float factorizedAccel = ofMap(brushVelocity , 0, maxDistance, 0.0, 1.0, true) * sizeAccelerationScaleFactor;
+        float scales_total = sizeEnergyScaleFactor +  sizeAccelerationScaleFactor;
+        int newBrushSize = ofMap(factorizedEnergySize + factorizedAccel, 0, scales_total, sizeMin, sizeMax, true);
 #else
         int newBrushSize = ofMap(factorizedEnergySize, 0, 1, sizeMin, sizeMax);
 #endif
@@ -412,7 +411,7 @@ void PMBaseLayer::melBandsChanged(float energy)
 		// if energy lower than threshold (silence) do not paint (by having full transparency)
 		if (normalizedEnergy < alphaThreshold)
 			brushAlpha = 0;
-		cout << "Alpha " << brushAlpha << endl;
+		//cout << "Alpha " << brushAlpha << endl;
     }
 
     //Hue Edu

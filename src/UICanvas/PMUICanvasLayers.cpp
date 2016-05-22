@@ -42,7 +42,7 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
     addIntSlider("Max Size", 0, 200, maxSize);
     addSlider("Scale Energy Factor Size", 0, 1, scaleEnergy_Size);
     addSlider("Scale Acceleration Factor Size", 0, 1, scaleAcceleration_Size);
-    addSlider("Scale Z Factor Size", 0, 1, scaleZ_Size);
+    //addSlider("Scale Z Factor Size", 0, 1, scaleZ_Size);
     
    /* addSpacer();
     
