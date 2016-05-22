@@ -90,7 +90,7 @@ protected:
 
 	float distanceThreshold = 0 ;
 	bool showWireframe = false;
-	float maxDistance = 40;
+	float maxDistance = 20;
     
     // UpdateToShake behaviour
     bool            didShoot;
@@ -134,6 +134,7 @@ protected:
 
 	// Fort Pienc version
 	vector<ofVec3f> points;
+	vector<float> brushSizes;
 	vector<Stroke> pastStrokes;
 	ofMesh ribbon;
 	

@@ -255,8 +255,9 @@ void PMBaseLayer::update()
 		if (distance > maxDistance) {
 			//crear nuevos vertices intermedio
 			cout << "Creating vertices" << endl;
+			float thick = (brushSizes[index] + brushSize) / 2.0f;
 			ofPoint n = (thisPoint + nextPoint) / 2.0f;
-			addPointToRibbon(n, brushDirectionUnormalized, brushSize);
+			addPointToRibbon(n, brushDirectionUnormalized, thick);
 		}
 	}
 
@@ -391,6 +392,7 @@ void PMBaseLayer::draw()
 
 void PMBaseLayer::addPointToRibbon(ofPoint point, ofPoint direction, float thickness) {
 	points.push_back(point);
+	brushSizes.push_back(thickness);
 
 	int index = points.size() - 2;
 	if (index < 0)
@@ -404,24 +406,22 @@ void PMBaseLayer::addPointToRibbon(ofPoint point, ofPoint direction, float thick
 	float distance = (nextPoint - thisPoint).length();
 	if (distance < distanceThreshold) {
 		points.pop_back();
+		brushSizes.pop_back();
 		return;
 	}
 
 	ofVec3f unitDirection = direction.getNormalized();
-
 	//find both directions to the left and to the right
 	ofVec3f toTheLeft = unitDirection.getRotated(-90, ofVec3f(0, 0, 1));
 	ofVec3f toTheRight = unitDirection.getRotated(90, ofVec3f(0, 0, 1));
 
 	//		cout << "brush size " << thisPoint.z << endl;
-	//float thickness = 20;// (thisPoint.z, 0, 150, 20, 30, true);// ofMap(distance, 0, 100, 20, 10, true);
 	ofVec3f leftPoint = thisPoint + toTheLeft*thickness;
 	ofVec3f rightPoint = thisPoint + toTheRight*thickness;
 
 	//add these points to the triangle strip
 	ofFloatColor c(brushRGBColor.r / 255.0f, brushRGBColor.g / 255.0f, brushRGBColor.b / 255.0f, brushAlpha);
 	
-	//cout << "Adding points to ribbon " << leftPoint << " - " << rightPoint << endl;
 	ribbon.addVertex(ofVec3f(leftPoint.x, leftPoint.y, 0));
 	ribbon.addTexCoord(ofVec2f(index / maxPoints * strokeTex.getWidth(), 0));
 	ribbon.addColor(c);
@@ -453,6 +453,7 @@ void PMBaseLayer::finishStroke() {
 	pastStrokes.push_back(Stroke(ribbon, textures[currentTexture].getTexture(), ofColor(brushRGBColor, int(brushAlpha * 255))));
 	ribbon.clear();
 	points.clear();
+	brushSizes.clear();
 	currentTexture = (int)ofRandom(0, textures.size());
 }
 

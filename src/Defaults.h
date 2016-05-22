@@ -23,7 +23,7 @@
 #define ENABLE_KNEES_DETECTION true
 
 
-static const float          WINDOW_SCALE_FACTOR         = 0.6f;
+static const float          WINDOW_SCALE_FACTOR         = 0.8f;
 static const float          FBO_SCALE_FACTOR            = 1.0f;
 
 static const int            WINDOW_WIDTH                = 1080;
