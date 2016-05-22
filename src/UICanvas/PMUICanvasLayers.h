@@ -61,6 +61,10 @@ public:
         curveSize = _curveSize;
     }
 
+	void bindAlphaThreshold(float * _alphaThreshold) {
+		alphaThreshold = _alphaThreshold;
+	}
+
 	void bindDistanceThreshold(float *_distThres) {
 		distanceThreshold = _distThres;
 	}
@@ -106,7 +110,7 @@ private:
     float                   *scaleBrightness, *variationBrightness;
     
     //Alpha
-    float                   *minAlpha, *maxAlpha, *scaleAlpha, *scaleEnergy_Alpha, *scaleVelocity_Alpha, *scaleZ_Alpha;
+    float                   *minAlpha, *maxAlpha, *scaleAlpha, *scaleEnergy_Alpha, *scaleVelocity_Alpha, *scaleZ_Alpha, *alphaThreshold;
     
     //Behaviour
     float                     *curveSpeed, *curveSize;

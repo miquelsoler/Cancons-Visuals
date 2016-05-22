@@ -151,7 +151,7 @@
                 "Max (N)": 0.7,
                 "Scale Factor": 1,
                 "Scale Energy Factor": 1,
-                "Scale Velocity Factor": 0.5,
+                "Scale Velocity Factor": 1,
                 "Scale Z Factor": 0.5
             },
             "Behaviour": {

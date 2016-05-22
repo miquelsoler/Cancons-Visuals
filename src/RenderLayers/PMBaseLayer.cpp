@@ -8,7 +8,6 @@
 #include "PMSharedSettings.h"
 
 
-
 PMBaseLayer::PMBaseLayer(int _fboWidth, int _fboHeight, KinectNodeType _kinectNodeType)
 {
     fboWidth = _fboWidth;
@@ -29,7 +28,6 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 {
     
     ofRegisterKeyEvents(this);
-
 
 	//vector<PMDeviceAudioAnalyzer *> deviceAudioAnalyzers = *PMAudioAnalyzer::getInstance().getAudioAnalyzers();
 	//PMDeviceAudioAnalyzer *deviceAudioAnalyzer = deviceAudioAnalyzers[0];
@@ -84,6 +82,8 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 	layersGui->bindBrightness(&brightnessScaleFactor, &brightnessVariation);
 	layersGui->bindAlpha(&alphaMin, &alphaMax, &alphaScaleFactor, &alphaEnergyScaleFactor, &alphaVelocityScaleFactor, &alphaZScaleFactor);
 	layersGui->bindBehaviour(&brushSpeed, &curveSize);
+
+	layersGui->bindAlphaThreshold(&alphaThreshold);
 
 	layersGui->bindDistanceThreshold(&distanceThreshold);
 	showWireframe = false;
@@ -165,8 +165,6 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 
 void PMBaseLayer::update()
 {
-    float anglenoise=ofNoise(ofGetElapsedTimeMicros()*layerID)*360;
-    brush->setAngle(anglenoise);
     brushPrevPosition = brushPosition;
 
 #if ENABLE_KINECT
@@ -252,6 +250,7 @@ void PMBaseLayer::update()
 		ofVec3f nextPoint = points[index];
 		ofVec3f direction = (nextPoint - thisPoint);
 		float distance = direction.length();
+		brushVelocity = distance;
 		if (distance > maxDistance) {
 			//crear nuevos vertices intermedio
 			cout << "Creating vertices" << endl;
@@ -265,100 +264,6 @@ void PMBaseLayer::update()
 	//cout << "mouse pos " << newPoint << endl;
 	if (points.size() > maxPoints)
 		finishStroke();
-}
-
-void PMBaseLayer::updateToShoot()
-{
-    if(layerID==4){
-        ofPoint layer1pos=ofPoint(ofMap(kinectNodeData.pos.x, 0.2,1, 0, fboWidth), kinectNodeData.pos.y * fboHeight);
-        ofPoint layer2pos=ofPoint(ofMap(kinectNodeData.pos.x, 0,0.8, 0, fboWidth), kinectNodeData.pos.y * fboHeight);
-        brushInitalPosition=(layer1pos+layer2pos)/2;
-    }
-    
-    float anglenoise=ofNoise(ofGetElapsedTimeMicros()*layerID)*360;
-    brush->setAngle(anglenoise);
-    brushPrevPosition = brushPosition;
-    
-    if (PMMotionExtractor::getInstance().isTracking())
-    {
-        switch(kinectNodeType)
-        {
-            case KINECTNODE_RIGHTHAND: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand;
-                break;
-            }
-            case KINECTNODE_LEFTHAND: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand;
-                break;
-            }
-            case KINECTNODE_HEAD: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head;
-                break;
-            }
-            case KINECTNODE_TORSO: {
-                kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso;
-                break;
-            }
-        }
-    }
-    
-    if (didShoot)
-    {
-        setBrushSize(brushSize - sizeShootDecrement);
-        brushSpeed -= speedShootDecrement;
-        if (brushSize <= sizeMin){
-            setBrushSize(sizeMin);
-        }
-        if(brushSpeed <= 0){
-            didShoot=false;
-            brushSpeed = PMSettingsManagerLayers::getInstance().getSpeed(layerID);
-            setBrushSize(ofRandom(sizeMin, sizeMax));
-        }
-        brushDirection.rotate(shootCurveAmount+ofSignedNoise(ofGetElapsedTimef()), ofPoint(0,0,1));
-    }
-    else
-    {
-        // Direction changes
-        ofPoint noise;
-        float noiseAmount=100;
-        noise.x= ofMap(ofSignedNoise(ofGetElapsedTimef()/2.0, -1000), -1, 1, -noiseAmount, noiseAmount);
-        noise.y= ofMap(ofSignedNoise(ofGetElapsedTimef()/2.0, 1000), -1, 1, -noiseAmount, noiseAmount);
-        ofPoint newDirection = (brushInitalPosition+noise)-brushPosition;
-        brushDirection = newDirection.getNormalized();
-//        brushSpeed = newDirection.length()*5;
-        brushDirection.normalize();
-        brushAlpha-=0.1;
-        if(brushAlpha<0)
-            brushAlpha=0;
-        
-        //direction history
-        directionHistory.push_back(kinectNodeData.v);
-        directionHistory.pop_front();
-        if (kinectNodeData.v.length() * kinectNodeData.a > KINECT_VELO_THRESHOLD)
-        {
-            beginShakeTime = ofGetElapsedTimeMillis();
-            setBrushSize(initialShootSize);
-            brushSpeed = initialShootSpeeed;
-            didShoot = true;
-            int directionHistoryMaxIndex=0;
-            for(int i=0; i<directionHistory.size(); i++){
-                if(directionHistoryMaxIndex < directionHistory[i].length())
-                    directionHistoryMaxIndex = i;
-            }
-            brushAlpha=alphaMax;
-            brushDirection=directionHistory[directionHistoryMaxIndex];
-        }
-    }
-    brushPosition += (brushDirection * brushSpeed);
-    
-//    int MARGIN=30;
-//    if (brushPosition.pos.pos.x < -MARGIN) brushPosition.pos.x = -MARGIN;
-//    if (brushPosition.pos.y < -MARGIN) brushPosition.pos.y = -MARGIN;
-//    if (brushPosition.pos.x > fboWidth + MARGIN) brushPosition.pos.x = fboWidth + MARGIN;
-//    if (brushPosition.pos.y > fboHeight + MARGIN) brushPosition.pos.y = fboHeight + MARGIN;
-    
-    brushDirection.normalize();
-    brush->update(int(brushPosition.x), int(brushPosition.y));
 }
 
 void PMBaseLayer::draw()
@@ -475,7 +380,7 @@ void PMBaseLayer::melBandsChanged(float energy)
 //    cout<<energyMin<<" "<<energyMax<<endl;
 #if ENABLE_KINECT
     float normalizedZ = ofMap((nodeInitialZ-kinectNodeData.pos.z), -0.3, 0.3, 0, 1);
-    float normalizedVelocity = ofMap(kinectNodeData.v.length(), 0, 100, 0, 1);
+    float normalizedVelocity = ofMap(kinectNodeData.v.length(), 0, 10, 0, 1, true);
     float normalizedAcceleration = ofMap(kinectNodeData.a, 0, 20, 0, 1);
 #endif
     
@@ -493,26 +398,21 @@ void PMBaseLayer::melBandsChanged(float energy)
 #else
         int newBrushSize = ofMap(factorizedEnergySize, 0, 1, sizeMin, sizeMax);
 #endif
-        //if(!didShoot)
-            setBrushSize(newBrushSize);
+        setBrushSize(newBrushSize);
     }
 
     // Alpha Edu
     {
-        float factorizedEnergyAlpha = normalizedEnergy*alphaEnergyScaleFactor;
-#if ENABLE_KINECT
-        float factorizedZAlpha = normalizedZ*alphaZScaleFactor;
+
         float factorizedVel;
-        if(kinectNodeData.v.length()!= 1) factorizedVel=normalizedVelocity*alphaVelocityScaleFactor; else factorizedVel=0.5;
-#if ENABLE_KNEES_DETECTION
-        brushAlpha = ofMap(factorizedEnergyAlpha *factorizedVel * factorizedZAlpha, 0, 1, alphaMin, alphaMax, true);
-#else
-        if(didShoot || layerID==1 || layerID ==2)
-            brushAlpha = ofMap(factorizedEnergyAlpha *factorizedVel * factorizedZAlpha, 0, 1, alphaMin, alphaMax, true);
-#endif
-#else
-        brushAlpha = ofMap(factorizedEnergyAlpha, 0, 1, alphaMin, alphaMax, true);
-#endif
+		//factorizedVel = normalizedVelocity * alphaVelocityScaleFactor;
+		factorizedVel = brushVelocity * alphaVelocityScaleFactor;
+
+		brushAlpha = ofMap(factorizedVel, 0, maxDistance, alphaMin, alphaMax, true);
+		// if energy lower than threshold (silence) do not paint (by having full transparency)
+		if (normalizedEnergy < alphaThreshold)
+			brushAlpha = 0;
+		cout << "Alpha " << brushAlpha << endl;
     }
 
     //Hue Edu
@@ -531,13 +431,13 @@ void PMBaseLayer::melBandsChanged(float energy)
     //    brushRGBColor.setSaturation(brushHSBColor.saturation+saturationIncrement);
     //}
    
-    //Brightness Edu
+    //Brightness
     {
 		float brightnessOffset =  ofMap(brightnessVariation, 0, 1, 0, 255, true); //Maps % to absolute brightness variation values
         int brightnessIncrement = ofMap(normalizedEnergy, 0, 1, -0.5, 0.5)*brightnessOffset;
         //brightnessIncrement=ofMap(brightnessIncrement, -brightnessOffset, brightnessOffset, -brightnessOffset, brightnessOffset, true);
         brushRGBColor.setBrightness(brushHSBColor.brightness + brightnessIncrement);
-		cout << normalizedEnergy << endl;
+		//cout << normalizedEnergy << endl;
     }
 }
 

@@ -67,9 +67,10 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
     addLabel("Alpha");
     addSlider("Min Alpha", 0, 1, minAlpha);
     addSlider("Max Alpha", 0, 1, maxAlpha);
-    addSlider("Scale Energy Factor Alpha", 0, 1, scaleEnergy_Alpha);
+    //addSlider("Scale Energy Factor Alpha", 0, 1, scaleEnergy_Alpha);
     addSlider("Scale Velocity Factor Alpha", 0, 1, scaleVelocity_Alpha);
-    addSlider("Scale Z Factor Alpha", 0, 1, scaleZ_Alpha);
+	addSlider("Alpha Threshold", 0, 1, alphaThreshold);
+    //addSlider("Scale Z Factor Alpha", 0, 1, scaleZ_Alpha);
     
     addSpacer();
     

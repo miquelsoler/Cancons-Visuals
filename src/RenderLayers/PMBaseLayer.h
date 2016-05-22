@@ -44,7 +44,6 @@ public:
 
     virtual void setup(ofPoint initialPosition);
     virtual void update();
-    void updateToShoot();
     virtual void draw();
     void setBrushSize(int brushSize);
     void setPosition(ofPoint pos) { brushPosition = pos; };
@@ -85,7 +84,7 @@ protected:
     ofPoint                 brushDirection;
     float                   brushSpeed;
     float                   nodeInitialZ; //holds de first position found of the node
-
+	float					brushVelocity;
     float                   curveSize;
 
 	float distanceThreshold = 0 ;
@@ -125,6 +124,7 @@ protected:
     float                   alphaEnergyScaleFactor;
     float                   alphaZScaleFactor;
     float                   alphaVelocityScaleFactor;
+	float alphaThreshold;
     
 
     // JSON settings
