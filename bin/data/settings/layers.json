@@ -4,10 +4,10 @@
 			"ID" : 1,
 			"Energy": {
       			"Min (N)": 0.0,
-      			"Max (N)": 0.1
+      			"Max (N)": 0.4
 			},
 			"Size": {
-				"Min": 10,
+				"Min": 1,
 				"Max": 20,
                 "Scale Energy Factor": 1,
                 "Scale Acceleration Factor": 0.5,
@@ -42,10 +42,10 @@
 			"ID" : 2,
 			"Energy": {
       			"Min (N)": 0.0,
-      			"Max (N)": 0.1
+      			"Max (N)": 0.4
 			},
 			"Size": {
-				"Min": 10,
+				"Min": 1,
 				"Max": 20,
                 "Scale Energy Factor": 1,
                 "Scale Acceleration Factor": 0.5,
@@ -80,10 +80,10 @@
 			"ID" : 3,    // la que fa els cercles
 			"Energy": {
       			"Min (N)": 0.0,
-      			"Max (N)": 0.1
+      			"Max (N)": 0.4
 			},
 			"Size": {
-				"Min": 50,
+				"Min": 1,
 				"Max": 20,
                 "Scale Energy Factor": 1,
                 "Scale Acceleration Factor": 0.5,
@@ -125,7 +125,7 @@
 			"ID" : 4,
                 "Energy": {
                 "Min (N)": 0.0,
-                "Max (N)": 0.1
+                "Max (N)": 0.4
             },
             "Size": {
                 "Min": 1,
@@ -144,7 +144,7 @@
             },
             "Brightness": {
                 "Scale Factor": 1,
-                "Variation": 0.5
+                "Variation": 0.1
             },
             "Alpha": {
                 "Min (N)": 0.4,
