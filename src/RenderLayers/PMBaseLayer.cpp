@@ -239,10 +239,8 @@ void PMBaseLayer::update()
     brush->update(int(brushPosition.x), int(brushPosition.y));
 	
 	//Fort Pienc version
-	brushPosition.z = 0;
-	//cout << "Adding point normalized " << kinectNodeData.pos << endl;
-	ofPoint newPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), 0);
-	//cout << "Adding point " << newPoint << endl;
+	ofPoint newPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), kinectNodeData.pos.z * 100);
+	//cout << "Adding point z" << kinectNodeData.pos.z * 400 << endl;
 
 	int index = points.size() - 1;
 	if (index >= 0) {
@@ -253,7 +251,7 @@ void PMBaseLayer::update()
 		brushVelocity = distance;
 		if (distance > maxDistance) {
 			//crear nuevos vertices intermedio
-			cout << "Creating vertices" << endl;
+			//cout << "Creating vertices" << endl;
 			float thick = (brushSizes[index] + brushSize) / 2.0f;
 			ofPoint n = (thisPoint + nextPoint) / 2.0f;
 			addPointToRibbon(n, brushDirectionUnormalized, thick);
@@ -327,11 +325,11 @@ void PMBaseLayer::addPointToRibbon(ofPoint point, ofPoint direction, float thick
 	//add these points to the triangle strip
 	ofFloatColor c(brushRGBColor.r / 255.0f, brushRGBColor.g / 255.0f, brushRGBColor.b / 255.0f, brushAlpha);
 	
-	ribbon.addVertex(ofVec3f(leftPoint.x, leftPoint.y, 0));
+	ribbon.addVertex(ofVec3f(leftPoint.x, leftPoint.y, leftPoint.z));
 	ribbon.addTexCoord(ofVec2f(index / maxPoints * strokeTex.getWidth(), 0));
 	ribbon.addColor(c);
 		
-	ribbon.addVertex(ofVec3f(rightPoint.x, rightPoint.y, 0));
+	ribbon.addVertex(ofVec3f(rightPoint.x, rightPoint.y, rightPoint.z));
 	ribbon.addTexCoord(ofVec2f(index / maxPoints * strokeTex.getWidth(), strokeTex.getHeight()));
 	ribbon.addColor(c);
 }
@@ -442,7 +440,8 @@ void PMBaseLayer::melBandsChanged(float energy)
 
 
 void PMBaseLayer::keyPressed(ofKeyEventArgs &a){
-
+	if (a.key == 'R')
+		pastStrokes.clear();
 }
 
 void PMBaseLayer::keyReleased(ofKeyEventArgs &a){
