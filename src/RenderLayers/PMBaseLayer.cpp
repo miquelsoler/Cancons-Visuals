@@ -182,10 +182,14 @@ void PMBaseLayer::update()
 #if ENABLE_KNEES_DETECTION
             case KINECTNODE_HEAD: {
                 kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightKnee;
+				kinectNodeData.pos.x = ofMap(kinectNodeData.pos.x, 0, 1, 0.4, 1);
+				kinectNodeData.pos.y = ofMap(kinectNodeData.pos.y, .3, 0.9, 0, 1);
                 break;
             }
             case KINECTNODE_TORSO: {
                 kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftKnee;
+				kinectNodeData.pos.x = ofMap(kinectNodeData.pos.x, 0, 1, 0, 0.6);
+				kinectNodeData.pos.y = ofMap(kinectNodeData.pos.y, 0.3, 0.9, 0, 1);
                 break;
             }
 #else
@@ -258,6 +262,7 @@ void PMBaseLayer::update()
 		}
 	}
 
+
 	addPointToRibbon(newPoint, brushDirectionUnormalized, brushSize);
 	//cout << "mouse pos " << newPoint << endl;
 	if (points.size() > maxPoints)
@@ -270,22 +275,7 @@ void PMBaseLayer::draw()
     layerFBO.begin();
     glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 #endif
-	//ofBackground(PMColorsSelector::getInstance().getColor(0));
     ofSetColor(brushRGBColor, int(brushAlpha * 255));
-
-//    brush->draw();
-//    if ((brushPrevPosition - brushPosition).length() > brushSpeed) {
-//        while ((brushPrevPosition - brushPosition).length() > brushSpeed*2) {
-//            float anglenoise=ofNoise(brushPrevPosition.x*brushPrevPosition.y)*360;
-//            brush->setAngle(anglenoise);
-//            ofPoint tempDirection = (brushPosition - brushPrevPosition).normalize();
-//            tempDirection.rotate(ofSignedNoise(brushPosition.x, brushPosition.y), ofPoint(0,0,1));
-//            brushPrevPosition += tempDirection* brushSpeed;
-//            brush->update(int(brushPrevPosition.x), int(brushPrevPosition.y));
-////            ofSetColor(brushRGBColor, int(brushAlpha)*255);
-//            brush->draw();
-//        }
-//    }
 	drawStrokes(); 
 
 #if ENABLE_MULTIPLE_FBOS
@@ -315,11 +305,14 @@ void PMBaseLayer::addPointToRibbon(ofPoint point, ofPoint direction, float thick
 
 	ofVec3f unitDirection = direction.getNormalized();
 	//find both directions to the left and to the right
-	ofVec3f toTheLeft = unitDirection.getRotated(-90, ofVec3f(0, 0, 1));
-	ofVec3f toTheRight = unitDirection.getRotated(90, ofVec3f(0, 0, 1));
+	//ofVec3f toTheLeft = unitDirection.getRotated(-90, ofVec3f(0, 0, 1));
+	//ofVec3f toTheRight = unitDirection.getRotated(90, ofVec3f(0, 0, 1));
+	ofVec3f axis = direction.cross(ofVec3f(0,-1,0)).getNormalized();
+	//cout << direction << " - " << axis << endl;
+	ofVec3f toTheLeft = unitDirection.getRotated(-90, axis);
+	ofVec3f toTheRight = unitDirection.getRotated(90, axis);
 
-	//		cout << "brush size " << thisPoint.z << endl;
-	ofVec3f leftPoint = thisPoint + toTheLeft*thickness;
+	ofVec3f leftPoint = thisPoint + toTheLeft * thickness;
 	ofVec3f rightPoint = thisPoint + toTheRight*thickness;
 
 	//add these points to the triangle strip
