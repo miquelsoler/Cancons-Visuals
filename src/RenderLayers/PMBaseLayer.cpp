@@ -182,14 +182,14 @@ void PMBaseLayer::update()
 #if ENABLE_KNEES_DETECTION
             case KINECTNODE_HEAD: {
                 kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightKnee;
-				kinectNodeData.pos.x = ofMap(kinectNodeData.pos.x, 0, 1, 0.4, 1);
-				kinectNodeData.pos.y = ofMap(kinectNodeData.pos.y, .3, 0.9, 0, 1);
+				kinectNodeData.pos.x = ofMap(kinectNodeData.pos.x, 0, 0.8, 0, 1, true);
+				kinectNodeData.pos.y = ofMap(kinectNodeData.pos.y, .3, 0.9, 0, 1, true);
                 break;
             }
             case KINECTNODE_TORSO: {
                 kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftKnee;
-				kinectNodeData.pos.x = ofMap(kinectNodeData.pos.x, 0, 1, 0, 0.6);
-				kinectNodeData.pos.y = ofMap(kinectNodeData.pos.y, 0.3, 0.9, 0, 1);
+				kinectNodeData.pos.x = ofMap(kinectNodeData.pos.x, 0.2, 1, 0, 1, true);
+				kinectNodeData.pos.y = ofMap(kinectNodeData.pos.y, 0.3, 0.9, 0, 1, true);
                 break;
             }
 #else
@@ -294,7 +294,7 @@ void PMBaseLayer::addPointToRibbon(ofPoint point, ofPoint direction, float thick
 	ofVec3f thisPoint = point;
 	ofVec3f nextPoint = points[index];
 
-	//ofVec3f direction = (nextPoint - thisPoint);
+	//direction = (nextPoint - thisPoint);
 	//get the distance from one point to the next
 	float distance = (nextPoint - thisPoint).length();
 	if (distance < distanceThreshold) {
