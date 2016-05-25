@@ -17,7 +17,8 @@ PMSc10Thanks::PMSc10Thanks() : PMBaseScene("Scene Thanks")
 {
     bigFont.load("fonts/NeutraTextTF-Book.otf", 28, true, true, false, 0.3, 72);
     smallFont.load("fonts/NeutraTextTF-Light.otf", 29, true, true, false, 0.3, 72);
-    smallestFont.load("fonts/NeutraTextTF-Light.otf", 21, true, true, false, 0.3, 72);
+    smallestFont.load("fonts/NeutraTextTF-Light.otf", 24, true, true, false, 0.3, 72);
+	small_logo.load("assets/urban_art.png");
     originalWidth = 1080;
     originalHeight = 1920;
     setSingleSetup(false);
@@ -110,7 +111,7 @@ void PMSc10Thanks::draw()
     drawCenteredFont(bigFont, "Cançons Visuals", originalWidth / 2, 938);
     drawCenteredFont(smallFont, "www.xavibove.com", originalWidth / 2, 988);
     ofPopMatrix();
-//    printFbo.draw(0,0, printFbo.getWidth(), printFbo.getHeight());
+//    printFbo.draw(0,0, ofGetWidth(), ofGetHeight());
 //    printFbo.draw(0,0);
     ofSetColor(ofColor::black);
 //    ofDrawBitmapString("Current X: "+ofToString(ofGetMouseX())+"  Y: "+ofToString(ofGetMouseY()), 15, 28);
@@ -135,12 +136,13 @@ void PMSc10Thanks::drawIntoFbo()
         drawRightAlignString(smallFont, dateName, 1024, 1716);
 //        drawLeftAlignString(smallFont, dateName, 151, 1633);
         ofPushMatrix();
-        ofTranslate(1047, 349);
+        ofTranslate(1047, 400);
         ofRotateZ(-90);
         smallestFont.drawString("cançons visuals - www.xavibove.com", 0, 0);
         ofPopMatrix();
         ofSetColor(255);
         printImage.draw(151, 40, 873, 1552);
+		small_logo.draw(151, 1610, 187, 126);
         ofPopStyle();
     }
     printFbo.end();

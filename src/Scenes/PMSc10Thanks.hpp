@@ -40,6 +40,7 @@ private:
     
     ofFbo           printFbo;
     ofImage         printImage;
+	ofImage			small_logo;
     
     string          userName;
     string           songName;
