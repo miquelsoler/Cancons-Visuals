@@ -65,7 +65,7 @@ public:
 	KinectInfo *getKinectInfo();
 	void resetUsers() {};
 
-	ofxKFW2::Data::Body* findClosestBody();
+	ofxKFW2::Data::Body findClosestBody();
 
 	ofEvent<bool> eventUserDetection;
 	ofEvent<bool> eventUserPositioned;
