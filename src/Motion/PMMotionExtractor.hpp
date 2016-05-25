@@ -47,7 +47,7 @@ public:
 	~PMMotionExtractor() {};
 
 	bool setup();
-	void update();
+	void update(ofEventArgs & a);
 	void draw(int x = 0, int y = 0, int width = ofGetWidth(), int height = ofGetHeight(), bool drawHands = false, bool drawBody = false);
 	void exit();
 

@@ -11,6 +11,7 @@
 ///--------------------------------------------------------------
 bool PMMotionExtractor::setup()
 {
+	ofAddListener(ofEvents().update, this, &PMMotionExtractor::update);
 	positionDetectedCounter = 0;
 
 	kinect.open();
@@ -27,7 +28,7 @@ bool PMMotionExtractor::setup()
 }
 
 ///--------------------------------------------------------------
-void PMMotionExtractor::update()
+void PMMotionExtractor::update(ofEventArgs & a)
 {
 	if (hasKinect) {
 		kinect.update();

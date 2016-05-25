@@ -28,9 +28,6 @@ void PMSc9Export::setup()
     timestamp=ofGetElapsedTimef()-1;
     isSlash=false;
     accentCharacter=0;
-#if ENABLE_KINECT
-    PMMotionExtractor::getInstance().stop();
-#endif
     ofDisableAlphaBlending();
 }
 

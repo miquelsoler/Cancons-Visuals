@@ -30,7 +30,6 @@ void PMSc7Countdown::setup()
     
     countdown.set();
     countdown.setAlarm(countdownTime * 1000);
-   // PMAudioAnalyzer::getInstance().start();
     line=ofPoint(0, 200);
 }
 
@@ -41,10 +40,6 @@ void PMSc7Countdown::updateEnter()
 
 void PMSc7Countdown::update()
 {
-#if ENABLE_KINECT
-    PMMotionExtractor::getInstance().update();
-#endif
-
     if (countdown.alarm()) {
         countdown.resetAlarm();
         string toScene = "Scene 8";

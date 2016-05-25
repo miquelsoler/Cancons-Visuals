@@ -52,10 +52,6 @@ void PMSc8Main::setup()
 
 void PMSc8Main::update()
 {
-#if ENABLE_KINECT
-    PMMotionExtractor::getInstance().update();
-#endif
-
     if (songIsStarted) {
         if (!song.isPlaying()) {
             exportImageAndLeaveScene();
