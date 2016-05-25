@@ -126,6 +126,9 @@ void ofApp::draw()
 ///--------------------------------------------------------------
 void ofApp::exit()
 {
+#if ENABLE_KINECT
+	PMMotionExtractor::getInstance().stop();
+#endif
 }
 
 ///--------------------------------------------------------------
