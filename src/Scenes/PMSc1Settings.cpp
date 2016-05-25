@@ -23,6 +23,7 @@ void PMSc1Settings::setup()
     // Kinect Setup
 #if ENABLE_KINECT
     PMMotionExtractor::getInstance().setup();
+	PMMotionExtractor::getInstance().start();
 #endif
 
     // Audio Analysis Setup

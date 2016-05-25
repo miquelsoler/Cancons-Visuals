@@ -80,14 +80,6 @@ void PMSc10Thanks::update()
         string toScene = "Scene 2";
         ofNotifyEvent(goToSceneEvent, toScene, this);
     }
-#if ENABLE_KINECT
-    if(count==2){
-        PMMotionExtractor::getInstance().exit();
-    }else if(count==60){
-        PMMotionExtractor::getInstance().setup();
-    }
-#endif
-    count++;
 }
 
 void PMSc10Thanks::draw()
