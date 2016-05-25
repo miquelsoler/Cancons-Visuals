@@ -47,14 +47,18 @@ void PMSc10Thanks::setup()
     ofStringReplace(dateName, "/", "_");
 //    string saveFilename= "exports/toprint/"+songName+"-"+userName+"_"+dateName+".png";
 //    cout<<songName<<"     "<<userName<<"       "<<dateName<<"         "<<saveFilename<<endl;
-    string saveFilename = "exports/toprint/toPrint_" + ofGetTimestampString() + ".png";
+	string simpleSaveFilename = "toPrint_" + ofGetTimestampString() + ".png";
+	string saveFilename = "exports/toprint/" + simpleSaveFilename;
     ofSaveImage(pix, saveFilename, OF_IMAGE_QUALITY_BEST);
 
     //imprimir fbo.
 
 #if ENABLE_PRINTING
-    string c = "lp -o media=Custom.4x6in -o page-left=0 -o page-right=0 -o page-top=0 -o page-bottom=0 " + ofToDataPath(saveFilename);
-    system(c.c_str());
+    //string c = "lp -o media=Custom.4x6in -o page-left=0 -o page-right=0 -o page-top=0 -o page-bottom=0 " + ofToDataPath(saveFilename);
+	string imagePath = ofToDataPath("exports\\toprint\\" + simpleSaveFilename, true);
+	ofStringReplace(imagePath, "/", "\\");
+	string s = "\"c:\\Program Files (x86)\\IrfanView\\i_view32.exe\" " + imagePath + " /silent /print=Printer01";
+	system(s.c_str());
 #endif
 
     countdown.set();
