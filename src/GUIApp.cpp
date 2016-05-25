@@ -22,7 +22,7 @@ void GUIApp::update()
 
 void GUIApp::draw()
 {
-
+	PMMotionExtractor::getInstance().draw(0, 0, ofGetWidth(), ofGetHeight(), true, true);
 }
 
 void GUIApp::exit()

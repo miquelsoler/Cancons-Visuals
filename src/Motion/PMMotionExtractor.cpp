@@ -135,7 +135,7 @@ void PMMotionExtractor::update()
 }
 
 ///--------------------------------------------------------------
-void PMMotionExtractor::draw()
+void PMMotionExtractor::draw(int x, int y, int width, int height, bool drawHands, bool drawBody)
 {
 	if (true) {
 		auto infraredImage = kinect.getInfraredSource();
@@ -146,18 +146,31 @@ void PMMotionExtractor::draw()
 		ofTexture drawTexture;
 		drawTexture.allocate(512, 424, GL_LUMINANCE);
 		drawTexture.loadData(infraredPixels);
-		drawTexture.draw(0, 0, ofGetWidth(), ofGetHeight());
+		drawTexture.draw(x, y, width, height);
 	}
-	if (false) {
+	if (drawBody) {
+		kinect.getBodySource()->drawProjected(x, y, width, height, ofxKFW2::ProjectionCoordinates::DepthCamera);
+		auto& bodies = kinect.getBodySource()->getBodies();
+		for (auto body : bodies) {
+			auto bodyBase = body.joints[JointType_SpineBase];
+			auto basePos = bodyBase.getProjected(kinect.getBodySource()->getCoordinateMapper(), ofxKFW2::ProjectionCoordinates::DepthCamera);
+			basePos = (((basePos / ofVec2f(512, 424)) + ofVec2f(0.05, -0.05)) * ofVec2f(width, height) + ofVec2f(x, y));
+			ofDrawBitmapString(ofToString(bodyBase.getPosition().z), basePos);
+		}
+	}
+	if (drawHands) {
 		ofPushStyle();
+		ofPushMatrix();
+		ofTranslate(x, y);
 		ofNoFill();
 		ofSetLineWidth(3);
 		ofSetColor(ofColor::red);
-		ofDrawEllipse(handsInfo.rightHand.pos.x * ofGetWidth(), handsInfo.rightHand.pos.y * ofGetHeight(), 20 + 20 * (handsInfo.rightHand.v.x), 20 + 20 * (handsInfo.rightHand.v.y));
-		ofDrawEllipse(handsInfo.leftHand.pos.x * ofGetWidth(), handsInfo.leftHand.pos.y * ofGetHeight(), 20 + 20 * (handsInfo.leftHand.v.x), 20 + 20 * (handsInfo.leftHand.v.y));
+		ofDrawEllipse(handsInfo.rightHand.pos.x * width, handsInfo.rightHand.pos.y * height, 50 + 20 * (handsInfo.rightHand.v.x), 50 + 20 * (handsInfo.rightHand.v.y));
+		ofDrawEllipse(handsInfo.leftHand.pos.x * width, handsInfo.leftHand.pos.y * height, 50 + 20 * (handsInfo.leftHand.v.x), 50 + 20 * (handsInfo.leftHand.v.y));
+		ofPopMatrix();
 		ofPopStyle();
 	}
-	ofDrawBitmapString(positionDetectedCounter, 0, 0);
+	ofDrawBitmapString(positionDetectedCounter, x, y);
 }
 
 ///--------------------------------------------------------------
@@ -228,7 +241,9 @@ ofxKFW2::Data::Body* PMMotionExtractor::findClosestBody()
 
 			auto currentLocation = joints[JointType_SpineBase].getPosition();
 
-			auto currentDistance = sqrt(pow(currentLocation.x, 2) + pow(currentLocation.y, 2) + pow(currentLocation.z, 2));
+			//auto currentDistance = sqrt(pow(currentLocation.x, 2) + pow(currentLocation.y, 2) + pow(currentLocation.z, 2));
+			auto currentDistance = currentLocation.z;
+
 
 			if (result == nullptr || currentDistance < closestBodyDistance)
 			{
