@@ -52,9 +52,11 @@ void PMMotionExtractor::update(ofEventArgs & a)
 			{
 				auto closestBody = findClosestBody();
 				//auto bodies = kinect.getBodySource()->getBodies();
-				for (auto body : bodies) {
-					if (body.trackingId == closestBody->trackingId)
-						break;
+				//for (auto body : bodies) {
+				//	if (body.trackingId == closestBody->trackingId)
+				//		break;
+				auto body = closestBody;
+				{
 					//cout << body.trackingId << endl;
 					for (auto joint : body.joints) {
 						if (joint.first == JointType_HandLeft) {
@@ -221,18 +223,14 @@ KinectInfo* PMMotionExtractor::getKinectInfo() {
 	return &handsInfo;
 }
 
-ofxKFW2::Data::Body* PMMotionExtractor::findClosestBody()
+ofxKFW2::Data::Body PMMotionExtractor::findClosestBody()
 {
-	ofxKFW2::Data::Body* result = nullptr;
+	ofxKFW2::Data::Body result;
+	bool noBody = true;
 
 	double closestBodyDistance = 10000000.0;
 
 	auto& bodies = kinect.getBodySource()->getBodies();
-	for (auto& body : bodies) {
-		if (body.tracked) {
-
-		}
-	}
 
 	for (auto body : bodies)
 	{
@@ -246,9 +244,10 @@ ofxKFW2::Data::Body* PMMotionExtractor::findClosestBody()
 			auto currentDistance = currentLocation.z;
 
 
-			if (result == nullptr || currentDistance < closestBodyDistance)
+			if (noBody || currentDistance < closestBodyDistance)
 			{
-				result = &body;
+				result = body;
+				noBody = false;
 				closestBodyDistance = currentDistance;
 			}
 		}
