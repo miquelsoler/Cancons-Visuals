@@ -17,7 +17,7 @@ PMSc10Thanks::PMSc10Thanks() : PMBaseScene("Scene Thanks")
 {
     bigFont.load("fonts/NeutraTextTF-Book.otf", 28, true, true, false, 0.3, 72);
     smallFont.load("fonts/NeutraTextTF-Light.otf", 29, true, true, false, 0.3, 72);
-    smallestFont.load("fonts/NeutraTextTF-Light.otf", 24, true, true, false, 0.3, 72);
+    smallestFont.load("fonts/NeutraTextTF-Light.otf", 28, true, true, false, 0.3, 72);
 	small_logo.load("assets/urban_art.png");
     originalWidth = 1080;
     originalHeight = 1920;
@@ -128,7 +128,7 @@ void PMSc10Thanks::drawIntoFbo()
         drawRightAlignString(smallFont, dateName, 1024, 1716);
 //        drawLeftAlignString(smallFont, dateName, 151, 1633);
         ofPushMatrix();
-        ofTranslate(1047, 400);
+        ofTranslate(1047, 470);
         ofRotateZ(-90);
         smallestFont.drawString("cançons visuals - www.xavibove.com", 0, 0);
         ofPopMatrix();
