@@ -47,6 +47,7 @@ void PMSc6Kinect_Detect::draw()
     ofPopMatrix();
     
 #if ENABLE_KINECT
-    PMMotionExtractor::getInstance().draw();
+	auto heightToDraw = 424 * ofGetWidth() / 512;
+    PMMotionExtractor::getInstance().draw(0, (ofGetHeight() - heightToDraw) / 2, ofGetWidth(), heightToDraw);
 #endif
 }
