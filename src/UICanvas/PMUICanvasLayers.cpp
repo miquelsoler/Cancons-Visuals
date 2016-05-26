@@ -114,7 +114,9 @@ void PMUICanvasLayers::handleEvents(ofxUIEventArgs &e)
 void PMUICanvasLayers::loadPreset(int presetNumber)
 {
     string presetPath = "presets/LAYERS/" + ofToString(presetNumber) + ".xml";
+	ofPoint oldPos = ofPoint(rect->getX(), rect->getY());
     loadSettings(presetPath);
+	setPosition(oldPos.x, oldPos.y);
     cout << "PMUICanvasLayers :: loading preset : " << presetNumber << " to " << presetPath << endl;
 }
 

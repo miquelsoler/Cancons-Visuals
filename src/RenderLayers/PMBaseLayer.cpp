@@ -94,6 +94,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 	layersGui->init(layerID, 5, 5);
 	layersGui->setBackgroundColor(ofColor::gray);
 	layersGui->setVisible(false);
+	layersGui->loadSettings(0);
 
 	shared.guiApp->layoutGuis();
 
