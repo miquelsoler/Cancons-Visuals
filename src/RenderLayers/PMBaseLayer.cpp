@@ -90,11 +90,13 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 	layersGui->bindWireframeToggle(&showWireframe);
 	layersGui->bindmaxDistance(&maxDistance);
 
+	
 	//setup Gui
 	layersGui->init(layerID, 5, 5);
 	layersGui->setBackgroundColor(ofColor::gray);
 	layersGui->setVisible(false);
-	layersGui->loadSettings(0);
+	layersGui->loadPreset(0);
+
 
 	shared.guiApp->layoutGuis();
 
