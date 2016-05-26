@@ -59,7 +59,7 @@ void PMSc4Palette_Choose::mousePressed(int x, int y, int mouse)
     x/=scaleX;
     y/=scaleY;
     if(PMColorsSelector::getInstance().checkMousePressed(x, y)){
-        string sceneToChange="Scene 5";
+        string sceneToChange="Scene 6";
         ofNotifyEvent(goToSceneEvent, sceneToChange, this);
     }
 
