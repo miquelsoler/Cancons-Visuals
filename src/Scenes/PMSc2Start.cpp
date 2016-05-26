@@ -40,4 +40,6 @@ void PMSc2Start::keyPressed(int key)
     string sceneToChange = "Scene 3";
     if(key == ' ')
         ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+	if (key == 'f')
+		ofToggleFullscreen();
 }
