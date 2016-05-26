@@ -23,7 +23,7 @@ int main()
     mainSettings.width = int(DEFAULT_WINDOW_WIDTH);
     mainSettings.height = int(DEFAULT_WINDOW_HEIGHT);
     mainSettings.windowMode = DEFAULT_WINDOW_MODE;
-    mainSettings.resizable = false;
+    mainSettings.resizable = true;
     shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(mainSettings);
     
     ofGLFWWindowSettings guiSettings;
