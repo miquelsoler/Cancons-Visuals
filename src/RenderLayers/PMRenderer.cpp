@@ -126,8 +126,13 @@ void PMRenderer::drawIntoFBO()
 //#if ENABLE_KINECT
 //		PMMotionExtractor::getInstance().draw();
 //#endif
-        for (int i=0; i<layers.size(); ++i)
-            layers[i]->draw();
+		//cambio orden pintado de capas, mano izquierda debajo del todo.
+        //for (int i=0; i<layers.size(); ++i)
+        //    layers[i]->draw();
+		layers[1]->draw();
+		layers[2]->draw();
+		layers[3]->draw();
+		layers[0]->draw();
 		ofPopMatrix();
     }
     mainFBO.end();
