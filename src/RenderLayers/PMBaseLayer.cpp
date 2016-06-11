@@ -278,7 +278,7 @@ void PMBaseLayer::draw()
     layerFBO.begin();
     glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 #endif
-    ofSetColor(brushRGBColor, int(brushAlpha * 255));
+   // ofSetColor(brushRGBColor, int(brushAlpha * 255));
 	drawStrokes(); 
 
 #if ENABLE_MULTIPLE_FBOS
@@ -349,7 +349,7 @@ void PMBaseLayer::drawStrokes() {
 }
 
 void PMBaseLayer::finishStroke() {
-	pastStrokes.push_back(Stroke(ribbon, textures[currentTexture].getTexture(), ofColor(brushRGBColor, int(brushAlpha * 255))));
+	pastStrokes.push_back(Stroke(ribbon, textures[currentTexture].getTexture(), 0.01));
 	ribbon.clear();
 	points.clear();
 	brushSizes.clear();

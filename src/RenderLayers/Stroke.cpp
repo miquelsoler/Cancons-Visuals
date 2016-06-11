@@ -1,13 +1,21 @@
 #include "Stroke.h"
 
-Stroke::Stroke(ofMesh mesh, ofTexture tex, ofColor col) {
+Stroke::Stroke(ofMesh mesh, ofTexture tex, float life) {
 	ribbon = mesh;
 	texture = tex;
-	color = col;		
+	//color = col;		
+	lifeDecrement = life;
 }
 
 void Stroke::draw() {
-	//ofSetColor(color);
+	if (lifeDecrement > 0.f) {
+		int index = 0;
+		for (ofFloatColor &color : ribbon.getColors()) {
+			color.a -= lifeDecrement;
+			ribbon.setColor(index, color);
+			index++;
+		}
+	}
 	texture.bind();
 	ribbon.draw();
 	texture.unbind();
