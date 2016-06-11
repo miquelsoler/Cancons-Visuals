@@ -346,10 +346,14 @@ void PMBaseLayer::drawStrokes() {
 		ofSetColor(100, 100, 100);
 		ribbon.drawWireframe();
 	}
+
+	// remove elements with a life higher than a threshold
+	pastStrokes.erase(std::remove_if(pastStrokes.begin(), pastStrokes.end(),
+		[](Stroke i) { return i.life > 1000; }), pastStrokes.end());
 }
 
 void PMBaseLayer::finishStroke() {
-	pastStrokes.push_back(Stroke(ribbon, textures[currentTexture].getTexture(), 0.01));
+	pastStrokes.push_back(Stroke(ribbon, textures[currentTexture].getTexture(), 0.001));
 	ribbon.clear();
 	points.clear();
 	brushSizes.clear();

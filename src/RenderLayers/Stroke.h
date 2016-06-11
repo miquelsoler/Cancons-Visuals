@@ -7,10 +7,12 @@ public:
 	Stroke(ofMesh mesh, ofTexture tex, float life);
 	void draw();
 	void drawWireframe();
+	int life;
 
 protected:
 	ofMesh ribbon;
 	ofTexture texture;
 	ofColor color;
 	float lifeDecrement;
+
 };

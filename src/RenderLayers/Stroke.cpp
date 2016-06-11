@@ -1,10 +1,11 @@
 #include "Stroke.h"
 
-Stroke::Stroke(ofMesh mesh, ofTexture tex, float life) {
+Stroke::Stroke(ofMesh mesh, ofTexture tex, float lifeDec) {
 	ribbon = mesh;
 	texture = tex;
 	//color = col;		
-	lifeDecrement = life;
+	lifeDecrement = lifeDec;
+	life = 0;
 }
 
 void Stroke::draw() {
@@ -19,6 +20,7 @@ void Stroke::draw() {
 	texture.bind();
 	ribbon.draw();
 	texture.unbind();
+	life++;
 }
 
 void Stroke::drawWireframe() {
