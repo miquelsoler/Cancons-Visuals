@@ -125,6 +125,7 @@ protected:
     float                   alphaZScaleFactor;
     float                   alphaVelocityScaleFactor;
 	float alphaThreshold;
+	float strokeFadeOut;
     
 
     // JSON settings

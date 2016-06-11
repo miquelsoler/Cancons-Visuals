@@ -65,6 +65,10 @@ public:
 		alphaThreshold = _alphaThreshold;
 	}
 
+	void bindStrokeFadeOut(float * _strokeFadeOut) {
+		strokeFadeOut = _strokeFadeOut;
+	}
+
 	void bindDistanceThreshold(float *_distThres) {
 		distanceThreshold = _distThres;
 	}
@@ -111,7 +115,7 @@ private:
     float                   *scaleBrightness, *variationBrightness;
     
     //Alpha
-    float                   *minAlpha, *maxAlpha, *scaleAlpha, *scaleEnergy_Alpha, *scaleVelocity_Alpha, *scaleZ_Alpha, *alphaThreshold;
+    float                   *minAlpha, *maxAlpha, *scaleAlpha, *scaleEnergy_Alpha, *scaleVelocity_Alpha, *scaleZ_Alpha, *alphaThreshold, *strokeFadeOut;
     
     //Behaviour
     float                     *curveSpeed, *curveSize;

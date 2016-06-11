@@ -84,6 +84,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 	layersGui->bindBehaviour(&brushSpeed, &curveSize);
 
 	layersGui->bindAlphaThreshold(&alphaThreshold);
+	layersGui->bindStrokeFadeOut(&strokeFadeOut);
 
 	layersGui->bindDistanceThreshold(&distanceThreshold);
 	showWireframe = false;
@@ -353,7 +354,7 @@ void PMBaseLayer::drawStrokes() {
 }
 
 void PMBaseLayer::finishStroke() {
-	pastStrokes.push_back(Stroke(ribbon, textures[currentTexture].getTexture(), 0.001));
+	pastStrokes.push_back(Stroke(ribbon, textures[currentTexture].getTexture(), strokeFadeOut));
 	ribbon.clear();
 	points.clear();
 	brushSizes.clear();

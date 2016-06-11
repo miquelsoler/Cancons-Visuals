@@ -40,9 +40,9 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
     addLabel("Size");
     addIntSlider("Min Size", 0, 200, minSize);
     addIntSlider("Max Size", 0, 200, maxSize);
-    addSlider("Scale Energy Factor Size", 0, 1, scaleEnergy_Size);
-    addSlider("Scale Acceleration Factor Size", 0, 1, scaleAcceleration_Size);
-    addSlider("Scale Z Factor Size", 0, 800, scaleZ_Size);
+    addSlider("Energy Factor", 0, 1, scaleEnergy_Size);
+    addSlider("Acceleration Factor", 0, 1, scaleAcceleration_Size);
+    addSlider("Z Factor", 0, 800, scaleZ_Size);
     
    /* addSpacer();
     
@@ -59,7 +59,7 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
    addSpacer();
    
     addLabel("Brightness");
-    addSlider("Brightness Scale Factor", 0, 1, scaleBrightness);
+    addSlider("Acceleration Factor", 0, 1, scaleBrightness);
     addSlider("Brightness Variation", 0, 1, variationBrightness);
     
     addSpacer();
@@ -68,20 +68,22 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
     addSlider("Min Alpha", 0, 1, minAlpha);
     addSlider("Max Alpha", 0, 1, maxAlpha);
     //addSlider("Scale Energy Factor Alpha", 0, 1, scaleEnergy_Alpha);
-    addSlider("Scale Velocity Factor Alpha", 0, 1, scaleVelocity_Alpha);
-	addSlider("Alpha Threshold", 0, 1, alphaThreshold);
+    addSlider("Acceleration Factor", 0, 1, scaleVelocity_Alpha);
+	addSlider("Min Energy Threshold", 0, 1, alphaThreshold);
+	ofxUISlider *t = addSlider("Fade out factor", 0, 0.0100, strokeFadeOut);
+	t->setLabelPrecision(5);
     //addSlider("Scale Z Factor Alpha", 0, 1, scaleZ_Alpha);
     
     addSpacer();
     
     addLabel("Behaviour");
-    addSlider("Speed", 0, 10, curveSpeed);
+   // addSlider("Speed", 0, 10, curveSpeed);
     addSlider("Curve Size", 0, 20, curveSize);
 
 	addSpacer();
 	addLabel("Stroke");
-	addSlider("Threshold", 0, 40, distanceThreshold);
-	addSlider("Max distance", 0, 40, maxDistance);
+	addSlider("Mnimum distance", 0, 40, distanceThreshold);
+	addSlider("Smoothing distance", 0, 40, maxDistance);
 	addToggle("wireframe", showWireframe);
     
     if (autosize) autoSizeToFitWidgets();
