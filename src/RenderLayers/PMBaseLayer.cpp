@@ -171,6 +171,8 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 
 void PMBaseLayer::update()
 {
+	brushRGBColor = PMColorsSelector::getInstance().getColor(layerID);
+	brushRGBColor.getHsb(brushHSBColor.hue, brushHSBColor.saturation, brushHSBColor.brightness);
     brushPrevPosition = brushPosition;
 	actualNodePrevPosition = actualNodePosition;
 
@@ -450,6 +452,9 @@ void PMBaseLayer::melBandsChanged(float energy)
 void PMBaseLayer::keyPressed(ofKeyEventArgs &a){
 	if (a.key == 'R')
 		pastStrokes.clear();
+	else if(a.key == 'h'){
+		PMColorsSelector::getInstance().nexPalette();
+	}
 }
 
 void PMBaseLayer::keyReleased(ofKeyEventArgs &a){

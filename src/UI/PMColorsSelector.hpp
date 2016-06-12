@@ -35,6 +35,7 @@ public:
     void draw();
     
     ofColor getColor(int layer){return colorPalettes[indexChoosed].colors[layer];};
+	void nexPalette() { indexChoosed = (indexChoosed + 1) % colorPalettes.size(); };
     void checkMousePassed(int x, int y);
     bool checkMousePressed(int x, int y);
     
