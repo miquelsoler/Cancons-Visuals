@@ -81,7 +81,9 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 	layersGui->bindSaturation(&saturationScaleFactor, &saturationVariation);
 	layersGui->bindBrightness(&brightnessScaleFactor, &brightnessVariation);
 	layersGui->bindAlpha(&alphaMin, &alphaMax, &alphaScaleFactor, &alphaEnergyScaleFactor, &alphaVelocityScaleFactor, &alphaZScaleFactor);
-	layersGui->bindBehaviour(&brushSpeed, &curveSize);
+	noiseSpeed = 0.1;
+	kneeScaleFactor = 10;
+	layersGui->bindBehaviour(&brushSpeed, &curveSize, &noiseSpeed, &kneeScaleFactor);
 
 	layersGui->bindAlphaThreshold(&alphaThreshold);
 	layersGui->bindStrokeFadeOut(&strokeFadeOut);
@@ -170,6 +172,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 void PMBaseLayer::update()
 {
     brushPrevPosition = brushPosition;
+	actualNodePrevPosition = actualNodePosition;
 
 #if ENABLE_KINECT
     if (PMMotionExtractor::getInstance().isTracking())
@@ -186,14 +189,10 @@ void PMBaseLayer::update()
 #if ENABLE_KNEES_DETECTION
             case KINECTNODE_HEAD: {
                 kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightKnee;
-				kinectNodeData.pos.x = ofMap(kinectNodeData.pos.x, 0, 0.8, 0, 1, true);
-				kinectNodeData.pos.y = ofMap(kinectNodeData.pos.y, .3, 0.9, 0, 1, true);
                 break;
             }
             case KINECTNODE_TORSO: {
                 kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftKnee;
-				kinectNodeData.pos.x = ofMap(kinectNodeData.pos.x, 0.2, 1, 0, 1, true);
-				kinectNodeData.pos.y = ofMap(kinectNodeData.pos.y, 0.3, 0.9, 0, 1, true);
                 break;
             }
 #else
@@ -236,8 +235,6 @@ void PMBaseLayer::update()
     brushDirection += ((newDirection.normalize()) * curveSize);
 //#endif
 
-    brushDirection.normalize();
-
     if (kinectNodeData.a / KINECT_ACCEL_FACTOR > KINECT_ACCEL_THRESHOLD) {
         brushDirection += (kinectNodeData.v.normalize() * (kinectNodeData.a / 3));
     }
@@ -247,7 +244,16 @@ void PMBaseLayer::update()
     brush->update(int(brushPosition.x), int(brushPosition.y));
 	
 	//Fort Pienc version
-	ofPoint newPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), kinectNodeData.pos.z * 100);
+	ofPoint newPoint;
+	if (layerID == 1 || layerID == 2)
+		newPoint = ofPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), kinectNodeData.pos.z * 100);
+	else {
+		float heightSpan = ofNoise(layerID * 1000, ofGetElapsedTimef() * noiseSpeed) * 0.7 + 0.3; //make sure knees range stay in the lower side of the canvas
+		newPoint = ofPoint(ofNoise(ofGetElapsedTimef() * noiseSpeed, layerID * 1000) * ofGetWidth(), heightSpan * ofGetHeight(), kinectNodeData.pos.z * 100);
+		actualNodePosition = ofPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), kinectNodeData.pos.z * 100);
+		ofPoint direction = actualNodePosition - actualNodePrevPosition;
+		newPoint += direction * kneeScaleFactor;
+	}
 	//cout << "Adding point z" << kinectNodeData.pos.z * 400 << endl;
 
 	int index = points.size() - 1;
@@ -262,12 +268,11 @@ void PMBaseLayer::update()
 			//cout << "Creating vertices" << endl;
 			float thick = (brushSizes[index] + brushSize) / 2.0f;
 			ofPoint n = (thisPoint + nextPoint) / 2.0f;
-			addPointToRibbon(n, brushDirectionUnormalized, thick);
+			addPointToRibbon(n, brushDirection, thick);
 		}
 	}
 
-
-	addPointToRibbon(newPoint, brushDirectionUnormalized, brushSize);
+	addPointToRibbon(newPoint, brushDirection, brushSize);
 	//cout << "mouse pos " << newPoint << endl;
 	if (points.size() > maxPoints)
 		finishStroke();
@@ -349,8 +354,10 @@ void PMBaseLayer::drawStrokes() {
 	}
 
 	// remove elements with a life higher than a threshold
-	pastStrokes.erase(std::remove_if(pastStrokes.begin(), pastStrokes.end(),
-		[](Stroke i) { return i.life > 1000; }), pastStrokes.end());
+	if (strokeFadeOut > 0) {
+		pastStrokes.erase(std::remove_if(pastStrokes.begin(), pastStrokes.end(),
+			[](Stroke i) { return i.life > 1000; }), pastStrokes.end());
+	}
 }
 
 void PMBaseLayer::finishStroke() {

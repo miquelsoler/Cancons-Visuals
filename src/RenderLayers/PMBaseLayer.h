@@ -80,6 +80,8 @@ protected:
     ofPoint                 brushInitalPosition;
     ofPoint                 brushPosition;
     ofPoint                 brushPrevPosition;
+	ofPoint                 actualNodePosition;
+	ofPoint					actualNodePrevPosition;
     int                     brushSize;
     ofPoint                 brushDirection;
     float                   brushSpeed;
@@ -126,6 +128,8 @@ protected:
     float                   alphaVelocityScaleFactor;
 	float alphaThreshold;
 	float strokeFadeOut;
+	float noiseSpeed;
+	float kneeScaleFactor;
     
 
     // JSON settings

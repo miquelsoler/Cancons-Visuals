@@ -56,9 +56,11 @@ public:
         scaleZ_Alpha = _scaleZ_Alpha;
     }
     
-    void bindBehaviour(float *_curveSpeed, float *_curveSize){
+    void bindBehaviour(float *_curveSpeed, float *_curveSize, float *_noiseSpeed, float *_kneeScaleFactor){
         curveSpeed = _curveSpeed;
         curveSize = _curveSize;
+		noiseSpeed = _noiseSpeed;
+		kneeScaleFactor = _kneeScaleFactor;
     }
 
 	void bindAlphaThreshold(float * _alphaThreshold) {
@@ -118,7 +120,7 @@ private:
     float                   *minAlpha, *maxAlpha, *scaleAlpha, *scaleEnergy_Alpha, *scaleVelocity_Alpha, *scaleZ_Alpha, *alphaThreshold, *strokeFadeOut;
     
     //Behaviour
-    float                     *curveSpeed, *curveSize;
+    float                     *curveSpeed, *curveSize, *noiseSpeed, *kneeScaleFactor;
 
 	// Stroke
 	float *distanceThreshold;
