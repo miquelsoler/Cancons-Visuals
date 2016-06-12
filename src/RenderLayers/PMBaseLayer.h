@@ -82,6 +82,7 @@ protected:
     ofPoint                 brushPrevPosition;
 	ofPoint                 actualNodePosition;
 	ofPoint					actualNodePrevPosition;
+	ofPoint					prevDirection;
     int                     brushSize;
     ofPoint                 brushDirection;
     float                   brushSpeed;
