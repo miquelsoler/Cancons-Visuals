@@ -226,6 +226,7 @@
     <ClCompile Include="src\Scenes\PMSc8Main.cpp" />
     <ClCompile Include="src\Scenes\PMSc9Export.cpp" />
     <ClCompile Include="src\SharedSettings\PMSharedSettings.cpp" />
+    <ClCompile Include="src\UICanvas\PMUICanvasAudioAnalyzer.cpp" />
     <ClCompile Include="src\UI\Containers\PMColorContainer.cpp" />
     <ClCompile Include="src\UI\Containers\PMImageContainer.cpp" />
     <ClCompile Include="src\UI\Containers\PMSelectorContainer.cpp" />
@@ -361,6 +362,7 @@
     <ClInclude Include="src\Scenes\PMSc8Main.hpp" />
     <ClInclude Include="src\Scenes\PMSc9Export.hpp" />
     <ClInclude Include="src\SharedSettings\PMSharedSettings.h" />
+    <ClInclude Include="src\UICanvas\PMUICanvasAudioAnalyzer.h" />
     <ClInclude Include="src\UI\Containers\PMColorContainer.hpp" />
     <ClInclude Include="src\UI\Containers\PMImageContainer.hpp" />
     <ClInclude Include="src\UI\Containers\PMSelectorContainer.hpp" />

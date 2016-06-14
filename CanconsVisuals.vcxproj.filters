@@ -379,6 +379,9 @@
     <ClCompile Include="src\RenderLayers\Stroke.cpp">
       <Filter>src\RenderLayers</Filter>
     </ClCompile>
+    <ClCompile Include="src\UICanvas\PMUICanvasAudioAnalyzer.cpp">
+      <Filter>src\UICanvas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -925,6 +928,9 @@
     </ClInclude>
     <ClInclude Include="src\RenderLayers\Stroke.h">
       <Filter>src\RenderLayers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UICanvas\PMUICanvasAudioAnalyzer.h">
+      <Filter>src\UICanvas</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

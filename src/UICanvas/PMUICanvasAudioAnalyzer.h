@@ -7,17 +7,29 @@
 
 #include "PMBaseUICanvas.h"
 
-#include "PMAudioInParams.h"
-#include "PMAudioAnalyzer.hpp"
-
 class PMUICanvasAudioAnalyzer : public PMBaseUICanvas
 {
 public:
 
-    PMUICanvasAudioAnalyzer(string title, int headerFontSize, unsigned int audioInputIndex);
+    PMUICanvasAudioAnalyzer(string title, int headerFontSize);
 
     virtual void init(int posX, int posY, bool autosize = true, int width = 0, int height = 0);
     virtual void clear();
+
+
+	//variable binding
+	void bindLimits(float *_bandLimit_low, float *_bandLimit_1, float *_bandLimit_2, float *_bandLimit_3, float  *_bandLimit_hight) {
+		bandLimit_low = _bandLimit_low;
+		bandLimit_1 = _bandLimit_1;
+		bandLimit_2 = _bandLimit_2;
+		bandLimit_3 = _bandLimit_3;
+		bandLimit_hight = _bandLimit_hight;
+	}
+
+	void bindSpectrums(float *_fullBands, float *_fourBands) {
+		fullBands = _fullBands;
+		fourBands = _fourBands;
+	}
 
     virtual void handleEvents(ofxUIEventArgs &e);
 
@@ -28,83 +40,30 @@ protected:
 
 private:
 
-    unsigned int audioInputIndex;
-
-    vector<PMDeviceAudioAnalyzer *> *audioAnalyzers;
-
     // Matrix --------------------------------
     
     ofxUIToggleMatrix       *presetsMatrix;
     int                     getActivePreset();
     bool                    savingPreset;
-
-    // Pitch ------------------------------------
-
-    void pitchChanged(pitchParams &pitchParams);
-
-    ofxUISlider         *pitchSlider;
-    float               pitchMinMidiNote, pitchMaxMidiNote;
-    float pitchCurrentMidiNote;
-
-    // Energy -----------------------------------
-
-    void energyChanged(energyParams &energyParams);
-
-    ofxUISlider         *energyGainSlider;
-    float               energyGainCurrent;
-    ofxUISlider         *energySilder;
-    float               energyCurrent;
-
-    // Silence ----------------------------------
-
-    void silenceStateChanged(silenceParams &silenceParams);
-
-    ofxUILabelToggle    *silenceToggle;
-    bool                silenceOn;
-    float               silenceThreshold;
-    float               silenceQueueLength;
     
-    // Pause ------------------------------------
+    // Bands control ---------------
 
-    void pauseStateChanged(pauseParams &pauseParams);
+	float					*bandLimit_low, *bandLimit_1, *bandLimit_2, *bandLimit_3, *bandLimit_hight;
 
-    ofxUILabelToggle    *pauseToggle;
-    bool                pauseOn;
-    float               pauseQueueLength;
-
-    // Onset ------------------------------------
-
-    void onsetStateChanged(onsetParams &onsetParams);
-
-    ofxUILabelToggle    *onsetToggle;
-    bool                onsetOn;
-
-    // Sht ------------------------------------
-    
-    void shtStateChanged(shtParams &_shtParams);
-    
-    ofxUILabelToggle    *shtToggle;
-    bool                shtOn;
-    
-    void            keyPressed(int key);
-    void            keyReleased(int key);
-    
-    
-    // MelBands---------------------------------
-    
-    void melBandsChanged(melBandsParams &_melBandsParams);
-    
+    // Vu-Bands---------------------------------
+        
     ofxUISpectrum *fullMelSpectrum;
     ofxUISpectrum *melSpectrum;
     
-    float *fullMelBands;
-    float *melBands;
-    
-    
+    float *fullBands;
+    float *fourBands;
 
-    // Settings
 
-    //PMSettingsManagerAudioAnalyzers *settings;
+	// KEYBOARD
+
+	void                    keyPressed(int key);
+	void                    keyReleased(int key);
+   
 };
 
 

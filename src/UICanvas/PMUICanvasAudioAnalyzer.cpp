@@ -10,15 +10,14 @@ static const unsigned int PRESETSMATRIX_NUMCOLS = 6;
 #include "PMUICanvasAudioAnalyzer.h"
 
 //--------------------------------------------------------------------------------------------------
-PMUICanvasAudioAnalyzer::PMUICanvasAudioAnalyzer(string title, int headerFontSize, unsigned int _audioInputIndex) : PMBaseUICanvas(title, headerFontSize)
+PMUICanvasAudioAnalyzer::PMUICanvasAudioAnalyzer(string title, int headerFontSize) : PMBaseUICanvas(title, headerFontSize)
 {
-    audioInputIndex = _audioInputIndex;
     savingPreset = false;
     
-    fullMelBands = new float[40];
-    for(int i = 0; i < 40; i++) { fullMelBands[i] = ofNoise(i/100.0); }
-    melBands = new float[4];
-    for(int i = 0; i < 4; i++) { melBands[i] = ofNoise(i/100.0); }
+    fullBands = new float[40];
+    for(int i = 0; i < 40; i++) { fullBands[i] = ofNoise(i/100.0); }
+    fourBands = new float[4];
+    for(int i = 0; i < 4; i++) { fourBands[i] = ofNoise(i/100.0); }
 
 }
 
@@ -32,92 +31,22 @@ void PMUICanvasAudioAnalyzer::init(int posX, int posY, bool autosize, int width,
 //    pitchMinMidiNote = settings->getMaxPitchMidiNote();
 //    pitchMaxMidiNote = settings->getMinPitchMidiNote();
 
-    silenceOn = false;
-
-    audioAnalyzers = PMAudioAnalyzer::getInstance().getAudioAnalyzers();
-    vector<PMDeviceAudioAnalyzer *>::iterator itAudioAnalyzer;
-
-    for (itAudioAnalyzer = audioAnalyzers->begin(); itAudioAnalyzer != audioAnalyzers->end(); ++itAudioAnalyzer)
-    {
-        if ((*itAudioAnalyzer)->getInputIndex() != audioInputIndex) continue;
-
-        string strChannelNumbers;
-        vector<unsigned int> channelNumbers = (*itAudioAnalyzer)->getChannelNumbers();
-        for (int i=0; i<channelNumbers.size(); ++i)
-        {
-            strChannelNumbers += ofToString(channelNumbers[i]);
-            if (i < channelNumbers.size() - 1)
-                strChannelNumbers += ",";
-        }
-
-        addLabel("Device: " + ofToString((*itAudioAnalyzer)->getDeviceID()) + " Channels: " + strChannelNumbers);
-        addSpacer();
-
         // Presets
         addLabel("PRESETS");
         presetsMatrix = addToggleMatrix("PRESETS", PRESETSMATRIX_NUMROWS, PRESETSMATRIX_NUMCOLS,200/PRESETSMATRIX_NUMCOLS,20);
         presetsMatrix->setAllowMultiple(false);
         presetsMatrix->setTriggerType(OFX_UI_TRIGGER_NONE );
-        
-        ofAddListener(newGUIEvent, this, &PMUICanvasAudioAnalyzer::handleEvents);
 
         addSpacer();
 
-        addLabel("PITCH");
-        // Current freq value
-//        pitchSlider = addSlider("Midi note", settings->getMinPitchMidiNote(), settings->getMaxPitchMidiNote(), &pitchCurrentMidiNote, 300, 10);
-        pitchSlider = addSlider("Midi note", 0, 127, &pitchCurrentMidiNote);
-        pitchSlider->setTriggerType(OFX_UI_TRIGGER_NONE);
-        addSpacer();
-        ofAddListener((*itAudioAnalyzer)->eventPitchChanged, this, &PMUICanvasAudioAnalyzer::pitchChanged);
 
-        addLabel("ENERGY");
-//        energySilder = addSlider("Energy", settings->getMinEnergy(), settings->getMaxEnergy(), &energyCurrent, 300, 10);
-        
-        energyGainSlider = addSlider("Gain",1.0,10.0,&energyGainCurrent);
-        energySilder = addSlider("Energy", 0.0, 1.0, &energyCurrent);
-        energySilder->setTriggerType(OFX_UI_TRIGGER_NONE);
-        addSpacer();
-        ofAddListener((*itAudioAnalyzer)->eventEnergyChanged, this, &PMUICanvasAudioAnalyzer::energyChanged);
-
-        addLabel("SILENCE");
-        addSlider("Silence Threshold",0.0,0.5,&silenceThreshold);
-        addSlider("Silence Length (ms)",0.0,1000.0,&silenceQueueLength);
-        silenceToggle = addLabelToggle("SILENCE", &silenceOn);
-        silenceToggle->setTriggerType(OFX_UI_TRIGGER_NONE);
-        addSpacer();
-        ofAddListener((*itAudioAnalyzer)->eventSilenceStateChanged, this, &PMUICanvasAudioAnalyzer::silenceStateChanged);
-
-        addLabel("PAUSE");
-        addSlider("Pause Length (ms)",0.0,10000.0,&pauseQueueLength);
-        pauseToggle = addLabelToggle("PAUSE", &pauseOn);
-        pauseToggle->setTriggerType(OFX_UI_TRIGGER_NONE);
-        addSpacer();
-        ofAddListener((*itAudioAnalyzer)->eventPauseStateChanged, this, &PMUICanvasAudioAnalyzer::pauseStateChanged);
-
-        addLabel("ONSET");
-        addSlider("Onset Threshold",0.0,1.0,&silenceThreshold);
-        onsetToggle = addLabelToggle("ONSET", &onsetOn);
-        onsetToggle->setTriggerType(OFX_UI_TRIGGER_NONE);
-        addSpacer();
-        ofAddListener((*itAudioAnalyzer)->eventOnsetStateChanged, this, &PMUICanvasAudioAnalyzer::onsetStateChanged);
-
-        addLabel("SHT");
-        shtToggle = addLabelToggle("SHT", &shtOn);
-        shtToggle->setTriggerType(OFX_UI_TRIGGER_NONE);
-        addSpacer();
-        ofAddListener((*itAudioAnalyzer)->eventShtStateChanged, this, &PMUICanvasAudioAnalyzer::shtStateChanged);
-        
         addLabel("FULLMelBands");
-        fullMelSpectrum = addSpectrum("FullMelBands", fullMelBands, 40, 0.0, 0.1);
+        fullMelSpectrum = addSpectrum("FullMelBands", fullBands, 40, 0.0, 0.1);
 //        fullMelSpectrum->setTriggerType(OFX_UI_TRIGGER_CHANGE);
         addSpacer();
         addLabel("ScaledBands");
-        melSpectrum = addSpectrum("4 Bands", melBands, 4, 0.0, 0.1);
+        melSpectrum = addSpectrum("4 Bands", fourBands, 4, 0.0, 0.1);
 //        melSpectrum->setTriggerType(OFX_UI_TRIGGER_ALL);
-        ofAddListener((*itAudioAnalyzer)->eventMelBandsChanged, this, &PMUICanvasAudioAnalyzer::melBandsChanged);
-        
-    }
 
     if (autosize) autoSizeToFitWidgets();
 }
@@ -144,42 +73,7 @@ void PMUICanvasAudioAnalyzer::handleEvents(ofxUIEventArgs &e)
             loadPreset(activePreset);
         }
     }
-    else if(name=="Silence Threshold")
-    {
-        vector<PMDeviceAudioAnalyzer *>::iterator itAudioAnalyzer;
-        for (itAudioAnalyzer = audioAnalyzers->begin(); itAudioAnalyzer != audioAnalyzers->end(); ++itAudioAnalyzer)
-        {
-            if ((*itAudioAnalyzer)->getInputIndex() != audioInputIndex) continue;
-            (*itAudioAnalyzer)->setSilenceThreshold(e.getFloat());
-        }
-    }
-    else if(name == "Silence Length (ms)")
-    {
-        vector<PMDeviceAudioAnalyzer *>::iterator itAudioAnalyzer;
-        for (itAudioAnalyzer = audioAnalyzers->begin(); itAudioAnalyzer != audioAnalyzers->end(); ++itAudioAnalyzer)
-        {
-            if ((*itAudioAnalyzer)->getInputIndex() != audioInputIndex) continue;
-            (*itAudioAnalyzer)->setSilenceQueueLength(e.getFloat());
-        }
-    }
-    else if(name == "Pause Length (ms)")
-    {
-        vector<PMDeviceAudioAnalyzer *>::iterator itAudioAnalyzer;
-        for (itAudioAnalyzer = audioAnalyzers->begin(); itAudioAnalyzer != audioAnalyzers->end(); ++itAudioAnalyzer)
-        {
-            if ((*itAudioAnalyzer)->getInputIndex() != audioInputIndex) continue;
-            (*itAudioAnalyzer)->setPauseTimeTreshold(e.getFloat());
-        }
-    }
-    else if(name == "Onset Threshold")
-    {
-        vector<PMDeviceAudioAnalyzer *>::iterator itAudioAnalyzer;
-        for (itAudioAnalyzer = audioAnalyzers->begin(); itAudioAnalyzer != audioAnalyzers->end(); ++itAudioAnalyzer)
-        {
-            if ((*itAudioAnalyzer)->getInputIndex() != audioInputIndex) continue;
-            (*itAudioAnalyzer)->setOnsetsThreshold(e.getFloat());
-        }
-    }
+   
 //    else if(name == "FullMelBands")
 //    {
 //        vector<PMDeviceAudioAnalyzer *>::iterator itAudioAnalyzer;
@@ -190,73 +84,6 @@ void PMUICanvasAudioAnalyzer::handleEvents(ofxUIEventArgs &e)
 //        }
 //    }
     
-}
-
-//--------------------------------------------------------------------------------------------------
-void PMUICanvasAudioAnalyzer::pitchChanged(pitchParams &pitchParams)
-{
-    if (pitchParams.audioInputIndex != audioInputIndex) return;
-
-    pitchCurrentMidiNote = pitchParams.midiNote;
-
-//    pitchMinMidiNote = pitchParams.midiNote;
-//    if ((pitchParams.midiNote > settings->getMinPitchMidiNote()) && (pitchParams.midiNote < pitchMinMidiNote)) {
-//        
-//    }
-
-//    if (pitchParams.midiNote > pitchMaxMidiNote) {
-//        pitchMaxMidiNote = pitchParams.midiNote;
-//    }
-
-}
-
-//--------------------------------------------------------------------------------------------------
-void PMUICanvasAudioAnalyzer::energyChanged(energyParams &energyParams)
-{
-    if (energyParams.audioInputIndex != audioInputIndex) return;
-    energyCurrent = energyGainCurrent * energyParams.energy;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-void PMUICanvasAudioAnalyzer::silenceStateChanged(silenceParams &silenceParams)
-{
-    if (silenceParams.audioInputIndex != audioInputIndex) return;
-    silenceOn = silenceParams.isSilent;
-//    cout << "Silent is " << silenceOn << "En.Curr : " << energyCurrent << "Silence Thr , Length  :  " << silenceThreshold << " , " << silenceQueueLength << endl;
-}
-
-//--------------------------------------------------------------------------------------------------
-void PMUICanvasAudioAnalyzer::pauseStateChanged(pauseParams &pauseParams)
-{
-    if (pauseParams.audioInputIndex != audioInputIndex) return;
-    pauseOn = pauseParams.isPaused;
-}
-
-//--------------------------------------------------------------------------------------------------
-void PMUICanvasAudioAnalyzer::onsetStateChanged(onsetParams &onsetParams)
-{
-    if (onsetParams.audioInputIndex != audioInputIndex) return;
-    onsetOn = onsetParams.isOnset;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-void PMUICanvasAudioAnalyzer::shtStateChanged(shtParams &_shtParams)
-{
-    if (_shtParams.audioInputIndex != audioInputIndex) return;
-    shtOn = _shtParams.isSht;
-}
-
-void PMUICanvasAudioAnalyzer::melBandsChanged(melBandsParams &_melBandsParams)
-{
-    if (_melBandsParams.audioInputIndex != audioInputIndex) return;
-    for(int i=0; i<_melBandsParams.fullBandsEnergy.size(); i++){
-        fullMelBands[i]=_melBandsParams.fullBandsEnergy[i];
-    }
-    for(int i=0; i<_melBandsParams.bandsEnergy.size(); i++){
-        melBands[i] = _melBandsParams.bandsEnergy[i];
-    }
 }
 
 //--------------------------------------------------------------------------------------------------
