@@ -8,6 +8,7 @@
 #include "ofMain.h"
 #include "ofxAppUtils.h"
 #include "PMUICanvasLayers.h"
+#include "PMUICanvasAudioAnalyzer.h"
 
 class ofApp;
 
@@ -28,6 +29,7 @@ public:
     
     void layoutGuis();
     PMUICanvasLayers* getGuiOfLayer(int layerId){return layersGui.at(layerId-1);};
+	PMUICanvasAudioAnalyzer* audioGui;
 
 private:
     

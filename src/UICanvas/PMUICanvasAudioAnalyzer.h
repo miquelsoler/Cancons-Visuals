@@ -33,10 +33,12 @@ public:
 
     virtual void handleEvents(ofxUIEventArgs &e);
 
+	void            loadPreset(int presetNumber = 0);
+	void            savePreset(int presetNumber = 0);
+
 protected:
     
-    void            loadPreset(int presetNumber = 0);
-    void            savePreset(int presetNumber = 0);
+    
 
 private:
 

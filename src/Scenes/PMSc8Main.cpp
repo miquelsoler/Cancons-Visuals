@@ -9,6 +9,7 @@
 #include "PMSc8Main.hpp"
 #include "PMSongSelector.hpp"
 #include "PMSettingsManagerGeneral.h"
+#include "PMSharedSettings.h"
 
 static const int MINIMUM_SONG_TIME = 10;
 
@@ -43,11 +44,28 @@ void PMSc8Main::setup()
 		fftSmoothed[i] = 0;
 
 	nMelBands = 4;
+	melBands = new float[4];
 	for (int i = 0; i < nMelBands; i++)
-		melBands.push_back(0);
+		melBands[i] = 0;
 
 	nBandsToGet = 8;
+
+	//createGui to guiApp
+	PMSharedSettings shared = PMSharedSettings::getInstance();
+	auto audioGui = shared.guiApp->audioGui;
 	
+	//bindVariables
+	audioGui->bindLimits(&bandLimit_low, &bandLimit_1, &bandLimit_2, &bandLimit_3, &bandLimit_hight);
+	audioGui->bindSpectrums(fftSmoothed, melBands);
+
+
+	//setup Gui
+	audioGui->init(5, 5);
+	audioGui->setBackgroundColor(ofColor::slateGrey);
+	audioGui->setVisible(false);
+	audioGui->loadPreset(0);
+
+	shared.guiApp->layoutGuis();
 }
 
 void PMSc8Main::update()
@@ -117,7 +135,12 @@ void PMSc8Main::computeFFT()
 	for (int i = 0; i < nMelBands; i++)
 		melBands[i] = fftSmoothed[i];
 
-	renderer->melBandsChange(melBands);
+	vector<float> bandsVec;
+	bandsVec.push_back(melBands[0]);
+	bandsVec.push_back(melBands[1]);
+	bandsVec.push_back(melBands[2]);
+	bandsVec.push_back(melBands[3]);
+	renderer->melBandsChange(bandsVec);
 }
 
 void PMSc8Main::loadSong(string filename)

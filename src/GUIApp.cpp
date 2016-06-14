@@ -13,6 +13,7 @@ void GUIApp::setup()
 //        tempGui->set
         layersGui.push_back(tempGui);
     }
+	audioGui = new PMUICanvasAudioAnalyzer("AUDIO PARAMETERS", OFX_UI_FONT_MEDIUM);
 }
 
 void GUIApp::update()
@@ -37,6 +38,7 @@ void GUIApp::layoutGuis(){
     layersGui[1]->setPosition(layersGui[0]->getWidth()+layersGui[0]->getRect()->getX(), 0);
     layersGui[2]->setPosition(layersGui[1]->getWidth()+layersGui[1]->getRect()->getX(), 0);
     layersGui[3]->setPosition(layersGui[2]->getWidth()+layersGui[2]->getRect()->getX(), 0);
+	audioGui->setPosition(layersGui[3]->getWidth() + layersGui[3]->getRect()->getX(), 0);
 }
 
 void GUIApp::keyPressed(int key)
