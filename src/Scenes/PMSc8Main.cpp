@@ -39,8 +39,9 @@ void PMSc8Main::setup()
     playSong();
 
 	//FFT
-	fftSmoothed = new float[8192];
-	for (int i = 0; i < 8192; i++)
+	nBandsToGet = 16;
+	fftSmoothed = new float[16];
+	for (int i = 0; i < nBandsToGet; i++)
 		fftSmoothed[i] = 0;
 
 	nMelBands = 4;
@@ -48,7 +49,7 @@ void PMSc8Main::setup()
 	for (int i = 0; i < nMelBands; i++)
 		melBands[i] = 0;
 
-	nBandsToGet = 8;
+	
 
 	//createGui to guiApp
 	PMSharedSettings shared = PMSharedSettings::getInstance();
@@ -129,11 +130,12 @@ void PMSc8Main::computeFFT()
 {
 	float * val = ofSoundGetSpectrum(nBandsToGet);
 	for (int i = 0; i < nBandsToGet; i++) {
-		fftSmoothed[i] *= 0.96f;
-		if (fftSmoothed[i] < val[i]) fftSmoothed[i] = val[i];
+		//fftSmoothed[i] *= 0.96f;
+		//if (fftSmoothed[i] < val[i]) 
+		fftSmoothed[i] = val[i];
 	}
 	for (int i = 0; i < nMelBands; i++)
-		melBands[i] = fftSmoothed[i];
+		melBands[i] = fftSmoothed[i+1];
 
 	vector<float> bandsVec;
 	bandsVec.push_back(melBands[0]);
