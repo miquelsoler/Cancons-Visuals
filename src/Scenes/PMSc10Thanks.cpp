@@ -35,7 +35,7 @@ void PMSc10Thanks::setup()
     dateName = ofGetTimestampString("%d/%m/%Y, %H:%M");
     //carrega la imatge, alloca el fbo i genera fbo
     ofClear(0, 0, 0);
-    printImage.load("TempRender.png");
+    printImage.load("TempRender.tiff");
     printFbo.allocate(1181, 1772, GL_RGB);
     drawIntoFbo();
     //exportem fbo i el guardem

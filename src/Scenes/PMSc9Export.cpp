@@ -22,7 +22,7 @@ PMSc9Export::PMSc9Export() : PMBaseScene("Scene 9")
 
 void PMSc9Export::setup()
 {
-    painting.load("TempRender.png");
+    painting.load("TempRender.tiff");
     textInput="";
     ofClear(0,0,0);
     timestamp=ofGetElapsedTimef()-1;

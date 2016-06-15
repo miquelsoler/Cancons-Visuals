@@ -39,8 +39,8 @@ void PMSc8Main::setup()
     playSong();
 
 	//FFT
-	nBandsToGet = 256;
-	fftSmoothed = new float[256];
+	nBandsToGet = 1024;
+	fftSmoothed = new float[1024];
 	for (int i = 0; i < nBandsToGet; i++)
 		fftSmoothed[i] = 0;
 

@@ -169,7 +169,7 @@ void PMRenderer::exportToImage(string path)
 #else
     ofPixels pix;
     mainFBO.readToPixels(pix);
-    ofSaveImage(pix, path + ".png", OF_IMAGE_QUALITY_BEST);
+    ofSaveImage(pix, path + ".tiff", OF_IMAGE_QUALITY_BEST);
 #endif
 }
 
