@@ -57,7 +57,10 @@ void PMSc8Main::setup()
 	
 	//bindVariables
 	audioGui->bindLimits(&bandLimit_low, &bandLimit_1, &bandLimit_2, &bandLimit_3, &bandLimit_high);
+	audioGui->bindMaxs(&bandMax_low, &bandMax_lowmid, &bandMax_highmid, &bandMax_high);
 	audioGui->bindSpectrums(fftSmoothed, melBands);
+
+	bandMax_low = bandMax_lowmid = bandMax_highmid = bandMax_high = 0;
 
 
 	//setup Gui
@@ -145,6 +148,7 @@ void PMSc8Main::computeFFT()
 		bandSize++;
 	}
 	melBands[0] /= bandSize;
+	if (bandMax_low < melBands[0]) bandMax_low = melBands[0];
 
 	bandSize = 0;
 	for (int i = toBin(bandLimit_1); i < toBin(bandLimit_2); i++) {
@@ -152,6 +156,7 @@ void PMSc8Main::computeFFT()
 		bandSize++;
 	}
 	melBands[1] /= bandSize;
+	if (bandMax_lowmid < melBands[1]) bandMax_lowmid = melBands[1];
 
 	bandSize = 0;
 	for (int i = toBin(bandLimit_2); i < toBin(bandLimit_3); i++) {
@@ -159,6 +164,7 @@ void PMSc8Main::computeFFT()
 		bandSize++;
 	}
 	melBands[2] /= bandSize;
+	if (bandMax_highmid < melBands[2]) bandMax_highmid = melBands[2];
 
 	bandSize = 0;
 	for (int i = toBin(bandLimit_3); i < toBin(bandLimit_high); i++) {
@@ -166,8 +172,9 @@ void PMSc8Main::computeFFT()
 		bandSize++;
 	}
 	melBands[3] /= bandSize;
+	if (bandMax_high < melBands[3]) bandMax_high = melBands[3];
 
-
+	cout << bandMax_low << endl;
 
 	//for (int i = 0; i < nMelBands; i++)
 	//	melBands[i] = fftSmoothed[i+1];

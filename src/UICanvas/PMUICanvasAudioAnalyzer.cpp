@@ -57,6 +57,14 @@ void PMUICanvasAudioAnalyzer::init(int posX, int posY, bool autosize, int width,
         melSpectrum = addSpectrum("4 Bands", fourBands, 4, 0.0, 1.0);
 //        melSpectrum->setTriggerType(OFX_UI_TRIGGER_ALL);
 
+		addSpacer();
+
+		addLabel("Band Maxs");
+		addSlider("Low", 0, 1.0, bandMax_low);
+		addSlider("LowMid", 0, 1.0, bandMax_lowmid);
+		addSlider("HighMid", 0, 1.0, bandMax_highmid);
+		addSlider("High", 0, 1.0, bandMax_high);
+
     if (autosize) autoSizeToFitWidgets();
 }
 
