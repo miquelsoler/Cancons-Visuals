@@ -189,7 +189,7 @@ void PMRenderer::resetPositions()
 void PMRenderer::melBandsChange(vector<float> melBands)
 {
 	for (auto layer : layers) {
-		int melBandIndex = (layer->getLayerID() != 4) ? layer->getLayerID() : 0;
+		int melBandIndex = layer->getLayerID()-1;
 		layer->melBandsChanged(melBands[melBandIndex]);
 	}
 }
