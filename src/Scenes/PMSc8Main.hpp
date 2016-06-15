@@ -42,6 +42,11 @@ public:
     }
 
 
+	int toBin(float frequency) {
+		return nBandsToGet*frequency / 44100;
+	}
+
+
 private:
     
     PMRenderer *renderer;
@@ -57,7 +62,7 @@ private:
 	float		 	*melBands;
 	int				nBandsToGet;
 	int				nMelBands;
-	float			bandLimit_low, bandLimit_1, bandLimit_2, bandLimit_3, bandLimit_hight;
+	float			bandLimit_low, bandLimit_1, bandLimit_2, bandLimit_3, bandLimit_high;
 
     bool            enteredScene;
     bool            disablePainting;

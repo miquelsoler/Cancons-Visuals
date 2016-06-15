@@ -18,12 +18,12 @@ public:
 
 
 	//variable binding
-	void bindLimits(float *_bandLimit_low, float *_bandLimit_1, float *_bandLimit_2, float *_bandLimit_3, float  *_bandLimit_hight) {
+	void bindLimits(float *_bandLimit_low, float *_bandLimit_1, float *_bandLimit_2, float *_bandLimit_3, float  *_bandLimit_high) {
 		bandLimit_low = _bandLimit_low;
 		bandLimit_1 = _bandLimit_1;
 		bandLimit_2 = _bandLimit_2;
 		bandLimit_3 = _bandLimit_3;
-		bandLimit_hight = _bandLimit_hight;
+		bandLimit_high = _bandLimit_high;
 	}
 
 	void bindSpectrums(float *_fullBands, float *_fourBands) {
@@ -50,7 +50,7 @@ private:
     
     // Bands control ---------------
 
-	float					*bandLimit_low, *bandLimit_1, *bandLimit_2, *bandLimit_3, *bandLimit_hight;
+	float					*bandLimit_low, *bandLimit_1, *bandLimit_2, *bandLimit_3, *bandLimit_high;
 
     // Vu-Bands---------------------------------
         

@@ -37,15 +37,24 @@ void PMUICanvasAudioAnalyzer::init(int posX, int posY, bool autosize, int width,
         presetsMatrix->setAllowMultiple(false);
         presetsMatrix->setTriggerType(OFX_UI_TRIGGER_NONE );
 
+		ofAddListener(newGUIEvent, this, &PMUICanvasAudioAnalyzer::handleEvents);
+
         addSpacer();
 
+		addLabel("Frequency Ranges");
+		addRangeSlider("Low Band", 20, 10000, bandLimit_low, bandLimit_1);
+		addRangeSlider("Low-Mid Band", 20, 10000, bandLimit_1, bandLimit_2);
+		addRangeSlider("High-Mid Band", 20, 10000, bandLimit_2, bandLimit_3);
+		addRangeSlider("High Band", 20, 10000, bandLimit_3, bandLimit_high);
+
+		addSpacer();
 
         addLabel("FULLMelBands");
-        fullMelSpectrum = addSpectrum("FullMelBands", fullBands, 40, 0.0, 0.1);
+        fullMelSpectrum = addSpectrum("FullMelBands", fullBands, 40, 0.0, 1.0);
 //        fullMelSpectrum->setTriggerType(OFX_UI_TRIGGER_CHANGE);
         addSpacer();
         addLabel("ScaledBands");
-        melSpectrum = addSpectrum("4 Bands", fourBands, 4, 0.0, 0.1);
+        melSpectrum = addSpectrum("4 Bands", fourBands, 4, 0.0, 1.0);
 //        melSpectrum->setTriggerType(OFX_UI_TRIGGER_ALL);
 
     if (autosize) autoSizeToFitWidgets();
@@ -91,6 +100,9 @@ void PMUICanvasAudioAnalyzer::loadPreset(int presetNumber)
 {
     string presetPath = "presets/AUDIO_ANALYZER/" + ofToString(presetNumber) + ".xml";
     loadSettings(presetPath);
+	ofPoint oldPos = ofPoint(rect->getX(), rect->getY());
+	loadSettings(presetPath);
+	setPosition(oldPos.x, oldPos.y);
     cout << "AudioAnalyzer :: loading preset : " << presetNumber << " to " << presetPath << endl;
 }
 

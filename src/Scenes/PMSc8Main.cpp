@@ -39,8 +39,8 @@ void PMSc8Main::setup()
     playSong();
 
 	//FFT
-	nBandsToGet = 16;
-	fftSmoothed = new float[16];
+	nBandsToGet = 256;
+	fftSmoothed = new float[256];
 	for (int i = 0; i < nBandsToGet; i++)
 		fftSmoothed[i] = 0;
 
@@ -56,7 +56,7 @@ void PMSc8Main::setup()
 	auto audioGui = shared.guiApp->audioGui;
 	
 	//bindVariables
-	audioGui->bindLimits(&bandLimit_low, &bandLimit_1, &bandLimit_2, &bandLimit_3, &bandLimit_hight);
+	audioGui->bindLimits(&bandLimit_low, &bandLimit_1, &bandLimit_2, &bandLimit_3, &bandLimit_high);
 	audioGui->bindSpectrums(fftSmoothed, melBands);
 
 
@@ -128,14 +128,49 @@ void PMSc8Main::updateExit()
 
 void PMSc8Main::computeFFT()
 {
+	//reset melbands
+	for (int i = 0; i < nMelBands; i++)
+		melBands[i] = 0;
+
 	float * val = ofSoundGetSpectrum(nBandsToGet);
 	for (int i = 0; i < nBandsToGet; i++) {
 		//fftSmoothed[i] *= 0.96f;
 		//if (fftSmoothed[i] < val[i]) 
 		fftSmoothed[i] = val[i];
 	}
-	for (int i = 0; i < nMelBands; i++)
-		melBands[i] = fftSmoothed[i+1];
+
+	int bandSize = 0;
+	for (int i = toBin(bandLimit_low); i < toBin(bandLimit_1); i++) {
+		melBands[0] += fftSmoothed[i];
+		bandSize++;
+	}
+	melBands[0] /= bandSize;
+
+	bandSize = 0;
+	for (int i = toBin(bandLimit_1); i < toBin(bandLimit_2); i++) {
+		melBands[1] += fftSmoothed[i];
+		bandSize++;
+	}
+	melBands[1] /= bandSize;
+
+	bandSize = 0;
+	for (int i = toBin(bandLimit_2); i < toBin(bandLimit_3); i++) {
+		melBands[2] += fftSmoothed[i];
+		bandSize++;
+	}
+	melBands[2] /= bandSize;
+
+	bandSize = 0;
+	for (int i = toBin(bandLimit_3); i < toBin(bandLimit_high); i++) {
+		melBands[3] += fftSmoothed[i];
+		bandSize++;
+	}
+	melBands[3] /= bandSize;
+
+
+
+	//for (int i = 0; i < nMelBands; i++)
+	//	melBands[i] = fftSmoothed[i+1];
 
 	vector<float> bandsVec;
 	bandsVec.push_back(melBands[0]);
