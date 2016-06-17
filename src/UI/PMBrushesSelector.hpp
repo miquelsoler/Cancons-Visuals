@@ -13,6 +13,7 @@
 #include "ofMain.h"
 #include "Containers/PMImageContainer.hpp"
 #include "Containers/PMColorContainer.hpp"
+#include "Defaults.h"
 
 class PMBrushesSelector
 {

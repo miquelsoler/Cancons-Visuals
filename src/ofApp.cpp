@@ -117,7 +117,8 @@ void ofApp::draw()
     ofxBitmapString(15, ofGetHeight()-28)
             << "[Current Scene] ID: " << sceneManager.getCurrentSceneIndex()
             << " Name: " << sceneManager.getCurrentSceneName()
-            << " Screen Size: " << ofGetWidth()<<" "<<ofGetHeight() << endl;
+            << " Screen Size: " << ofGetWidth()<<" "<<ofGetHeight()
+			<< " Mouse Position: " << ofGetMouseX() << " " << ofGetMouseY() << endl;
 #endif
 
     ofSetColor(ofColor::white);

@@ -13,8 +13,8 @@ static const int NUM_ERASED_COLORS = 2; //for debuging purposes
 
 void PMColorsSelector::init(ofTrueTypeFont &font)
 {
-    originalWidth=1080;
-    originalHeight=1920;
+    originalWidth = DESIGN_WIDTH;
+    originalHeight= DESIGN_HEIGHT;
     
     indexChoosed=0;
     
@@ -38,7 +38,7 @@ void PMColorsSelector::init(ofTrueTypeFont &font)
         for(int j=0; j<columns; j++){
             x=(originalWidth*(j+1)/(columns+1));
             width=((originalWidth/(columns*2))-1);
-            height=width;
+            height=width/4;
             PMColorContainer tempContainer(x, y, width, height, colorPalettes[i].colors[j]);
             colorContainers.push_back(tempContainer);
         }

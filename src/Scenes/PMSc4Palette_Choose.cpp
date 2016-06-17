@@ -28,25 +28,25 @@ void PMSc4Palette_Choose::draw()
 {
     PMBaseScene::draw();
     ofPushMatrix();
-    float scaleX=(float)ofGetWidth()/(float)1080;
-    float scaleY=(float)ofGetHeight()/(float)1920;
+    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
+    float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
     ofScale(scaleX, scaleY);
 //    ofBackground(0);
     drawSettingsNumbers(2);
-    drawCenteredFont(baseBoldFont, "Tria els teus colors", 1080/2, 150);
-    drawCenteredFont(infoFont, "Fons", 180, 290);
-    drawCenteredFont(infoFont, "Mà dreta", 360, 290);
-    drawCenteredFont(infoFont, "Mà esquerra", 540, 290);
-    drawCenteredFont(infoFont, "Cap", 720, 290);
-    drawCenteredFont(infoFont, "Tors", 900, 290);
+    drawCenteredFont(baseBoldFont, "Tria els teus colors", DESIGN_WIDTH/2, 150);
+    drawCenteredFont(infoFont, "Fons", 315, 215);
+    drawCenteredFont(infoFont, "Mà dreta", 640, 215);
+    drawCenteredFont(infoFont, "Mà esquerra", 960, 215);
+    drawCenteredFont(infoFont, "Genoll dret", 1275, 215);
+    drawCenteredFont(infoFont, "Genoll esquerra", 1600, 215);
     PMColorsSelector::getInstance().draw();
     ofPopMatrix();
 }
 
 void PMSc4Palette_Choose::mouseMoved(int x, int y)
 {
-    float scaleX=(float)ofGetWidth()/(float)1080;
-    float scaleY=(float)ofGetHeight()/(float)1920;
+    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
+    float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
     x/=scaleX;
     y/=scaleY;
     PMColorsSelector::getInstance().checkMousePassed(x, y);
@@ -54,8 +54,8 @@ void PMSc4Palette_Choose::mouseMoved(int x, int y)
 
 void PMSc4Palette_Choose::mousePressed(int x, int y, int mouse)
 {
-    float scaleX=(float)ofGetWidth()/(float)1080;
-    float scaleY=(float)ofGetHeight()/(float)1920;
+    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
+    float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
     x/=scaleX;
     y/=scaleY;
     if(PMColorsSelector::getInstance().checkMousePressed(x, y)){

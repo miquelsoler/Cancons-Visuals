@@ -37,17 +37,22 @@ void PMSc6Kinect_Detect::update()
 
 void PMSc6Kinect_Detect::draw()
 {
+
     PMBaseScene::draw();
-    ofPushMatrix();
-    float scaleX=(float)ofGetWidth()/(float)1080;
-    float scaleY=(float)ofGetHeight()/(float)1920;
-    ofScale(scaleX, scaleY);
-    drawCenteredFont(baseBoldFont, "Detecció de cos", 1080/2, 100);
-    drawCenteredFont(baseBoldFont, "Si us plau, mira endavant i obre els braços", 1080/2, 150);
-    ofPopMatrix();
-    
+
 #if ENABLE_KINECT
 	auto heightToDraw = 424 * ofGetWidth() / 512;
-    PMMotionExtractor::getInstance().draw(0, (ofGetHeight() - heightToDraw) / 2, ofGetWidth(), heightToDraw);
+	PMMotionExtractor::getInstance().draw(0, (ofGetHeight() - heightToDraw) / 2, ofGetWidth(), heightToDraw);
 #endif
+
+
+    ofPushMatrix();
+	float scaleX = (float)ofGetWidth() / (float)DESIGN_WIDTH;
+    float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
+    ofScale(scaleX, scaleY);
+    drawCenteredFont(baseBoldFont, "Detecció de cos", DESIGN_WIDTH /2, 100);
+    drawCenteredFont(baseBoldFont, "Si us plau, mira endavant i obre els braços", DESIGN_WIDTH /2, 150);
+    ofPopMatrix();
+    
+
 }

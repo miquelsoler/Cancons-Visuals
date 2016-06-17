@@ -10,8 +10,8 @@
 
 void PMSongSelector::init(ofTrueTypeFont &_font)
 {
-    originalHeight=1920;
-    originalWidth=1080;
+    originalHeight= DESIGN_HEIGHT;
+    originalWidth= DESIGN_WIDTH;
     
     indexChoosed=0;
     

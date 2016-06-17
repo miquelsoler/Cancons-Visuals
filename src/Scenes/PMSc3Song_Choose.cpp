@@ -35,12 +35,12 @@ void PMSc3Song_Choose::draw()
 {
     PMBaseScene::draw();
     ofPushMatrix();
-    float scaleX=(float)ofGetWidth()/(float)1080;
-    float scaleY=(float)ofGetHeight()/(float)1920;
+    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
+    float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
     ofScale(scaleX, scaleY);
 //    ofBackground(0);
     drawSettingsNumbers(1);
-    drawCenteredFont(baseBoldFont, "Tria la teva cançó", 1080/2, 150);
+    drawCenteredFont(baseBoldFont, "Tria la teva cançó", DESIGN_WIDTH/2, 150);
     PMSongSelector::getInstance().draw();
     ofPopMatrix();
     
@@ -48,8 +48,8 @@ void PMSc3Song_Choose::draw()
 
 void PMSc3Song_Choose::mouseMoved(int x, int y)
 {
-    float scaleX=(float)ofGetWidth()/(float)1080;
-    float scaleY=(float)ofGetHeight()/(float)1920;
+    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
+    float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
     x/=scaleX;
     y/=scaleY;
     PMSongSelector::getInstance().checkMousePassed(x, y);
@@ -57,8 +57,8 @@ void PMSc3Song_Choose::mouseMoved(int x, int y)
 
 void PMSc3Song_Choose::mousePressed(int x, int y, int button)
 {
-    float scaleX=(float)ofGetWidth()/(float)1080;
-    float scaleY=(float)ofGetHeight()/(float)1920;
+    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
+    float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
     x/=scaleX;
     y/=scaleY;
     if(PMSongSelector::getInstance().checkMousePressed(x, y)){

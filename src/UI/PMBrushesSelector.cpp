@@ -10,8 +10,8 @@
 
 void PMBrushesSelector::init()
 {
-    originalHeight=1920;
-    originalWidth=1080;
+    originalHeight= DESIGN_HEIGHT;
+    originalWidth= DESIGN_WIDTH;
     
     selectedPaletteIndex = 0;
     brushesXpalette = 0;

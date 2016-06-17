@@ -15,6 +15,7 @@
 #include "../UI/Containers/PMTextContainer.hpp"
 #include "ofxJSON.h"
 #include "ofxAppUtils.h"
+#include "Defaults.h"
 
 //struct colorPalette{
 //    string name;
