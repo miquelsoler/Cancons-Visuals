@@ -83,7 +83,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 	layersGui->bindAlpha(&alphaMin, &alphaMax, &alphaScaleFactor, &alphaEnergyScaleFactor, &alphaVelocityScaleFactor, &alphaZScaleFactor);
 	noiseSpeed = 0.1;
 	kneeScaleFactor = 10;
-	layersGui->bindBehaviour(&brushSpeed, &curveSize, &noiseSpeed, &kneeScaleFactor);
+	layersGui->bindBehaviour(&brushSpeed, &curveSize, &noiseSpeed, &kneeScaleFactor, &maxLife);
 
 	layersGui->bindAlphaThreshold(&alphaThreshold);
 	layersGui->bindStrokeFadeOut(&strokeFadeOut);
@@ -359,8 +359,18 @@ void PMBaseLayer::drawStrokes() {
 
 	// remove elements with a life higher than a threshold
 	if (strokeFadeOut > 0) {
-		pastStrokes.erase(std::remove_if(pastStrokes.begin(), pastStrokes.end(),
-			[](Stroke i) { return i.life > 1000; }), pastStrokes.end());
+	
+		for (auto it = pastStrokes.cbegin(); it != pastStrokes.cend() ; )
+		{
+			if (it->life > maxLife)
+			{
+				it = pastStrokes.erase(it);
+			}
+			else
+			{
+				++it;
+			}
+		}
 	}
 }
 
