@@ -16,8 +16,8 @@ PMSc9Export::PMSc9Export() : PMBaseScene("Scene 9")
     smallFont.load("fonts/NeutraTextTF-Light.otf", 30, true, true, false, 0.3, 72);
     textInput="";
     setSingleSetup(false);
-    originalWidth=1080;
-    originalHeight=1920;
+    originalWidth=DESIGN_WIDTH;
+    originalHeight=DESIGN_HEIGHT;
 }
 
 void PMSc9Export::setup()
@@ -59,19 +59,22 @@ void PMSc9Export::draw()
     ofPopStyle();
     
     ofSetColor(ofColor::white);
-    drawCenteredFont(bigFont, "Enhorabona!", originalWidth/2, 145);
-    drawCenteredFont(bigFont, "Aquesta és la teva interpretació!", originalWidth/2, 190);
-    drawCenteredFont(bigFont, "Si us plau, introdueix el teu nom, prem Enter", originalWidth/2, 265);
-    drawCenteredFont(bigFont, "i emporta't una impressió de la teva obra!", originalWidth/2, 315);
-    drawCenteredFont(smallFont, "(màxim 25 caràcters)", originalWidth/2, 550);
+    //drawCenteredFont(bigFont, "Enhorabona!, Aquesta és la teva interpretació!", originalWidth/2, 145);
+    //drawCenteredFont(bigFont, "Si us plau, introdueix el teu nom, prem Enter", originalWidth/2, 190);
+    //drawCenteredFont(bigFont, "i emporta't una impressió de la teva obra!", originalWidth/2, 265);
+    //drawCenteredFont(smallFont, "(màxim 25 caràcters)", originalWidth/2, 315);
+	int addtoShift = 600;
+	drawCenteredFont(bigFont, "Enhorabona!, Aquesta és la teva interpretació!", originalWidth / 1.33, 145+addtoShift);
+	drawCenteredFont(bigFont, "Si us plau, introdueix el teu nom, prem Enter", originalWidth/1.33, 190 + addtoShift);
+	drawCenteredFont(bigFont, "i emporta't una impressió de la teva obra!", originalWidth/1.33, 265 + addtoShift);
+	drawCenteredFont(smallFont, "(màxim 25 caràcters)", originalWidth/1.33, 315 + addtoShift);
     drawTextBox(bigFont, textInput, isSlash);
     ofPushStyle();
     ofSetRectMode(OF_RECTMODE_CENTER);
     ofNoFill();
     ofSetLineWidth(3);
     ofDrawRectangle(originalWidth/2, 480, 850, 85);
-//    ofDrawRectangle(originalWidth/2, 1200, originalWidth/1.7, originalHeight/1.7);
-    painting.draw(originalWidth/2, 1200, originalWidth/1.7, originalHeight/1.7);
+    painting.draw(originalWidth/2, originalHeight/3, originalWidth/1.7, originalHeight/1.7);
     ofPopStyle();
     ofPopMatrix();
 }
@@ -82,9 +85,9 @@ void PMSc9Export::drawTextBox(ofTrueTypeFont &font, string s, bool slash)
     int halfStringWidth = 0;
     if(s != "") halfStringWidth = font.stringWidth(s)/2;
     if(isSlash){
-        bigFont.drawString(textInput, (originalWidth/2)-halfStringWidth, 495);
+        bigFont.drawString(textInput, (originalWidth/1.33)-halfStringWidth, 495+600);
     }else{
-        bigFont.drawString(textInput+'|', (originalWidth/2)-halfStringWidth, 495);
+        bigFont.drawString(textInput+'|', (originalWidth/1.33)-halfStringWidth, 495+600);
     }
 }
 
