@@ -93,6 +93,7 @@ protected:
 	float distanceThreshold = 0 ;
 	bool showWireframe = false;
 	float maxDistance = 20;
+	int maxLife = 2000;
     
     // UpdateToShake behaviour
     bool            didShoot;
