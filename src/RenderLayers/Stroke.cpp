@@ -6,14 +6,17 @@ Stroke::Stroke(ofMesh mesh, ofTexture tex, float lifeDec) {
 	//color = col;		
 	lifeDecrement = lifeDec;
 	life = 0;
+	minAlpha = 0;
 }
 
 void Stroke::draw() {
 	if (lifeDecrement > 0.f) {
 		int index = 0;
 		for (ofFloatColor &color : ribbon.getColors()) {
-			color.a -= lifeDecrement;
-			ribbon.setColor(index, color);
+			if (color.a > minAlpha) {
+				color.a -= lifeDecrement;
+				ribbon.setColor(index, color);
+			}
 			index++;
 		}
 	}

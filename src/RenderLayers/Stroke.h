@@ -14,5 +14,5 @@ protected:
 	ofTexture texture;
 	ofColor color;
 	float lifeDecrement;
-
+	float minAlpha;
 };
