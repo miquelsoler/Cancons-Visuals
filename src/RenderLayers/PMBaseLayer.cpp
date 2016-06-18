@@ -341,14 +341,6 @@ void PMBaseLayer::addPointToRibbon(ofPoint point, ofPoint direction, float thick
 }
 
 void PMBaseLayer::drawStrokes() {
-	/*for (Stroke & m : pastStrokes) {
-		m.draw();
-		if (showWireframe) {
-			ofSetColor(100, 100, 100);
-			m.drawWireframe();
-		}
-	}*/
-
 	textures[currentTexture].getTextureReference().bind();
 	ribbon.draw();
 	textures[currentTexture].getTextureReference().unbind();
@@ -356,17 +348,6 @@ void PMBaseLayer::drawStrokes() {
 		ofSetColor(100, 100, 100);
 		ribbon.drawWireframe();
 	}
-
-	//// remove elements with a life higher than a threshold
-	//if (strokeFadeOut > 0) {
-	//	for (auto it = pastStrokes.cbegin(); it != pastStrokes.cend() ; )
-	//	{
-	//		if (it->life > maxLife)
-	//			it = pastStrokes.erase(it);
-	//		else
-	//			++it;
-	//	}
-	//}
 }
 
 void PMBaseLayer::finishStroke() {
@@ -430,22 +411,6 @@ void PMBaseLayer::melBandsChanged(float energy)
 			brushAlpha = 0;
 		//cout << "Alpha " << brushAlpha << endl;
     }
-
-    //Hue Edu
-    //{
-    //    float hueOffset = ofMap(hueVariation, 0, 1, 0, 255, true); //Maps % to absolute hue variation values
-    //    int hueIncrement=ofMap(normalizedEnergy, 0, 1, -1, 1)*hueOffset; //maps energy to -1 1, then aplies scale factor to finaly get a number between -hueOffset and hueoffset
-    //    hueIncrement=ofMap(hueIncrement, -hueOffset, hueOffset, -hueOffset, hueOffset, true);
-    //    brushRGBColor.setHue(brushHSBColor.hue+hueIncrement);
-    //}
-
-    ////Saturation Edu
-    //{
-    //    float saturationOffset = ofMap(saturationVariation, 0, 1, 0, 255, true); //Maps % to absolute Saturation variation values
-    //    int saturationIncrement=ofMap(normalizedEnergy, 0, 1, -1, 1)*saturationOffset;
-    //    saturationIncrement=ofMap(saturationIncrement, -saturationOffset, saturationOffset, -saturationOffset, saturationOffset, true);
-    //    brushRGBColor.setSaturation(brushHSBColor.saturation+saturationIncrement);
-    //}
    
     //Brightness
     {
