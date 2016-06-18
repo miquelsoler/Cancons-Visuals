@@ -55,12 +55,25 @@ public:
 	void drawStrokes();
 	void finishStroke();
 
+	void setStrokesVector(vector<Stroke> *s) {
+		strokes = s;
+	}
+
 #if ENABLE_MULTIPLE_FBOS
     ofFbo *getFBO() { return &layerFBO; };
 #endif
 
     // Audio listeners
     void melBandsChanged(float bandEnergy);
+	bool isFading() {
+		if (strokeFadeOut > 0)
+			return true;
+		else
+			return false;
+	}
+	int getMaxLife() {
+		return maxLife;
+	}
 
 protected:
 
@@ -143,6 +156,7 @@ protected:
 	vector<ofVec3f> points;
 	vector<float> brushSizes;
 	vector<Stroke> pastStrokes;
+	vector<Stroke> *strokes;
 	ofMesh ribbon;
 	
 	ofImage strokeTex;

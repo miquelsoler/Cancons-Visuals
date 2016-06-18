@@ -22,12 +22,16 @@ PMRenderer::PMRenderer()
 #endif
 
     PMLayer1 *layer1 = new PMLayer1(fboWidth, fboHeight, KINECTNODE_RIGHTHAND);
+	layer1->setStrokesVector(&strokes);
     layers.push_back(layer1);
     PMLayer2 *layer2 = new PMLayer2(fboWidth, fboHeight, KINECTNODE_LEFTHAND);
+	layer2->setStrokesVector(&strokes);
     layers.push_back(layer2);
     PMLayer3 *layer3 = new PMLayer3(fboWidth, fboHeight, KINECTNODE_HEAD);
+	layer3->setStrokesVector(&strokes);
     layers.push_back(layer3);
     PMLayer4 *layer4 = new PMLayer4(fboWidth, fboHeight, KINECTNODE_TORSO);
+	layer4->setStrokesVector(&strokes);
     layers.push_back(layer4);
 }
 
@@ -71,6 +75,17 @@ void PMRenderer::update()
         layers[i]->update();
 
     drawIntoFBO();
+
+	 //remove elements with a life higher than a threshold
+	if (layers[0]->isFading()) {
+		for (auto it = strokes.cbegin(); it != strokes.cend() ; )
+		{
+			if (it->life > layers[0]->getMaxLife())
+				it = strokes.erase(it);
+			else
+				++it;
+		}
+	}
 }
 
 void PMRenderer::draw()
@@ -126,6 +141,16 @@ void PMRenderer::drawIntoFBO()
 //#if ENABLE_KINECT
 //		PMMotionExtractor::getInstance().draw();
 //#endif
+
+
+//draw past strokes
+		for (Stroke & m : strokes) {
+			m.draw();
+			/*if (showWireframe) {
+			ofSetColor(100, 100, 100);
+			m.drawWireframe();
+			}*/
+		}
 		//cambio orden pintado de capas, mano izquierda debajo del todo.
         //for (int i=0; i<layers.size(); ++i)
         //    layers[i]->draw();
