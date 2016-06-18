@@ -11,20 +11,28 @@
 #include "PMSharedSettings.h"
 #include "PMMotionExtractor.hpp"
 
-const static int COUNTDOWN_TIME = 15;
+const static int COUNTDOWN_TIME = 2;
 
 PMSc10Thanks::PMSc10Thanks() : PMBaseScene("Scene Thanks")
 {
-    bigFont.load("fonts/NeutraTextTF-Book.otf", 28, true, true, false, 0.3, 72);
-    smallFont.load("fonts/NeutraTextTF-Light.otf", 29, true, true, false, 0.3, 72);
-    smallestFont.load("fonts/NeutraTextTF-Light.otf", 28, true, true, false, 0.3, 72);
+    bigFont.load("fonts/NeutraTextTF-Book.otf", 29, true, true, false, 0.3, 72);
+    smallFont.load("fonts/NeutraTextTF-Light.otf", 28, true, true, false, 0.3, 72);
+    smallestFont.load("fonts/NeutraTextTF-Light.otf", 22, true, true, false, 0.3, 72);
 	small_logo.load("assets/urban_art.png");
     originalWidth = 1080;
     originalHeight = 1920;
     setSingleSetup(false);
-    songName = "\"Walürenritt\" Richard Wagner";
-    dateName = "12/12/2015, 13:13";
-    userName = "Interpretat per Xavi Bové";
+    songName = "Blade Runner";
+    dateName = "30/06/2016, 22:13";
+    userName = "Interpretat per Susanna Mitjà";
+
+	facana.load("assets/facana.tiff");
+	//plantilla.load("assets/export_plantilla.tif");
+	//ofSetWindowShape(1772, 1181);
+	homography.set(0.579811573, 0.220885843, 0, 0.000285788818,
+		0.00508813839, 0.338972956, 0, 0.000000268133908,
+		0, 0, 1, 0,
+		166.0, 358.0, 0, 1);
 }
 
 void PMSc10Thanks::setup()
@@ -36,7 +44,7 @@ void PMSc10Thanks::setup()
     //carrega la imatge, alloca el fbo i genera fbo
     ofClear(0, 0, 0);
     printImage.load("TempRender.tiff");
-    printFbo.allocate(1181, 1772, GL_RGB);
+    printFbo.allocate(1772, 1181, GL_RGB);
     drawIntoFbo();
     //exportem fbo i el guardem
     ofPixels pix;
@@ -89,24 +97,17 @@ void PMSc10Thanks::draw()
     float scaleX = (float) ofGetWidth() / (float) originalWidth;
     float scaleY = (float) ofGetHeight() / (float) originalHeight;
     ofScale(scaleX, scaleY);
-//    ofBackground(0);
-    ofPushStyle();
-    ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(ofColor::red);
-//    plantilla.draw(0,0, ofGetWidth(), ofGetHeight());
-    ofPopStyle();
-
     ofSetColor(ofColor::white);
-//    ofDrawBitmapString("Current X: "+ofToString(ofGetMouseX())+"  Y: "+ofToString(ofGetMouseY()), 15, 28);
     drawCenteredFont(bigFont, "Imprimint", originalWidth / 2, 462);
     drawCenteredFont(bigFont, "Moltes gràcies!", originalWidth / 2, 508);
     drawCenteredFont(bigFont, "Cançons Visuals", originalWidth / 2, 938);
     drawCenteredFont(smallFont, "www.xavibove.com", originalWidth / 2, 988);
     ofPopMatrix();
 //    printFbo.draw(0,0, ofGetWidth(), ofGetHeight());
-//    printFbo.draw(0,0);
-    ofSetColor(ofColor::black);
-//    ofDrawBitmapString("Current X: "+ofToString(ofGetMouseX())+"  Y: "+ofToString(ofGetMouseY()), 15, 28);
+    //printFbo.draw(0,0);
+
+	if (ofGetKeyPressed(OF_KEY_SHIFT))
+		//plantilla.draw(0, 0);
 }
 
 
@@ -115,27 +116,24 @@ void PMSc10Thanks::drawIntoFbo()
     printFbo.begin();
     {
         ofClear(255);
-//        ofSetColor(ofColor::red);
-//        print_testImage.draw(0,0, printFbo.getWidth(), printFbo.getHeight());
+
+		//Draw tempRender image in its position
+		ofSetColor(255);
+		ofPushMatrix();
+		ofMultMatrix(homography);
+		printImage.draw(0, 0);
+		ofPopMatrix();
+
+		//Draw facade image;
+		facana.draw(69, 59, 1628, 961);
+
+		//Draw strings
         ofSetColor(ofColor::black);
-        ofPushStyle();
-        ofSetRectMode(OF_RECTMODE_CORNER);
-        ofNoFill();
-        ofSetLineWidth(3);
-//        ofDrawRectangle(151, 40, 873, 1552);
-        drawRightAlignString(bigFont, songName, 1024, 1633);
-        drawRightAlignString(bigFont, userName, 1024, 1675);
-        drawRightAlignString(smallFont, dateName, 1024, 1716);
-//        drawLeftAlignString(smallFont, dateName, 151, 1633);
-        ofPushMatrix();
-        ofTranslate(1047, 470);
-        ofRotateZ(-90);
-        smallestFont.drawString("cançons visuals - www.xavibove.com", 0, 0);
-        ofPopMatrix();
-        ofSetColor(255);
-        printImage.draw(151, 40, 873, 1552);
-		small_logo.draw(151, 1610, 187, 126);
-        ofPopStyle();
+        drawRightAlignString(bigFont, "\"" + songName + "\"", 1693, 1046);
+        drawRightAlignString(smallFont, userName, 1693, 1081);
+        drawRightAlignString(smallFont, dateName, 1693, 1116);
+        drawLeftAlignString(smallestFont, "Centre Cívic Fort Pienc", 70, 1042);
+		drawLeftAlignString(smallestFont, "www.fortpienc.org", 70, 1064);
     }
     printFbo.end();
 }

@@ -41,6 +41,8 @@ private:
     ofFbo           printFbo;
     ofImage         printImage;
 	ofImage			small_logo;
+	ofImage			plantilla;
+	ofImage			facana;
     
     string          userName;
     string           songName;
@@ -48,5 +50,7 @@ private:
     
     ofxTimer        countdown;
     int count;
+
+	ofMatrix4x4 homography;
     
 };
