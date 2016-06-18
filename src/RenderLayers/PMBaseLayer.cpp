@@ -341,13 +341,13 @@ void PMBaseLayer::addPointToRibbon(ofPoint point, ofPoint direction, float thick
 }
 
 void PMBaseLayer::drawStrokes() {
-	for (Stroke & m : pastStrokes) {
+	/*for (Stroke & m : pastStrokes) {
 		m.draw();
 		if (showWireframe) {
 			ofSetColor(100, 100, 100);
 			m.drawWireframe();
 		}
-	}
+	}*/
 
 	textures[currentTexture].getTextureReference().bind();
 	ribbon.draw();
@@ -357,25 +357,22 @@ void PMBaseLayer::drawStrokes() {
 		ribbon.drawWireframe();
 	}
 
-	// remove elements with a life higher than a threshold
-	if (strokeFadeOut > 0) {
-	
-		for (auto it = pastStrokes.cbegin(); it != pastStrokes.cend() ; )
-		{
-			if (it->life > maxLife)
-			{
-				it = pastStrokes.erase(it);
-			}
-			else
-			{
-				++it;
-			}
-		}
-	}
+	//// remove elements with a life higher than a threshold
+	//if (strokeFadeOut > 0) {
+	//	for (auto it = pastStrokes.cbegin(); it != pastStrokes.cend() ; )
+	//	{
+	//		if (it->life > maxLife)
+	//			it = pastStrokes.erase(it);
+	//		else
+	//			++it;
+	//	}
+	//}
 }
 
 void PMBaseLayer::finishStroke() {
-	pastStrokes.push_back(Stroke(ribbon, textures[currentTexture].getTexture(), strokeFadeOut));
+	// we know store all past strokes in a unique vector in PMRenderer so they are all drawn in the creation order
+	/*pastStrokes.push_back(Stroke(ribbon, textures[currentTexture].getTexture(), strokeFadeOut));*/
+	strokes->push_back(Stroke(ribbon, textures[currentTexture].getTexture(), strokeFadeOut));
 	ribbon.clear();
 	points.clear();
 	brushSizes.clear();

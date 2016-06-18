@@ -9,6 +9,7 @@
 #include "PMBaseLayer.h"
 #include "Defaults.h"
 
+
 class PMRenderer
 {
 public:
@@ -33,6 +34,7 @@ private:
 #if ENABLE_MULTIPLE_FBOS
     ofFbo                       backgroundFBO;
 #endif
+	vector<Stroke> strokes;
 };
 
 
