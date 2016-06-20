@@ -105,9 +105,6 @@ void PMSc10Thanks::draw()
     ofPopMatrix();
 //    printFbo.draw(0,0, ofGetWidth(), ofGetHeight());
     //printFbo.draw(0,0);
-
-	if (ofGetKeyPressed(OF_KEY_SHIFT))
-		//plantilla.draw(0, 0);
 }
 
 

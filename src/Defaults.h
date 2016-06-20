@@ -35,6 +35,9 @@ static const int            WINDOW_HEIGHT               = 1080;
 static const int			DESIGN_WIDTH = 1920;
 static const int			DESIGN_HEIGHT = 1080;
 
+static const int			DESIGN_LEFT_WIDTH = 890;
+static const int			DESIGN_LEFT_HEIGHT = 767;
+
 static const int            DEFAULT_WINDOW_WIDTH        = int(float(WINDOW_WIDTH) * WINDOW_SCALE_FACTOR);
 static const int            DEFAULT_WINDOW_HEIGHT       = int(float(WINDOW_HEIGHT) * WINDOW_SCALE_FACTOR);
 

@@ -60,7 +60,7 @@ void PMBaseScene::drawCenteredFont(ofTrueTypeFont &font, string s, int x, int y)
 void PMBaseScene::drawSettingsNumbers(int currentNumber)
 {
     int numHeight=numberFont.getLineHeight();
-    int originalWidth = DESIGN_WIDTH;
+    int originalWidth = DESIGN_LEFT_WIDTH;
     
     //settings number
     ofPoint numberPos;

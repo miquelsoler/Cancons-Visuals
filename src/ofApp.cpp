@@ -112,16 +112,25 @@ void ofApp::draw()
         ofxBitmapString(15, ofGetHeight() - 15) << roundf(ofGetFrameRate()) << "fps" << endl;
     }
 
-#ifdef OF_DEBUG
-    ofSetColor(debugMessagesColor);
-    ofxBitmapString(15, ofGetHeight()-28)
-            << "[Current Scene] ID: " << sceneManager.getCurrentSceneIndex()
-            << " Name: " << sceneManager.getCurrentSceneName()
-            << " Screen Size: " << ofGetWidth()<<" "<<ofGetHeight()
-			<< " Mouse Position: " << ofGetMouseX() << " " << ofGetMouseY() << endl;
-#endif
+	//draw mask
+    ofSetColor(ofColor::black);
+	ofDrawRectangle(0, DESIGN_LEFT_HEIGHT, DESIGN_LEFT_WIDTH, DESIGN_HEIGHT - DESIGN_LEFT_HEIGHT);
+	//ofSetColor(255);
+	//if (ofGetKeyPressed(OF_KEY_SHIFT)) {
+	//	ofImage tempimg;
+	//	tempimg.load("assets/plantilla_projeccio.tiff");
+	//	tempimg.draw(0, 0);
+	//}
 
-    ofSetColor(ofColor::white);
+
+#ifdef OF_DEBUG
+	ofSetColor(debugMessagesColor);
+	ofxBitmapString(15, ofGetHeight() - 28)
+		<< "[Current Scene] ID: " << sceneManager.getCurrentSceneIndex()
+		<< " Name: " << sceneManager.getCurrentSceneName()
+		<< " Screen Size: " << ofGetWidth() << " " << ofGetHeight()
+		<< " Mouse Position: " << ofGetMouseX() << " " << ofGetMouseY() << endl;
+#endif
 }
 
 ///--------------------------------------------------------------
