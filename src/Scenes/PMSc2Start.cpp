@@ -37,7 +37,11 @@ void PMSc2Start::draw()
 
 void PMSc2Start::keyPressed(int key)
 {
-    string sceneToChange = "Scene 3";
+#if ENABLE_LIVE
+    string sceneToChange = "Scene 4";
+#else
+	string sceneToChange = "Scene 3";
+#endif
     if(key == ' ')
         ofNotifyEvent(goToSceneEvent, sceneToChange, this);
 	if (key == 'f')

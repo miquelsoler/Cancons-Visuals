@@ -12,7 +12,9 @@
 #include "PMBaseScene.hpp"
 #include "../motion/PMMotionExtractor.hpp"
 #include "../RenderLayers/PMRenderer.h"
-//#include "PMUICanvasAudioAnalyzer.h"
+#if ENABLE_LIVE
+#include "ofxFft.h"
+#endif
 
 #endif /* PMSc8Main_hpp */
 
@@ -32,6 +34,10 @@ public:
 	void computeFFT();
     void loadSong(string filename);
     void playSong();
+
+#if ENABLE_LIVE
+	void audioIn(float* input, int bufferSize, int nChannels);
+#endif
 
     void keyReleased(int key);
     void keyPressed(ofKeyEventArgs &keyargs){
@@ -53,6 +59,11 @@ private:
     
     PMMotionExtractor* motionExtractor;
     KinectInfo* kinectInfo;
+
+#if ENABLE_LIVE
+	ofxFft* fft;
+	ofSoundStream soundStream;
+#endif
 
     ofSoundPlayer   song;
     bool            songIsStarted;
