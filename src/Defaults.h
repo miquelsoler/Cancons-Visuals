@@ -18,12 +18,13 @@
 
 
 
-#define ENABLE_SOUNDFLOWER false
+#define ENABLE_LIVE false
 #define ENABLE_KINECT false
 #define ENABLE_MULTIPLE_FBOS false
 #define ENABLE_MULTILAYER_EXPORT false
 #define ENABLE_KNEES_DETECTION true
 #define ENABLE_PRINTING true
+#define ENABLE_REMOTE_KINECT false
 
 
 static const float          WINDOW_SCALE_FACTOR         = 0.7f;
