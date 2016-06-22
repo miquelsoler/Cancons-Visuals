@@ -163,7 +163,7 @@ protected:
 	vector<ofImage> textures;
 	int currentTexture;
 
-	float maxPoints = 50;
+	float maxPoints = 25;
 };
 
 
