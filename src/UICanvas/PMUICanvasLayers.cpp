@@ -38,8 +38,8 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
     addSpacer();
     
     addLabel("Size");
-    addIntSlider("Min Size", 0, 200, minSize);
-    addIntSlider("Max Size", 0, 200, maxSize);
+    addIntSlider("Min Size", 0, 50, minSize);
+    addIntSlider("Max Size", 0, 60, maxSize);
     addSlider("Energy Factor", 0, 1, scaleEnergy_Size);
     addSlider("Acceleration Factor", 0, 1, scaleAcceleration_Size);
     addSlider("Z Factor", 0, 800, scaleZ_Size);
@@ -70,7 +70,7 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
     //addSlider("Scale Energy Factor Alpha", 0, 1, scaleEnergy_Alpha);
     addSlider("Acceleration Factor", 0, 1, scaleVelocity_Alpha);
 	addSlider("Min Energy Threshold", 0, 1, alphaThreshold);
-	ofxUISlider *t = addSlider("Fade out factor", 0, 0.005, strokeFadeOut);
+	ofxUISlider *t = addSlider("Fade out factor", 0, 0.01, strokeFadeOut);
 	t->setLabelPrecision(5);
     //addSlider("Scale Z Factor Alpha", 0, 1, scaleZ_Alpha);
     
