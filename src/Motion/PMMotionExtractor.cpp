@@ -216,7 +216,7 @@ void PMMotionExtractor::draw(int x, int y, int width, int height, bool drawHands
 		ofPopStyle();
 	}
 	ofDrawBitmapString(positionDetectedCounter, x, y);
-#end
+#endif
 }
 
 ///--------------------------------------------------------------
