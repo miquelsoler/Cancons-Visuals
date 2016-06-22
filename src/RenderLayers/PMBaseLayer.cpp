@@ -83,7 +83,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 	layersGui->bindAlpha(&alphaMin, &alphaMax, &alphaScaleFactor, &alphaEnergyScaleFactor, &alphaVelocityScaleFactor, &alphaZScaleFactor);
 	noiseSpeed = 0.1;
 	kneeScaleFactor = 10;
-	layersGui->bindBehaviour(&brushSpeed, &curveSize, &noiseSpeed, &kneeScaleFactor, &maxLife);
+	layersGui->bindBehaviour(&brushSpeed, &curveSize, &noiseSpeed, &kneeScaleFactor, &maxLife, &noiseThreshold);
 
 	layersGui->bindAlphaThreshold(&alphaThreshold);
 	layersGui->bindStrokeFadeOut(&strokeFadeOut);
@@ -250,17 +250,16 @@ void PMBaseLayer::update()
 		newPoint = ofPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), kinectNodeData.pos.z * 100);
 	// Knees follow perlin noise afected by real movement
 	else {
-		if (PERFORMANCE_MODE) {
-			newPoint = ofPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), kinectNodeData.pos.z * 100);
+		actualNodePosition = ofPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), kinectNodeData.pos.z * 100);
+		float diffPosition = (actualNodePosition - actualNodePrevPosition).length();
+		if (diffPosition > noiseThreshold) {
+			noiseIndex++;
+			//cout << noiseIndex << " at layer " << layerID << endl;
 		}
-		else {
-			float heightSpan = ofNoise(layerID * 1000, ofGetElapsedTimef() * noiseSpeed) * 0.7 + 0.3; //make sure knees range stay in the lower side of the canvas
-			newPoint = ofPoint(ofNoise(ofGetElapsedTimef() * noiseSpeed, layerID * 1000) * ofGetWidth(), heightSpan * ofGetHeight(), kinectNodeData.pos.z * 100);
-			actualNodePosition = ofPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), kinectNodeData.pos.z * 100);
-			ofPoint direction = actualNodePosition - actualNodePrevPosition;
-			prevDirection = 0.2 * direction + 0.8 * prevDirection;
-			newPoint += prevDirection * kneeScaleFactor;
-		}
+		ofPoint noise = ofPoint( (ofNoise(noiseIndex * noiseSpeed, layerID * 1000) - 0.5) * kneeScaleFactor,
+								(ofNoise(layerID * 1000, noiseIndex * noiseSpeed) - 0.8) * kneeScaleFactor,
+									kinectNodeData.pos.z * 100);
+		newPoint = actualNodePosition + noise;
 	}
 	//cout << "Adding point z" << kinectNodeData.pos.z * 400 << endl;
 

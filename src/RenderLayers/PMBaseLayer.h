@@ -104,6 +104,8 @@ protected:
     float                   nodeInitialZ; //holds de first position found of the node
 	float					brushVelocity;
     float                   curveSize;
+	float					noiseThreshold ;
+	float					noiseIndex=0;
 
 	float distanceThreshold = 0 ;
 	float maxDistance = 20;

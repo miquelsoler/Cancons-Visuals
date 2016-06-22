@@ -79,8 +79,9 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
     addLabel("Behaviour");
    // addSlider("Speed", 0, 10, curveSpeed);
     addSlider("Curve Size", 0, 20, curveSize);
+	addSlider("Knees noise threshold", 0, 20, kneesThreshold);
 	addSlider("Knees Speed", 0.05, 0.4, noiseSpeed);
-	addSlider("Real knees factor", 1, 20, kneeScaleFactor);
+	addSlider("Knees noise factor", 50, 500, kneeScaleFactor);
 	addIntSlider("Maximum life", 2000, 10000, maxLife);
 
 	addSpacer();
