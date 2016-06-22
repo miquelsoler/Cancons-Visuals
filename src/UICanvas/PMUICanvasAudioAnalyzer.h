@@ -71,6 +71,8 @@ private:
     float *fullBands;
     float *fourBands;
 
+	bool guiCreated;
+
 
 	// KEYBOARD
 

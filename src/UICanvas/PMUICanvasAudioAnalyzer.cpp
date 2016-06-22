@@ -13,6 +13,7 @@ static const unsigned int PRESETSMATRIX_NUMCOLS = 6;
 PMUICanvasAudioAnalyzer::PMUICanvasAudioAnalyzer(string title, int headerFontSize) : PMBaseUICanvas(title, headerFontSize)
 {
     savingPreset = false;
+	guiCreated = false;
     
     fullBands = new float[40];
     for(int i = 0; i < 40; i++) { fullBands[i] = ofNoise(i/100.0); }
@@ -24,6 +25,7 @@ PMUICanvasAudioAnalyzer::PMUICanvasAudioAnalyzer(string title, int headerFontSiz
 //--------------------------------------------------------------------------------------------------
 void PMUICanvasAudioAnalyzer::init(int posX, int posY, bool autosize, int width, int height)
 {
+	if (guiCreated) clearWidgets();
     PMBaseUICanvas::init(posX, posY, autosize, width, height);
 
 //    settings = &PMSettingsManagerAudioAnalyzers::getInstance();
@@ -60,14 +62,18 @@ void PMUICanvasAudioAnalyzer::init(int posX, int posY, bool autosize, int width,
 		addSpacer();
 
 		addLabel("Band Maxs");
-		addSpectrum("Band Maxs", bandMaxs, 4, 0.0, 2.0);
+		addSpectrum("Band Maxs", bandMaxs, 4, 0.0, 1.0);
 		//band_l = addSlider("Low", 0, 1.0, bandMax_low);
 		//band_l->setTriggerType(OFX_UI_TRIGGER_ALL);
 		//band_lm = addSlider("LowMid", 0, 1.0, bandMax_lowmid);
 		//band_hm = addSlider("HighMid", 0, 1.0, bandMax_highmid);
 		//band_h = addSlider("High", 0, 1.0, bandMax_high);
+		addSpacer();
+		addValuePlotter("Band Maxs", 4, 0.0, 1.0 ,bandMaxs );
 
     if (autosize) autoSizeToFitWidgets();
+
+	guiCreated = true;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -240,6 +240,10 @@ void PMSc8Main::audioIn(float* input, int bufferSize, int nChannels) {
 	//	melBands[i] = fftSmoothed[i+1];
 
 	vector<float> bandsVec;
+	for (int i = 0; i < 4; i++) {
+		bandsVec.push_back(scaledBands[i]);
+		//bandsVec.push_back(melBands[i]);
+	}
 	bandsVec.push_back(melBands[0]);
 	bandsVec.push_back(melBands[1]);
 	bandsVec.push_back(melBands[2]);
