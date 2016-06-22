@@ -250,12 +250,17 @@ void PMBaseLayer::update()
 		newPoint = ofPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), kinectNodeData.pos.z * 100);
 	// Knees follow perlin noise afected by real movement
 	else {
-		float heightSpan = ofNoise(layerID * 1000, ofGetElapsedTimef() * noiseSpeed) * 0.7 + 0.3; //make sure knees range stay in the lower side of the canvas
-		newPoint = ofPoint(ofNoise(ofGetElapsedTimef() * noiseSpeed, layerID * 1000) * ofGetWidth(), heightSpan * ofGetHeight(), kinectNodeData.pos.z * 100);
-		actualNodePosition = ofPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), kinectNodeData.pos.z * 100);
-		ofPoint direction = actualNodePosition - actualNodePrevPosition;
-		prevDirection = 0.2 * direction + 0.8 * prevDirection;
-		newPoint += prevDirection * kneeScaleFactor;
+		if (PERFORMANCE_MODE) {
+			newPoint = ofPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), kinectNodeData.pos.z * 100);
+		}
+		else {
+			float heightSpan = ofNoise(layerID * 1000, ofGetElapsedTimef() * noiseSpeed) * 0.7 + 0.3; //make sure knees range stay in the lower side of the canvas
+			newPoint = ofPoint(ofNoise(ofGetElapsedTimef() * noiseSpeed, layerID * 1000) * ofGetWidth(), heightSpan * ofGetHeight(), kinectNodeData.pos.z * 100);
+			actualNodePosition = ofPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), kinectNodeData.pos.z * 100);
+			ofPoint direction = actualNodePosition - actualNodePrevPosition;
+			prevDirection = 0.2 * direction + 0.8 * prevDirection;
+			newPoint += prevDirection * kneeScaleFactor;
+		}
 	}
 	//cout << "Adding point z" << kinectNodeData.pos.z * 400 << endl;
 
