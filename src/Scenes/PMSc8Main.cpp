@@ -109,6 +109,7 @@ void PMSc8Main::update()
     if (!disablePainting)
         renderer->update();
 
+	PMSharedSettings::getInstance().guiApp->audioGui->updateMaxs();
 }
 
 void PMSc8Main::draw()

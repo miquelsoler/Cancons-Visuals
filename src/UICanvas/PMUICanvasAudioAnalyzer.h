@@ -39,6 +39,7 @@ public:
 		fourBands = _fourBands;
 	}
 
+	void updateMaxs();
 
     virtual void handleEvents(ofxUIEventArgs &e);
 

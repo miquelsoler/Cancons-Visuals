@@ -69,12 +69,16 @@ void PMUICanvasAudioAnalyzer::init(int posX, int posY, bool autosize, int width,
 		//band_hm = addSlider("HighMid", 0, 1.0, bandMax_highmid);
 		//band_h = addSlider("High", 0, 1.0, bandMax_high);
 		addSpacer();
-		addValuePlotter("Band Maxs", 4, 0.0, 1.0 ,bandMaxs );
+		addTextArea("lband",	 "Low Band:   " + ofToString(bandMaxs[0]));
+		addTextArea("lmband",	 "LowM Band:  " + ofToString(bandMaxs[1]));
+		addTextArea("hmband",	 "HighM Band: " + ofToString(bandMaxs[2]));
+		addTextArea("hband",	 "High Band:  " + ofToString(bandMaxs[3]));
 
     if (autosize) autoSizeToFitWidgets();
 
 	guiCreated = true;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 void PMUICanvasAudioAnalyzer::clear()
@@ -83,6 +87,21 @@ void PMUICanvasAudioAnalyzer::clear()
     superInit("AUDIO ANALYZER", OFX_UI_FONT_MEDIUM);
 }
 
+
+void PMUICanvasAudioAnalyzer::updateMaxs()
+{
+	auto text = (ofxUITextArea*)getWidget("lband");
+	text->setTextString("Low Band:   " + ofToString(bandMaxs[0]));
+
+	text = (ofxUITextArea*)getWidget("lmband");
+	text->setTextString("LowM Band:  " + ofToString(bandMaxs[1]));
+
+	text = (ofxUITextArea*)getWidget("hmband");
+	text->setTextString("HighM Band: " + ofToString(bandMaxs[2]));
+
+	text = (ofxUITextArea*)getWidget("hband");
+	text->setTextString("High Band:  " + ofToString(bandMaxs[3]));
+}
 
 //--------------------------------------------------------------------------------------------------
 void PMUICanvasAudioAnalyzer::handleEvents(ofxUIEventArgs &e)
