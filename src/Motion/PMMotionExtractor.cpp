@@ -14,6 +14,9 @@ bool PMMotionExtractor::setup()
 	ofAddListener(ofEvents().update, this, &PMMotionExtractor::update);
 	positionDetectedCounter = 0;
 
+#if ENABLE_REMOTE_KINECT
+	receiver.setup(OSC_KINECT_SENDER_PORT);
+#else
 	kinect.open();
 	kinect.initDepthSource();
 	kinect.initColorSource();
@@ -25,11 +28,47 @@ bool PMMotionExtractor::setup()
 	//hasKinect = kinect.isOpen();
 	hasKinect = true;
 	return hasKinect;
+#endif
+	return true;
 }
 
 ///--------------------------------------------------------------
 void PMMotionExtractor::update(ofEventArgs & a)
 {
+#if ENABLE_REMOTE_KINECT
+	// check for waiting messages
+	while (receiver.hasWaitingMessages()) {
+		// get the next message
+		ofxOscMessage m;
+		receiver.getNextMessage(&m);
+		//        cout<<m.getAddress()<<endl;
+		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_STATE)) {
+			auto receivedMessage = m.getArgAsString(0);
+			if (receivedMessage != OSC_KINECT_STATE_POSITIONED)
+				detectionStatus = receivedMessage;
+			else
+				triggerUserPositioned();
+		}
+		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_LHAND + OSC_KINECT_ADDR_POSITION))
+			handsInfo.leftHand.pos = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
+		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_RHAND + OSC_KINECT_ADDR_POSITION))
+			handsInfo.rightHand.pos = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
+		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_LKNEE + OSC_KINECT_ADDR_POSITION))
+			handsInfo.leftKnee.pos = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
+		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_RKNEE + OSC_KINECT_ADDR_POSITION))
+			handsInfo.rightKnee.pos = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
+
+		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_LHAND + OSC_KINECT_ADDR_VELOCITY))
+			handsInfo.leftHand.vel = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
+		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_RHAND + OSC_KINECT_ADDR_VELOCITY))
+			handsInfo.rightHand.vel = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
+		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_LKNEE + OSC_KINECT_ADDR_VELOCITY))
+			handsInfo.leftKnee.vel = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
+		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_RKNEE + OSC_KINECT_ADDR_VELOCITY))
+			handsInfo.rightKnee.vel = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
+
+	}
+#else
 	if (hasKinect) {
 		kinect.update();
 		// Count number of tracked bodies
@@ -134,12 +173,15 @@ void PMMotionExtractor::update(ofEventArgs & a)
 		rHandPosHist.clear();
 		lHandPosHist.clear();
 	}
-
+#endif
 }
 
 ///--------------------------------------------------------------
 void PMMotionExtractor::draw(int x, int y, int width, int height, bool drawHands, bool drawBody)
 {
+#if ENABLE_REMOTE_KINECT
+
+#else
 	if (true) {
 		auto infraredImage = kinect.getInfraredSource();
 		auto infraredPixels = infraredImage->getPixels();
@@ -174,6 +216,7 @@ void PMMotionExtractor::draw(int x, int y, int width, int height, bool drawHands
 		ofPopStyle();
 	}
 	ofDrawBitmapString(positionDetectedCounter, x, y);
+#end
 }
 
 ///--------------------------------------------------------------
@@ -183,6 +226,7 @@ void PMMotionExtractor::exit()
 }
 
 KinectInfo* PMMotionExtractor::getKinectInfo() {
+#if !ENABLE_REMOTE_KINECT
 	KinectInfo tempInfo = handsInfo;
 
 	//Compute hand Mean value;
@@ -220,6 +264,7 @@ KinectInfo* PMMotionExtractor::getKinectInfo() {
 	tempInfo.rightKnee.pos = rKneePosMean;
 
 	handsInfo = tempInfo;
+#endif
 	return &handsInfo;
 }
 

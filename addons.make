@@ -1,4 +1,5 @@
 ofxGui
+ofxOsc
 ofxXmlSettings
 ofxAppUtils-PM
 ofxFft

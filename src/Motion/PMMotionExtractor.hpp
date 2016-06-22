@@ -13,6 +13,10 @@
 
 #include "ofMain.h"
 #include "ofxKinectForWindows2.h"
+#if ENABLE_REMOTE_KINECT
+#include "ofxOsc.h"
+#include "OSCSettings.h"
+#endif
 
 struct KinectElement
 {
@@ -85,6 +89,11 @@ private:
 
 	//positioning variable
 	int positionDetectedCounter;
+
+
+#if ENABLE_REMOTE_KINECT
+	ofxOscReceiver receiver;
+#endif
 };
 
 #endif /* PMMotionExtractor_hpp */

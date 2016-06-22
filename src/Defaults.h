@@ -24,6 +24,7 @@
 #define ENABLE_MULTILAYER_EXPORT false
 #define ENABLE_KNEES_DETECTION true
 #define ENABLE_PRINTING true
+#define ENABLE_REMOTE_KINECT false
 
 
 static const float          WINDOW_SCALE_FACTOR         = 1.0f;

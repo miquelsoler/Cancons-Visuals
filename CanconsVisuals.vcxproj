@@ -99,10 +99,13 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\External\PMAudioAnalysis;src\JSONSettings;src\JSONSettings\AudioAnalyzer;src\JSONSettings\AudioDevices;src\JSONSettings\General;src\JSONSettings\LayerMappings;src\JSONSettings\Renderer;src\Motion;src\RenderLayers;src\Scenes;src\SharedSettings;src\UI;src\UICanvas;src\UI\Containers;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxAubio\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxJSON\libs;..\..\..\addons\ofxJSON\libs\jsoncpp;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxKinectForWindows2\src;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\addons\ofxSceneManager\src;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxXmlSettings\libs;
-C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\src;
-C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\fftw\include;
-C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\kiss</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\External\PMAudioAnalysis;src\JSONSettings;src\JSONSettings\AudioAnalyzer;src\JSONSettings\AudioDevices;src\JSONSettings\General;src\JSONSettings\LayerMappings;src\JSONSettings\Renderer;src\Motion;src\RenderLayers;src\Scenes;src\SharedSettings;src\UI;src\UICanvas;src\UI\Containers;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxAubio\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxJSON\libs;..\..\..\addons\ofxJSON\libs\jsoncpp;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxKinectForWindows2\src;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\addons\ofxSceneManager\src;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxXmlSettings\libs;C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\fftw\include;C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\kiss;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\src;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\libs\oscpack\src;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\libs\oscpack\src\ip;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\libs\oscpack\src\ip\posix;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\libs\oscpack\src\ip\win32;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\libs\oscpack\src\osc</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -122,7 +125,7 @@ C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\kiss</AdditionalIncl
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxFft\src;src;src\UICanvas;src\UI;src\UI\Containers;src\SharedSettings;src\Scenes;src\RenderLayers;src\Motion;src\JSONSettings;src\JSONSettings\Renderer;src\JSONSettings\LayerMappings;src\JSONSettings\General;src\JSONSettings\AudioDevices;src\JSONSettings\AudioAnalyzer;src\External\PMAudioAnalysis;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\libs;C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\fftw\include;C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\kiss;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxFft\libs\kiss;..\..\..\addons\ofxFft\src;src;src\UICanvas;src\UI;src\UI\Containers;src\SharedSettings;src\Scenes;src\RenderLayers;src\Motion;src\JSONSettings;src\JSONSettings\Renderer;src\JSONSettings\LayerMappings;src\JSONSettings\General;src\JSONSettings\AudioDevices;src\JSONSettings\AudioAnalyzer;src\External\PMAudioAnalysis;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\libs;..\..\..\addons\ofxFft\libs\fftw\include;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -138,10 +141,13 @@ C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\kiss</AdditionalIncl
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\External\PMAudioAnalysis;src\JSONSettings;src\JSONSettings\AudioAnalyzer;src\JSONSettings\AudioDevices;src\JSONSettings\General;src\JSONSettings\LayerMappings;src\JSONSettings\Renderer;src\Motion;src\RenderLayers;src\Scenes;src\SharedSettings;src\UI;src\UICanvas;src\UI\Containers;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxAubio\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxJSON\libs;..\..\..\addons\ofxJSON\libs\jsoncpp;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxKinectForWindows2\src;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\addons\ofxSceneManager\src;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxXmlSettings\libs;
-C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\src;
-C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\fftw\include;
-C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\kiss</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\External\PMAudioAnalysis;src\JSONSettings;src\JSONSettings\AudioAnalyzer;src\JSONSettings\AudioDevices;src\JSONSettings\General;src\JSONSettings\LayerMappings;src\JSONSettings\Renderer;src\Motion;src\RenderLayers;src\Scenes;src\SharedSettings;src\UI;src\UICanvas;src\UI\Containers;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxAubio\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxJSON\libs;..\..\..\addons\ofxJSON\libs\jsoncpp;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxKinectForWindows2\src;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\addons\ofxSceneManager\src;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxXmlSettings\libs;C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\fftw\include;C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\kiss;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\src;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\libs\oscpack\src;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\libs\oscpack\src\ip;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\libs\oscpack\src\ip\posix;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\libs\oscpack\src\ip\win32;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\libs\oscpack\src\osc</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -162,10 +168,13 @@ C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\kiss</AdditionalIncl
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\External\PMAudioAnalysis;src\JSONSettings;src\JSONSettings\AudioAnalyzer;src\JSONSettings\AudioDevices;src\JSONSettings\General;src\JSONSettings\LayerMappings;src\JSONSettings\Renderer;src\Motion;src\RenderLayers;src\Scenes;src\SharedSettings;src\UI;src\UICanvas;src\UI\Containers;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxAubio\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxJSON\libs;..\..\..\addons\ofxJSON\libs\jsoncpp;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxKinectForWindows2\src;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\addons\ofxSceneManager\src;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxXmlSettings\libs;
-C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\src;
-C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\fftw\include;
-C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\kiss</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\External\PMAudioAnalysis;src\JSONSettings;src\JSONSettings\AudioAnalyzer;src\JSONSettings\AudioDevices;src\JSONSettings\General;src\JSONSettings\LayerMappings;src\JSONSettings\Renderer;src\Motion;src\RenderLayers;src\Scenes;src\SharedSettings;src\UI;src\UICanvas;src\UI\Containers;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxAubio\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxJSON\libs;..\..\..\addons\ofxJSON\libs\jsoncpp;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxKinectForWindows2\src;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\addons\ofxSceneManager\src;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxAppUtils-PM\src;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxXmlSettings\libs;C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\src;C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\fftw\include;C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\kiss;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\src;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\libs\oscpack\src;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\libs\oscpack\src\ip;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\libs\oscpack\src\ip\posix;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\libs\oscpack\src\ip\win32;
+C:\Users\eduard\Documents\openFrameworks\addons\ofxOsc\libs\oscpack\src\osc</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -204,6 +213,20 @@ C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\kiss</AdditionalIncl
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
     <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\jsoncpp.cpp" />
     <ClCompile Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix\NetworkingUtils.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix\UdpSocket.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\NetworkingUtils.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\UdpSocket.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscSender.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
@@ -349,6 +372,26 @@ C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\kiss</AdditionalIncl
     <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json.h" />
     <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSON.h" />
     <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\NetworkingUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\PacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\TimerListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\MessageMappingOscPacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscException.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscHostEndianness.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOsc.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscArg.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscSender.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
     <ClInclude Include="src\GUIApp.h" />
@@ -361,6 +404,7 @@ C:\Users\eduard\Documents\openFrameworks\addons\ofxFft\libs\kiss</AdditionalIncl
     <ClInclude Include="src\JSONSettings\PMSettingsManager.h" />
     <ClInclude Include="src\JSONSettings\Renderer\PMSettingsManagerRenderers.h" />
     <ClInclude Include="src\Motion\PMMotionExtractor.hpp" />
+    <ClInclude Include="src\OSCSettings.h" />
     <ClInclude Include="src\RenderLayers\PMBaseLayer.h" />
     <ClInclude Include="src\RenderLayers\PMLayer1.h" />
     <ClInclude Include="src\RenderLayers\PMLayer2.h" />
