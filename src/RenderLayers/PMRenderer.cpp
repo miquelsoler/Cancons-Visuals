@@ -134,8 +134,8 @@ void PMRenderer::drawIntoFBO()
     mainFBO.begin();
     {
 		ofPushMatrix();
-		float scaleX = (float)ofGetWidth() / (float)1080;
-		float scaleY = (float)ofGetHeight() / (float)1920;
+		float scaleX = (float)ofGetWidth() / (float)DESIGN_WIDTH;
+		float scaleY = (float)ofGetHeight() / (float)DESIGN_HEIGHT;
 		ofScale(1.0/scaleX, 1.0/scaleY);
 		ofBackground(PMColorsSelector::getInstance().getColor(0));
 //#if ENABLE_KINECT
