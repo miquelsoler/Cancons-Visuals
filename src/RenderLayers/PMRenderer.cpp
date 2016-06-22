@@ -213,8 +213,10 @@ void PMRenderer::resetPositions()
 
 void PMRenderer::melBandsChange(vector<float> melBands)
 {
-	for (auto layer : layers) {
-		int melBandIndex = layer->getLayerID()-1;
-		layer->melBandsChanged(melBands[melBandIndex]);
+	if (mainFBO.isAllocated()) {
+		for (auto layer : layers) {
+			int melBandIndex = layer->getLayerID() - 1;
+			layer->melBandsChanged(melBands[melBandIndex]);
+		}
 	}
 }

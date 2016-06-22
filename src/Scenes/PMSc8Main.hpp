@@ -71,6 +71,8 @@ private:
 
 	float			*fftSmoothed;
 	float		 	*melBands;
+	float			*scaledBands;
+	float			*bandMaxs;
 	int				nBandsToGet;
 	int				nMelBands;
 	float			bandLimit_low, bandLimit_1, bandLimit_2, bandLimit_3, bandLimit_high;

@@ -58,8 +58,13 @@ void PMSc8Main::setup()
 
 	nMelBands = 4;
 	melBands = new float[4];
-	for (int i = 0; i < nMelBands; i++)
+	scaledBands = new float[4];
+	for (int i = 0; i < nMelBands; i++) {
 		melBands[i] = 0;
+		scaledBands[i] = 0;
+	}
+
+	bandMaxs = new float[4];
 
 	
 
@@ -69,8 +74,9 @@ void PMSc8Main::setup()
 	
 	//bindVariables
 	audioGui->bindLimits(&bandLimit_low, &bandLimit_1, &bandLimit_2, &bandLimit_3, &bandLimit_high);
-	audioGui->bindMaxs(&bandMax_low, &bandMax_lowmid, &bandMax_highmid, &bandMax_high);
-	audioGui->bindSpectrums(fftSmoothed, melBands);
+	//audioGui->bindMaxs(&bandMax_low, &bandMax_lowmid, &bandMax_highmid, &bandMax_high);
+	audioGui->bindMaxs(bandMaxs);
+	audioGui->bindSpectrums(fftSmoothed, scaledBands);
 
 	bandMax_low = bandMax_lowmid = bandMax_highmid = bandMax_high = 0;
 
@@ -102,6 +108,7 @@ void PMSc8Main::update()
 
     if (!disablePainting)
         renderer->update();
+
 }
 
 void PMSc8Main::draw()
@@ -126,11 +133,13 @@ void PMSc8Main::exit()
 void PMSc8Main::updateEnter()
 {
     if (isEnteringFirst()) {
-        enteredScene = true;
+        
         disablePainting = false;
 
         renderer = new PMRenderer();
         renderer->setup();
+
+		enteredScene = true;
 
         PMBaseScene::updateEnter();
 //        string songPath = "songs/" + PMSongSelector::getInstance().getFilename();
@@ -171,12 +180,14 @@ void PMSc8Main::audioIn(float* input, int bufferSize, int nChannels) {
 		}
 	}
 	for (int i = 0; i < fft->getBinSize(); i++) {
-		fftSmoothed[i] /= maxValue;
+		//fftSmoothed[i] /= maxValue;
 	}
 
 	//reset melbands
-	for (int i = 0; i < nMelBands; i++)
+	for (int i = 0; i < nMelBands; i++){
 		melBands[i] = 0;
+		scaledBands[i] = 0;
+	}
 
 
 	/*fft->setSignal(input);
@@ -193,7 +204,8 @@ void PMSc8Main::audioIn(float* input, int bufferSize, int nChannels) {
 		bandSize++;
 	}
 	melBands[0] /= bandSize;
-	if (bandMax_low < melBands[0]) bandMax_low = melBands[0];
+	if (bandMaxs[0] < melBands[0])bandMaxs[0] = melBands[0];
+	
 
 	bandSize = 0;
 	for (int i = toBin(bandLimit_1); i < toBin(bandLimit_2); i++) {
@@ -201,7 +213,7 @@ void PMSc8Main::audioIn(float* input, int bufferSize, int nChannels) {
 		bandSize++;
 	}
 	melBands[1] /= bandSize;
-	if (bandMax_lowmid < melBands[1]) bandMax_lowmid = melBands[1];
+	if (bandMaxs[1] < melBands[1]) bandMaxs[1] = melBands[1];
 
 	bandSize = 0;
 	for (int i = toBin(bandLimit_2); i < toBin(bandLimit_3); i++) {
@@ -209,7 +221,7 @@ void PMSc8Main::audioIn(float* input, int bufferSize, int nChannels) {
 		bandSize++;
 	}
 	melBands[2] /= bandSize;
-	if (bandMax_highmid < melBands[2]) bandMax_highmid = melBands[2];
+	if (bandMaxs[2] < melBands[2]) bandMaxs[2] = melBands[2];
 
 	bandSize = 0;
 	for (int i = toBin(bandLimit_3); i < toBin(bandLimit_high); i++) {
@@ -217,9 +229,12 @@ void PMSc8Main::audioIn(float* input, int bufferSize, int nChannels) {
 		bandSize++;
 	}
 	melBands[3] /= bandSize;
-	if (bandMax_high < melBands[3]) bandMax_high = melBands[3];
+	if (bandMaxs[3] < melBands[3]) bandMaxs[3] = melBands[3];
 
-	
+	//scaled bands
+	for (int i = 0; i < 4; i++) {
+		scaledBands[i] = melBands[i] / bandMaxs[i];
+	}
 
 	//for (int i = 0; i < nMelBands; i++)
 	//	melBands[i] = fftSmoothed[i+1];
@@ -229,10 +244,8 @@ void PMSc8Main::audioIn(float* input, int bufferSize, int nChannels) {
 	bandsVec.push_back(melBands[1]);
 	bandsVec.push_back(melBands[2]);
 	bandsVec.push_back(melBands[3]);
-	//renderer->melBandsChange(bandsVec);
-	
-
-	cout << fftSmoothed[10] << endl;
+	if(enteredScene)
+		renderer->melBandsChange(bandsVec);
 }
 #else
 

@@ -26,17 +26,19 @@ public:
 		bandLimit_high = _bandLimit_high;
 	}
 
-	void bindMaxs(float	*_bandMax_low, float *_bandMax_lowmid, float *_bandMax_highmid, float *_bandMax_high) {
+	/*void bindMaxs(float	*_bandMax_low, float *_bandMax_lowmid, float *_bandMax_highmid, float *_bandMax_high) {
 		bandMax_low = _bandMax_low;
 		bandMax_lowmid = _bandMax_lowmid;
 		bandMax_highmid = _bandMax_highmid;
 		bandMax_high = _bandMax_high;
-	}
+	}*/
+	void bindMaxs(float *_bandMaxs) { bandMaxs = _bandMaxs; };
 
 	void bindSpectrums(float *_fullBands, float *_fourBands) {
 		fullBands = _fullBands;
 		fourBands = _fourBands;
 	}
+
 
     virtual void handleEvents(ofxUIEventArgs &e);
 
@@ -58,7 +60,8 @@ private:
     // Bands control ---------------
 
 	float					*bandLimit_low, *bandLimit_1, *bandLimit_2, *bandLimit_3, *bandLimit_high;
-	float					*bandMax_low, *bandMax_lowmid, *bandMax_highmid, *bandMax_high;
+	float					*bandMaxs;
+	ofxUISlider				*band_l, *band_lm, *band_hm, *band_h;
 
     // Vu-Bands---------------------------------
         

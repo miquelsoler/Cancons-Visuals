@@ -50,7 +50,7 @@ void PMUICanvasAudioAnalyzer::init(int posX, int posY, bool autosize, int width,
 		addSpacer();
 
         addLabel("FULLMelBands");
-        fullMelSpectrum = addSpectrum("FullMelBands", fullBands, 40, 0.0, 1.0);
+        fullMelSpectrum = addSpectrum("FullMelBands", fullBands, 256, 0.0, 1.0);
 //        fullMelSpectrum->setTriggerType(OFX_UI_TRIGGER_CHANGE);
         addSpacer();
         addLabel("ScaledBands");
@@ -60,10 +60,12 @@ void PMUICanvasAudioAnalyzer::init(int posX, int posY, bool autosize, int width,
 		addSpacer();
 
 		addLabel("Band Maxs");
-		addSlider("Low", 0, 1.0, bandMax_low);
-		addSlider("LowMid", 0, 1.0, bandMax_lowmid);
-		addSlider("HighMid", 0, 1.0, bandMax_highmid);
-		addSlider("High", 0, 1.0, bandMax_high);
+		addSpectrum("Band Maxs", bandMaxs, 4, 0.0, 2.0);
+		//band_l = addSlider("Low", 0, 1.0, bandMax_low);
+		//band_l->setTriggerType(OFX_UI_TRIGGER_ALL);
+		//band_lm = addSlider("LowMid", 0, 1.0, bandMax_lowmid);
+		//band_hm = addSlider("HighMid", 0, 1.0, bandMax_highmid);
+		//band_h = addSlider("High", 0, 1.0, bandMax_high);
 
     if (autosize) autoSizeToFitWidgets();
 }
@@ -74,6 +76,7 @@ void PMUICanvasAudioAnalyzer::clear()
     ofxUICanvas::clearWidgets();
     superInit("AUDIO ANALYZER", OFX_UI_FONT_MEDIUM);
 }
+
 
 //--------------------------------------------------------------------------------------------------
 void PMUICanvasAudioAnalyzer::handleEvents(ofxUIEventArgs &e)
