@@ -33,6 +33,7 @@ PMRenderer::PMRenderer()
     PMLayer4 *layer4 = new PMLayer4(fboWidth, fboHeight, KINECTNODE_TORSO);
 	layer4->setStrokesVector(&strokes);
     layers.push_back(layer4);
+	ofRegisterKeyEvents(this);
 }
 
 void PMRenderer::setup()
@@ -146,10 +147,10 @@ void PMRenderer::drawIntoFBO()
 //draw past strokes
 		for (Stroke & m : strokes) {
 			m.draw();
-			/*if (showWireframe) {
+			if (layers[0]->showWireframe) {
 			ofSetColor(100, 100, 100);
 			m.drawWireframe();
-			}*/
+			}
 		}
 		//cambio orden pintado de capas, mano izquierda debajo del todo.
         //for (int i=0; i<layers.size(); ++i)
@@ -219,4 +220,9 @@ void PMRenderer::melBandsChange(vector<float> melBands)
 			layer->melBandsChanged(melBands[melBandIndex]);
 		}
 	}
+}
+
+void PMRenderer::keyPressed(ofKeyEventArgs &a) {
+	if (a.key == 'R')
+		strokes.clear();
 }

@@ -75,6 +75,8 @@ public:
 		return maxLife;
 	}
 
+	bool showWireframe = false;
+
 protected:
 
 #if ENABLE_MULTIPLE_FBOS
@@ -104,7 +106,6 @@ protected:
     float                   curveSize;
 
 	float distanceThreshold = 0 ;
-	bool showWireframe = false;
 	float maxDistance = 20;
 	int maxLife = 2000;
     

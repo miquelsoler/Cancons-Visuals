@@ -24,7 +24,8 @@ public:
     void resetPositions();
 
 	void melBandsChange(vector<float> melBands);
-
+	void keyPressed(ofKeyEventArgs &a);
+	void keyReleased(ofKeyEventArgs &a) {};
 private:
 
     void drawIntoFBO();
