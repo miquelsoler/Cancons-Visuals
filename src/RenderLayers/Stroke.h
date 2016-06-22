@@ -4,7 +4,7 @@
 
 class Stroke {
 public:
-	Stroke(ofMesh mesh, ofTexture tex, float life);
+	Stroke(ofMesh mesh, ofTexture tex, float life, float _minAlpha);
 	void draw();
 	void drawWireframe();
 	int life;

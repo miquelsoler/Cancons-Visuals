@@ -18,26 +18,19 @@
 
 
 
-#define ENABLE_LIVE true
-#define ENABLE_KINECT true
+#define ENABLE_SOUNDFLOWER false
+#define ENABLE_KINECT false
 #define ENABLE_MULTIPLE_FBOS false
 #define ENABLE_MULTILAYER_EXPORT false
 #define ENABLE_KNEES_DETECTION true
 #define ENABLE_PRINTING true
-#define ENABLE_REMOTE_KINECT false
 
 
-static const float          WINDOW_SCALE_FACTOR         = 1.0f;
+static const float          WINDOW_SCALE_FACTOR         = 0.7f;
 static const float          FBO_SCALE_FACTOR            = 1.0f;
 
-static const int            WINDOW_WIDTH                = 1920;
-static const int            WINDOW_HEIGHT               = 1080;
-
-static const int			DESIGN_WIDTH = 1920;
-static const int			DESIGN_HEIGHT = 1080;
-
-static const int			DESIGN_LEFT_WIDTH = 890;
-static const int			DESIGN_LEFT_HEIGHT = 767;
+static const int            WINDOW_WIDTH                = 1080;
+static const int            WINDOW_HEIGHT               = 1920;
 
 static const int            DEFAULT_WINDOW_WIDTH        = int(float(WINDOW_WIDTH) * WINDOW_SCALE_FACTOR);
 static const int            DEFAULT_WINDOW_HEIGHT       = int(float(WINDOW_HEIGHT) * WINDOW_SCALE_FACTOR);
@@ -54,5 +47,6 @@ static const ofWindowMode   DEFAULT_WINDOW_MODE         = OF_WINDOW;
 
 static const int            DEFAULT_SAMPLERATE          = 44100;
 static const int            DEFAULT_BUFFERSIZE          = 512;
+static const bool			PERFORMANCE_MODE			= false;
 
 #endif

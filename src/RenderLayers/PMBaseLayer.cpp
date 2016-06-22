@@ -243,7 +243,6 @@ void PMBaseLayer::update()
     brushPosition += (brushDirection * brushSpeed);
 	ofPoint brushDirectionUnormalized = brushDirection;
     brushDirection.normalize();
-    brush->update(int(brushPosition.x), int(brushPosition.y));
 	
 	//Fort Pienc version
 	ofPoint newPoint;
@@ -277,6 +276,7 @@ void PMBaseLayer::update()
 	}
 
 	addPointToRibbon(newPoint, brushDirection, brushSize);
+	brush->update(int(newPoint.x), int(newPoint.y));
 	//cout << "mouse pos " << newPoint << endl;
 	if (points.size() > maxPoints)
 		finishStroke();
@@ -353,7 +353,8 @@ void PMBaseLayer::drawStrokes() {
 void PMBaseLayer::finishStroke() {
 	// we know store all past strokes in a unique vector in PMRenderer so they are all drawn in the creation order
 	/*pastStrokes.push_back(Stroke(ribbon, textures[currentTexture].getTexture(), strokeFadeOut));*/
-	strokes->push_back(Stroke(ribbon, textures[currentTexture].getTexture(), strokeFadeOut));
+	float minAlpha = PERFORMANCE_MODE ? 0 : 0.1;
+	strokes->push_back(Stroke(ribbon, textures[currentTexture].getTexture(), strokeFadeOut, minAlpha));
 	ribbon.clear();
 	points.clear();
 	brushSizes.clear();
