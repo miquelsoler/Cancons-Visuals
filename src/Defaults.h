@@ -19,7 +19,7 @@
 
 
 #define ENABLE_SOUNDFLOWER false
-#define ENABLE_KINECT true
+#define ENABLE_KINECT false
 #define ENABLE_MULTIPLE_FBOS false
 #define ENABLE_MULTILAYER_EXPORT false
 #define ENABLE_KNEES_DETECTION true
@@ -47,5 +47,6 @@ static const ofWindowMode   DEFAULT_WINDOW_MODE         = OF_WINDOW;
 
 static const int            DEFAULT_SAMPLERATE          = 44100;
 static const int            DEFAULT_BUFFERSIZE          = 512;
+static const bool			PERFORMANCE_MODE			= false;
 
 #endif

@@ -1,12 +1,12 @@
 #include "Stroke.h"
 
-Stroke::Stroke(ofMesh mesh, ofTexture tex, float lifeDec) {
+Stroke::Stroke(ofMesh mesh, ofTexture tex, float lifeDec, float _minAlpha) {
 	ribbon = mesh;
 	texture = tex;
 	//color = col;		
 	lifeDecrement = lifeDec;
 	life = 0;
-	minAlpha = 0;
+	minAlpha = _minAlpha;
 }
 
 void Stroke::draw() {

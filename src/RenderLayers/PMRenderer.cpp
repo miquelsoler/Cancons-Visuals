@@ -77,7 +77,7 @@ void PMRenderer::update()
     drawIntoFBO();
 
 	 //remove elements with a life higher than a threshold
-	if (layers[0]->isFading()) {
+	if ( PERFORMANCE_MODE && layers[0]->isFading()) {
 		for (auto it = strokes.cbegin(); it != strokes.cend() ; )
 		{
 			if (it->life > layers[0]->getMaxLife())
