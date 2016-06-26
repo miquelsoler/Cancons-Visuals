@@ -12,6 +12,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "Defaults.h"
 #include "ofxKinectForWindows2.h"
 #if ENABLE_REMOTE_KINECT
 #include "ofxOsc.h"

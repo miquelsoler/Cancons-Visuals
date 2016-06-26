@@ -44,10 +44,10 @@ void PMMotionExtractor::update(ofEventArgs & a)
 		//        cout<<m.getAddress()<<endl;
 		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_STATE)) {
 			auto receivedMessage = m.getArgAsString(0);
-			if (receivedMessage != OSC_KINECT_STATE_POSITIONED)
-				detectionStatus = receivedMessage;
-			else
-				triggerUserPositioned();
+			if (receivedMessage != OSC_KINECT_STATE_CAPTURING)
+				hasUser = true;
+			else if(receivedMessage != OSC_KINECT_STATE_DETECTING)
+				hasUser = false;
 		}
 		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_LHAND + OSC_KINECT_ADDR_POSITION))
 			handsInfo.leftHand.pos = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
@@ -59,13 +59,13 @@ void PMMotionExtractor::update(ofEventArgs & a)
 			handsInfo.rightKnee.pos = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
 
 		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_LHAND + OSC_KINECT_ADDR_VELOCITY))
-			handsInfo.leftHand.vel = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
+			handsInfo.leftHand.v = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
 		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_RHAND + OSC_KINECT_ADDR_VELOCITY))
-			handsInfo.rightHand.vel = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
+			handsInfo.rightHand.v = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
 		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_LKNEE + OSC_KINECT_ADDR_VELOCITY))
-			handsInfo.leftKnee.vel = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
+			handsInfo.leftKnee.v = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
 		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_RKNEE + OSC_KINECT_ADDR_VELOCITY))
-			handsInfo.rightKnee.vel = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
+			handsInfo.rightKnee.v = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
 
 	}
 #else
