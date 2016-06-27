@@ -28,7 +28,7 @@ PMSc10Thanks::PMSc10Thanks() : PMBaseScene("Scene Thanks")
 
 	//facana.load("assets/facana.tiff");
 	facana.load("assets/print_background.png");
-	plantilla.load("assets/print_plantilla.png");
+	//plantilla.load("assets/print_plantilla.png");
 	//ofSetWindowShape(1772, 1181);
 	//homography.set(0.579811573, 0.220885843, 0, 0.000285788818,
 	//	0.00508813839, 0.338972956, 0, 0.000000268133908,
@@ -52,7 +52,7 @@ PMSc10Thanks::PMSc10Thanks() : PMBaseScene("Scene Thanks")
 
 void PMSc10Thanks::setup()
 {
-	ofSetWindowShape(1772, 1181);
+	//ofSetWindowShape(1772, 1181);
     //Primer ha de pillar el nom, sino No es pot generar l'fbo
     songName = PMSongSelector::getInstance().getSongname();
     userName = "Interpretat per " + PMSharedSettings::getInstance().getUserName();
@@ -102,7 +102,7 @@ void PMSc10Thanks::update()
     if (countdown.alarm()) {
         countdown.resetAlarm();
         string toScene = "Scene 2";
-        //ofNotifyEvent(goToSceneEvent, toScene, this);
+        ofNotifyEvent(goToSceneEvent, toScene, this);
     }
 }
 
@@ -120,9 +120,9 @@ void PMSc10Thanks::draw()
     drawCenteredFont(bigFont, "Cançons Visuals", originalWidth / 2, 938);
     drawCenteredFont(smallFont, "www.xavibove.com", originalWidth / 2, 988);
     ofPopMatrix();
-    printFbo.draw(0,0, ofGetWidth(), ofGetHeight());
-	if (ofGetKeyPressed(OF_KEY_SHIFT))
-		plantilla.draw(0,0);
+    //printFbo.draw(0,0, ofGetWidth(), ofGetHeight());
+	//if (ofGetKeyPressed(OF_KEY_SHIFT))
+		//plantilla.draw(0,0);
 
     //printFbo.draw(0,0);
 }
