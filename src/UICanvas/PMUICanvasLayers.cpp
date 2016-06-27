@@ -14,74 +14,77 @@ PMUICanvasLayers::PMUICanvasLayers(string title, int headerFontSize) : PMBaseUIC
 
 void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int width, int height)
 {
-    if(guiCreated) clearWidgets();
-    PMBaseUICanvas::init(posX, posY, autosize, width, height);
-    layer = layerNum;
-    
-    addLabel("Layer " + ofToString(layer));
-    addSpacer();
-    
-    // Presets
-    addLabel("PRESETS");
-    presetsMatrix = addToggleMatrix("PRESETS", PRESETSMATRIX_NUMROWS, PRESETSMATRIX_NUMCOLS,200/PRESETSMATRIX_NUMCOLS,20);
-    presetsMatrix->setAllowMultiple(false);
-    presetsMatrix->setTriggerType(OFX_UI_TRIGGER_NONE );
-    
-    ofAddListener(newGUIEvent, this, &PMUICanvasLayers::handleEvents);
-    
-    addSpacer();
-    
-    addLabel("Energy");
-    addSlider("Min Energy", 0, 1, minEnergy);
-    addSlider("Max Energy", 0, 1, maxEnergy);
-    
-    addSpacer();
-    
-    addLabel("Size");
-    addIntSlider("Min Size", 0, 50, minSize);
-    addIntSlider("Max Size", 0, 60, maxSize);
-    addSlider("Energy Factor", 0, 1, scaleEnergy_Size);
-    addSlider("Acceleration Factor", 0, 1, scaleAcceleration_Size);
-    addSlider("Z Factor", 0, 800, scaleZ_Size);
-    
-   /* addSpacer();
-    
-    addLabel("Hue");
-    addSlider("Hue Scale Factor", 0, 1, scaleHue);
-    addSlider("Hue Variation", 0, 1, variationHue);*/
-    
-   /* addSpacer();
-    
-    addLabel("Saturation");
-    addSlider("Saturation Scale Factor", 0, 1, scaleSaturation);
-    addSlider("Saturation Variation", 0, 1, variationSaturation);*/
-    
-   addSpacer();
-   
-    addLabel("Brightness");
-    addSlider("Acceleration Factor", 0, 1, scaleBrightness);
-    addSlider("Brightness Variation", 0, 1, variationBrightness);
-    
-    addSpacer();
-    
-    addLabel("Alpha");
-    addSlider("Min Alpha", 0, 1, minAlpha);
-    addSlider("Max Alpha", 0, 1, maxAlpha);
-    //addSlider("Scale Energy Factor Alpha", 0, 1, scaleEnergy_Alpha);
-    addSlider("Acceleration Factor", 0, 1, scaleVelocity_Alpha);
+	if (guiCreated) clearWidgets();
+	PMBaseUICanvas::init(posX, posY, autosize, width, height);
+	layer = layerNum;
+
+	addLabel("Layer " + ofToString(layer));
+	addSpacer();
+
+	// Presets
+	addLabel("PRESETS");
+	presetsMatrix = addToggleMatrix("PRESETS", PRESETSMATRIX_NUMROWS, PRESETSMATRIX_NUMCOLS, 200 / PRESETSMATRIX_NUMCOLS, 20);
+	presetsMatrix->setAllowMultiple(false);
+	presetsMatrix->setTriggerType(OFX_UI_TRIGGER_NONE);
+
+	ofAddListener(newGUIEvent, this, &PMUICanvasLayers::handleEvents);
+
+	addSpacer();
+
+	addLabel("Energy");
+	addSlider("Min Energy", 0, 1, minEnergy);
+	addSlider("Max Energy", 0, 1, maxEnergy);
+
+	addSpacer();
+
+	addLabel("Size");
+	addIntSlider("Min Size", 0, 50, minSize);
+	addIntSlider("Max Size", 0, 60, maxSize);
+	addSlider("Energy Factor", 0, 1, scaleEnergy_Size);
+	addSlider("Acceleration Factor", 0, 1, scaleAcceleration_Size);
+	addSlider("Z Factor", 0, 800, scaleZ_Size);
+
+	/* addSpacer();
+
+	 addLabel("Hue");
+	 addSlider("Hue Scale Factor", 0, 1, scaleHue);
+	 addSlider("Hue Variation", 0, 1, variationHue);*/
+
+	 /* addSpacer();
+
+	  addLabel("Saturation");
+	  addSlider("Saturation Scale Factor", 0, 1, scaleSaturation);
+	  addSlider("Saturation Variation", 0, 1, variationSaturation);*/
+
+	addSpacer();
+
+	addLabel("Brightness");
+	addSlider("Acceleration Factor", 0, 1, scaleBrightness);
+	addSlider("Brightness Variation", 0, 1, variationBrightness);
+
+	addSpacer();
+
+	addLabel("Alpha");
+	addSlider("Min Alpha", 0, 1, minAlpha);
+	addSlider("Max Alpha", 0, 1, maxAlpha);
+	//addSlider("Scale Energy Factor Alpha", 0, 1, scaleEnergy_Alpha);
+	addSlider("Acceleration Factor", 0, 1, scaleVelocity_Alpha);
 	addSlider("Min Energy Threshold", 0, 1, alphaThreshold);
 	ofxUISlider *t = addSlider("Fade out factor", 0, 0.01, strokeFadeOut);
 	t->setLabelPrecision(5);
-    //addSlider("Scale Z Factor Alpha", 0, 1, scaleZ_Alpha);
-    
-    addSpacer();
-    
-    addLabel("Behaviour");
-   // addSlider("Speed", 0, 10, curveSpeed);
-    addSlider("Curve Size", 0, 20, curveSize);
-	addSlider("Knees noise threshold", 0, 20, kneesThreshold);
-	addSlider("Knees Speed", 0.05, 0.4, noiseSpeed);
-	addSlider("Knees noise factor", 50, 500, kneeScaleFactor);
+	//addSlider("Scale Z Factor Alpha", 0, 1, scaleZ_Alpha);
+
+	addSpacer();
+
+	addLabel("Behaviour");
+	// addSlider("Speed", 0, 10, curveSpeed);
+	addSlider("Curve Size", 0, 20, curveSize);
+	if (layerNum > 2) {
+		addSlider("Knees noise threshold", 0, 20, kneesThreshold);
+		addSlider("Knees Speed", 0.05, 0.4, noiseSpeed);
+		addSlider("Knees noise factor", 50, 500, kneeScaleFactor);
+	}else if(layerNum == 1)
+		addSlider("Color tween time", 500, 8000, colorFade);
 	addIntSlider("Maximum life", 2000, 10000, maxLife);
 
 	addSpacer();

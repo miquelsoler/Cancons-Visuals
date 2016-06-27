@@ -58,6 +58,7 @@ public:
 	void setStrokesVector(vector<Stroke> *s) {
 		strokes = s;
 	}
+	float getFadeTime() {return colorFade;}
 
 #if ENABLE_MULTIPLE_FBOS
     ofFbo *getFBO() { return &layerFBO; };
@@ -148,6 +149,7 @@ protected:
 	float strokeFadeOut;
 	float noiseSpeed;
 	float kneeScaleFactor;
+	float colorFade;
     
 
     // JSON settings

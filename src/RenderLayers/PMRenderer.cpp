@@ -63,6 +63,8 @@ void PMRenderer::setup()
     int INITIAL_POS_MARGIN_Y=FBO_HEIGHT*0.2;
     ofPoint initialPosition = ofPoint(ofRandom(INITIAL_POS_MARGIN_X, FBO_WIDTH-INITIAL_POS_MARGIN_X), ofRandom(INITIAL_POS_MARGIN_Y, FBO_HEIGHT-INITIAL_POS_MARGIN_Y));    for (int i=0; i<layers.size(); ++i)
         layers[i]->setup(initialPosition);
+	tweening = false;
+	counter = 0;
 }
 
 void PMRenderer::update()
@@ -138,7 +140,14 @@ void PMRenderer::drawIntoFBO()
 		float scaleX = (float)ofGetWidth() / (float)DESIGN_WIDTH;
 		float scaleY = (float)ofGetHeight() / (float)DESIGN_HEIGHT;
 		ofScale(1.0/scaleX, 1.0/scaleY);
-		ofBackground(PMColorsSelector::getInstance().getColor(0));
+		if (tweening)
+		{
+			ofBackground(prevColor.lerp(PMColorsSelector::getInstance().getColor(0), tweenColor.update()));
+			if(tweenColor.isCompleted() )
+				tweening = false;
+		}
+		else
+			ofBackground(PMColorsSelector::getInstance().getColor(0));
 //#if ENABLE_KINECT
 //		PMMotionExtractor::getInstance().draw();
 //#endif
@@ -225,4 +234,10 @@ void PMRenderer::melBandsChange(vector<float> melBands)
 void PMRenderer::keyPressed(ofKeyEventArgs &a) {
 	if (a.key == 'R')
 		strokes.clear();
+	else if (a.key == 'h') {
+		prevColor = PMColorsSelector::getInstance().getColor(0);
+		PMColorsSelector::getInstance().nexPalette();
+		tweening = true;
+		tweenColor.setParameters(1, easing, ofxTween::easeIn,0,1, layers[0]->getFadeTime(),0);
+	}
 }

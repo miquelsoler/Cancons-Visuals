@@ -83,7 +83,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 	layersGui->bindAlpha(&alphaMin, &alphaMax, &alphaScaleFactor, &alphaEnergyScaleFactor, &alphaVelocityScaleFactor, &alphaZScaleFactor);
 	noiseSpeed = 0.1;
 	kneeScaleFactor = 10;
-	layersGui->bindBehaviour(&brushSpeed, &curveSize, &noiseSpeed, &kneeScaleFactor, &maxLife, &noiseThreshold);
+	layersGui->bindBehaviour(&brushSpeed, &curveSize, &noiseSpeed, &kneeScaleFactor, &maxLife, &noiseThreshold, &colorFade);
 
 	layersGui->bindAlphaThreshold(&alphaThreshold);
 	layersGui->bindStrokeFadeOut(&strokeFadeOut);
@@ -431,9 +431,9 @@ void PMBaseLayer::melBandsChanged(float energy)
 void PMBaseLayer::keyPressed(ofKeyEventArgs &a){
 	if (a.key == 'R')
 		pastStrokes.clear();
-	else if(a.key == 'h'){
+	/*else if(a.key == 'h'){
 		PMColorsSelector::getInstance().nexPalette();
-	}
+	}*/
 }
 
 void PMBaseLayer::keyReleased(ofKeyEventArgs &a){

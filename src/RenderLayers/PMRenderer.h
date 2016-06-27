@@ -8,6 +8,7 @@
 #include "ofMain.h"
 #include "PMBaseLayer.h"
 #include "Defaults.h"
+#include "ofxTween.h"
 
 
 class PMRenderer
@@ -36,6 +37,12 @@ private:
     ofFbo                       backgroundFBO;
 #endif
 	vector<Stroke> strokes;
+
+	ofColor prevColor;
+	bool tweening ;
+	float counter;
+	ofxTween tweenColor;
+	ofxEasingLinear easing;
 };
 
 
