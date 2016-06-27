@@ -83,7 +83,7 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
 		addSlider("Knees noise threshold", 0, 20, kneesThreshold);
 		addSlider("Knees Speed", 0.05, 0.4, noiseSpeed);
 		addSlider("Knees noise factor", 50, 500, kneeScaleFactor);
-	}else
+	}else if(layerNum == 1)
 		addSlider("Color tween time", 500, 8000, colorFade);
 	addIntSlider("Maximum life", 2000, 10000, maxLife);
 
