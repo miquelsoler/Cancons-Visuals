@@ -431,9 +431,9 @@ void PMBaseLayer::melBandsChanged(float energy)
 void PMBaseLayer::keyPressed(ofKeyEventArgs &a){
 	if (a.key == 'R')
 		pastStrokes.clear();
-	else if(a.key == 'h'){
+	/*else if(a.key == 'h'){
 		PMColorsSelector::getInstance().nexPalette();
-	}
+	}*/
 }
 
 void PMBaseLayer::keyReleased(ofKeyEventArgs &a){

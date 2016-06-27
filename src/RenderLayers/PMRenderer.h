@@ -36,6 +36,10 @@ private:
     ofFbo                       backgroundFBO;
 #endif
 	vector<Stroke> strokes;
+
+	ofColor prevColor;
+	bool tweening ;
+	float counter;
 };
 
 
