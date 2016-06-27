@@ -48,7 +48,7 @@ void PMSc1Settings::setup()
 //                                                                 devices[iDev].inputChannels, devices[iDev].outputChannels,
 //                                                                 DEFAULT_SAMPLERATE, DEFAULT_BUFFERSIZE,
 //                                                                 enabledChannelNumbers);
-	Sleep(5000);
+	Sleep(3000);
     string sceneToChange="Scene 2";
     ofNotifyEvent(goToSceneEvent, sceneToChange, this);
 }

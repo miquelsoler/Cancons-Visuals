@@ -45,7 +45,7 @@ private:
 	ofImage			facana;
     
     string          userName;
-    string           songName;
+    string          songName;
     string          dateName;
     
     ofxTimer        countdown;

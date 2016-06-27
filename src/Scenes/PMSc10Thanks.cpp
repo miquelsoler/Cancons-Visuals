@@ -19,24 +19,40 @@ PMSc10Thanks::PMSc10Thanks() : PMBaseScene("Scene Thanks")
     smallFont.load("fonts/NeutraTextTF-Light.otf", 28, true, true, false, 0.3, 72);
     smallestFont.load("fonts/NeutraTextTF-Light.otf", 22, true, true, false, 0.3, 72);
 	small_logo.load("assets/urban_art.png");
-    originalWidth = 1080;
-    originalHeight = 1920;
+    originalWidth = DESIGN_WIDTH;
+    originalHeight = DESIGN_HEIGHT;
     setSingleSetup(false);
     songName = "Blade Runner";
     dateName = "30/06/2016, 22:13";
     userName = "Interpretat per Susanna Mitjà";
 
-	facana.load("assets/facana.tiff");
-	//plantilla.load("assets/export_plantilla.tif");
+	//facana.load("assets/facana.tiff");
+	facana.load("assets/print_background.png");
+	plantilla.load("assets/print_plantilla.png");
 	//ofSetWindowShape(1772, 1181);
-	homography.set(0.579811573, 0.220885843, 0, 0.000285788818,
-		0.00508813839, 0.338972956, 0, 0.000000268133908,
+	//homography.set(0.579811573, 0.220885843, 0, 0.000285788818,
+	//	0.00508813839, 0.338972956, 0, 0.000000268133908,
+	//	0, 0, 1, 0,
+	//	166.0, 358.0, 0, 1);
+
+	//Homography for new plantilla
+	/*
+	homography.set(0.592777908, 0.223622605, 0, 0.000294847618,
+		0.000365242478, 0.339181930, 0, -0.000000268133908,
 		0, 0, 1, 0,
-		166.0, 358.0, 0, 1);
+		168.0, 349.0, 0, 1);
+	*/
+
+	//Homography for new fbo resolution
+	homography.set(0.599193573, 0.226636082, 0, 0.000300306710,
+		0.00733219925, 0.544999719, 0, 8.78107676e-06,
+		0, 0, 1, 0,
+		166.0, 350.0, 0, 1);
 }
 
 void PMSc10Thanks::setup()
 {
+	ofSetWindowShape(1772, 1181);
     //Primer ha de pillar el nom, sino No es pot generar l'fbo
     songName = PMSongSelector::getInstance().getSongname();
     userName = "Interpretat per " + PMSharedSettings::getInstance().getUserName();
@@ -86,7 +102,7 @@ void PMSc10Thanks::update()
     if (countdown.alarm()) {
         countdown.resetAlarm();
         string toScene = "Scene 2";
-        ofNotifyEvent(goToSceneEvent, toScene, this);
+        //ofNotifyEvent(goToSceneEvent, toScene, this);
     }
 }
 
@@ -98,12 +114,16 @@ void PMSc10Thanks::draw()
     float scaleY = (float) ofGetHeight() / (float) originalHeight;
     ofScale(scaleX, scaleY);
     ofSetColor(ofColor::white);
+	///plantilla.draw(0, 0, ofGetWidth(), ofGetHeight());
     drawCenteredFont(bigFont, "Imprimint", originalWidth / 2, 462);
     drawCenteredFont(bigFont, "Moltes gràcies!", originalWidth / 2, 508);
     drawCenteredFont(bigFont, "Cançons Visuals", originalWidth / 2, 938);
     drawCenteredFont(smallFont, "www.xavibove.com", originalWidth / 2, 988);
     ofPopMatrix();
-//    printFbo.draw(0,0, ofGetWidth(), ofGetHeight());
+    printFbo.draw(0,0, ofGetWidth(), ofGetHeight());
+	if (ofGetKeyPressed(OF_KEY_SHIFT))
+		plantilla.draw(0,0);
+
     //printFbo.draw(0,0);
 }
 
@@ -122,15 +142,20 @@ void PMSc10Thanks::drawIntoFbo()
 		ofPopMatrix();
 
 		//Draw facade image;
-		facana.draw(69, 59, 1628, 961);
+		//facana.draw(69, 59, 1628, 961);
+		facana.draw(0, 0);
 
 		//Draw strings
         ofSetColor(ofColor::black);
-        drawRightAlignString(bigFont, "\"" + songName + "\"", 1693, 1046);
-        drawRightAlignString(smallFont, userName, 1693, 1081);
-        drawRightAlignString(smallFont, dateName, 1693, 1116);
-        drawLeftAlignString(smallestFont, "Centre Cívic Fort Pienc", 70, 1042);
-		drawLeftAlignString(smallestFont, "www.fortpienc.org", 70, 1064);
+        //drawRightAlignString(bigFont, "\"" + songName + "\"", 1693, 1046);
+        //drawRightAlignString(smallFont, userName, 1693, 1081);
+        //drawRightAlignString(smallFont, dateName, 1693, 1116);
+        //drawLeftAlignString(smallestFont, "Centre Cívic Fort Pienc", 70, 1042);
+		//drawLeftAlignString(smallestFont, "www.fortpienc.org", 70, 1064);
+
+		drawLeftAlignString(bigFont, "\"" + songName + "\"", 67, 1046-2);
+		drawLeftAlignString(smallFont, userName, 67, 1081-2);
+		drawLeftAlignString(smallFont, dateName, 67, 1116-2);
     }
     printFbo.end();
 }

@@ -90,7 +90,6 @@ void PMColorsSelector::checkMousePassed(int x, int y)
         int y1=rectSelector[i].getY()-rectSelector[i].getHeight()/2;
         int y2=rectSelector[i].getY()+rectSelector[i].getHeight()/2;
         if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
-			cout << "Selecting color " << i << endl;
         }else{
         }
     }

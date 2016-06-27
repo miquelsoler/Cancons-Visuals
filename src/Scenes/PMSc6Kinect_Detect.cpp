@@ -41,8 +41,10 @@ void PMSc6Kinect_Detect::draw()
     PMBaseScene::draw();
 
 #if ENABLE_KINECT
-	auto heightToDraw = 424 * ofGetWidth() / 512;
-	PMMotionExtractor::getInstance().draw(0, (ofGetHeight() - heightToDraw) / 2, ofGetWidth(), heightToDraw);
+	//auto heightToDraw = 424 * ofGetWidth() / 512;
+	//PMMotionExtractor::getInstance().draw(0, (ofGetHeight() - heightToDraw) / 2, ofGetWidth(), heightToDraw);
+	auto heightToDraw = 424 * (DESIGN_WIDTH-DESIGN_LEFT_WIDTH-50) / 512;
+	PMMotionExtractor::getInstance().draw(DESIGN_LEFT_WIDTH - 25, (ofGetHeight() - heightToDraw) / 2, DESIGN_WIDTH - DESIGN_LEFT_WIDTH - 50, heightToDraw);
 #endif
 
 
