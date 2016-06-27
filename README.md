@@ -18,6 +18,7 @@ Before building, make sure you've already downloaded these add-ons:
 * [ofxUI] (https://github.com/rezaali/ofxUI)
 * [ofxAubio] (https://github.com/aubio/ofxAubio) ->FOLLOW instruction, not downloading github source!
 * [ofxOpenNI-PM] (https://github.com/eduardfrigola/ofxOpenNI-PM)
+* [ofxSpout2] (https://github.com/sheridanis/ofxSpout2)
 
 These add-ons are also needed, but they are already part of openframeworks:
 * [ofxGUI](http://openframeworks.cc/documentation/ofxGui/ofxGui.html)
