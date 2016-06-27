@@ -49,6 +49,13 @@ void PMMotionExtractor::update(ofEventArgs & a)
 			else if(receivedMessage != OSC_KINECT_STATE_DETECTING)
 				hasUser = false;
 		}
+		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_KEY))
+			cout << "KEY Received " << m.getArgAsChar(0) << " - " << m.getArgAsInt32(1) << endl;
+		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_MOUSE_MOVE))
+			cout << "Mouse moved: " << m.getArgAsInt32(0) << " " << m.getArgAsInt32(1) << endl;
+		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_MOUSE_PRESS))
+			cout << "Mouse pressed: " << m.getArgAsInt32(0) << " " << m.getArgAsInt32(1) << endl;
+
 		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_LHAND + OSC_KINECT_ADDR_POSITION))
 			handsInfo.leftHand.pos = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1), m.getArgAsFloat(2));
 		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_RHAND + OSC_KINECT_ADDR_POSITION))
