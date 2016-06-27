@@ -39,7 +39,7 @@ void PMSc3Song_Choose::draw()
     float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
     ofScale(scaleX, scaleY);
 //    ofBackground(0);
-    drawSettingsNumbers(1);
+    //drawSettingsNumbers(1);
     drawCenteredFont(baseBoldFont, "Tria la teva cançó", DESIGN_LEFT_WIDTH/2, 150);
     PMSongSelector::getInstance().draw();
     ofPopMatrix();

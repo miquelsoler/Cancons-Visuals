@@ -13,8 +13,9 @@ static const int NUM_ERASED_COLORS = 2; //for debuging purposes
 
 void PMColorsSelector::init(ofTrueTypeFont &font)
 {
-    originalWidth = DESIGN_WIDTH;
+    originalWidth = DESIGN_WIDTH - DESIGN_LEFT_WIDTH;
     originalHeight= DESIGN_HEIGHT;
+	int topOffset = 0;
     
     indexChoosed=0;
     
@@ -34,9 +35,9 @@ void PMColorsSelector::init(ofTrueTypeFont &font)
     int x,y;
     int width,height;
     for(int i=0; i<rows; i++){
-        y=(((originalHeight-150)*(i+1)/((rows)+1))+150);
+        y=(((originalHeight-topOffset)*(i+1)/((rows)+1))+topOffset);
         for(int j=0; j<columns; j++){
-            x=(originalWidth*(j+1)/(columns+1));
+            x=(originalWidth*(j+1)/(columns+1)) + DESIGN_LEFT_WIDTH;
             width=((originalWidth/(columns*2))-1);
             height=width/4;
             PMColorContainer tempContainer(x, y, width, height, colorPalettes[i].colors[j]);
@@ -44,15 +45,15 @@ void PMColorsSelector::init(ofTrueTypeFont &font)
         }
     }
     for(int i=0; i<colorContainers.size(); i=i+colorPalettes[0].colors.size()){
-        int x=originalWidth/2;
+        int x=originalWidth/2 + DESIGN_LEFT_WIDTH;
         int y=colorContainers[i].getY()+20;
-        int width=originalWidth-(2*colorContainers[i].getX()-colorContainers[i].getWidth())+20;
+        int width=originalWidth-(2*(colorContainers[i].getX()-DESIGN_LEFT_WIDTH)-colorContainers[i].getWidth())+20;
         int height=colorContainers[i].getHeight()+60;
         rectSelector.push_back(PMColorContainer(x, y, width, height, ofColor(127)));
     }
     
     for(int i=0; i<colorContainers.size(); i=i+colorPalettes[0].colors.size()){
-        int x=originalWidth/2;
+        int x=originalWidth/2 + DESIGN_LEFT_WIDTH;
         int y=colorContainers[i].getY()+20+colorContainers[i].getHeight()/2;
         paletteNames.push_back(PMTextContainer(x, y, colorPalettes[i/colorPalettes[0].colors.size()].name, font));
     }
@@ -89,6 +90,7 @@ void PMColorsSelector::checkMousePassed(int x, int y)
         int y1=rectSelector[i].getY()-rectSelector[i].getHeight()/2;
         int y2=rectSelector[i].getY()+rectSelector[i].getHeight()/2;
         if(x>=x1 && x<=x2 && y>=y1 && y<=y2){
+			cout << "Selecting color " << i << endl;
         }else{
         }
     }

@@ -30,8 +30,9 @@ void PMBaseScene::draw()
 {
     ofClear(backgroundColor);
     ofPushStyle();
-    ofSetColor(255);
-    backgroundImage.draw(0,0, ofGetWidth(), ofGetHeight());
+    ofSetColor(47, 87, 120);
+    //backgroundImage.draw(0,0, ofGetWidth(), ofGetHeight());
+	ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
     ofPopStyle();
 }
 

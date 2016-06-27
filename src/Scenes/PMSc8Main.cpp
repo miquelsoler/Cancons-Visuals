@@ -299,7 +299,7 @@ void PMSc8Main::computeFFT()
 	melBands[3] /= bandSize;
 	if (bandMax_high < melBands[3]) bandMax_high = melBands[3];
 
-	cout << bandMax_low << endl;
+	//cout << bandMax_low << endl;
 
 	//for (int i = 0; i < nMelBands; i++)
 	//	melBands[i] = fftSmoothed[i+1];

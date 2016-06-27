@@ -61,10 +61,10 @@ void PMSc7Countdown::draw()
     countdownTime = PMSettingsManagerGeneral::getInstance().getReleaseScene7CountdownTime();
 #endif
     ofPushMatrix();
-    float scaleX=(float)ofGetWidth()/(float)1080;
-    float scaleY=(float)ofGetHeight()/(float)1920;
+    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
+    float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
     ofScale(scaleX, scaleY);
-    ofPoint center=ofPoint(1080/2, 1920/2);
+    ofPoint center=ofPoint(DESIGN_WIDTH-((DESIGN_WIDTH - DESIGN_LEFT_WIDTH)/2), DESIGN_HEIGHT/2);
 //    ofSetColor(ofColor::gray);
 //    ofDrawLine(center, center+line);
 //    ofColor(127, 127, 127, 127);
