@@ -1,9 +1,10 @@
-ofxGui
-ofxOsc
-ofxXmlSettings
 ofxAppUtils-PM
 ofxFft
+ofxGui
 ofxJSON
 ofxKinectForWindows2
+ofxOsc
+ofxSpout2
 ofxTween
 ofxUI
+ofxXmlSettings

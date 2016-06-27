@@ -171,6 +171,8 @@ void PMRenderer::drawIntoFBO()
 		ofPopMatrix();
     }
     mainFBO.end();
+
+	spout.sendTexture(mainFBO.getTexture(), "Cancons-visuals");
 #endif
 }
 
