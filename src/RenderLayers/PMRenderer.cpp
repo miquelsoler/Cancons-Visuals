@@ -142,9 +142,8 @@ void PMRenderer::drawIntoFBO()
 		ofScale(1.0/scaleX, 1.0/scaleY);
 		if (tweening)
 		{
-			counter += 0.01;
-			ofBackground(prevColor.lerp(PMColorsSelector::getInstance().getColor(0), counter));
-			if(counter >= 1)
+			ofBackground(prevColor.lerp(PMColorsSelector::getInstance().getColor(0), tweenColor.update()));
+			if(tweenColor.isCompleted() )
 				tweening = false;
 		}
 		else
@@ -239,6 +238,6 @@ void PMRenderer::keyPressed(ofKeyEventArgs &a) {
 		prevColor = PMColorsSelector::getInstance().getColor(0);
 		PMColorsSelector::getInstance().nexPalette();
 		tweening = true;
-		counter = 0;
+		tweenColor.setParameters(1, easing, ofxTween::easeIn,0,1, layers[0]->getFadeTime(),0);
 	}
 }

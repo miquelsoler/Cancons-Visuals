@@ -8,6 +8,7 @@
 #include "ofMain.h"
 #include "PMBaseLayer.h"
 #include "Defaults.h"
+#include "ofxTween.h"
 
 
 class PMRenderer
@@ -40,6 +41,8 @@ private:
 	ofColor prevColor;
 	bool tweening ;
 	float counter;
+	ofxTween tweenColor;
+	ofxEasingLinear easing;
 };
 
 

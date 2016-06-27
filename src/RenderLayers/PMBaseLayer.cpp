@@ -83,7 +83,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 	layersGui->bindAlpha(&alphaMin, &alphaMax, &alphaScaleFactor, &alphaEnergyScaleFactor, &alphaVelocityScaleFactor, &alphaZScaleFactor);
 	noiseSpeed = 0.1;
 	kneeScaleFactor = 10;
-	layersGui->bindBehaviour(&brushSpeed, &curveSize, &noiseSpeed, &kneeScaleFactor, &maxLife, &noiseThreshold);
+	layersGui->bindBehaviour(&brushSpeed, &curveSize, &noiseSpeed, &kneeScaleFactor, &maxLife, &noiseThreshold, &colorFade);
 
 	layersGui->bindAlphaThreshold(&alphaThreshold);
 	layersGui->bindStrokeFadeOut(&strokeFadeOut);
