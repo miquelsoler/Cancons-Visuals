@@ -44,9 +44,9 @@ void PMMotionExtractor::update(ofEventArgs & a)
 		//        cout<<m.getAddress()<<endl;
 		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_STATE)) {
 			auto receivedMessage = m.getArgAsString(0);
-			if (receivedMessage != OSC_KINECT_STATE_CAPTURING)
+			if (receivedMessage == OSC_KINECT_STATE_CAPTURING || receivedMessage == OSC_KINECT_STATE_POSITIONED)
 				hasUser = true;
-			else if(receivedMessage != OSC_KINECT_STATE_DETECTING)
+			else if(receivedMessage == OSC_KINECT_STATE_DETECTING)
 				hasUser = false;
 		}
 		if (m.getAddress() == (OSC_KINECT_ADDR_BASE + OSC_KINECT_ADDR_KEY))
