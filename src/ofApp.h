@@ -19,6 +19,8 @@
 #include "PMSc9Export.hpp"
 #include "PMSc10Thanks.hpp"
 
+#include "ofxSpout2Sender.h"
+
 class ofApp : public ofxApp
 {
 public:
@@ -74,6 +76,9 @@ private:
     PMSc8Main               *scene8;
     PMSc9Export             *scene9;
     PMSc10Thanks            *scene10;
+
+
+	ofxSpout2::Sender spout;
     
     
 };

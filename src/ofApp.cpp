@@ -99,6 +99,15 @@ void ofApp::update()
 
     currentScene = sceneManager.getCurrentSceneIndex();
 #endif
+	/*int w = ofGetWidth();
+	int h = ofGetHeight();
+
+	ofTexture tex;
+	tex.allocate(w, h, GL_RGBA);
+
+	tex.loadScreenData(0, 0, w, h);
+	spout.sendTexture(tex, "Cancons-Main");
+	tex.clear();*/
 }
 
 ///--------------------------------------------------------------
