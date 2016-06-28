@@ -71,9 +71,10 @@ void PMSc7Countdown::draw()
 //    ofDrawCircle(center.x, center.y, 100);
     drawCenteredFont(baseBoldFont, "Prem espai", 1080/2, 100);
     drawCenteredFont(baseBoldFont, "quan vulguis finalitzar la visualització", 1080/2, 150);
+	ofPushStyle();
     ofSetColor(ofColor::white);
     drawCenteredFont(countdownFont, ofToString(countdownTime - (int) countdown.getDiff() / 1000), center.x, center.y);
-  
+	ofPopStyle();
     ofPopMatrix();
 }
 

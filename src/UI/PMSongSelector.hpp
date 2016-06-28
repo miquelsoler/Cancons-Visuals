@@ -35,6 +35,7 @@ public:
     void init(ofTrueTypeFont &font);
     void update();
     void draw();
+	int getIndexChoosed() { return indexChoosed; };
     
     string getFilename(){return songFilenames[indexChoosed];};
     string getSongname(){return songNamesBox[indexChoosed].getString();};

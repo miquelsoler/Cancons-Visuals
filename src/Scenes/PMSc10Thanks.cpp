@@ -113,12 +113,14 @@ void PMSc10Thanks::draw()
     float scaleX = (float) ofGetWidth() / (float) originalWidth;
     float scaleY = (float) ofGetHeight() / (float) originalHeight;
     ofScale(scaleX, scaleY);
+	ofPushStyle();
     ofSetColor(ofColor::white);
 	///plantilla.draw(0, 0, ofGetWidth(), ofGetHeight());
     drawCenteredFont(bigFont, "Imprimint", originalWidth / 2, 462);
     drawCenteredFont(bigFont, "Moltes gràcies!", originalWidth / 2, 508);
     drawCenteredFont(bigFont, "Cançons Visuals", originalWidth / 2, 938);
     drawCenteredFont(smallFont, "www.xavibove.com", originalWidth / 2, 988);
+	ofPopStyle();
     ofPopMatrix();
     //printFbo.draw(0,0, ofGetWidth(), ofGetHeight());
 	//if (ofGetKeyPressed(OF_KEY_SHIFT))
@@ -142,20 +144,16 @@ void PMSc10Thanks::drawIntoFbo()
 		ofPopMatrix();
 
 		//Draw facade image;
-		//facana.draw(69, 59, 1628, 961);
 		facana.draw(0, 0);
 
 		//Draw strings
+		ofPushStyle();
         ofSetColor(ofColor::black);
-        //drawRightAlignString(bigFont, "\"" + songName + "\"", 1693, 1046);
-        //drawRightAlignString(smallFont, userName, 1693, 1081);
-        //drawRightAlignString(smallFont, dateName, 1693, 1116);
-        //drawLeftAlignString(smallestFont, "Centre Cívic Fort Pienc", 70, 1042);
-		//drawLeftAlignString(smallestFont, "www.fortpienc.org", 70, 1064);
 
 		drawLeftAlignString(bigFont, "\"" + songName + "\"", 67, 1046-2);
 		drawLeftAlignString(smallFont, userName, 67, 1081-2);
 		drawLeftAlignString(smallFont, dateName, 67, 1116-2);
+		ofPopStyle();
     }
     printFbo.end();
 }

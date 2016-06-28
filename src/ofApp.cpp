@@ -117,13 +117,17 @@ void ofApp::draw()
 
     if (showFPS && sceneManager.getCurrentSceneIndex() != -1)
     {
+		ofPushStyle();
         ofSetColor(debugMessagesColor);
         ofxBitmapString(15, ofGetHeight() - 15) << roundf(ofGetFrameRate()) << "fps" << endl;
+		ofPopStyle();
     }
 
 	//draw mask
-    ofSetColor(ofColor::black);
-	ofDrawRectangle(0, DESIGN_LEFT_HEIGHT, DESIGN_LEFT_WIDTH, DESIGN_HEIGHT - DESIGN_LEFT_HEIGHT);
+	ofPushStyle();
+    //ofSetColor(ofColor::black);
+	//ofDrawRectangle(0, DESIGN_LEFT_HEIGHT, DESIGN_LEFT_WIDTH, DESIGN_HEIGHT - DESIGN_LEFT_HEIGHT);
+	ofPopStyle();
 	//ofSetColor(255);
 	//if (ofGetKeyPressed(OF_KEY_SHIFT)) {
 	//	ofImage tempimg;
@@ -133,12 +137,14 @@ void ofApp::draw()
 
 
 #ifdef OF_DEBUG
+	ofPushStyle();
 	ofSetColor(debugMessagesColor);
 	ofxBitmapString(15, ofGetHeight() - 28)
 		<< "[Current Scene] ID: " << sceneManager.getCurrentSceneIndex()
 		<< " Name: " << sceneManager.getCurrentSceneName()
 		<< " Screen Size: " << ofGetWidth() << " " << ofGetHeight()
 		<< " Mouse Position: " << ofGetMouseX() << " " << ofGetMouseY() << endl;
+	ofPopStyle();
 #endif
 }
 

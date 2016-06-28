@@ -34,5 +34,6 @@ protected:
     
 private:
     ofTrueTypeFont infoFont;
+
     
 };

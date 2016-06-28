@@ -16,6 +16,11 @@ PMSc3Song_Choose::PMSc3Song_Choose() : PMBaseScene("Scene 3")
     selectFont.load("fonts/NeutraTextTF-Book.otf", 43);
     PMSongSelector::getInstance().init(selectFont);
     setSingleSetup(false);
+#if ENABLE_LIVE
+	backgroundImage.load("assets/LIVE_02.png");
+#else
+	backgroundImage.load("assets/PUBLIC_01.png");
+#endif
 }
 
 void PMSc3Song_Choose::setup()
@@ -33,14 +38,15 @@ void PMSc3Song_Choose::update()
 
 void PMSc3Song_Choose::draw()
 {
-    PMBaseScene::draw();
+	backgroundImage.draw(0, 0, DESIGN_WIDTH, DESIGN_HEIGHT);
+    //PMBaseScene::draw();
     ofPushMatrix();
-    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
+    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH; //Treure al fer warpiung
     float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
     ofScale(scaleX, scaleY);
 //    ofBackground(0);
     //drawSettingsNumbers(1);
-    drawCenteredFont(baseBoldFont, "Tria la teva cançó", DESIGN_LEFT_WIDTH/2, 150);
+    //drawCenteredFont(baseBoldFont, "Tria la teva cançó", DESIGN_LEFT_WIDTH/2, 150);
     PMSongSelector::getInstance().draw();
     ofPopMatrix();
     

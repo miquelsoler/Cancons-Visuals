@@ -34,6 +34,7 @@ public:
     void init(ofTrueTypeFont &font);
     void update();
     void draw();
+	void setIndex(int index) { indexChoosed = index; };
     
     ofColor getColor(int layer){return colorPalettes[indexChoosed].colors[layer];};
 	void nexPalette() { indexChoosed = (indexChoosed + 1) % colorPalettes.size(); };

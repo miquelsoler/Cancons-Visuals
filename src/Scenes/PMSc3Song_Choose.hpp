@@ -38,6 +38,8 @@ private:
     vector<string> songNames;
     int pseudoSelectedSong;
     ofTrueTypeFont selectFont;
+
+	ofImage backgroundImage;
     
     
     

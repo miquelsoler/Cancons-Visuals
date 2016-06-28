@@ -57,7 +57,7 @@ void PMSc9Export::draw()
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofSetColor(ofColor::red);
     ofPopStyle();
-    
+	ofPushStyle();
     ofSetColor(ofColor::white);
     //drawCenteredFont(bigFont, "Enhorabona!, Aquesta és la teva interpretació!", originalWidth/2, 145);
     //drawCenteredFont(bigFont, "Si us plau, introdueix el teu nom, prem Enter", originalWidth/2, 190);
@@ -69,7 +69,7 @@ void PMSc9Export::draw()
 	drawCenteredFont(bigFont, "i emporta't una impressió de la teva obra!", originalWidth/1.33, 265 + addtoShift);
 	drawCenteredFont(smallFont, "(màxim 25 caràcters)", originalWidth/1.33, 315 + addtoShift);
     drawTextBox(bigFont, textInput, isSlash);
-    ofPushStyle();
+    //ofPushStyle();
     ofSetRectMode(OF_RECTMODE_CENTER);
     ofNoFill();
     ofSetLineWidth(3);

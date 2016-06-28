@@ -7,6 +7,7 @@
 //
 
 #include "PMSc4Palette_Choose.hpp"
+#include "PMSongSelector.hpp"
 #include "../UI/PMColorsSelector.hpp"
 
 PMSc4Palette_Choose::PMSc4Palette_Choose() : PMBaseScene("Scene 4")
@@ -21,12 +22,18 @@ void PMSc4Palette_Choose::setup()
 
 void PMSc4Palette_Choose::update()
 {
-    
+#if ENABLE_LIVE
+	PMColorsSelector::getInstance().setIndex(0);
+#else
+	PMColorsSelector::getInstance().setIndex(PMSongSelector::getInstance().getIndexChoosed());
+#endif
+	string sceneToChange = "Scene 6";
+	ofNotifyEvent(goToSceneEvent, sceneToChange, this);
 }
 
 void PMSc4Palette_Choose::draw()
 {
-    PMBaseScene::draw();
+    /*PMBaseScene::draw();
     ofPushMatrix();
     float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
     float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
@@ -40,21 +47,21 @@ void PMSc4Palette_Choose::draw()
     drawCenteredFont(infoFont, "Genoll dret", 1275, 215);
     drawCenteredFont(infoFont, "Genoll esquerra", 1600, 215);
     PMColorsSelector::getInstance().draw();
-    ofPopMatrix();
+    ofPopMatrix();*/
 }
 
 void PMSc4Palette_Choose::mouseMoved(int x, int y)
 {
-    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
+    /*float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
     float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
     x/=scaleX;
     y/=scaleY;
-    PMColorsSelector::getInstance().checkMousePassed(x, y);
+    PMColorsSelector::getInstance().checkMousePassed(x, y);*/
 }
 
 void PMSc4Palette_Choose::mousePressed(int x, int y, int mouse)
 {
-    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
+    /*float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
     float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
     x/=scaleX;
     y/=scaleY;
@@ -62,5 +69,5 @@ void PMSc4Palette_Choose::mousePressed(int x, int y, int mouse)
         string sceneToChange="Scene 6";
         ofNotifyEvent(goToSceneEvent, sceneToChange, this);
     }
-
+	*/
 }

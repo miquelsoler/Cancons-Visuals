@@ -32,5 +32,7 @@ public:
 protected:
     
 private:
+
+	ofImage backgroundImage;
     
 };

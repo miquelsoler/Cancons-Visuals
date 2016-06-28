@@ -12,6 +12,9 @@
 PMSc6Kinect_Detect::PMSc6Kinect_Detect() : PMBaseScene("Scene 6")
 {
     setSingleSetup(false);
+#if !ENABLE_LIVE
+	backgroundImage.load("assets/PUBLIC_02.png");
+#endif
 }
 
 void PMSc6Kinect_Detect::setup()
@@ -23,7 +26,7 @@ void PMSc6Kinect_Detect::setup()
 
 void PMSc6Kinect_Detect::update()
 {
-#if ENABLE_KINECT
+#if ENABLE_KINECT && !ENABLE_LIVE
     if (PMMotionExtractor::getInstance().isTracking())
     {
         string sceneToChange = "Scene 7";
@@ -38,13 +41,19 @@ void PMSc6Kinect_Detect::update()
 void PMSc6Kinect_Detect::draw()
 {
 
-    PMBaseScene::draw();
+    //PMBaseScene::draw();ç
+	ofPushStyle();
+	ofSetColor(255, 255, 255, 255);
+	backgroundImage.draw(0, 0);
+	ofPopStyle();
 
 #if ENABLE_KINECT
-	auto heightToDraw = 424 * ofGetWidth() / 512;
-	PMMotionExtractor::getInstance().draw(0, (ofGetHeight() - heightToDraw) / 2, ofGetWidth(), heightToDraw);
-	//auto heightToDraw = 424 * (DESIGN_WIDTH-DESIGN_LEFT_WIDTH-50) / 512;
-	//PMMotionExtractor::getInstance().draw(DESIGN_LEFT_WIDTH - 25, (ofGetHeight() - heightToDraw) / 2, DESIGN_WIDTH - DESIGN_LEFT_WIDTH - 50, heightToDraw);
+	//auto heightToDraw = 424 * ofGetWidth() / 512;
+	//PMMotionExtractor::getInstance().draw(0, (ofGetHeight() - heightToDraw) / 2, ofGetWidth(), heightToDraw);
+	auto heightToDraw = 424 * (DESIGN_WIDTH-DESIGN_LEFT_WIDTH-350) / 512;
+	//PMMotionExtractor::getInstance().draw( (ofGetHeight() - heightToDraw) / 2, DESIGN_LEFT_HEIGHT - 25, DESIGN_WIDTH - DESIGN_LEFT_WIDTH - 50, heightToDraw);
+	//ofSetColor(255);
+	ofDrawRectangle(1050, 230, DESIGN_WIDTH - DESIGN_LEFT_WIDTH - 350, heightToDraw);
 #endif
 
 
@@ -52,8 +61,8 @@ void PMSc6Kinect_Detect::draw()
 	float scaleX = (float)ofGetWidth() / (float)DESIGN_WIDTH;
     float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
     ofScale(scaleX, scaleY);
-    drawCenteredFont(baseBoldFont, "Detecció de cos", DESIGN_WIDTH /2, 100);
-    drawCenteredFont(baseBoldFont, "Si us plau, mira endavant i obre els braços", DESIGN_WIDTH /2, 150);
+    //drawCenteredFont(baseBoldFont, "Detecció de cos", DESIGN_WIDTH /2, 100);
+    //drawCenteredFont(baseBoldFont, "Si us plau, mira endavant i obre els braços", DESIGN_WIDTH /2, 150);
     ofPopMatrix();
     
 

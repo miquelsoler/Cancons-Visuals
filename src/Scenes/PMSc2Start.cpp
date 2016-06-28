@@ -12,7 +12,11 @@ PMSc2Start::PMSc2Start() : PMBaseScene("Scene 2")
 {
     //setFade(1000, 1000);
 //    setFadeIn(1000);
+#if ENABLE_LIVE
+	backgroundImage.load("assets/LIVE_01.png");
+#else
     backgroundImage.load("assets/escena2.jpg");
+#endif
     setSingleSetup(false);
 }
 
@@ -38,7 +42,7 @@ void PMSc2Start::draw()
 void PMSc2Start::keyPressed(int key)
 {
 #if ENABLE_LIVE
-    string sceneToChange = "Scene 4";
+    string sceneToChange = "Scene 3";
 #else
 	string sceneToChange = "Scene 3";
 #endif
