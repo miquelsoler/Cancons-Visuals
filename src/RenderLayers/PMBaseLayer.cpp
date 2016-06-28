@@ -257,7 +257,7 @@ void PMBaseLayer::update()
 			//cout << noiseIndex << " at layer " << layerID << endl;
 		}
 		ofPoint noise = ofPoint( (ofNoise(noiseIndex * noiseSpeed, layerID * 1000) - 0.5) * kneeScaleFactor,
-								(ofNoise(layerID * 1000, noiseIndex * noiseSpeed) - 0.8) * kneeScaleFactor,
+								(ofNoise(layerID * 1000, noiseIndex * noiseSpeed) - 1) * kneeScaleFactor,
 									kinectNodeData.pos.z * 100);
 		newPoint = actualNodePosition + noise;
 	}
