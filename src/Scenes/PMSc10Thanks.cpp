@@ -48,6 +48,8 @@ PMSc10Thanks::PMSc10Thanks() : PMBaseScene("Scene Thanks")
 		0.00733219925, 0.544999719, 0, 8.78107676e-06,
 		0, 0, 1, 0,
 		166.0, 350.0, 0, 1);
+
+	backgroundImage.load("assets/PUBLIC_05.png");
 }
 
 void PMSc10Thanks::setup()
@@ -108,25 +110,7 @@ void PMSc10Thanks::update()
 
 void PMSc10Thanks::draw()
 {
-    PMBaseScene::draw();
-    ofPushMatrix();
-    float scaleX = (float) ofGetWidth() / (float) originalWidth;
-    float scaleY = (float) ofGetHeight() / (float) originalHeight;
-    ofScale(scaleX, scaleY);
-	ofPushStyle();
-    ofSetColor(ofColor::white);
-	///plantilla.draw(0, 0, ofGetWidth(), ofGetHeight());
-    drawCenteredFont(bigFont, "Imprimint", originalWidth / 2, 462);
-    drawCenteredFont(bigFont, "Moltes gràcies!", originalWidth / 2, 508);
-    drawCenteredFont(bigFont, "Cançons Visuals", originalWidth / 2, 938);
-    drawCenteredFont(smallFont, "www.xavibove.com", originalWidth / 2, 988);
-	ofPopStyle();
-    ofPopMatrix();
-    //printFbo.draw(0,0, ofGetWidth(), ofGetHeight());
-	//if (ofGetKeyPressed(OF_KEY_SHIFT))
-		//plantilla.draw(0,0);
-
-    //printFbo.draw(0,0);
+	backgroundImage.draw(0, 0);
 }
 
 
@@ -135,9 +119,10 @@ void PMSc10Thanks::drawIntoFbo()
     printFbo.begin();
     {
         ofClear(255);
-
+		ofPushStyle();
+		ofEnableAlphaBlending();
 		//Draw tempRender image in its position
-		ofSetColor(255);
+		ofSetColor(255,255);
 		ofPushMatrix();
 		ofMultMatrix(homography);
 		printImage.draw(0, 0);
@@ -145,6 +130,8 @@ void PMSc10Thanks::drawIntoFbo()
 
 		//Draw facade image;
 		facana.draw(0, 0);
+		ofDisableAlphaBlending();
+		ofPopStyle();
 
 		//Draw strings
 		ofPushStyle();

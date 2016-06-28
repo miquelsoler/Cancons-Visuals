@@ -43,6 +43,7 @@ private:
 	ofImage			small_logo;
 	ofImage			plantilla;
 	ofImage			facana;
+	ofImage			backgroundImage;
     
     string          userName;
     string          songName;

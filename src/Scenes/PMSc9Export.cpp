@@ -18,6 +18,12 @@ PMSc9Export::PMSc9Export() : PMBaseScene("Scene 9")
     setSingleSetup(false);
     originalWidth=DESIGN_WIDTH;
     originalHeight=DESIGN_HEIGHT;
+
+#if ENABLE_LIVE
+	backgroundImage.load("assets/LIVE_03.png");
+#else
+	backgroundImage.load("assets/PUBLIC_04.png");
+#endif
 }
 
 void PMSc9Export::setup()
@@ -47,36 +53,39 @@ void PMSc9Export::exit()
 
 void PMSc9Export::draw()
 {
-    PMBaseScene::draw();
+    /*PMBaseScene::draw();
     ofPushMatrix();
     float scaleX=(float)ofGetWidth()/(float)originalWidth;
     float scaleY=(float)ofGetHeight()/(float)originalHeight;
     ofScale(scaleX, scaleY);
+	*/
 //    ofBackground(0);
-    ofPushStyle();
-    ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(ofColor::red);
-    ofPopStyle();
-	ofPushStyle();
+	backgroundImage.draw(0, 0);
+#if !ENABLE_LIVE
+	//ofPushStyle();
     ofSetColor(ofColor::white);
-    //drawCenteredFont(bigFont, "Enhorabona!, Aquesta és la teva interpretació!", originalWidth/2, 145);
-    //drawCenteredFont(bigFont, "Si us plau, introdueix el teu nom, prem Enter", originalWidth/2, 190);
-    //drawCenteredFont(bigFont, "i emporta't una impressió de la teva obra!", originalWidth/2, 265);
-    //drawCenteredFont(smallFont, "(màxim 25 caràcters)", originalWidth/2, 315);
-	int addtoShift = 600;
-	drawCenteredFont(bigFont, "Enhorabona!, Aquesta és la teva interpretació!", originalWidth / 1.33, 145+addtoShift);
-	drawCenteredFont(bigFont, "Si us plau, introdueix el teu nom, prem Enter", originalWidth/1.33, 190 + addtoShift);
-	drawCenteredFont(bigFont, "i emporta't una impressió de la teva obra!", originalWidth/1.33, 265 + addtoShift);
-	drawCenteredFont(smallFont, "(màxim 25 caràcters)", originalWidth/1.33, 315 + addtoShift);
     drawTextBox(bigFont, textInput, isSlash);
-    //ofPushStyle();
+    ofPushStyle();
     ofSetRectMode(OF_RECTMODE_CENTER);
     ofNoFill();
-    ofSetLineWidth(3);
-    ofDrawRectangle(originalWidth/2, 480, 850, 85);
-    painting.draw(originalWidth/2, originalHeight/3, originalWidth/1.7, originalHeight/1.7);
+    ofSetLineWidth(1);
+    ofDrawRectRounded(1382, 552, 528, 54, 5);
+    //painting.draw(originalWidth/2, originalHeight/3, originalWidth/1.7, originalHeight/1.7);
     ofPopStyle();
-    ofPopMatrix();
+	ofPushStyle();
+	ofSetColor(255);
+	painting.draw(1118, 173, 527, 188);
+	ofNoFill();
+	ofDrawRectRounded(1118, 173, 527, 188, 2);
+	ofPopStyle();
+#endif
+    //ofPopMatrix();
+
+	if (ofGetKeyPressed(OF_KEY_SHIFT)) {
+		ofImage tempimg;
+		tempimg.load("assets/PUBLIC_04_brut.png");
+		tempimg.draw(0, 0);
+	}
 }
 
 
@@ -85,9 +94,9 @@ void PMSc9Export::drawTextBox(ofTrueTypeFont &font, string s, bool slash)
     int halfStringWidth = 0;
     if(s != "") halfStringWidth = font.stringWidth(s)/2;
     if(isSlash){
-        bigFont.drawString(textInput, (originalWidth/1.33)-halfStringWidth, 495+600);
+        bigFont.drawString(s, 1382-halfStringWidth, 548+(font.stringHeight("|")/2));
     }else{
-        bigFont.drawString(textInput+'|', (originalWidth/1.33)-halfStringWidth, 495+600);
+        bigFont.drawString(s+'|', 1382 -halfStringWidth, 548 + (font.stringHeight("|") / 2));
     }
 }
 

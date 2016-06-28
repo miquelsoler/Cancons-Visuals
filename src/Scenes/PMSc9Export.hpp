@@ -30,7 +30,7 @@ public:
 
 private:
     
-    ofImage         painting;
+	ofImage         painting, backgroundImage;
     ofTrueTypeFont  bigFont, smallFont;
     string          textInput;
     float           timestamp;
