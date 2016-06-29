@@ -46,7 +46,9 @@ void PMSc3Song_Choose::draw()
 //    ofBackground(0);
     //drawSettingsNumbers(1);
     //drawCenteredFont(baseBoldFont, "Tria la teva cançó", DESIGN_LEFT_WIDTH/2, 150);
+#if !ENABLE_LIVE
     PMSongSelector::getInstance().draw();   
+#endif
 
 	ofPopMatrix();
 }
@@ -70,4 +72,12 @@ void PMSc3Song_Choose::mousePressed(int x, int y, int button)
         string sceneToChange="Scene 4";
         ofNotifyEvent(goToSceneEvent, sceneToChange, this);
     }
+}
+
+void PMSc3Song_Choose::keyPressed(int key) {
+#if ENABLE_LIVE
+	string sceneToChange = "Scene 4";
+	if (key == ' ')
+		ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+#endif
 }

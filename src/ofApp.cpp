@@ -137,7 +137,7 @@ void ofApp::draw()
     {
 		ofPushStyle();
         ofSetColor(debugMessagesColor);
-        ofxBitmapString(15, ofGetHeight() - 15) << roundf(ofGetFrameRate()) << "fps" << endl;
+        ofxBitmapString(15, DESIGN_HEIGHT - 15) << roundf(ofGetFrameRate()) << "fps" << endl;
 		ofPopStyle();
     }
 
@@ -157,7 +157,7 @@ void ofApp::draw()
 #ifdef OF_DEBUG
 	ofPushStyle();
 	ofSetColor(debugMessagesColor);
-	ofxBitmapString(15, ofGetHeight() - 28)
+	ofxBitmapString(15, DESIGN_HEIGHT - 28)
 		<< "[Current Scene] ID: " << sceneManager.getCurrentSceneIndex()
 		<< " Name: " << sceneManager.getCurrentSceneName()
 		<< " Screen Size: " << ofGetWidth() << " " << ofGetHeight()
