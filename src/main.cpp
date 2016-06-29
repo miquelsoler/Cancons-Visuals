@@ -19,15 +19,21 @@
 
 int main()
 {
+	glfwInit();
+	int count_monitors;
+	glfwGetMonitors(&count_monitors);
     ofGLFWWindowSettings mainSettings;
     mainSettings.width = int(DEFAULT_WINDOW_WIDTH);
     mainSettings.height = int(DEFAULT_WINDOW_HEIGHT);
-    mainSettings.windowMode = DEFAULT_WINDOW_MODE;
+    mainSettings.windowMode = (count_monitors == 1) ? OF_WINDOW : DEFAULT_WINDOW_MODE;
+	mainSettings.multiMonitorFullScreen = false;
+	mainSettings.monitor = (count_monitors == 1) ? 0 : 1;
     mainSettings.resizable = true;
     shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(mainSettings);
     
     ofGLFWWindowSettings guiSettings;
-    guiSettings.width = 1000;
+	guiSettings.monitor = 0;
+    guiSettings.width = 1500;
     guiSettings.height = 1500;
     guiSettings.windowMode = OF_WINDOW;
     guiSettings.resizable = true;

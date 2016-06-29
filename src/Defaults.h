@@ -51,7 +51,7 @@ static const int            FBO_WIDTH                   = int(float(DESIGN_WIDTH
 static const int            FBO_HEIGHT                  = int(float(DESIGN_HEIGHT) * FBO_SCALE_FACTOR);
 #endif
 
-static const ofWindowMode   DEFAULT_WINDOW_MODE         = OF_WINDOW;
+static const ofWindowMode   DEFAULT_WINDOW_MODE         = OF_GAME_MODE;
 
 static const int            DEFAULT_SAMPLERATE          = 44100;
 static const int            DEFAULT_BUFFERSIZE          = 512;
