@@ -13,7 +13,7 @@
 
 PMSc1Settings::PMSc1Settings() : PMBaseScene("Scene 1")
 {
-    ofBackground(150);
+    //ofBackground(150);
 //    setFade(1000, 1000);
 //    setupGUI_SONG();
 }

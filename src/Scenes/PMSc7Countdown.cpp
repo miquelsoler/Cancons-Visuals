@@ -65,7 +65,7 @@ void PMSc7Countdown::draw()
 	ofMultMatrix(*homography);
 
 	ofPushStyle();
-	ofSetColor(255, 255, 255, 255);
+	ofSetColor(255);
 	backgroundImage.draw(0, 0);
 	ofPopStyle();
 

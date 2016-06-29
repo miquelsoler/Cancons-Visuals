@@ -62,11 +62,11 @@ void PMSc3Song_Choose::mouseMoved(int x, int y)
 
 void PMSc3Song_Choose::mousePressed(int x, int y, int button)
 {
-    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
-    float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
-   // x/=scaleX;
-   // y/=scaleY;
-    if(PMSongSelector::getInstance().checkMousePressed(x, y)){
+	//Warp via homography;
+	ofVec3f pos = ofVec3f(x, y);
+	pos = pos*(homography->getInverse());
+
+    if(PMSongSelector::getInstance().checkMousePressed(pos.x, pos.y)){
         string sceneToChange="Scene 4";
         ofNotifyEvent(goToSceneEvent, sceneToChange, this);
     }

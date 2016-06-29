@@ -9,9 +9,10 @@ void ofApp::setup()
 {
     ofSetFrameRate(60);
     ofSetVerticalSync(true);
-    //ofBackground(ofColor::black);
+    ofBackground(ofColor::black);
 
-    isFullScreen = (DEFAULT_WINDOW_MODE == OF_FULLSCREEN);
+    //
+	//isFullScreen = (DEFAULT_WINDOW_MODE == OF_FULLSCREEN);
 
     currentScene = 2;
     currentSceneName = "";

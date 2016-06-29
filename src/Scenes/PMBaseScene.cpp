@@ -22,7 +22,7 @@ PMBaseScene::PMBaseScene(const string &name) : ofxFadeScene(name)
     //this->setSceneDuration(0.2, 0.2);
     setFade(0, 0);
 
-    backgroundColor = ofColor::green;
+    //backgroundColor = ofColor::green;
     backgroundImage.load("assets/background.png");
 
 	homography = &PMSharedSettings::getInstance().homography;
@@ -31,7 +31,7 @@ PMBaseScene::PMBaseScene(const string &name) : ofxFadeScene(name)
 ///--------------------------------------------------------------
 void PMBaseScene::draw()
 {
-    ofClear(backgroundColor);
+    //ofClear(backgroundColor);
     ofPushStyle();
     ofSetColor(47, 87, 120);
     //backgroundImage.draw(0,0, ofGetWidth(), ofGetHeight());
