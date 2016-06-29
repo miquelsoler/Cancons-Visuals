@@ -55,7 +55,7 @@ void PMSc6Kinect_Detect::draw()
 	auto heightToDraw = 424 * (DESIGN_WIDTH-DESIGN_LEFT_WIDTH-350) / 512;
 	//PMMotionExtractor::getInstance().draw( (ofGetHeight() - heightToDraw) / 2, DESIGN_LEFT_HEIGHT - 25, DESIGN_WIDTH - DESIGN_LEFT_WIDTH - 50, heightToDraw);
 	//ofSetColor(255);
-	ofDrawRectangle(1050, 230, DESIGN_WIDTH - DESIGN_LEFT_WIDTH - 350, heightToDraw);
+	//ofDrawRectangle(1050, 230, DESIGN_WIDTH - DESIGN_LEFT_WIDTH - 350, heightToDraw);
 #endif
 
 	ofPopMatrix();
