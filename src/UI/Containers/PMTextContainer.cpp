@@ -39,14 +39,21 @@ PMTextContainer::PMTextContainer(int _x, int _y, string _s, ofTrueTypeFont &_fon
 void PMTextContainer::draw()
 {
     ofSetColor(ofColor::white);
-    font->drawString(s, x-scaledWidth/2, y+scaledHeight/2);
+	//Center Font
+    //font->drawString(s, x-scaledWidth/2, y+scaledHeight/2);
+
+	//No Center Font
+	font->drawString(s, x, y + scaledHeight / 2);
 }
 
 void PMTextContainer::draw(float _scale)
 {
     setScale(_scale);
     ofPushMatrix();
-        ofTranslate(x-(scaledWidth)/2, y+(scaledHeight)/2);
+		//Center font
+        //ofTranslate(x-(scaledWidth)/2, y+(scaledHeight)/2);
+		//No center font
+		ofTranslate(x, y+(scaledHeight) / 2);
         ofScale(scale, scale);
         ofSetColor(ofColor::white);
         font->drawString(s, 0, 0);

@@ -13,7 +13,7 @@ PMSc3Song_Choose::PMSc3Song_Choose() : PMBaseScene("Scene 3")
 {
     //setFade(1000, 1000);
 //    setFadeIn(1000);
-    selectFont.load("fonts/NeutraTextTF-Book.otf", 43);
+    selectFont.load("fonts/NeutraTextTF-Book.otf", 35);
     PMSongSelector::getInstance().init(selectFont);
     setSingleSetup(false);
 #if ENABLE_LIVE
