@@ -88,7 +88,22 @@ void ofApp::setup()
     ofAddListener(scene8->goToSceneEvent, this, &ofApp::changeScene);
     ofAddListener(scene9->goToSceneEvent, this, &ofApp::changeScene);
     ofAddListener(scene10->goToSceneEvent, this, &ofApp::changeScene);
-    
+
+
+	//LOAD HOMOGRPHY MATRIX
+	ofxXmlSettings configXML;
+	configXML.clear();
+
+	configXML.loadFile("screenConfig.xml");
+	configXML.pushTag("configQuad");
+	for (int i = 0; i < 4; i++)
+	{
+		configXML.pushTag("row", i);
+		for (int j = 0; j < 4; j++)
+			PMSharedSettings::getInstance().homography._mat[i][j] = configXML.getValue("Value" + ofToString(j), 0.0);
+		configXML.popTag(); // row
+	}
+	configXML.popTag(); // configQuad
 }
 
 ///--------------------------------------------------------------
@@ -113,6 +128,8 @@ void ofApp::update()
 ///--------------------------------------------------------------
 void ofApp::draw()
 {
+	ofPushMatrix();
+	ofMultMatrix(PMSharedSettings::getInstance().homography);
     ofColor debugMessagesColor = ofColor(127);
 
     if (showFPS && sceneManager.getCurrentSceneIndex() != -1)
@@ -146,6 +163,7 @@ void ofApp::draw()
 		<< " Mouse Position: " << ofGetMouseX() << " " << ofGetMouseY() << endl;
 	ofPopStyle();
 #endif
+	ofPopMatrix();
 }
 
 ///--------------------------------------------------------------

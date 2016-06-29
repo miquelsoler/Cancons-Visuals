@@ -32,7 +32,7 @@ static const float          WINDOW_SCALE_FACTOR         = 1.0f;
 static const float          FBO_SCALE_FACTOR            = 1.0f;
 
 static const int            WINDOW_WIDTH                = 1920;
-static const int            WINDOW_HEIGHT               = 685;
+static const int            WINDOW_HEIGHT               = 1200;
 
 static const int			DESIGN_WIDTH = 1920;
 static const int			DESIGN_HEIGHT = 685;
@@ -47,8 +47,8 @@ static const int            DEFAULT_WINDOW_HEIGHT       = int(float(WINDOW_HEIGH
 static const int            FBO_WIDTH                   = int(float(WINDOW_WIDTH) * FBO_SCALE_FACTOR);
 static const int            FBO_HEIGHT                  = int(float(WINDOW_HEIGHT) * FBO_SCALE_FACTOR);
 #else
-static const int            FBO_WIDTH                   = int(float(WINDOW_WIDTH) * FBO_SCALE_FACTOR);
-static const int            FBO_HEIGHT                  = int(float(WINDOW_HEIGHT) * FBO_SCALE_FACTOR);
+static const int            FBO_WIDTH                   = int(float(DESIGN_WIDTH) * FBO_SCALE_FACTOR);
+static const int            FBO_HEIGHT                  = int(float(DESIGN_HEIGHT) * FBO_SCALE_FACTOR);
 #endif
 
 static const ofWindowMode   DEFAULT_WINDOW_MODE         = OF_WINDOW;

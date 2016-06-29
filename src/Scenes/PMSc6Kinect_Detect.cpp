@@ -40,6 +40,8 @@ void PMSc6Kinect_Detect::update()
 
 void PMSc6Kinect_Detect::draw()
 {
+	ofPushMatrix();
+	ofMultMatrix(*homography);
 
     //PMBaseScene::draw();ç
 	ofPushStyle();
@@ -55,4 +57,6 @@ void PMSc6Kinect_Detect::draw()
 	//ofSetColor(255);
 	ofDrawRectangle(1050, 230, DESIGN_WIDTH - DESIGN_LEFT_WIDTH - 350, heightToDraw);
 #endif
+
+	ofPopMatrix();
 }

@@ -61,6 +61,9 @@ void PMSc7Countdown::update()
 
 void PMSc7Countdown::draw()
 {
+	ofPushMatrix();
+	ofMultMatrix(*homography);
+
 	ofPushStyle();
 	ofSetColor(255, 255, 255, 255);
 	backgroundImage.draw(0, 0);
@@ -78,6 +81,8 @@ void PMSc7Countdown::draw()
     ofSetColor(ofColor::white);
     drawCenteredFont(countdownFont, ofToString(countdownTime - (int) countdown.getDiff() / 1000), center.x, center.y);
 	ofPopStyle();
+
+	ofPopMatrix();
 }
 
 void PMSc7Countdown::updateExit()

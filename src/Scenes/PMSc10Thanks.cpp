@@ -44,7 +44,7 @@ PMSc10Thanks::PMSc10Thanks() : PMBaseScene("Scene Thanks")
 	*/
 
 	//Homography for new fbo resolution
-	homography.set(0.599193573, 0.226636082, 0, 0.000300306710,
+	homography_fbo.set(0.599193573, 0.226636082, 0, 0.000300306710,
 		0.00733219925, 0.544999719, 0, 8.78107676e-06,
 		0, 0, 1, 0,
 		166.0, 350.0, 0, 1);
@@ -110,7 +110,12 @@ void PMSc10Thanks::update()
 
 void PMSc10Thanks::draw()
 {
+	ofPushMatrix();
+	ofMultMatrix(*homography);
+
 	backgroundImage.draw(0, 0);
+
+	ofPopMatrix();
 }
 
 
@@ -124,7 +129,7 @@ void PMSc10Thanks::drawIntoFbo()
 		//Draw tempRender image in its position
 		ofSetColor(255,255);
 		ofPushMatrix();
-		ofMultMatrix(homography);
+		ofMultMatrix(homography_fbo);
 		printImage.draw(0, 0);
 		ofPopMatrix();
 

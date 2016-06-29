@@ -53,6 +53,9 @@ void PMSc9Export::exit()
 
 void PMSc9Export::draw()
 {
+	ofPushMatrix();
+	ofMultMatrix(*homography);
+
     /*PMBaseScene::draw();
     ofPushMatrix();
     float scaleX=(float)ofGetWidth()/(float)originalWidth;
@@ -79,7 +82,8 @@ void PMSc9Export::draw()
 	ofDrawRectRounded(1118, 173, 527, 188, 2);
 	ofPopStyle();
 #endif
-    //ofPopMatrix();
+
+    ofPopMatrix();
 
 	if (ofGetKeyPressed(OF_KEY_SHIFT)) {
 		ofImage tempimg;

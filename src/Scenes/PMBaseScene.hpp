@@ -47,6 +47,8 @@ protected:
     ofTrueTypeFont  baseBoldFont;
     ofTrueTypeFont  numberFont;
     ofTrueTypeFont  numberBoldFont;
+
+	ofMatrix4x4		*homography;
 };
 
 #endif /* PMBaseScene_hpp */

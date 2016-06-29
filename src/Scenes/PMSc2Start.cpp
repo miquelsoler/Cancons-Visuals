@@ -32,11 +32,16 @@ void PMSc2Start::update()
 
 void PMSc2Start::draw()
 {
+	ofPushMatrix();
+	ofMultMatrix(*homography);
+
     ofPushStyle();
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofSetColor(255);
     backgroundImage.draw(0,0, DESIGN_WIDTH, DESIGN_HEIGHT);
     ofPopStyle();
+
+	ofPopStyle();
 }
 
 void PMSc2Start::keyPressed(int key)

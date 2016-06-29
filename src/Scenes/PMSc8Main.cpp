@@ -114,7 +114,12 @@ void PMSc8Main::update()
 
 void PMSc8Main::draw()
 {
+	ofPushMatrix();
+	ofMultMatrix(*homography);
+
     renderer->draw();
+
+	ofPopMatrix();
 }
 
 void PMSc8Main::exit()

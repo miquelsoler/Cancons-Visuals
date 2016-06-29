@@ -30,6 +30,8 @@ public:
     
     shared_ptr<GUIApp> guiApp;
 
+	ofMatrix4x4 homography;
+
 private:
 
     PMSharedSettings() {};

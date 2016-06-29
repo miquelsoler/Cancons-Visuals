@@ -38,21 +38,26 @@ void PMSc3Song_Choose::update()
 
 void PMSc3Song_Choose::draw()
 {
+	ofPushMatrix();
+	ofMultMatrix(*homography);
+
 	backgroundImage.draw(0, 0, DESIGN_WIDTH, DESIGN_HEIGHT);
     //PMBaseScene::draw();
 //    ofBackground(0);
     //drawSettingsNumbers(1);
     //drawCenteredFont(baseBoldFont, "Tria la teva cançó", DESIGN_LEFT_WIDTH/2, 150);
     PMSongSelector::getInstance().draw();   
+
+	ofPopMatrix();
 }
 
 void PMSc3Song_Choose::mouseMoved(int x, int y)
 {
-    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
-    float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
-    //x/=scaleX;
-    //y/=scaleY;
-    PMSongSelector::getInstance().checkMousePassed(x, y);
+   //Warp via homography;
+	ofVec3f pos = ofVec3f(x, y);
+	pos = pos*(homography->getInverse());
+
+    PMSongSelector::getInstance().checkMousePassed(pos.x, pos.y);
 }
 
 void PMSc3Song_Choose::mousePressed(int x, int y, int button)

@@ -7,6 +7,7 @@
 //
 
 #include "PMBaseScene.hpp"
+#include "PMSharedSettings.h"
 
 ///--------------------------------------------------------------
 PMBaseScene::PMBaseScene(const string &name) : ofxFadeScene(name)
@@ -23,6 +24,8 @@ PMBaseScene::PMBaseScene(const string &name) : ofxFadeScene(name)
 
     backgroundColor = ofColor::green;
     backgroundImage.load("assets/background.png");
+
+	homography = &PMSharedSettings::getInstance().homography;
 }
 
 ///--------------------------------------------------------------
@@ -32,7 +35,7 @@ void PMBaseScene::draw()
     ofPushStyle();
     ofSetColor(47, 87, 120);
     //backgroundImage.draw(0,0, ofGetWidth(), ofGetHeight());
-	ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+	//ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
     ofPopStyle();
 }
 
