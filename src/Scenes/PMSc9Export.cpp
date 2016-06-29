@@ -84,12 +84,6 @@ void PMSc9Export::draw()
 #endif
 
     ofPopMatrix();
-
-	if (ofGetKeyPressed(OF_KEY_SHIFT)) {
-		ofImage tempimg;
-		tempimg.load("assets/PUBLIC_04_brut.png");
-		tempimg.draw(0, 0);
-	}
 }
 
 

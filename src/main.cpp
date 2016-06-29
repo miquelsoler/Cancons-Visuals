@@ -32,7 +32,8 @@ int main()
 	mainSettings.monitor = (count_monitors == 1) ? 0 : 1;
     mainSettings.resizable = true;
     shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(mainSettings);
-	mainWindow->setWindowPosition(ofGetScreenWidth(), 0);
+	if(count_monitors != 1)
+		mainWindow->setWindowPosition(ofGetScreenWidth(), 0);
     
     ofGLFWWindowSettings guiSettings;
 	guiSettings.monitor = 0;
