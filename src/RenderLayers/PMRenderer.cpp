@@ -234,12 +234,17 @@ void PMRenderer::melBandsChange(vector<float> melBands)
 }
 
 void PMRenderer::keyPressed(ofKeyEventArgs &a) {
-	if (a.key == 'R')
-		strokes.clear();
+	if (a.key == 'R'){
+		if(strokes.size() > 0){
+			strokes.clear();
+		}
+	}
 	else if (a.key == 'h') {
-		prevColor = PMColorsSelector::getInstance().getColor(0);
-		PMColorsSelector::getInstance().nexPalette();
-		tweening = true;
-		tweenColor.setParameters(1, easing, ofxTween::easeIn,0,1, layers[0]->getFadeTime(),0);
+		if(layers.size() > 0){
+			prevColor = PMColorsSelector::getInstance().getColor(0);
+			PMColorsSelector::getInstance().nexPalette();
+			tweening = true;
+			tweenColor.setParameters(1, easing, ofxTween::easeIn,0,1, layers[0]->getFadeTime(),0);
+		}
 	}
 }
