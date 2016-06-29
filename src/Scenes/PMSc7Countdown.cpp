@@ -16,6 +16,9 @@ PMSc7Countdown::PMSc7Countdown() : PMBaseScene("Scene 7")
 {
     countdownFont.load("fonts/NeutraTextTF-Book.otf", 100, true, true, false, 0.3, 72);
     setSingleSetup(false);
+#if !ENABLE_LIVE
+	backgroundImage.load("assets/PUBLIC_03.png");
+#endif
 }
 
 void PMSc7Countdown::setup()
@@ -40,6 +43,10 @@ void PMSc7Countdown::updateEnter()
 
 void PMSc7Countdown::update()
 {
+#if ENABLE_LIVE
+	string toScene = "Scene 8";
+	ofNotifyEvent(goToSceneEvent, toScene, this);
+#else
     if (countdown.alarm()) {
         countdown.resetAlarm();
         string toScene = "Scene 8";
@@ -49,33 +56,28 @@ void PMSc7Countdown::update()
     timeElapsed-=(int)timeElapsed;
     line.x=400*sin(timeElapsed*2*PI);
     line.y=-400*cos(timeElapsed*2*PI);
+#endif
 }
 
 void PMSc7Countdown::draw()
 {
-    PMBaseScene::draw();
+	ofPushStyle();
+	ofSetColor(255, 255, 255, 255);
+	backgroundImage.draw(0, 0);
+	ofPopStyle();
+
     unsigned int countdownTime;
 #ifdef OF_DEBUG
     countdownTime = PMSettingsManagerGeneral::getInstance().getDebugScene7CountdownTime();
 #else
     countdownTime = PMSettingsManagerGeneral::getInstance().getReleaseScene7CountdownTime();
 #endif
-    ofPushMatrix();
-    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
-    float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
-    ofScale(scaleX, scaleY);
-    ofPoint center=ofPoint(DESIGN_WIDTH-((DESIGN_WIDTH - DESIGN_LEFT_WIDTH)/2), DESIGN_HEIGHT/2);
-//    ofSetColor(ofColor::gray);
-//    ofDrawLine(center, center+line);
-//    ofColor(127, 127, 127, 127);
-//    ofDrawCircle(center.x, center.y, 100);
-    drawCenteredFont(baseBoldFont, "Prem espai", 1080/2, 100);
-    drawCenteredFont(baseBoldFont, "quan vulguis finalitzar la visualització", 1080/2, 150);
+    ofPoint center=ofPoint(DESIGN_WIDTH-((DESIGN_WIDTH - DESIGN_LEFT_WIDTH)/2) - 35, DESIGN_HEIGHT/2);
+
 	ofPushStyle();
     ofSetColor(ofColor::white);
     drawCenteredFont(countdownFont, ofToString(countdownTime - (int) countdown.getDiff() / 1000), center.x, center.y);
 	ofPopStyle();
-    ofPopMatrix();
 }
 
 void PMSc7Countdown::updateExit()
