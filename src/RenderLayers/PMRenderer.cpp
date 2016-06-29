@@ -33,7 +33,7 @@ PMRenderer::PMRenderer()
     PMLayer4 *layer4 = new PMLayer4(fboWidth, fboHeight, KINECTNODE_TORSO);
 	layer4->setStrokesVector(&strokes);
     layers.push_back(layer4);
-	ofRegisterKeyEvents(this);
+	//ofRegisterKeyEvents(this);
 }
 
 void PMRenderer::setup()
@@ -233,14 +233,14 @@ void PMRenderer::melBandsChange(vector<float> melBands)
 	}
 }
 
-void PMRenderer::keyPressed(ofKeyEventArgs &a) {
-	if (a.key == 'R'){
+void PMRenderer::keyPressed(int key) {
+	if (key == 'R'){
 		if(strokes.size() > 0){
 			strokes.clear();
 		}
 	}
-	else if (a.key == 'h') {
-		if(layers.size() > 0){
+	else if (key == 'h') {
+		if(layers.size() > 0 && layers[0] != NULL){
 			prevColor = PMColorsSelector::getInstance().getColor(0);
 			PMColorsSelector::getInstance().nexPalette();
 			tweening = true;

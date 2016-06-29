@@ -375,7 +375,7 @@ void PMSc8Main::keyReleased(int key)
         default:
             break;
     }
-    
+	renderer->keyPressed(key);
 }
 
 void PMSc8Main::exportImageAndLeaveScene()

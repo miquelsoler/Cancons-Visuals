@@ -25,7 +25,7 @@ public:
     void resetPositions();
 
 	void melBandsChange(vector<float> melBands);
-	void keyPressed(ofKeyEventArgs &a);
+	void keyPressed(int key);
 	void keyReleased(ofKeyEventArgs &a) {};
 private:
 
