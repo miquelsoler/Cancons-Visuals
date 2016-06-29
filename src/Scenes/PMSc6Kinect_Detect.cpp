@@ -55,15 +55,4 @@ void PMSc6Kinect_Detect::draw()
 	//ofSetColor(255);
 	ofDrawRectangle(1050, 230, DESIGN_WIDTH - DESIGN_LEFT_WIDTH - 350, heightToDraw);
 #endif
-
-
-    ofPushMatrix();
-	float scaleX = (float)ofGetWidth() / (float)DESIGN_WIDTH;
-    float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
-    ofScale(scaleX, scaleY);
-    //drawCenteredFont(baseBoldFont, "Detecció de cos", DESIGN_WIDTH /2, 100);
-    //drawCenteredFont(baseBoldFont, "Si us plau, mira endavant i obre els braços", DESIGN_WIDTH /2, 150);
-    ofPopMatrix();
-    
-
 }

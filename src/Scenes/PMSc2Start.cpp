@@ -35,7 +35,7 @@ void PMSc2Start::draw()
     ofPushStyle();
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofSetColor(255);
-    backgroundImage.draw(0,0, ofGetWidth(), ofGetHeight());
+    backgroundImage.draw(0,0, DESIGN_WIDTH, DESIGN_HEIGHT);
     ofPopStyle();
 }
 

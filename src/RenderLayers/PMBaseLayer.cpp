@@ -247,10 +247,10 @@ void PMBaseLayer::update()
 	//Fort Pienc version
 	ofPoint newPoint;
 	if (layerID == 1 || layerID == 2)
-		newPoint = ofPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), kinectNodeData.pos.z * 100);
+		newPoint = ofPoint(kinectNodeData.pos.x * fboWidth, kinectNodeData.pos.y * fboHeight, kinectNodeData.pos.z * 100);
 	// Knees follow perlin noise afected by real movement
 	else {
-		actualNodePosition = ofPoint(kinectNodeData.pos.x * ofGetWidth(), kinectNodeData.pos.y * ofGetHeight(), kinectNodeData.pos.z * 100);
+		actualNodePosition = ofPoint(kinectNodeData.pos.x * fboWidth, kinectNodeData.pos.y * fboHeight, kinectNodeData.pos.z * 100);
 		float diffPosition = (actualNodePosition - actualNodePrevPosition).length();
 		if (diffPosition > noiseThreshold) {
 			noiseIndex++;

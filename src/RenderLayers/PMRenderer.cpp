@@ -96,7 +96,7 @@ void PMRenderer::draw()
 //    ofClear(ofColor::white);
 
     ofSetColor(255);
-    mainFBO.draw(0, 0, ofGetWidth(), ofGetHeight());
+    mainFBO.draw(0, 0, DESIGN_WIDTH, DESIGN_HEIGHT);
 }
 
 void PMRenderer::drawIntoFBO()
@@ -139,7 +139,7 @@ void PMRenderer::drawIntoFBO()
 		ofPushMatrix();
 		float scaleX = (float)ofGetWidth() / (float)DESIGN_WIDTH;
 		float scaleY = (float)ofGetHeight() / (float)DESIGN_HEIGHT;
-		ofScale(1.0/scaleX, 1.0/scaleY);
+		//ofScale(1.0/scaleX, 1.0/scaleY);
 		if (tweening)
 		{
 			ofBackground(prevColor.lerp(PMColorsSelector::getInstance().getColor(0), tweenColor.update()));
@@ -214,13 +214,13 @@ void PMRenderer::resetPositions()
 {
     KinectElement kinectNodeData;
     kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->rightHand;
-    layers[0]->setPosition(ofPoint(ofGetWidth()/2, ofGetHeight()/2));
+	layers[0]->setPosition(ofPoint(DESIGN_WIDTH / 2, DESIGN_HEIGHT / 2));
     kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->leftHand;
-    layers[1]->setPosition(ofPoint(ofGetWidth()/2, ofGetHeight()/2));
+    layers[1]->setPosition(ofPoint(DESIGN_WIDTH / 2, DESIGN_HEIGHT / 2));
     kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->head;
-    layers[2]->setPosition(ofPoint(ofGetWidth()/2, ofGetHeight()/2));
+    layers[2]->setPosition(ofPoint(DESIGN_WIDTH / 2, DESIGN_HEIGHT / 2));
     kinectNodeData = PMMotionExtractor::getInstance().getKinectInfo()->torso;
-    layers[3]->setPosition(ofPoint(ofGetWidth()/2, ofGetHeight()/2));
+    layers[3]->setPosition(ofPoint(DESIGN_WIDTH / 2, DESIGN_HEIGHT / 2));
 }
 
 void PMRenderer::melBandsChange(vector<float> melBands)
