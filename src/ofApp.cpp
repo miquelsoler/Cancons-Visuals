@@ -10,7 +10,7 @@ void ofApp::setup()
     ofSetFrameRate(60);
     ofSetVerticalSync(true);
     ofBackground(ofColor::black);
-
+	ofHideCursor();
     //
 	//isFullScreen = (DEFAULT_WINDOW_MODE == OF_FULLSCREEN);
 
@@ -133,6 +133,12 @@ void ofApp::draw()
 	ofMultMatrix(PMSharedSettings::getInstance().homography);
     ofColor debugMessagesColor = ofColor(127);
 
+	//draw mask
+	ofPushStyle();
+	ofSetColor(ofColor::black);
+	ofDrawRectangle(0, DESIGN_LEFT_HEIGHT, DESIGN_LEFT_WIDTH, DESIGN_HEIGHT - DESIGN_LEFT_HEIGHT);
+	ofPopStyle();
+
     if (showFPS && sceneManager.getCurrentSceneIndex() != -1)
     {
 		ofPushStyle();
@@ -141,11 +147,7 @@ void ofApp::draw()
 		ofPopStyle();
     }
 
-	//draw mask
-	ofPushStyle();
-    //ofSetColor(ofColor::black);
-	//ofDrawRectangle(0, DESIGN_LEFT_HEIGHT, DESIGN_LEFT_WIDTH, DESIGN_HEIGHT - DESIGN_LEFT_HEIGHT);
-	ofPopStyle();
+	
 	//ofSetColor(255);
 	//if (ofGetKeyPressed(OF_KEY_SHIFT)) {
 	//	ofImage tempimg;

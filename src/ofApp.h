@@ -19,7 +19,7 @@
 #include "PMSc9Export.hpp"
 #include "PMSc10Thanks.hpp"
 
-#include "ofxSpout2Sender.h"
+//#include "ofxSpout2Sender.h"
 
 class ofApp : public ofxApp
 {
@@ -78,7 +78,7 @@ private:
     PMSc10Thanks            *scene10;
 
 
-	ofxSpout2::Sender spout;
+	//ofxSpout2::Sender spout;
     
     
 };

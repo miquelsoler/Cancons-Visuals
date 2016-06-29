@@ -1,15 +1,15 @@
 <configQuad>
     <row>
-        <Value0>1.052662373</Value0>
-        <Value1>0.020764377</Value1>
+        <Value0>0.921335936</Value0>
+        <Value1>-0.036534943</Value1>
         <Value2>0.000000000</Value2>
-        <Value3>0.000033897</Value3>
+        <Value3>-0.000034750</Value3>
     </row>
     <row>
-        <Value0>0.107231177</Value0>
-        <Value1>0.857618809</Value1>
+        <Value0>0.013244722</Value0>
+        <Value1>0.944630384</Value1>
         <Value2>0.000000000</Value2>
-        <Value3>0.000063017</Value3>
+        <Value3>0.000006237</Value3>
     </row>
     <row>
         <Value0>0.000000000</Value0>
@@ -18,8 +18,8 @@
         <Value3>0.000000000</Value3>
     </row>
     <row>
-        <Value0>10.000000000</Value0>
-        <Value1>318.000000000</Value1>
+        <Value0>8.000000000</Value0>
+        <Value1>310.000000000</Value1>
         <Value2>0.000000000</Value2>
         <Value3>1.000000000</Value3>
     </row>
