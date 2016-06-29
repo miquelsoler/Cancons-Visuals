@@ -25,16 +25,19 @@ int main()
     ofGLFWWindowSettings mainSettings;
     mainSettings.width = int(DEFAULT_WINDOW_WIDTH);
     mainSettings.height = int(DEFAULT_WINDOW_HEIGHT);
-    mainSettings.windowMode = (count_monitors == 1) ? OF_WINDOW : DEFAULT_WINDOW_MODE;
+    //mainSettings.windowMode = (count_monitors == 1) ? OF_WINDOW : DEFAULT_WINDOW_MODE;
+	mainSettings.windowMode = OF_WINDOW;
+	mainSettings.decorated = (count_monitors == 1) ? true : false;
 	mainSettings.multiMonitorFullScreen = false;
 	mainSettings.monitor = (count_monitors == 1) ? 0 : 1;
     mainSettings.resizable = true;
     shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(mainSettings);
+	mainWindow->setWindowPosition(ofGetScreenWidth(), 0);
     
     ofGLFWWindowSettings guiSettings;
 	guiSettings.monitor = 0;
     guiSettings.width = 1500;
-    guiSettings.height = 1500;
+    guiSettings.height = 1300;
     guiSettings.windowMode = OF_WINDOW;
     guiSettings.resizable = true;
     shared_ptr<ofAppBaseWindow> guiWindow = ofCreateWindow(guiSettings);
