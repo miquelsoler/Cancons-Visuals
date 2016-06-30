@@ -105,198 +105,199 @@ void PMSc9Export::keyPressed(ofKeyEventArgs  &keyargs){
         accentCharacter=-1;
     else if(keyargs.keycode == 39)
         accentCharacter=1;
-    
-    int key=keyargs.key;
-    switch(accentCharacter){
-        case 0:
-        {
-            switch (key) {
-                case -1:
-                case 2304:
-                case 2306:
-                case 2305:
-                    break;
-                case OF_KEY_DEL:
-                case OF_KEY_BACKSPACE:
-                {
-                    textInput=textInput.substr(0, textInput.length()-1);
-                    break;
-                }
-                case OF_KEY_RETURN:
-                {
-                    PMSharedSettings::getInstance().setUserName(textInput);
-                    string sceneToChange = "Scene Thanks";
-                    ofNotifyEvent(goToSceneEvent, sceneToChange, this);
-                    break;
-                }
-                case 231:
-                    textInput+="ç";
-                    break;
-                case 199:
-                    textInput+="Ç";
-                    break;
-                case 241:
-                    textInput+="ñ";
-                    break;
-                case 209:
-                    textInput+="Ñ";
-                    break;
-                default:
-                {
-                    textInput.append(1, (char)key);
-                    break;
-                }
-            }
-            break;
-        }
-        case -1:
-        {
-            switch (key) {
-                case -1:
-                case 2304:
-                case 2306:
-                case 2305:
-                    break;
-                case OF_KEY_DEL:
-                case OF_KEY_BACKSPACE:
-                {
-                    accentCharacter=0;
-                    break;
-                }
-                case OF_KEY_RETURN:
-                {
-                    PMSharedSettings::getInstance().setUserName(textInput);
-                    string sceneToChange = "Scene Thanks";
-                    ofNotifyEvent(goToSceneEvent, sceneToChange, this);
-                    break;
-                }case 'a':
-                    textInput+="à";
-                    break;
-                case 'A':
-                    textInput+="À";
-                    break;
-                case 'e':
-                    textInput+="è";
-                    break;
-                case 'E':
-                    textInput+="È";
-                    break;
-                case 'i':
-                    textInput+="ì";
-                    break;
-                case 'I':
-                    textInput+="Ì";
-                    break;
-                case 'o':
-                    textInput+="ò";
-                    break;
-                case 'O':
-                    textInput+="Ò";
-                    break;
-                case 'u':
-                    textInput+="ù";
-                    break;
-                case 'U':
-                    textInput+="Ù";
-                    break;
-                case 231:
-                    textInput+="ç";
-                    break;
-                case 199:
-                    textInput+="Ç";
-                    break;
-                case 241:
-                    textInput+="ñ";
-                    break;
-                case 209:
-                    textInput+="Ñ";
-                    break;
-                default:
-                {
-                    textInput.append(1, (char)key);
-                    accentCharacter=0;
-                    break;
-                }
-            }
-            break;
-        }
-        case 1: //acent tancat
-        {
-            switch (key) {
-                case -1:
-                case 2304:
-                case 2306:
-                case 2305:
-                    break;
-                case OF_KEY_DEL:
-                case OF_KEY_BACKSPACE:
-                {
-                    accentCharacter=0;
-                    break;
-                }
-                case OF_KEY_RETURN:
-                {
-                    PMSharedSettings::getInstance().setUserName(textInput);
-                    string sceneToChange = "Scene Thanks";
-                    ofNotifyEvent(goToSceneEvent, sceneToChange, this);
-                    break;
-                }
-                case 'a':
-                    textInput+="á";
-                    break;
-                case 'A':
-                    textInput+="Á";
-                    break;
-                case 'e':
-                    textInput+="é";
-                    break;
-                case 'E':
-                    textInput+="É";
-                    break;
-                case 'i':
-                    textInput+="í";
-                    break;
-                case 'I':
-                    textInput+="Í";
-                    break;
-                case 'o':
-                    textInput+="ó";
-                    break;
-                case 'O':
-                    textInput+="Ó";
-                    break;
-                case 'u':
-                    textInput+="ú";
-                    break;
-                case 'U':
-                    textInput+="Ú";
-                    break;
-                case 231:
-                    textInput+="ç";
-                    break;
-                case 199:
-                    textInput+="Ç";
-                    break;
-                case 241:
-                    textInput+="ñ";
-                    break;
-                case 209:
-                    textInput+="Ñ";
-                    break;
-                default:
-                {
-                    textInput.append(1, (char)key);
-                    accentCharacter=0;
-                    break;
-                }
-            }
-            break;
-        default:
-            break;
-            
-        }
-            
-    }
+	else {
+		int key = keyargs.key;
+		switch (accentCharacter) {
+		case 0:
+		{
+			switch (key) {
+			case -1:
+			case 2304:
+			case 2306:
+			case 2305:
+				break;
+			case OF_KEY_DEL:
+			case OF_KEY_BACKSPACE:
+			{
+				textInput = textInput.substr(0, textInput.length() - 1);
+				break;
+			}
+			case OF_KEY_RETURN:
+			{
+				PMSharedSettings::getInstance().setUserName(textInput);
+				string sceneToChange = "Scene Thanks";
+				ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+				break;
+			}
+			case 92:
+				textInput += "ç";
+				break;
+			case 199:
+				textInput += "Ç";
+				break;
+			case 241:
+				textInput += "ñ";
+				break;
+			case 209:
+				textInput += "Ñ";
+				break;
+			default:
+			{
+				textInput.append(1, (char)key);
+				break;
+			}
+			}
+			break;
+		}
+		case -1:
+		{
+			switch (key) {
+			case -1:
+			case 2304:
+			case 2306:
+			case 2305:
+				break;
+			case OF_KEY_DEL:
+			case OF_KEY_BACKSPACE:
+			{
+				accentCharacter = 0;
+				break;
+			}
+			case OF_KEY_RETURN:
+			{
+				PMSharedSettings::getInstance().setUserName(textInput);
+				string sceneToChange = "Scene Thanks";
+				ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+				break;
+			}case 'a':
+				textInput += "à";
+				break;
+			case 'A':
+				textInput += "À";
+				break;
+			case 'e':
+				textInput += "è";
+				break;
+			case 'E':
+				textInput += "È";
+				break;
+			case 'i':
+				textInput += "ì";
+				break;
+			case 'I':
+				textInput += "Ì";
+				break;
+			case 'o':
+				textInput += "ò";
+				break;
+			case 'O':
+				textInput += "Ò";
+				break;
+			case 'u':
+				textInput += "ù";
+				break;
+			case 'U':
+				textInput += "Ù";
+				break;
+			case 231:
+				textInput += "ç";
+				break;
+			case 199:
+				textInput += "Ç";
+				break;
+			case 241:
+				textInput += "ñ";
+				break;
+			case 209:
+				textInput += "Ñ";
+				break;
+			default:
+			{
+				textInput.append(1, (char)key);
+				accentCharacter = 0;
+				break;
+			}
+			}
+			break;
+		}
+		case 1: //acent tancat
+		{
+			switch (key) {
+			case -1:
+			case 2304:
+			case 2306:
+			case 2305:
+				break;
+			case OF_KEY_DEL:
+			case OF_KEY_BACKSPACE:
+			{
+				accentCharacter = 0;
+				break;
+			}
+			case OF_KEY_RETURN:
+			{
+				PMSharedSettings::getInstance().setUserName(textInput);
+				string sceneToChange = "Scene Thanks";
+				ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+				break;
+			}
+			case 'a':
+				textInput += "á";
+				break;
+			case 'A':
+				textInput += "Á";
+				break;
+			case 'e':
+				textInput += "é";
+				break;
+			case 'E':
+				textInput += "É";
+				break;
+			case 'i':
+				textInput += "í";
+				break;
+			case 'I':
+				textInput += "Í";
+				break;
+			case 'o':
+				textInput += "ó";
+				break;
+			case 'O':
+				textInput += "Ó";
+				break;
+			case 'u':
+				textInput += "ú";
+				break;
+			case 'U':
+				textInput += "Ú";
+				break;
+			case 231:
+				textInput += "ç";
+				break;
+			case 199:
+				textInput += "Ç";
+				break;
+			case 241:
+				textInput += "ñ";
+				break;
+			case 209:
+				textInput += "Ñ";
+				break;
+			default:
+			{
+				textInput.append(1, (char)key);
+				accentCharacter = 0;
+				break;
+			}
+			}
+			break;
+		default:
+			break;
+
+		}
+
+		}
+	}
     
 }
 
