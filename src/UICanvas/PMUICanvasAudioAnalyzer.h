@@ -32,7 +32,7 @@ public:
 		bandMax_highmid = _bandMax_highmid;
 		bandMax_high = _bandMax_high;
 	}*/
-	void bindMaxs(float *_bandMaxs) { bandMaxs = _bandMaxs; };
+	void bindMaxs(float *_bandMaxs, float *_bandMaxScale) { bandMaxs = _bandMaxs; bandMaxScale = _bandMaxScale; };
 
 	void bindSpectrums(float *_fullBands, float *_fourBands) {
 		fullBands = _fullBands;
@@ -63,6 +63,7 @@ private:
 	float					*bandLimit_low, *bandLimit_1, *bandLimit_2, *bandLimit_3, *bandLimit_high;
 	float					*bandMaxs;
 	ofxUISlider				*band_l, *band_lm, *band_hm, *band_h;
+	float					*bandMaxScale;
 
     // Vu-Bands---------------------------------
         
