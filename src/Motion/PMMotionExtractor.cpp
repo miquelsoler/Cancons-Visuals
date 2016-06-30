@@ -15,7 +15,11 @@ bool PMMotionExtractor::setup()
 	positionDetectedCounter = 0;
 
 #if ENABLE_REMOTE_KINECT
-	receiver.setup(OSC_KINECT_SENDER_PORT);
+#if ENABLE_LIVE
+	receiver.setup(30304);
+#else
+	receiver.setup(30305);
+#endif
 #else
 	kinect.open();
 	kinect.initDepthSource();
