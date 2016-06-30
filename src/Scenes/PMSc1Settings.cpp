@@ -49,7 +49,11 @@ void PMSc1Settings::setup()
 //                                                                 DEFAULT_SAMPLERATE, DEFAULT_BUFFERSIZE,
 //                                                                 enabledChannelNumbers);
 	Sleep(3000);
+#if ENABLE_LIVE
     string sceneToChange="Scene 2";
+#else 
+	string sceneToChange = "Scene 3";
+#endif
     ofNotifyEvent(goToSceneEvent, sceneToChange, this);
 }
 

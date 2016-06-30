@@ -103,7 +103,7 @@ void PMSc10Thanks::update()
 {
     if (countdown.alarm()) {
         countdown.resetAlarm();
-        string toScene = "Scene 2";
+        string toScene = "Scene 3";
         ofNotifyEvent(goToSceneEvent, toScene, this);
     }
 }
