@@ -18,13 +18,13 @@
 
 
 
-#define ENABLE_LIVE false
+#define ENABLE_LIVE true
 #define ENABLE_KINECT true
 #define ENABLE_MULTIPLE_FBOS false
 #define ENABLE_MULTILAYER_EXPORT false
 #define ENABLE_KNEES_DETECTION true
 #define ENABLE_PRINTING true
-#define ENABLE_REMOTE_KINECT false
+#define ENABLE_REMOTE_KINECT true
 
 
 
@@ -37,8 +37,8 @@ static const int            WINDOW_HEIGHT               = 1200;
 static const int			DESIGN_WIDTH = 1920;
 static const int			DESIGN_HEIGHT = 685;
 
-static const int			DESIGN_LEFT_WIDTH = 898;
-static const int			DESIGN_LEFT_HEIGHT = 470;
+static const int			DESIGN_LEFT_WIDTH = 920;
+static const int			DESIGN_LEFT_HEIGHT = 472;
 
 static const int            DEFAULT_WINDOW_WIDTH        = int(float(WINDOW_WIDTH) * WINDOW_SCALE_FACTOR);
 static const int            DEFAULT_WINDOW_HEIGHT       = int(float(WINDOW_HEIGHT) * WINDOW_SCALE_FACTOR);
@@ -51,10 +51,10 @@ static const int            FBO_WIDTH                   = int(float(DESIGN_WIDTH
 static const int            FBO_HEIGHT                  = int(float(DESIGN_HEIGHT) * FBO_SCALE_FACTOR);
 #endif
 
-static const ofWindowMode   DEFAULT_WINDOW_MODE         = OF_GAME_MODE;
+static const ofWindowMode   DEFAULT_WINDOW_MODE         = OF_WINDOW;
 
 static const int            DEFAULT_SAMPLERATE          = 44100;
 static const int            DEFAULT_BUFFERSIZE          = 512;
-static const bool			PERFORMANCE_MODE			= false;
+static const bool			PERFORMANCE_MODE			= true;
 
 #endif

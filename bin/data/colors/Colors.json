@@ -1,76 +1,92 @@
 {
     "Colors" : [
                 {
-                "Name" : "Vasili Kandinsky - Composition VIII (1923)",
-                "1" : "0xF4DBB1",
-                "2" : "0x573059",
-                "3" : "0xF0B345",
-                "4" : "0xBE6148",
-                "5" : "0xBE1605"
+                "Name" : "01 - The Godfather",
+                "1" : "0x120307", 
+                "2" : "0xF6A460",
+                "3" : "0xFBF6E0",
+                "4" : "0xBA3120",
+                "5" : "0xEED47A"
                 },
                 {
-                "Name" : "Robert Delaunay - Rythme I (1938)",
-                "1" : "0x9AA5AB",
-                "2" : "0xB82527",
-                "3" : "0xA6861C",
-                "4" : "0x5D9BD9",
-                "5" : "0xCACC43"
+                "Name" : "02 - Amelie",
+                "1" : "0x003B16",
+                "2" : "0xD11F08",
+                "3" : "0xD99C25",
+                "4" : "0x009957",
+                "5" : "0xA69D5B"
                 },
                 {
-                "Name" : "Franz Marc - Blue Horse I (1911)",
-                "1" : "0xA35366",
-                "2" : "0x075CAB",
-                "3" : "0x63913A",
-                "4" : "0xD4A406",
-                "5" : "0x8C2416"
+                "Name" : "03 - La Llista de Schindler",
+                "1" : "0xB8A98D",
+                "2" : "0x151617",
+                "3" : "0xB2685B",
+                "4" : "0xE3CAB1",
+                "5" : "0xBAB8B6"
                 },
                 {
-                "Name" : "Umberto Boccioni - La Strada Entra Nella Casa (1911)",
-                "1" : "0xA67998",
-                "2" : "0xC9D6CB",
-                "3" : "0x96A3A8",
-                "4" : "0xE0D3BC",
-                "5" : "0xBFA8B0"
+                "Name" : "04 - Dos homes i un desti",
+                "1" : "0xC9A32E",
+                "2" : "0xE8E3DF",
+                "3" : "0xD9C380",
+                "4" : "0xA32C10",
+                "5" : "0x401206"
                 },
                 {
-                "Name" : "Salvador Dali - La Persistencia de la Memoria (1931)",
-                "1" : "0x7DA4DB",
-                "2" : "0xD3E0F5",
-                "3" : "0xF2E7BB",
-                "4" : "0xA6593A",
-                "5" : "0xDA573B"
+                "Name" : "05 - James Bond",
+                "1" : "0x092233",
+                "2" : "0xE5C137",
+                "3" : "0xE38112",
+                "4" : "0xCF7C69",
+                "5" : "0x780E06"
                 },
                 {
-                "Name" : "Edvard Munch - The Scream (1893)",
-                "1" : "0x303E59",
-                "2" : "0x313D37",
-                "3" : "0xF2C366",
-                "4" : "0xBF9967",
-                "5" : "0xBF6443"
+                "Name" : "06 - El bo el lleig i el dolent",
+                "1" : "0xFFFFED",
+                "2" : "0xE34D5B",
+                "3" : "0x451919",
+                "4" : "0xF2DA4E",
+                "5" : "0x6D95C9"
                 },
                 {
-                "Name" : "Egon Schiele - Sitting Woman with Legs Drawn Up (1917)",
-                "1" : "0xEDDBCC",
-                "2" : "0x4D736E",
-                "3" : "0x9DC7BF",
-                "4" : "0x5A5A61",
-                "5" : "0xB08256"
+                "Name" : "07 - Indiana Jones",
+                "1" : "0xF77E20",
+                "2" : "0xF2C76F",
+                "3" : "0xF2C76F",
+                "4" : "0x57181A",
+                "5" : "0x330B12"
                 },
                 {
-                "Name" : "Starry Night - Vincent van Gogh (1889)",
-                "1" : "0x32468C",
-                "2" : "0x5175A8",
-                "3" : "0x7E91A6",
-                "4" : "0xBDBB80",
-                "5" : "0xBFA628"
+                "Name" : "08 - Amarcord",
+                "1" : "0x6D828C",
+                "2" : "0xF2F2ED",
+                "3" : "0xEDAD66",
+                "4" : "0xF2D066",
+                "5" : "0xBA5B4A"
                 },
                 {
-                "Name" : "Leonardo da Vinci - Mona Lisa (1503-1519)",
-                "1" : "0x0E0104",
-                "2" : "0x8B772f",
-                "3" : "0xF3B63D",
-                "4" : "0x8C4215",
-                "5" : "0x582014"
+                "Name" : "09 - Esmorzar amb diamants",
+                "1" : "0xBD266F",
+                "2" : "0x5ABFDB",
+                "3" : "0xD4D663",
+                "4" : "0xD98418",
+                "5" : "0xF2CEA2"
+                },
+                {
+                "Name" : "10 - Superman",
+                "1" : "0x95BFDB",
+                "2" : "0xDE121B",
+                "3" : "0x194194",
+                "4" : "0x688FB0",
+                "5" : "0xFCBB44"
+                },
+                {
+                "Name" : "11 - La vida es bella",
+                "1" : "0x35354F",
+                "2" : "0xFCFCFA",
+                "3" : "0xC79983",
+                "4" : "0xBF583F",
+                "5" : "0x6B5C6A"
                 }
                 ]
 }

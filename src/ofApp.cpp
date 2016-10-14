@@ -157,13 +157,17 @@ void ofApp::draw()
 
 
 #ifdef OF_DEBUG
+
+	ofVec3f pos = ofVec3f(ofGetMouseX(), ofGetMouseY());
+	pos = pos*(PMSharedSettings::getInstance().homography.getInverse());
+
 	ofPushStyle();
 	ofSetColor(debugMessagesColor);
 	ofxBitmapString(15, DESIGN_HEIGHT - 28)
 		<< "[Current Scene] ID: " << sceneManager.getCurrentSceneIndex()
 		<< " Name: " << sceneManager.getCurrentSceneName()
 		<< " Screen Size: " << ofGetWidth() << " " << ofGetHeight()
-		<< " Mouse Position: " << ofGetMouseX() << " " << ofGetMouseY() << endl;
+		<< " Mouse Position: " << pos.x << " " << pos.y << endl;
 	ofPopStyle();
 #endif
 	ofPopMatrix();

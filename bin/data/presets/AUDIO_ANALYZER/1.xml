@@ -38,44 +38,24 @@
 <Widget>
     <Kind>6</Kind>
     <Name>Low Band</Name>
-    <HighValue>200.000015259</HighValue>
+    <HighValue>609.950744629</HighValue>
     <LowValue>20.000000000</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Low-Mid Band</Name>
-    <HighValue>800.000000000</HighValue>
-    <LowValue>200.000015259</LowValue>
+    <HighValue>1642.364624023</HighValue>
+    <LowValue>609.950744629</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>High-Mid Band</Name>
-    <HighValue>1999.999877930</HighValue>
-    <LowValue>800.000000000</LowValue>
+    <HighValue>2871.428710938</HighValue>
+    <LowValue>1642.364624023</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>High Band</Name>
     <HighValue>5000.000000000</HighValue>
-    <LowValue>1999.999877930</LowValue>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Low</Name>
-    <Value>0.799042404</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>LowMid</Name>
-    <Value>0.339638799</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>HighMid</Name>
-    <Value>0.212963253</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>High</Name>
-    <Value>0.089243479</Value>
+    <LowValue>2871.428710938</LowValue>
 </Widget>

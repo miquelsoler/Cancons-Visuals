@@ -10,7 +10,7 @@
 
 PMSc2Start::PMSc2Start() : PMBaseScene("Scene 2")
 {
-    //setFade(1000, 1000);
+    setFade(0, 0);
 //    setFadeIn(1000);
 #if ENABLE_LIVE
 	backgroundImage.load("assets/LIVE_01.png");
@@ -51,7 +51,7 @@ void PMSc2Start::keyPressed(int key)
 #else
 	string sceneToChange = "Scene 3";
 #endif
-    if(key == ' ')
+	if (key == ' ')
         ofNotifyEvent(goToSceneEvent, sceneToChange, this);
 	if (key == 'f')
 		ofToggleFullscreen();
