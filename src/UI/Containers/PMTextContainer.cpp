@@ -36,14 +36,14 @@ PMTextContainer::PMTextContainer(int _x, int _y, string _s, ofTrueTypeFont &_fon
     
 }
 
-void PMTextContainer::draw()
+void PMTextContainer::draw(bool centered)
 {
     ofSetColor(ofColor::white);
 	//Center Font
-    //font->drawString(s, x-scaledWidth/2, y+scaledHeight/2);
-
-	//No Center Font
-	font->drawString(s, x, y + scaledHeight / 2);
+	if(centered)
+		font->drawString(s, x-scaledWidth/2, y+scaledHeight/2);
+	else
+		font->drawString(s, x, y + scaledHeight / 2);
 }
 
 void PMTextContainer::draw(float _scale)

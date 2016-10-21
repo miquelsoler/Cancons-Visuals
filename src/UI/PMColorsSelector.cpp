@@ -9,7 +9,7 @@
 #include "PMColorsSelector.hpp"
 
 
-static const int NUM_ERASED_COLORS = 2; //for debuging purposes
+
 
 void PMColorsSelector::init(ofTrueTypeFont &font)
 {
@@ -39,7 +39,7 @@ void PMColorsSelector::init(ofTrueTypeFont &font)
         for(int j=0; j<columns; j++){
             x=(originalWidth*(j+1)/(columns+1)) + DESIGN_LEFT_WIDTH;
             width=((originalWidth/(columns*2))-1);
-            height=width/4;
+            height=width/2;
             PMColorContainer tempContainer(x, y, width, height, colorPalettes[i].colors[j]);
             colorContainers.push_back(tempContainer);
         }
@@ -48,7 +48,7 @@ void PMColorsSelector::init(ofTrueTypeFont &font)
         int x=originalWidth/2 + DESIGN_LEFT_WIDTH;
         int y=colorContainers[i].getY()+20;
         int width=originalWidth-(2*(colorContainers[i].getX()-DESIGN_LEFT_WIDTH)-colorContainers[i].getWidth())+20;
-        int height=colorContainers[i].getHeight()+60;
+        int height=colorContainers[i].getHeight()+50;
         rectSelector.push_back(PMColorContainer(x, y, width, height, ofColor(127)));
     }
     
@@ -57,8 +57,6 @@ void PMColorsSelector::init(ofTrueTypeFont &font)
         int y=colorContainers[i].getY()+20+colorContainers[i].getHeight()/2;
         paletteNames.push_back(PMTextContainer(x, y, colorPalettes[i/colorPalettes[0].colors.size()].name, font));
     }
-                               
-                               
 }
 
 void PMColorsSelector::update()
@@ -77,7 +75,7 @@ void PMColorsSelector::draw()
     }
     
     for(int i=0; i<paletteNames.size(); i++){
-        paletteNames[i].draw();
+        paletteNames[i].draw(true);
     }
 
 }

@@ -29,25 +29,7 @@ PMSc10Thanks::PMSc10Thanks() : PMBaseScene("Scene Thanks")
 	//facana.load("assets/facana.tiff");
 	facana.load("assets/print_background.png");
 	//plantilla.load("assets/print_plantilla.png");
-	//ofSetWindowShape(1772, 1181);
-	//homography.set(0.579811573, 0.220885843, 0, 0.000285788818,
-	//	0.00508813839, 0.338972956, 0, 0.000000268133908,
-	//	0, 0, 1, 0,
-	//	166.0, 358.0, 0, 1);
-
-	//Homography for new plantilla
-	/*
-	homography.set(0.592777908, 0.223622605, 0, 0.000294847618,
-		0.000365242478, 0.339181930, 0, -0.000000268133908,
-		0, 0, 1, 0,
-		168.0, 349.0, 0, 1);
-	*/
-
-	//Homography for new fbo resolution
-	homography_fbo.set(0.599193573, 0.226636082, 0, 0.000300306710,
-		0.00733219925, 0.544999719, 0, 8.78107676e-06,
-		0, 0, 1, 0,
-		166.0, 350.0, 0, 1);
+	ofSetWindowShape(1772, 1181);
 
 	backgroundImage.load("assets/PUBLIC_05.png");
 }
@@ -104,7 +86,7 @@ void PMSc10Thanks::update()
     if (countdown.alarm()) {
         countdown.resetAlarm();
         string toScene = "Scene 3";
-        ofNotifyEvent(goToSceneEvent, toScene, this);
+        //ofNotifyEvent(goToSceneEvent, toScene, this);
     }
 }
 
@@ -113,7 +95,8 @@ void PMSc10Thanks::draw()
 	ofPushMatrix();
 	ofMultMatrix(*homography);
 
-	backgroundImage.draw(0, 0);
+	//backgroundImage.draw(0, 0);
+	printFbo.draw(0, 0);
 
 	ofPopMatrix();
 }
@@ -126,17 +109,21 @@ void PMSc10Thanks::drawIntoFbo()
         ofClear(255);
 		ofPushStyle();
 		ofEnableAlphaBlending();
-		//Draw tempRender image in its position
-		ofSetColor(255,255);
-		ofPushMatrix();
-		ofMultMatrix(homography_fbo);
-		printImage.draw(0, 0);
-		ofPopMatrix();
+
+		
 
 		//Draw facade image;
 		facana.draw(0, 0);
+
+		//Draw tempRender image in its position
+		ofSetColor(255, 255);
+		printImage.draw(71, 50, 1624, 961);
+
+
 		ofDisableAlphaBlending();
 		ofPopStyle();
+
+
 
 		//Draw strings
 		ofPushStyle();

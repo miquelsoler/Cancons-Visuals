@@ -23,46 +23,40 @@ void PMSc4Palette_Choose::setup()
 
 void PMSc4Palette_Choose::update()
 {
-#if ENABLE_LIVE
-	PMColorsSelector::getInstance().setIndex(0);
-#else
-	PMColorsSelector::getInstance().setIndex(PMSongSelector::getInstance().getIndexChoosed());
-#endif
-	string sceneToChange = "Scene 6";
-	ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+
 }
 
 void PMSc4Palette_Choose::draw()
 {
-    /*PMBaseScene::draw();
+    PMBaseScene::draw();
     ofPushMatrix();
     float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
     float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
     ofScale(scaleX, scaleY);
 //    ofBackground(0);
-    drawSettingsNumbers(2);
-    drawCenteredFont(baseBoldFont, "Tria els teus colors", DESIGN_WIDTH/2, 150);
-    drawCenteredFont(infoFont, "Fons", 315, 215);
-    drawCenteredFont(infoFont, "Mà dreta", 640, 215);
-    drawCenteredFont(infoFont, "Mà esquerra", 960, 215);
-    drawCenteredFont(infoFont, "Genoll dret", 1275, 215);
-    drawCenteredFont(infoFont, "Genoll esquerra", 1600, 215);
+    //drawSettingsNumbers(2);
+    //drawCenteredFont(baseBoldFont, "Tria els teus colors", DESIGN_WIDTH/2, 150);
+    //drawCenteredFont(infoFont, "Fons", 315, 215);
+    //drawCenteredFont(infoFont, "Mà dreta", 640, 215);
+    //drawCenteredFont(infoFont, "Mà esquerra", 960, 215);
+    //drawCenteredFont(infoFont, "Genoll dret", 1275, 215);
+    //drawCenteredFont(infoFont, "Genoll esquerra", 1600, 215);
     PMColorsSelector::getInstance().draw();
-    ofPopMatrix();*/
+    ofPopMatrix();
 }
 
 void PMSc4Palette_Choose::mouseMoved(int x, int y)
 {
-    /*float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
+    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
     float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
     x/=scaleX;
     y/=scaleY;
-    PMColorsSelector::getInstance().checkMousePassed(x, y);*/
+    PMColorsSelector::getInstance().checkMousePassed(x, y);
 }
 
 void PMSc4Palette_Choose::mousePressed(int x, int y, int mouse)
 {
-    /*float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
+    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
     float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
     x/=scaleX;
     y/=scaleY;
@@ -70,5 +64,4 @@ void PMSc4Palette_Choose::mousePressed(int x, int y, int mouse)
         string sceneToChange="Scene 6";
         ofNotifyEvent(goToSceneEvent, sceneToChange, this);
     }
-	*/
 }

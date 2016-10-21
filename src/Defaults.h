@@ -17,14 +17,12 @@
 #define ConductrEnter_Config_h 
 
 
-
-#define ENABLE_LIVE true
-#define ENABLE_KINECT true
+#define ENABLE_KINECT false
 #define ENABLE_MULTIPLE_FBOS false
 #define ENABLE_MULTILAYER_EXPORT false
 #define ENABLE_KNEES_DETECTION true
-#define ENABLE_PRINTING true
-#define ENABLE_REMOTE_KINECT true
+#define ENABLE_PRINTING false
+#define ENABLE_REMOTE_KINECT false
 
 
 
@@ -34,8 +32,8 @@ static const float          FBO_SCALE_FACTOR            = 1.0f;
 static const int            WINDOW_WIDTH                = 1920;
 static const int            WINDOW_HEIGHT               = 1200;
 
-static const int			DESIGN_WIDTH = 1920;
-static const int			DESIGN_HEIGHT = 685;
+static const int			DESIGN_WIDTH = WINDOW_WIDTH;
+static const int			DESIGN_HEIGHT = WINDOW_HEIGHT;
 
 static const int			DESIGN_LEFT_WIDTH = 920;
 static const int			DESIGN_LEFT_HEIGHT = 472;
@@ -56,5 +54,7 @@ static const ofWindowMode   DEFAULT_WINDOW_MODE         = OF_WINDOW;
 static const int            DEFAULT_SAMPLERATE          = 44100;
 static const int            DEFAULT_BUFFERSIZE          = 512;
 static const bool			PERFORMANCE_MODE			= true;
+
+static const int NUM_ERASED_COLORS = 3; //for debuging purposes
 
 #endif

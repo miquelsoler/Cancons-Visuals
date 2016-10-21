@@ -12,9 +12,7 @@
 PMSc6Kinect_Detect::PMSc6Kinect_Detect() : PMBaseScene("Scene 6")
 {
     setSingleSetup(false);
-#if !ENABLE_LIVE
 	backgroundImage.load("assets/PUBLIC_02.png");
-#endif
 }
 
 void PMSc6Kinect_Detect::setup()
@@ -26,7 +24,7 @@ void PMSc6Kinect_Detect::setup()
 
 void PMSc6Kinect_Detect::update()
 {
-#if ENABLE_KINECT && !ENABLE_LIVE
+#if ENABLE_KINECT
     if (PMMotionExtractor::getInstance().isTracking())
     {
         string sceneToChange = "Scene 7";

@@ -90,7 +90,7 @@ void ofApp::setup()
     ofAddListener(scene9->goToSceneEvent, this, &ofApp::changeScene);
     ofAddListener(scene10->goToSceneEvent, this, &ofApp::changeScene);
 
-
+	/*
 	//LOAD HOMOGRPHY MATRIX
 	ofxXmlSettings configXML;
 	configXML.clear();
@@ -105,6 +105,7 @@ void ofApp::setup()
 		configXML.popTag(); // row
 	}
 	configXML.popTag(); // configQuad
+	*/
 }
 
 ///--------------------------------------------------------------
@@ -133,12 +134,6 @@ void ofApp::draw()
 	ofMultMatrix(PMSharedSettings::getInstance().homography);
     ofColor debugMessagesColor = ofColor(127);
 
-	//draw mask
-	ofPushStyle();
-	ofSetColor(ofColor::black);
-	ofDrawRectangle(0, DESIGN_LEFT_HEIGHT, DESIGN_LEFT_WIDTH, DESIGN_HEIGHT - DESIGN_LEFT_HEIGHT);
-	ofPopStyle();
-
     if (showFPS && sceneManager.getCurrentSceneIndex() != -1)
     {
 		ofPushStyle();
@@ -146,15 +141,6 @@ void ofApp::draw()
         ofxBitmapString(15, DESIGN_HEIGHT - 15) << roundf(ofGetFrameRate()) << "fps" << endl;
 		ofPopStyle();
     }
-
-	
-	//ofSetColor(255);
-	//if (ofGetKeyPressed(OF_KEY_SHIFT)) {
-	//	ofImage tempimg;
-	//	tempimg.load("assets/plantilla_projeccio.tiff");
-	//	tempimg.draw(0, 0);
-	//}
-
 
 #ifdef OF_DEBUG
 

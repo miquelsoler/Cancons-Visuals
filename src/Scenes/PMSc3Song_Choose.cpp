@@ -16,11 +16,7 @@ PMSc3Song_Choose::PMSc3Song_Choose() : PMBaseScene("Scene 3")
     selectFont.load("fonts/NeutraTextTF-Book.otf", 35);
     PMSongSelector::getInstance().init(selectFont);
     setSingleSetup(false);
-#if ENABLE_LIVE
-	backgroundImage.load("assets/LIVE_02.png");
-#else
 	backgroundImage.load("assets/PUBLIC_01.png");
-#endif
 }
 
 void PMSc3Song_Choose::setup()
@@ -75,9 +71,5 @@ void PMSc3Song_Choose::mousePressed(int x, int y, int button)
 }
 
 void PMSc3Song_Choose::keyPressed(int key) {
-#if ENABLE_LIVE
-	string sceneToChange = "Scene 4";
-	if (key == ' ')
-		ofNotifyEvent(goToSceneEvent, sceneToChange, this);
-#endif
+
 }

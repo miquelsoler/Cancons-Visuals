@@ -51,6 +51,4 @@ private:
     
     ofxTimer        countdown;
     int count;
-
-	ofMatrix4x4 homography_fbo;
 };

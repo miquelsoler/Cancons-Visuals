@@ -19,11 +19,7 @@ PMSc9Export::PMSc9Export() : PMBaseScene("Scene 9")
     originalWidth=DESIGN_WIDTH;
     originalHeight=DESIGN_HEIGHT;
 
-#if ENABLE_LIVE
-	backgroundImage.load("assets/LIVE_03.png");
-#else
 	backgroundImage.load("assets/PUBLIC_04.png");
-#endif
 }
 
 void PMSc9Export::setup()
@@ -64,7 +60,6 @@ void PMSc9Export::draw()
 	*/
 //    ofBackground(0);
 	backgroundImage.draw(0, 0);
-#if !ENABLE_LIVE
 	//ofPushStyle();
     ofSetColor(ofColor::white);
     drawTextBox(bigFont, textInput, isSlash);
@@ -81,7 +76,6 @@ void PMSc9Export::draw()
 	ofNoFill();
 	ofDrawRectRounded(1118, 173, 527, 188, 2);
 	ofPopStyle();
-#endif
 
     ofPopMatrix();
 }
