@@ -12,7 +12,7 @@
 PMSc6Kinect_Detect::PMSc6Kinect_Detect() : PMBaseScene("Scene 6")
 {
     setSingleSetup(false);
-	backgroundImage.load("assets/PUBLIC_02.png");
+	backgroundImage.load("assets/04_plantilla.png");
 }
 
 void PMSc6Kinect_Detect::setup()

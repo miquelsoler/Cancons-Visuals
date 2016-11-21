@@ -16,7 +16,7 @@ PMSc3Song_Choose::PMSc3Song_Choose() : PMBaseScene("Scene 3")
     selectFont.load("fonts/NeutraTextTF-Book.otf", 35);
     PMSongSelector::getInstance().init(selectFont);
     setSingleSetup(false);
-	backgroundImage.load("assets/PUBLIC_01.png");
+	backgroundImage.load("assets/02.png");
 }
 
 void PMSc3Song_Choose::setup()
@@ -35,6 +35,9 @@ void PMSc3Song_Choose::update()
 void PMSc3Song_Choose::draw()
 {
 	ofPushMatrix();
+	float scaleX = (float)ofGetWidth() / (float)DESIGN_WIDTH;
+	float scaleY = (float)ofGetHeight() / (float)DESIGN_HEIGHT;
+	ofScale(scaleX, scaleY);
 	ofMultMatrix(*homography);
 
 	backgroundImage.draw(0, 0, DESIGN_WIDTH, DESIGN_HEIGHT);

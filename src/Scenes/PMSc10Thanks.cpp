@@ -27,11 +27,11 @@ PMSc10Thanks::PMSc10Thanks() : PMBaseScene("Scene Thanks")
     userName = "Interpretat per Susanna Mitjà";
 
 	//facana.load("assets/facana.tiff");
-	facana.load("assets/print_background.png");
+	//facana.load("assets/08.jpeg");
 	//plantilla.load("assets/print_plantilla.png");
-	ofSetWindowShape(1772, 1181);
+	//ofSetWindowShape(1772, 1181);
 
-	backgroundImage.load("assets/PUBLIC_05.png");
+	backgroundImage.load("assets/07.png");
 }
 
 void PMSc10Thanks::setup()
@@ -45,6 +45,7 @@ void PMSc10Thanks::setup()
     ofClear(0, 0, 0);
     printImage.load("TempRender.tiff");
     printFbo.allocate(1772, 1181, GL_RGB);
+	//ofSetWindowShape(1772, 1181);
     drawIntoFbo();
     //exportem fbo i el guardem
     ofPixels pix;
@@ -86,17 +87,20 @@ void PMSc10Thanks::update()
     if (countdown.alarm()) {
         countdown.resetAlarm();
         string toScene = "Scene 3";
-        //ofNotifyEvent(goToSceneEvent, toScene, this);
+        ofNotifyEvent(goToSceneEvent, toScene, this);
     }
 }
 
 void PMSc10Thanks::draw()
 {
 	ofPushMatrix();
+	float scaleX = (float)ofGetWidth() / (float)DESIGN_WIDTH;
+	float scaleY = (float)ofGetHeight() / (float)DESIGN_HEIGHT;
+	ofScale(scaleX, scaleY);
 	ofMultMatrix(*homography);
 
-	//backgroundImage.draw(0, 0);
-	printFbo.draw(0, 0);
+	backgroundImage.draw(0, 0, DESIGN_WIDTH, DESIGN_HEIGHT);
+	//printFbo.draw(0, 0);
 
 	ofPopMatrix();
 }
@@ -113,11 +117,11 @@ void PMSc10Thanks::drawIntoFbo()
 		
 
 		//Draw facade image;
-		facana.draw(0, 0);
+		//facana.draw(0, 0, printFbo.getWidth(), printFbo.getHeight());
 
 		//Draw tempRender image in its position
 		ofSetColor(255, 255);
-		printImage.draw(71, 50, 1624, 961);
+		printImage.draw(70, 67, 1624, 915);
 
 
 		ofDisableAlphaBlending();
@@ -129,9 +133,11 @@ void PMSc10Thanks::drawIntoFbo()
 		ofPushStyle();
         ofSetColor(ofColor::black);
 
-		drawLeftAlignString(bigFont, "\"" + songName + "\"", 67, 1046-2);
-		drawLeftAlignString(smallFont, userName, 67, 1081-2);
-		drawLeftAlignString(smallFont, dateName, 67, 1116-2);
+		drawLeftAlignString(bigFont, "\"" + songName + "\"", 67, 1033);
+		drawLeftAlignString(smallFont, userName, 67, 1069);
+		drawLeftAlignString(smallFont, dateName, 67, 1103);
+		drawRightAlignString(smallestFont, "Cançons Visuals", 1692, 1073);
+		drawRightAlignString(smallestFont, "xavibove.com", 1692, 1103);
 		ofPopStyle();
     }
     printFbo.end();

@@ -16,7 +16,7 @@ PMSc7Countdown::PMSc7Countdown() : PMBaseScene("Scene 7")
 {
     countdownFont.load("fonts/NeutraTextTF-Book.otf", 100, true, true, false, 0.3, 72);
     setSingleSetup(false);
-	backgroundImage.load("assets/PUBLIC_03.png");
+	backgroundImage.load("assets/05.png");
 }
 
 void PMSc7Countdown::setup()
@@ -60,11 +60,13 @@ void PMSc7Countdown::update()
 void PMSc7Countdown::draw()
 {
 	ofPushMatrix();
+	float scaleX = (float)ofGetWidth() / (float)DESIGN_WIDTH;
+	float scaleY = (float)ofGetHeight() / (float)DESIGN_HEIGHT;
+	ofScale(scaleX, scaleY);
 	ofMultMatrix(*homography);
-
 	ofPushStyle();
 	ofSetColor(255);
-	backgroundImage.draw(0, 0);
+	backgroundImage.draw(0, 0, DESIGN_WIDTH, DESIGN_HEIGHT);
 	ofPopStyle();
 
     unsigned int countdownTime;
@@ -73,7 +75,7 @@ void PMSc7Countdown::draw()
 #else
     countdownTime = PMSettingsManagerGeneral::getInstance().getReleaseScene7CountdownTime();
 #endif
-    ofPoint center=ofPoint(DESIGN_WIDTH-((DESIGN_WIDTH - DESIGN_LEFT_WIDTH)/2) - 35, DESIGN_HEIGHT/2);
+    ofPoint center=ofPoint(DESIGN_WIDTH/2, DESIGN_HEIGHT/2);
 
 	ofPushStyle();
     ofSetColor(ofColor::white);

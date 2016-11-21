@@ -13,6 +13,7 @@
 PMSc4Palette_Choose::PMSc4Palette_Choose() : PMBaseScene("Scene 4")
 {
     infoFont.load("fonts/NeutraTextTF-Light.otf", 20, true, true, false, 0.3, 72);
+	backgroundImage.load("assets/03.png");
 }
 
 void PMSc4Palette_Choose::setup()
@@ -41,8 +42,12 @@ void PMSc4Palette_Choose::draw()
     //drawCenteredFont(infoFont, "Mà esquerra", 960, 215);
     //drawCenteredFont(infoFont, "Genoll dret", 1275, 215);
     //drawCenteredFont(infoFont, "Genoll esquerra", 1600, 215);
-    PMColorsSelector::getInstance().draw();
-    ofPopMatrix();
+    //PMColorsSelector::getInstance().draw();
+	ofMultMatrix(*homography);
+	backgroundImage.draw(0, 0, DESIGN_WIDTH, DESIGN_HEIGHT);
+	PMColorsSelector::getInstance().draw();
+
+	ofPopMatrix();
 }
 
 void PMSc4Palette_Choose::mouseMoved(int x, int y)

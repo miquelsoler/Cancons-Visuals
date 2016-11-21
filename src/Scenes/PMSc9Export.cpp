@@ -19,7 +19,7 @@ PMSc9Export::PMSc9Export() : PMBaseScene("Scene 9")
     originalWidth=DESIGN_WIDTH;
     originalHeight=DESIGN_HEIGHT;
 
-	backgroundImage.load("assets/PUBLIC_04.png");
+	backgroundImage.load("assets/06.png");
 }
 
 void PMSc9Export::setup()
@@ -50,6 +50,9 @@ void PMSc9Export::exit()
 void PMSc9Export::draw()
 {
 	ofPushMatrix();
+	float scaleX = (float)ofGetWidth() / (float)DESIGN_WIDTH;
+	float scaleY = (float)ofGetHeight() / (float)DESIGN_HEIGHT;
+	ofScale(scaleX, scaleY);
 	ofMultMatrix(*homography);
 
     /*PMBaseScene::draw();
@@ -59,36 +62,37 @@ void PMSc9Export::draw()
     ofScale(scaleX, scaleY);
 	*/
 //    ofBackground(0);
-	backgroundImage.draw(0, 0);
+	backgroundImage.draw(0, 0, DESIGN_WIDTH, DESIGN_HEIGHT);
 	//ofPushStyle();
     ofSetColor(ofColor::white);
-    drawTextBox(bigFont, textInput, isSlash);
+	ofPoint rectBoxPos = ofPoint(536, 610);
+    drawTextBox(bigFont, textInput, isSlash, rectBoxPos.x, rectBoxPos.y);
     ofPushStyle();
     ofSetRectMode(OF_RECTMODE_CENTER);
     ofNoFill();
     ofSetLineWidth(1);
-    ofDrawRectRounded(1382, 552, 528, 54, 5);
+    ofDrawRectRounded(rectBoxPos.x, rectBoxPos.y, 788, 84, 5);
     //painting.draw(originalWidth/2, originalHeight/3, originalWidth/1.7, originalHeight/1.7);
     ofPopStyle();
 	ofPushStyle();
 	ofSetColor(255);
-	painting.draw(1118, 173, 527, 188);
+	painting.draw(994, 252, 790, 444);
 	ofNoFill();
-	ofDrawRectRounded(1118, 173, 527, 188, 2);
+	ofDrawRectRounded(994, 252, 790, 444, 2);
 	ofPopStyle();
 
     ofPopMatrix();
 }
 
 
-void PMSc9Export::drawTextBox(ofTrueTypeFont &font, string s, bool slash)
+void PMSc9Export::drawTextBox(ofTrueTypeFont &font, string s, bool slash, int x, int y)
 {
     int halfStringWidth = 0;
     if(s != "") halfStringWidth = font.stringWidth(s)/2;
     if(isSlash){
-        bigFont.drawString(s, 1382-halfStringWidth, 548+(font.stringHeight("|")/2));
+        bigFont.drawString(s, x-halfStringWidth, y-4+(font.stringHeight("|")/2));
     }else{
-        bigFont.drawString(s+'|', 1382 -halfStringWidth, 548 + (font.stringHeight("|") / 2));
+        bigFont.drawString(s+'|', x -halfStringWidth, y-4 + (font.stringHeight("|") / 2));
     }
 }
 

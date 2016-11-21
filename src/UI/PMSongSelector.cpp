@@ -12,7 +12,7 @@ void PMSongSelector::init(ofTrueTypeFont &_font)
 {
     originalHeight= DESIGN_HEIGHT;
     originalWidth= DESIGN_WIDTH - DESIGN_LEFT_WIDTH;
-	int topOffset = 0;
+	int topOffset = 150;
 
     indexChoosed=0;
     
@@ -27,8 +27,8 @@ void PMSongSelector::init(ofTrueTypeFont &_font)
     int x,y;
     for(int i=0; i<songFilenames.size(); i++){
         //x= originalWidth/2 + DESIGN_LEFT_WIDTH;
-		x = DESIGN_LEFT_WIDTH + 200;
-		y = ((originalHeight - topOffset)*(i + 1) / (songFilenames.size() + 1)) + topOffset;
+		x = DESIGN_LEFT_WIDTH - 150;
+		y = ((font->getLineHeight()) * (i+1)) + topOffset;//((originalHeight - topOffset)*(i + 1) / (songFilenames.size() + 1)) + topOffset;
         songNamesBox.push_back(PMTextContainer(x, y, songFilenames[i].substr(0, songFilenames[i].find_last_of('.')), *font, 0.5));
     }
     

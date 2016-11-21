@@ -26,7 +26,7 @@ public:
     
     void keyPressed(ofKeyEventArgs &keyargs);
     
-    void drawTextBox(ofTrueTypeFont &font, string s, bool slash);
+    void drawTextBox(ofTrueTypeFont &font, string s, bool slash, int x, int y);
 
 private:
     

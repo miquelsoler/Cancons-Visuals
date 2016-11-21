@@ -12,7 +12,7 @@ PMSc2Start::PMSc2Start() : PMBaseScene("Scene 2")
 {
     setFade(0, 0);
 //    setFadeIn(1000);
-    backgroundImage.load("assets/escena2.jpg");
+    backgroundImage.load("assets/01.png");
     setSingleSetup(false);
 }
 

@@ -146,10 +146,11 @@ void ofApp::draw()
 
 	ofVec3f pos = ofVec3f(ofGetMouseX(), ofGetMouseY());
 	pos = pos*(PMSharedSettings::getInstance().homography.getInverse());
+	pos *= ofVec3f(DESIGN_WIDTH, DESIGN_HEIGHT) / ofVec2f(ofGetWidth(), ofGetHeight());
 
 	ofPushStyle();
 	ofSetColor(debugMessagesColor);
-	ofxBitmapString(15, DESIGN_HEIGHT - 28)
+	ofxBitmapString(15, 28)
 		<< "[Current Scene] ID: " << sceneManager.getCurrentSceneIndex()
 		<< " Name: " << sceneManager.getCurrentSceneName()
 		<< " Screen Size: " << ofGetWidth() << " " << ofGetHeight()

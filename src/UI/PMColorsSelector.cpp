@@ -13,9 +13,10 @@
 
 void PMColorsSelector::init(ofTrueTypeFont &font)
 {
-    originalWidth = DESIGN_WIDTH - DESIGN_LEFT_WIDTH;
+    originalWidth = DESIGN_WIDTH/4;
     originalHeight= DESIGN_HEIGHT;
 	int topOffset = 0;
+	ofPoint rectMargin = ofPoint(15, 10);
     
     indexChoosed=0;
     
@@ -37,24 +38,24 @@ void PMColorsSelector::init(ofTrueTypeFont &font)
     for(int i=0; i<rows; i++){
         y=(((originalHeight-topOffset)*(i+1)/((rows)+1))+topOffset);
         for(int j=0; j<columns; j++){
-            x=(originalWidth*(j+1)/(columns+1)) + DESIGN_LEFT_WIDTH;
-            width=((originalWidth/(columns*2))-1);
-            height=width/2;
+			width = ((originalWidth / (columns)) - rectMargin.x * 2);
+            x=(originalWidth*(j+1)/(columns)) + (DESIGN_WIDTH / 4 * 3) - 100 - width/2 - rectMargin.x;
+            height=width;
             PMColorContainer tempContainer(x, y, width, height, colorPalettes[i].colors[j]);
             colorContainers.push_back(tempContainer);
         }
     }
     for(int i=0; i<colorContainers.size(); i=i+colorPalettes[0].colors.size()){
-        int x=originalWidth/2 + DESIGN_LEFT_WIDTH;
-        int y=colorContainers[i].getY()+20;
-        int width=originalWidth-(2*(colorContainers[i].getX()-DESIGN_LEFT_WIDTH)-colorContainers[i].getWidth())+20;
-        int height=colorContainers[i].getHeight()+50;
+		int x = (originalWidth / 2) + (DESIGN_WIDTH / 4 * 3) - 100; //originalWidth/2 + DESIGN_LEFT_WIDTH;
+        int y=colorContainers[i].getY();
+		int width = originalWidth;// originalWidth-(2*(colorContainers[i].getX()-DESIGN_LEFT_WIDTH)-colorContainers[i].getWidth())+20;
+        int height=colorContainers[i].getHeight()+rectMargin.y*2;
         rectSelector.push_back(PMColorContainer(x, y, width, height, ofColor(127)));
     }
     
     for(int i=0; i<colorContainers.size(); i=i+colorPalettes[0].colors.size()){
-        int x=originalWidth/2 + DESIGN_LEFT_WIDTH;
-        int y=colorContainers[i].getY()+20+colorContainers[i].getHeight()/2;
+		int x = (DESIGN_WIDTH / 4 * 2);//originalWidth/2 + DESIGN_LEFT_WIDTH;
+		int y = colorContainers[i].getY();
         paletteNames.push_back(PMTextContainer(x, y, colorPalettes[i/colorPalettes[0].colors.size()].name, font));
     }
 }

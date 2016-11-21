@@ -34,6 +34,6 @@ protected:
     
 private:
     ofTrueTypeFont infoFont;
-
+	ofImage backgroundImage;
     
 };
