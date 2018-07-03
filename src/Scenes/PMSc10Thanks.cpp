@@ -29,7 +29,7 @@ PMSc10Thanks::PMSc10Thanks() : PMBaseScene("Scene Thanks")
 	//facana.load("assets/facana.tiff");
 	facana.load("assets/print_background.png");
 	//plantilla.load("assets/print_plantilla.png");
-	ofSetWindowShape(1772, 1181);
+	//ofSetWindowShape(1772, 1181);
 
 	backgroundImage.load("assets/PUBLIC_05.png");
 }
@@ -85,8 +85,8 @@ void PMSc10Thanks::update()
 {
     if (countdown.alarm()) {
         countdown.resetAlarm();
-        string toScene = "Scene 3";
-        //ofNotifyEvent(goToSceneEvent, toScene, this);
+        string toScene = "Scene 2";
+        ofNotifyEvent(goToSceneEvent, toScene, this);
     }
 }
 
@@ -95,8 +95,8 @@ void PMSc10Thanks::draw()
 	ofPushMatrix();
 	ofMultMatrix(*homography);
 
-	//backgroundImage.draw(0, 0);
-	printFbo.draw(0, 0);
+	backgroundImage.draw(0, 0);
+	//printFbo.draw(0, 0);
 
 	ofPopMatrix();
 }

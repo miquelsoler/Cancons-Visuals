@@ -13,26 +13,28 @@
 PMSc4Palette_Choose::PMSc4Palette_Choose() : PMBaseScene("Scene 4")
 {
     infoFont.load("fonts/NeutraTextTF-Light.otf", 20, true, true, false, 0.3, 72);
+	backgroundImage.load("assets/cartela_colors.png");
 }
 
 void PMSc4Palette_Choose::setup()
 {
-	ofHideCursor();
     PMColorsSelector::getInstance().init(baseFont);
 }
 
 void PMSc4Palette_Choose::update()
 {
-
+	if (!isEntering()) {
+		PMColorsSelector::getInstance().update();
+	}
 }
 
 void PMSc4Palette_Choose::draw()
 {
     PMBaseScene::draw();
     ofPushMatrix();
-    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
-    float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
-    ofScale(scaleX, scaleY);
+	ofMultMatrix(*homography);
+
+	backgroundImage.draw(0, 0, DESIGN_WIDTH, DESIGN_HEIGHT);
 //    ofBackground(0);
     //drawSettingsNumbers(2);
     //drawCenteredFont(baseBoldFont, "Tria els teus colors", DESIGN_WIDTH/2, 150);
@@ -47,20 +49,19 @@ void PMSc4Palette_Choose::draw()
 
 void PMSc4Palette_Choose::mouseMoved(int x, int y)
 {
-    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
-    float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
-    x/=scaleX;
-    y/=scaleY;
-    PMColorsSelector::getInstance().checkMousePassed(x, y);
+	ofVec3f pos = ofVec3f(x, y);
+	pos = pos*(homography->getInverse());
+
+    PMColorsSelector::getInstance().checkMousePassed(pos.x, pos.y);
 }
 
 void PMSc4Palette_Choose::mousePressed(int x, int y, int mouse)
 {
-    float scaleX=(float)ofGetWidth()/(float)DESIGN_WIDTH;
-    float scaleY=(float)ofGetHeight()/(float)DESIGN_HEIGHT;
-    x/=scaleX;
-    y/=scaleY;
-    if(PMColorsSelector::getInstance().checkMousePressed(x, y)){
+	//Warp via homography;
+	ofVec3f pos = ofVec3f(x, y);
+	pos = pos*(homography->getInverse());
+
+    if(PMColorsSelector::getInstance().checkMousePressed(pos.x, pos.y)){
         string sceneToChange="Scene 6";
         ofNotifyEvent(goToSceneEvent, sceneToChange, this);
     }
