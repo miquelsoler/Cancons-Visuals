@@ -18,8 +18,8 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
 	PMBaseUICanvas::init(posX, posY, autosize, width, height);
 	layer = layerNum;
 
-	addLabel("Layer " + ofToString(layer));
-	addSpacer();
+	//addLabel("Layer " + ofToString(layer));
+	//addSpacer();
 
 	// Presets
 	addLabel("PRESETS");
@@ -31,13 +31,13 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
 
 	addSpacer();
 
-	addLabel("Energy");
+	//addLabel("Energy");
 	addSlider("Min Energy", 0, 1, minEnergy);
 	addSlider("Max Energy", 0, 1, maxEnergy);
 
 	addSpacer();
 
-	addLabel("Size");
+	//addLabel("Size");
 	addIntSlider("Min Size", 0, 50, minSize);
 	addIntSlider("Max Size", 0, 60, maxSize);
 	addSlider("Energy Factor", 0, 1, scaleEnergy_Size);
@@ -58,13 +58,13 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
 
 	addSpacer();
 
-	addLabel("Brightness");
-	addSlider("Acceleration Factor", 0, 1, scaleBrightness);
+	//addLabel("Brightness");
+	addSlider("Brightness Acceleration Factor", 0, 1, scaleBrightness);
 	addSlider("Brightness Variation", 0, 1, variationBrightness);
 
 	addSpacer();
 
-	addLabel("Alpha");
+	//addLabel("Alpha");
 	addSlider("Min Alpha", 0, 1, minAlpha);
 	addSlider("Max Alpha", 0, 1, maxAlpha);
 	//addSlider("Scale Energy Factor Alpha", 0, 1, scaleEnergy_Alpha);
@@ -76,7 +76,7 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
 
 	addSpacer();
 
-	addLabel("Behaviour");
+	//addLabel("Behaviour");
 	// addSlider("Speed", 0, 10, curveSpeed);
 	addSlider("Curve Size", 0, 20, curveSize);
 	if (layerNum > 2) {
@@ -88,7 +88,7 @@ void PMUICanvasLayers::init(int layerNum, int posX, int posY, bool autosize, int
 	addIntSlider("Maximum life", 2000, 10000, maxLife);
 
 	addSpacer();
-	addLabel("Stroke");
+	//addLabel("Stroke");
 	addSlider("Mnimum distance", 0, 40, distanceThreshold);
 	addSlider("Smoothing distance", 0, 40, maxDistance);
 	addToggle("wireframe", showWireframe);
