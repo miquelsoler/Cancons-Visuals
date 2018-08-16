@@ -19,7 +19,7 @@ void PMBaseUICanvas::init(int posX, int posY, bool _autosize, int width, int hei
 
     autosize = _autosize;
 
-	setGlobalSliderHeight(getGlobalSliderHeight() / 2);
+	setGlobalSliderHeight(8);
 
     setPosition(posX, posY);
     if (!autosize)

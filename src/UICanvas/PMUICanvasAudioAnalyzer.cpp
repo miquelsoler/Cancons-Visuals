@@ -71,10 +71,10 @@ void PMUICanvasAudioAnalyzer::init(int posX, int posY, bool autosize, int width,
 		//band_hm = addSlider("HighMid", 0, 1.0, bandMax_highmid);
 		//band_h = addSlider("High", 0, 1.0, bandMax_high);
 		addSpacer();
-		addTextArea("lband",	 "Low Band:   " + ofToString(bandMaxs[0]));
-		addTextArea("lmband",	 "LowM Band:  " + ofToString(bandMaxs[1]));
-		addTextArea("hmband",	 "HighM Band: " + ofToString(bandMaxs[2]));
-		addTextArea("hband",	 "High Band:  " + ofToString(bandMaxs[3]));
+		addTextArea("lband",	 "Low Band:   " + ofToString(bandMaxs[0]), OFX_UI_FONT_SMALL);
+		addTextArea("lmband",	 "LowM Band:  " + ofToString(bandMaxs[1]), OFX_UI_FONT_SMALL);
+		addTextArea("hmband",	 "HighM Band: " + ofToString(bandMaxs[2]), OFX_UI_FONT_SMALL);
+		addTextArea("hband",	 "High Band:  " + ofToString(bandMaxs[3]), OFX_UI_FONT_SMALL);
 
     if (autosize) autoSizeToFitWidgets();
 
