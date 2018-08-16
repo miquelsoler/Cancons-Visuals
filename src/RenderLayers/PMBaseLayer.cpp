@@ -101,7 +101,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 #if ENABLE_LIVE
 	layersGui->loadPreset(0);
 #else
-	layersGui->loadPreset(ofRandom(2, 5));
+	layersGui->loadPreset(ofRandom(1, 3));
 #endif
 
 	shared.guiApp->layoutGuis();
