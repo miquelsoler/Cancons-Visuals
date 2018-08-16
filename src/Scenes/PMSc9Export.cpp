@@ -67,14 +67,14 @@ void PMSc9Export::draw()
     ofSetRectMode(OF_RECTMODE_CENTER);
     ofNoFill();
     ofSetLineWidth(1);
-    ofDrawRectRounded(1382, 552, 528, 54, 5);
+    ofDrawRectRounded(1382, 650, 528, 54, 5);
     //painting.draw(originalWidth/2, originalHeight/3, originalWidth/1.7, originalHeight/1.7);
     ofPopStyle();
 	ofPushStyle();
 	ofSetColor(255);
-	painting.draw(1118, 173, 527, 188);
+	painting.draw(1118, 250, 527, 296);
 	ofNoFill();
-	ofDrawRectRounded(1118, 173, 527, 188, 2);
+	ofDrawRectRounded(1118, 250, 527, 296, 2);
 	ofPopStyle();
 
     ofPopMatrix();
@@ -86,9 +86,9 @@ void PMSc9Export::drawTextBox(ofTrueTypeFont &font, string s, bool slash)
     int halfStringWidth = 0;
     if(s != "") halfStringWidth = font.stringWidth(s)/2;
     if(isSlash){
-        bigFont.drawString(s, 1382-halfStringWidth, 548+(font.stringHeight("|")/2));
+        bigFont.drawString(s, 1382-halfStringWidth, 650 - 4 +(font.stringHeight("|")/2));
     }else{
-        bigFont.drawString(s+'|', 1382 -halfStringWidth, 548 + (font.stringHeight("|") / 2));
+        bigFont.drawString(s+'|', 1382 -halfStringWidth, 650 - 4 + (font.stringHeight("|") / 2));
     }
 }
 

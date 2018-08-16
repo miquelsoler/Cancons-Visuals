@@ -18,7 +18,7 @@ PMSc10Thanks::PMSc10Thanks() : PMBaseScene("Scene Thanks")
     bigFont.load("fonts/NeutraTextTF-Book.otf", 29, true, true, false, 0.3, 72);
     smallFont.load("fonts/NeutraTextTF-Light.otf", 28, true, true, false, 0.3, 72);
     smallestFont.load("fonts/NeutraTextTF-Light.otf", 22, true, true, false, 0.3, 72);
-	small_logo.load("assets/urban_art.png");
+	//small_logo.load("assets/urban_art.png");
     originalWidth = DESIGN_WIDTH;
     originalHeight = DESIGN_HEIGHT;
     setSingleSetup(false);
@@ -117,8 +117,8 @@ void PMSc10Thanks::drawIntoFbo()
 
 		//Draw tempRender image in its position
 		ofSetColor(255, 255);
-		printImage.draw(71, 50, 1624, 961);
-
+		printImage.draw(71, 98, 1624, 913);
+		
 
 		ofDisableAlphaBlending();
 		ofPopStyle();
