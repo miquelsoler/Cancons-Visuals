@@ -32,7 +32,8 @@ public:
 protected:
     
 private:
-
+	ofxTimer countdown;
+	bool alarmIsSet;
 	ofImage backgroundImage;
     
 };

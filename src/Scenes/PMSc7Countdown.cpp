@@ -73,7 +73,9 @@ void PMSc7Countdown::draw()
 #else
     countdownTime = PMSettingsManagerGeneral::getInstance().getReleaseScene7CountdownTime();
 #endif
-    ofPoint center=ofPoint(DESIGN_WIDTH-((DESIGN_WIDTH - DESIGN_LEFT_WIDTH)/2) - 35, DESIGN_HEIGHT/2);
+    //ofPoint center=ofPoint(DESIGN_WIDTH-((DESIGN_WIDTH - DESIGN_LEFT_WIDTH)/2) - 35, DESIGN_HEIGHT/2);
+	ofPoint center = ofPoint(DESIGN_WIDTH / 2, DESIGN_HEIGHT/2);
+
 
 	ofPushStyle();
     ofSetColor(ofColor::white);

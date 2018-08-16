@@ -25,9 +25,9 @@ void GUIApp::draw()
 {
 #if ENABLE_KINECT
 	//auto imageHeight = layersGui[0]->getHeight() - audioGui->getHeight();
-	auto imageHeight = 500;
+	auto imageHeight = 200;
 	//PMMotionExtractor::getInstance().draw(audioGui->getRect()->getX(), audioGui->getHeight(), imageHeight*513/424, imageHeight, true, true);
-	PMMotionExtractor::getInstance().draw(audioGui->getRect()->getX(), audioGui->getHeight(), imageHeight * 513 / 424, imageHeight, true, true);
+	PMMotionExtractor::getInstance().draw(audioGui->getRect()->getX(), audioGui->getHeight(), imageHeight * 1920 / 1080, imageHeight, true, true);
 #endif
 }
 
