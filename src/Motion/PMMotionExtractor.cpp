@@ -99,6 +99,9 @@ void PMMotionExtractor::update(ofEventArgs & a)
 			//Getting joint positions (skeleton tracking)
 			//--
 			//
+#ifdef ENABLE_MULTI_USER
+			if (numBodiesTracked == 1) {
+#endif // ENABLE_MULTI_USER
 			{
 				auto closestBody = findClosestBody();
 				//auto bodies = kinect.getBodySource()->getBodies();
@@ -151,8 +154,82 @@ void PMMotionExtractor::update(ofEventArgs & a)
 						}
 					}
 				}
-				computeVelocity(5);
 			}
+#ifdef ENABLE_MULTI_USER
+			}else{
+				int index = 0;
+				for (auto& body : bodies) {
+					if (body.tracked) {
+						for (auto joint : body.joints) {
+							if (joint.first == JointType_HandLeft) {
+								if (index = 0) {
+									handsInfo.leftHand.pos = joint.second.getProjected(kinect.getBodySource()->getCoordinateMapper(), ofxKFW2::ProjectionCoordinates::DepthCamera);
+									handsInfo.leftHand.pos.x /= 512;
+									handsInfo.leftHand.pos.y /= 424;
+									handsInfo.leftHand.pos.z = joint.second.getPosition().z;
+								}
+								else if (index = 1 && numBodiesTracked == 2) {
+									handsInfo.leftKnee.pos = joint.second.getProjected(kinect.getBodySource()->getCoordinateMapper(), ofxKFW2::ProjectionCoordinates::DepthCamera);
+									handsInfo.leftKnee.pos.x /= 512;
+									handsInfo.leftKnee.pos.y /= 424;
+									handsInfo.leftKnee.pos.z = joint.second.getPosition().z;
+								}
+							}
+							else if (joint.first == JointType_HandRight) {
+								if (index == 0 && (numBodiesTracked == 2 || numBodiesTracked == 3)) {
+									handsInfo.rightHand.pos = joint.second.getProjected(kinect.getBodySource()->getCoordinateMapper(), ofxKFW2::ProjectionCoordinates::DepthCamera);
+									handsInfo.rightHand.pos.x /= 512;
+									handsInfo.rightHand.pos.y /= 424;
+									handsInfo.rightHand.pos.z = joint.second.getPosition().z;
+								}
+								else if (index == 1 && numBodiesTracked == 2) {
+									handsInfo.rightKnee.pos = joint.second.getProjected(kinect.getBodySource()->getCoordinateMapper(), ofxKFW2::ProjectionCoordinates::DepthCamera);
+									handsInfo.rightKnee.pos.x /= 512;
+									handsInfo.rightKnee.pos.y /= 424;
+									handsInfo.rightKnee.pos.z = joint.second.getPosition().z;
+								}
+								else if (index == 1 && numBodiesTracked == 4) {
+									handsInfo.leftHand.pos = joint.second.getProjected(kinect.getBodySource()->getCoordinateMapper(), ofxKFW2::ProjectionCoordinates::DepthCamera);
+									handsInfo.leftHand.pos.x /= 512;
+									handsInfo.leftHand.pos.y /= 424;
+									handsInfo.leftHand.pos.z = joint.second.getPosition().z;
+								}
+								else if (index == 2 && (numBodiesTracked == 3 || numBodiesTracked == 4)) {
+									handsInfo.leftKnee.pos = joint.second.getProjected(kinect.getBodySource()->getCoordinateMapper(), ofxKFW2::ProjectionCoordinates::DepthCamera);
+									handsInfo.leftKnee.pos.x /= 512;
+									handsInfo.leftKnee.pos.y /= 424;
+									handsInfo.leftKnee.pos.z = joint.second.getPosition().z;
+								}
+								else if (index == 3 && (numBodiesTracked == 3 || numBodiesTracked == 4)) {
+									handsInfo.rightKnee.pos = joint.second.getProjected(kinect.getBodySource()->getCoordinateMapper(), ofxKFW2::ProjectionCoordinates::DepthCamera);
+									handsInfo.rightKnee.pos.x /= 512;
+									handsInfo.rightKnee.pos.y /= 424;
+									handsInfo.rightKnee.pos.z = joint.second.getPosition().z;
+								}
+							}
+							else if (joint.first == JointType_Head && index == 0) {
+								auto headPos = joint.second.getProjected(kinect.getBodySource()->getCoordinateMapper(), ofxKFW2::ProjectionCoordinates::DepthCamera);
+								headPos.y /= 424;
+								if (abs(headPos.y - handsInfo.leftHand.pos.y) < 0.05 && abs(headPos.y - handsInfo.rightHand.pos.y) < 0.05) {
+									positionDetectedCounter++;
+								}
+								else {
+									positionDetectedCounter = 0;
+								}
+
+								if (positionDetectedCounter >= 60) {
+									auto userPositioned = true;
+									ofNotifyEvent(eventUserPositioned, userPositioned, this);
+									positionDetectedCounter = 0;
+								}
+							}
+						}
+					}
+					index++;
+				}
+			}
+#endif // ENABLE_MULTI_USER
+				computeVelocity(5);
 		}
 		else {
 			if (hasUser) {

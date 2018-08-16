@@ -17,12 +17,13 @@
 #define ConductrEnter_Config_h 
 
 
-#define ENABLE_KINECT false
+#define ENABLE_KINECT true
 #define ENABLE_MULTIPLE_FBOS false
 #define ENABLE_MULTILAYER_EXPORT false
 #define ENABLE_KNEES_DETECTION true
-#define ENABLE_PRINTING false
+#define ENABLE_PRINTING true
 #define ENABLE_REMOTE_KINECT false
+#define ENABLE_MULTI_USER false
 
 
 
@@ -30,7 +31,7 @@ static const float          WINDOW_SCALE_FACTOR         = 1.0f;
 static const float          FBO_SCALE_FACTOR            = 1.0f;
 
 static const int            WINDOW_WIDTH                = 1920;
-static const int            WINDOW_HEIGHT               = 1200;
+static const int            WINDOW_HEIGHT               = 1080;
 
 static const int			DESIGN_WIDTH = WINDOW_WIDTH;
 static const int			DESIGN_HEIGHT = WINDOW_HEIGHT;

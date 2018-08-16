@@ -20,16 +20,29 @@ void PMSc6Kinect_Detect::setup()
 #if ENABLE_KINECT
     ofHideCursor();
 #endif
+	alarmIsSet = false;
+	countdown.set();
+	countdown.setAlarm(40000);
 }
 
 void PMSc6Kinect_Detect::update()
 {
 #if ENABLE_KINECT
-    if (PMMotionExtractor::getInstance().isTracking())
+    if (PMMotionExtractor::getInstance().isTracking() && !alarmIsSet)
     {
-        string sceneToChange = "Scene 7";
-        ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+        //string sceneToChange = "Scene 7";
+        //ofNotifyEvent(goToSceneEvent, sceneToChange, this);
+		countdown.set();
+		countdown.setAlarm(2000);
+		alarmIsSet = true;
     }
+
+	if (countdown.alarm()) {
+		countdown.resetAlarm();
+		string toScene = "Scene 7";
+		ofNotifyEvent(goToSceneEvent, toScene, this);
+	}
+
 #else
     string sceneToChange="Scene 7";
     ofNotifyEvent(goToSceneEvent, sceneToChange, this);
@@ -41,7 +54,7 @@ void PMSc6Kinect_Detect::draw()
 	ofPushMatrix();
 	ofMultMatrix(*homography);
 
-    //PMBaseScene::draw();ç
+    //PMBaseScene::draw();
 	ofPushStyle();
 	ofSetColor(255, 255, 255, 255);
 	backgroundImage.draw(0, 0);
@@ -50,10 +63,11 @@ void PMSc6Kinect_Detect::draw()
 #if ENABLE_KINECT
 	//auto heightToDraw = 424 * ofGetWidth() / 512;
 	//PMMotionExtractor::getInstance().draw(0, (ofGetHeight() - heightToDraw) / 2, ofGetWidth(), heightToDraw);
-	auto heightToDraw = 424 * (DESIGN_WIDTH-DESIGN_LEFT_WIDTH-350) / 512;
-	//PMMotionExtractor::getInstance().draw( (ofGetHeight() - heightToDraw) / 2, DESIGN_LEFT_HEIGHT - 25, DESIGN_WIDTH - DESIGN_LEFT_WIDTH - 50, heightToDraw);
+	auto heightToDraw = DESIGN_HEIGHT / 2;
+	auto widthToDraw = DESIGN_WIDTH / 2;
+	PMMotionExtractor::getInstance().draw(widthToDraw/2, heightToDraw/2, widthToDraw, heightToDraw, false, true);
 	//ofSetColor(255);
-	//ofDrawRectangle(1050, 230, DESIGN_WIDTH - DESIGN_LEFT_WIDTH - 350, heightToDraw);
+	//ofDrawRectangle(widthToDraw/2, heightToDraw/2, widthToDraw, heightToDraw);
 #endif
 
 	ofPopMatrix();
