@@ -84,10 +84,19 @@ void PMMotionExtractor::update(ofEventArgs & a)
 		kinect.update();
 		// Count number of tracked bodies
 		int numBodiesTracked = 0;
-		auto& bodies = kinect.getBodySource()->getBodies();
-		for (auto& body : bodies) {
+		auto& rawBodies = kinect.getBodySource()->getBodies();
+		vector<ofxKFW2::Data::Body> bodies; //should be a vector of references?
+		for (auto& body : rawBodies) {
 			if (body.tracked) {
-				numBodiesTracked++;
+				auto joints = body.joints;
+
+				auto currentLocation = joints[JointType_SpineBase].getPosition();
+				auto currentDistance = currentLocation.z;
+				float maxTrackingDistance = 2000;
+				if (currentDistance < maxTrackingDistance) {
+					numBodiesTracked++;
+					bodies.push_back(body);
+				}
 			}
 		}
 		if (numBodiesTracked != 0) {
@@ -103,7 +112,7 @@ void PMMotionExtractor::update(ofEventArgs & a)
 			if (numBodiesTracked == 1) {
 #endif // ENABLE_MULTI_USER
 			{
-				auto closestBody = findClosestBody();
+				auto closestBody = findClosestBody(bodies);
 				//auto bodies = kinect.getBodySource()->getBodies();
 				//for (auto body : bodies) {
 				//	if (body.trackingId == closestBody->trackingId)
@@ -162,13 +171,13 @@ void PMMotionExtractor::update(ofEventArgs & a)
 					if (body.tracked) {
 						for (auto joint : body.joints) {
 							if (joint.first == JointType_HandLeft) {
-								if (index = 0) {
+								if (index == 0) {
 									handsInfo.leftHand.pos = joint.second.getProjected(kinect.getBodySource()->getCoordinateMapper(), ofxKFW2::ProjectionCoordinates::DepthCamera);
 									handsInfo.leftHand.pos.x /= 512;
 									handsInfo.leftHand.pos.y /= 424;
 									handsInfo.leftHand.pos.z = joint.second.getPosition().z;
 								}
-								else if (index = 1 && numBodiesTracked == 2) {
+								else if (index == 1 && numBodiesTracked == 2) {
 									handsInfo.leftKnee.pos = joint.second.getProjected(kinect.getBodySource()->getCoordinateMapper(), ofxKFW2::ProjectionCoordinates::DepthCamera);
 									handsInfo.leftKnee.pos.x /= 512;
 									handsInfo.leftKnee.pos.y /= 424;
@@ -356,14 +365,14 @@ KinectInfo* PMMotionExtractor::getKinectInfo() {
 	return &handsInfo;
 }
 
-ofxKFW2::Data::Body PMMotionExtractor::findClosestBody()
+ofxKFW2::Data::Body PMMotionExtractor::findClosestBody(vector<ofxKFW2::Data::Body> bodies)
 {
 	ofxKFW2::Data::Body result;
 	bool noBody = true;
 
 	double closestBodyDistance = 10000000.0;
 
-	auto& bodies = kinect.getBodySource()->getBodies();
+	//auto& bodies = kinect.getBodySource()->getBodies();
 
 	for (auto body : bodies)
 	{
