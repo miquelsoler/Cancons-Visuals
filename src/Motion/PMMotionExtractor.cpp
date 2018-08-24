@@ -7,12 +7,16 @@
 //
 
 #include "PMMotionExtractor.hpp"
+#include "PMSharedSettings.h"
 
 ///--------------------------------------------------------------
 bool PMMotionExtractor::setup()
 {
 	ofAddListener(ofEvents().update, this, &PMMotionExtractor::update);
+	//ofAddListener(ofEvents().keyReleased, this, &PMMotionExtractor::keyPressed);
 	positionDetectedCounter = 0;
+
+	
 
 #if ENABLE_REMOTE_KINECT
 #if ENABLE_LIVE
@@ -31,6 +35,12 @@ bool PMMotionExtractor::setup()
 	//TODO: Implement kinect detection
 	//hasKinect = kinect.isOpen();
 	hasKinect = true;
+
+	//createGui to guiApp
+	/*PMSharedSettings shared = PMSharedSettings::getInstance();
+	auto layersGui = shared.guiApp->getGuiOfLayer(1);
+	layersGui->bindmaxUserDistance(& maxUserDistance);*/
+
 	return hasKinect;
 #endif
 	return true;
@@ -92,7 +102,7 @@ void PMMotionExtractor::update(ofEventArgs & a)
 
 				auto currentLocation = joints[JointType_SpineBase].getPosition();
 				auto currentDistance = currentLocation.z;
-				float maxTrackingDistance = 2000;
+				//float maxTrackingDistance = 2000;
 				if (currentDistance < maxTrackingDistance) {
 					numBodiesTracked++;
 					bodies.push_back(body);
@@ -496,3 +506,27 @@ ofPixels PMMotionExtractor::getColorPixels() {
 	auto ColoredImage = kinect.getColorSource();
 	return ColoredImage->getPixels();
 }
+
+void PMMotionExtractor::increaseDistance()
+{
+	maxTrackingDistance += 0.1;
+	if (maxTrackingDistance > 8)
+		maxTrackingDistance = 8;
+}
+
+void PMMotionExtractor::decreaseDistance()
+{
+	maxTrackingDistance -= 0.1;
+	if (maxTrackingDistance < 0)
+		maxTrackingDistance = 0;
+}
+
+//void PMMotionExtractor::keyPressed(ofKeyEventArgs &e)
+//{
+//	if (e.key) {
+//
+//	}
+//	else if (e.key) {
+//
+//	}
+//}

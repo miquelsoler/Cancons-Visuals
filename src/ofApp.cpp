@@ -183,8 +183,13 @@ void ofApp::keyReleased(int key)
             showFPS = !showFPS;
             break;
         }
-        case OF_KEY_UP:
-        case OF_KEY_RIGHT: {
+		case OF_KEY_UP: {
+			if (currentScene < 9) {
+				PMMotionExtractor::getInstance().increaseDistance();
+			}
+			break;
+		}
+        case OF_KEY_RIGHT: {	
 #ifdef OF_DEBUG
 			cout << "nextScene" << endl;
             if(currentScene!=9)
@@ -196,7 +201,12 @@ void ofApp::keyReleased(int key)
 #endif
             break;
         }
-        case OF_KEY_DOWN:
+		case OF_KEY_DOWN: {
+			if (currentScene < 9) {
+				PMMotionExtractor::getInstance().decreaseDistance();
+			}
+			break;
+		}
         case OF_KEY_LEFT: {
 #ifdef OF_DEBUG
             sceneManager.prevScene();

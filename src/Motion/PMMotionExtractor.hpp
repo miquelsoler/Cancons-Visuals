@@ -74,6 +74,9 @@ public:
 
 	ofEvent<bool> eventUserDetection;
 	ofEvent<bool> eventUserPositioned;
+	void increaseDistance();
+	void decreaseDistance();
+	//void keyPressed(ofKeyEventArgs &e);
 
 private:
 	ofxKFW2::Device kinect;
@@ -91,7 +94,7 @@ private:
 	//positioning variable
 	int positionDetectedCounter;
 
-
+	float maxTrackingDistance = 6.0;
 #if ENABLE_REMOTE_KINECT
 	ofxOscReceiver receiver;
 #endif
