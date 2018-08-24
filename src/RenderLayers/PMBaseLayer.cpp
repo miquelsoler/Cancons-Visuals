@@ -98,11 +98,12 @@ void PMBaseLayer::setup(ofPoint initialPosition)
 	layersGui->init(layerID, 5, 5);
 	layersGui->setBackgroundColor(ofColor::gray);
 	layersGui->setVisible(false);
-#if ENABLE_LIVE
+//#if ENABLE_LIVE
+//	layersGui->loadPreset(0);
+//#else
+//	layersGui->loadPreset(ofRandom(1, 3));
+//#endif
 	layersGui->loadPreset(0);
-#else
-	layersGui->loadPreset(ofRandom(1, 3));
-#endif
 
 	shared.guiApp->layoutGuis();
 
