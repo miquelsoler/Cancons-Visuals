@@ -3,7 +3,6 @@
 #include "PMSettingsManagerAudioAnalyzers.h"
 #include "Defaults.h"
 
-
 ///--------------------------------------------------------------
 void ofApp::setup()
 {
@@ -11,6 +10,7 @@ void ofApp::setup()
     ofSetVerticalSync(true);
     ofBackground(ofColor::black);
 	ofHideCursor();
+	ofSetEscapeQuitsApp(false);
     //
 	//isFullScreen = (DEFAULT_WINDOW_MODE == OF_FULLSCREEN);
 
@@ -184,9 +184,10 @@ void ofApp::keyReleased(int key)
             break;
         }
 		case OF_KEY_UP: {
-			if (currentScene < 9) {
-				PMMotionExtractor::getInstance().increaseDistance();
-			}
+			if(ofGetKeyPressed(OF_KEY_CONTROL))
+				if (currentScene < 9) 
+					PMMotionExtractor::getInstance().increaseDistance();
+			
 			break;
 		}
         case OF_KEY_RIGHT: {	
@@ -202,9 +203,9 @@ void ofApp::keyReleased(int key)
             break;
         }
 		case OF_KEY_DOWN: {
-			if (currentScene < 9) {
-				PMMotionExtractor::getInstance().decreaseDistance();
-			}
+			if (ofGetKeyPressed(OF_KEY_CONTROL))
+				if (currentScene < 9) 
+					PMMotionExtractor::getInstance().decreaseDistance();
 			break;
 		}
         case OF_KEY_LEFT: {
@@ -232,11 +233,19 @@ void ofApp::keyReleased(int key)
 }
 
 void ofApp::keyPressed(ofKeyEventArgs &keyargs){
-    if(keyargs.keycode == 290){
+	   if(keyargs.keycode == 290){
         sceneManager.gotoScene(1);
         PMMotionExtractor::getInstance().exit();
         PMMotionExtractor::getInstance().setup();
     }
+	else if (keyargs.key == OF_KEY_ESC) {
+		if (ofGetKeyPressed(OF_KEY_SHIFT)) {
+			OF_EXIT_APP(0);
+		}
+		else {
+			sceneManager.gotoScene(1);
+		}
+	}
 }
 
 void ofApp::changeScene(string &scene)
