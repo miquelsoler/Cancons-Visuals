@@ -254,16 +254,21 @@ void PMBaseLayer::update()
 		newPoint = ofPoint(kinectNodeData.pos.x * fboWidth, kinectNodeData.pos.y * fboHeight, kinectNodeData.pos.z * 100);
 	// Knees follow perlin noise afected by real movement
 	else {
-		actualNodePosition = ofPoint(kinectNodeData.pos.x * fboWidth, kinectNodeData.pos.y * fboHeight, kinectNodeData.pos.z * 100);
-		float diffPosition = (actualNodePosition - actualNodePrevPosition).length();
-		if (diffPosition > noiseThreshold) {
-			noiseIndex++;
-			//cout << noiseIndex << " at layer " << layerID << endl;
-		}
-		ofPoint noise = ofPoint( (ofNoise(noiseIndex * noiseSpeed, layerID * 1000) - 0.5) * kneeScaleFactor,
-								(ofNoise(layerID * 1000, noiseIndex * noiseSpeed) - 1) * kneeScaleFactor,
-									kinectNodeData.pos.z * 100);
-		newPoint = actualNodePosition + noise;
+		//actualNodePosition = ofPoint(kinectNodeData.pos.x * fboWidth, kinectNodeData.pos.y * fboHeight, kinectNodeData.pos.z * 100);
+		//float diffPosition = (actualNodePosition - actualNodePrevPosition).length();
+		//if (diffPosition > noiseThreshold) {
+		//	noiseIndex++;
+		//	//cout << noiseIndex << " at layer " << layerID << endl;
+		//}
+		//ofPoint noise = ofPoint( (ofNoise(noiseIndex * noiseSpeed, layerID * 1000) - 0.5) * kneeScaleFactor,
+		//						(ofNoise(layerID * 1000, noiseIndex * noiseSpeed) - 1) * kneeScaleFactor,
+		//							kinectNodeData.pos.z * 100);
+		//newPoint = actualNodePosition + noise;
+		//cout << kinectNodeData.pos.x << " - " << kinectNodeData.pos.y << endl;
+		newPoint = actualNodePosition = ofPoint(
+			kinectNodeData.pos.x* fboWidth ,
+			ofMap(kinectNodeData.pos.y, kneeScaleFactor,1,0,1) * fboHeight ,
+			kinectNodeData.pos.z * 100);
 	}
 	//cout << "Adding point z" << kinectNodeData.pos.z * 400 << endl;
 
