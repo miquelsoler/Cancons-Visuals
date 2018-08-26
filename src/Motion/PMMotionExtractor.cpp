@@ -13,6 +13,22 @@
 bool PMMotionExtractor::setup()
 {
 	ofAddListener(ofEvents().update, this, &PMMotionExtractor::update);
+	
+	if (XML.load("settings\\KinectSettings.xml")) {
+		//cout << "Kinect Settings loaded" << endl;
+		maxTrackingDistance = XML.getValue<float>("//MaxDepth"); 
+	}
+	else {
+		XML.addChild("Settings");
+		XML.setTo("Settings");
+		XML.addValue("MaxDepth", maxTrackingDistance);
+		saveSettings();
+		//cout << "unable to load Kinect Settings" <<endl;
+	}
+	/*if (XML.exists("//MaxDepth")) {
+		
+	}*/
+
 	//ofAddListener(ofEvents().keyReleased, this, &PMMotionExtractor::keyPressed);
 	positionDetectedCounter = 0;
 
@@ -519,6 +535,12 @@ void PMMotionExtractor::decreaseDistance()
 	maxTrackingDistance -= 0.1;
 	if (maxTrackingDistance < 0)
 		maxTrackingDistance = 0;
+}
+
+void PMMotionExtractor::saveSettings() {
+	XML.setTo("Settings");
+	XML.setValue("MaxDepth", ofToString(maxTrackingDistance));
+	XML.save("settings\\KinectSettings.xml");
 }
 
 //void PMMotionExtractor::keyPressed(ofKeyEventArgs &e)

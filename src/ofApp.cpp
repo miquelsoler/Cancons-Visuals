@@ -164,7 +164,9 @@ void ofApp::exit()
 {
 #if ENABLE_KINECT
 	PMMotionExtractor::getInstance().stop();
+	PMMotionExtractor::getInstance().saveSettings();
 #endif
+	OF_EXIT_APP(0);
 }
 
 ///--------------------------------------------------------------
@@ -240,7 +242,7 @@ void ofApp::keyPressed(ofKeyEventArgs &keyargs){
     }
 	else if (keyargs.key == OF_KEY_ESC) {
 		if (ofGetKeyPressed(OF_KEY_SHIFT)) {
-			OF_EXIT_APP(0);
+			exit();
 		}
 		else {
 			sceneManager.gotoScene(1);

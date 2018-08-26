@@ -58,6 +58,7 @@ public:
 
 	void start() {};
 	void stop() {};
+	void saveSettings();
 
 	bool reset(bool kinectActivated);
 	bool isTracking() {
@@ -93,8 +94,9 @@ private:
 
 	//positioning variable
 	int positionDetectedCounter;
+	ofXml XML;
 
-	float maxTrackingDistance = 6.0;
+	float maxTrackingDistance = 3.0;
 #if ENABLE_REMOTE_KINECT
 	ofxOscReceiver receiver;
 #endif
