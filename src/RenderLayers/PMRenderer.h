@@ -9,7 +9,6 @@
 #include "PMBaseLayer.h"
 #include "Defaults.h"
 #include "ofxTween.h"
-#include "ofxSpout2Sender.h"
 
 class PMRenderer
 {
@@ -43,8 +42,6 @@ private:
 	float counter;
 	ofxTween tweenColor;
 	ofxEasingLinear easing;
-
-	ofxSpout2::Sender spout;
 };
 
 

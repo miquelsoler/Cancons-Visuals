@@ -172,7 +172,6 @@ void PMRenderer::drawIntoFBO()
     }
     mainFBO.end();
 
-	spout.sendTexture(mainFBO.getTexture(), "Cancons-visuals");
 #endif
 }
 

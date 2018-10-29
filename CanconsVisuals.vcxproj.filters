@@ -403,45 +403,6 @@
     <ClCompile Include="..\..\..\addons\ofxFft\libs\kiss\kiss_fftr.c">
       <Filter>addons\ofxFft\libs\kiss</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxSpout2\src\ofxSpout2Receiver.cpp">
-      <Filter>addons\ofxSpout2\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxSpout2\src\ofxSpout2Sender.cpp">
-      <Filter>addons\ofxSpout2\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxSpout2\libs\src\SpoutControls.cpp">
-      <Filter>addons\ofxSpout2\libs\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxSpout2\libs\src\SpoutDirectX.cpp">
-      <Filter>addons\ofxSpout2\libs\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxSpout2\libs\src\SpoutGLDXinterop.cpp">
-      <Filter>addons\ofxSpout2\libs\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxSpout2\libs\src\SpoutGLextensions.cpp">
-      <Filter>addons\ofxSpout2\libs\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxSpout2\libs\src\SpoutMemoryShare.cpp">
-      <Filter>addons\ofxSpout2\libs\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxSpout2\libs\src\SpoutReceiver.cpp">
-      <Filter>addons\ofxSpout2\libs\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxSpout2\libs\src\SpoutSDK.cpp">
-      <Filter>addons\ofxSpout2\libs\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxSpout2\libs\src\SpoutSender.cpp">
-      <Filter>addons\ofxSpout2\libs\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxSpout2\libs\src\SpoutSenderMemory.cpp">
-      <Filter>addons\ofxSpout2\libs\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxSpout2\libs\src\SpoutSenderNames.cpp">
-      <Filter>addons\ofxSpout2\libs\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxSpout2\libs\src\SpoutSharedMemory.cpp">
-      <Filter>addons\ofxSpout2\libs\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.cpp">
       <Filter>addons\ofxOsc\src</Filter>
     </ClCompile>
@@ -478,6 +439,8 @@
     <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp">
       <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix\NetworkingUtils.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix\UdpSocket.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -608,21 +571,6 @@
     </Filter>
     <Filter Include="addons\ofxFft\libs\kiss">
       <UniqueIdentifier>{c5429166-7950-402f-9748-7b9c9d1e8c19}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxSpout2">
-      <UniqueIdentifier>{869cdcdd-e0fb-4411-b934-3fa18379e4c2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxSpout2\src">
-      <UniqueIdentifier>{52c813b9-0227-408c-8ff3-180d2afa5e05}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxSpout2\libs">
-      <UniqueIdentifier>{b508ff99-a817-43df-b6dd-378fd3dc3b45}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxSpout2\libs\src">
-      <UniqueIdentifier>{3975e0f2-1511-4a75-9648-722299df7b38}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxSpout2\libs\include">
-      <UniqueIdentifier>{bdf72fd9-2213-4a63-b36e-d85f59c950a4}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxOsc">
       <UniqueIdentifier>{013fcb5d-67f8-4c5e-a72b-05ed7bbfe82f}</UniqueIdentifier>
@@ -1114,51 +1062,6 @@
     </ClInclude>
     <ClInclude Include="src\OSCSettings.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxSpout2\src\ofxSpout2Sender.h">
-      <Filter>addons\ofxSpout2\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxSpout2\src\ofxSpout2Receiver.h">
-      <Filter>addons\ofxSpout2\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxSpout2\libs\include\Spout.h">
-      <Filter>addons\ofxSpout2\libs\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxSpout2\libs\include\SpoutCommon.h">
-      <Filter>addons\ofxSpout2\libs\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxSpout2\libs\include\SpoutControls.h">
-      <Filter>addons\ofxSpout2\libs\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxSpout2\libs\include\SpoutDirectX.h">
-      <Filter>addons\ofxSpout2\libs\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxSpout2\libs\include\SpoutGLDXinterop.h">
-      <Filter>addons\ofxSpout2\libs\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxSpout2\libs\include\SpoutGLextensions.h">
-      <Filter>addons\ofxSpout2\libs\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxSpout2\libs\include\SpoutMemoryShare.h">
-      <Filter>addons\ofxSpout2\libs\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxSpout2\libs\include\SpoutReceiver.h">
-      <Filter>addons\ofxSpout2\libs\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxSpout2\libs\include\SpoutSDK.h">
-      <Filter>addons\ofxSpout2\libs\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxSpout2\libs\include\SpoutSender.h">
-      <Filter>addons\ofxSpout2\libs\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxSpout2\libs\include\SpoutSenderMemory.h">
-      <Filter>addons\ofxSpout2\libs\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxSpout2\libs\include\SpoutSenderNames.h">
-      <Filter>addons\ofxSpout2\libs\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxSpout2\libs\include\SpoutSharedMemory.h">
-      <Filter>addons\ofxSpout2\libs\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOsc.h">
       <Filter>addons\ofxOsc\src</Filter>
