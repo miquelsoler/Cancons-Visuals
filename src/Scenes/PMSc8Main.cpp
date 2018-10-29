@@ -283,6 +283,7 @@ void PMSc8Main::keyReleased(int key)
 
 void PMSc8Main::exportImageAndLeaveScene()
 {
+	songIsStarted = false;
     renderer->exportToImage("TempRender");
     renderer->exportToImage("exports/unprocessed/testImage_" + ofGetTimestampString());
     cout << "song_has_finished" << endl;
