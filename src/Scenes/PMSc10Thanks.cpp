@@ -39,7 +39,7 @@ void PMSc10Thanks::setup()
 	//ofSetWindowShape(1772, 1181);
     //Primer ha de pillar el nom, sino No es pot generar l'fbo
     songName = PMSongSelector::getInstance().getSongname();
-    userName = "Interpretat per " + PMSharedSettings::getInstance().getUserName();
+    userName = "Performed by " + PMSharedSettings::getInstance().getUserName();
     dateName = ofGetTimestampString("%d/%m/%Y, %H:%M");
     //carrega la imatge, alloca el fbo i genera fbo
     ofClear(0, 0, 0);
