@@ -111,6 +111,7 @@ protected:
 	float distanceThreshold = 0 ;
 	float maxDistance = 20;
 	int maxLife = 2000;
+	float maxDistanceToBreakStroke = 200;
     
     // UpdateToShake behaviour
     bool            didShoot;

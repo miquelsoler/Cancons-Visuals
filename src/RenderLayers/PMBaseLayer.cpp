@@ -154,6 +154,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
     brushDirection = ofPoint(ofRandom(-1, 1), ofRandom(-1, 1)).normalize();
     setBrushSize(int(ofRandom(sizeMin, sizeMax)));
 
+	maxDistanceToBreakStroke = (fboWidth * fboHeight) / 4;
     brushRGBColor = PMColorsSelector::getInstance().getColor(layerID);
     brushRGBColor.getHsb(brushHSBColor.hue, brushHSBColor.saturation, brushHSBColor.brightness);
     brushAlpha = 1;
@@ -279,11 +280,27 @@ void PMBaseLayer::update()
 		ofVec3f direction = (nextPoint - thisPoint);
 		float distance = direction.length();
 		brushVelocity = distance;
-		if (distance > maxDistance) {
+		// if new point is too far away from previous, finish the stroke and start a new one
+		if(distance > maxDistanceToBreakStroke)
+			finishStroke();
+		else if (distance > maxDistance) {
 			//crear nuevos vertices intermedio
 			//cout << "Creating vertices" << endl;
 			float thick = (brushSizes[index] + brushSize) / 2.0f;
-			ofPoint n = (thisPoint + nextPoint) / 2.0f;
+
+			// intermediate vertices are now created between the new point and the direction the stroke had
+			// in order to smooth changes of direction
+			ofVec3f prevPoint = points[index];
+			if(index>=1)
+				prevPoint = points[index - 1];
+			// this is the directin the stroke had prior to the new point
+			ofVec3f prevDirection = nextPoint - prevPoint;
+			// this is the "expected next point", the nex point if there was no change in direction
+			ofVec3f smoothDirection = prevDirection + nextPoint;
+
+			// interpolate between the no change in dorectin point and the new point
+			ofPoint n = smoothDirection.interpolate(thisPoint, 0.5);
+			//ofPoint n = (thisPoint + nextPoint) / 2.0f;
 			addPointToRibbon(n, brushDirection, thick);
 		}
 	}
@@ -366,6 +383,7 @@ void PMBaseLayer::drawStrokes() {
 void PMBaseLayer::finishStroke() {
 	// we know store all past strokes in a unique vector in PMRenderer so they are all drawn in the creation order
 	/*pastStrokes.push_back(Stroke(ribbon, textures[currentTexture].getTexture(), strokeFadeOut));*/
+	//cout << "Finish stroke" << endl;
 	float minAlpha = PERFORMANCE_MODE ? 0 : 0.1;
 	strokes->push_back(Stroke(ribbon, textures[currentTexture].getTexture(), strokeFadeOut, minAlpha));
 	ribbon.clear();
