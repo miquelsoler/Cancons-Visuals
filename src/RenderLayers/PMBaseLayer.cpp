@@ -154,7 +154,7 @@ void PMBaseLayer::setup(ofPoint initialPosition)
     brushDirection = ofPoint(ofRandom(-1, 1), ofRandom(-1, 1)).normalize();
     setBrushSize(int(ofRandom(sizeMin, sizeMax)));
 
-	maxDistanceToBreakStroke = (fboWidth * fboHeight) / 4;
+	//maxDistanceToBreakStroke = (fboWidth ) / 4;
     brushRGBColor = PMColorsSelector::getInstance().getColor(layerID);
     brushRGBColor.getHsb(brushHSBColor.hue, brushHSBColor.saturation, brushHSBColor.brightness);
     brushAlpha = 1;
